@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Find Up</string>
+    <string name="find_things">أشياء جديدة</string>
+    <string name="search_hint">food-truck,home business, etc</string>
+    <string name="near_me_text">بالقرب مني</string>
+    <string name="events_text">الاحداث</string>
+</resources>

@@ -1,0 +1,38 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:actionBarStyle">@style/ToolBarTheme</item>
+        <item name="cardViewStyle">@style/MyCardView</item>
+    </style>
+
+    <!-- Base application theme. -->
+    <style name="ToolBarTheme">
+        <item name="android:background">@color/material_color_black</item>
+    </style>
+
+    <style name="MyCardView" parent="Base.CardView">
+        <item name="android:color">@color/material_color_red_500</item>
+    </style>
+
+    <attr format="reference" name="cardStyle"/>
+
+    <style name="Light" parent="Theme.AppCompat.NoActionBar">
+        <item name="cardStyle">@style/CardView.Light</item>
+        <item name="android:background">@color/material_color_red_500</item>
+    </style>
+
+    <style name="Dark" parent="Theme.AppCompat.NoActionBar">
+        <item name="cardStyle">@style/CardView.Dark</item>
+        <item name="android:background">@color/material_color_red_500</item>
+    </style>
+
+    <style name="text_style" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+</resources>
