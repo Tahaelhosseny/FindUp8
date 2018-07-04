@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Find Up</string>
     <string name="find_things">Find New Things</string>
-    <string name="search_hint">food-truck,home business, etc</string>
+    <string name="search_hint">e.g food-truck , home business, etc</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="near_me_text">Near me</string>

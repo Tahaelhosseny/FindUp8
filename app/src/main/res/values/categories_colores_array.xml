@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="colors">
+        <item>@color/category_background_color_1</item>
+        <item>@color/category_background_color_2</item>
+        <item>@color/category_background_color_3</item>
+        <item>@color/category_background_color_4</item>
+    </array>
+</resources>
