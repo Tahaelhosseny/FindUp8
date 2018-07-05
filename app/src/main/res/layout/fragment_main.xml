@@ -89,8 +89,6 @@
         android:fadeScrollbars="false"
         android:nestedScrollingEnabled="true"
         android:orientation="vertical"
-        android:scrollY="@dimen/material_baseline_grid_3.5x"
-        android:scrollbarSize="@dimen/material_baseline_grid_3.5x"
         android:scrollbars="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
