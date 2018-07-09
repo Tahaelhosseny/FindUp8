@@ -6,4 +6,9 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="near_me_text">Near me</string>
     <string name="events_text">Events</string>
+    <string name="signing_in">Signing In ...</string>
+
+    <string name="facebook_app_id">200521430799548</string>
+    <string name="fb_login_protocol_scheme">fb200521430799548</string>
+
 </resources>

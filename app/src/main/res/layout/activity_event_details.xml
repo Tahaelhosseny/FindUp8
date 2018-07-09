@@ -6,29 +6,29 @@
     android:fitsSystemWindows="true"
     android:orientation="vertical">
 
+    <FrameLayout
+        android:id="@+id/event_fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar_top"
-        android:layout_height="wrap_content"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:minHeight="?attr/actionBarSize"
-        app:theme="@style/ToolBarTheme" >
+        app:theme="@style/ToolBarThemeNoBg">
 
-        <TextView
+        <Button
+            android:id="@+id/btnBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/find_things"
-            android:textStyle="bold"
-            android:textSize="20sp"
-            android:textColor="@color/material_color_white"
-            android:layout_gravity="center"
-            android:id="@+id/main_toolbar_title" />
+            android:layout_marginBottom="22dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:background="@null"
+            android:drawableLeft="@drawable/baseline_keyboard_arrow_left_black_48dp" />
 
     </android.support.v7.widget.Toolbar>
-
-    <FrameLayout
-        android:id="@+id/main_toolbar_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="?android:attr/actionBarSize" />
 
 </android.support.design.widget.CoordinatorLayout>
