@@ -7,7 +7,7 @@ import android.os.Bundle;
 
 import khaled.example.com.findup.R;
 
-public class SplashScreen extends AppCompatActivity {
+public class SplashScreenActivity extends AppCompatActivity {
 
     private final int SPLASH_DISPLAY_LENGTH = 2000;
 
@@ -18,7 +18,7 @@ public class SplashScreen extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(SplashScreen.this, Intro.class));
+                startActivity(new Intent(SplashScreenActivity.this, IntroActivity.class));
                 finish();
             }
         }, SPLASH_DISPLAY_LENGTH);

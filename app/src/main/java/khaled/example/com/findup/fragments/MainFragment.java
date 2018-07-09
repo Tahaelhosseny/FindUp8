@@ -80,7 +80,9 @@ public class MainFragment extends Fragment {
             }
         }));
         RecyclerView nearRecyclerView = getActivity().findViewById(R.id.nearMeRecyclerView);
+
         NearMeAdapter nearMeAdapter = new NearMeAdapter(getActivity(), places);
+
         nearRecyclerView.addOnItemTouchListener(new RecyclerTouchListener(getActivity()
                 , catsRecyclerView, new RecyclerTouchListener.ClickListener() {
             @Override
@@ -92,8 +94,11 @@ public class MainFragment extends Fragment {
 
             }
         }));
+        nearRecyclerView.smoothScrollToPosition(0);
+
         RecyclerView eventsRecyclerView = getActivity().findViewById(R.id.eventsRecyclerView);
         EventsAdapter eventsAdapter = new EventsAdapter(getActivity(), events);
+        eventsRecyclerView.smoothScrollToPosition(0);
         eventsRecyclerView.addOnItemTouchListener(new RecyclerTouchListener(getActivity()
                 , catsRecyclerView, new RecyclerTouchListener.ClickListener() {
             @Override

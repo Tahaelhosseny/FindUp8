@@ -18,11 +18,8 @@
             android:layout_height="wrap_content"
             android:text="@string/find_things"
             android:textStyle="bold"
-            android:textSize="20sp"
-            android:textColor="@color/material_color_white"
-            android:layout_gravity="center"
+            android:textColor="@color/colorBlack"
             android:id="@+id/main_toolbar_title" />
-
     </android.support.v7.widget.Toolbar>
 
     <FrameLayout

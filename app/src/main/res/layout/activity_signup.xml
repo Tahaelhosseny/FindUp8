@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
-    tools:context=".activities.Signup">
+    tools:context=".Signup">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar_signup"
@@ -53,7 +53,7 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:drawableLeft="@drawable/ic_username"
@@ -84,7 +84,7 @@
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="60dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="34dp"
         android:layout_marginStart="34dp"
@@ -100,12 +100,13 @@
 
     <Spinner
         android:id="@+id/mobileSpinner"
-        android:layout_width="55dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@null"
         android:spinnerMode="dialog"
         app:layout_constraintBottom_toBottomOf="@+id/editText_phone"
-        app:layout_constraintStart_toStartOf="@+id/editText_phone" />
+        app:layout_constraintStart_toStartOf="@+id/editText_phone"
+        android:paddingBottom="5dp"/>
 
     <com.santalu.maskedittext.MaskEditText
         android:id="@+id/editText_phone"
@@ -131,7 +132,7 @@
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="80dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="55dp"
         android:layout_marginLeft="34dp"
@@ -163,7 +164,7 @@
 
     <Button
         android:id="@+id/btn_signup"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:background="@drawable/bg_button_rounded_accent"
@@ -177,7 +178,7 @@
 
     <Button
         android:id="@+id/btn_login"
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="189dp"
         android:background="@null"

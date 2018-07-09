@@ -19,7 +19,6 @@ import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
-import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -34,18 +33,15 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
-import com.facebook.FacebookSdk;
 import com.facebook.appevents.AppEventsLogger;
 
 import java.util.Arrays;
 
 import khaled.example.com.findup.R;
 
-import static android.provider.ContactsContract.DisplayNameSources.EMAIL;
+public class IntroActivity extends AppCompatActivity {
 
-public class Intro extends AppCompatActivity {
-
-    private String TAG = Intro.class.getSimpleName();
+    private String TAG = IntroActivity.class.getSimpleName();
     Button btn_skip, btn_login, btn_signup, btn_creatAccount;
     ImageButton  btn_facebook, btn_instagram, btn_twitter;
     TextView main;
@@ -68,8 +64,7 @@ public class Intro extends AppCompatActivity {
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
                 .build();
-        FacebookSdk.sdkInitialize(getApplicationContext());
-        AppEventsLogger.activateApp(this);
+        AppEventsLogger.activateApp(getApplication());
         callbackManager = CallbackManager.Factory.create();
 
         main=findViewById(R.id.main);
@@ -84,14 +79,14 @@ public class Intro extends AppCompatActivity {
         btn_skip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(Intro.this,"Skip",Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(IntroActivity.this,MainActivity.class));
             }
         });
 
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Intro.this, Login.class));
+                startActivity(new Intent(IntroActivity.this, LoginActivity.class));
                 finish();
             }
         });
@@ -99,7 +94,7 @@ public class Intro extends AppCompatActivity {
         btn_signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Intro.this, Signup.class));
+                startActivity(new Intent(IntroActivity.this, SignupActivity.class));
                 finish();
             }
         });
@@ -120,14 +115,14 @@ public class Intro extends AppCompatActivity {
         btn_twitter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(Intro.this,"twitter",Toast.LENGTH_SHORT).show();
+                Toast.makeText(IntroActivity.this,"twitter",Toast.LENGTH_SHORT).show();
             }
         });
 
         btn_creatAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(Intro.this,"create store account",Toast.LENGTH_SHORT).show();
+                Toast.makeText(IntroActivity.this,"create store account",Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -150,7 +145,7 @@ public class Intro extends AppCompatActivity {
 
     private void signInGoogle(){
         showProgressDialog();
-        mGoogleSignInClient = GoogleSignIn.getClient(Intro.this, gso);
+        mGoogleSignInClient = GoogleSignIn.getClient(IntroActivity.this, gso);
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
@@ -161,7 +156,7 @@ public class Intro extends AppCompatActivity {
         LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-                Toast.makeText(Intro.this,"facebook:onSuccess",Toast.LENGTH_SHORT).show();
+                Toast.makeText(IntroActivity.this,"facebook:onSuccess",Toast.LENGTH_SHORT).show();
                 handleFacebookAccessToken(loginResult.getAccessToken());
             }
 
@@ -172,7 +167,7 @@ public class Intro extends AppCompatActivity {
 
             @Override
             public void onError(FacebookException error) {
-                Toast.makeText(Intro.this,error.toString(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(IntroActivity.this,error.toString(),Toast.LENGTH_SHORT).show();
                 progressDialog.dismiss();
             }
         });
@@ -194,7 +189,7 @@ public class Intro extends AppCompatActivity {
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithCredential:failure", task.getException());
-                            Toast.makeText(Intro.this, task.getException().getMessage(),
+                            Toast.makeText(IntroActivity.this, task.getException().getMessage(),
                                     Toast.LENGTH_SHORT).show();
                         }
 
@@ -242,7 +237,7 @@ public class Intro extends AppCompatActivity {
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithCredential:failure", task.getException());
-                            Toast.makeText(Intro.this, "Authentication failed.",
+                            Toast.makeText(IntroActivity.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
                         }
                         progressDialog.dismiss();
@@ -251,8 +246,8 @@ public class Intro extends AppCompatActivity {
     }
 
     private void signedIn(FirebaseUser currentUser){
-        Toast.makeText(Intro.this,"signedIn",Toast.LENGTH_SHORT).show();
-        startActivity(new Intent(Intro.this, MainActivity.class));
+        Toast.makeText(IntroActivity.this,"signedIn",Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(IntroActivity.this, MainActivity.class));
     }
 
     private void showProgressDialog() {

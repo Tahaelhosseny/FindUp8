@@ -8,32 +8,34 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.santalu.maskedittext.MaskEditText;
 
-public class Login extends AppCompatActivity {
+import khaled.example.com.findup.R;
 
-    ImageView pic_account;
-    EditText editText_password;
+public class SignupActivity extends AppCompatActivity {
+
+    ImageButton pic_account;
+    EditText editText_username, editText_password;
     MaskEditText editText_phone;
+    Button btn_login, btn_signup, btn_signupBack;
     Spinner mobileSpinner;
 
-    Button btn_forgotPassword, btn_login, btn_signup, btn_loginBack;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_signup);
 
         pic_account=findViewById(R.id.pic_account);
+        editText_username=findViewById(R.id.editText_username);
         editText_phone=findViewById(R.id.editText_phone);
         editText_password=findViewById(R.id.editText_password);
-        btn_forgotPassword=findViewById(R.id.btn_forgotPassword);
         btn_login=findViewById(R.id.btn_login);
         btn_signup=findViewById(R.id.btn_signup);
-        btn_loginBack=findViewById(R.id.btn_loginBack);
+        btn_signupBack=findViewById(R.id.btn_signupBack);
 
         mobileSpinner=findViewById(R.id.mobileSpinner);
         String[] items = new String[]{"+2", "+966", "+900"};
@@ -47,40 +49,41 @@ public class Login extends AppCompatActivity {
             }
         });
 
-        btn_forgotPassword.setOnClickListener(new View.OnClickListener() {
+        pic_account.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(Login.this,"forgot",Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        btn_login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(Login.this,"login",Toast.LENGTH_SHORT).show();
+                Toast.makeText(SignupActivity.this,"add pic",Toast.LENGTH_SHORT).show();
             }
         });
 
         btn_signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Login.this, Signup.class));
+                Toast.makeText(SignupActivity.this,"signup",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        btn_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(SignupActivity.this, LoginActivity.class));
                 finish();
             }
         });
 
-        btn_loginBack.setOnClickListener(new View.OnClickListener() {
+        btn_signupBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Login.this, Intro.class));
+                startActivity(new Intent(SignupActivity.this, IntroActivity.class));
                 finish();
             }
         });
     }
+
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
-            startActivity(new Intent(Login.this, Intro.class));
+            startActivity(new Intent(SignupActivity.this, IntroActivity.class));
             finish();
         }
         return super.onKeyDown(keyCode, event);
