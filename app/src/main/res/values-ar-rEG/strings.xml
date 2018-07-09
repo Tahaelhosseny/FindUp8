@@ -5,4 +5,5 @@
     <string name="search_hint">food-truck,home business, etc</string>
     <string name="near_me_text">بالقرب مني</string>
     <string name="events_text">الاحداث</string>
+    <string name="signing_in">جار تسجيل الدخول ...</string>
 </resources>

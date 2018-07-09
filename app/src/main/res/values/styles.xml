@@ -8,6 +8,7 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:actionBarStyle">@style/ToolBarTheme</item>
         <item name="cardViewStyle">@style/MyCardView</item>
+        <item name="coordinatorLayoutStyle">@style/Widget.Design.CoordinatorLayout</item>
     </style>
 
     <!-- Base application theme. -->
@@ -15,8 +16,12 @@
         <item name="android:background">@color/material_color_black</item>
     </style>
 
-    <style name="MyCardView" parent="Base.CardView">
-        <item name="android:color">@color/material_color_red_500</item>
+    <style name="ToolBarThemeNoBg">
+        <item name="android:background">@null</item>
+    </style>
+
+    <style name="MyCardView" parent="CardView">
+        <item name="cardBackgroundColor">@color/colorWhite</item>
     </style>
 
     <attr format="reference" name="cardStyle"/>
@@ -33,6 +38,25 @@
 
     <style name="text_style" parent="TextAppearance.AppCompat">
         <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="Theme.AppCompat.Light.NoActionBar.UnFullScreen" parent="@style/Theme.AppCompat.Light">
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="colorAccent">@color/colorWhiteGrey</item>
+    </style>
+
+    <style name="Theme.AppCompat.Light.NoActionBar.FullScreen" parent="@style/Theme.AppCompat.Light">
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <style name="MyEditText" parent="Theme.AppCompat.Light">
+        <item name="colorControlNormal">@color/colorWhiteGrey</item>
+        <item name="colorControlActivated">@color/colorWhiteGrey</item>
+        <item name="colorAccent">@color/colorWhiteGrey</item>
+        <item name="android:textCursorDrawable">@drawable/color_black</item>
     </style>
 
 </resources>

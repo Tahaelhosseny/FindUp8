@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="vertical"
+    android:scrollbarSize="@dimen/material_baseline_grid_3.5x"
+    android:scrollbarStyle="insideOverlay"
+    tools:context=".fragments.EventDetailsFragment">
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:src="@color/material_color_red_200" />
+
+    <LinearLayout
+        android:id="@+id/nameLayout"
+        android:layout_width="340dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="108dp"
+        android:background="@drawable/event_details_layout_bg"
+        android:orientation="vertical"
+        app:layout_anchor="@+id/imageView2"
+        app:layout_anchorGravity="bottom|center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/eventName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/sfcompactdisplay_semibold"
+            android:padding="5dp"
+            android:text="Event"
+            android:textColor="@color/colorBlack"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/sfcompactdisplay_regular"
+            android:padding="5dp"
+            android:text="by Store"
+            android:textColor="@color/colorBlack" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/calImg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start|center"
+        android:layout_marginTop="224dp"
+        android:src="@drawable/calendar_0_5x"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.044"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:fontFamily="@font/sfcompactdisplay_regular"
+        android:padding="5dp"
+        android:text="Date and Time"
+        android:textColor="@color/colorBlack"
+        android:textSize="14sp"
+        app:layout_anchor="@+id/calImg"
+        app:layout_anchorGravity="center|right"
+        app:layout_constraintStart_toEndOf="@id/calImg"
+        app:layout_constraintTop_toTopOf="@id/calImg"
+        android:layout_marginLeft="12dp" />
+
+    <ImageView
+        android:id="@+id/locImg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="264dp"
+        android:src="@drawable/map_0_5x"
+        app:layout_anchor="@+id/calImg"
+        app:layout_anchorGravity="bottom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.043"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:fontFamily="@font/sfcompactdisplay_regular"
+        android:padding="5dp"
+        android:text="Location"
+        android:textColor="@color/colorBlack"
+        android:textSize="14sp"
+        app:layout_anchor="@+id/locImg"
+        app:layout_anchorGravity="center|right"
+        app:layout_constraintStart_toEndOf="@id/locImg"
+        app:layout_constraintTop_toTopOf="@id/locImg"
+        android:layout_marginLeft="20dp" />
+
+    <ImageView
+        android:id="@+id/tckImg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="304dp"
+        android:src="@drawable/ticket_0_5x"
+        app:layout_anchor="@+id/calImg"
+        app:layout_anchorGravity="bottom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.043"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/sfcompactdisplay_regular"
+        android:padding="5dp"
+        android:text="Ticket Price"
+        android:textColor="@color/colorBlack"
+        android:textSize="14sp"
+        app:layout_anchor="@+id/locImg"
+        app:layout_anchorGravity="center|right"
+        app:layout_constraintStart_toEndOf="@id/locImg"
+        app:layout_constraintTop_toTopOf="@id/locImg"
+        android:layout_marginLeft="20dp" />
+
+    <TextView
+        android:id="@+id/aboutTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="356dp"
+        android:fontFamily="@font/sfcompactdisplay_regular"
+        android:padding="5dp"
+        android:text="About"
+        android:textColor="@color/colorBlack"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.047"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/aboutTxtDetails"
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/sfcompactdisplay_regular"
+        android:padding="5dp"
+        android:text="The Red and Black The Red and Black The Red and Black The Red and Black The Red and Black The Red and Black The Red and Black"
+        android:textColor="@color/colorBlack"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/aboutTxt"
+        app:layout_constraintTop_toBottomOf="@id/aboutTxt"/>
+
+    <TextView
+        android:id="@+id/addressTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/sfcompactdisplay_regular"
+        android:padding="5dp"
+        android:text="Address"
+        android:textColor="@color/colorBlack"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.049"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/aboutTxtDetails"/>
+
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/mapView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.047"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/addressTxt" />
+
+
+</android.support.constraint.ConstraintLayout>
