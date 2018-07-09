@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    tools:context=".activities.Login">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_login"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="18dp"
+        android:background="@color/colorWhite"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/btn_loginBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="22dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:background="@null"
+            android:drawableLeft="@drawable/baseline_keyboard_arrow_left_black_48dp"
+            android:fontFamily="@font/sfcompactdisplay_medium"
+            android:text="Login"
+            android:textAllCaps="false"
+            android:textColor="@color/colorBlack"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/pic_account"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </android.support.v7.widget.Toolbar>
+
+
+    <ImageView
+        android:id="@+id/pic_account"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="34dp"
+        android:src="@drawable/ic_accountpic"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_login"
+        android:layout_marginStart="34dp" />
+
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:drawableLeft="@drawable/ic_phonenumber"
+        android:text="Mobile"
+        android:textAlignment="center"
+        android:textColor="@color/colorWhiteGrey"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/pic_account"
+        app:layout_constraintTop_toBottomOf="@+id/pic_account" />
+
+    <Spinner
+        android:id="@+id/mobileSpinner"
+        android:layout_width="55dp"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:spinnerMode="dialog"
+        app:layout_constraintBottom_toBottomOf="@+id/editText_phone"
+        app:layout_constraintStart_toStartOf="@+id/editText_phone" />
+
+    <com.santalu.maskedittext.MaskEditText
+        android:id="@+id/editText_phone"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:digits="0123456789"
+        android:inputType="phone"
+        android:paddingLeft="55dp"
+        android:shadowColor="@color/colorBlack"
+        android:textColor="@color/colorBlack"
+        android:textColorHighlight="@color/colorWhiteGrey"
+        android:textColorLink="@color/colorWhiteGrey"
+        android:textCursorDrawable="@drawable/color_black"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:theme="@style/MyEditText"
+        app:layout_constraintEnd_toEndOf="@+id/editText_password"
+        app:layout_constraintStart_toStartOf="@+id/textView4"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:met_mask="| #### ## ## ###" />
+
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="34dp"
+        android:layout_marginStart="34dp"
+        android:layout_marginTop="16dp"
+        android:drawableLeft="@drawable/ic_password"
+        android:text="Password"
+        android:textAlignment="center"
+        android:textColor="@color/colorWhiteGrey"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_phone" />
+
+    <EditText
+        android:id="@+id/editText_password"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:inputType="textPassword"
+        android:shadowColor="@color/colorBlack"
+        android:textColor="@color/colorBlack"
+        android:textColorHighlight="@color/colorWhiteGrey"
+        android:textColorLink="@color/colorWhiteGrey"
+        android:textCursorDrawable="@drawable/color_black"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:theme="@style/MyEditText"
+        app:layout_constraintStart_toStartOf="@+id/textView5"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+
+    <Button
+        android:id="@+id/btn_forgotPassword"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:background="@null"
+        android:drawableLeft="@drawable/ic_forgotpassword"
+        android:drawableStart="@drawable/ic_forgotpassword"
+        android:text="Forget Password"
+        android:textAllCaps="false"
+        android:textColor="@color/colorBlack"
+        app:layout_constraintStart_toStartOf="@+id/editText_password"
+        app:layout_constraintTop_toBottomOf="@+id/editText_password" />
+
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/bg_button_rounded_accent"
+        android:text="Login"
+        android:textAllCaps="false"
+        android:textColor="@color/colorWhite"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_forgotPassword"/>
+
+    <Button
+        android:id="@+id/btn_signup"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="34dp"
+        android:background="@null"
+        android:text="Don't have Account..Create one"
+        android:textAllCaps="false"
+        android:textColor="@color/colorBlack"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_login" />
+
+</android.support.constraint.ConstraintLayout>
