@@ -48,6 +48,15 @@
         </activity>
 
         <activity
+            android:name=".activities.SettingsActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.MainActivity" />
+        </activity>
+
+
+        <activity
             android:name=".activities.IntroActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
         <activity
