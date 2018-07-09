@@ -10,52 +10,119 @@
     android:foreground="?android:attr/selectableItemBackground"
     android:layout_margin="10dp">
 
-    <LinearLayout
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
         android:background="@drawable/near_me_item_bg"
-        android:orientation="vertical">
+        app:layout_constraintBottom_toBottomOf="@+id/nearItemImg"
+        app:layout_constraintEnd_toEndOf="@+id/nearItemReview"
+        app:layout_constraintStart_toEndOf="@+id/nearItemReview"
+        app:layout_constraintTop_toBottomOf="@+id/nearItemImg">
 
         <ImageView
             android:id="@+id/nearItemImg"
             android:layout_width="180dp"
-            android:layout_height="120dp"
-            android:scaleType="fitXY"/>
+            android:layout_height="100dp"
+            android:layout_marginBottom="5dp"
+            android:minHeight="100dp"
+            app:layout_constraintBottom_toTopOf="@+id/nearItemName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
 
         <TextView
             android:id="@+id/nearItemName"
+            style="@style/text_style"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
             android:text="food"
-            android:layout_margin="5dp"
-            style="@style/text_style"
+            android:textColor="@color/material_color_black"
             android:textSize="22sp"
-            android:textColor="@color/material_color_black"/>
+            app:layout_constraintBottom_toTopOf="@+id/nearItemDistance"
+            app:layout_constraintStart_toStartOf="@+id/nearItemImg"
+            app:layout_constraintTop_toBottomOf="@+id/nearItemImg" />
 
         <TextView
             android:id="@+id/nearItemDistance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="16dp"
             android:text="20 KM"
-            android:layout_margin="5dp"
+            android:textColor="@color/material_color_black"
             android:textSize="15sp"
-            android:textColor="@color/material_color_black"/>
+            app:layout_constraintBottom_toTopOf="@+id/nearItemTags"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nearItemName" />
 
         <TextView
             android:id="@+id/nearItemTags"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:text="cafe"/>
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="16dp"
+            android:text="cafe"
+            app:layout_constraintBottom_toTopOf="@+id/nearItemReview"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nearItemDistance" />
 
         <TextView
             android:id="@+id/nearItemReview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:text="5.0"/>
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="16dp"
+            android:text="5.0"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nearItemTags" />
 
-    </LinearLayout>
+        <ImageView
+            android:visibility="gone"
+            android:id="@+id/love"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_love_icon"
+            />
+
+        <com.like.LikeButton
+            app:icon_type="heart"
+            app:icon_size="25dp"
+            app:like_drawable="@drawable/ic_love_icon"
+            app:unlike_drawable="@drawable/ic_unlove_icon"
+            android:id="@+id/star_button"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+    </android.support.constraint.ConstraintLayout>
 
 </android.support.v7.widget.CardView>
