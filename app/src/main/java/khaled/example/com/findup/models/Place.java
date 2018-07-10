@@ -5,13 +5,21 @@ package khaled.example.com.findup.models;
  */
 
 public class Place {
-    private String placeName, placeDistane,placeImg, placeReview;
+    private int placeID;
+    private String placeName;
+    private String placeDistane;
+    private String placeImg;
+    private String placeReview;
+    private String placeShortDescription;
 
-    public Place(String placeName, String placeDistane, String placeImg, String placeReview) {
+
+    public Place(int placeID, String placeName, String placeDistane, String placeImg, String placeReview, String placeShortDescription) {
+        this.placeID = placeID;
         this.placeName = placeName;
         this.placeDistane = placeDistane;
         this.placeImg = placeImg;
         this.placeReview = placeReview;
+        this.placeShortDescription = placeShortDescription;
     }
 
     public String getPlaceName() {
@@ -44,5 +52,17 @@ public class Place {
 
     public void setPlaceReview(String placeReview) {
         this.placeReview = placeReview;
+    }
+
+    public int getPlaceID() {
+        return placeID;
+    }
+
+    public void setPlaceID(int placeID) {
+        this.placeID = placeID;
+    }
+
+    public String getPlaceShortDescription() {
+        return placeShortDescription;
     }
 }

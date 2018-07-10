@@ -47,17 +47,17 @@ public class MainFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         List<Category> categories = new ArrayList<>();
-        categories.add(new Category("food"));
-        categories.add(new Category("food"));
-        categories.add(new Category("food"));
-        categories.add(new Category("food"));
-        categories.add(new Category("food"));
+        categories.add(new Category("Food-Trunk"));
+        categories.add(new Category("Home Business"));
+        categories.add(new Category("Crafts"));
+        categories.add(new Category("Food-Trunk"));
+        categories.add(new Category("Home Business"));
 
         List<Place> places = new ArrayList<>();
-        places.add(new Place("place", "4 KM", "", "5.0"));
-        places.add(new Place("place", "4 KM", "", "5.0"));
-        places.add(new Place("place", "4 KM", "", "5.0"));
-        places.add(new Place("place", "4 KM", "", "5.0"));
+        places.add(new Place(1,"Black Cafe", "1.3km", "", "4.5","American Cafe Break $$"));
+        places.add(new Place(2,"Genuine Coffee", "2km", "", "4.2","Indian Cafe Break $$"));
+        places.add(new Place(1,"Black Cafe", "1.3km", "", "4.5","American Cafe Break $$"));
+        places.add(new Place(2,"Genuine Coffee", "2km", "", "4.2","Indian Cafe Break $$"));
 
         List<Event> events = new ArrayList<>();
         events.add(new Event("Event", "Event Description","6 May",""));

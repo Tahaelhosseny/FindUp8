@@ -2,6 +2,7 @@ package khaled.example.com.findup.adapters;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,7 +42,7 @@ public class MainCategoriesAdapter extends RecyclerView.Adapter<MainCategoriesAd
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Category category = categoryList.get(position);
         holder.catNameText.setText(category.getCat_name());
-        holder.cat_bg.setBackgroundColor(Utility.getCategoryBackgroundIDSArray(context)[position%4]);
+        holder.cat_bg.setCardBackgroundColor(Utility.getCategoryBackgroundIDSArray(context)[position%4]);
     }
 
     @Override
@@ -52,7 +53,7 @@ public class MainCategoriesAdapter extends RecyclerView.Adapter<MainCategoriesAd
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView catNameText;
-        LinearLayout cat_bg;
+        CardView cat_bg;
 
         public ViewHolder(View view) {
             super(view);

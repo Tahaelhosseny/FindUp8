@@ -13,13 +13,6 @@
         android:minHeight="?attr/actionBarSize"
         app:theme="@style/ToolBarTheme" >
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/find_things"
-            android:textStyle="bold"
-            android:textColor="@color/colorBlack"
-            android:id="@+id/main_toolbar_title" />
     </android.support.v7.widget.Toolbar>
 
     <FrameLayout
@@ -28,4 +21,14 @@
         android:layout_height="match_parent"
         android:layout_marginTop="?android:attr/actionBarSize" />
 
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/navigation_bottom"
+        android:layout_width="match_parent"
+        android:elevation="8dp"
+        android:layout_height="60dp"
+        android:layout_gravity="bottom"
+        android:background="@color/colorWhite"
+        app:itemIconTint="@color/colorAccent"
+        app:itemTextColor="#000"
+        app:menu="@menu/bottom_navigation_items"/>
 </android.support.design.widget.CoordinatorLayout>

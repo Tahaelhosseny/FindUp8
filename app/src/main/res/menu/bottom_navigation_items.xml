@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/home"
+        android:enabled="true"
+        android:icon="@drawable/home_sel_1_5x"
+        android:title="Home"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/map"
+        android:enabled="true"
+        android:icon="@drawable/map_1_5x"
+        android:title="map"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/search"
+        android:enabled="true"
+        android:icon="@drawable/search_1_5x"
+        android:title="search"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/category"
+        android:enabled="true"
+        android:icon="@drawable/category_1_5x"
+        android:title="category"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/myCart"
+        android:enabled="true"
+        android:icon="@drawable/__1_5x"
+        android:title="profile"
+        app:showAsAction="always"/>
+
+</menu>
