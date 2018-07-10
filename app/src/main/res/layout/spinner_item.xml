@@ -14,5 +14,4 @@
     android:textStyle="bold"
     android:textSize="20sp"
     android:gravity="left"
-    android:padding="5dip"
-    />
+    android:padding="5dip" />
