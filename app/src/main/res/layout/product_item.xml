@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:layout_margin="10dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/productItemImg"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_margin="10dp"
+        android:src="@drawable/placeholder"
+        android:scaleType="fitXY"/>
+
+    <TextView
+        android:id="@+id/productItemTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginStart="20dp"
+        android:fontFamily="@font/sfcompactdisplay_semibold"
+        android:text="Product Name"
+        android:textColor="@color/material_color_black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@id/productItemImg" />
+
+    <TextView
+        android:id="@+id/productItemDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/sfcompactdisplay_semibold"
+        android:text="The red and Black cafe"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@id/productItemTxt"
+        app:layout_constraintTop_toBottomOf="@+id/productItemTxt"/>
+
+    <TextView
+        android:id="@+id/productItemPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/sfcompactdisplay_semibold"
+        android:text="18.5 SR"
+        android:textColor="@color/material_color_black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@id/productItemDesc"
+        app:layout_constraintTop_toBottomOf="@+id/productItemDesc"/>
+
+    <TextView
+        android:id="@+id/productNumComments"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/sfcompactdisplay_semibold"
+        android:text="567"
+        android:textColor="@color/material_color_black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@id/productItemPrice"
+        app:layout_constraintTop_toBottomOf="@+id/productItemPrice"/>
+
+    <TextView
+        android:id="@+id/productNumLikes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="36dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/sfcompactdisplay_semibold"
+        android:text="2.2 k"
+        android:textColor="@color/material_color_black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@id/productNumComments"
+        app:layout_constraintTop_toBottomOf="@+id/productItemPrice" />
+
+</android.support.constraint.ConstraintLayout>

@@ -13,16 +13,15 @@
             android:name=".activities.MainActivity"
             android:label="@string/find_things"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        </activity>
-        <activity
-            android:name=".activities.SplashScreenActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <activity
+            android:name=".activities.SplashScreenActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"></activity>
         <activity
             android:name=".activities.LoginActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen">
@@ -30,7 +29,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activities.IntroActivity" />
         </activity>
-
         <activity
             android:name=".activities.VerifyCodeActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen">
@@ -38,7 +36,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activities.LoginActivity" />
         </activity>
-
         <activity
             android:name=".activities.ForgotPasswordActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen">
@@ -46,7 +43,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activities.LoginActivity" />
         </activity>
-
         <activity
             android:name=".activities.SettingsActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen">
@@ -54,18 +50,9 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activities.MainActivity" />
         </activity>
-
-
         <activity
             android:name=".activities.IntroActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
-        <activity
-            android:name=".activities.LoginActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activities.IntroActivity" />
-        </activity>
         <activity
             android:name=".activities.SignupActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen">
@@ -94,7 +81,10 @@
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
-        <activity android:name=".activities.EventDetailsActivity"
+        <activity
+            android:name=".activities.EventDetailsActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
+        <activity android:name=".activities.StoreDetailsActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen"></activity>
     </application>
 

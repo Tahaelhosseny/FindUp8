@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:isScrollContainer="false">
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:nestedScrollingEnabled="true"
+        android:scrollbarSize="@dimen/material_baseline_grid_3.5x"
+        android:scrollbarStyle="insideOverlay"
+        android:scrollbars="vertical"
+        tools:context=".fragments.StoreInfoFragment">
+
+        <TextView
+            android:id="@+id/aboutTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/sfcompactdisplay_medium"
+            android:padding="5dp"
+            android:text="About"
+            android:textColor="@color/colorBlack"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.047"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/aboutTxtDetails"
+            android:layout_width="360dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/sfcompactdisplay_light"
+            android:padding="5dp"
+            android:text="The Red and Black The Red and Black The Red and Black The Red and Black The Red and Black The Red and Black The Red and Black"
+            android:textColor="@color/colorBlack"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/aboutTxt"
+            app:layout_constraintTop_toBottomOf="@id/aboutTxt" />
+
+        <TextView
+            android:id="@+id/workTimeTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/sfcompactdisplay_medium"
+            android:padding="5dp"
+            android:text="Work Time"
+            android:textColor="@color/colorBlack"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.047"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/aboutTxtDetails" />
+
+        <TextView
+            android:id="@+id/workTimeDaysTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/sfcompactdisplay_regular"
+            android:padding="5dp"
+            android:text="Days"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.047"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/workTimeTxt" />
+
+        <TextView
+            android:id="@+id/workTimehTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="168dp"
+            android:layout_marginStart="168dp"
+            android:fontFamily="@font/sfcompactdisplay_regular"
+            android:padding="5dp"
+            android:text="Time"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/workTimeDaysTxt"
+            app:layout_constraintTop_toBottomOf="@+id/workTimeTxt" />
+
+        <TextView
+            android:id="@+id/workTimeDaysInfoTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/sfcompactdisplay_light"
+            android:padding="5dp"
+            android:text="Sunday - Wednesday"
+            android:textColor="@color/colorBlack"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.067"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/workTimeDaysTxt" />
+
+        <TextView
+            android:id="@+id/workTimeInfoTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="28dp"
+            android:layout_marginRight="28dp"
+            android:fontFamily="@font/sfcompactdisplay_light"
+            android:padding="5dp"
+            android:text="9:00 AM - 6:00 PM"
+            android:textColor="@color/colorBlack"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintHorizontal_bias="0.679"
+            app:layout_constraintStart_toStartOf="@id/workTimehTxt"
+            app:layout_constraintTop_toBottomOf="@+id/workTimeDaysTxt" />
+
+        <TextView
+            android:id="@+id/contactTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/sfcompactdisplay_medium"
+            android:padding="5dp"
+            android:text="Contact"
+            android:textColor="@color/colorBlack"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.047"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/workTimeDaysInfoTxt" />
+
+        <ImageView
+            android:id="@+id/mailImg"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="8dp"
+            android:padding="5dp"
+            android:src="@drawable/mail_1_5x"
+            app:layout_constraintStart_toStartOf="@id/contactTxt"
+            app:layout_constraintTop_toBottomOf="@+id/contactTxt" />
+
+        <ImageView
+            android:id="@+id/siteImg"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="8dp"
+            android:padding="5dp"
+            android:src="@drawable/web_1_5x"
+            app:layout_constraintStart_toEndOf="@id/mailImg"
+            app:layout_constraintTop_toBottomOf="@+id/contactTxt" />
+
+        <ImageView
+            android:id="@+id/chatImg"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="8dp"
+            android:padding="5dp"
+            android:src="@drawable/chat_1_5x"
+            app:layout_constraintStart_toEndOf="@id/siteImg"
+            app:layout_constraintTop_toBottomOf="@+id/contactTxt" />
+
+        <ImageView
+            android:id="@+id/phoneImg"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="8dp"
+            android:padding="5dp"
+            android:src="@drawable/phone_1_5x"
+            app:layout_constraintStart_toEndOf="@id/chatImg"
+            app:layout_constraintTop_toBottomOf="@+id/contactTxt" />
+
+        <ImageView
+            android:id="@+id/twitterImg"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="8dp"
+            android:padding="5dp"
+            android:src="@drawable/tiwitter_1_5x"
+            app:layout_constraintStart_toEndOf="@id/phoneImg"
+            app:layout_constraintTop_toBottomOf="@+id/contactTxt" />
+
+        <ImageView
+            android:id="@+id/snapImg"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="8dp"
+            android:padding="5dp"
+            android:src="@drawable/snap_1_5x"
+            app:layout_constraintStart_toEndOf="@id/twitterImg"
+            app:layout_constraintTop_toBottomOf="@+id/contactTxt" />
+
+        <TextView
+            android:id="@+id/photosTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/sfcompactdisplay_medium"
+            android:padding="5dp"
+            android:text="Photos"
+            android:textColor="@color/colorBlack"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.047"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mailImg" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/storePhotosRecycler"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:padding="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/photosTxt">
+
+        </android.support.v7.widget.RecyclerView>
+
+        <TextView
+            android:id="@+id/ratingTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/sfcompactdisplay_medium"
+            android:padding="5dp"
+            android:text="Rating"
+            android:textColor="@color/colorBlack"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.047"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/storePhotosRecycler" />
+
+        <RatingBar
+            android:id="@+id/storeRatingBar"
+            style="?android:attr/ratingBarStyleIndicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numStars="5"
+            android:stepSize="1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.047"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ratingTxt" />
+
+        <TextView
+            android:id="@+id/addRateTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="52dp"
+            android:layout_marginStart="52dp"
+            android:drawableEnd="@drawable/forward_0_5x"
+            android:drawableRight="@drawable/forward_0_5x"
+            android:fontFamily="@font/sfcompactdisplay_thin"
+            android:padding="5dp"
+            android:text="Add Rating"
+            android:textColor="@color/colorBlack"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@id/storeRatingBar"
+            app:layout_constraintTop_toTopOf="@id/storeRatingBar" />
+
+        <TextView
+            android:id="@+id/commentsTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/sfcompactdisplay_medium"
+            android:padding="5dp"
+            android:text="Comments"
+            android:textColor="@color/colorBlack"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.047"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/storeRatingBar" />
+
+        <ImageView
+            android:id="@+id/commentUsersImg"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="8dp"
+            android:padding="5dp"
+            android:src="@drawable/placeholder"
+            app:layout_constraintStart_toStartOf="@id/commentsTxt"
+            app:layout_constraintTop_toBottomOf="@+id/commentsTxt" />
+
+        <TextView
+            android:id="@+id/commentUsersTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/sfcompactdisplay_medium"
+            android:padding="5dp"
+            android:text="Nof, Sara, Saga"
+            android:textColor="@color/colorBlack"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/commentUsersImg"
+            app:layout_constraintTop_toTopOf="@+id/commentUsersImg" />
+
+        <TextView
+            android:id="@+id/commentUsersNumTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:fontFamily="@font/sfcompactdisplay_regular"
+            android:padding="5dp"
+            android:text="and 250 people comment on this"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@id/commentUsersTxt"
+            app:layout_constraintTop_toBottomOf="@+id/commentUsersTxt" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/forward_0_5x"
+            app:layout_constraintEnd_toEndOf="@id/addRateTxt"
+            app:layout_constraintHorizontal_bias="0.887"
+            app:layout_constraintStart_toEndOf="@id/commentUsersNumTxt"
+            app:layout_constraintTop_toTopOf="@+id/commentUsersNumTxt" />
+
+        <TextView
+            android:id="@+id/addressTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/sfcompactdisplay_medium"
+            android:padding="5dp"
+            android:text="Address"
+            android:textColor="@color/colorBlack"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.047"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/commentUsersImg" />
+
+        <com.google.android.gms.maps.MapView
+            android:id="@+id/mapView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.047"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/addressTxt" />
+
+    </android.support.constraint.ConstraintLayout>
+
+</ScrollView>

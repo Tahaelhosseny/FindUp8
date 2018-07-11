@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <color name="material_bottom_sheet_background_fill">@color/material_color_white</color>
     <color name="material_bottom_sheet_contents_text_color">@color/material_typography_primary_text_color_dark</color>
     <color name="material_bottom_sheet_title_text_color">@color/material_typography_primary_text_color_dark</color>
@@ -735,5 +734,11 @@
     <dimen name="main_activity_title_marginStart">16sp</dimen>
     <dimen name="main_activity_title_marginTop">36sp</dimen>
 
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="tab_max_width">264dp</dimen>
+    <dimen name="tab_padding_bottom">16dp</dimen>
+    <dimen name="tab_label">14sp</dimen>
+    <dimen name="custom_tab_layout_height">72dp</dimen>
 
 </resources>

@@ -33,7 +33,6 @@ public class EventDetailsFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        Event event = new Event("Event", "Event Description","6 May","");
         bindUI();
     }
 

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:nestedScrollingEnabled="true"
+        android:scrollbars="vertical"
+        android:scrollbarSize="@dimen/material_baseline_grid_3.5x"
+        android:scrollbarStyle="insideOverlay"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:context=".fragments.StoreDetailsFragment">
+
+        <ImageView
+            android:id="@+id/storeImg"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:src="@color/material_color_red_200" />
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/nameLayout"
+            android:layout_width="340dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="108dp"
+            app:cardCornerRadius="5dp"
+            android:orientation="vertical"
+            app:layout_anchor="@+id/imageView2"
+            app:layout_anchorGravity="bottom|center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="320dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp">
+
+                <TextView
+                    android:id="@+id/storeName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/sfcompactdisplay_semibold"
+                    android:padding="5dp"
+                    android:text="Black Cafe"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/storeDis"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/sfcompactdisplay_semibold"
+                    android:padding="5dp"
+                    android:text="2KM"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="17sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <TextView
+                    android:id="@+id/storeBriefTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:fontFamily="@font/sfcompactdisplay_regular"
+                    android:padding="5dp"
+                    android:text="American Cafe Break $$"
+                    android:textColor="@color/colorBlack"
+                    app:layout_constraintTop_toBottomOf="@id/storeName"/>
+
+                <ImageView
+                    android:id="@+id/starImg"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:padding="5dp"
+                    android:src="@drawable/star_off"
+                    app:layout_constraintTop_toBottomOf="@id/storeBriefTxt" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="5.0"
+                    app:layout_constraintStart_toEndOf="@id/starImg"
+                    app:layout_constraintTop_toTopOf="@id/starImg" />
+
+            </android.support.constraint.ConstraintLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/storeTabs"
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:tabGravity="fill"
+            app:layout_constraintTop_toBottomOf="@+id/nameLayout"/>
+
+        <khaled.example.com.findup.CustomViews.WrapContentHeightViewPager
+            android:id="@+id/storeViewpager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            app:layout_constraintTop_toBottomOf="@+id/storeTabs"/>
+
+    </android.support.constraint.ConstraintLayout>
+
+</ScrollView>

@@ -57,8 +57,8 @@ public class MainCatsFragment extends Fragment {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         MainCategoriesAdapter adapter = new MainCategoriesAdapter(getActivity(), categories);
         recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
         recyclerView.smoothScrollToPosition(0);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, true));
         recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getActivity()
                 , recyclerView, new RecyclerTouchListener.ClickListener() {
             @Override
