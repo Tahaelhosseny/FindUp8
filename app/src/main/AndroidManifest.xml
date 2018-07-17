@@ -85,7 +85,8 @@
             android:name=".activities.EventDetailsActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
         <activity android:name=".activities.StoreDetailsActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen"></activity>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen">
+        </activity>
     </application>
 
 </manifest>

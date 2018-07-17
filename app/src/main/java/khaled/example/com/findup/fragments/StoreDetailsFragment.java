@@ -52,7 +52,7 @@ public class StoreDetailsFragment extends Fragment {
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter((getChildFragmentManager()));
         adapter.addFragment(new StoreInfoFragment(), "Information");
-        adapter.addFragment(new NearMeFragment(), "Products");
+        adapter.addFragment(new ProductsFragment(), "Products");
         viewPager.setAdapter(adapter);
     }
 

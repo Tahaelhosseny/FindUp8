@@ -2,7 +2,7 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="200dp"
+    android:layout_height="wrap_content"
     android:layout_margin="10dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
@@ -15,7 +15,7 @@
         android:scaleType="fitXY"/>
 
     <TextView
-        android:id="@+id/productItemTxt"
+        android:id="@+id/productItemNameTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
@@ -34,8 +34,8 @@
         android:fontFamily="@font/sfcompactdisplay_semibold"
         android:text="The red and Black cafe"
         android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="@id/productItemTxt"
-        app:layout_constraintTop_toBottomOf="@+id/productItemTxt"/>
+        app:layout_constraintStart_toStartOf="@id/productItemNameTxt"
+        app:layout_constraintTop_toBottomOf="@+id/productItemNameTxt"/>
 
     <TextView
         android:id="@+id/productItemPrice"
