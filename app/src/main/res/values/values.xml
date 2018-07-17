@@ -740,5 +740,6 @@
     <dimen name="tab_padding_bottom">16dp</dimen>
     <dimen name="tab_label">14sp</dimen>
     <dimen name="custom_tab_layout_height">72dp</dimen>
+    <dimen name="login_text_padding_from_drawable">15dp</dimen>
 
 </resources>

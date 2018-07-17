@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
 
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                    Fragment selectedFragment = null;
+                    Fragment selectedFragment = new MainFragment();
                     switch (item.getItemId()) {
                         case R.id.home:
                             ToolbarSwitch(true);
