@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#C0000000"
-    tools:context=".MeasureDistanceActivity"
+    tools:context=".activities.MeasureDistanceActivity"
     android:padding="16dp">
 
     <android.support.v7.widget.Toolbar
