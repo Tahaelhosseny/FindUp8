@@ -57,7 +57,7 @@ public class EventsFragment extends Fragment {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         EventsAdapter adapter = new EventsAdapter(getActivity(), events);
         recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
         recyclerView.smoothScrollToPosition(0);
         recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getActivity()
                 , recyclerView, new RecyclerTouchListener.ClickListener() {

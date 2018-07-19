@@ -12,4 +12,7 @@
     <color name="category_background_color_3">#428EED</color>
     <color name="category_background_color_4">#A8B6C8</color>
 
+
+    <color name="sort_by_background">#323B45</color>
+
 </resources>

@@ -62,17 +62,5 @@ public class NearMeFragment extends Fragment {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
         recyclerView.smoothScrollToPosition(0);
-        recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getActivity()
-                , recyclerView, new RecyclerTouchListener.ClickListener() {
-            @Override
-            public void onClick(View view, int position) {
-                startActivity(new Intent(getActivity(), StoreDetailsActivity.class));
-            }
-
-            @Override
-            public void onLongClick(View view, int position) {
-
-            }
-        }));
     }
 }

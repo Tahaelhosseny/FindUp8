@@ -1,6 +1,7 @@
 package khaled.example.com.findup.fragments;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -9,6 +10,9 @@ import android.view.InflateException;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.HorizontalScrollView;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -18,6 +22,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import khaled.example.com.findup.Helper.UI_Utility;
 import khaled.example.com.findup.R;
 
 public class MapFragment extends Fragment implements OnMapReadyCallback {
@@ -25,12 +30,10 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     GoogleMap myMap;
     MapView mMapView;
     String TAG = getTag();
+    HorizontalScrollView filter;
 
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -40,7 +43,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             mMapView = (MapView) rootView.findViewById(R.id.map);
             mMapView.onCreate(savedInstanceState);
             mMapView.getMapAsync(this);
-
 
             getChildFragmentManager().beginTransaction().replace(R.id.nearMeContainer, new NearMeFragment()).commit();
 
@@ -78,7 +80,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     @Override
     public void onResume() {
         super.onResume();
-        mMapView.onResume();
+        if (mMapView !=null)
+            mMapView.onResume();
     }
 
     @Override
@@ -98,6 +101,25 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 
         }
+
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        ImageButton view_fillter = getActivity().findViewById(R.id.search_filter);
+        filter = getActivity().findViewById(R.id.filter);
+        view_fillter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                UI_Utility.switchVisibility(filter);
+            }
+        });
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
     }
 }

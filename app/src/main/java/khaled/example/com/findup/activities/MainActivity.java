@@ -19,6 +19,7 @@ import android.util.TypedValue;
 import android.view.MenuItem;
 import android.view.View;
 
+import khaled.example.com.findup.Helper.UI_Utility;
 import khaled.example.com.findup.R;
 import khaled.example.com.findup.fragments.MainFragment;
 import khaled.example.com.findup.fragments.MapFragment;
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
     Toolbar toolbar;
     float actionBarSize;
+    BottomNavigationView bottomNavigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
 
-        BottomNavigationView bottomNavigationView = findViewById(R.id.navigation_bottom);
+        bottomNavigationView = findViewById(R.id.navigation_bottom);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(navListner);
 
@@ -57,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                     Fragment selectedFragment = new MainFragment();
+                    UI_Utility.BottomNavigationMenu_icons_change(bottomNavigationView.getMenu(),item);
                     switch (item.getItemId()) {
                         case R.id.home:
                             ToolbarSwitch(true);
@@ -83,5 +86,6 @@ public class MainActivity extends AppCompatActivity {
             ((CoordinatorLayout.LayoutParams) (findViewById(R.id.main_toolbar_container)).getLayoutParams()).topMargin = (int) actionBarSize;
         }
     }
+
 
 }

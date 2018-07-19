@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import khaled.example.com.findup.Helper.UI_Utility;
 import khaled.example.com.findup.Helper.Utility;
 import khaled.example.com.findup.R;
 import khaled.example.com.findup.models.Category;
@@ -42,7 +43,7 @@ public class MainCategoriesAdapter extends RecyclerView.Adapter<MainCategoriesAd
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Category category = categoryList.get(position);
         holder.catNameText.setText(category.getCat_name());
-        holder.cat_bg.setCardBackgroundColor(Utility.getCategoryBackgroundIDSArray(context)[position%4]);
+        holder.cat_bg.setCardBackgroundColor(UI_Utility.getCategoryBackgroundIDSArray(context)[position%4]);
     }
 
     @Override

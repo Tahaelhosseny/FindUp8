@@ -16,25 +16,19 @@
     android:scrollbarStyle="insideOverlay"
     tools:context="khaled.example.com.findup.fragments.MainFragment">
 
-    <EditText
-        android:id="@+id/search"
+
+    <include
+        android:id="@+id/search_edit_text_with_filter"
+        layout="@layout/search_edit_text_with_filter"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/search_background"
-        android:hint="@string/search_hint"
-        android:imeOptions="actionSearch"
-        android:inputType="text"
-        android:padding="10dp"
-        android:textColor="#000"
-        android:textColorHint="@color/material_color_grey_primary"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 
     <FrameLayout
         android:id="@+id/catsContainer"
@@ -44,7 +38,7 @@
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/search">
+        app:layout_constraintTop_toBottomOf="@+id/search_edit_text_with_filter">
 
     </FrameLayout>
 
@@ -79,10 +73,6 @@
         android:id="@+id/eventsContainer"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="10dp"
-        android:layout_marginLeft="18dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginStart="18dp"
         android:layout_marginTop="8dp"
         android:fadeScrollbars="false"
         android:nestedScrollingEnabled="true"

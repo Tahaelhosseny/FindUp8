@@ -1,11 +1,14 @@
 package khaled.example.com.findup.fragments;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
 
 import khaled.example.com.findup.R;
 public class MainFragment extends Fragment {
@@ -26,6 +29,13 @@ public class MainFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+        ImageButton search_filter = getActivity().findViewById(R.id.search_filter);
+        search_filter.setVisibility(View.GONE);
+
+        LinearLayout search_layout = getActivity().findViewById(R.id.search_edit_text_with_filter);
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M)
+            search_layout.setElevation(0);
 
         getChildFragmentManager().beginTransaction().replace(R.id.catsContainer, new MainCatsFragment()).commit();
         getChildFragmentManager().beginTransaction().replace(R.id.nearMeContainer, new NearMeFragment()).commit();

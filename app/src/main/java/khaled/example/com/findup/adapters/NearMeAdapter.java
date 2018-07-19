@@ -1,6 +1,7 @@
 package khaled.example.com.findup.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -15,6 +16,7 @@ import java.util.List;
 
 import khaled.example.com.findup.R;
 
+import khaled.example.com.findup.activities.StoreDetailsActivity;
 import khaled.example.com.findup.models.Place;
 
 /**
@@ -46,11 +48,14 @@ public class NearMeAdapter extends RecyclerView.Adapter<NearMeAdapter.ViewHolder
             distance = view.findViewById(R.id.nearItemDistance);
             review = view.findViewById(R.id.nearItemReview);
             shortDesc = view.findViewById(R.id.nearItemTags);
+            view.setOnClickListener(this);
 
         }
 
         @Override
         public void onClick(View v) {
+            v.getContext().startActivity(new Intent(v.getContext(), StoreDetailsActivity.class));
+
         }
     }
 
