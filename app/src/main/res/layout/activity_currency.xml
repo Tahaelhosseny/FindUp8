@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/colorWhite"
     style="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen"
-    tools:context=".CurrencyActivity">
+    tools:context=".activities.CurrencyActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar_currency"
