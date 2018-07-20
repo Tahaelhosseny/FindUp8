@@ -2,7 +2,6 @@ package khaled.example.com.findup.Helper;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.support.design.internal.BottomNavigationMenu;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;

@@ -1,15 +1,10 @@
 package khaled.example.com.findup.Helper;
 
-import android.content.Context;
-import android.content.res.TypedArray;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
-
-import khaled.example.com.findup.R;
 
 public class Utility {
 

@@ -1,7 +1,6 @@
 package khaled.example.com.findup.fragments;
 
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -16,12 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import khaled.example.com.findup.R;
-import khaled.example.com.findup.activities.EventDetailsActivity;
-import khaled.example.com.findup.activities.StoreDetailsActivity;
-import khaled.example.com.findup.adapters.MainCategoriesAdapter;
 import khaled.example.com.findup.adapters.NearMeAdapter;
-import khaled.example.com.findup.adapters.RecyclerTouchListener;
-import khaled.example.com.findup.models.Category;
 import khaled.example.com.findup.models.Place;
 
 /**

@@ -1,6 +1,7 @@
 package khaled.example.com.findup.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.jsibbold.zoomage.ZoomageView;
 import com.makeramen.roundedimageview.RoundedTransformationBuilder;
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Transformation;
@@ -17,63 +19,57 @@ import java.util.List;
 
 import khaled.example.com.findup.Helper.Utility;
 import khaled.example.com.findup.R;
+import khaled.example.com.findup.activities.StoreDetailsActivity;
 import khaled.example.com.findup.models.Comment;
+import khaled.example.com.findup.models.Place;
 
-public class CommentsAdapter extends RecyclerView.Adapter<CommentsAdapter.ViewHolder> {
-
+public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.ViewHolder> {
 
     private Context mContext;
-    private List<Comment> commentList;
+    private List<String> url;
+    private Place place;
 
-    public CommentsAdapter(Context mContext, List<Comment> commentList) {
+
+    public GalleryAdapter(Context mContext, List<String> url, Place place) {
         this.mContext = mContext;
-        this.commentList = commentList;
+        this.url = url;
+        this.place = place;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.comment_item, parent, false);
-    return new ViewHolder(itemView);
+                .inflate(R.layout.photo_gallery_item, parent, false);
+        return new GalleryAdapter.ViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Comment comment = commentList.get(position);
-        holder.username.setText(comment.getUser_name());
-        holder.date.setText(Utility.getDate(comment.getDate()));
-        holder.comment_txt.setText(comment.getComment());
-        if (!comment.getUser_profile_pic().isEmpty()) {
+        String url = this.url.get(position);
+        if (!url.isEmpty()) {
             Transformation transformation = new RoundedTransformationBuilder()
-                    .cornerRadiusDp(80)
+                    .cornerRadiusDp(10)
                     .oval(false)
                     .build();
 
-            Picasso.with(mContext).load(comment.getUser_profile_pic()).transform(transformation).placeholder(R.drawable.com_facebook_profile_picture_blank_square).into(holder.profile_pic);
+            Picasso.with(mContext).load(url).transform(transformation).placeholder(R.drawable.com_facebook_profile_picture_blank_square).into(holder.photo);
         }
     }
 
     @Override
     public int getItemCount() {
-        return commentList.size();
+        return url.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView username;
-        TextView date;
-        TextView comment_txt;
-        ImageView profile_pic;
+        private ZoomageView photo;
 
         public ViewHolder(View view) {
             super(view);
-            username = view.findViewById(R.id.comment_username);
-            date = view.findViewById(R.id.comment_date);
-            comment_txt = view.findViewById(R.id.comment_txt);
-            profile_pic = view.findViewById(R.id.user_photo);
+            photo = view.findViewById(R.id.photo_gallery_item);
         }
+
     }
-
-
 }

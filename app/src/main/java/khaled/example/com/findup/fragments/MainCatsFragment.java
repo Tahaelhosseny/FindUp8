@@ -15,9 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import khaled.example.com.findup.R;
-import khaled.example.com.findup.adapters.EventsAdapter;
 import khaled.example.com.findup.adapters.MainCategoriesAdapter;
-import khaled.example.com.findup.adapters.NearMeAdapter;
 import khaled.example.com.findup.adapters.RecyclerTouchListener;
 import khaled.example.com.findup.models.Category;
 

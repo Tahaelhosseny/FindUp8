@@ -18,7 +18,6 @@ import java.util.List;
 import khaled.example.com.findup.R;
 import khaled.example.com.findup.activities.EventDetailsActivity;
 import khaled.example.com.findup.adapters.EventsAdapter;
-import khaled.example.com.findup.adapters.NearMeAdapter;
 import khaled.example.com.findup.adapters.RecyclerTouchListener;
 import khaled.example.com.findup.models.Event;
 
