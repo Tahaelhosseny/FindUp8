@@ -8,23 +8,21 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        android:windowSoftInputMode="stateHidden">
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_maps_key" />
+        android:windowSoftInputMode="stateHidden"
+        android:theme="@style/AppTheme">
+        <meta-data android:name="com.google.android.geo.API_KEY" android:value="@string/google_maps_key"/>
 
         <activity
             android:name=".activities.MainActivity"
             android:label="@string/find_things"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            android:windowSoftInputMode="adjustPan" />
+            android:windowSoftInputMode="adjustPan">
+        </activity>
         <activity
             android:name=".activities.SplashScreenActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -90,18 +88,29 @@
         <activity
             android:name=".activities.EventDetailsActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
-        <activity
-            android:name=".activities.StoreDetailsActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
-        <activity
-            android:name=".activities.CommentsActivity"
-            android:label="@string/title_activity_comments"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-
-        <activity
-            android:name=".activities.PhotosGalleryActivity"
-            android:label="@string/title_activity_photos"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".activities.StoreDetailsActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen">
+        </activity>
+        <activity 
+                  android:name=".activities.EditProfileActivity" 
+                  android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen">
+        <meta-data 
+                   android:name="android.support.PARENT_ACTIVITY" 
+                   android:value=".activities.Settings"/>
+        </activity>
+        <activity 
+                  android:name=".activities.NotificationsActivity" 
+                  android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen">
+        <meta-data 
+                   android:name="android.support.PARENT_ACTIVITY" 
+                   android:value=".activities.Settings"/>
+        </activity>
+        <activity android:name=".activities.CurrencyActivity" android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen">
+        <meta-data android:name="android.support.PARENT_ACTIVITY" android:value=".activities.Settings"/>
+        </activity>
+        <activity android:name=".activities.MeasureDistanceActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar">
+        <meta-data android:name="android.support.PARENT_ACTIVITY" android:value=".activities.Settings"/>
+    </activity>
     </application>
 
 </manifest>
