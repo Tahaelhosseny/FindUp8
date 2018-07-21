@@ -18,9 +18,10 @@
     <string name="comments_write_your_comment_txt">Write your comment</string>
     <string name="comments_max_characters_txt">300 Characters</string>
 
-
     <string name="title_activity_photos">Photos</string>
 
+    <string name="add_your_rating_txt">Add your rating</string>
+    <string name="btn_submit">Submit</string>
 
 
 </resources>

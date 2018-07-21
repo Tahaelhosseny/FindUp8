@@ -1,6 +1,7 @@
 package khaled.example.com.findup.fragments;
 
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -11,7 +12,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RatingBar;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,6 +63,10 @@ public class StoreInfoFragment extends Fragment {
                 startActivity(new Intent(getContext(), CommentsActivity.class));
             }
         });
+
+        TextView add_rating = getActivity().findViewById(R.id.addRateTxt);
+        add_rating.setOnClickListener(getRatingDialog());
+
     }
 
     private void bindPhotos(List<String > photos){
@@ -80,5 +88,32 @@ public class StoreInfoFragment extends Fragment {
 
             }
         }));
+    }
+
+
+    private View.OnClickListener getRatingDialog(){
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getActivity());
+                LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService(getActivity().LAYOUT_INFLATER_SERVICE);
+                final View dialogView = inflater.inflate(R.layout.rating_custom_dialog, null);
+                dialogBuilder.setView(dialogView);
+                dialogBuilder.setCancelable(false);
+                RatingBar ratingBar = dialogView.findViewById(R.id.ratingBar);
+                Button submit = dialogView.findViewById(R.id.submit_rating);
+                final AlertDialog b = dialogBuilder.create();
+
+                submit.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        b.dismiss();
+                    }
+                });
+
+                b.show();
+                b.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            }
+        };
     }
 }
