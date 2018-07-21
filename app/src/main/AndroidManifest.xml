@@ -111,6 +111,20 @@
         <activity android:name=".activities.MeasureDistanceActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar">
         <meta-data android:name="android.support.PARENT_ACTIVITY" android:value=".activities.Settings"/>
     </activity>
-    </application>
+        <activit1y
+            android:name=".activities.EventDetailsActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
+        <activity
+            android:name=".activities.StoreDetailsActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
+        <activity
+            android:name=".activities.CommentsActivity"
+            android:label="@string/title_activity_comments"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 
+        <activity
+            android:name=".activities.PhotosGalleryActivity"
+            android:label="@string/title_activity_photos"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+    </application>
 </manifest>
