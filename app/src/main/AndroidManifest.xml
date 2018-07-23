@@ -96,20 +96,20 @@
                   android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen">
         <meta-data 
                    android:name="android.support.PARENT_ACTIVITY" 
-                   android:value=".activities.Settings"/>
+                   android:value=".activities.SettingsActivity"/>
         </activity>
         <activity 
                   android:name=".activities.NotificationsActivity" 
                   android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen">
         <meta-data 
                    android:name="android.support.PARENT_ACTIVITY" 
-                   android:value=".activities.Settings"/>
+                   android:value=".activities.SettingsActivity"/>
         </activity>
         <activity android:name=".activities.CurrencyActivity" android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen">
-        <meta-data android:name="android.support.PARENT_ACTIVITY" android:value=".activities.Settings"/>
+        <meta-data android:name="android.support.PARENT_ACTIVITY" android:value=".activities.SettingsActivity"/>
         </activity>
         <activity android:name=".activities.MeasureDistanceActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar">
-        <meta-data android:name="android.support.PARENT_ACTIVITY" android:value=".activities.Settings"/>
+        <meta-data android:name="android.support.PARENT_ACTIVITY" android:value=".activities.SettingsActivity"/>
     </activity>
         <activit1y
             android:name=".activities.EventDetailsActivity"
