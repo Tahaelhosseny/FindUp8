@@ -1,4 +1,4 @@
-package com.android.findup;
+package khaled.example.com.findup.activities;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -6,6 +6,8 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
+import khaled.example.com.findup.R;
 
 public class MeasureDistanceActivity extends Activity {
 
