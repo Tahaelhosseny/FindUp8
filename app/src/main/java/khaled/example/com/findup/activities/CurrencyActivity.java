@@ -1,4 +1,4 @@
-package com.android.findup;
+package khaled.example.com.findup.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -7,9 +7,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import khaled.example.com.findup.R;
+
 public class CurrencyActivity extends AppCompatActivity {
 
     Button btn_currencyBack, btn_submit;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -56,16 +56,14 @@
         android:id="@+id/scrollview_choices"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fillViewport="true"
+        android:fillViewport="false"
         app:layout_constraintEnd_toStartOf="@id/btn_submit"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchCurrency">
 
         <RadioGroup
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/searchCurrency">
+            android:layout_height="wrap_content">
 
             <RadioButton
                 android:id="@+id/radioUsDollar"

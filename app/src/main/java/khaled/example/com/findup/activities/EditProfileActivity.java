@@ -1,4 +1,4 @@
-package com.android.findup;
+package khaled.example.com.findup.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.Spinner;
 
 import com.santalu.maskedittext.MaskEditText;
+
+import khaled.example.com.findup.R;
 
 public class EditProfileActivity extends AppCompatActivity {
 

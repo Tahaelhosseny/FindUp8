@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 import khaled.example.com.findup.R;
 
-public class SettingsActivity extends AppCompatActivity {
+public class SettingsActivity extends AppCompatActivity implements View.OnClickListener {
     
     Button btn_editProfile, btn_notifications, btn_currency, btn_measureDistance, btn_langauge,
             btn_inviteFriend, btn_contactUs, btn_terms, btn_settingsBack;
@@ -21,9 +21,6 @@ public class SettingsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
-
-        setSupportActionBar((android.support.v7.widget.Toolbar) findViewById(R.id.toolbar_settings));
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         btn_editProfile=findViewById(R.id.btn_editProfile);
         btn_editProfile.setOnClickListener(this);
@@ -60,45 +57,51 @@ public class SettingsActivity extends AppCompatActivity {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_editProfile:
-                startActivity(new Intent(Settings.this, EditProfileActivity.class));
+                startActivity(new Intent(SettingsActivity.this, EditProfileActivity.class));
                 break;
 
             case R.id.btn_notifications:
-                startActivity(new Intent(Settings.this, NotificationsActivity.class));
+                startActivity(new Intent(SettingsActivity.this, NotificationsActivity.class));
                 break;
 
             case R.id.btn_currency:
-                startActivity(new Intent(Settings.this, CurrencyActivity.class));
+                startActivity(new Intent(SettingsActivity.this, CurrencyActivity.class));
                 break;
 
             case R.id.btn_measureDistance:
-                startActivity(new Intent(Settings.this, MeasureDistanceActivity.class));
+                startActivity(new Intent(SettingsActivity.this, MeasureDistanceActivity.class));
                 break;
 
             case R.id.btn_langauge:
-                Toast.makeText(Settings.this, "langauge", Toast.LENGTH_SHORT).show();
+                Toast.makeText(SettingsActivity.this, "langauge", Toast.LENGTH_SHORT).show();
                 break;
 
             case R.id.btn_inviteFriend:
-                Toast.makeText(Settings.this, "invite", Toast.LENGTH_SHORT).show();
+                Toast.makeText(SettingsActivity.this, "invite", Toast.LENGTH_SHORT).show();
                 break;
 
             case R.id.btn_contactUs:
-                Toast.makeText(Settings.this, "contact", Toast.LENGTH_SHORT).show();
+                Toast.makeText(SettingsActivity.this, "contact", Toast.LENGTH_SHORT).show();
                 break;
 
             case R.id.btn_terms:
-                Toast.makeText(Settings.this, "terms", Toast.LENGTH_SHORT).show();
+                Toast.makeText(SettingsActivity.this, "terms", Toast.LENGTH_SHORT).show();
                 break;
 
             case R.id.btn_settingsBack:
-                startActivity(new Intent(Settings.this, Intro.class));
+                startActivity(new Intent(SettingsActivity.this, IntroActivity.class));
                 finish();
                 break;
 
             case R.id.btn_logout:
-                startActivity(new Intent(Settings.this, SplashScreen.class));
+                startActivity(new Intent(SettingsActivity.this, SplashScreenActivity.class));
                 finish();
                 break;
+        }
+    }
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+
     }
 }
