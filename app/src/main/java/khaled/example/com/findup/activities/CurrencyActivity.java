@@ -31,6 +31,7 @@ public class CurrencyActivity extends AppCompatActivity {
         btn_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 Toast.makeText(CurrencyActivity.this, "Submit", Toast.LENGTH_SHORT).show();
             }
         });
