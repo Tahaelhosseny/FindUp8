@@ -63,7 +63,7 @@ public class CommentsAdapter extends RecyclerView.Adapter<CommentsAdapter.ViewHo
             username = view.findViewById(R.id.comment_username);
             date = view.findViewById(R.id.comment_date);
             comment_txt = view.findViewById(R.id.comment_date);
-            profile_pic = view.findViewById(R.id.comment_photo);
+            profile_pic = view.findViewById(R.id.user_photo);
         }
     }
 
