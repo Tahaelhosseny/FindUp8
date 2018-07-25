@@ -1,9 +1,9 @@
 package khaled.example.com.findup.activities;
 
+import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 
 import khaled.example.com.findup.R;
 import khaled.example.com.findup.fragments.StoreDetailsFragment;

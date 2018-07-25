@@ -1,18 +1,14 @@
 package khaled.example.com.findup.adapters;
 
-import android.support.v7.widget.RecyclerView;
-
-import khaled.example.com.findup.fragments.MainFragment;
-
-/**
- * Created by khaled on 7/4/18.
- */
-
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
+
+/**
+ * Created by khaled on 7/4/18.
+ */
 
 public class RecyclerTouchListener implements RecyclerView.OnItemTouchListener {
 

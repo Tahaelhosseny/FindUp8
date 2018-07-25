@@ -1,6 +1,7 @@
 package khaled.example.com.findup.fragments;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -9,25 +10,18 @@ import android.view.ViewGroup;
 
 import khaled.example.com.findup.R;
 
-
-public class EventDetailsFragment extends Fragment {
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_event_details, container, false);
-    }
-
+public class WriteCommentFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        bindUI();
     }
 
-    private void bindUI() {
 
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view =inflater.inflate(R.layout.write_comment_layout, container, false);
+        return view;
     }
-
 }

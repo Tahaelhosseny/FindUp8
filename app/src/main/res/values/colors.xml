@@ -15,5 +15,7 @@
 
 
     <color name="sort_by_background">#323B45</color>
+    <color name="semi_hit_color">#AAB7C9</color>
+
 
 </resources>

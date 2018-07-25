@@ -2,23 +2,18 @@ package khaled.example.com.findup.adapters;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
-
-import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-import khaled.example.com.findup.Helper.Utility;
 import khaled.example.com.findup.R;
-import khaled.example.com.findup.models.Category;
+import khaled.example.com.findup.activities.PhotosGalleryActivity;
 
 /**
  * Created by khaled on 7/11/18.
@@ -68,6 +63,7 @@ public class StorePhotosAdapter extends RecyclerView.Adapter<StorePhotosAdapter.
 
         @Override
         public void onClick(View v) {
+            context.startActivity(new Intent(context, PhotosGalleryActivity.class));
         }
     }
 }

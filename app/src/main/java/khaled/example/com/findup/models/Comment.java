@@ -9,6 +9,15 @@ public class Comment {
     private String comment;
     private String user_profile_pic;
 
+    public Comment() {
+    }
+
+    public Comment(String user_name, long date, String comment, String user_profile_pic) {
+        this.user_name = user_name;
+        this.date = date;
+        this.comment = comment;
+        this.user_profile_pic = user_profile_pic;
+    }
 
     public int getCm_id() {
         return cm_id;

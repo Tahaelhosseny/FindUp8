@@ -327,6 +327,7 @@
             app:layout_constraintTop_toBottomOf="@+id/commentUsersTxt" />
 
         <ImageView
+            android:id="@+id/show_comments"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/forward_0_5x"

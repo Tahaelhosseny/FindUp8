@@ -17,10 +17,8 @@ import java.util.List;
 
 import khaled.example.com.findup.R;
 import khaled.example.com.findup.activities.EventDetailsActivity;
-import khaled.example.com.findup.adapters.EventsAdapter;
 import khaled.example.com.findup.adapters.ProductsAdapter;
 import khaled.example.com.findup.adapters.RecyclerTouchListener;
-import khaled.example.com.findup.models.Event;
 import khaled.example.com.findup.models.Product;
 
 /**

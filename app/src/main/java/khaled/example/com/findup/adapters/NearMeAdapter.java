@@ -15,7 +15,6 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 import khaled.example.com.findup.R;
-
 import khaled.example.com.findup.activities.StoreDetailsActivity;
 import khaled.example.com.findup.models.Place;
 

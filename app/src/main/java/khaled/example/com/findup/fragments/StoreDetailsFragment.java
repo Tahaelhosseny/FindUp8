@@ -1,7 +1,6 @@
 package khaled.example.com.findup.fragments;
 
 
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
@@ -16,7 +15,6 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
-import khaled.example.com.findup.CustomViews.DepthPageTransformer;
 import khaled.example.com.findup.R;
 
 /**

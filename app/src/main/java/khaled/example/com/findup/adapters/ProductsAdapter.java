@@ -12,7 +12,6 @@ import android.widget.TextView;
 import java.util.List;
 
 import khaled.example.com.findup.R;
-
 import khaled.example.com.findup.models.Product;
 
 /**
