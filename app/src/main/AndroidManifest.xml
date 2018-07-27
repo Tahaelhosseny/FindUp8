@@ -24,6 +24,7 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -91,7 +92,7 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
         <activity
             android:name=".activities.StoreDetailsActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen"></activity>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
         <activity
             android:name=".activities.EditProfileActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen">
@@ -120,5 +121,9 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activities.SettingsActivity" />
         </activity>
+        <activity
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:name=".activities.RatingActivity" />
     </application>
+
 </manifest>

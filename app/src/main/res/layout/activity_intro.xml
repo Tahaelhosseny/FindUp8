@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
     android:gravity="top"
-    tools:context=".Intro">
+    tools:context=".activities.IntroActivity">
 
     <Button
         android:id="@+id/btn_skip"
@@ -109,9 +109,9 @@
         android:textColor="@color/colorWhiteGrey"
         android:textSize="14sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/btn_instagram"
         app:layout_constraintStart_toStartOf="@+id/btn_instagram"
-        app:layout_constraintTop_toBottomOf="@+id/btn_signup" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_signup"
+        app:layout_constraintVertical_bias="0.400" />
 
     <ImageButton
         android:id="@+id/btn_facebook"
@@ -121,10 +121,12 @@
         android:layout_marginStart="1dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/ic_facebook_icon"
+        app:layout_constraintBottom_toTopOf="@id/btn_createAccount"
         app:layout_constraintEnd_toStartOf="@+id/btn_instagram"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+        app:layout_constraintTop_toBottomOf="@+id/textView5"
+        app:layout_constraintVertical_bias="0.100"/>
 
     <ImageButton
         android:id="@+id/btn_instagram"

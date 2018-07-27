@@ -51,7 +51,7 @@ dependencies {
 
     implementation 'com.jsibbold:zoomage:1.2.0-SNAPSHOT'
 
-
+    implementation 'com.github.ome450901:SimpleRatingBar:1.4.2'
 }
 
 apply plugin: 'com.google.gms.google-services'
