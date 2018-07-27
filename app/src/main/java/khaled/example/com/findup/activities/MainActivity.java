@@ -15,8 +15,10 @@ import android.view.View;
 
 import khaled.example.com.findup.Helper.UI_Utility;
 import khaled.example.com.findup.R;
+import khaled.example.com.findup.fragments.CategoryFragment;
 import khaled.example.com.findup.fragments.MainFragment;
 import khaled.example.com.findup.fragments.MapFragment;
+import khaled.example.com.findup.fragments.SearchFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -62,6 +64,14 @@ public class MainActivity extends AppCompatActivity {
                         case R.id.map:
                             ToolbarSwitch(false);
                             selectedFragment = new MapFragment();
+                            break;
+                        case R.id.search:
+                            ToolbarSwitch(false);
+                            selectedFragment = new SearchFragment();
+                            break;
+                        case R.id.category:
+                            ToolbarSwitch(false);
+                            selectedFragment = new CategoryFragment();
                             break;
                     }
                     getSupportFragmentManager().beginTransaction().replace(R.id.main_toolbar_container, selectedFragment).commit();

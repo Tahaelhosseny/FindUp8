@@ -742,4 +742,8 @@
     <dimen name="custom_tab_layout_height">72dp</dimen>
     <dimen name="login_text_padding_from_drawable">15dp</dimen>
 
+    <dimen name="search_activity_title_font_size">26sp</dimen>
+    <dimen name="search_activity_title_marginLeft">16sp</dimen>
+    <dimen name="search_activity_title_marginStart">16sp</dimen>
+    <dimen name="search_activity_title_marginTop">36sp</dimen>
 </resources>

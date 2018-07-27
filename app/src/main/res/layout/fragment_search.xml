@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="?attr/actionBarSize">
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:nestedScrollingEnabled="false"
+    android:scrollbars="vertical"
+    android:scrollbarSize="@dimen/material_baseline_grid_3.5x"
+    android:scrollbarStyle="insideOverlay"
+    tools:context=".fragments.SearchFragment">
+
+    <EditText
+        android:id="@+id/search"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/search_background"
+        android:hint="@string/search_hint"
+        android:imeOptions="actionSearch"
+        android:inputType="text"
+        android:padding="10dp"
+        android:textColor="#000"
+        android:textColorHint="@color/material_color_grey_primary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <FrameLayout
+        android:id="@+id/catsContainer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/search">
+
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/popularTxt"
+        style="@style/text_style"
+        android:textSize="@dimen/main_activity_title_font_size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/search_activity_title_marginLeft"
+        android:layout_marginStart="@dimen/search_activity_title_marginStart"
+        android:layout_marginTop="@dimen/search_activity_title_marginTop"
+        android:fontFamily="@font/sfcompactdisplay_heavy"
+        android:text="Popular"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/catsContainer" />
+
+    <FrameLayout
+        android:id="@+id/popularProductsContainer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/popularTxt">
+
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/suggestedTxt"
+        style="@style/text_style"
+        android:textSize="@dimen/main_activity_title_font_size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/search_activity_title_marginLeft"
+        android:layout_marginStart="@dimen/search_activity_title_marginStart"
+        android:layout_marginTop="@dimen/search_activity_title_marginTop"
+        android:fontFamily="@font/sfcompactdisplay_heavy"
+        android:text="Suggested"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/popularProductsContainer" />
+
+    <FrameLayout
+        android:id="@+id/suggestedProductsContainer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/suggestedTxt">
+
+    </FrameLayout>
+
+</android.support.constraint.ConstraintLayout>
+
+</ScrollView>

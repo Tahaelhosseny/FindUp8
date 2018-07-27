@@ -50,8 +50,7 @@ dependencies {
     implementation 'com.ramotion.cardslider:card-slider:0.3.0'
 
     implementation 'com.jsibbold:zoomage:1.2.0-SNAPSHOT'
-
-
+    implementation 'io.github.luizgrp.sectionedrecyclerviewadapter:sectionedrecyclerviewadapter:1.2.0'
 }
 
 apply plugin: 'com.google.gms.google-services'

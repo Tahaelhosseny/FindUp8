@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragments.ProductDetailsFragment">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/nameLayout"
+            android:layout_width="340dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="108dp"
+            app:cardCornerRadius="5dp"
+            android:orientation="vertical"
+            app:layout_anchor="@+id/imageView2"
+            app:layout_anchorGravity="bottom|center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="320dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp">
+
+                <TextView
+                    android:id="@+id/productName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/sfcompactdisplay_semibold"
+                    android:padding="5dp"
+                    android:text="Chocklate Cake"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/productPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/sfcompactdisplay_semibold"
+                    android:padding="5dp"
+                    android:text="18.5 SR"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="19sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/likeImg" />
+
+                <TextView
+                    android:id="@+id/productStoreTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:fontFamily="@font/sfcompactdisplay_regular"
+                    android:padding="5dp"
+                    android:text="Black Cafe"
+                    android:textColor="@color/colorBlack"
+                    app:layout_constraintTop_toBottomOf="@id/productName"/>
+
+                <ImageView
+                    android:id="@+id/likeImg"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:padding="5dp"
+                    app:srcCompat="@drawable/like_0_5x"
+                    app:layout_constraintTop_toBottomOf="@id/productStoreTxt" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="2.2K"
+                    app:layout_constraintStart_toEndOf="@id/likeImg"
+                    app:layout_constraintTop_toTopOf="@id/likeImg" />
+
+            </android.support.constraint.ConstraintLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <TextView
+            android:id="@+id/aboutTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/sfcompactdisplay_medium"
+            android:padding="5dp"
+            android:text="About"
+            android:textColor="@color/colorBlack"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.047"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/nameLayout" />
+
+        <TextView
+            android:id="@+id/aboutProduct"
+            android:layout_width="360dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/sfcompactdisplay_regular"
+            android:padding="5dp"
+            android:text="The Red and Black Cafe was a radical safer space cafe and worker-managed collective located in Portland, Oregon."
+            android:textColor="@color/colorBlack"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/aboutTxt"
+            app:layout_constraintTop_toBottomOf="@id/aboutTxt" />
+
+        <TextView
+            android:id="@+id/photosTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/sfcompactdisplay_medium"
+            android:padding="5dp"
+            android:text="Photos"
+            android:textColor="@color/colorBlack"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.047"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/aboutProduct" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/productPhotosRecycler"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:padding="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/photosTxt">
+
+        </android.support.v7.widget.RecyclerView>
+
+        <TextView
+            android:id="@+id/commentsTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/sfcompactdisplay_medium"
+            android:padding="5dp"
+            android:text="Comments"
+            android:textColor="@color/colorBlack"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.047"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/productPhotosRecycler" />
+
+        <ImageView
+            android:id="@+id/commentUsersImg"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="8dp"
+            android:padding="5dp"
+            app:srcCompat="@drawable/placeholder"
+            app:layout_constraintStart_toStartOf="@id/commentsTxt"
+            app:layout_constraintTop_toBottomOf="@+id/commentsTxt" />
+
+        <TextView
+            android:id="@+id/commentUsersTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/sfcompactdisplay_medium"
+            android:padding="5dp"
+            android:text="Nof, Sara, Saga"
+            android:textColor="@color/colorBlack"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/commentUsersImg"
+            app:layout_constraintTop_toTopOf="@+id/commentUsersImg" />
+
+        <TextView
+            android:id="@+id/commentUsersNumTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:fontFamily="@font/sfcompactdisplay_regular"
+            android:padding="5dp"
+            android:text="and 250 people comment on this"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@id/commentUsersTxt"
+            app:layout_constraintTop_toBottomOf="@+id/commentUsersTxt" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/forward_0_5x"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.887"
+            app:layout_constraintStart_toEndOf="@id/commentUsersNumTxt"
+            app:layout_constraintTop_toTopOf="@+id/commentUsersNumTxt" />
+
+        <TextView
+            android:id="@+id/contactTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/sfcompactdisplay_medium"
+            android:padding="5dp"
+            android:text="Contact"
+            android:textColor="@color/colorBlack"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.047"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/commentUsersNumTxt" />
+
+        <ImageView
+            android:id="@+id/mailImg"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="8dp"
+            android:padding="5dp"
+            app:srcCompat="@drawable/mail_1_5x"
+            app:layout_constraintStart_toStartOf="@id/contactTxt"
+            app:layout_constraintTop_toBottomOf="@+id/contactTxt" />
+
+        <ImageView
+            android:id="@+id/siteImg"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="8dp"
+            android:padding="5dp"
+            app:srcCompat="@drawable/web_1_5x"
+            app:layout_constraintStart_toEndOf="@id/mailImg"
+            app:layout_constraintTop_toBottomOf="@+id/contactTxt" />
+
+        <ImageView
+            android:id="@+id/chatImg"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="8dp"
+            android:padding="5dp"
+            app:srcCompat="@drawable/chat_1_5x"
+            app:layout_constraintStart_toEndOf="@id/siteImg"
+            app:layout_constraintTop_toBottomOf="@+id/contactTxt" />
+
+        <ImageView
+            android:id="@+id/phoneImg"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="8dp"
+            android:padding="5dp"
+            app:srcCompat="@drawable/phone_1_5x"
+            app:layout_constraintStart_toEndOf="@id/chatImg"
+            app:layout_constraintTop_toBottomOf="@+id/contactTxt" />
+
+        <ImageView
+            android:id="@+id/twitterImg"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="8dp"
+            android:padding="5dp"
+            app:srcCompat="@drawable/tiwitter_1_5x"
+            app:layout_constraintStart_toEndOf="@id/phoneImg"
+            app:layout_constraintTop_toBottomOf="@+id/contactTxt" />
+
+        <ImageView
+            android:id="@+id/snapImg"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="8dp"
+            android:padding="5dp"
+            app:srcCompat="@drawable/snap_1_5x"
+            app:layout_constraintStart_toEndOf="@id/twitterImg"
+            app:layout_constraintTop_toBottomOf="@+id/contactTxt" />
+
+    </android.support.constraint.ConstraintLayout>
+
+</ScrollView>
