@@ -126,4 +126,11 @@ public class VerifyCodeActivity extends AppCompatActivity {
             }
         }.start();
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(VerifyCodeActivity.this, LoginActivity.class));
+        finish();
+    }
 }
