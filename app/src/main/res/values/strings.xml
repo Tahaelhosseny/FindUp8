@@ -23,5 +23,6 @@
     <string name="add_your_rating_txt">Add your rating</string>
     <string name="btn_submit">Submit</string>
 
+    <string name="rating_text">Add your Rating</string>
 
 </resources>
