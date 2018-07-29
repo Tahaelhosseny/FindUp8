@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import khaled.example.com.findup.R;
 
 import com.willy.ratingbar.RotationRatingBar;
 
