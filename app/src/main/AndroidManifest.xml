@@ -122,8 +122,10 @@
                 android:value=".activities.SettingsActivity" />
         </activity>
         <activity
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"
-            android:name=".activities.RatingActivity" />
+            android:name=".activities.RatingActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity android:name=".activities.ProductDetailsActivity"
+                  android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen"/>
     </application>
 
 </manifest>

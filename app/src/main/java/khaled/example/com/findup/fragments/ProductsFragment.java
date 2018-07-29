@@ -17,6 +17,7 @@ import java.util.List;
 
 import khaled.example.com.findup.R;
 import khaled.example.com.findup.activities.EventDetailsActivity;
+import khaled.example.com.findup.activities.ProductDetailsActivity;
 import khaled.example.com.findup.adapters.ProductsAdapter;
 import khaled.example.com.findup.adapters.RecyclerTouchListener;
 import khaled.example.com.findup.models.Product;
@@ -62,7 +63,7 @@ public class ProductsFragment extends Fragment {
                 , recyclerView, new RecyclerTouchListener.ClickListener() {
             @Override
             public void onClick(View view, int position) {
-                startActivity(new Intent(getActivity(), EventDetailsActivity.class));
+                startActivity(new Intent(getActivity(), ProductDetailsActivity.class));
             }
 
             @Override
