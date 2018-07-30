@@ -42,5 +42,12 @@
     <string name="language">Language</string>
     <string name="logout">Logout</string>
     <string name="delete_account">Delete Account</string>
+    <string name="_5_0">5.0</string>
+    <string name="cafe">cafe</string>
+    <string name="star">star</string>
+    <string name="love">love</string>
+    <string name="_16_8km">16.8km</string>
+    <string name="food">Food</string>
+    <string name="near">near</string>
 
 </resources>

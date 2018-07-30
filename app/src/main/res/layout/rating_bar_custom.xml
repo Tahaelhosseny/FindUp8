@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+<layer-list xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 <item android:id="@android:id/background">
     <bitmap
-        android:src="@drawable/__2_0_5x"
+        app:srcCompat="@drawable/__2_0_5x"
         android:tint="#fff" />
 </item>
 <item android:id="@android:id/secondaryProgress">
     <bitmap
-        android:src="@drawable/__2_0_5x"
+        app:srcCompat="@drawable/__2_0_5x"
         android:tint="#fff" />
 </item>
 <item android:id="@android:id/progress">
     <bitmap
-        android:src="@drawable/__0_5x"
+        app:srcCompat="@drawable/__0_5x"
         android:tint="@color/colorAccent" />
 </item>
 </layer-list>
