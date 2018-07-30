@@ -3,7 +3,6 @@ package khaled.example.com.findup.activities;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.content.Intent;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -73,7 +72,7 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
                 break;
 
             case R.id.btn_langauge:
-                Toast.makeText(SettingsActivity.this, "langauge", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(SettingsActivity.this, LanguagesActivity.class));
                 break;
 
             case R.id.btn_inviteFriend:
