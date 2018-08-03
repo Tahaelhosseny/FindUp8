@@ -12,7 +12,7 @@ import khaled.example.com.findup.R;
 
 public class SettingsActivity extends AppCompatActivity implements View.OnClickListener {
     
-    Button btn_editProfile, btn_notifications, btn_currency, btn_measureDistance, btn_langauge,
+    Button btn_editProfile, btn_notifications, btn_currency, btn_measureDistance, btn_language,
             btn_inviteFriend, btn_contactUs, btn_terms, btn_settingsBack;
     ImageButton btn_logout;
 
@@ -33,8 +33,8 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
         btn_measureDistance=findViewById(R.id.btn_measureDistance);
         btn_measureDistance.setOnClickListener(this);
 
-        btn_langauge=findViewById(R.id.btn_langauge);
-        btn_langauge.setOnClickListener(this);
+        btn_language=findViewById(R.id.btn_language);
+        btn_language.setOnClickListener(this);
 
         btn_inviteFriend=findViewById(R.id.btn_inviteFriend);
         btn_inviteFriend.setOnClickListener(this);
@@ -71,8 +71,8 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
                 startActivity(new Intent(SettingsActivity.this, MeasureDistanceActivity.class));
                 break;
 
-            case R.id.btn_langauge:
-                Toast.makeText(SettingsActivity.this, "langauge", Toast.LENGTH_SHORT).show();
+            case R.id.btn_language:
+                startActivity(new Intent(SettingsActivity.this, LanguagesActivity.class));
                 break;
 
             case R.id.btn_inviteFriend:

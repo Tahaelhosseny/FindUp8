@@ -101,7 +101,7 @@
                 android:value=".activities.SettingsActivity" />
         </activity>
         <activity
-            android:name=".activities.NotificationsSettingsActivity"
+            android:name=".activities.NotificationsActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -124,8 +124,13 @@
         <activity
             android:name=".activities.RatingActivity"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity android:name=".activities.ProductDetailsActivity"
+                  android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen"/>
         <activity
-            android:name=".activities.ProductDetailsActivity"
+            android:name=".activities.LanguagesActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
+        <activity
+            android:name=".activities.StoreSettingsActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
         <activity
             android:name=".activities.FilterActivity"

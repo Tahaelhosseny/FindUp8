@@ -24,6 +24,31 @@
     <string name="btn_submit">Submit</string>
 
     <string name="rating_text">Add your Rating</string>
+    <string name="english">English</string>
+    <string name="arabic">عربي</string>
+    <string name="currency">Currency</string>
+    <string name="egypt_pound">Egypt ( Pound $ )</string>
+    <string name="australian_dollar">Australian ( Dollar $ )</string>
+    <string name="united_states_dollar">United States ( Dollar $ )</string>
+    <string name="argentine_peso">Argentine ( Peso $ )</string>
+    <string name="select_language">Select Language</string>
+    <string name="settings">Settings</string>
+    <string name="contact_with_us">Contact with us</string>
+    <string name="invite_friend">Invite Friend</string>
+    <string name="terms_of_services">Terms of Services</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="notifications">Notifications</string>
+    <string name="measure_distance">Measure Distance</string>
+    <string name="language">Language</string>
+    <string name="logout">Logout</string>
+    <string name="delete_account">Delete Account</string>
+    <string name="_5_0">5.0</string>
+    <string name="cafe">cafe</string>
+    <string name="star">star</string>
+    <string name="love">love</string>
+    <string name="_16_8km">16.8km</string>
+    <string name="food">Food</string>
+    <string name="near">near</string>
 
     <array name="distance_seekbar_values">
         <item>0.5 KM</item>
