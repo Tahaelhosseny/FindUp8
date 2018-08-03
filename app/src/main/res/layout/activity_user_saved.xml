@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginTop="?attr/actionBarSize"
-    tools:context=".activities.ProductDetailsActivity">
+    tools:context=".activities.UserSavedActivity">
 
     <FrameLayout
-        android:id="@+id/product_fragment_container"
+        android:id="@+id/user_saved_fragment_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

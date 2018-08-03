@@ -60,9 +60,7 @@
             app:srb_clickable="true"
             app:srb_scrollable="true"
             app:srb_clearRatingEnabled="true"
-            android:layout_marginBottom="@dimen/activity_horizontal_margin"
-            app:srb_drawableEmpty="@drawable/ic_rating_star_off"
-            app:srb_drawableFilled="@drawable/ic_rating_star_on"/>
+            android:layout_marginBottom="@dimen/activity_horizontal_margin"/>
 
         <Button
             android:layout_width="match_parent"
