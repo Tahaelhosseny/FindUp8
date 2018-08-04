@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/systemImg"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_margin="10dp"
+        app:srcCompat="@drawable/ic_launcher"
+        android:scaleType="fitXY"/>
+
+    <TextView
+        android:id="@+id/systemMsgDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/sfcompactdisplay_thin"
+        android:text="12/05/2018"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@id/systemImg"
+        app:layout_constraintStart_toStartOf="@id/systemImg"/>
+
+    <TextView
+        android:id="@+id/systemMsgTypeTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/sfcompactdisplay_semibold"
+        android:text="System Message"
+        android:textColor="@color/material_color_black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@id/systemMsgDate"
+        app:layout_constraintTop_toBottomOf="@+id/systemMsgDate"/>
+
+    <TextView
+        android:id="@+id/systemMsgDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/sfcompactdisplay_regular"
+        android:text="The red and Black cafe"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@id/systemMsgTypeTxt"
+        app:layout_constraintTop_toBottomOf="@+id/systemMsgTypeTxt"/>
+
+    <ImageView
+        android:id="@+id/delSystemMsgBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        app:srcCompat="@drawable/rubbish_bin_0_5x"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/systemImg"/>
+
+</android.support.constraint.ConstraintLayout>

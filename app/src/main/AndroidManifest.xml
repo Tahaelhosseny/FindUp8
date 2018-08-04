@@ -126,6 +126,24 @@
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity android:name=".activities.ProductDetailsActivity"
                   android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen"/>
+        <activity
+            android:name=".activities.LanguagesActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
+        <activity
+            android:name=".activities.StoreSettingsActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
+        <activity
+            android:name=".activities.FilterActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
+        <activity
+            android:name=".activities.NotificationsActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen">
+
+        </activity>
+        <activity android:name=".activities.UserSavedActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen">
+
+        </activity>
     </application>
 
 </manifest>

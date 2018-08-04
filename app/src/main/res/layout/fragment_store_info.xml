@@ -144,7 +144,7 @@
             android:layout_height="match_parent"
             android:layout_marginTop="8dp"
             android:padding="5dp"
-            android:src="@drawable/mail_1_5x"
+            app:srcCompat="@drawable/mail_1_5x"
             app:layout_constraintStart_toStartOf="@id/contactTxt"
             app:layout_constraintTop_toBottomOf="@+id/contactTxt" />
 
@@ -154,7 +154,7 @@
             android:layout_height="match_parent"
             android:layout_marginTop="8dp"
             android:padding="5dp"
-            android:src="@drawable/web_1_5x"
+            app:srcCompat="@drawable/web_1_5x"
             app:layout_constraintStart_toEndOf="@id/mailImg"
             app:layout_constraintTop_toBottomOf="@+id/contactTxt" />
 
@@ -164,7 +164,7 @@
             android:layout_height="match_parent"
             android:layout_marginTop="8dp"
             android:padding="5dp"
-            android:src="@drawable/chat_1_5x"
+            app:srcCompat="@drawable/chat_1_5x"
             app:layout_constraintStart_toEndOf="@id/siteImg"
             app:layout_constraintTop_toBottomOf="@+id/contactTxt" />
 
@@ -174,7 +174,7 @@
             android:layout_height="match_parent"
             android:layout_marginTop="8dp"
             android:padding="5dp"
-            android:src="@drawable/phone_1_5x"
+            app:srcCompat="@drawable/phone_1_5x"
             app:layout_constraintStart_toEndOf="@id/chatImg"
             app:layout_constraintTop_toBottomOf="@+id/contactTxt" />
 
@@ -184,7 +184,7 @@
             android:layout_height="match_parent"
             android:layout_marginTop="8dp"
             android:padding="5dp"
-            android:src="@drawable/tiwitter_1_5x"
+            app:srcCompat="@drawable/tiwitter_1_5x"
             app:layout_constraintStart_toEndOf="@id/phoneImg"
             app:layout_constraintTop_toBottomOf="@+id/contactTxt" />
 
@@ -194,7 +194,7 @@
             android:layout_height="match_parent"
             android:layout_marginTop="8dp"
             android:padding="5dp"
-            android:src="@drawable/snap_1_5x"
+            app:srcCompat="@drawable/snap_1_5x"
             app:layout_constraintStart_toEndOf="@id/twitterImg"
             app:layout_constraintTop_toBottomOf="@+id/contactTxt" />
 
@@ -294,7 +294,7 @@
             android:layout_height="70dp"
             android:layout_marginTop="8dp"
             android:padding="5dp"
-            android:src="@drawable/placeholder"
+            app:srcCompat="@drawable/placeholder"
             app:layout_constraintStart_toStartOf="@id/commentsTxt"
             app:layout_constraintTop_toBottomOf="@+id/commentsTxt" />
 
@@ -330,7 +330,7 @@
             android:id="@+id/show_comments"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/forward_0_5x"
+            app:srcCompat="@drawable/forward_0_5x"
             app:layout_constraintEnd_toEndOf="@id/addRateTxt"
             app:layout_constraintHorizontal_bias="0.887"
             app:layout_constraintStart_toEndOf="@id/commentUsersNumTxt"

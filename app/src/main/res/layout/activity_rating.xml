@@ -51,6 +51,7 @@
             android:id="@+id/ratingBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
             android:layout_gravity="center"
             app:srb_minimumStars="0"
             app:srb_starWidth="30dp"
@@ -60,6 +61,7 @@
             app:srb_clickable="true"
             app:srb_scrollable="true"
             app:srb_clearRatingEnabled="true"
+            app:srb_starPadding="10dp"
             android:layout_marginBottom="@dimen/activity_horizontal_margin"
             app:srb_drawableEmpty="@drawable/ic_rating_star_off"
             app:srb_drawableFilled="@drawable/ic_rating_star_on"/>
@@ -71,6 +73,7 @@
             android:text="@string/btn_submit"
             android:layout_marginRight="24dp"
             android:layout_marginLeft="24dp"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
             android:padding="@dimen/activity_horizontal_margin"
             android:background="@drawable/bg_button_rounded_accent"
             android:textAllCaps="false"

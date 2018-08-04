@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/notificationItemImg"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_margin="10dp"
+        app:srcCompat="@drawable/placeholder"
+        android:scaleType="fitXY"/>
+
+    <TextView
+        android:id="@+id/notificationItemDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:fontFamily="@font/sfcompactdisplay_thin"
+        android:text="12/05/2018"
+        android:textSize="18sp"
+        app:layout_constraintTop_toTopOf="@id/notificationItemImg"
+        app:layout_constraintStart_toEndOf="@id/notificationItemImg"/>
+
+    <TextView
+        android:id="@+id/notificationItemTypeTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/sfcompactdisplay_semibold"
+        android:text="System Message"
+        android:textColor="@color/material_color_black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@id/notificationItemDate"
+        app:layout_constraintTop_toBottomOf="@+id/notificationItemDate"/>
+
+    <TextView
+        android:id="@+id/notificationItemDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:fontFamily="@font/sfcompactdisplay_semibold"
+        android:text="The red and Black cafe"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@id/notificationItemTypeTxt"
+        app:layout_constraintTop_toBottomOf="@+id/notificationItemTypeTxt"/>
+
+    <ImageView
+        android:id="@+id/delNotificationBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        app:srcCompat="@drawable/rubbish_bin_0_5x"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/notificationItemDate"/>
+
+</android.support.constraint.ConstraintLayout>
