@@ -135,11 +135,8 @@
         <activity
             android:name=".activities.FilterActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
-        <activity
-            android:name=".activities.NotificationsActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen">
 
-        </activity>
+
         <activity android:name=".activities.UserSavedActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen">
 

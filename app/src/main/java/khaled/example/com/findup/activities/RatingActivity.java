@@ -9,6 +9,8 @@ import android.widget.Toast;
 
 import com.willy.ratingbar.RotationRatingBar;
 
+import khaled.example.com.findup.R;
+
 public class RatingActivity extends Activity {
 
     @Override
