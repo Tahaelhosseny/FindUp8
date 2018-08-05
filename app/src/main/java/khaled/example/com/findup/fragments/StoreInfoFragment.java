@@ -17,6 +17,14 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.MapsInitializer;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,8 +38,9 @@ import khaled.example.com.findup.adapters.StorePhotosAdapter;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class StoreInfoFragment extends Fragment {
+public class StoreInfoFragment extends Fragment implements OnMapReadyCallback {
 
+    MapView mMapView;
 
     public StoreInfoFragment() {
         // Required empty public constructor
@@ -42,7 +51,14 @@ public class StoreInfoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_store_info, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_store_info, container, false);
+
+        MapsInitializer.initialize(this.getActivity());
+        mMapView = (MapView) rootView.findViewById(R.id.mapView);
+        mMapView.onCreate(savedInstanceState);
+        mMapView.getMapAsync(this);
+
+        return rootView;
     }
 
     @Override
@@ -99,7 +115,7 @@ public class StoreInfoFragment extends Fragment {
                 LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService(getActivity().LAYOUT_INFLATER_SERVICE);
                 final View dialogView = inflater.inflate(R.layout.rating_custom_dialog, null);
                 dialogBuilder.setView(dialogView);
-                dialogBuilder.setCancelable(false);
+                dialogBuilder.setCancelable(true);
                 RatingBar ratingBar = dialogView.findViewById(R.id.ratingBar);
                 Button submit = dialogView.findViewById(R.id.submit_rating);
                 final AlertDialog b = dialogBuilder.create();
@@ -116,4 +132,47 @@ public class StoreInfoFragment extends Fragment {
             }
         };
     }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        // Add a marker in Sydney and move the camera
+        LatLng sydney = new LatLng(-34, 151);
+        googleMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(sydney.latitude - ((sydney.latitude * 14) / 1000000), sydney.longitude- ((sydney.longitude * 14) / 400000)) , 14));
+        googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+    }
+
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        mMapView.onPause();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mMapView.onDestroy();
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        mMapView.onSaveInstanceState(outState);
+    }
+
+    @Override
+    public void onLowMemory() {
+        super.onLowMemory();
+        mMapView.onLowMemory();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (mMapView !=null)
+            mMapView.onResume();
+    }
+
+
 }

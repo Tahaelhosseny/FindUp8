@@ -60,7 +60,7 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
                 break;
 
             case R.id.btn_notifications:
-                startActivity(new Intent(SettingsActivity.this, NotificationsActivity.class));
+                startActivity(new Intent(SettingsActivity.this, NotificationsSettingsActivity.class));
                 break;
 
             case R.id.btn_currency:

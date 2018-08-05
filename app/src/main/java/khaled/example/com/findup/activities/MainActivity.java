@@ -44,11 +44,8 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView = findViewById(R.id.navigation_bottom);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(navListner);
-
-
         transaction.replace(R.id.main_toolbar_container, new MainFragment()).commit();
     }
-
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListner =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -67,11 +64,11 @@ public class MainActivity extends AppCompatActivity {
                             selectedFragment = new MapFragment();
                             break;
                         case R.id.search:
-                            ToolbarSwitch(false);
+                            ToolbarSwitch(true);
                             selectedFragment = new SearchFragment();
                             break;
                         case R.id.category:
-                            ToolbarSwitch(false);
+                            ToolbarSwitch(true);
                             selectedFragment = new CategoryFragment();
                             break;
                         case R.id.profile:
@@ -95,6 +92,5 @@ public class MainActivity extends AppCompatActivity {
             ((CoordinatorLayout.LayoutParams) (findViewById(R.id.main_toolbar_container)).getLayoutParams()).topMargin = (int) actionBarSize;
         }
     }
-
 
 }

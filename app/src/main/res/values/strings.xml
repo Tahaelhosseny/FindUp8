@@ -73,4 +73,11 @@
     <string name="done">Done</string>
     <string name="delete">Delete</string>
 
+    <array name="distance_seekbar_values">
+        <item>0.5 KM</item>
+        <item>2 KM</item>
+        <item>5 KM</item>
+        <item>unlimited</item>
+    </array>
+
 </resources>

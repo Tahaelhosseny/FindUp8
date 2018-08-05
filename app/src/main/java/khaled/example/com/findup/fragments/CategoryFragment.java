@@ -1,27 +1,24 @@
 package khaled.example.com.findup.fragments;
 
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Filter;
-import android.widget.Filterable;
-import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
+
 import io.github.luizgrp.sectionedrecyclerviewadapter.SectionParameters;
 import io.github.luizgrp.sectionedrecyclerviewadapter.SectionedRecyclerViewAdapter;
 import io.github.luizgrp.sectionedrecyclerviewadapter.StatelessSection;
 import khaled.example.com.findup.R;
-import khaled.example.com.findup.models.Category;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -29,6 +26,7 @@ import khaled.example.com.findup.models.Category;
 public class CategoryFragment extends Fragment {
 
     private SectionedRecyclerViewAdapter sectionAdapter;
+    List<ExpandableSection> expandableSections;
 
     public CategoryFragment() {
         // Required empty public constructor
@@ -46,26 +44,32 @@ public class CategoryFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+        expandableSections = new ArrayList<>();
+        expandableSections.add(new ExpandableSection("My Title", "Content, Content, Content, Content, Content, Content"));
+        expandableSections.add(new ExpandableSection("My Title", "Content, Content, Content, Content, Content, Content"));
+        expandableSections.add(new ExpandableSection("My Title", "Content, Content, Content, Content, Content, Content"));
+        expandableSections.add(new ExpandableSection("My Title", "Content, Content, Content, Content, Content, Content"));
+        expandableSections.add(new ExpandableSection("Title", "Content, Content, Content, Content, Content, Content"));
+        expandableSections.add(new ExpandableSection("Title", "Content, Content, Content, Content, Content, Content"));
+
         sectionAdapter = new SectionedRecyclerViewAdapter();
-        sectionAdapter.addSection(new ExpandableContactsSection("My Title", "Content, Content, Content, Content, Content, Content"));
-        sectionAdapter.addSection(new ExpandableContactsSection("My Title", "Content, Content, Content, Content, Content, Content"));
-        sectionAdapter.addSection(new ExpandableContactsSection("My Title", "Content, Content, Content, Content, Content, Content"));
-        sectionAdapter.addSection(new ExpandableContactsSection("My Title", "Content, Content, Content, Content, Content, Content"));
-        sectionAdapter.addSection(new ExpandableContactsSection("Title", "Content, Content, Content, Content, Content, Content"));
-        sectionAdapter.addSection(new ExpandableContactsSection("Title", "Content, Content, Content, Content, Content, Content"));
+
+        for (int i = 0;i<expandableSections.size();i++){
+            sectionAdapter.addSection(expandableSections.get(i));
+        }
 
         RecyclerView recyclerView = getActivity().findViewById(R.id.categoryRecyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(sectionAdapter);
     }
 
-    private class ExpandableContactsSection extends StatelessSection {
+    private class ExpandableSection extends StatelessSection {
 
         String title;
         String content;
-        boolean expanded = false;
+        public boolean expanded = false;
 
-        ExpandableContactsSection(String title, String content) {
+        ExpandableSection(String title, String content) {
             super(SectionParameters.builder()
                     .itemResourceId(R.layout.cat_sec_content)
                     .headerResourceId(R.layout.cat_sec_header)
@@ -104,6 +108,9 @@ public class CategoryFragment extends Fragment {
             headerHolder.rootView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    for (int i = 0;i<expandableSections.size();i++){
+                        expandableSections.get(i).expanded = false;
+                    }
                     expanded = !expanded;
                     sectionAdapter.notifyDataSetChanged();
                 }

@@ -1,5 +1,6 @@
 package khaled.example.com.findup.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -21,6 +22,9 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import khaled.example.com.findup.Helper.UI_Utility;
 import khaled.example.com.findup.R;
+import khaled.example.com.findup.activities.FilterActivity;
+import khaled.example.com.findup.activities.ForgotPasswordActivity;
+import khaled.example.com.findup.activities.LoginActivity;
 
 public class MapFragment extends Fragment implements OnMapReadyCallback {
     private View rootView;
@@ -110,6 +114,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             @Override
             public void onClick(View v) {
                 UI_Utility.switchVisibility(filter);
+                getChildFragmentManager().beginTransaction().replace(R.id.nearMeContainer, new NearMeFragment()).commit();
+                //startActivity(new Intent(getActivity(), FilterActivity.class));
             }
         });
     }

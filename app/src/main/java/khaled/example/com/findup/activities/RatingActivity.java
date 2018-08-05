@@ -6,9 +6,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import khaled.example.com.findup.R;
 
 import com.willy.ratingbar.RotationRatingBar;
+
+import khaled.example.com.findup.R;
 
 public class RatingActivity extends Activity {
 

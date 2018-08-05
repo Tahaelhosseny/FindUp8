@@ -124,6 +124,8 @@
         <activity
             android:name=".activities.RatingActivity"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity android:name=".activities.ProductDetailsActivity"
+                  android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen"/>
         <activity
             android:name=".activities.LanguagesActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
@@ -131,14 +133,14 @@
             android:name=".activities.StoreSettingsActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
         <activity
-            android:name=".activities.SuccessfulRegisterationActivity"
+            android:name=".activities.FilterActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
-        <activity
-            android:name=".activities.AddProductTruckActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen"/>
-        <activity
-            android:name=".activities.AddProductCraftActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen"/>
+
+
+        <activity android:name=".activities.UserSavedActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen">
+
+        </activity>
     </application>
 
 </manifest>

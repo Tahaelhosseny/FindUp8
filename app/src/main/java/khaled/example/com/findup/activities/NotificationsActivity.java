@@ -1,34 +1,26 @@
 package khaled.example.com.findup.activities;
 
-import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.view.KeyEvent;
-import android.view.View;
-import android.widget.Button;
+import android.os.Bundle;
 
 import khaled.example.com.findup.R;
+import khaled.example.com.findup.fragments.NotificationsFragment;
+
+/**
+ * Created by khaled on 8/1/18.
+ */
 
 public class NotificationsActivity extends AppCompatActivity {
 
-    Button btn_notificationsBack;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notifications);
 
-        btn_notificationsBack=findViewById(R.id.btn_notificationsBack);
-
-        btn_notificationsBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        finish();
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.replace(R.id.notification_fragment_container, new NotificationsFragment()).commit();
     }
 }
