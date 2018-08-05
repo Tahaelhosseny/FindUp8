@@ -23,7 +23,7 @@ public class UI_Utility {
         menu.findItem(R.id.map).setIcon(R.drawable.map_1_5x);
         menu.findItem(R.id.search).setIcon(R.drawable.search_1_5x);
         menu.findItem(R.id.category).setIcon(R.drawable.category_1_5x);
-        menu.findItem(R.id.myCart).setIcon(R.drawable.__1_5x);
+        menu.findItem(R.id.profile).setIcon(R.drawable.__1_5x);
 
         if (Selected.getItemId() == R.id.home)
             Selected.setIcon(R.drawable.home_sel_1_5x);
@@ -33,7 +33,7 @@ public class UI_Utility {
             Selected.setIcon(R.drawable.search_sel_0_5x);
         if (Selected.getItemId() == R.id.category)
             Selected.setIcon(R.drawable.category_sel_1_5x);
-        if (Selected.getItemId() == R.id.myCart)
+        if (Selected.getItemId() == R.id.profile)
             Selected.setIcon(R.drawable.__1_5x);
     }
 

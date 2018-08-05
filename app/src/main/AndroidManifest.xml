@@ -130,6 +130,15 @@
         <activity
             android:name=".activities.StoreSettingsActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
-
+        <activity
+            android:name=".activities.SuccessfulRegisterationActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
+        <activity
+            android:name=".activities.AddProductTruckActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen"/>
+        <activity
+            android:name=".activities.AddProductCraftActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen"/>
     </application>
+
 </manifest>

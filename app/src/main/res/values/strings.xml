@@ -49,5 +49,28 @@
     <string name="_16_8km">16.8km</string>
     <string name="food">Food</string>
     <string name="near">near</string>
+    <string name="successful">Successful</string>
+    <string name="thanks_text">Thanks for you to register the store account,,we will send you confirmation soon!</string>
+    <string name="switch_to_user_account">Switch to user account</string>
+    <string name="profile">Profile</string>
+    <string name="profile_name">Mahmoud Ali</string>
+    <string name="profile_number">+966 55 11 73 969</string>
+    <string name="chats">Chats</string>
+    <string name="you_saved">You Saved</string>
+    <string name="create_store_account">Create Store Account</string>
+    <string name="profile_notification">Notification</string>
+    <string name="add_your_first_product">Add Your First Product</string>
+    <string name="add_your_first_product_hint">Add your first product with picture, name, description and price</string>
+    <string name="add_product">Add Product</string>
+    <string name="don_t_have_account_create_one">Don\'t have Account..Create one</string>
+    <string name="login">Login</string>
+    <string name="forget_password">Forget Password</string>
+    <string name="password">Password</string>
+    <string name="mobile">Mobile</string>
+    <string name="product_name">Product Name</string>
+    <string name="description">Description</string>
+    <string name="price">Price</string>
+    <string name="done">Done</string>
+    <string name="delete">Delete</string>
 
 </resources>
