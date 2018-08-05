@@ -15,6 +15,7 @@
         android:scrollbarSize="@dimen/material_baseline_grid_3.5x"
         android:scrollbarStyle="insideOverlay"
         android:scrollbars="vertical"
+        android:paddingBottom="30dp"
         tools:context=".fragments.StoreInfoFragment">
 
         <TextView
@@ -26,7 +27,7 @@
             android:padding="5dp"
             android:text="About"
             android:textColor="@color/colorBlack"
-            android:textSize="16sp"
+            android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.047"
@@ -56,7 +57,7 @@
             android:padding="5dp"
             android:text="Work Time"
             android:textColor="@color/colorBlack"
-            android:textSize="16sp"
+            android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.047"
@@ -68,9 +69,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/sfcompactdisplay_regular"
-            android:padding="5dp"
             android:text="Days"
-            android:textSize="16sp"
+            android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.047"
@@ -84,7 +84,6 @@
             android:layout_marginLeft="168dp"
             android:layout_marginStart="168dp"
             android:fontFamily="@font/sfcompactdisplay_regular"
-            android:padding="5dp"
             android:text="Time"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -125,7 +124,7 @@
         <TextView
             android:id="@+id/contactTxt"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="100dp"
             android:layout_marginTop="20dp"
             android:fontFamily="@font/sfcompactdisplay_medium"
             android:padding="5dp"
@@ -140,8 +139,8 @@
 
         <ImageView
             android:id="@+id/mailImg"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
             android:layout_marginTop="8dp"
             android:padding="5dp"
             app:srcCompat="@drawable/mail_1_5x"
@@ -150,13 +149,13 @@
 
         <ImageView
             android:id="@+id/siteImg"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
             android:layout_marginTop="8dp"
             android:padding="5dp"
-            app:srcCompat="@drawable/web_1_5x"
             app:layout_constraintStart_toEndOf="@id/mailImg"
-            app:layout_constraintTop_toBottomOf="@+id/contactTxt" />
+            app:layout_constraintTop_toBottomOf="@+id/contactTxt"
+            app:srcCompat="@drawable/web_1_5x" />
 
         <ImageView
             android:id="@+id/chatImg"
@@ -170,8 +169,8 @@
 
         <ImageView
             android:id="@+id/phoneImg"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
             android:layout_marginTop="8dp"
             android:padding="5dp"
             app:srcCompat="@drawable/phone_1_5x"
@@ -180,8 +179,8 @@
 
         <ImageView
             android:id="@+id/twitterImg"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
             android:layout_marginTop="8dp"
             android:padding="5dp"
             app:srcCompat="@drawable/tiwitter_1_5x"
@@ -190,8 +189,8 @@
 
         <ImageView
             android:id="@+id/snapImg"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
             android:layout_marginTop="8dp"
             android:padding="5dp"
             app:srcCompat="@drawable/snap_1_5x"
@@ -248,6 +247,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:numStars="5"
+            android:rating="3"
             android:stepSize="1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.047"
@@ -352,15 +352,61 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/commentUsersImg" />
 
-        <com.google.android.gms.maps.MapView
-            android:id="@+id/mapView"
+        <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="150dp"
             android:layout_marginTop="5dp"
+            android:layout_marginBottom="30dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.047"
+            app:layout_constraintCircleRadius="10dp"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/addressTxt" />
+            app:layout_constraintTop_toBottomOf="@id/addressTxt">
+
+            <com.google.android.gms.maps.MapView
+                android:id="@+id/mapView"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="@drawable/cardview_bg"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/streetAddress"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/sfcompactdisplay_light"
+                android:lineSpacingMultiplier="1.3"
+                android:text="123 , test street Cairo , Egypt street reyiad"
+                android:textSize="18dp"
+                app:layout_constraintStart_toStartOf="@+id/mapView"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:textAllCaps="false"
+                android:background="@drawable/get_directions_button_bg"
+                android:drawablePadding="20dp"
+                android:drawableStart="@drawable/__1_5x"
+                android:paddingEnd="20dp"
+                android:paddingStart="10dp"
+                android:text="Get direction"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/streetAddress" />
+
+
+        </android.support.constraint.ConstraintLayout>
+
 
     </android.support.constraint.ConstraintLayout>
 

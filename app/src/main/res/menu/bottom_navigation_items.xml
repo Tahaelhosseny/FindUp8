@@ -27,7 +27,7 @@
         android:title="category"
         app:showAsAction="always"/>
     <item
-        android:id="@+id/myCart"
+        android:id="@+id/profile"
         android:enabled="true"
         android:icon="@drawable/__1_5x"
         android:title="profile"
