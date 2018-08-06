@@ -19,6 +19,7 @@ import com.felix.bottomnavygation.ItemNav;
 
 import khaled.example.com.findup.Helper.UI_Utility;
 import khaled.example.com.findup.R;
+import khaled.example.com.findup.fragments.BottomBarFragment;
 import khaled.example.com.findup.fragments.CategoryFragment;
 import khaled.example.com.findup.fragments.MainFragment;
 import khaled.example.com.findup.fragments.MapFragment;
@@ -49,8 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
         //bottomNavigationView.setOnNavigationItemSelectedListener(navListner);
 
-
-        final BottomNav bottomNav = findViewById(R.id.navigation_bottom);
+        /*final BottomNav bottomNav = findViewById(R.id.navigation_bottom);
         bottomNav.addItemNav(new ItemNav(this, R.drawable.home_unselected_0_5x, R.drawable.home_sel_1_5x));
         bottomNav.addItemNav(new ItemNav(this, R.drawable.map_1_5x, R.drawable.map_sel_1_5x));
         bottomNav.addItemNav(new ItemNav(this, R.drawable.search_1_5x, R.drawable.search_sel_0_5x));
@@ -88,9 +88,13 @@ public class MainActivity extends AppCompatActivity {
             public void onTabLongSelected(int position) {
             }
         };
-        bottomNav.setTabSelectedListener(listener);
+        bottomNav.setTabSelectedListener(listener);*/
+
+
 
         transaction.replace(R.id.main_toolbar_container, new MainFragment()).commit();
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.navigation_bottom_container, new BottomBarFragment()).commit();
     }
 
 

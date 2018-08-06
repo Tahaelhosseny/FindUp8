@@ -22,8 +22,8 @@
         android:layout_marginTop="?android:attr/actionBarSize"
         android:layout_marginBottom="@dimen/bottom_navigation_height"/>
 
-    <com.felix.bottomnavygation.BottomNav
-        android:id="@+id/navigation_bottom"
+    <FrameLayout
+        android:id="@+id/navigation_bottom_container"
         android:layout_width="match_parent"
         android:elevation="8dp"
         android:layout_height="60dp"
