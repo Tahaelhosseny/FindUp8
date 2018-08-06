@@ -30,12 +30,14 @@ public class SearchFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_search, container, false);
+        View view =inflater.inflate(R.layout.fragment_search, container, false);
+        return view;
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        getActivity().overridePendingTransition(R.anim.abc_slide_in_bottom, R.anim.abc_slide_out_top);
         getChildFragmentManager().beginTransaction().replace(R.id.catsContainer, new MainCatsFragment()).commit();
         getChildFragmentManager().beginTransaction().replace(R.id.popularProductsContainer, new ProductsFragment()).commit();
         getChildFragmentManager().beginTransaction().replace(R.id.suggestedProductsContainer, new ProductsFragment()).commit();

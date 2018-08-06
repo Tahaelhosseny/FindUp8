@@ -41,10 +41,10 @@ public class NearMeFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         List<Place> places = new ArrayList<>();
-        places.add(new Place(1,"Black Cafe", "1.3km", "", "4.5","American Cafe Break $$"));
-        places.add(new Place(2,"Genuine Coffee", "2km", "", "4.2","Indian Cafe Break $$"));
-        places.add(new Place(1,"Black Cafe", "1.3km", "", "4.5","American Cafe Break $$"));
-        places.add(new Place(2,"Genuine Coffee", "2km", "", "4.2","Indian Cafe Break $$"));
+        places.add(new Place(1,"Black Cafe", "1.3km", "https://www.butlerschocolates.com/upload/637/cms/525995/en/39710/gallery.jpg", "4.5","American Cafe Break $$"));
+        places.add(new Place(2,"Genuine Coffee", "2km", "https://viejas.com/wp-content/uploads/2018/01/Cafe_Patio_detail-1.jpg", "4.2","Indian Cafe Break $$"));
+        places.add(new Place(1,"Black Cafe", "1.3km", "http://www.royalhotelchilliwack.com/Content/images/Hotel-Cafe-o.jpg", "4.5","American Cafe Break $$"));
+        places.add(new Place(2,"Genuine Coffee", "2km", "https://www.butlerschocolates.com/upload/637/cms/525995/en/39710/gallery.jpg", "4.2","Indian Cafe Break $$"));
 
         bindUI(places);
     }

@@ -6,7 +6,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -32,13 +35,14 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder
         TextView eventName;
         TextView eventDate;
         TextView eventDescription;
-
+        ImageView eventsItemImg;
         public ViewHolder(View view) {
             super(view);
 
             eventName = view.findViewById(R.id.eventName);
             eventDescription = view.findViewById(R.id.eventDesc);
             eventDate = view.findViewById(R.id.eventDate);
+            eventsItemImg=view.findViewById(R.id.eventsItemImg);
         }
 
         @Override
@@ -60,6 +64,9 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder
         holder.eventName.setText(event.getEventName());
         holder.eventDescription.setText(event.getEventDescription());
         holder.eventDate.setText(event.getEventDat());
+        if (!event.getEventImg().isEmpty())
+            Picasso.with(holder.eventsItemImg.getContext()).load(event.getEventImg()).placeholder(R.drawable.events_place_holder).into(holder.eventsItemImg);
+
     }
 
     @Override

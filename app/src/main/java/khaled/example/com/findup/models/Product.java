@@ -2,15 +2,16 @@ package khaled.example.com.findup.models;
 
 public class Product {
     private int productId, productPrice, numOfLikes, numOfComments;
-    private String productName, productDescription;
+    private String productName, productDescription,productPhoto;
 
-    public Product(int productId, int productPrice, int numOfLikes, int numOfComments, String productName, String productDescription) {
+    public Product(int productId, int productPrice, int numOfLikes, int numOfComments, String productName, String productDescription, String productPhoto) {
         this.productId = productId;
         this.productPrice = productPrice;
         this.numOfLikes = numOfLikes;
         this.numOfComments = numOfComments;
         this.productName = productName;
         this.productDescription = productDescription;
+        this.productPhoto = productPhoto;
     }
 
     public int getProductId() {
@@ -59,5 +60,13 @@ public class Product {
 
     public void setProductDescription(String productDescription) {
         this.productDescription = productDescription;
+    }
+
+    public String getProductPhoto() {
+        return productPhoto;
+    }
+
+    public void setProductPhoto(String productPhoto) {
+        this.productPhoto = productPhoto;
     }
 }

@@ -1,6 +1,8 @@
 package khaled.example.com.findup.adapters;
 
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,9 +11,14 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.makeramen.roundedimageview.RoundedTransformationBuilder;
+import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Transformation;
+
 import java.util.List;
 
 import khaled.example.com.findup.R;
+import khaled.example.com.findup.activities.ProductDetailsActivity;
 import khaled.example.com.findup.models.Product;
 
 /**
@@ -46,6 +53,7 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
 
         @Override
         public void onClick(View v) {
+            context.startActivity(new Intent(context, ProductDetailsActivity.class));
         }
     }
 
@@ -61,9 +69,21 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
     public void onBindViewHolder(@NonNull ProductsAdapter.ViewHolder holder, int position) {
 
         Product product = products.get(position);
-        /*holder.productName.setText(product.getProductName());
+        /*
+        holder.productName.setText(product.getProductName());
         holder.productDescription.setText(product.getProductDescription());
-        holder.productPrice.setText(String.valueOf(product.getProductPrice()));*/
+        holder.productPrice.setText(String.valueOf(product.getProductPrice()));
+
+        if (!product.getProductPhoto().isEmpty()) {
+            Transformation transformation = new RoundedTransformationBuilder()
+                    .cornerRadiusDp(90)
+                    .oval(false)
+                    .build();
+
+            Picasso.with(holder.productImg.getContext()).load(product.getProductPhoto()).transform(transformation).placeholder(R.drawable.near_by_place_holder).into(holder.productImg);
+
+        }
+        */
     }
 
     @Override

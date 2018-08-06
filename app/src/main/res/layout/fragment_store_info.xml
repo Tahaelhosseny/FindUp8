@@ -124,7 +124,7 @@
         <TextView
             android:id="@+id/contactTxt"
             android:layout_width="wrap_content"
-            android:layout_height="100dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:fontFamily="@font/sfcompactdisplay_medium"
             android:padding="5dp"
@@ -215,8 +215,9 @@
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/storePhotosRecycler"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="90dp"
+            android:foregroundGravity="center"
             android:padding="5dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -288,23 +289,20 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/storeRatingBar" />
 
-        <ImageView
+        <android.support.v7.widget.RecyclerView
             android:id="@+id/commentUsersImg"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_width="90dp"
+            android:layout_height="60dp"
             android:layout_marginTop="8dp"
             android:padding="5dp"
-            app:srcCompat="@drawable/placeholder"
             app:layout_constraintStart_toStartOf="@id/commentsTxt"
-            app:layout_constraintTop_toBottomOf="@+id/commentsTxt" />
+            app:layout_constraintTop_toBottomOf="@+id/commentsTxt"
+            />
 
         <TextView
             android:id="@+id/commentUsersTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
             android:fontFamily="@font/sfcompactdisplay_medium"
             android:padding="5dp"
             android:text="Nof, Sara, Saga"

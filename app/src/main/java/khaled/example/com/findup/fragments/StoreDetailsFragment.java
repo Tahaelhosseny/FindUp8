@@ -45,6 +45,7 @@ public class StoreDetailsFragment extends Fragment {
         TabLayout tabLayout = getActivity().findViewById(R.id.storeTabs);
         tabLayout.setupWithViewPager(viewPager);
         tabLayout.setSelectedTabIndicatorColor(getActivity().getResources().getColor(R.color.material_color_deep_orange_accent));
+
     }
 
     private void setupViewPager(ViewPager viewPager) {

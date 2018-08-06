@@ -75,7 +75,7 @@ public class NearMeAdapter extends RecyclerView.Adapter<NearMeAdapter.ViewHolder
         holder.review.setText(place.getPlaceReview());
         holder.shortDesc.setText(place.getPlaceShortDescription());
         if (!place.getPlaceImg().isEmpty())
-            Picasso.with(holder.placeImage.getContext()).load(place.getPlaceImg()).placeholder(R.drawable.placeholder).into(holder.placeImage);
+            Picasso.with(holder.placeImage.getContext()).load(place.getPlaceImg()).placeholder(R.drawable.near_by_place_holder).into(holder.placeImage);
 
     }
 

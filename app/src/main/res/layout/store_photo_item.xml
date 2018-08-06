@@ -1,19 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="70dp"
-    android:layout_height="70dp"
+<LinearLayout
+    android:id="@+id/photo_item_container"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_margin="10dp"
-    app:cardCornerRadius="10dp"
-    android:elevation="5dp"
-    tools:style="@style/CardView"
-    android:foreground="?android:attr/selectableItemBackground">
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:foregroundGravity="center"
+    app:layout_anchorGravity="center"
+    android:padding="2dp">
 
-    <ImageView
-        android:id="@+id/storePhotosImg"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@color/material_color_blue_400"/>
+    <android.support.v7.widget.CardView
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="20dp"
+        android:elevation="5dp"
+        tools:style="@style/CardView"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:layout_gravity="center"
+        app:layout_anchorGravity="center"
+        android:foregroundGravity="center">
 
-</android.support.v7.widget.CardView>
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/storePhotoMoreButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/more"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:foregroundGravity="center"
+            android:fontFamily="@font/sfcompactdisplay_heavy"/>
+
+        <ImageView
+            android:id="@+id/storePhotosImg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@color/material_color_blue_400"/>
+
+    </android.support.v7.widget.CardView>
+</LinearLayout>

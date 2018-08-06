@@ -40,13 +40,12 @@
 
     <ImageButton
         android:id="@+id/pic_account"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@null"
+        android:layout_width="@dimen/login_photo_size"
+        android:layout_height="@dimen/login_photo_size"
+        android:background="@drawable/ic_accountpic"
         android:layout_marginBottom="16dp"
         android:layout_marginLeft="34dp"
         android:layout_marginStart="34dp"
-        app:srcCompat="@drawable/ic_accountpic"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar_signup"/>
 

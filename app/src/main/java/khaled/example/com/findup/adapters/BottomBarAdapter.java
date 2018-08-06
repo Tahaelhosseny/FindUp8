@@ -79,6 +79,4 @@ public class BottomBarAdapter extends RecyclerView.Adapter<BottomBarAdapter.View
     public static int getScreenWidth() {
         return Resources.getSystem().getDisplayMetrics().widthPixels;
     }
-
-
 }

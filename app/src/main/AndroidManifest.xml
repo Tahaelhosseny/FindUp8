@@ -163,6 +163,15 @@
         <activity
             android:name=".activities.StoreCraftCategoryActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen"/>
+
+        <activity
+            android:name=".activities.CommentsActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen"/>
+
+        <activity
+            android:name=".activities.PhotosGalleryActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen"/>
+
     </application>
 
 </manifest>
