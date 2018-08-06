@@ -2,6 +2,7 @@ package khaled.example.com.findup.activities;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.app.Fragment;
@@ -13,9 +14,6 @@ import android.util.TypedValue;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
-
-import com.felix.bottomnavygation.BottomNav;
-import com.felix.bottomnavygation.ItemNav;
 
 import khaled.example.com.findup.Helper.UI_Utility;
 import khaled.example.com.findup.R;
@@ -39,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
         toolbar =  findViewById(R.id.toolbar_top);
         setSupportActionBar(toolbar);
 
-        actionBarSize =((CoordinatorLayout.LayoutParams) (findViewById(R.id.main_toolbar_container)).getLayoutParams()).topMargin;
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -99,55 +96,15 @@ public class MainActivity extends AppCompatActivity {
 
         transaction.replace(R.id.main_toolbar_container, new MainFragment()).commit();
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.navigation_bottom_container, new BottomBarFragment()).commit();
+        BottomBarFragment bottomBarFragment =new BottomBarFragment();
+        Bundle bundle = new Bundle();
+        getSupportFragmentManager().beginTransaction().replace(R.id.navigation_bottom_container, bottomBarFragment).commit();
     }
 
 
-    private BottomNavigationView.OnNavigationItemSelectedListener navListner =
-            new BottomNavigationView.OnNavigationItemSelectedListener() {
 
-                @Override
-                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                    Fragment selectedFragment = new MainFragment();
-                    //UI_Utility.BottomNavigationMenu_icons_change(bottomNavigationView.getMenu(),item);
-                    switch (item.getItemId()) {
-                        case R.id.home:
-                            ToolbarSwitch(true);
-                            selectedFragment = new MainFragment();
-                            break;
-                        case R.id.map:
-                            ToolbarSwitch(false);
-                            selectedFragment = new MapFragment();
-                            break;
-                        case R.id.search:
-                            ToolbarSwitch(false);
-                            selectedFragment = new SearchFragment();
-                            break;
-                        case R.id.category:
-                            ToolbarSwitch(false);
-                            selectedFragment = new CategoryFragment();
-                            break;
-                        case R.id.profile:
-                            ToolbarSwitch(false);
-                            selectedFragment = new ProfileFragment();
-                            break;
-                    }
-                    getSupportFragmentManager().beginTransaction().replace(R.id.main_toolbar_container, selectedFragment).commit();
-                    return true;
-                }
-            };
 
-    @NonNull
-    private void ToolbarSwitch(Boolean sw) {
-        if (!sw) {
-            toolbar.setVisibility(View.GONE);
-            ((CoordinatorLayout.LayoutParams) (findViewById(R.id.main_toolbar_container)).getLayoutParams()).topMargin = 0;
-        }else {
-            TypedValue tv = new TypedValue();
-            toolbar.setVisibility(View.VISIBLE);
-            ((CoordinatorLayout.LayoutParams) (findViewById(R.id.main_toolbar_container)).getLayoutParams()).topMargin = (int) actionBarSize;
-        }
-    }
+
 
 
 }

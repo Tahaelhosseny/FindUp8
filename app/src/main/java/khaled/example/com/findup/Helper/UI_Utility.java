@@ -18,23 +18,23 @@ public class UI_Utility {
         return colors;
     }
 
-    public static void BottomNavigationMenu_icons_change(Menu menu , MenuItem Selected){
+    public static void BottomNavigationMenu_icons_change(Menu menu , int Selected){
         menu.findItem(R.id.home).setIcon(R.drawable.home_unselected_0_5x);
         menu.findItem(R.id.map).setIcon(R.drawable.map_1_5x);
         menu.findItem(R.id.search).setIcon(R.drawable.search_1_5x);
         menu.findItem(R.id.category).setIcon(R.drawable.category_1_5x);
         menu.findItem(R.id.profile).setIcon(R.drawable.__1_5x);
 
-        if (Selected.getItemId() == R.id.home)
-            Selected.setIcon(R.drawable.home_sel_1_5x);
-        if (Selected.getItemId() == R.id.map)
-            Selected.setIcon(R.drawable.map_sel_1_5x);
-        if (Selected.getItemId() == R.id.search)
-            Selected.setIcon(R.drawable.search_sel_0_5x);
-        if (Selected.getItemId() == R.id.category)
-            Selected.setIcon(R.drawable.category_sel_1_5x);
-        if (Selected.getItemId() == R.id.profile)
-            Selected.setIcon(R.drawable.__1_5x);
+        if (Selected == 0)
+            menu.getItem(Selected).setIcon(R.drawable.home_sel_1_5x);
+        if (Selected == 1)
+            menu.getItem(Selected).setIcon(R.drawable.map_sel_1_5x);
+        if (Selected == 2)
+            menu.getItem(Selected).setIcon(R.drawable.search_sel_0_5x);
+        if (Selected == 3)
+            menu.getItem(Selected).setIcon(R.drawable.category_sel_1_5x);
+        if (Selected == 4)
+            menu.getItem(Selected).setIcon(R.drawable.__1_5x);
     }
 
     public static void switchVisibility(View view){

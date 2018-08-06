@@ -5,17 +5,26 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.constraint.ConstraintLayout;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import khaled.example.com.findup.Helper.UI_Utility;
 import khaled.example.com.findup.R;
 import khaled.example.com.findup.activities.EventDetailsActivity;
 import khaled.example.com.findup.adapters.BottomBarAdapter;
@@ -25,8 +34,11 @@ import khaled.example.com.findup.models.Event;
 
 public class BottomBarFragment extends Fragment {
 
-    public BottomBarFragment() {
-        // Required empty public constructor
+    public static BottomBarFragment newInstance() {
+        BottomBarFragment fragment = new BottomBarFragment();
+        Bundle args = new Bundle();
+        fragment.setArguments(args);
+        return fragment;
     }
 
     @Override
@@ -36,36 +48,89 @@ public class BottomBarFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_bottom_bar, container, false);
     }
 
+    float actionBarSize;
+    Menu menu;
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        List<int[]> itemsImgIds = new ArrayList<>();
-        itemsImgIds.add(new int[]{R.drawable.home_unselected_0_5x, R.drawable.home_sel_1_5x});
-        itemsImgIds.add(new int[]{R.drawable.map_1_5x, R.drawable.map_sel_1_5x});
-        itemsImgIds.add(new int[]{R.drawable.search_1_5x, R.drawable.search_sel_0_5x});
-        itemsImgIds.add(new int[]{R.drawable.category_1_5x, R.drawable.category_sel_1_5x});
-        itemsImgIds.add(new int[]{R.drawable.__1_5x, R.drawable.__1_5x});
-        bindUI(itemsImgIds);
+        actionBarSize =((CoordinatorLayout.LayoutParams) (getActivity().findViewById(R.id.main_toolbar_container)).getLayoutParams()).topMargin;
+
+        PopupMenu p  = new PopupMenu(getActivity(), null);
+        menu = p.getMenu();
+        getActivity().getMenuInflater().inflate(R.menu.bottom_navigation_items, menu);
+        bindUI(menu);
+
     }
 
-    private void bindUI(List<int[]> itemsImgIds){
+    BottomBarAdapter adapter;
+    private void bindUI(Menu menu){
         RecyclerView recyclerView = getActivity().findViewById(R.id.BottomBarRecyclerView);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        BottomBarAdapter adapter = new BottomBarAdapter(itemsImgIds);
+         adapter = new BottomBarAdapter(menu,navListner);
         recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+        recyclerView.stopNestedScroll();
+        recyclerView.stopScroll();
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false) {
+            @Override
+            public boolean canScrollVertically() {
+                return false;
+            }
+
+            @Override
+            public boolean canScrollHorizontally() {
+                return false;
+            }
+        });
         recyclerView.smoothScrollToPosition(0);
-        recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getActivity()
-                , recyclerView, new RecyclerTouchListener.ClickListener() {
-            @Override
-            public void onClick(View view, int position) {
-            }
+    }
 
-            @Override
-            public void onLongClick(View view, int position) {
 
-            }
-        }));
+    public View.OnClickListener navListner =
+            new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    ConstraintLayout constraintLayout = v.findViewById(R.id.bottom_menu_item_container);
+                    int position =(int) constraintLayout.getTag();
+                    UI_Utility.BottomNavigationMenu_icons_change(menu,position);
+                    adapter.notifyDataSetChanged();
+                    Fragment selectedFragment = new MainFragment();
+                    switch (position) {
+                        case 0:
+                            ToolbarSwitch(true);
+                            selectedFragment = new MainFragment();
+                            break;
+                        case 1:
+                            ToolbarSwitch(false);
+                            selectedFragment = new MapFragment();
+                            break;
+                        case 2:
+                            ToolbarSwitch(true);
+                            selectedFragment = new SearchFragment();
+                            break;
+                        case 3:
+                            ToolbarSwitch(true);
+                            selectedFragment = new CategoryFragment();
+                            break;
+                        case 4:
+                            ToolbarSwitch(true);
+                            selectedFragment = new ProfileFragment();
+                            break;
+                    }
+                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_toolbar_container, selectedFragment).commit();
+                }
+            };
+
+    public void ToolbarSwitch(Boolean sw) {
+        Toolbar toolbar =  getActivity().findViewById(R.id.toolbar_top);
+        if (!sw) {
+            toolbar.setVisibility(View.GONE);
+            ((CoordinatorLayout.LayoutParams) (getActivity().findViewById(R.id.main_toolbar_container)).getLayoutParams()).topMargin = 0;
+        }else {
+            TypedValue tv = new TypedValue();
+            toolbar.setVisibility(View.VISIBLE);
+            ((CoordinatorLayout.LayoutParams) (getActivity().findViewById(R.id.main_toolbar_container)).getLayoutParams()).topMargin = (int) actionBarSize;
+        }
     }
 }
