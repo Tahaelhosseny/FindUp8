@@ -6,4 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".activities.StoreInformationActivity">
 
+    <Button
+        android:id="@+id/btn_next"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/activity_vertical_margin"
+        android:background="@drawable/bg_button_rounded_accent"
+        android:text="@string/next"
+        android:textAllCaps="false"
+        android:textColor="@color/colorWhite"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 </android.support.constraint.ConstraintLayout>

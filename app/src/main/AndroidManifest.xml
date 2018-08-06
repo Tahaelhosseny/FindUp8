@@ -21,12 +21,12 @@
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".activities.SplashScreenActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" >
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".activities.LoginActivity"
@@ -147,14 +147,22 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
         <activity
             android:name=".activities.AddProductTruckActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen">
-        </activity>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen"/>
         <activity
             android:name=".activities.AddProductCraftActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
-        <activity android:name=".activities.StoreInformationActivity" />
-        <activity android:name=".activities.StoreContactActivity" />
-        <activity android:name=".activities.StoreChooseCategoryActivity" />
+        <activity
+            android:name=".activities.StoreInformationActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
+        <activity
+            android:name=".activities.StoreContactActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
+        <activity
+            android:name=".activities.StoreChooseCategoryActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
+        <activity
+            android:name=".activities.StoreCraftCategoryActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen"/>
     </application>
 
 </manifest>
