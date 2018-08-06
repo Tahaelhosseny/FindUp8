@@ -121,7 +121,7 @@ public class IntroActivity extends AppCompatActivity {
         btn_creatAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(IntroActivity.this,"create store account",Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(IntroActivity.this, StoreChooseCategoryActivity.class));
             }
         });
     }

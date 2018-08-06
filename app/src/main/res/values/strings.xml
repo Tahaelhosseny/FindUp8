@@ -75,6 +75,8 @@
     <string name="product_price">18 SR</string>
     <string name="product_description">The Red and Black Cafe was a radical safer space</string>
     <string name="product_name">Chocolate Cake</string>
+    <string name="choose_category">Choose Category</string>
+    <string name="next">Next</string>
 
     <array name="distance_seekbar_values">
         <item>0.5 KM</item>

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.StoreChooseCategoryActivity">
+    tools:context=".activities.StoreCraftCategoryActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar_chooseCategory"
@@ -37,12 +37,12 @@
     </android.support.v7.widget.Toolbar>
 
     <Button
-        android:id="@+id/btn_switchToCraft"
+        android:id="@+id/btn_switchToTruck"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/activity_vertical_margin"
         android:background="@drawable/bg_button_rounded_null"
-        android:text="CRAFT"
+        android:text="TRUCK"
         android:textAllCaps="false"
         android:textColor="@color/colorBlack"
         android:textStyle="bold"
@@ -58,4 +58,5 @@
         android:textColor="@color/colorWhite"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"/>
+
 </android.support.constraint.ConstraintLayout>

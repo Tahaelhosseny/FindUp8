@@ -7,4 +7,8 @@
     android:layout_height="match_parent"
     tools:context=".activities.AddProductCraftActivity">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="craft"/>
 </android.support.constraint.ConstraintLayout>
