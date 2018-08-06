@@ -2,6 +2,7 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
 
+    <solid android:color="#d3d3d3"/>
     <!-- If you want to add some padding -->
     <padding
         android:bottom="5dp"

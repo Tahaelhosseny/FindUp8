@@ -88,7 +88,7 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
                 break;
 
             case R.id.btn_settingsBack:
-                startActivity(new Intent(SettingsActivity.this, IntroActivity.class));
+                super.onBackPressed();
                 finish();
                 break;
 
@@ -97,6 +97,12 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
                 finish();
                 break;
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
 
     @Override

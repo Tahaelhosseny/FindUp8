@@ -128,6 +128,7 @@
         app:layout_constraintStart_toStartOf="@id/profile_pic"/>
 
     <Button
+        android:id="@+id/btn_createStoreAccount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/bg_button_rounded_null"

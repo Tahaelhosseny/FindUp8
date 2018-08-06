@@ -21,12 +21,12 @@
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".activities.SplashScreenActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" >
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
         </activity>
         <activity
             android:name=".activities.LoginActivity"
@@ -124,8 +124,9 @@
         <activity
             android:name=".activities.RatingActivity"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-        <activity android:name=".activities.ProductDetailsActivity"
-                  android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen"/>
+        <activity
+            android:name=".activities.ProductDetailsActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
         <activity
             android:name=".activities.LanguagesActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
@@ -137,22 +138,23 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
         <activity
             android:name=".activities.NotificationsSettingsActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen">
-        </activity>
-
-        <activity android:name=".activities.UserSavedActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen">
-        </activity>
-
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
+        <activity
+            android:name=".activities.UserSavedActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
         <activity
             android:name=".activities.SuccessfulRegisterationActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
         <activity
             android:name=".activities.AddProductTruckActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen"/>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen">
+        </activity>
         <activity
             android:name=".activities.AddProductCraftActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen"/>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
+        <activity android:name=".activities.StoreInformationActivity" />
+        <activity android:name=".activities.StoreContactActivity" />
+        <activity android:name=".activities.StoreChooseCategoryActivity" />
     </application>
 
 </manifest>

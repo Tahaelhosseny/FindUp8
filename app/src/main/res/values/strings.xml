@@ -67,11 +67,14 @@
     <string name="forget_password">Forget Password</string>
     <string name="password">Password</string>
     <string name="mobile">Mobile</string>
-    <string name="product_name">Product Name</string>
     <string name="description">Description</string>
     <string name="price">Price</string>
     <string name="done">Done</string>
     <string name="delete">Delete</string>
+    <string name="add_other_product">Add other product</string>
+    <string name="product_price">18 SR</string>
+    <string name="product_description">The Red and Black Cafe was a radical safer space</string>
+    <string name="product_name">Chocolate Cake</string>
 
     <array name="distance_seekbar_values">
         <item>0.5 KM</item>

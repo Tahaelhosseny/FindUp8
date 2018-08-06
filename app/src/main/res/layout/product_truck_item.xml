@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/activity_vertical_margin"
+    android:layout_marginEnd="@dimen/activity_vertical_margin"
+    android:layout_marginBottom="@dimen/activity_vertical_margin"
+    android:background="@drawable/bg_dashed_rounded_view"
+    android:padding="@dimen/activity_vertical_margin"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/productItemImg"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_margin="10dp"
+        app:srcCompat="@drawable/placeholder"
+        android:scaleType="fitXY"
+        android:contentDescription="@string/add_product" />
+
+    <TextView
+        android:id="@+id/productItemNameTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:fontFamily="@font/sfcompactdisplay_semibold"
+        android:text="@string/product_name"
+        android:textColor="@color/material_color_black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@id/productItemImg" />
+
+    <TextView
+        android:id="@+id/productItemDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/sfcompactdisplay_semibold"
+        android:text="@string/product_description"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@id/productItemNameTxt"
+        app:layout_constraintTop_toBottomOf="@+id/productItemNameTxt"/>
+
+    <TextView
+        android:id="@+id/productItemPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/sfcompactdisplay_semibold"
+        android:text="@string/product_price"
+        android:textColor="@color/material_color_black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@id/productItemDesc"
+        app:layout_constraintTop_toBottomOf="@+id/productItemDesc"/>
+</android.support.constraint.ConstraintLayout>

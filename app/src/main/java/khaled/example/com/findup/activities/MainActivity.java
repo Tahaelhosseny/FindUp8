@@ -23,6 +23,7 @@ import khaled.example.com.findup.fragments.BottomBarFragment;
 import khaled.example.com.findup.fragments.CategoryFragment;
 import khaled.example.com.findup.fragments.MainFragment;
 import khaled.example.com.findup.fragments.MapFragment;
+import khaled.example.com.findup.fragments.ProfileFragment;
 import khaled.example.com.findup.fragments.SearchFragment;
 
 public class MainActivity extends AppCompatActivity {
@@ -80,6 +81,10 @@ public class MainActivity extends AppCompatActivity {
                         ToolbarSwitch(false);
                         selectedFragment = new CategoryFragment();
                         break;
+                    case 4:
+                        ToolbarSwitch(false);
+                        selectedFragment = new ProfileFragment();
+                        break;
                 }
                 getSupportFragmentManager().beginTransaction().replace(R.id.main_toolbar_container, selectedFragment).commit();
             }
@@ -121,6 +126,10 @@ public class MainActivity extends AppCompatActivity {
                         case R.id.category:
                             ToolbarSwitch(false);
                             selectedFragment = new CategoryFragment();
+                            break;
+                        case R.id.profile:
+                            ToolbarSwitch(false);
+                            selectedFragment = new ProfileFragment();
                             break;
                     }
                     getSupportFragmentManager().beginTransaction().replace(R.id.main_toolbar_container, selectedFragment).commit();
