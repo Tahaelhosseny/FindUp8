@@ -746,4 +746,6 @@
     <dimen name="search_activity_title_marginLeft">16sp</dimen>
     <dimen name="search_activity_title_marginStart">16sp</dimen>
     <dimen name="search_activity_title_marginTop">36sp</dimen>
+
+    <dimen name="login_social_media_icons_size">40dp</dimen>
 </resources>
