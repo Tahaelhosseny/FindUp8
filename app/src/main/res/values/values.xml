@@ -751,5 +751,6 @@
     <dimen name="login_logo_size">50dp</dimen>
     <dimen name="login_photo_size">50dp</dimen>
 
+    <dimen name="start_margin_left">25dp</dimen>
 
 </resources>

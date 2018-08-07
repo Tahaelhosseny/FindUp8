@@ -113,9 +113,9 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         view_fillter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                UI_Utility.switchVisibility(filter);
-                getChildFragmentManager().beginTransaction().replace(R.id.nearMeContainer, new NearMeFragment()).commit();
-                //startActivity(new Intent(getActivity(), FilterActivity.class));
+               // UI_Utility.switchVisibility(filter);
+               // getChildFragmentManager().beginTransaction().replace(R.id.nearMeContainer, new NearMeFragment()).commit();
+                startActivity(new Intent(getActivity(), FilterActivity.class));
             }
         });
     }

@@ -2,10 +2,12 @@ package khaled.example.com.findup.fragments;
 
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import khaled.example.com.findup.R;
 
@@ -28,4 +30,16 @@ public class FilterFragment extends Fragment {
         return inflater.inflate(R.layout.fragment_filter, container, false);
     }
 
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        Button applyBtn = getActivity().findViewById(R.id.applyBtn);
+        applyBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+    }
 }
