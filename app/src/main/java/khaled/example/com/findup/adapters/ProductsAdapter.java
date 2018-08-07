@@ -69,21 +69,21 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
     public void onBindViewHolder(@NonNull ProductsAdapter.ViewHolder holder, int position) {
 
         Product product = products.get(position);
-        /*
+
         holder.productName.setText(product.getProductName());
         holder.productDescription.setText(product.getProductDescription());
         holder.productPrice.setText(String.valueOf(product.getProductPrice()));
 
         if (!product.getProductPhoto().isEmpty()) {
             Transformation transformation = new RoundedTransformationBuilder()
-                    .cornerRadiusDp(90)
+                    .cornerRadiusDp(80)
                     .oval(false)
                     .build();
 
             Picasso.with(holder.productImg.getContext()).load(product.getProductPhoto()).transform(transformation).placeholder(R.drawable.near_by_place_holder).into(holder.productImg);
 
         }
-        */
+
     }
 
     @Override

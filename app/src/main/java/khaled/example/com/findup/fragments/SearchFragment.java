@@ -40,7 +40,7 @@ public class SearchFragment extends Fragment {
         getActivity().overridePendingTransition(R.anim.abc_slide_in_bottom, R.anim.abc_slide_out_top);
         getChildFragmentManager().beginTransaction().replace(R.id.catsContainer, new MainCatsFragment()).commit();
         getChildFragmentManager().beginTransaction().replace(R.id.popularProductsContainer, new ProductsFragment()).commit();
-        getChildFragmentManager().beginTransaction().replace(R.id.suggestedProductsContainer, new ProductsFragment()).commit();
+        getChildFragmentManager().beginTransaction().replace(R.id.suggestedProductsContainer, new SuggestedProductsFragment()).commit();
 
         ImageButton view_fillter = getActivity().findViewById(R.id.search_filter);
         view_fillter.setOnClickListener(new View.OnClickListener() {
