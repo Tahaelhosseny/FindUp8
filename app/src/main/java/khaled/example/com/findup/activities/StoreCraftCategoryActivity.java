@@ -18,9 +18,7 @@ public class StoreCraftCategoryActivity extends AppCompatActivity {
         btn_switchToTruck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent transferIntent = new Intent(StoreCraftCategoryActivity.this, StoreChooseCategoryActivity.class);
-                transferIntent.putExtra("next_id",1);
-                startActivity(transferIntent);
+                startActivity(new Intent(StoreCraftCategoryActivity.this, StoreChooseCategoryActivity.class));
                 finish();
             }
         });
@@ -28,9 +26,7 @@ public class StoreCraftCategoryActivity extends AppCompatActivity {
         btn_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent transferIntent = new Intent(StoreCraftCategoryActivity.this, StoreInformationActivity.class);
-                transferIntent.putExtra("next_id",getIntent().getExtras().getInt("next_id"));
-                startActivity(transferIntent);
+                startActivity(new Intent(StoreCraftCategoryActivity.this, StoreInformationActivity.class));
             }
         });
     }

@@ -20,14 +20,14 @@ public class SuccessfulRegisterationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_successful_registeration);
 
-       /* new Handler().postDelayed(new Runnable() {
+        new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 startActivity(new Intent(SuccessfulRegisterationActivity.this, StoreDetailsActivity.class));
                 finish();
             }
         }, SPLASH_DISPLAY_LENGTH);
-*/
+
         btn_switch=findViewById(R.id.btn_switch);
         btn_switch.setOnClickListener(new View.OnClickListener() {
             @Override

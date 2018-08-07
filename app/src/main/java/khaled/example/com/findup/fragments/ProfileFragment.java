@@ -11,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 import com.minibugdev.drawablebadge.BadgePosition;
 import com.minibugdev.drawablebadge.DrawableBadge;
@@ -19,7 +18,6 @@ import com.minibugdev.drawablebadge.DrawableBadge;
 import khaled.example.com.findup.R;
 import khaled.example.com.findup.activities.NotificationsActivity;
 import khaled.example.com.findup.activities.SettingsActivity;
-import khaled.example.com.findup.activities.StoreChooseCategoryActivity;
 import khaled.example.com.findup.activities.UserSavedActivity;
 
 public class ProfileFragment extends Fragment {
@@ -67,7 +65,7 @@ public class ProfileFragment extends Fragment {
         btn_createStoreAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getActivity(), StoreChooseCategoryActivity.class));
+                Toast.makeText(getActivity(), "create store account",Toast.LENGTH_SHORT).show();
             }
         });
         return view;
