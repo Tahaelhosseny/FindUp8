@@ -34,11 +34,11 @@ public class SuggestedProductsFragment extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_suggested_products, container, false);
     }
+    List<Product> products = new ArrayList<>();
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        List<Product> products = new ArrayList<>();
         products.add(new Product(0,36,206,566,"Name", "Description","https://i2-prod.mirror.co.uk/incoming/article6201545.ece/ALTERNATES/s615/Cup-of-tea.jpg"));
         products.add(new Product(0,36,206,566,"Name", "Description","http://cdn.shopify.com/s/files/1/0653/8213/products/Review_1_1_595e822f-7ad5-42f2-8f04-d16c923614dd_grande.jpg?v=1520387592"));
         bindUI(products);
@@ -50,6 +50,11 @@ public class SuggestedProductsFragment extends Fragment {
         ProductsAdapter adapter = new ProductsAdapter(getActivity(), products);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
-        recyclerView.smoothScrollToPosition(0);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        bindUI(products);
     }
 }
