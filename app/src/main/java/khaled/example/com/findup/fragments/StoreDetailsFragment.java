@@ -22,6 +22,7 @@ import khaled.example.com.findup.R;
  */
 public class StoreDetailsFragment extends Fragment {
 
+    TabLayout tabLayout;
 
     public StoreDetailsFragment() {
         // Required empty public constructor
@@ -42,7 +43,7 @@ public class StoreDetailsFragment extends Fragment {
         ViewPager viewPager = getActivity().findViewById(R.id.storeViewpager);
         setupViewPager(viewPager);
 
-        TabLayout tabLayout = getActivity().findViewById(R.id.storeTabs);
+        tabLayout = getActivity().findViewById(R.id.storeTabs);
         tabLayout.setupWithViewPager(viewPager);
         tabLayout.setSelectedTabIndicatorColor(getActivity().getResources().getColor(R.color.material_color_deep_orange_accent));
 
@@ -81,6 +82,15 @@ public class StoreDetailsFragment extends Fragment {
         @Override
         public CharSequence getPageTitle(int position) {
             return mFragmentTitleList.get(position);
+        }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        if (tabLayout != null){
+            tabLayout.clearFocus();
         }
     }
 }
