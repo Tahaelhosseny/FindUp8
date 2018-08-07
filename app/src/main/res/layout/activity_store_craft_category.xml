@@ -36,17 +36,66 @@
             app:layout_constraintTop_toTopOf="parent" />
     </android.support.v7.widget.Toolbar>
 
+    <TextView
+        android:id="@+id/txt_events"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/events"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_chooseCategory"/>
+    <TextView
+        android:id="@+id/txt_homeBusiness"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/home_business"
+        app:layout_constraintTop_toBottomOf="@id/txt_events"/>
+    <TextView
+        android:id="@+id/txt_craft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/home_business"
+        app:layout_constraintTop_toBottomOf="@id/txt_events"/>
+    <TextView
+        android:id="@+id/txt_foodTruck"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/food_truck"
+        app:layout_constraintTop_toBottomOf="@id/txt_craft"/>
+    <TextView
+        android:id="@+id/txt_foodTruckDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/food_truck_desc"
+        app:layout_constraintTop_toBottomOf="@id/txt_foodTruck"/>
+    <TextView
+        android:id="@+id/txt_stores"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/stores"
+        app:layout_constraintTop_toBottomOf="@id/btn_switchToTruck"/>
+    <TextView
+        android:id="@+id/txt_booth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/booth"
+        app:layout_constraintTop_toBottomOf="@id/txt_stores"/>
+    <TextView
+        android:id="@+id/txt_others"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/others"
+        app:layout_constraintTop_toBottomOf="@id/txt_booth"/>
+
     <Button
         android:id="@+id/btn_switchToTruck"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/activity_vertical_margin"
         android:background="@drawable/bg_button_rounded_null"
-        android:text="TRUCK"
+        android:text="@string/truck"
         android:textAllCaps="false"
         android:textColor="@color/colorBlack"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/toolbar_chooseCategory"/>
+        app:layout_constraintTop_toBottomOf="@id/txt_foodTruckDesc"/>
     <Button
         android:id="@+id/btn_next"
         android:layout_width="match_parent"

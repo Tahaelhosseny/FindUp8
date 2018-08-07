@@ -19,14 +19,18 @@ public class StoreChooseCategoryActivity extends AppCompatActivity {
         btn_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(StoreChooseCategoryActivity.this, StoreInformationActivity.class));
+                Intent transferIntent = new Intent(StoreChooseCategoryActivity.this, StoreInformationActivity.class);
+                transferIntent.putExtra("next_id",getIntent().getExtras().getInt("next_id"));
+                startActivity(transferIntent);
             }
         });
         Button btn_switchtoCraft =findViewById(R.id.btn_switchToCraft);
         btn_switchtoCraft.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(StoreChooseCategoryActivity.this, StoreCraftCategoryActivity.class));
+                Intent transferIntent = new Intent(StoreChooseCategoryActivity.this, StoreCraftCategoryActivity.class);
+                transferIntent.putExtra("next_id",2);
+                startActivity(transferIntent);
                 finish();
             }
         });
