@@ -30,36 +30,50 @@
         android:id="@+id/productItemDesc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/sfcompactdisplay_semibold"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/sfcompactdisplay_medium"
         android:text="The red and Black cafe"
-        android:textSize="20sp"
+        android:textColor="@color/material_color_grey_600"
+        android:textSize="14sp"
         app:layout_constraintStart_toStartOf="@id/productItemNameTxt"
-        app:layout_constraintTop_toBottomOf="@+id/productItemNameTxt"/>
+        app:layout_constraintTop_toBottomOf="@+id/productItemNameTxt" />
 
     <TextView
         android:id="@+id/productItemPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:fontFamily="@font/sfcompactdisplay_semibold"
-        android:text="18.5 SR"
+        android:text="18.5"
         android:textColor="@color/material_color_black"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@id/productItemDesc"
-        app:layout_constraintTop_toBottomOf="@+id/productItemDesc"/>
+        app:layout_constraintTop_toBottomOf="@+id/productItemDesc" />
+
+    <TextView
+        android:id="@+id/prouductCurrency"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:fontFamily="@font/sfcompactdisplay_semibold"
+        android:text="SR"
+        android:textColor="@color/material_color_black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/productItemPrice"
+        app:layout_constraintStart_toEndOf="@+id/productItemPrice" />
 
     <TextView
         android:id="@+id/productNumComments"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/sfcompactdisplay_semibold"
+        android:layout_marginTop="8dp"
+        android:drawablePadding="3dp"
+        android:drawableStart="@drawable/chat_comment_oval_speech_bubble_with_text_lines_0_5x"
+        android:fontFamily="@font/sfcompactdisplay_light"
         android:text="567"
-        android:textColor="@color/material_color_black"
-        android:textSize="20sp"
+        android:textColor="@color/material_color_grey_600"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@id/productItemPrice"
-        app:layout_constraintTop_toBottomOf="@+id/productItemPrice"/>
+        app:layout_constraintTop_toBottomOf="@+id/productItemPrice" />
 
     <TextView
         android:id="@+id/productNumLikes"
@@ -68,10 +82,12 @@
         android:layout_marginLeft="36dp"
         android:layout_marginStart="36dp"
         android:layout_marginTop="8dp"
-        android:fontFamily="@font/sfcompactdisplay_semibold"
-        android:text="2.2 k"
-        android:textColor="@color/material_color_black"
-        android:textSize="20sp"
+        android:fontFamily="@font/sfcompactdisplay_light"
+        android:text="2.2k"
+        android:textSize="18sp"
+        android:textColor="@color/material_color_grey_600"
+        android:drawablePadding="3dp"
+        android:drawableStart="@drawable/like_0_5x"
         app:layout_constraintStart_toEndOf="@id/productNumComments"
         app:layout_constraintTop_toBottomOf="@+id/productItemPrice" />
 

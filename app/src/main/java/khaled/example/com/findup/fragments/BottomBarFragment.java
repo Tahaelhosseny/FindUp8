@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.PopupMenu;
@@ -100,6 +101,8 @@ public class BottomBarFragment extends Fragment {
                         case 0:
                             ToolbarSwitch(true);
                             selectedFragment = new MainFragment();
+                            ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+                            ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(false);
                             break;
                         case 1:
                             ToolbarSwitch(false);
@@ -108,14 +111,20 @@ public class BottomBarFragment extends Fragment {
                         case 2:
                             ToolbarSwitch(true);
                             selectedFragment = new SearchFragment();
+                            ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+                            ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
                             break;
                         case 3:
                             ToolbarSwitch(true);
                             selectedFragment = new CategoryFragment();
+                            ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+                            ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
                             break;
                         case 4:
                             ToolbarSwitch(true);
                             selectedFragment = new ProfileFragment();
+                            ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+                            ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
                             break;
                     }
                     getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_toolbar_container, selectedFragment).commit();

@@ -39,20 +39,26 @@ public class StoreDetailsFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
-        ViewPager viewPager = getActivity().findViewById(R.id.storeViewpager);
+        final ViewPager viewPager = getActivity().findViewById(R.id.storeViewpager);
         setupViewPager(viewPager);
 
+
         tabLayout = getActivity().findViewById(R.id.storeTabs);
-        tabLayout.setupWithViewPager(viewPager);
-        tabLayout.setSelectedTabIndicatorColor(getActivity().getResources().getColor(R.color.material_color_deep_orange_accent));
+        tabLayout.post(new Runnable() {
+            @Override
+            public void run() {
+                tabLayout.setupWithViewPager(viewPager);
+                tabLayout.setSelectedTabIndicatorColor(getActivity().getResources().getColor(R.color.material_color_deep_orange_accent));            }
+        });
 
     }
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter((getChildFragmentManager()));
         adapter.addFragment(new StoreInfoFragment(), "Information");
+        adapter.addFragment(new CommentsFragment(), "Products");
         adapter.addFragment(new ProductsFragment(), "Products");
+
         viewPager.setAdapter(adapter);
     }
 
