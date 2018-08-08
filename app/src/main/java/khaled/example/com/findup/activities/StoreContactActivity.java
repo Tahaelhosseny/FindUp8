@@ -5,27 +5,37 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.TextView;
 
 import khaled.example.com.findup.R;
 
 public class StoreContactActivity extends AppCompatActivity {
 
-    int btnNext_id;
+    RadioButton radioShowCity;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_store_contact);
+        radioShowCity=findViewById(R.id.radioShowCity);
+        if (getIntent().getExtras().getInt("next_id")==2){
+            radioShowCity.setVisibility(View.GONE);
+        }
         final Button btn_next = findViewById(R.id.btn_next);
-        btnNext_id=2;
         btn_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                switch (btnNext_id){
+                switch (getIntent().getExtras().getInt("next_id")){
                     case 1:
                         startActivity(new Intent(StoreContactActivity.this, AddProductTruckActivity.class));
                         break;
                     case 2:
                         startActivity(new Intent(StoreContactActivity.this, AddProductCraftActivity.class));
+                        break;
+                    default:
+                        startActivity(new Intent(StoreContactActivity.this, AddProductTruckActivity.class));
                         break;
                 }
             }
