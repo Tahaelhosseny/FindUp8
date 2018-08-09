@@ -56,6 +56,10 @@ dependencies {
     implementation 'com.github.ceryle:RadioRealButton:v2.1.1'
     implementation 'com.github.warkiz.tickseekbar:tickseekbar:0.1.3'
     implementation 'com.github.felixsoares:BottomNavygation:1.8.6'
+
+
+    //new tab layout
+    implementation 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
 }
 
 apply plugin: 'com.google.gms.google-services'
