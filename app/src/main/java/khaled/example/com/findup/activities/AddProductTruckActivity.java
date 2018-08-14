@@ -46,7 +46,8 @@ public class AddProductTruckActivity extends AppCompatActivity {
         btn_addProductBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(AddProductTruckActivity.this, "Back", Toast.LENGTH_SHORT).show();
+                AddProductTruckActivity.super.onBackPressed();
+                finish();
             }
         });
 
@@ -95,5 +96,11 @@ public class AddProductTruckActivity extends AppCompatActivity {
                 Toast.makeText(AddProductTruckActivity.this, "delete", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
 }

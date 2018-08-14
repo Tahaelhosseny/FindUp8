@@ -11,7 +11,7 @@
         android:id="@+id/toolbar_settings"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="18dp"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
         android:background="@color/colorWhite"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -21,16 +21,14 @@
             android:id="@+id/btn_settingsBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="22dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="4dp"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
             android:background="@null"
             android:drawableStart="@drawable/baseline_keyboard_arrow_left_black_48dp"
             android:fontFamily="@font/sfcompactdisplay_medium"
             android:text="@string/settings"
             android:textAllCaps="false"
             android:textColor="@color/colorBlack"
-            android:textSize="24sp"
+            android:textSize="@dimen/sp24"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -41,7 +39,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp"
+        android:padding="@dimen/activity_vertical_margin"
         app:layout_constraintTop_toBottomOf="@+id/toolbar_settings"
         app:layout_constraintStart_toStartOf="parent">
 
@@ -52,8 +50,8 @@
             android:background="@drawable/bg_button_rounded_null"
             android:fontFamily="@font/sfcompactdisplay_semibold"
             android:text="@string/edit_profile"
+            android:textAlignment="viewStart"
             android:textAllCaps="false"
-            android:layout_marginBottom="2dp"
             android:textStyle="bold"/>
 
         <Button
@@ -63,8 +61,8 @@
             android:background="@drawable/bg_button_rounded_null"
             android:fontFamily="@font/sfcompactdisplay_semibold"
             android:text="@string/notifications"
+            android:textAlignment="viewStart"
             android:textAllCaps="false"
-            android:layout_marginBottom="2dp"
             android:textStyle="bold"/>
 
         <Button
@@ -74,8 +72,8 @@
             android:background="@drawable/bg_button_rounded_null"
             android:fontFamily="@font/sfcompactdisplay_semibold"
             android:text="@string/currency"
+            android:textAlignment="viewStart"
             android:textAllCaps="false"
-            android:layout_marginBottom="2dp"
             android:textStyle="bold"/>
 
         <Button
@@ -85,8 +83,8 @@
             android:background="@drawable/bg_button_rounded_null"
             android:fontFamily="@font/sfcompactdisplay_semibold"
             android:text="@string/measure_distance"
+            android:textAlignment="viewStart"
             android:textAllCaps="false"
-            android:layout_marginBottom="2dp"
             android:textStyle="bold"/>
 
         <Button
@@ -96,8 +94,8 @@
             android:background="@drawable/bg_button_rounded_null"
             android:fontFamily="@font/sfcompactdisplay_semibold"
             android:text="@string/language"
+            android:textAlignment="viewStart"
             android:textAllCaps="false"
-            android:layout_marginBottom="2dp"
             android:textStyle="bold"/>
 
         <Button
@@ -107,8 +105,8 @@
             android:background="@drawable/bg_button_rounded_null"
             android:fontFamily="@font/sfcompactdisplay_semibold"
             android:text="@string/invite_friend"
+            android:textAlignment="viewStart"
             android:textAllCaps="false"
-            android:layout_marginBottom="2dp"
             android:textStyle="bold"/>
 
         <Button
@@ -118,8 +116,8 @@
             android:background="@drawable/bg_button_rounded_null"
             android:fontFamily="@font/sfcompactdisplay_semibold"
             android:text="@string/contact_with_us"
+            android:textAlignment="viewStart"
             android:textAllCaps="false"
-            android:layout_marginBottom="2dp"
             android:textStyle="bold"/>
 
         <Button
@@ -129,16 +127,16 @@
             android:background="@drawable/bg_button_rounded_null"
             android:fontFamily="@font/sfcompactdisplay_semibold"
             android:text="@string/terms_of_services"
+            android:textAlignment="viewStart"
             android:textAllCaps="false"
-            android:layout_marginBottom="2dp"
             android:textStyle="bold"/>
     </LinearLayout>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="24dp"
-        android:textSize="24sp"
+        android:layout_margin="@dimen/material_elevation_dialog"
+        android:textSize="@dimen/sp24"
         android:fontFamily="@font/sfcompactdisplay_semibold"
         android:text="@string/logout"
         android:textColor="@color/colorBlack"
@@ -155,7 +153,8 @@
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/ic_forward"
         android:background="@null"
-        android:layout_margin="24dp"
+        android:layout_margin="@dimen/activity_vertical_margin"
+        android:padding="@dimen/activity_vertical_margin"
         app:layout_constraintTop_toBottomOf="@+id/linearSettings"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

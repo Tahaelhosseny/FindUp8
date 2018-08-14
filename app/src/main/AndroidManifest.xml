@@ -147,7 +147,7 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
         <activity
             android:name=".activities.AddProductTruckActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen"/>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
         <activity
             android:name=".activities.AddProductCraftActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
@@ -162,16 +162,23 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
         <activity
             android:name=".activities.StoreCraftCategoryActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen"/>
-
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
         <activity
             android:name=".activities.CommentsActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen"/>
-
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
         <activity
             android:name=".activities.PhotosGalleryActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
+        <activity
+            android:name=".activities.StoreEventsCategoryActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
+        <activity
+            android:name=".activities.StoreEventsActivity"
+            android:label="@string/title_activity_store_events"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen"/>
-
+        <activity
+            android:name=".activities.CreateEventActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen"/>
     </application>
 
 </manifest>

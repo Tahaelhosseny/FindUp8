@@ -34,10 +34,10 @@
                 android:background="@null"
                 android:drawableStart="@drawable/baseline_keyboard_arrow_left_black_48dp"
                 android:fontFamily="@font/sfcompactdisplay_medium"
-                android:text="Craft Details"
+                android:text="@string/craft_details"
                 android:textAllCaps="false"
                 android:textColor="@color/colorBlack"
-                android:textSize="24sp"
+                android:textSize="@dimen/sp24"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -64,7 +64,7 @@
                 android:text="@string/add_your_first_craft"
                 android:textColor="@color/colorBlack"
                 android:fontFamily="@font/sfcompactdisplay_semibold"
-                android:textSize="20sp"
+                android:textSize="@dimen/sp20"
                 android:layout_marginTop="@dimen/activity_vertical_margin"/>
 
             <TextView
@@ -137,7 +137,7 @@
                     android:textColor="@color/colorBlack"
                     android:textColorHint="@color/colorWhiteGrey"
                     android:fontFamily="@font/sfcompactdisplay_semibold"
-                    android:textSize="20sp"/>
+                    android:textSize="@dimen/sp20"/>
             </android.support.design.widget.TextInputLayout>
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -156,7 +156,7 @@
                     android:textColor="@color/colorBlack"
                     android:textColorHint="@color/colorWhiteGrey"
                     android:fontFamily="@font/sfcompactdisplay_semibold"
-                    android:textSize="20sp"/>
+                    android:textSize="@dimen/sp20"/>
             </android.support.design.widget.TextInputLayout>
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -175,7 +175,7 @@
                     android:textColor="@color/colorBlack"
                     android:textColorHint="@color/colorWhiteGrey"
                     android:fontFamily="@font/sfcompactdisplay_semibold"
-                    android:textSize="20sp"/>
+                    android:textSize="@dimen/sp20"/>
             </android.support.design.widget.TextInputLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -239,7 +239,7 @@
                     android:text="@string/add_your_first_craft"
                     android:textColor="@color/colorBlack"
                     android:fontFamily="@font/sfcompactdisplay_semibold"
-                    android:textSize="20sp"
+                    android:textSize="@dimen/sp20"
                     android:layout_marginTop="@dimen/activity_vertical_margin"/>
 
                 <TextView
@@ -248,7 +248,7 @@
                     android:textAlignment="viewStart"
                     android:text="@string/add_your_first_craft_hint"
                     android:fontFamily="@font/sfcompactdisplay_regular"
-                    android:textSize="20sp"/>
+                    android:textSize="@dimen/sp20"/>
 
             </LinearLayout>
 
@@ -280,7 +280,7 @@
                 android:text="@string/add_other_craft"
                 android:textColor="@color/colorBlack"
                 android:fontFamily="@font/sfcompactdisplay_semibold"
-                android:textSize="20sp"
+                android:textSize="@dimen/sp20"
                 android:paddingTop="@dimen/activity_vertical_margin"
                 android:paddingBottom="@dimen/activity_vertical_margin"/>
         </LinearLayout>

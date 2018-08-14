@@ -19,6 +19,14 @@ public class StoreContactActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_store_contact);
+        Button btn_contactBack= findViewById(R.id.btn_contactBack);
+        btn_contactBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                StoreContactActivity.super.onBackPressed();
+                finish();
+            }
+        });
         radioShowCity=findViewById(R.id.radioShowCity);
         if (getIntent().getExtras().getInt("next_id")==2){
             radioShowCity.setVisibility(View.GONE);
@@ -40,5 +48,11 @@ public class StoreContactActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
 }

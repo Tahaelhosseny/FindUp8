@@ -15,7 +15,7 @@ public class StoreChooseCategoryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_store_choose_category);
 
-        Button btn_next= findViewById(R.id.btn_next);
+        Button btn_next= findViewById(R.id.btn_truckNext);
         btn_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -24,8 +24,8 @@ public class StoreChooseCategoryActivity extends AppCompatActivity {
                 startActivity(transferIntent);
             }
         });
-        Button btn_switchtoCraft =findViewById(R.id.btn_switchToCraft);
-        btn_switchtoCraft.setOnClickListener(new View.OnClickListener() {
+        Button btn_switchToCraft =findViewById(R.id.btn_truckToCraft);
+        btn_switchToCraft.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent transferIntent = new Intent(StoreChooseCategoryActivity.this, StoreCraftCategoryActivity.class);
@@ -34,5 +34,27 @@ public class StoreChooseCategoryActivity extends AppCompatActivity {
                 finish();
             }
         });
+        Button btn_switchToEvents =findViewById(R.id.btn_truckToEvents);
+        btn_switchToEvents.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(StoreChooseCategoryActivity.this, StoreEventsCategoryActivity.class));
+                finish();
+            }
+        });
+        Button btn_truckBack=findViewById(R.id.btn_truckCategoryBack);
+        btn_truckBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(StoreChooseCategoryActivity.this, IntroActivity.class));
+                finish();
+            }
+        });
+    }
+
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(StoreChooseCategoryActivity.this, IntroActivity.class));
+        finish();
     }
 }

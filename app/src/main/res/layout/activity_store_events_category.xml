@@ -12,10 +12,10 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:context=".activities.StoreChooseCategoryActivity">
+        tools:context=".activities.StoreEventsCategoryActivity">
 
     <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar_truckCategory"
+        android:id="@+id/toolbar_eventsCategory"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,7 +23,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <Button
-            android:id="@+id/btn_truckCategoryBack"
+            android:id="@+id/btn_eventsBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@null"
@@ -38,23 +38,35 @@
             app:layout_constraintTop_toTopOf="parent" />
     </android.support.v7.widget.Toolbar>
 
-    <Button
-        android:id="@+id/btn_truckToEvents"
+    <TextView
+        android:id="@+id/txt_events"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:paddingEnd="@dimen/activity_vertical_margin"
+        android:paddingStart="@dimen/activity_vertical_margin"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
         android:text="@string/events"
+        android:textAllCaps="true"
+        android:textColor="@color/colorWhite"
+        android:textSize="@dimen/sp48"
+        android:fontFamily="@font/sfcompactdisplay_heavy"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/txt_eventsDesc"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_eventsCategory" />
+    <TextView
+        android:id="@+id/txt_eventsDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/truck_description"
+        android:textColor="@color/colorWhite"
+        android:textAllCaps="false"
+        android:textStyle="bold"
         android:paddingStart="@dimen/activity_vertical_margin"
         android:paddingEnd="@dimen/activity_vertical_margin"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:background="@drawable/bg_button_rounded_null"
-        android:textAllCaps="true"
-        android:textColor="@color/colorWhiteGrey"
-        android:textStyle="bold"
-        android:textSize="@dimen/sp36"
-        app:layout_constraintBottom_toTopOf="@+id/txt_truckHomeBusiness"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_truckCategory"/>
+        app:layout_constraintTop_toBottomOf="@id/txt_events"
+        app:layout_constraintBottom_toTopOf="@id/txt_eventsHomeBusiness"/>
     <TextView
-        android:id="@+id/txt_truckHomeBusiness"
+        android:id="@+id/txt_eventsHomeBusiness"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/home_business"
@@ -64,37 +76,40 @@
         android:textSize="@dimen/sp36"
         android:paddingStart="@dimen/activity_vertical_margin"
         android:paddingEnd="@dimen/activity_vertical_margin"
-        app:layout_constraintBottom_toTopOf="@+id/btn_truckToCraft"
-        app:layout_constraintTop_toBottomOf="@+id/btn_truckToEvents"/>
-    <TextView
-        android:id="@+id/txt_foodTruck"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/food_truck"
-        android:fontFamily="@font/sfcompactdisplay_heavy"
-        android:textAllCaps="true"
-        android:textColor="@color/colorWhite"
-        android:textStyle="bold"
-        android:textSize="@dimen/sp48"
-        android:paddingStart="@dimen/activity_vertical_margin"
-        android:paddingEnd="@dimen/activity_vertical_margin"
-        app:layout_constraintBottom_toTopOf="@+id/txt_foodTruckDesc"
-        app:layout_constraintTop_toBottomOf="@+id/btn_truckToCraft"/>
+        app:layout_constraintBottom_toTopOf="@+id/btn_eventsToCraft"
+        app:layout_constraintTop_toBottomOf="@+id/txt_eventsDesc"/>
 
-    <TextView
-        android:id="@+id/txt_foodTruckDesc"
+
+    <Button
+    android:id="@+id/btn_eventsToCraft"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingStart="@dimen/activity_vertical_margin"
+    android:paddingEnd="@dimen/activity_vertical_margin"
+    android:background="@drawable/bg_button_rounded_null"
+    android:text="@string/craft"
+    android:textSize="@dimen/sp36"
+    android:textAllCaps="true"
+    android:textColor="@color/colorWhiteGrey"
+    android:textStyle="bold"
+    app:layout_constraintBottom_toTopOf="@+id/btn_eventsToTruck"
+    app:layout_constraintTop_toBottomOf="@+id/txt_eventsHomeBusiness"/>
+    <Button
+        android:id="@+id/btn_eventsToTruck"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/bg_button_rounded_null"
         android:paddingEnd="@dimen/activity_vertical_margin"
         android:paddingStart="@dimen/activity_vertical_margin"
-        android:text="@string/truck_description"
+        android:text="@string/food_truck"
         android:textAllCaps="true"
-        android:textColor="@color/colorWhite"
+        android:textColor="@color/colorWhiteGrey"
+        android:textSize="@dimen/sp36"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@+id/txt_foodTruck"
-        app:layout_constraintBottom_toTopOf="@+id/txt_truckStores"/>
+        app:layout_constraintBottom_toTopOf="@+id/txt_eventsStores"
+        app:layout_constraintTop_toBottomOf="@+id/btn_eventsToCraft" />
     <TextView
-        android:id="@+id/txt_truckStores"
+        android:id="@+id/txt_eventsStores"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/stores"
@@ -104,23 +119,24 @@
         android:textSize="@dimen/sp36"
         android:paddingStart="@dimen/activity_vertical_margin"
         android:paddingEnd="@dimen/activity_vertical_margin"
-        app:layout_constraintBottom_toTopOf="@+id/txt_truckBooth"
-        app:layout_constraintTop_toBottomOf="@+id/txt_foodTruckDesc"/>
+        app:layout_constraintBottom_toTopOf="@+id/txt_eventsBooth"
+        app:layout_constraintTop_toBottomOf="@+id/btn_eventsToTruck"/>
+
     <TextView
-        android:id="@+id/txt_truckBooth"
+        android:id="@+id/txt_eventsBooth"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:paddingEnd="@dimen/activity_vertical_margin"
+        android:paddingStart="@dimen/activity_vertical_margin"
         android:text="@string/booth"
         android:textAllCaps="true"
         android:textColor="@color/colorWhiteGrey"
-        android:textStyle="bold"
         android:textSize="@dimen/sp36"
-        android:paddingStart="@dimen/activity_vertical_margin"
-        android:paddingEnd="@dimen/activity_vertical_margin"
-        app:layout_constraintTop_toBottomOf="@+id/txt_truckStores"
-        app:layout_constraintBottom_toTopOf="@+id/txt_truckOthers"/>
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/txt_eventsOthers"
+        app:layout_constraintTop_toBottomOf="@+id/txt_eventsStores" />
     <TextView
-        android:id="@+id/txt_truckOthers"
+        android:id="@+id/txt_eventsOthers"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/others"
@@ -130,24 +146,12 @@
         android:textSize="@dimen/sp36"
         android:paddingStart="@dimen/activity_vertical_margin"
         android:paddingEnd="@dimen/activity_vertical_margin"
-        app:layout_constraintTop_toBottomOf="@+id/txt_truckBooth"
-        app:layout_constraintBottom_toTopOf="@+id/btn_truckNext"/>
+        app:layout_constraintTop_toBottomOf="@+id/txt_eventsBooth"
+        app:layout_constraintBottom_toTopOf="@+id/btn_eventsNext"/>
+
+
     <Button
-        android:id="@+id/btn_truckToCraft"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingStart="@dimen/activity_vertical_margin"
-        android:paddingEnd="@dimen/activity_vertical_margin"
-        android:background="@drawable/bg_button_rounded_null"
-        android:text="@string/craft"
-        android:textSize="@dimen/sp36"
-        android:textAllCaps="true"
-        android:textColor="@color/colorWhiteGrey"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/txt_foodTruck"
-        app:layout_constraintTop_toBottomOf="@+id/txt_truckHomeBusiness" />
-    <Button
-        android:id="@+id/btn_truckNext"
+        android:id="@+id/btn_eventsNext"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/activity_vertical_margin"
@@ -157,5 +161,6 @@
         android:textColor="@color/colorWhite"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"/>
+
 </android.support.constraint.ConstraintLayout>
 </ScrollView>

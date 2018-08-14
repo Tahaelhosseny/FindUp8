@@ -29,7 +29,7 @@
         <item name="cardBackgroundColor">@color/colorWhite</item>
     </style>
 
-    <attr format="reference" name="cardStyle"/>
+    <attr name="cardStyle" format="reference" />
 
     <style name="Light" parent="Theme.AppCompat.NoActionBar">
         <item name="cardStyle">@style/CardView.Light</item>
@@ -63,5 +63,14 @@
         <item name="colorAccent">@color/colorWhiteGrey</item>
         <item name="android:textCursorDrawable">@drawable/color_black</item>
     </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
 </resources>

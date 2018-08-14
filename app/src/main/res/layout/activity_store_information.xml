@@ -31,7 +31,7 @@ xmlns:android="http://schemas.android.com/apk/res/android">
             android:text="@string/information"
             android:textAllCaps="false"
             android:textColor="@color/colorBlack"
-            android:textSize="24sp"
+            android:textSize="@dimen/sp24"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -46,28 +46,27 @@ xmlns:android="http://schemas.android.com/apk/res/android">
         app:layout_constraintTop_toBottomOf="@+id/toolbar_information"
         android:layout_margin="@dimen/activity_vertical_margin">
 
-        <ImageButton
+        <ImageView
             android:id="@+id/pic_logo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/material_baseline_grid_7.5x"
+            android:layout_height="@dimen/material_baseline_grid_7.5x"
             app:srcCompat="@drawable/ic_logo"
             android:background="@null"
             android:layout_marginStart="@dimen/activity_vertical_margin"
             android:layout_marginTop="@dimen/activity_vertical_margin"
             android:layout_marginBottom="@dimen/activity_vertical_margin"
             app:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="@string/store_name" />
+            android:contentDescription="@string/store_name"/>
 
-        <ImageButton
+        <ImageView
             android:id="@+id/pic_banner"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/dp150"
             app:srcCompat="@drawable/ic_banner"
-            android:background="@null"
             android:layout_marginTop="@dimen/activity_vertical_margin"
             android:layout_marginBottom="@dimen/activity_vertical_margin"
             app:layout_constraintTop_toBottomOf="@id/pic_logo"
-            android:contentDescription="@string/store_name" />
+            android:contentDescription="@string/store_name"/>
 
         <TextView
             android:id="@+id/txt_storeName"
@@ -78,7 +77,7 @@ xmlns:android="http://schemas.android.com/apk/res/android">
             android:text="@string/store_name"
             android:textColor="@color/colorWhiteGrey"
             android:textStyle="bold"
-            android:textSize="18sp"
+            android:textSize="@dimen/sp18"
             app:layout_constraintTop_toBottomOf="@id/pic_banner"/>
 
         <EditText
@@ -91,7 +90,7 @@ xmlns:android="http://schemas.android.com/apk/res/android">
             android:textColorHighlight="@color/colorWhiteGrey"
             android:textColorLink="@color/colorWhiteGrey"
             android:textCursorDrawable="@drawable/color_black"
-            android:textSize="18sp"
+            android:textSize="@dimen/sp18"
             app:layout_constraintTop_toBottomOf="@+id/txt_storeName" />
 
         <TextView
@@ -103,7 +102,7 @@ xmlns:android="http://schemas.android.com/apk/res/android">
             android:text="@string/other_language"
             android:textColor="@color/colorWhiteGrey"
             android:textStyle="bold"
-            android:textSize="18sp"
+            android:textSize="@dimen/sp18"
             app:layout_constraintTop_toBottomOf="@+id/editText_storeName"/>
         <EditText
             android:id="@+id/editText_otherLanguage"
@@ -117,7 +116,7 @@ xmlns:android="http://schemas.android.com/apk/res/android">
             android:textColorHighlight="@color/colorWhiteGrey"
             android:textColorLink="@color/colorWhiteGrey"
             android:textCursorDrawable="@drawable/color_black"
-            android:textSize="18sp"/>
+            android:textSize="@dimen/sp18"/>
         <TextView
             android:id="@+id/txt_workTime"
             android:layout_width="wrap_content"
@@ -127,7 +126,7 @@ xmlns:android="http://schemas.android.com/apk/res/android">
             android:text="@string/work_time"
             android:textColor="@color/colorWhiteGrey"
             android:textStyle="bold"
-            android:textSize="18sp"
+            android:textSize="@dimen/sp16"
             app:layout_constraintTop_toBottomOf="@+id/editText_otherLanguage"/>
         <TextView
             android:id="@+id/txt_days"
@@ -137,7 +136,7 @@ xmlns:android="http://schemas.android.com/apk/res/android">
             android:layout_marginTop="@dimen/activity_vertical_margin"
             android:text="@string/days"
             android:textColor="@color/colorWhiteGrey"
-            android:textSize="16sp"
+            android:textSize="@dimen/sp16"
             app:layout_constraintTop_toBottomOf="@+id/txt_workTime"/>
         <TextView
             android:id="@+id/txt_workdays"
@@ -147,7 +146,7 @@ xmlns:android="http://schemas.android.com/apk/res/android">
             android:layout_marginTop="5dp"
             android:text="@string/work_days"
             android:textColor="@color/colorBlack"
-            android:textSize="16sp"
+            android:textSize="@dimen/sp16"
             app:layout_constraintTop_toBottomOf="@+id/txt_days"/>
         <TextView
             android:id="@+id/txt_time"
@@ -157,7 +156,7 @@ xmlns:android="http://schemas.android.com/apk/res/android">
             android:layout_marginTop="@dimen/activity_vertical_margin"
             android:text="@string/time"
             android:textColor="@color/colorWhiteGrey"
-            android:textSize="16sp"
+            android:textSize="@dimen/sp16"
             app:layout_constraintTop_toBottomOf="@+id/txt_workdays"/>
 
         <EditText
@@ -172,7 +171,7 @@ xmlns:android="http://schemas.android.com/apk/res/android">
             android:textColorHighlight="@color/colorWhiteGrey"
             android:textColorLink="@color/colorWhiteGrey"
             android:textCursorDrawable="@drawable/color_black"
-            android:textSize="18sp"/>
+            android:textSize="@dimen/sp18"/>
 
         <LinearLayout
             android:id="@+id/layoutAddDays"
@@ -219,7 +218,7 @@ xmlns:android="http://schemas.android.com/apk/res/android">
             android:text="@string/tags"
             android:textColor="@color/colorWhiteGrey"
             android:textStyle="bold"
-            android:textSize="18sp"
+            android:textSize="@dimen/sp18"
             app:layout_constraintTop_toBottomOf="@+id/layoutAddDays"/>
 
         <EditText
@@ -234,7 +233,7 @@ xmlns:android="http://schemas.android.com/apk/res/android">
             android:textColorHighlight="@color/colorWhiteGrey"
             android:textColorLink="@color/colorWhiteGrey"
             android:textCursorDrawable="@drawable/color_black"
-            android:textSize="18sp"/>
+            android:textSize="@dimen/sp18"/>
         <TextView
             android:id="@+id/txt_description"
             android:layout_width="wrap_content"
@@ -244,7 +243,7 @@ xmlns:android="http://schemas.android.com/apk/res/android">
             android:text="@string/description"
             android:textColor="@color/colorWhiteGrey"
             android:textStyle="bold"
-            android:textSize="18sp"
+            android:textSize="@dimen/sp18"
             app:layout_constraintTop_toBottomOf="@+id/editText_tags"/>
 
         <EditText
@@ -259,7 +258,7 @@ xmlns:android="http://schemas.android.com/apk/res/android">
             android:textColorHighlight="@color/colorWhiteGrey"
             android:textColorLink="@color/colorWhiteGrey"
             android:textCursorDrawable="@drawable/color_black"
-            android:textSize="18sp"/>
+            android:textSize="@dimen/sp18"/>
         <Button
             android:id="@+id/btn_next"
             android:layout_width="match_parent"

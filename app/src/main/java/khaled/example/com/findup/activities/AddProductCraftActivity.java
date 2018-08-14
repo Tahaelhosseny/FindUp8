@@ -28,6 +28,7 @@ public class AddProductCraftActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_product_craft);
 
+
         btn_addCraftBack=findViewById(R.id.btn_addCraftBack);
         btn_addCraftDone=findViewById(R.id.btn_addCraftDone);
         btn_addCraftDelete=findViewById(R.id.btn_addCraftDelete);
@@ -46,7 +47,8 @@ public class AddProductCraftActivity extends AppCompatActivity {
         btn_addCraftBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(AddProductCraftActivity.this, "Back", Toast.LENGTH_SHORT).show();
+                AddProductCraftActivity.super.onBackPressed();
+                finish();
             }
         });
 
@@ -95,6 +97,11 @@ public class AddProductCraftActivity extends AppCompatActivity {
                 Toast.makeText(AddProductCraftActivity.this, "delete", Toast.LENGTH_SHORT).show();
             }
         });
+    }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
 }
