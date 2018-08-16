@@ -175,9 +175,12 @@
         <activity
             android:name=".activities.StoreEventsActivity"
             android:label="@string/title_activity_store_events"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen"/>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
         <activity
             android:name=".activities.CreateEventActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
+        <activity
+            android:name=".activities.MainStoreActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen"/>
     </application>
 

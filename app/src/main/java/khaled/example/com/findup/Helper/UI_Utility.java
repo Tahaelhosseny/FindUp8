@@ -37,6 +37,19 @@ public class UI_Utility {
             menu.getItem(Selected).setIcon(R.drawable.__1_5x);
     }
 
+    public static void BottomNavigationStoreMenu_icons_change(Menu menu , int Selected){
+        menu.findItem(R.id.storeHome).setIcon(R.drawable.ic_home_unselected);
+        menu.findItem(R.id.storeChat).setIcon(R.drawable.ic_chat_unselected);
+        menu.findItem(R.id.storeProfile).setIcon(R.drawable.__1_5x);
+
+        if (Selected == 0)
+            menu.getItem(Selected).setIcon(R.drawable.ic_home_selected);
+        if (Selected == 1)
+            menu.getItem(Selected).setIcon(R.drawable.ic_chat_selected);
+        if (Selected == 2)
+            menu.getItem(Selected).setIcon(R.drawable.__1_5x);
+    }
+
     public static void switchVisibility(View view){
         if (view.getVisibility() == View.GONE)
             view.setVisibility(View.VISIBLE);
