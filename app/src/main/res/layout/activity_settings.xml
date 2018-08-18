@@ -50,6 +50,7 @@
             android:background="@drawable/bg_button_rounded_null"
             android:fontFamily="@font/sfcompactdisplay_semibold"
             android:text="@string/edit_profile"
+            android:textSize="20sp"
             android:textAlignment="viewStart"
             android:textAllCaps="false"
             android:textStyle="bold"/>
@@ -61,6 +62,7 @@
             android:background="@drawable/bg_button_rounded_null"
             android:fontFamily="@font/sfcompactdisplay_semibold"
             android:text="@string/notifications"
+            android:textSize="20sp"
             android:textAlignment="viewStart"
             android:textAllCaps="false"
             android:textStyle="bold"/>
@@ -72,6 +74,7 @@
             android:background="@drawable/bg_button_rounded_null"
             android:fontFamily="@font/sfcompactdisplay_semibold"
             android:text="@string/currency"
+            android:textSize="20sp"
             android:textAlignment="viewStart"
             android:textAllCaps="false"
             android:textStyle="bold"/>
@@ -83,6 +86,7 @@
             android:background="@drawable/bg_button_rounded_null"
             android:fontFamily="@font/sfcompactdisplay_semibold"
             android:text="@string/measure_distance"
+            android:textSize="20sp"
             android:textAlignment="viewStart"
             android:textAllCaps="false"
             android:textStyle="bold"/>
@@ -94,6 +98,7 @@
             android:background="@drawable/bg_button_rounded_null"
             android:fontFamily="@font/sfcompactdisplay_semibold"
             android:text="@string/language"
+            android:textSize="20sp"
             android:textAlignment="viewStart"
             android:textAllCaps="false"
             android:textStyle="bold"/>
@@ -105,6 +110,7 @@
             android:background="@drawable/bg_button_rounded_null"
             android:fontFamily="@font/sfcompactdisplay_semibold"
             android:text="@string/invite_friend"
+            android:textSize="20sp"
             android:textAlignment="viewStart"
             android:textAllCaps="false"
             android:textStyle="bold"/>
@@ -116,6 +122,7 @@
             android:background="@drawable/bg_button_rounded_null"
             android:fontFamily="@font/sfcompactdisplay_semibold"
             android:text="@string/contact_with_us"
+            android:textSize="20sp"
             android:textAlignment="viewStart"
             android:textAllCaps="false"
             android:textStyle="bold"/>
@@ -127,6 +134,7 @@
             android:background="@drawable/bg_button_rounded_null"
             android:fontFamily="@font/sfcompactdisplay_semibold"
             android:text="@string/terms_of_services"
+            android:textSize="20sp"
             android:textAlignment="viewStart"
             android:textAllCaps="false"
             android:textStyle="bold"/>
@@ -136,7 +144,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/material_elevation_dialog"
-        android:textSize="@dimen/sp24"
+        android:textSize="20sp"
         android:fontFamily="@font/sfcompactdisplay_semibold"
         android:text="@string/logout"
         android:textColor="@color/colorBlack"

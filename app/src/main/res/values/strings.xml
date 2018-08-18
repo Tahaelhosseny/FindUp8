@@ -58,7 +58,7 @@
     <string name="chats">Chats</string>
     <string name="you_saved">You Saved</string>
     <string name="create_store_account">Create Store Account</string>
-    <string name="profile_notification">Notification</string>
+    <string name="profile_notification">Notifications</string>
     <string name="add_your_first_product">Add Your First Product</string>
     <string name="add_your_first_craft">Add Your First Craft</string>
     <string name="add_your_first_product_hint">Add your first product with picture, name, description and price</string>
@@ -121,7 +121,6 @@
     <string name="or">OR</string>
     <string name="craft_details">Craft Details</string>
 
-
     <array name="distance_seekbar_values">
         <item>0.5 KM</item>
         <item>2 KM</item>
@@ -143,5 +142,6 @@
     <string name="create_new_events">Create new events</string>
     <string name="toolbar_create_event">Create Event</string>
     <string name="address">Address</string>
+    <string name="category">Category</string>
 
 </resources>

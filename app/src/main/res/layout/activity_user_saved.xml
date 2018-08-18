@@ -4,12 +4,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="?attr/actionBarSize"
     tools:context=".activities.UserSavedActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:background="@color/colorWhite"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/btn_UserSavedBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:background="@null"
+            android:drawableStart="@drawable/baseline_keyboard_arrow_left_black_48dp"
+            android:fontFamily="@font/sfcompactdisplay_medium"
+            android:text="@string/you_saved"
+            android:textAllCaps="false"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/sp24"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </android.support.v7.widget.Toolbar>
 
     <FrameLayout
         android:id="@+id/user_saved_fragment_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize" />
 
 </android.support.constraint.ConstraintLayout>

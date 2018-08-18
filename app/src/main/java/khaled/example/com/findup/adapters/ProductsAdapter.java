@@ -81,7 +81,6 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
                     .build();
 
             Picasso.with(holder.productImg.getContext()).load(product.getProductPhoto()).transform(transformation).placeholder(R.drawable.near_by_place_holder).into(holder.productImg);
-
         }
 
     }

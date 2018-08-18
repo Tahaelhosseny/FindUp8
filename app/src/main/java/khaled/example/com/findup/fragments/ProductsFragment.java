@@ -1,6 +1,5 @@
 package khaled.example.com.findup.fragments;
 
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -16,7 +15,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import khaled.example.com.findup.R;
-import khaled.example.com.findup.activities.EventDetailsActivity;
 import khaled.example.com.findup.activities.ProductDetailsActivity;
 import khaled.example.com.findup.adapters.ProductsAdapter;
 import khaled.example.com.findup.adapters.RecyclerTouchListener;
@@ -26,7 +24,6 @@ import khaled.example.com.findup.models.Product;
  * A simple {@link Fragment} subclass.
  */
 public class ProductsFragment extends Fragment {
-
 
     public ProductsFragment() {
         // Required empty public constructor
@@ -58,6 +55,17 @@ public class ProductsFragment extends Fragment {
         ProductsAdapter adapter = new ProductsAdapter(getActivity(), products);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
-        recyclerView.smoothScrollToPosition(0);
+        recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getActivity()
+                , recyclerView, new RecyclerTouchListener.ClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+                startActivity(new Intent(getActivity(), ProductDetailsActivity.class));
+            }
+
+            @Override
+            public void onLongClick(View view, int position) {
+
+            }
+        }));
     }
 }

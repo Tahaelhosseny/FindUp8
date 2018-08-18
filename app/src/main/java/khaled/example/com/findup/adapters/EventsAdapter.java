@@ -60,12 +60,12 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder
     @Override
     public void onBindViewHolder(@NonNull EventsAdapter.ViewHolder holder, int position) {
 
-        Event event = events.get(position);
+        /*Event event = events.get(position);
         holder.eventName.setText(event.getEventName());
         holder.eventDescription.setText(event.getEventDescription());
         holder.eventDate.setText(event.getEventDat());
         if (!event.getEventImg().isEmpty())
-            Picasso.with(holder.eventsItemImg.getContext()).load(event.getEventImg()).placeholder(R.drawable.events_place_holder).into(holder.eventsItemImg);
+            Picasso.with(holder.eventsItemImg.getContext()).load(event.getEventImg()).placeholder(R.drawable.events_place_holder).into(holder.eventsItemImg);*/
 
     }
 

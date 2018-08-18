@@ -97,12 +97,16 @@ public class BottomBarFragment extends Fragment {
                     UI_Utility.BottomNavigationMenu_icons_change(menu,position);
                     adapter.notifyDataSetChanged();
                     Fragment selectedFragment = new MainFragment();
+                    ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+                    ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(false);
+                    ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Category");
                     switch (position) {
                         case 0:
                             ToolbarSwitch(true);
                             selectedFragment = new MainFragment();
                             ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
                             ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(false);
+                            ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(getActivity().getString(R.string.find_things));
                             break;
                         case 1:
                             ToolbarSwitch(false);
@@ -111,20 +115,23 @@ public class BottomBarFragment extends Fragment {
                         case 2:
                             ToolbarSwitch(true);
                             selectedFragment = new SearchFragment();
-                            ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-                            ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
+                            ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+                            ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(false);
+                            ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(getActivity().getString(R.string.find_things));
                             break;
                         case 3:
                             ToolbarSwitch(true);
                             selectedFragment = new CategoryFragment();
-                            ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-                            ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
+                            ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+                            ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(false);
+                            ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(getActivity().getString(R.string.category));
                             break;
                         case 4:
                             ToolbarSwitch(true);
                             selectedFragment = new ProfileFragment();
-                            ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-                            ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
+                            ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+                            ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(false);
+                            ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(getActivity().getString(R.string.profile));
                             break;
                     }
                     getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_toolbar_container, selectedFragment).commit();
