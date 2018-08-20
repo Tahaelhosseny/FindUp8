@@ -8,10 +8,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.HorizontalScrollView;
 import android.widget.ImageButton;
 
-import khaled.example.com.findup.Helper.UI_Utility;
 import khaled.example.com.findup.R;
 import khaled.example.com.findup.activities.FilterActivity;
 

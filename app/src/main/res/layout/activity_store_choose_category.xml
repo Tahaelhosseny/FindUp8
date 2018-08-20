@@ -1,18 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:tools="http://schemas.android.com/tools"
+<android.support.constraint.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:background="@color/colorBlack"
-    android:fillViewport="true">
-    <android.support.constraint.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:context=".activities.StoreChooseCategoryActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorBlack">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar_truckCategory"
@@ -38,114 +30,13 @@
             app:layout_constraintTop_toTopOf="parent" />
     </android.support.v7.widget.Toolbar>
 
-    <Button
-        android:id="@+id/btn_truckToEvents"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/events"
-        android:paddingStart="@dimen/activity_vertical_margin"
-        android:paddingEnd="@dimen/activity_vertical_margin"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:background="@drawable/bg_button_rounded_null"
-        android:textAllCaps="true"
-        android:textColor="@color/colorWhiteGrey"
-        android:textStyle="bold"
-        android:textSize="@dimen/sp36"
-        app:layout_constraintBottom_toTopOf="@+id/txt_truckHomeBusiness"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_truckCategory"/>
-    <TextView
-        android:id="@+id/txt_truckHomeBusiness"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/home_business"
-        android:textAllCaps="true"
-        android:textColor="@color/colorWhiteGrey"
-        android:textStyle="bold"
-        android:textSize="@dimen/sp36"
-        android:paddingStart="@dimen/activity_vertical_margin"
-        android:paddingEnd="@dimen/activity_vertical_margin"
-        app:layout_constraintBottom_toTopOf="@+id/btn_truckToCraft"
-        app:layout_constraintTop_toBottomOf="@+id/btn_truckToEvents"/>
-    <TextView
-        android:id="@+id/txt_foodTruck"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/food_truck"
-        android:fontFamily="@font/sfcompactdisplay_heavy"
-        android:textAllCaps="true"
-        android:textColor="@color/colorWhite"
-        android:textStyle="bold"
-        android:textSize="@dimen/sp48"
-        android:paddingStart="@dimen/activity_vertical_margin"
-        android:paddingEnd="@dimen/activity_vertical_margin"
-        app:layout_constraintBottom_toTopOf="@+id/txt_foodTruckDesc"
-        app:layout_constraintTop_toBottomOf="@+id/btn_truckToCraft"/>
-
-    <TextView
-        android:id="@+id/txt_foodTruckDesc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingEnd="@dimen/activity_vertical_margin"
-        android:paddingStart="@dimen/activity_vertical_margin"
-        android:text="@string/truck_description"
-        android:textAllCaps="true"
-        android:textColor="@color/colorWhite"
-        android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@+id/txt_foodTruck"
-        app:layout_constraintBottom_toTopOf="@+id/txt_truckStores"/>
-    <TextView
-        android:id="@+id/txt_truckStores"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/stores"
-        android:textAllCaps="true"
-        android:textColor="@color/colorWhiteGrey"
-        android:textStyle="bold"
-        android:textSize="@dimen/sp36"
-        android:paddingStart="@dimen/activity_vertical_margin"
-        android:paddingEnd="@dimen/activity_vertical_margin"
-        app:layout_constraintBottom_toTopOf="@+id/txt_truckBooth"
-        app:layout_constraintTop_toBottomOf="@+id/txt_foodTruckDesc"/>
-    <TextView
-        android:id="@+id/txt_truckBooth"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/booth"
-        android:textAllCaps="true"
-        android:textColor="@color/colorWhiteGrey"
-        android:textStyle="bold"
-        android:textSize="@dimen/sp36"
-        android:paddingStart="@dimen/activity_vertical_margin"
-        android:paddingEnd="@dimen/activity_vertical_margin"
-        app:layout_constraintTop_toBottomOf="@+id/txt_truckStores"
-        app:layout_constraintBottom_toTopOf="@+id/txt_truckOthers"/>
-    <TextView
-        android:id="@+id/txt_truckOthers"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/others"
-        android:textAllCaps="true"
-        android:textColor="@color/colorWhiteGrey"
-        android:textStyle="bold"
-        android:textSize="@dimen/sp36"
-        android:paddingStart="@dimen/activity_vertical_margin"
-        android:paddingEnd="@dimen/activity_vertical_margin"
-        app:layout_constraintTop_toBottomOf="@+id/txt_truckBooth"
+    <FrameLayout
+        android:id="@+id/cats_fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize"
         app:layout_constraintBottom_toTopOf="@+id/btn_truckNext"/>
-    <Button
-        android:id="@+id/btn_truckToCraft"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingStart="@dimen/activity_vertical_margin"
-        android:paddingEnd="@dimen/activity_vertical_margin"
-        android:background="@drawable/bg_button_rounded_null"
-        android:text="@string/craft"
-        android:textSize="@dimen/sp36"
-        android:textAllCaps="true"
-        android:textColor="@color/colorWhiteGrey"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/txt_foodTruck"
-        app:layout_constraintTop_toBottomOf="@+id/txt_truckHomeBusiness" />
+
     <Button
         android:id="@+id/btn_truckNext"
         android:layout_width="match_parent"
@@ -156,6 +47,6 @@
         android:textAllCaps="false"
         android:textColor="@color/colorWhite"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintBottom_toBottomOf="parent" />
+
 </android.support.constraint.ConstraintLayout>
-</ScrollView>

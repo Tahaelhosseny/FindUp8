@@ -1,8 +1,6 @@
 package khaled.example.com.findup.fragments;
 
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -11,10 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
-import android.widget.Toolbar;
-
-import com.minibugdev.drawablebadge.BadgePosition;
-import com.minibugdev.drawablebadge.DrawableBadge;
 
 import khaled.example.com.findup.R;
 import khaled.example.com.findup.activities.NotificationsActivity;

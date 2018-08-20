@@ -45,12 +45,13 @@ public class CategoryFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         expandableSections = new ArrayList<>();
-        expandableSections.add(new ExpandableSection("My Title", "Content, Content, Content, Content, Content, Content"));
-        expandableSections.add(new ExpandableSection("My Title", "Content, Content, Content, Content, Content, Content"));
-        expandableSections.add(new ExpandableSection("My Title", "Content, Content, Content, Content, Content, Content"));
-        expandableSections.add(new ExpandableSection("My Title", "Content, Content, Content, Content, Content, Content"));
-        expandableSections.add(new ExpandableSection("Title", "Content, Content, Content, Content, Content, Content"));
-        expandableSections.add(new ExpandableSection("Title", "Content, Content, Content, Content, Content, Content"));
+        expandableSections.add(new ExpandableSection(getString(R.string.events), getString(R.string.truck_description)));
+        expandableSections.add(new ExpandableSection(getString(R.string.home_business), getString(R.string.truck_description)));
+        expandableSections.add(new ExpandableSection(getString(R.string.craft), getString(R.string.craft_description)));
+        expandableSections.add(new ExpandableSection(getString(R.string.food_truck), getString(R.string.truck_description)));
+        expandableSections.add(new ExpandableSection(getString(R.string.stores), getString(R.string.truck_description)));
+        expandableSections.add(new ExpandableSection(getString(R.string.booth), getString(R.string.truck_description)));
+        expandableSections.add(new ExpandableSection(getString(R.string.others), getString(R.string.truck_description)));
 
         sectionAdapter = new SectionedRecyclerViewAdapter();
 
