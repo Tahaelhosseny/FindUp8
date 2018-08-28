@@ -188,13 +188,16 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
         <activity
             android:name=".UI.activities.MainStoreActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen"/>
-
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
         <activity
             android:name=".UI.activities.ChatWithStoreActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
-        <activity android:name=".UI.activities.ProfileChatsActivity"
+        <activity
+            android:name=".UI.activities.ProfileChatsActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
+        <activity android:name=".UI.activities.StoreAccountHomeActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen">
+        </activity>
     </application>
 
 </manifest>

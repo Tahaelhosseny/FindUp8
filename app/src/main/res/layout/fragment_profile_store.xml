@@ -1,14 +1,154 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".UI.fragments.ProfileStoreFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="profile" />
+    <ImageView
+        android:id="@+id/profileBg"
+        android:layout_width="0dp"
+        android:layout_height="150dp"
+        android:src="@color/colorBlack"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/sfcompactdisplay_semibold"
+        android:text="Profile"
+        android:textColor="@color/material_color_white"
+        android:textSize="22sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/profileImg"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="108dp"
+        android:orientation="vertical"
+        app:layout_anchor="@+id/profileBg"
+        app:layout_anchorGravity="bottom|center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@color/colorLightGrey" />
+
+    <TextView
+        android:id="@+id/storeName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:fontFamily="@font/sfcompactdisplay_semibold"
+        android:text="Tiny Cat cafe"
+        android:textColor="@color/colorBlack"
+        android:textSize="25sp"
+        app:layout_constraintTop_toBottomOf="@+id/profileImg"
+        app:layout_constraintStart_toStartOf="@id/profileImg" />
+
+    <TextView
+        android:id="@+id/storeDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/sfcompactdisplay_light"
+        android:text="American Cafe Break $$$"
+        android:textColor="@color/colorBlack"
+        android:textSize="18sp"
+        app:layout_constraintTop_toBottomOf="@+id/storeName"
+        app:layout_constraintStart_toStartOf="@id/storeName" />
+
+    <ImageView
+        android:id="@+id/star"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintTop_toTopOf="@+id/storeName"
+        app:layout_constraintEnd_toStartOf="@id/storeReview"
+        app:srcCompat="@drawable/star_off"
+        android:contentDescription="@string/star" />
+
+    <TextView
+        android:id="@+id/storeReview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="10dp"
+        android:fontFamily="@font/sfcompactdisplay_ultralight"
+        android:text="4.5"
+        android:textColor="@color/colorBlack"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/star" />
+
+    <Button
+        android:id="@+id/btn_notifications"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_button_rounded_null"
+        android:drawableStart="@drawable/ic_notifications_on"
+        android:drawablePadding="10dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/profile_notification"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        android:fontFamily="@font/sfcompactdisplay_semibold"
+        app:layout_constraintStart_toStartOf="@id/storeDesc"
+        app:layout_constraintTop_toBottomOf="@+id/storeDesc"/>
+
+    <Button
+        android:id="@+id/btn_events"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_button_rounded_null"
+        android:drawableStart="@drawable/ic_notifications_on"
+        android:drawablePadding="10dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/my_events"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        android:fontFamily="@font/sfcompactdisplay_semibold"
+        app:layout_constraintStart_toStartOf="@id/btn_notifications"
+        app:layout_constraintTop_toBottomOf="@+id/btn_notifications"/>
+
+    <Button
+        android:id="@+id/btn_Settings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_button_rounded_null"
+        android:drawableStart="@drawable/settings_1_5x"
+        android:drawablePadding="10dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/settings"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        android:fontFamily="@font/sfcompactdisplay_semibold"
+        app:layout_constraintStart_toStartOf="@id/btn_events"
+        app:layout_constraintTop_toBottomOf="@+id/btn_events"/>
+
+    <Button
+        android:id="@+id/btn_userAccount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_button_rounded_null"
+        app:layout_constraintTop_toBottomOf="@id/btn_settings"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="@string/switch_to_user_account"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="15dp"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        android:fontFamily="@font/sfcompactdisplay_semibold"
+        android:textAlignment="viewStart"
+        android:drawableEnd="@drawable/ic_profile_forward"
+        app:layout_constraintStart_toStartOf="@id/btn_Settings" />
+
+</android.support.constraint.ConstraintLayout>

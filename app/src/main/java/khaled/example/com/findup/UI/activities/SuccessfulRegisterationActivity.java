@@ -23,7 +23,7 @@ public class SuccessfulRegisterationActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(SuccessfulRegisterationActivity.this, MainStoreActivity.class));
+                startActivity(new Intent(SuccessfulRegisterationActivity.this, StoreAccountHomeActivity.class));
                 finish();
             }
         }, SPLASH_DISPLAY_LENGTH);

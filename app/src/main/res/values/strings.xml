@@ -146,7 +146,7 @@
     <string name="address">Address</string>
     <string name="category">Category</string>
 
-    
+
     <string name="choose_work_days">Choose Work Days</string>
     <string name="all_work_days">All</string>
     <string name="saturday">Saturday</string>
@@ -156,6 +156,7 @@
     <string name="wednesday">Wednesday</string>
     <string name="thursday">Thursday</string>
     <string name="friday">Friday</string>
+    <string name="dynamic_store_loc">your location is Dynamic .. change it if you want</string>
 
 
 </resources>
