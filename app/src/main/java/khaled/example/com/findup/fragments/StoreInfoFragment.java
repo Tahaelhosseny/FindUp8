@@ -30,9 +30,9 @@ import java.util.List;
 
 import khaled.example.com.findup.CustomViews.OverlapDecoration;
 import khaled.example.com.findup.R;
+import khaled.example.com.findup.activities.ChatWithStoreActivity;
 import khaled.example.com.findup.activities.CommentsActivity;
 import khaled.example.com.findup.activities.PhotosGalleryActivity;
-import khaled.example.com.findup.activities.StoreDetailsActivity;
 import khaled.example.com.findup.adapters.CommentsPhotosAdapter;
 import khaled.example.com.findup.adapters.RecyclerTouchListener;
 import khaled.example.com.findup.adapters.StorePhotosAdapter;
@@ -91,6 +91,14 @@ public class StoreInfoFragment extends Fragment implements OnMapReadyCallback {
 
         TextView add_rating = getActivity().findViewById(R.id.addRateTxt);
         add_rating.setOnClickListener(getRatingDialog());
+
+        ImageView chats = getActivity().findViewById(R.id.chatImg);
+        chats.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(), ChatWithStoreActivity.class));
+            }
+        });
 
         bindCommentsPhotos();
     }

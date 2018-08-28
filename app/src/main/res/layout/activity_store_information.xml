@@ -138,16 +138,19 @@ xmlns:android="http://schemas.android.com/apk/res/android">
                 android:textColor="@color/colorWhiteGrey"
                 android:textSize="@dimen/sp16"
                 app:layout_constraintTop_toBottomOf="@+id/txt_workTime"/>
-            <TextView
-                android:id="@+id/txt_workdays"
-                android:layout_width="wrap_content"
+            <EditText
+                android:id="@+id/edit_workdays"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/activity_vertical_margin"
-                android:layout_marginTop="5dp"
-                android:text="@string/work_days"
+                android:layout_marginEnd="@dimen/activity_vertical_margin"
+                app:layout_constraintTop_toBottomOf="@+id/txt_days"
+                android:inputType="text"
+                android:shadowColor="@color/colorBlack"
                 android:textColor="@color/colorBlack"
-                android:textSize="@dimen/sp16"
-                app:layout_constraintTop_toBottomOf="@+id/txt_days"/>
+                android:textColorHighlight="@color/colorWhiteGrey"
+                android:textColorLink="@color/colorWhiteGrey"
+                android:textCursorDrawable="@drawable/color_black"
+                android:textSize="@dimen/sp18"/>
             <TextView
                 android:id="@+id/txt_time"
                 android:layout_width="wrap_content"
@@ -157,7 +160,7 @@ xmlns:android="http://schemas.android.com/apk/res/android">
                 android:text="@string/time"
                 android:textColor="@color/colorWhiteGrey"
                 android:textSize="@dimen/sp16"
-                app:layout_constraintTop_toBottomOf="@+id/txt_workdays"/>
+                app:layout_constraintTop_toBottomOf="@+id/edit_workdays"/>
 
             <EditText
                 android:id="@+id/editText_time"

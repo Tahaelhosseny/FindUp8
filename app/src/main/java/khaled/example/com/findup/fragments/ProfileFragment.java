@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import khaled.example.com.findup.R;
 import khaled.example.com.findup.activities.NotificationsActivity;
+import khaled.example.com.findup.activities.ProfileChatsActivity;
 import khaled.example.com.findup.activities.SettingsActivity;
 import khaled.example.com.findup.activities.StoreChooseCategoryActivity;
 import khaled.example.com.findup.activities.UserSavedActivity;
@@ -43,7 +44,7 @@ public class ProfileFragment extends Fragment {
         btn_chats.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(), "chats",Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getActivity(), ProfileChatsActivity.class));
             }
         });
         btn_saved.setOnClickListener(new View.OnClickListener() {

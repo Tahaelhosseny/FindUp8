@@ -181,7 +181,12 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
         <activity
             android:name=".activities.MainStoreActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen"/>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
+        <activity
+            android:name=".activities.ChatWithStoreActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
+        <activity android:name=".activities.ProfileChatsActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
     </application>
 
 </manifest>
