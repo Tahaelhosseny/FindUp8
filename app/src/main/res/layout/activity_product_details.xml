@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="?attr/actionBarSize"
-    tools:context=".activities.ProductDetailsActivity">
+    tools:context=".UI.activities.ProductDetailsActivity">
 
     <FrameLayout
         android:id="@+id/product_fragment_container"

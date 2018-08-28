@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#C0000000"
+    tools:context=".UI.activities.MeasureDistanceActivity"
+    android:padding="16dp">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_distance"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="18dp"
+        android:background="@null"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/btn_distanceBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:drawableStart="@drawable/baseline_close_white_36dp"
+            android:drawableLeft="@drawable/baseline_close_white_36dp" />
+    </android.support.v7.widget.Toolbar>
+
+    <LinearLayout
+        android:id="@+id/layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/bg_form_rounded"
+        android:orientation="vertical"
+        android:padding="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_submit"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.8"
+        tools:layout_editor_absoluteX="40dp">
+        <LinearLayout
+            android:id="@+id/fragment_history_menu_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:fontFamily="@font/sfcompactdisplay_semibold"
+                android:text="@string/choose_work_days"
+                android:textColor="@color/material_color_black"
+                android:textSize="@dimen/sp24" />
+
+            <RadioButton
+                android:id="@+id/all"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="10dp"
+                android:button="@null"
+                android:drawableEnd="@drawable/radio_button_selector"
+                android:fontFamily="@font/sfcompactdisplay_medium"
+                android:gravity="start"
+                android:text="@string/all_work_days"
+                android:textColor="@color/material_color_black_87_percent"
+                android:textSize="@dimen/sp22" />
+
+            <RadioButton
+                android:id="@+id/saturday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="10dp"
+                android:button="@null"
+                android:drawableEnd="@drawable/radio_button_selector"
+                android:fontFamily="@font/sfcompactdisplay_medium"
+                android:gravity="start"
+                android:text="@string/saturday"
+                android:textColor="@color/material_color_black_87_percent"
+                android:textSize="@dimen/sp22" />
+
+            <RadioButton
+                android:id="@+id/sunday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="10dp"
+                android:button="@null"
+                android:drawableEnd="@drawable/radio_button_selector"
+                android:fontFamily="@font/sfcompactdisplay_medium"
+                android:gravity="start"
+                android:text="@string/sunday"
+                android:textColor="@color/material_color_black_87_percent"
+                android:textSize="@dimen/sp22" />
+
+
+            <RadioButton
+                android:id="@+id/monday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="10dp"
+                android:button="@null"
+                android:drawableEnd="@drawable/radio_button_selector"
+                android:fontFamily="@font/sfcompactdisplay_medium"
+                android:gravity="start"
+                android:text="@string/monday"
+                android:textColor="@color/material_color_black_87_percent"
+                android:textSize="@dimen/sp22" />
+
+            <RadioButton
+                android:id="@+id/tuesday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="10dp"
+                android:button="@null"
+                android:drawableEnd="@drawable/radio_button_selector"
+                android:fontFamily="@font/sfcompactdisplay_medium"
+                android:gravity="start"
+                android:text="@string/tuesday"
+                android:textColor="@color/material_color_black_87_percent"
+                android:textSize="@dimen/sp22" />
+
+            <RadioButton
+                android:id="@+id/wednesday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="10dp"
+                android:button="@null"
+                android:drawableEnd="@drawable/radio_button_selector"
+                android:fontFamily="@font/sfcompactdisplay_medium"
+                android:gravity="start"
+                android:text="@string/wednesday"
+                android:textColor="@color/material_color_black_87_percent"
+                android:textSize="@dimen/sp22" />
+
+            <RadioButton
+                android:id="@+id/thursday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="10dp"
+                android:button="@null"
+                android:drawableEnd="@drawable/radio_button_selector"
+                android:fontFamily="@font/sfcompactdisplay_medium"
+                android:gravity="start"
+                android:text="@string/thursday"
+                android:textColor="@color/material_color_black_87_percent"
+                android:textSize="@dimen/sp22" />
+
+            <RadioButton
+                android:id="@+id/friday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="10dp"
+                android:button="@null"
+                android:drawableEnd="@drawable/radio_button_selector"
+                android:fontFamily="@font/sfcompactdisplay_medium"
+                android:gravity="start"
+                android:text="@string/friday"
+                android:textColor="@color/material_color_black_87_percent"
+                android:textSize="@dimen/sp22" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/bg_button_rounded_accent"
+        android:gravity="center"
+        android:padding="16dp"
+        android:text="Submit"
+        android:textAllCaps="false"
+        android:textColor="@color/colorWhite"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layout" />
+
+</android.support.constraint.ConstraintLayout>

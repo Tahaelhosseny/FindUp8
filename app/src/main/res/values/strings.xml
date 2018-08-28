@@ -2,6 +2,7 @@
     <string name="app_name">Find Up</string>
     <string name="find_things">Find New Things</string>
     <string name="search_hint">e.g food-truck , home business, etc</string>
+    <string name="currency_search_hint">Search on currency</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="near_me_text">NEAR ME</string>
@@ -59,6 +60,7 @@
     <string name="you_saved">You Saved</string>
     <string name="create_store_account">Create Store Account</string>
     <string name="profile_notification">Notifications</string>
+    <string name="system_message">System Message</string>
     <string name="add_your_first_product">Add Your First Product</string>
     <string name="add_your_first_craft">Add Your First Craft</string>
     <string name="add_your_first_product_hint">Add your first product with picture, name, description and price</string>
@@ -143,5 +145,17 @@
     <string name="toolbar_create_event">Create Event</string>
     <string name="address">Address</string>
     <string name="category">Category</string>
+
+    
+    <string name="choose_work_days">Choose Work Days</string>
+    <string name="all_work_days">All</string>
+    <string name="saturday">Saturday</string>
+    <string name="sunday">Sunday</string>
+    <string name="monday">Monday</string>
+    <string name="tuesday">Tuesday</string>
+    <string name="wednesday">Wednesday</string>
+    <string name="thursday">Thursday</string>
+    <string name="friday">Friday</string>
+
 
 </resources>

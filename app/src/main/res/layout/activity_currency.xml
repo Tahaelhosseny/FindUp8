@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/colorWhite"
     style="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen"
-    tools:context=".activities.CurrencyActivity">
+    tools:context=".UI.activities.CurrencyActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar_currency"
@@ -38,15 +38,21 @@
             android:drawableStart="@drawable/baseline_close_black_36" />
     </android.support.v7.widget.Toolbar>
 
-    <SearchView
+    <EditText
         android:id="@+id/searchCurrency"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60sp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginStart="24dp"
+        android:background="@drawable/search_background"
+        android:drawablePadding="10dp"
+        android:hint="@string/currency_search_hint"
+        android:drawableStart="@drawable/search_1_5x"
         android:iconifiedByDefault="false"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_currency"
         android:queryHint="Search on currency"
-        android:layout_marginStart="16dp"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_currency" />
 
     <ScrollView
         android:id="@+id/scrollview_choices"
@@ -75,8 +81,8 @@
                 android:fontFamily="@font/sfcompactdisplay_medium"
                 android:gravity="start"
                 android:text="@string/united_states_dollar"
-                android:textColor="@color/colorBlack"
-                android:textSize="24sp"
+                android:textColor="@color/material_color_black_87_percent"
+                android:textSize="22sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/searchCurrency" />
 
@@ -94,8 +100,8 @@
                 android:fontFamily="@font/sfcompactdisplay_medium"
                 android:gravity="start"
                 android:text="@string/argentine_peso"
-                android:textColor="@color/colorBlack"
-                android:textSize="24sp"
+                android:textColor="@color/material_color_black_87_percent"
+                android:textSize="22sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/radioUsDollar" />
 
@@ -113,8 +119,8 @@
                 android:fontFamily="@font/sfcompactdisplay_medium"
                 android:gravity="start"
                 android:text="@string/australian_dollar"
-                android:textColor="@color/colorBlack"
-                android:textSize="24sp"
+                android:textColor="@color/material_color_black_87_percent"
+                android:textSize="22sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/radioPeso" />
 
@@ -132,8 +138,8 @@
                 android:fontFamily="@font/sfcompactdisplay_medium"
                 android:gravity="start"
                 android:text="@string/egypt_pound"
-                android:textColor="@color/colorBlack"
-                android:textSize="24sp"
+                android:textColor="@color/material_color_black_87_percent"
+                android:textSize="22sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/radioAustralianDollar" />
         </RadioGroup>

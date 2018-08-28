@@ -15,12 +15,12 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".activities.MainActivity"
+            android:name=".UI.activities.MainActivity"
             android:label="@string/find_things"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name=".activities.SplashScreenActivity"
+            android:name=".UI.activities.SplashScreenActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,42 +29,42 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.LoginActivity"
+            android:name=".UI.activities.LoginActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activities.IntroActivity" />
+                android:value=".UI.activities.IntroActivity" />
         </activity>
         <activity
-            android:name=".activities.VerifyCodeActivity"
+            android:name=".UI.activities.VerifyCodeActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activities.LoginActivity" />
+                android:value=".UI.activities.LoginActivity" />
         </activity>
         <activity
-            android:name=".activities.ForgotPasswordActivity"
+            android:name=".UI.activities.ForgotPasswordActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activities.LoginActivity" />
+                android:value=".UI.activities.LoginActivity" />
         </activity>
         <activity
-            android:name=".activities.SettingsActivity"
+            android:name=".UI.activities.SettingsActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activities.MainActivity" />
+                android:value=".UI.activities.MainActivity" />
         </activity>
         <activity
-            android:name=".activities.IntroActivity"
+            android:name=".UI.activities.IntroActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
         <activity
-            android:name=".activities.SignupActivity"
+            android:name=".UI.activities.SignupActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activities.IntroActivity" />
+                android:value=".UI.activities.IntroActivity" />
         </activity>
 
         <meta-data
@@ -88,104 +88,112 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.EventDetailsActivity"
+            android:name=".UI.activities.EventDetailsActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
         <activity
-            android:name=".activities.StoreDetailsActivity"
+            android:name=".UI.activities.StoreDetailsActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
         <activity
-            android:name=".activities.EditProfileActivity"
+            android:name=".UI.activities.EditProfileActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activities.SettingsActivity" />
+                android:value=".UI.activities.SettingsActivity" />
         </activity>
         <activity
-            android:name=".activities.NotificationsActivity"
+            android:name=".UI.activities.NotificationsActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activities.SettingsActivity" />
+                android:value=".UI.activities.SettingsActivity" />
         </activity>
         <activity
-            android:name=".activities.CurrencyActivity"
+            android:name=".UI.activities.CurrencyActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activities.SettingsActivity" />
+                android:value=".UI.activities.SettingsActivity" />
         </activity>
         <activity
-            android:name=".activities.MeasureDistanceActivity"
+            android:name=".UI.activities.MeasureDistanceActivity"
             android:theme="@android:style/Theme.Translucent.NoTitleBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activities.SettingsActivity" />
+                android:value=".UI.activities.SettingsActivity" />
         </activity>
         <activity
-            android:name=".activities.RatingActivity"
+            android:name=".UI.activities.WorkDaysActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".UI.activities.SettingsActivity" />
+        </activity>
+        <activity
+            android:name=".UI.activities.RatingActivity"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
-            android:name=".activities.ProductDetailsActivity"
+            android:name=".UI.activities.ProductDetailsActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
         <activity
-            android:name=".activities.LanguagesActivity"
+            android:name=".UI.activities.LanguagesActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
         <activity
-            android:name=".activities.StoreSettingsActivity"
+            android:name=".UI.activities.StoreSettingsActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
         <activity
-            android:name=".activities.FilterActivity"
+            android:name=".UI.activities.FilterActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
         <activity
-            android:name=".activities.NotificationsSettingsActivity"
+            android:name=".UI.activities.NotificationsSettingsActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
         <activity
-            android:name=".activities.UserSavedActivity"
+            android:name=".UI.activities.UserSavedActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
         <activity
-            android:name=".activities.SuccessfulRegisterationActivity"
+            android:name=".UI.activities.SuccessfulRegisterationActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
         <activity
-            android:name=".activities.AddProductTruckActivity"
+            android:name=".UI.activities.AddProductTruckActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
         <activity
-            android:name=".activities.AddProductCraftActivity"
+            android:name=".UI.activities.AddProductCraftActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
         <activity
-            android:name=".activities.StoreInformationActivity"
+            android:name=".UI.activities.StoreInformationActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
         <activity
-            android:name=".activities.StoreContactActivity"
+            android:name=".UI.activities.StoreContactActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
         <activity
-            android:name=".activities.StoreChooseCategoryActivity"
+            android:name=".UI.activities.StoreChooseCategoryActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
         <activity
-            android:name=".activities.StoreCraftCategoryActivity"
+            android:name=".UI.activities.StoreCraftCategoryActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
         <activity
-            android:name=".activities.CommentsActivity"
+            android:name=".UI.activities.CommentsActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
         <activity
-            android:name=".activities.PhotosGalleryActivity"
+            android:name=".UI.activities.PhotosGalleryActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
         <activity
-            android:name=".activities.StoreEventsCategoryActivity"
+            android:name=".UI.activities.StoreEventsCategoryActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
         <activity
-            android:name=".activities.StoreEventsActivity"
+            android:name=".UI.activities.StoreEventsActivity"
             android:label="@string/title_activity_store_events"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
         <activity
-            android:name=".activities.CreateEventActivity"
+            android:name=".UI.activities.CreateEventActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
         <activity
-            android:name=".activities.MainStoreActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
+            android:name=".UI.activities.MainStoreActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen"/>
+
         <activity
-            android:name=".activities.ChatWithStoreActivity"
+            android:name=".UI.activities.ChatWithStoreActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
-        <activity android:name=".activities.ProfileChatsActivity"
+        <activity android:name=".UI.activities.ProfileChatsActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
     </application>
 

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.StoreSettingsActivity">
+    tools:context=".UI.activities.StoreSettingsActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar_storeSettings"
@@ -51,6 +51,7 @@
             android:text="@string/edit_profile"
             android:textAlignment="viewStart"
             android:textAllCaps="false"
+            android:textSize="@dimen/sp24"
             android:layout_marginBottom="2dp"
             android:textStyle="bold"/>
 
@@ -63,6 +64,7 @@
             android:text="@string/notifications"
             android:textAlignment="viewStart"
             android:textAllCaps="false"
+            android:textSize="@dimen/sp24"
             android:layout_marginBottom="2dp"
             android:textStyle="bold"/>
 
@@ -75,6 +77,7 @@
             android:text="@string/language"
             android:textAlignment="viewStart"
             android:textAllCaps="false"
+            android:textSize="@dimen/sp24"
             android:layout_marginBottom="2dp"
             android:textStyle="bold"/>
 
@@ -87,6 +90,7 @@
             android:text="@string/invite_friend"
             android:textAlignment="viewStart"
             android:textAllCaps="false"
+            android:textSize="@dimen/sp24"
             android:layout_marginBottom="2dp"
             android:textStyle="bold"/>
 
@@ -99,6 +103,7 @@
             android:text="@string/contact_with_us"
             android:textAlignment="viewStart"
             android:textAllCaps="false"
+            android:textSize="@dimen/sp24"
             android:layout_marginBottom="2dp"
             android:textStyle="bold"/>
 
@@ -111,6 +116,7 @@
             android:text="@string/terms_of_services"
             android:textAlignment="viewStart"
             android:textAllCaps="false"
+            android:textSize="@dimen/sp24"
             android:layout_marginBottom="2dp"
             android:textStyle="bold"/>
     </LinearLayout>

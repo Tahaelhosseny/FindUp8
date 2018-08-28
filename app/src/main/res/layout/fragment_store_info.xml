@@ -16,7 +16,7 @@
         android:scrollbarStyle="insideOverlay"
         android:scrollbars="vertical"
         android:paddingBottom="30dp"
-        tools:context=".fragments.StoreInfoFragment">
+        tools:context=".UI.fragments.StoreInfoFragment">
 
         <TextView
             android:id="@+id/aboutTxt"

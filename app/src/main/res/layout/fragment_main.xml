@@ -14,7 +14,7 @@
     android:scrollbars="vertical"
     android:scrollbarSize="@dimen/material_baseline_grid_3.5x"
     android:scrollbarStyle="insideOverlay"
-    tools:context="khaled.example.com.findup.fragments.MainFragment">
+    tools:context=".UI.fragments.MainFragment">
 
 
     <include

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#C0000000"
-    tools:context=".activities.RatingActivity">
+    tools:context=".UI.activities.RatingActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar_distance"

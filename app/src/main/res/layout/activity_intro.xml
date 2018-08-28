@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
     android:gravity="top"
-    tools:context=".activities.IntroActivity">
+    tools:context=".UI.activities.IntroActivity">
 
     <Button
         android:id="@+id/btn_skip"

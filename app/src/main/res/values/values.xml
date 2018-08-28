@@ -764,4 +764,8 @@
     <dimen name="sp36">36sp</dimen>
     <dimen name="sp48">48sp</dimen>
 
+
+    <dimen name="settings_label_text_size">@dimen/sp36</dimen>
+
+
 </resources>

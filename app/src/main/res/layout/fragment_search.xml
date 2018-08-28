@@ -14,7 +14,7 @@
     android:nestedScrollingEnabled="false"
     android:scrollbarSize="@dimen/material_baseline_grid_3.5x"
     android:scrollbarStyle="insideOverlay"
-    tools:context=".fragments.SearchFragment">
+    tools:context=".UI.fragments.SearchFragment">
 
     <include
         android:id="@+id/search_edit_text_with_filter"

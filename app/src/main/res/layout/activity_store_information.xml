@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:layout_behavior="android.support.design.widget.BottomSheetBehavior"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
 <android.support.constraint.ConstraintLayout
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
 android:layout_height="match_parent"
-android:layout_width="match_parent"
-xmlns:android="http://schemas.android.com/apk/res/android">
+android:layout_width="match_parent">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar_information"
@@ -75,6 +79,7 @@ xmlns:android="http://schemas.android.com/apk/res/android">
                 android:layout_marginStart="@dimen/activity_vertical_margin"
                 android:layout_marginTop="@dimen/activity_vertical_margin"
                 android:text="@string/store_name"
+                android:fontFamily="@font/sfcompactdisplay_semibold"
                 android:textColor="@color/colorWhiteGrey"
                 android:textStyle="bold"
                 android:textSize="@dimen/sp18"
@@ -82,10 +87,10 @@ xmlns:android="http://schemas.android.com/apk/res/android">
 
             <EditText
                 android:id="@+id/editText_storeName"
+                android:theme="@style/MyEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
-                android:shadowColor="@color/colorBlack"
                 android:textColor="@color/colorBlack"
                 android:textColorHighlight="@color/colorWhiteGrey"
                 android:textColorLink="@color/colorWhiteGrey"
@@ -100,6 +105,7 @@ xmlns:android="http://schemas.android.com/apk/res/android">
                 android:layout_marginStart="@dimen/activity_vertical_margin"
                 android:layout_marginTop="@dimen/activity_vertical_margin"
                 android:text="@string/other_language"
+                android:fontFamily="@font/sfcompactdisplay_semibold"
                 android:textColor="@color/colorWhiteGrey"
                 android:textStyle="bold"
                 android:textSize="@dimen/sp18"
@@ -111,7 +117,7 @@ xmlns:android="http://schemas.android.com/apk/res/android">
                 android:layout_marginEnd="@dimen/activity_vertical_margin"
                 app:layout_constraintTop_toBottomOf="@+id/txt_otherLanguage"
                 android:inputType="text"
-                android:shadowColor="@color/colorBlack"
+                android:theme="@style/MyEditText"
                 android:textColor="@color/colorBlack"
                 android:textColorHighlight="@color/colorWhiteGrey"
                 android:textColorLink="@color/colorWhiteGrey"
@@ -124,9 +130,10 @@ xmlns:android="http://schemas.android.com/apk/res/android">
                 android:layout_marginStart="@dimen/activity_vertical_margin"
                 android:layout_marginTop="@dimen/activity_vertical_margin"
                 android:text="@string/work_time"
+                android:fontFamily="@font/sfcompactdisplay_semibold"
                 android:textColor="@color/colorWhiteGrey"
                 android:textStyle="bold"
-                android:textSize="@dimen/sp16"
+                android:textSize="@dimen/sp18"
                 app:layout_constraintTop_toBottomOf="@+id/editText_otherLanguage"/>
             <TextView
                 android:id="@+id/txt_days"
@@ -135,22 +142,21 @@ xmlns:android="http://schemas.android.com/apk/res/android">
                 android:layout_marginStart="@dimen/activity_vertical_margin"
                 android:layout_marginTop="@dimen/activity_vertical_margin"
                 android:text="@string/days"
+                android:fontFamily="@font/sfcompactdisplay_regular"
                 android:textColor="@color/colorWhiteGrey"
-                android:textSize="@dimen/sp16"
+                android:textSize="@dimen/sp18"
                 app:layout_constraintTop_toBottomOf="@+id/txt_workTime"/>
-            <EditText
-                android:id="@+id/edit_workdays"
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/txt_workdays"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/activity_vertical_margin"
-                app:layout_constraintTop_toBottomOf="@+id/txt_days"
-                android:inputType="text"
-                android:shadowColor="@color/colorBlack"
+                android:layout_marginStart="@dimen/activity_vertical_margin"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/sfcompactdisplay_regular"
+                android:text="@string/work_days"
                 android:textColor="@color/colorBlack"
-                android:textColorHighlight="@color/colorWhiteGrey"
-                android:textColorLink="@color/colorWhiteGrey"
-                android:textCursorDrawable="@drawable/color_black"
-                android:textSize="@dimen/sp18"/>
+                android:textSize="@dimen/sp16"
+                app:layout_constraintTop_toBottomOf="@+id/txt_days"/>
             <TextView
                 android:id="@+id/txt_time"
                 android:layout_width="wrap_content"
@@ -158,9 +164,10 @@ xmlns:android="http://schemas.android.com/apk/res/android">
                 android:layout_marginStart="@dimen/activity_vertical_margin"
                 android:layout_marginTop="@dimen/activity_vertical_margin"
                 android:text="@string/time"
+                android:fontFamily="@font/sfcompactdisplay_regular"
                 android:textColor="@color/colorWhiteGrey"
-                android:textSize="@dimen/sp16"
-                app:layout_constraintTop_toBottomOf="@+id/edit_workdays"/>
+                android:textSize="@dimen/sp18"
+                app:layout_constraintTop_toBottomOf="@+id/txt_workdays"/>
 
             <EditText
                 android:id="@+id/editText_time"
@@ -169,8 +176,8 @@ xmlns:android="http://schemas.android.com/apk/res/android">
                 android:layout_marginEnd="@dimen/activity_vertical_margin"
                 app:layout_constraintTop_toBottomOf="@+id/txt_time"
                 android:inputType="text"
-                android:shadowColor="@color/colorBlack"
                 android:textColor="@color/colorBlack"
+                android:theme="@style/MyEditText"
                 android:textColorHighlight="@color/colorWhiteGrey"
                 android:textColorLink="@color/colorWhiteGrey"
                 android:textCursorDrawable="@drawable/color_black"
@@ -186,12 +193,15 @@ xmlns:android="http://schemas.android.com/apk/res/android">
                 android:focusable="true">
 
                 <LinearLayout
+                    android:id="@+id/add_days"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="5dp">
+
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
                         app:srcCompat="@drawable/ic_add"
                         android:layout_marginTop="@dimen/activity_vertical_margin"
                         android:layout_marginStart="@dimen/activity_vertical_margin"
@@ -202,13 +212,17 @@ xmlns:android="http://schemas.android.com/apk/res/android">
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:text="@string/add_days"
-                        android:gravity="bottom"
-                        android:layout_marginBottom="1dp"/>
+                        android:paddingBottom="5dp"
+                        android:textSize="@dimen/sp16"
+                        android:theme="@style/MyEditText"
+                        android:textColor="@color/material_color_black_87_percent"
+                        android:fontFamily="@font/sfcompactdisplay_light"
+                        android:gravity="bottom" />
                 </LinearLayout>
                 <View
                     android:layout_width="fill_parent"
                     android:layout_height="1dp"
-                    android:background="@color/colorBlack"
+                    android:background="@color/colorWhiteGrey"
                     android:layout_marginEnd="20dp"
                     android:layout_marginStart="4dp"/>
             </LinearLayout>
@@ -233,6 +247,7 @@ xmlns:android="http://schemas.android.com/apk/res/android">
                 android:inputType="text"
                 android:shadowColor="@color/colorBlack"
                 android:textColor="@color/colorBlack"
+                android:theme="@style/MyEditText"
                 android:textColorHighlight="@color/colorWhiteGrey"
                 android:textColorLink="@color/colorWhiteGrey"
                 android:textCursorDrawable="@drawable/color_black"
@@ -251,12 +266,13 @@ xmlns:android="http://schemas.android.com/apk/res/android">
 
             <EditText
                 android:id="@+id/editText_description"
+                android:theme="@style/MyEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/activity_vertical_margin"
                 app:layout_constraintTop_toBottomOf="@+id/txt_description"
-                android:inputType="text"
-                android:shadowColor="@color/colorBlack"
+                android:inputType="textMultiLine"
+                android:maxLines="4"
                 android:textColor="@color/colorBlack"
                 android:textColorHighlight="@color/colorWhiteGrey"
                 android:textColorLink="@color/colorWhiteGrey"
@@ -280,3 +296,4 @@ xmlns:android="http://schemas.android.com/apk/res/android">
     </ScrollView>
 
 </android.support.constraint.ConstraintLayout>
+</android.support.design.widget.CoordinatorLayout>

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/colorWhite"
-    tools:context=".activities.EditProfileActivity">
+    tools:context=".UI.activities.EditProfileActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar_editProfile"
@@ -39,10 +39,10 @@
             app:layout_constraintTop_toTopOf="parent" />
     </android.support.v7.widget.Toolbar>
 
-    <ImageButton
+    <ImageView
         android:id="@+id/pic_account"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
         android:background="@null"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"

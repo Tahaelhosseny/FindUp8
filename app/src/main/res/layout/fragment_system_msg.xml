@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="10dp"
+    android:layout_margin="20dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ImageView
@@ -11,8 +11,10 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_margin="10dp"
-        app:srcCompat="@drawable/ic_launcher"
-        android:scaleType="fitXY"/>
+        android:layout_marginTop="90dp"
+        android:scaleType="fitXY"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_launcher" />
 
     <TextView
         android:id="@+id/systemMsgDate"
@@ -21,7 +23,8 @@
         android:layout_marginTop="20dp"
         android:fontFamily="@font/sfcompactdisplay_thin"
         android:text="12/05/2018"
-        android:textSize="18sp"
+        android:textSize="16sp"
+        android:textColor="@color/material_color_grey_500"
         app:layout_constraintTop_toBottomOf="@id/systemImg"
         app:layout_constraintStart_toStartOf="@id/systemImg"/>
 
@@ -33,7 +36,7 @@
         android:fontFamily="@font/sfcompactdisplay_semibold"
         android:text="System Message"
         android:textColor="@color/material_color_black"
-        android:textSize="20sp"
+        android:textSize="22sp"
         app:layout_constraintStart_toStartOf="@id/systemMsgDate"
         app:layout_constraintTop_toBottomOf="@+id/systemMsgDate"/>
 
@@ -42,8 +45,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:fontFamily="@font/sfcompactdisplay_regular"
-        android:text="The red and Black cafe"
+        android:lineSpacingExtra="6dp"
+        android:fontFamily="@font/sfcompactdisplay_medium"
+        android:text="But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it is pleasure, but because those who do not know how to pursue pleasure rationally encounter consequences that are extremely painful. Nor again is there anyone who loves or pursues or desires to obtain pain of itself, because it is pain, but because occasionally"
+        android:textColor="@color/material_color_grey_600"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@id/systemMsgTypeTxt"
         app:layout_constraintTop_toBottomOf="@+id/systemMsgTypeTxt"/>

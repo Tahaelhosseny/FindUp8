@@ -21,8 +21,9 @@
         android:layout_marginStart="20dp"
         android:fontFamily="@font/sfcompactdisplay_semibold"
         android:text="Chocolate Cake"
-        android:textColor="@color/material_color_black"
-        android:textSize="20sp"
+        android:letterSpacing=".05"
+        android:textColor="@color/material_color_grey_900"
+        android:textSize="22sp"
         app:layout_constraintStart_toEndOf="@id/userSavedItemImg" />
 
     <TextView
@@ -30,9 +31,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:fontFamily="@font/sfcompactdisplay_semibold"
+        android:fontFamily="@font/sfcompactdisplay_regular"
         android:text="The Red and Black cafe"
-        android:textSize="20sp"
+        android:textSize="17sp"
+        android:textColor="@color/material_color_grey_600"
         app:layout_constraintStart_toStartOf="@id/userSavedItemName"
         app:layout_constraintTop_toBottomOf="@+id/userSavedItemName"/>
 
@@ -43,8 +45,9 @@
         app:dots_primary_color="@color/material_color_red_accent"
         app:dots_secondary_color="@color/material_color_grey_700"
         app:circle_start_color="@color/material_color_grey_700"
-        app:icon_size="25dp"
+        app:icon_size="22dp"
         android:elevation="@dimen/cardview_default_elevation"
+        app:liked="true"
         app:like_drawable="@drawable/ic_love_icon"
         app:unlike_drawable="@drawable/ic_unlove_icon"
         android:layout_width="25dp"

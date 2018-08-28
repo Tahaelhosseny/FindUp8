@@ -1,12 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:tools="http://schemas.android.com/tools">
+        <data>
+
+            <variable
+                name="loginview"
+                type="khaled.example.com.findup.UI.ViewModel.LoginViewModel"/>
+
+            <variable
+                name="presenter"
+                type="khaled.example.com.findup.UI.Presenter.LoginPresenter"/>
+
+        </data>
+    <android.support.constraint.ConstraintLayout
     android:id="@+id/relativeLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
-    tools:context=".activities.LoginActivity">
+    tools:context=".UI.activities.LoginActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar_login"
@@ -153,6 +166,7 @@
         android:textAllCaps="false"
         android:textColor="@color/colorWhite"
         android:textStyle="bold"
+        android:onClick="@{(v)->presenter.LoginLoadData()}"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_forgotPassword"/>
@@ -172,3 +186,4 @@
         app:layout_constraintTop_toBottomOf="@+id/btn_login" />
 
 </android.support.constraint.ConstraintLayout>
+</layout>

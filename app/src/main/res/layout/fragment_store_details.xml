@@ -8,7 +8,7 @@
         android:scrollbarSize="@dimen/material_baseline_grid_3.5x"
         android:scrollbarStyle="insideOverlay"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        tools:context=".fragments.StoreDetailsFragment">
+        tools:context=".UI.fragments.StoreDetailsFragment">
 
         <ImageView
             android:id="@+id/storeImg"
