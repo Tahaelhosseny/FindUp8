@@ -6,15 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".UI.fragments.ProfileStoreFragment">
 
-    <ImageView
-        android:id="@+id/profileBg"
-        android:layout_width="0dp"
-        android:layout_height="150dp"
-        android:src="@color/colorBlack"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
         android:id="@+id/textView10"
         android:layout_width="wrap_content"
@@ -22,12 +13,26 @@
         android:layout_margin="15dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:textStyle="bold"
+        android:elevation="4dp"
         android:fontFamily="@font/sfcompactdisplay_semibold"
         android:text="Profile"
         android:textColor="@color/material_color_white"
         android:textSize="22sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
+    <ImageView
+        android:id="@+id/profileBg"
+        android:layout_width="0dp"
+        android:layout_height="150dp"
+        android:src="@drawable/product_placeholder_background_image"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <ImageView
         android:id="@+id/profileImg"
@@ -40,7 +45,9 @@
         app:layout_anchorGravity="bottom|center"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@color/colorLightGrey" />
+        android:background="@drawable/bg_form_rounded"
+        android:backgroundTint="@color/material_color_red_accent"
+       />
 
     <TextView
         android:id="@+id/storeName"

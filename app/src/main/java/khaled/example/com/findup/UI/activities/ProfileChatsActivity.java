@@ -6,7 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import khaled.example.com.findup.R;
-import khaled.example.com.findup.fragments.ChatWithStoreFragment;
+import khaled.example.com.findup.UI.fragments.ChatStoreFragment;
+import khaled.example.com.findup.UI.fragments.ChatWithStoreFragment;
 
 public class ProfileChatsActivity extends AppCompatActivity {
 
@@ -17,6 +18,6 @@ public class ProfileChatsActivity extends AppCompatActivity {
 
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
-        transaction.replace(R.id.chat_fragment_container, new ChatWithStoreFragment()).commit();
+        transaction.replace(R.id.chat_fragment_container, new ChatStoreFragment()).commit();
     }
 }

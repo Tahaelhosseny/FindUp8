@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:maxWidth="300dp"
+    android:layout_height="150dp">
+
+    <ImageView
+        android:id="@+id/product_image"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/product_placeholder_background_image" />
+
+    <TextView
+        android:id="@+id/product_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:fontFamily="@font/sfcompactdisplay_semibold"
+        android:maxLength="200"
+        android:maxLines="2"
+        android:text="Cappuccino"
+        android:textColor="@color/material_color_black"
+        android:textSize="@dimen/sp16"
+        app:layout_constraintStart_toEndOf="@+id/product_image"
+        app:layout_constraintTop_toTopOf="@+id/product_image" />
+
+    <TextView
+        android:id="@+id/product_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxWidth="200dp"
+        android:minWidth="100dp"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/sfcompactdisplay_regular"
+        android:text="The red and black cafe that help was redical suffer"
+        android:textColor="@color/material_color_grey_700"
+        android:textSize="@dimen/sp12"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/product_title"
+        app:layout_constraintTop_toBottomOf="@+id/product_title" />
+
+
+    <TextView
+        android:id="@+id/productItemPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/sfcompactdisplay_semibold"
+        android:text="18.5"
+        android:textColor="@color/material_color_black"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@id/product_desc"
+        app:layout_constraintTop_toBottomOf="@+id/product_desc" />
+
+    <TextView
+        android:id="@+id/prouductCurrency"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:fontFamily="@font/sfcompactdisplay_semibold"
+        android:text="SR"
+        android:textColor="@color/material_color_black"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/productItemPrice"
+        app:layout_constraintStart_toEndOf="@+id/productItemPrice" />
+
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:background="@color/colorWhiteGrey"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/product_desc"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"/>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@+id/productItemPrice"
+        app:layout_constraintTop_toBottomOf="@+id/productItemPrice">
+
+        <TextView
+            android:id="@+id/prod_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="3dp"
+            android:fontFamily="@font/sfcompactdisplay_semibold"
+            android:text="3"
+            android:textColor="@color/material_color_black"
+            android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@+id/plus"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/plus"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_add"
+            android:text="Button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/minus"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="8dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_rating_star_on"
+            android:text="Button"
+            app:layout_constraintStart_toEndOf="@+id/prod_amount"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
+
+</android.support.constraint.ConstraintLayout>

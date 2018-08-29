@@ -1,4 +1,4 @@
-package khaled.example.com.findup.adapters;
+package khaled.example.com.findup.UI.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;

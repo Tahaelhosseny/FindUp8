@@ -30,6 +30,7 @@ import java.util.List;
 
 import khaled.example.com.findup.UI.CustomViews.OverlapDecoration;
 import khaled.example.com.findup.R;
+import khaled.example.com.findup.UI.activities.ChatWithStoreActivity;
 import khaled.example.com.findup.UI.activities.CommentsActivity;
 import khaled.example.com.findup.UI.activities.PhotosGalleryActivity;
 import khaled.example.com.findup.UI.activities.StoreDetailsActivity;
@@ -147,6 +148,14 @@ public class StoreInfoFragment extends Fragment implements OnMapReadyCallback {
 
             }
         }));
+
+        ImageView chatImg = getActivity().findViewById(R.id.chatImg);
+        chatImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), ChatWithStoreActivity.class));
+            }
+        });
     }
 
 

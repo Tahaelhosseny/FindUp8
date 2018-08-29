@@ -68,8 +68,8 @@
 
         <Button
             android:id="@+id/imgBtn"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
             android:layout_margin="5dp"
             android:background="@drawable/ic_love_icon"
             android:clickable="true"
@@ -80,8 +80,8 @@
 
         <Button
             android:id="@+id/emojiBtn"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
             android:layout_margin="5dp"
             android:background="@drawable/ic_love_icon"
             android:clickable="true"

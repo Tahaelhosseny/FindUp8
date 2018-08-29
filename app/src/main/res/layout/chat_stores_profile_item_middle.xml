@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="100dp"
+    android:layout_height="130dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="75dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.mikhaellopez.circularimageview.CircularImageView
+            android:id="@+id/store_prof_pic"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:src="@drawable/product_placeholder_background_image"
+            app:civ_border="true"
+            app:civ_border_color="@color/colorBlack"
+            app:civ_border_width="2dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/store_name"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/sfcompactdisplay_regular"
+            android:foregroundGravity="center"
+            android:gravity="center"
+            android:text="Ahmed"
+            android:textStyle="bold"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/sp14"
+            app:layout_constraintEnd_toEndOf="@+id/store_prof_pic"
+            app:layout_constraintStart_toStartOf="@+id/store_prof_pic"
+            app:layout_constraintTop_toBottomOf="@+id/store_prof_pic" />
+    </android.support.constraint.ConstraintLayout>
+</android.support.constraint.ConstraintLayout>
