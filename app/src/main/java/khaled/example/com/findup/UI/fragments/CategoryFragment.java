@@ -2,6 +2,7 @@ package khaled.example.com.findup.UI.fragments;
 
 
 import android.animation.ValueAnimator;
+import android.content.Intent;
 import android.databinding.adapters.ExpandableListViewBindingAdapter;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -23,6 +24,9 @@ import io.github.luizgrp.sectionedrecyclerviewadapter.SectionedRecyclerViewAdapt
 import io.github.luizgrp.sectionedrecyclerviewadapter.StatelessSection;
 import khaled.example.com.findup.Helper.UI_Utility;
 import khaled.example.com.findup.R;
+import khaled.example.com.findup.UI.activities.EventDetailsActivity;
+import khaled.example.com.findup.UI.activities.MainActivity;
+import khaled.example.com.findup.UI.activities.ProductsActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -123,6 +127,12 @@ public class CategoryFragment extends Fragment {
         public void onBindItemViewHolder(RecyclerView.ViewHolder holder, int position) {
             final ItemViewHolder itemHolder = (ItemViewHolder) holder;
             itemHolder.contentText.setText(content);
+            itemHolder.rootView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(getActivity(), ProductsActivity.class));
+                }
+            });
             //changeTextSize(itemHolder.contentText,itemHolder.contentText.getTextSize(),((ItemViewHolder) holder).defalut_text_size);
         }
 

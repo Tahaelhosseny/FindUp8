@@ -33,7 +33,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
     <ImageView
         android:id="@+id/profileImg"
         android:layout_width="80dp"
@@ -46,8 +45,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:background="@drawable/bg_form_rounded"
-        android:backgroundTint="@color/material_color_red_accent"
-       />
+        android:backgroundTint="@color/colorWhite"
+        android:src="@drawable/tinycat"
+        android:scaleType="fitXY"/>
 
     <TextView
         android:id="@+id/storeName"

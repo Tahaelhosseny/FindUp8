@@ -17,6 +17,7 @@ import java.util.List;
 
 import khaled.example.com.findup.R;
 import khaled.example.com.findup.UI.CustomViews.OverlapDecoration;
+import khaled.example.com.findup.UI.activities.CommentsActivity;
 import khaled.example.com.findup.UI.activities.PhotosGalleryActivity;
 import khaled.example.com.findup.UI.adapters.CommentsPhotosAdapter;
 import khaled.example.com.findup.UI.adapters.RecyclerTouchListener;
@@ -108,5 +109,17 @@ public class ProductDetailsFragment extends Fragment {
 
         recyclerView.addItemDecoration(new OverlapDecoration());
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+        recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getActivity()
+                , recyclerView, new RecyclerTouchListener.ClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+                startActivity(new Intent(getActivity(), CommentsActivity.class));
+            }
+
+            @Override
+            public void onLongClick(View view, int position) {
+
+            }
+        }));
     }
 }

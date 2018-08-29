@@ -115,6 +115,19 @@ public class StoreInfoFragment extends Fragment implements OnMapReadyCallback {
         recyclerView.setAdapter(adapter);
         //recyclerView.setLayoutManager(layoutManager);
 
+        recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getActivity()
+                , recyclerView, new RecyclerTouchListener.ClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+                startActivity(new Intent(getActivity(), CommentsActivity.class));
+            }
+
+            @Override
+            public void onLongClick(View view, int position) {
+
+            }
+        }));
+
         recyclerView.addItemDecoration(new OverlapDecoration());
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
     }
