@@ -39,6 +39,7 @@ public class ProductsFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
         List<Product> products = new ArrayList<>();
         products.add(new Product(0,36,206,566,"Name", "Description","http://i.imgur.com/2KQVKw0.jpg"));
         products.add(new Product(0,36,206,566,"Name", "Description","https://media-cdn.tripadvisor.com/media/photo-s/0e/40/f2/34/delicious-cofe.jpg"));
