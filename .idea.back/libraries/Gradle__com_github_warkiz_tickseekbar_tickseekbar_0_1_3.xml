@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.warkiz.tickseekbar:tickseekbar-0.1.3">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/tickseekbar-0.1.3.aar/92133bd402c9ff76063377f31373487b/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/tickseekbar-0.1.3.aar/92133bd402c9ff76063377f31373487b/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.warkiz.tickseekbar/tickseekbar/0.1.3/50d4b6928dd19cc8ffd6a91f39ae355b688ae01b/tickseekbar-0.1.3-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
