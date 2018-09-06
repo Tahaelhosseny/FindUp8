@@ -26,6 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import khaled.example.com.findup.Helper.UI_Utility;
+import khaled.example.com.findup.Helper.Utility;
 import khaled.example.com.findup.R;
 import khaled.example.com.findup.UI.activities.EventDetailsActivity;
 import khaled.example.com.findup.UI.adapters.BottomBarAdapter;
@@ -104,6 +105,7 @@ public class BottomBarFragment extends Fragment {
                         case 0:
                             ToolbarSwitch(true);
                             selectedFragment = new MainFragment();
+                            Utility.replaceFragment(getActivity().getSupportFragmentManager(), new MainFragment(), R.id.main_toolbar_container, 0);
                             ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
                             ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(false);
                             ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(getActivity().getString(R.string.find_things));
@@ -111,10 +113,12 @@ public class BottomBarFragment extends Fragment {
                         case 1:
                             ToolbarSwitch(false);
                             selectedFragment = new MapFragment();
+                            Utility.replaceFragment(getActivity().getSupportFragmentManager(), new MapFragment(), R.id.main_toolbar_container, 0);
                             break;
                         case 2:
                             ToolbarSwitch(true);
                             selectedFragment = new SearchFragment();
+                            Utility.replaceFragment(getActivity().getSupportFragmentManager(), new SearchFragment(), R.id.main_toolbar_container, 0);
                             ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
                             ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(false);
                             ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(getActivity().getString(R.string.find_things));
@@ -122,6 +126,7 @@ public class BottomBarFragment extends Fragment {
                         case 3:
                             ToolbarSwitch(true);
                             selectedFragment = new CategoryFragment();
+                            Utility.replaceFragment(getActivity().getSupportFragmentManager(), new CategoryFragment(), R.id.main_toolbar_container, 0);
                             ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
                             ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(false);
                             ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(getActivity().getString(R.string.category));
@@ -129,12 +134,13 @@ public class BottomBarFragment extends Fragment {
                         case 4:
                             ToolbarSwitch(true);
                             selectedFragment = new ProfileFragment();
+                            Utility.replaceFragment(getActivity().getSupportFragmentManager(), new ProfileFragment(), R.id.main_toolbar_container, 0);
                             ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
                             ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(false);
                             ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(getActivity().getString(R.string.profile));
                             break;
                     }
-                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_toolbar_container, selectedFragment).commit();
+                    //getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_toolbar_container, selectedFragment).commit();
                 }
             };
 

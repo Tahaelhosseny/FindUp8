@@ -1,10 +1,18 @@
 package khaled.example.com.findup.Helper;
 
+import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
+
+import khaled.example.com.findup.R;
 
 public class Utility {
 
@@ -37,5 +45,28 @@ public class Utility {
             e.printStackTrace();
         }
         return localTime;
+    }
+
+    public static void replaceFragment (FragmentManager manager, Fragment fragment , int containerID, int transition){
+        String fragmentTag =  fragment.getClass().getName();
+        boolean fragmentPopped = manager.popBackStackImmediate (fragmentTag, 0);
+
+        FragmentTransaction ft = manager.beginTransaction();
+        if (!fragmentPopped && manager.findFragmentByTag(fragmentTag) == null){
+            ft.replace(containerID, fragment, fragmentTag);
+            if (transition == 0)
+                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+            else
+                ft.setTransition(transition);
+            ft.addToBackStack(fragmentTag);
+            ft.commit();
+        } else {
+            ft.replace(containerID, manager.findFragmentByTag(fragmentTag));
+            if (transition == 0)
+                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+            else
+                ft.setTransition(transition);
+            ft.commit();
+        }
     }
 }

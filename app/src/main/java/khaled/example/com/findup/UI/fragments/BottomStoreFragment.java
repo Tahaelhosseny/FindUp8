@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import khaled.example.com.findup.Helper.UI_Utility;
+import khaled.example.com.findup.Helper.Utility;
 import khaled.example.com.findup.R;
 import khaled.example.com.findup.UI.adapters.BottomBarAdapter;
 
@@ -82,25 +83,29 @@ public class BottomStoreFragment extends Fragment {
                     int position =(int) constraintLayout.getTag();
                     UI_Utility.BottomNavigationStoreMenu_icons_change(menu,position);
                     adapter.notifyDataSetChanged();
-                    android.support.v4.app.Fragment selectedFragment = new MainStoreFragment();
+                    //android.support.v4.app.Fragment selectedFragment = new MainStoreFragment();
+                    Utility.replaceFragment(getActivity().getSupportFragmentManager(), new MainStoreFragment(), R.id.main_toolbar_container, 0);
                     switch (position) {
                         case 0:
-                            selectedFragment = new MainStoreFragment();
+                            //selectedFragment = new MainStoreFragment();
+                            Utility.replaceFragment(getActivity().getSupportFragmentManager(), new MainStoreFragment(), R.id.main_toolbar_container, 0);
                             //((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
                             //((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(false);
                             break;
                         case 1:
-                            selectedFragment = new ChatStoreFragment();
+                            //selectedFragment = new ChatStoreFragment();
+                            Utility.replaceFragment(getActivity().getSupportFragmentManager(), new ChatStoreFragment(), R.id.main_toolbar_container, 0);
                             //((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
                             //((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
                             break;
                         case 2:
-                            selectedFragment = new ProfileStoreFragment();
+                            //selectedFragment = new ProfileStoreFragment();
+                            Utility.replaceFragment(getActivity().getSupportFragmentManager(), new ProfileStoreFragment(), R.id.main_toolbar_container, 0);
                             //((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
                             //((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
                             break;
                     }
-                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_toolbar_container, selectedFragment).commit();
+                    //getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_toolbar_container, selectedFragment).commit();
                 }
             };
 
