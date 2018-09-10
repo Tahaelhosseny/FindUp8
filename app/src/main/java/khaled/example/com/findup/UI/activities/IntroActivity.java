@@ -1,12 +1,15 @@
 package khaled.example.com.findup.UI.activities;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -35,7 +38,10 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
 import java.util.Arrays;
+import java.util.HashMap;
 
+import khaled.example.com.findup.Helper.instaIntegration.ApplicationData;
+import khaled.example.com.findup.Helper.instaIntegration.InstagramApp;
 import khaled.example.com.findup.R;
 
 public class IntroActivity extends AppCompatActivity {
@@ -52,6 +58,21 @@ public class IntroActivity extends AppCompatActivity {
     GoogleSignInOptions gso;
     GoogleSignInClient mGoogleSignInClient;
     private CallbackManager callbackManager;
+    private InstagramApp mApp;
+    private HashMap<String, String> userInfoHashmap = new HashMap<String, String>();
+    private Handler handler = new Handler(new Handler.Callback() {
+
+        @Override
+        public boolean handleMessage(Message msg) {
+            if (msg.what == InstagramApp.WHAT_FINALIZE) {
+                userInfoHashmap = mApp.getUserInfo();
+            } else if (msg.what == InstagramApp.WHAT_FINALIZE) {
+                Toast.makeText(IntroActivity.this, "Check your network.",
+                        Toast.LENGTH_SHORT).show();
+            }
+            return false;
+        }
+    });
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +86,21 @@ public class IntroActivity extends AppCompatActivity {
                 .build();
         AppEventsLogger.activateApp(getApplication());
         callbackManager = CallbackManager.Factory.create();
+
+        mApp = new InstagramApp(IntroActivity.this, ApplicationData.CLIENT_ID,
+                ApplicationData.CLIENT_SECRET, ApplicationData.CALLBACK_URL);
+        mApp.setListener(new InstagramApp.OAuthAuthenticationListener() {
+
+            @Override
+            public void onSuccess() {
+                mApp.fetchUserName(handler);
+            }
+
+            @Override
+            public void onFail(String error) {
+                Toast.makeText(IntroActivity.this, "Error", Toast.LENGTH_LONG).show();
+            }
+        });
 
         main=findViewById(R.id.main);
         btn_skip=findViewById(R.id.btn_skip);
@@ -107,7 +143,8 @@ public class IntroActivity extends AppCompatActivity {
 
         btn_instagram.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {signInGoogle();
+            public void onClick(View view) {
+                connectToInstagram();
             }
         });
 
@@ -251,5 +288,32 @@ public class IntroActivity extends AppCompatActivity {
         progressDialog.setMessage(getString(R.string.signing_in));
         progressDialog.setCancelable(false);
         progressDialog.show();
+    }
+
+    private void connectToInstagram() {
+        if (mApp.hasAccessToken()) {
+            final AlertDialog.Builder builder = new AlertDialog.Builder(
+                    IntroActivity.this);
+            builder.setMessage("Disconnect from Instagram?")
+                    .setCancelable(false)
+                    .setPositiveButton("Yes",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog,
+                                                    int id) {
+                                    mApp.resetAccessToken();
+                                }
+                            })
+                    .setNegativeButton("No",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog,
+                                                    int id) {
+                                    dialog.cancel();
+                                }
+                            });
+            final AlertDialog alert = builder.create();
+            alert.show();
+        } else {
+            mApp.authorize();
+        }
     }
 }
