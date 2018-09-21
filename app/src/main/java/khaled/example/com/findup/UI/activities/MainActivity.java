@@ -101,10 +101,12 @@ public class MainActivity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction().replace(R.id.navigation_bottom_container, bottomBarFragment).commit();
     }
 
+    @Override
+    public void onBackPressed() {
 
-
-
-
-
-
+        if (getSupportFragmentManager().getBackStackEntryCount() == 0)
+            super.onBackPressed();
+        else
+            getSupportFragmentManager().popBackStack();
+    }
 }
