@@ -1,62 +1,80 @@
 package khaled.example.com.findup.models;
 
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
+
+@Entity
 public class Comment {
-    private int cm_id;
-    private String user_name;
-    private int user_id;
-    private int prod_id;
-    private long date;
+    @PrimaryKey
+    private int comment_id;
+    @NonNull
+    private String account_name;
+    @NonNull
+    private int acc_id;
+    @NonNull
+    private int store_id;
+    @NonNull
+    private String comment_date;
+    @NonNull
+    private long comment_date_timestamp;
+    @NonNull
     private String comment;
-    private String user_profile_pic;
+    @NonNull
+    private String account_image;
+    @NonNull
+    private String block_flag;
+
 
     public Comment() {
     }
 
-    public Comment(String user_name, long date, String comment, String user_profile_pic) {
-        this.user_name = user_name;
-        this.date = date;
+    public Comment(String account_name, long date, String comment, String account_image) {
+        this.account_name = account_name;
+        this.comment_date_timestamp = date;
         this.comment = comment;
-        this.user_profile_pic = user_profile_pic;
+        this.account_image = account_image;
     }
 
-    public int getCm_id() {
-        return cm_id;
+    public int getComment_id() {
+        return comment_id;
     }
 
-    public void setCm_id(int cm_id) {
-        this.cm_id = cm_id;
+    public void setComment_id(int comment_id) {
+        this.comment_id = comment_id;
     }
 
-    public String getUser_name() {
-        return user_name;
+    public String getAccount_name() {
+        return account_name;
     }
 
-    public void setUser_name(String user_name) {
-        this.user_name = user_name;
+    public void setAccount_name(String account_name) {
+        this.account_name = account_name;
     }
 
-    public int getUser_id() {
-        return user_id;
+    public int getAcc_id() {
+        return acc_id;
     }
 
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public void setAcc_id(int acc_id) {
+        this.acc_id = acc_id;
     }
 
-    public int getProd_id() {
-        return prod_id;
+    public int getStore_id() {
+        return store_id;
     }
 
-    public void setProd_id(int prod_id) {
-        this.prod_id = prod_id;
+    public void setStore_id(int store_id) {
+        this.store_id = store_id;
     }
 
     public long getDate() {
-        return date;
+        return comment_date_timestamp;
     }
 
     public void setDate(long date) {
-        this.date = date;
+        this.comment_date_timestamp = date;
     }
 
     public String getComment() {
@@ -67,11 +85,38 @@ public class Comment {
         this.comment = comment;
     }
 
-    public String getUser_profile_pic() {
-        return user_profile_pic;
+    public String getAccount_image() {
+        return account_image;
     }
 
-    public void setUser_profile_pic(String user_profile_pic) {
-        this.user_profile_pic = user_profile_pic;
+    public void setAccount_image(String account_image) {
+        this.account_image = account_image;
+    }
+
+    @NonNull
+    public String getComment_date() {
+        return comment_date;
+    }
+
+    public void setComment_date(@NonNull String comment_date) {
+        this.comment_date = comment_date;
+    }
+
+    @NonNull
+    public long getComment_date_timestamp() {
+        return comment_date_timestamp;
+    }
+
+    public void setComment_date_timestamp(@NonNull long comment_date_timestamp) {
+        this.comment_date_timestamp = comment_date_timestamp;
+    }
+
+    @NonNull
+    public String getBlock_flag() {
+        return block_flag;
+    }
+
+    public void setBlock_flag(@NonNull String block_flag) {
+        this.block_flag = block_flag;
     }
 }

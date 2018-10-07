@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+
+        <variable
+            name="NearMe"
+            type="khaled.example.com.findup.UI.ViewModel.Fragments.StoreDetailsViewModel"/>
+
+        <variable
+            name="presenter"
+            type="khaled.example.com.findup.UI.Presenter.Fragments.StoreDetailsPresenter"/>
+
+    </data>
+    <android.support.constraint.ConstraintLayout
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -7,8 +20,8 @@
         android:scrollbars="vertical"
         android:scrollbarSize="@dimen/material_baseline_grid_3.5x"
         android:scrollbarStyle="insideOverlay"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         tools:context=".UI.fragments.StoreDetailsFragment">
+
 
         <ImageView
             android:id="@+id/storeImg"
@@ -19,8 +32,9 @@
 
         <android.support.v7.widget.CardView
             android:id="@+id/nameLayout"
-            android:layout_width="340dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:minWidth="340dp"
             android:layout_marginTop="108dp"
             app:cardCornerRadius="5dp"
             android:orientation="vertical"
@@ -60,13 +74,16 @@
 
                 <TextView
                     android:id="@+id/storeBriefTxt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="35dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:fontFamily="@font/sfcompactdisplay_regular"
+                    android:minHeight="35dp"
                     android:padding="5dp"
-                    android:text="American Cafe Break $$"
+                    android:text=""
                     android:textColor="@color/colorBlack"
-                    app:layout_constraintTop_toBottomOf="@id/storeName"/>
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/storeName" />
 
                 <ImageView
                     android:id="@+id/starImg"
@@ -77,6 +94,7 @@
                     app:layout_constraintTop_toBottomOf="@id/storeBriefTxt" />
 
                 <TextView
+                    android:id="@+id/store_rating"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -126,3 +144,4 @@
 
 
     </android.support.constraint.ConstraintLayout>
+</layout>

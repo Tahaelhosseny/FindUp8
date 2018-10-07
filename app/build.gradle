@@ -23,6 +23,10 @@ android {
         }
     }
     buildToolsVersion '27.0.3'
+    compileOptions {
+        targetCompatibility 1.8
+        sourceCompatibility 1.8
+    }
 }
 
 dependencies {
@@ -73,6 +77,22 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
     implementation 'io.reactivex.rxjava2:rxjava:2.x.x'
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.2.0'
+
+    //Loading Indicator View
+    implementation 'com.wang.avi:library:2.1.3'
+
+    //permission
+    implementation 'com.karumi:dexter:4.2.0'
+    implementation 'com.patloew.rxlocation:rxlocation:1.0.5'
+
+    //location
+    implementation 'com.google.android.gms:play-services-location:15.0.1'
+
+
+    //shared preferences rx
+    implementation 'com.f2prateek.rx.preferences2:rx-preferences:2.0.0'
+
+
 }
 
 apply plugin: 'com.google.gms.google-services'

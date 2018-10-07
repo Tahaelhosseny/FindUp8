@@ -41,16 +41,16 @@ public class CommentsAdapter extends RecyclerView.Adapter<CommentsAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Comment comment = commentList.get(position);
-        holder.username.setText(comment.getUser_name());
+        holder.username.setText(comment.getAccount_name());
         holder.date.setText(Utility.getDate(comment.getDate()));
         holder.comment_txt.setText(comment.getComment());
-        if (!comment.getUser_profile_pic().isEmpty()) {
+        if (!comment.getAccount_image().isEmpty()) {
             Transformation transformation = new RoundedTransformationBuilder()
-                    .cornerRadiusDp(80)
+                    .cornerRadiusDp(20)
                     .oval(false)
                     .build();
 
-            Picasso.with(mContext).load(comment.getUser_profile_pic()).transform(transformation).placeholder(R.drawable.com_facebook_profile_picture_blank_square).into(holder.profile_pic);
+            Picasso.with(mContext).load(comment.getAccount_image()).transform(transformation).placeholder(R.drawable.com_facebook_profile_picture_blank_square).into(holder.profile_pic);
         }
     }
 

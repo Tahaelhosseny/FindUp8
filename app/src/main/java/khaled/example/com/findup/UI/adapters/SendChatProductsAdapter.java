@@ -7,7 +7,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -78,17 +77,17 @@ public class SendChatProductsAdapter extends RecyclerView.Adapter<SendChatProduc
 
         Product product = products.get(position);
 
-        holder.productName.setText(product.getProductName());
-        holder.productDescription.setText(product.getProductDescription());
-        holder.productPrice.setText(String.valueOf(product.getProductPrice()));
+        holder.productName.setText(product.getProduct_name());
+        holder.productDescription.setText(product.getProduct_desc());
+        holder.productPrice.setText(String.valueOf(product.getProduct_price()));
 
-        if (!product.getProductPhoto().isEmpty()) {
+        if (!product.getProduct_banner().isEmpty()) {
             Transformation transformation = new RoundedTransformationBuilder()
                     .cornerRadiusDp(80)
                     .oval(false)
                     .build();
 
-            Picasso.with(holder.productImg.getContext()).load(product.getProductPhoto()).transform(transformation).placeholder(R.drawable.near_by_place_holder).into(holder.productImg);
+            Picasso.with(holder.productImg.getContext()).load(product.getProduct_banner()).transform(transformation).placeholder(R.drawable.near_by_place_holder).into(holder.productImg);
         }
 
         holder.plus.setOnClickListener(new View.OnClickListener() {

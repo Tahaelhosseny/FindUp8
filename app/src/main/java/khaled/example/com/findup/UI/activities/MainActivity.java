@@ -1,41 +1,38 @@
 package khaled.example.com.findup.UI.activities;
 
+import android.location.Address;
+import android.location.Location;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.constraint.ConstraintLayout;
-import android.support.design.widget.BottomNavigationView;
-import android.support.design.widget.CoordinatorLayout;
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.TypedValue;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.Toast;
 
-import khaled.example.com.findup.Helper.UI_Utility;
+import com.patloew.rxlocation.RxLocation;
+
+import java.util.concurrent.TimeUnit;
+
+import khaled.example.com.findup.Helper.Location.LocationUtility;
+import khaled.example.com.findup.Helper.Location.LocationView;
+import khaled.example.com.findup.Helper.SharedPrefManger;
 import khaled.example.com.findup.R;
 import khaled.example.com.findup.UI.fragments.BottomBarFragment;
-import khaled.example.com.findup.UI.fragments.CategoryFragment;
 import khaled.example.com.findup.UI.fragments.MainFragment;
-import khaled.example.com.findup.UI.fragments.MapFragment;
-import khaled.example.com.findup.UI.fragments.ProfileFragment;
-import khaled.example.com.findup.UI.fragments.SearchFragment;
+import khaled.example.com.findup.models.CurrentLocation;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements LocationView{
 
     Toolbar toolbar;
-    float actionBarSize;
-    //BottomNavigationView bottomNavigationView;
-
+    private RxLocation rxLocation;
+    LocationUtility locationUtility;
+    SharedPrefManger sharedPrefManger;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         toolbar =  findViewById(R.id.toolbar_top);
         setSupportActionBar(toolbar);
+        sharedPrefManger = new SharedPrefManger(this);
 
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
@@ -44,55 +41,10 @@ public class MainActivity extends AppCompatActivity {
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
 
-        //bottomNavigationView = findViewById(R.id.navigation_bottom);
 
-        //bottomNavigationView.setOnNavigationItemSelectedListener(navListner);
-
-        /*final BottomNav bottomNav = findViewById(R.id.navigation_bottom);
-        bottomNav.addItemNav(new ItemNav(this, R.drawable.home_unselected_0_5x, R.drawable.home_sel_1_5x));
-        bottomNav.addItemNav(new ItemNav(this, R.drawable.map_1_5x, R.drawable.map_sel_1_5x));
-        bottomNav.addItemNav(new ItemNav(this, R.drawable.search_1_5x, R.drawable.search_sel_0_5x));
-        bottomNav.addItemNav(new ItemNav(this, R.drawable.category_1_5x, R.drawable.category_sel_1_5x));
-        bottomNav.addItemNav(new ItemNav(this, R.drawable.__1_5x, R.drawable.__1_5x));
-        bottomNav.build();
-
-        BottomNav.OnTabSelectedListener listener = new BottomNav.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(int position) {
-                Fragment selectedFragment = new MainFragment();
-                //UI_Utility.BottomNavigationMenu_icons_change(bottomNavigationView.getMenu(),item);
-                switch (position) {
-                    case 0:
-                        ToolbarSwitch(true);
-                        selectedFragment = new MainFragment();
-                        break;
-                    case 1:
-                        ToolbarSwitch(false);
-                        selectedFragment = new MapFragment();
-                        break;
-                    case 2:
-                        ToolbarSwitch(false);
-                        selectedFragment = new SearchFragment();
-                        break;
-                    case 3:
-                        ToolbarSwitch(false);
-                        selectedFragment = new CategoryFragment();
-                        break;
-                    case 4:
-                        ToolbarSwitch(false);
-                        selectedFragment = new ProfileFragment();
-                        break;
-                }
-                getSupportFragmentManager().beginTransaction().replace(R.id.main_toolbar_container, selectedFragment).commit();
-            }
-
-            @Override
-            public void onTabLongSelected(int position) {
-            }
-        };
-        bottomNav.setTabSelectedListener(listener);*/
-
-
+        rxLocation = new RxLocation(this);
+        rxLocation.setDefaultTimeout(15, TimeUnit.SECONDS);
+        locationUtility = new LocationUtility(rxLocation);
 
         transaction.replace(R.id.main_toolbar_container, new MainFragment()).commit();
 
@@ -103,10 +55,31 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-
         if (getSupportFragmentManager().getBackStackEntryCount() == 0)
             super.onBackPressed();
         else
             getSupportFragmentManager().popBackStack();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        locationUtility.attachView(this);
+    }
+
+    @Override
+    public void onLocationUpdate(Location location) {
+        sharedPrefManger.setCurrentLocation(new CurrentLocation(location.getLatitude(),location.getLongitude()));
+    }
+
+
+    @Override
+    public void onLocationSettingsUnsuccessful() {
+
+    }
+
+    @Override
+    public void onAddressUpdate(Address address) {
+
     }
 }

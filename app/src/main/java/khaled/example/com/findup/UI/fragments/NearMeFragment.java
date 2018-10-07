@@ -1,6 +1,7 @@
 package khaled.example.com.findup.UI.fragments;
 
 
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -15,8 +16,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import khaled.example.com.findup.R;
+import khaled.example.com.findup.UI.Presenter.Fragments.NearMePresenter;
+import khaled.example.com.findup.UI.ViewModel.Fragments.NearMeViewModel;
 import khaled.example.com.findup.UI.adapters.NearMeAdapter;
-import khaled.example.com.findup.models.Place;
+import khaled.example.com.findup.databinding.FragmentNearMeBinding;
+import khaled.example.com.findup.models.Store;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -28,33 +32,31 @@ public class NearMeFragment extends Fragment {
         // Required empty public constructor
     }
 
-
+    NearMeViewModel nearMeViewModel;
+    FragmentNearMeBinding binding;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_near_me, container, false);
+
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_near_me, container, false);
+        View view = binding.getRoot();
+        //here data must be an instance of the class MarsDataProvider
+        nearMeViewModel = new NearMeViewModel(view.getContext());
+        binding.setNearMe(nearMeViewModel);
+        return view;
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        nearMeViewModel.InitRecyclerView(binding.nearMeRecyclerView);
 
-        List<Place> places = new ArrayList<>();
-        places.add(new Place(1,"Black Cafe", "1.3km", "https://www.butlerschocolates.com/upload/637/cms/525995/en/39710/gallery.jpg", "4.5","American Cafe Break $$"));
-        places.add(new Place(2,"Genuine Coffee", "2km", "https://viejas.com/wp-content/uploads/2018/01/Cafe_Patio_detail-1.jpg", "4.2","Indian Cafe Break $$"));
-        places.add(new Place(1,"Black Cafe", "1.3km", "http://www.royalhotelchilliwack.com/Content/images/Hotel-Cafe-o.jpg", "4.5","American Cafe Break $$"));
-        places.add(new Place(2,"Genuine Coffee", "2km", "https://www.butlerschocolates.com/upload/637/cms/525995/en/39710/gallery.jpg", "4.2","Indian Cafe Break $$"));
-
-        bindUI(places);
+        binding.setPresenter(new NearMePresenter() {
+            @Override
+            public void InitRecyclerView() {
+                nearMeViewModel.InitRecyclerView(binding.nearMeRecyclerView);
+            }
+        });
     }
 
-    private void bindUI(List<Place> places){
-        RecyclerView recyclerView = getActivity().findViewById(R.id.nearMeRecyclerView);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        NearMeAdapter adapter = new NearMeAdapter(getActivity(), places);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
-        recyclerView.smoothScrollToPosition(0);
-    }
 }

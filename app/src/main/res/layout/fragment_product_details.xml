@@ -39,7 +39,7 @@
                 android:layout_margin="10dp">
 
                 <TextView
-                    android:id="@+id/productName"
+                    android:id="@+id/product_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/sfcompactdisplay_semibold"
@@ -50,7 +50,7 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/productPrice"
+                    android:id="@+id/product_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/sfcompactdisplay_semibold"
@@ -70,7 +70,7 @@
                     android:padding="5dp"
                     android:text="Black Cafe"
                     android:textColor="@color/colorBlack"
-                    app:layout_constraintTop_toBottomOf="@id/productName"/>
+                    app:layout_constraintTop_toBottomOf="@id/product_name"/>
 
                 <ImageView
                     android:id="@+id/likeImg"

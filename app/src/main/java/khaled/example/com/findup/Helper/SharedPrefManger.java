@@ -4,6 +4,11 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
+import com.f2prateek.rx.preferences2.Preference;
+import com.f2prateek.rx.preferences2.RxSharedPreferences;
+
+import khaled.example.com.findup.models.CurrentLocation;
+
 public class SharedPrefManger {
 
     private static SharedPreferences mSharedPref;
@@ -48,4 +53,38 @@ public class SharedPrefManger {
     public static boolean isIsLoggedIn() {
         return mSharedPref.getBoolean("isLoggedIn", false);
     }
+
+    public static void setCurrentLocation(CurrentLocation currentLocation){
+        mSharedPref.edit().putBoolean("HaveLocation", currentLocation.isEnabled()).apply();
+        mSharedPref.edit().putFloat("latitude", (float) currentLocation.getLocation().latitude).apply();
+        mSharedPref.edit().putFloat("longitude", (float) currentLocation.getLocation().longitude).apply();
+    }
+
+    public static CurrentLocation getCurrentLocation() {
+        float latitude =  mSharedPref.getFloat("latitude", 0);
+        float longitude =  mSharedPref.getFloat("longitude", 0);
+        CurrentLocation currentLocation = new CurrentLocation(latitude,longitude);
+        return currentLocation;
+    }
+
+    public static Preference<Float> getLatitude() {
+        RxSharedPreferences rxPreferences = RxSharedPreferences.create(mSharedPref);
+        return rxPreferences.getFloat("latitude");
+    }
+
+
+
+    public static Preference<Float> getLongitude() {
+        RxSharedPreferences rxPreferences = RxSharedPreferences.create(mSharedPref);
+        return rxPreferences.getFloat("longitude");
+    }
+
+    public static Float getLongitudeF() {
+        return mSharedPref.getFloat("longitude", 0);
+    }
+    public static Float getLatitudeF() {
+        return mSharedPref.getFloat("latitude", 0);
+    }
+
+
 }

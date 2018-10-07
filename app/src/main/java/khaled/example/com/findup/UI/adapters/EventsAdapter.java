@@ -39,7 +39,7 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder
         public ViewHolder(View view) {
             super(view);
 
-            eventName = view.findViewById(R.id.eventName);
+            eventName = view.findViewById(R.id.event_name);
             eventDescription = view.findViewById(R.id.eventDesc);
             eventDate = view.findViewById(R.id.eventDate);
             eventsItemImg=view.findViewById(R.id.eventsItemImg);
@@ -61,11 +61,11 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder
     public void onBindViewHolder(@NonNull EventsAdapter.ViewHolder holder, int position) {
 
         /*Event event = events.get(position);
-        holder.eventName.setText(event.getEventName());
-        holder.eventDescription.setText(event.getEventDescription());
-        holder.eventDate.setText(event.getEventDat());
-        if (!event.getEventImg().isEmpty())
-            Picasso.with(holder.eventsItemImg.getContext()).load(event.getEventImg()).placeholder(R.drawable.events_place_holder).into(holder.eventsItemImg);*/
+        holder.eventName.setText(event.getEvent_name());
+        holder.eventDescription.setText(event.getEvent_desc());
+        holder.eventDate.setText(event.getEvent_start_date());
+        if (!event.getEvent_photo().isEmpty())
+            Picasso.with(holder.eventsItemImg.getContext()).load(event.getEvent_photo()).placeholder(R.drawable.events_place_holder).into(holder.eventsItemImg);*/
 
     }
 

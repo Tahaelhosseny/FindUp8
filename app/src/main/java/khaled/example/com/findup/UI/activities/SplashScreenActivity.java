@@ -1,26 +1,34 @@
 package khaled.example.com.findup.UI.activities;
 
-import android.content.Intent;
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 
 import khaled.example.com.findup.R;
+import khaled.example.com.findup.UI.Presenter.Activities.SplashScreenPresenter;
+import khaled.example.com.findup.UI.ViewModel.Activites.SplashScreenViewModel;
+import khaled.example.com.findup.databinding.ActivitySplashScreenBinding;
 
 public class SplashScreenActivity extends AppCompatActivity {
 
-    private final int SPLASH_DISPLAY_LENGTH = 2000;
+    ActivitySplashScreenBinding binding;
+    SplashScreenViewModel splashScreenViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash_screen);
-        new Handler().postDelayed(new Runnable() {
+        //setContentView(R.layout.activity_splash_screen);
+        splashScreenViewModel = new SplashScreenViewModel(this);
+        binding= DataBindingUtil.setContentView(this,R.layout.activity_splash_screen);
+        binding.setLoginview(splashScreenViewModel);
+        splashScreenViewModel.UpdateStoresData();
+
+        binding.setPresenter(new SplashScreenPresenter() {
             @Override
-            public void run() {
-                startActivity(new Intent(SplashScreenActivity.this, IntroActivity.class));
-                finish();
+            public void LoadStoreData() {
+                splashScreenViewModel.UpdateStoresData();
             }
-        }, SPLASH_DISPLAY_LENGTH);
+        });
+
     }
 }

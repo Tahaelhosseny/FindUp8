@@ -4,17 +4,15 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
-import android.widget.Toast;
 
-import khaled.example.com.findup.UI.Presenter.LoginPresenter;
-import khaled.example.com.findup.UI.ViewModel.LoginViewModel;
+import khaled.example.com.findup.UI.Presenter.Activities.LoginPresenter;
+import khaled.example.com.findup.UI.ViewModel.Activites.LoginViewModel;
 import khaled.example.com.findup.databinding.ActivityLoginBinding;
 import com.santalu.maskedittext.MaskEditText;
 
@@ -44,7 +42,6 @@ public class LoginActivity extends AppCompatActivity {
                 loginViewModel.sendLoginRequest(phone,pass);
             }
         });
-
 
         pic_account=findViewById(R.id.pic_account);
         editText_phone=findViewById(R.id.editText_phone);

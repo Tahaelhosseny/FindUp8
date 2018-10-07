@@ -1,6 +1,7 @@
 package khaled.example.com.findup.UI.fragments;
 
 import android.content.Intent;
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -15,9 +16,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import khaled.example.com.findup.R;
-import khaled.example.com.findup.UI.activities.ProductDetailsActivity;
+import khaled.example.com.findup.UI.ViewModel.Fragments.NearMeViewModel;
+import khaled.example.com.findup.UI.ViewModel.Fragments.ProductsViewModel;
 import khaled.example.com.findup.UI.adapters.ProductsAdapter;
-import khaled.example.com.findup.UI.adapters.RecyclerTouchListener;
+import khaled.example.com.findup.databinding.FragmentNearMeBinding;
+import khaled.example.com.findup.databinding.FragmentProductsBinding;
 import khaled.example.com.findup.models.Product;
 
 /**
@@ -29,44 +32,39 @@ public class ProductsFragment extends Fragment {
         // Required empty public constructor
     }
 
+    public static ProductsFragment newInstance() {
+        ProductsFragment fragment = new ProductsFragment();
+        Bundle args = new Bundle();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    ProductsViewModel productsViewModel;
+    FragmentProductsBinding binding;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_products, container, false);
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_products, container, false);
+
+        View view = binding.getRoot();
+        //here data must be an instance of the class MarsDataProvider
+        productsViewModel = new ProductsViewModel(view.getContext());
+        binding.setProducts(productsViewModel);
+        return view;
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        Intent i = getActivity().getIntent();
+        int store_id = 1;
+        if (i.hasExtra("store_id"))
+            store_id = i.getIntExtra("store_id",1);
 
-        List<Product> products = new ArrayList<>();
-        products.add(new Product(0,36,206,566,"Name", "Description","http://i.imgur.com/2KQVKw0.jpg"));
-        products.add(new Product(0,36,206,566,"Name", "Description","https://media-cdn.tripadvisor.com/media/photo-s/0e/40/f2/34/delicious-cofe.jpg"));
-        products.add(new Product(0,36,206,566,"Name", "Description","https://cdn2.stylecraze.com/wp-content/uploads/2013/09/1557_5-Black-Tea-Side-Effects-You-Should-Be-Aware-Of.jpg"));
-        products.add(new Product(0,36,206,566,"Name", "Description","http://i.imgur.com/2KQVKw0.jpg"));
-        products.add(new Product(0,36,206,566,"Name", "Description","https://i2-prod.mirror.co.uk/incoming/article6201545.ece/ALTERNATES/s615/Cup-of-tea.jpg"));
-        products.add(new Product(0,36,206,566,"Name", "Description","http://cdn.shopify.com/s/files/1/0653/8213/products/Review_1_1_595e822f-7ad5-42f2-8f04-d16c923614dd_grande.jpg?v=1520387592"));
-        bindUI(products);
+
+        productsViewModel.bindStoreProducts(binding.productsRecyclerView,store_id);
     }
 
-    private void bindUI(List<Product> products){
-        RecyclerView recyclerView = getActivity().findViewById(R.id.productsRecyclerView);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        ProductsAdapter adapter = new ProductsAdapter(getActivity(), products);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
-        recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getActivity()
-                , recyclerView, new RecyclerTouchListener.ClickListener() {
-            @Override
-            public void onClick(View view, int position) {
-                startActivity(new Intent(getActivity(), ProductDetailsActivity.class));
-            }
 
-            @Override
-            public void onLongClick(View view, int position) {
-
-            }
-        }));
-    }
 }

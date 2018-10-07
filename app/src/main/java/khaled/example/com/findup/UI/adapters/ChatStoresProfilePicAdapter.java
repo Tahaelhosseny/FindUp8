@@ -17,19 +17,18 @@ import java.util.List;
 
 import khaled.example.com.findup.R;
 import khaled.example.com.findup.UI.activities.ProductDetailsActivity;
-import khaled.example.com.findup.models.Place;
-import khaled.example.com.findup.models.Product;
+import khaled.example.com.findup.models.Store;
 
 public class ChatStoresProfilePicAdapter extends RecyclerView.Adapter<ChatStoresProfilePicAdapter.ViewHolder> {
 
-    private List<Place> places;
+    private List<Store> stores;
     private Context context;
 
     private int middle_element_position;
 
-    public ChatStoresProfilePicAdapter(Context context, List<Place> places,int middle_element_position) {
+    public ChatStoresProfilePicAdapter(Context context, List<Store> stores, int middle_element_position) {
         this.context = context;
-        this.places = places;
+        this.stores = stores;
         this.middle_element_position = middle_element_position;
     }
 
@@ -66,11 +65,11 @@ public class ChatStoresProfilePicAdapter extends RecyclerView.Adapter<ChatStores
     @Override
     public void onBindViewHolder(@NonNull final ChatStoresProfilePicAdapter.ViewHolder holder, int position) {
 
-        Place place = places.get(position);
+        Store store = stores.get(position);
 
-        holder.store_name.setText(place.getPlaceName());
-        if (!place.getPlaceImg().isEmpty()) {
-            Picasso.with(holder.store_img.getContext()).load(place.getPlaceImg()).placeholder(R.drawable.near_by_place_holder).into(holder.store_img);
+        holder.store_name.setText(store.getStore_name());
+        if (!store.getStore_banner().isEmpty()) {
+            Picasso.with(holder.store_img.getContext()).load(store.getStore_banner()).placeholder(R.drawable.near_by_place_holder).into(holder.store_img);
         }
 
     }
@@ -81,7 +80,7 @@ public class ChatStoresProfilePicAdapter extends RecyclerView.Adapter<ChatStores
 
     @Override
     public int getItemCount() {
-        return places.size();
+        return stores.size();
     }
 
     @Override

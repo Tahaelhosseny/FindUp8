@@ -1,17 +1,27 @@
 package khaled.example.com.findup.Helper;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
+import android.support.v7.app.AlertDialog;
 import android.util.TypedValue;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import java.util.List;
+
 import khaled.example.com.findup.R;
+import khaled.example.com.findup.UI.activities.MainActivity;
+import khaled.example.com.findup.UI.activities.SplashScreenActivity;
+import khaled.example.com.findup.models.Day;
+import khaled.example.com.findup.models.Store_WorkTime;
 
 public class UI_Utility {
-    public static int[] getCategoryBackgroundIDSArray(Context mContext){
+    public static int[] getCategoryBackgroundIDSArray(Context mContext) {
         TypedArray ta = mContext.getResources().obtainTypedArray(R.array.colors);
         int[] colors = new int[ta.length()];
         for (int i = 0; i < ta.length(); i++) {
@@ -20,7 +30,7 @@ public class UI_Utility {
         return colors;
     }
 
-    public static void BottomNavigationMenu_icons_change(Menu menu , int Selected){
+    public static void BottomNavigationMenu_icons_change(Menu menu, int Selected) {
         menu.findItem(R.id.home).setIcon(R.drawable.home_unselected_0_5x);
         menu.findItem(R.id.map).setIcon(R.drawable.map_1_5x);
         menu.findItem(R.id.search).setIcon(R.drawable.search_1_5x);
@@ -39,7 +49,7 @@ public class UI_Utility {
             menu.getItem(Selected).setIcon(R.drawable.__1_5x);
     }
 
-    public static void BottomNavigationStoreMenu_icons_change(Menu menu , int Selected){
+    public static void BottomNavigationStoreMenu_icons_change(Menu menu, int Selected) {
         menu.findItem(R.id.storeHome).setIcon(R.drawable.ic_home_unselected);
         menu.findItem(R.id.storeChat).setIcon(R.drawable.ic_chat_unselected);
         menu.findItem(R.id.storeProfile).setIcon(R.drawable.__1_5x);
@@ -52,7 +62,7 @@ public class UI_Utility {
             menu.getItem(Selected).setIcon(R.drawable.__1_5x);
     }
 
-    public static void switchVisibility(View view){
+    public static void switchVisibility(View view) {
         if (view.getVisibility() == View.GONE)
             view.setVisibility(View.VISIBLE);
         else if (view.getVisibility() == View.VISIBLE)
@@ -62,7 +72,70 @@ public class UI_Utility {
     public static int spToPx(float sp, Context context) {
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, sp, context.getResources().getDisplayMetrics());
     }
+
     public static int dpToPx(float dp, Context context) {
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, context.getResources().getDisplayMetrics());
     }
+
+
+    public static AlertDialog ShowProgressDialog(Context mContext, boolean isVisible) {
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(mContext);
+        LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View dialogView = inflater.inflate(R.layout.loading_dialoge_layout, null);
+        dialogBuilder.setView(dialogView);
+        dialogBuilder.setCancelable(false);
+        AlertDialog b = dialogBuilder.create();
+        if (isVisible)
+            b.show();
+        else
+            b.dismiss();
+        return b;
+    }
+
+    public static AlertDialog noConnection(Context mContext, boolean isVisible) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+
+        builder.setTitle(mContext.getResources().getString(R.string.no_internet));
+        builder.setMessage(mContext.getResources().getString(R.string.no_internet_connection));
+
+        builder.setPositiveButton(mContext.getResources().getString(R.string.no_connection_try_again), new DialogInterface.OnClickListener() {
+
+            public void onClick(DialogInterface dialog, int which) {
+                mContext.startActivity(new Intent(mContext, SplashScreenActivity.class));
+                dialog.dismiss();
+            }
+        });
+
+        builder.setNegativeButton(mContext.getResources().getString(R.string.no_internet_continue), new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                mContext.startActivity(new Intent(mContext, MainActivity.class));
+                dialog.dismiss();
+            }
+        });
+
+        AlertDialog alert = builder.create();
+        alert.show();
+        return alert;
+    }
+
+    public static String WorkDaysToString(List<Day> dayList) {
+        if (dayList.size() == 7) {
+            return dayList.get(0) + " - " + dayList.get(dayList.size() - 1);
+        } else {
+            String days = "";
+            for (int i = 0; i <dayList.size(); i++) {
+                days = days + "" + dayList.get(i).getDay_name();
+                if (i != dayList.size()-1)
+                    days = days +" - ";
+            }
+            return days;
+        }
+    }
+
+    public static String WorkTimeToString(Store_WorkTime store_workTime){
+        return store_workTime.getWork_from_time() +" - " + store_workTime.getWork_to_time();
+    }
 }
+

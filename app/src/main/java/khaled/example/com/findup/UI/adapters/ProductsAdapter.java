@@ -2,7 +2,6 @@ package khaled.example.com.findup.UI.adapters;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -35,13 +34,17 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
         this.products = products;
     }
 
+    public void setProducts(List<Product> products) {
+        this.products = products;
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView productName;
         TextView productPrice;
         TextView productDescription;
         ImageView productImg;
-
+        Product product;
         public ViewHolder(View view) {
             super(view);
 
@@ -49,11 +52,14 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
             productDescription = view.findViewById(R.id.productItemDesc);
             productPrice = view.findViewById(R.id.productItemPrice);
             productImg = view.findViewById(R.id.productItemImg);
+            view.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View v) {
-            context.startActivity(new Intent(context, ProductDetailsActivity.class));
+            Intent intent =new Intent(context, ProductDetailsActivity.class);
+            intent.putExtra("prod_id",product.getProduct_id());
+            v.getContext().startActivity(intent);
         }
     }
 
@@ -68,19 +74,18 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ProductsAdapter.ViewHolder holder, int position) {
 
-        Product product = products.get(position);
+        holder.product = products.get(position);
 
-        holder.productName.setText(product.getProductName());
-        holder.productDescription.setText(product.getProductDescription());
-        holder.productPrice.setText(String.valueOf(product.getProductPrice()));
+        holder.productName.setText(holder.product.getProduct_name());
+        holder.productDescription.setText(holder.product.getProduct_desc());
+        holder.productPrice.setText(String.valueOf(holder.product.getProduct_price()));
 
-        if (!product.getProductPhoto().isEmpty()) {
+        if (!holder.product.getProduct_banner().isEmpty()) {
             Transformation transformation = new RoundedTransformationBuilder()
                     .cornerRadiusDp(80)
                     .oval(false)
                     .build();
-
-            Picasso.with(holder.productImg.getContext()).load(product.getProductPhoto()).transform(transformation).placeholder(R.drawable.near_by_place_holder).into(holder.productImg);
+            Picasso.with(holder.productImg.getContext()).load(holder.product.getProduct_banner()).transform(transformation).placeholder(R.drawable.near_by_place_holder).into(holder.productImg);
         }
 
     }

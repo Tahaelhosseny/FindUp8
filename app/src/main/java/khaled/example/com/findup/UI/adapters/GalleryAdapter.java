@@ -1,14 +1,11 @@
 package khaled.example.com.findup.UI.adapters;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.jsibbold.zoomage.ZoomageView;
 import com.makeramen.roundedimageview.RoundedTransformationBuilder;
@@ -17,23 +14,20 @@ import com.squareup.picasso.Transformation;
 
 import java.util.List;
 
-import khaled.example.com.findup.Helper.Utility;
 import khaled.example.com.findup.R;
-import khaled.example.com.findup.UI.activities.StoreDetailsActivity;
-import khaled.example.com.findup.models.Comment;
-import khaled.example.com.findup.models.Place;
+import khaled.example.com.findup.models.Store;
 
 public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.ViewHolder> {
 
     private Context mContext;
     private List<String> url;
-    private Place place;
+    private Store store;
 
 
-    public GalleryAdapter(Context mContext, List<String> url, Place place) {
+    public GalleryAdapter(Context mContext, List<String> url, Store store) {
         this.mContext = mContext;
         this.url = url;
-        this.place = place;
+        this.store = store;
     }
 
     @NonNull

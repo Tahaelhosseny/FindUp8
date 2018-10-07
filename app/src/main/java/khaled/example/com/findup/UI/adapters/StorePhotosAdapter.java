@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,22 +15,31 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.makeramen.roundedimageview.RoundedTransformationBuilder;
+import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Transformation;
+
 import java.util.List;
 
+import khaled.example.com.findup.CONST;
 import khaled.example.com.findup.R;
 import khaled.example.com.findup.UI.activities.PhotosGalleryActivity;
+import khaled.example.com.findup.models.StorePhoto;
 
 /**
  * Created by khaled on 7/11/18.
  */
 
 public class StorePhotosAdapter extends RecyclerView.Adapter<StorePhotosAdapter.ViewHolder>{
-    private List<String> photos;
+    private List<StorePhoto> photos;
     private Context context;
 
-    public StorePhotosAdapter(Context context, List<String> photos) {
+    public StorePhotosAdapter(Context context, List<StorePhoto> photos) {
         this.context = context;
-        this.photos = photos.subList(0,4);
+        if (photos.size() > 4)
+            this.photos = photos.subList(0,4);
+        else
+            this.photos = photos;
     }
 
     @NonNull
@@ -41,12 +52,22 @@ public class StorePhotosAdapter extends RecyclerView.Adapter<StorePhotosAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull StorePhotosAdapter.ViewHolder holder, int position) {
-        String photo = photos.get(position);
-        /*if (TextUtils.isEmpty(photo)){
+        String photo = CONST.API_FILE_DOMAIN+""+CONST.IMAGES_PATH+""+photos.get(position).getPhoto_name();
+        /*if (!TextUtils.isEmpty(photo)){
             Picasso.with(context)
                     .load(photo)
                     .into(holder.photo);
         }*/
+
+        if (!photo.isEmpty()) {
+            Transformation transformation = new RoundedTransformationBuilder()
+                    .cornerRadiusDp(20)
+                    .oval(false)
+                    .build();
+
+            Picasso.with(context).load(photo).transform(transformation).placeholder(R.drawable.com_facebook_profile_picture_blank_square).into(holder.photo);
+        }
+        Log.i("photo_url",photo);
 
         holder.photo_container.setMinimumWidth(getScreenWidth()/4);
 

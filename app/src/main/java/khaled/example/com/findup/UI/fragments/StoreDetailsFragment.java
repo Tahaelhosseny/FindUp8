@@ -1,6 +1,9 @@
 package khaled.example.com.findup.UI.fragments;
 
 
+import android.app.Activity;
+import android.content.Intent;
+import android.databinding.DataBindingUtil;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -22,63 +25,47 @@ import java.util.ArrayList;
 import java.util.List;
 
 import khaled.example.com.findup.R;
+import khaled.example.com.findup.UI.ViewModel.Fragments.NearMeViewModel;
+import khaled.example.com.findup.UI.ViewModel.Fragments.StoreDetailsViewModel;
+import khaled.example.com.findup.databinding.FragmentNearMeBinding;
+import khaled.example.com.findup.databinding.FragmentStoreDetailsBinding;
 import khaled.example.com.findup.models.TabEntity;
 import khaled.example.com.findup.UI.fragments.ProductsFragment;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class StoreDetailsFragment extends Fragment {
+public class StoreDetailsFragment extends Fragment  {
 
 
     public StoreDetailsFragment() {
         // Required empty public constructor
     }
 
-
+    StoreDetailsViewModel storeDetailsViewModel;
+    FragmentStoreDetailsBinding binding;
+    int store_id;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_store_details, container, false);
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_store_details, container, false);
+        View view = binding.getRoot();
+        Intent i = ((Activity)view.getContext()).getIntent();
+        store_id=0;
+        if (i.hasExtra("store_id"))
+            store_id = i.getIntExtra("store_id",0);
+        storeDetailsViewModel = new StoreDetailsViewModel(view.getContext(),store_id);
+        binding.setNearMe(storeDetailsViewModel);
+        return view;
     }
 
-    CommonTabLayout tabLayout;
+
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-
-        ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();
-        mTabEntities.add(new TabEntity("Information"));
-        mTabEntities.add(new TabEntity("Products"));
-        ArrayList<Fragment> fragmentList = new ArrayList<>();
-        fragmentList.add(new StoreInfoFragment());
-        fragmentList.add(new ProductsFragment());
-        tabLayout = getActivity().findViewById(R.id.storeTabs);
-        tabLayout.setTabData(mTabEntities,getActivity(),R.id.fl_change,fragmentList);
-        tabLayout.setIconHeight(0);
-        tabLayout.setIconVisible(false);
-        //Typeface mTypeface = Typeface.createFromAsset(getActivity().getAssets(), "fonts/sfcompactdisplay_semibold.ttf");
-       // mTypeface = Typeface.createFromAsset(getContext().getAssets(), "fonts/sfcompactdisplay_semibold.ttf");
-
-        tabLayout.getTitleView(0).setTypeface(Typeface.create("sfcompactdisplay_semibold", Typeface.NORMAL));
-        tabLayout.getTitleView(1).setTypeface(Typeface.create("sfcompactdisplay_heavy", Typeface.NORMAL));
-
-        //tabLayout.setupWithViewPager(viewPager);
-        //tabLayout.setSelectedTabIndicatorColor(getActivity().getResources().getColor(R.color.material_color_deep_orange_accent));
-        /*tabLayout.clearFocus();
-        tabLayout.setFocusableInTouchMode(false);
-        tabLayout.setFocusable(false);
-        tabLayout.dispatchWindowFocusChanged(false);*/
-
+        storeDetailsViewModel.AssignDataToFields(binding.storeImg,binding.storeName,binding.storeDis,binding.storeBriefTxt,binding.storeRating);
+        storeDetailsViewModel.InitTabs(binding.storeTabs);
     }
 
-    @Override
-    public void onPause() {
-        super.onPause();
-        tabLayout.getTitleView(0).setTypeface(Typeface.create("sfcompactdisplay_semibold", Typeface.NORMAL));
-        tabLayout.getTitleView(1).setTypeface(Typeface.create("sfcompactdisplay_heavy", Typeface.NORMAL));
-
-    }
 }

@@ -51,11 +51,11 @@ public class EventsFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         List<Event> events = new ArrayList<>();
+        /*events.add(new Event("Event", "Event Description","6 May",""));
         events.add(new Event("Event", "Event Description","6 May",""));
         events.add(new Event("Event", "Event Description","6 May",""));
         events.add(new Event("Event", "Event Description","6 May",""));
-        events.add(new Event("Event", "Event Description","6 May",""));
-        events.add(new Event("Event", "Event Description","6 May",""));
+        events.add(new Event("Event", "Event Description","6 May",""));*/
         bindUI(events);
 
     }

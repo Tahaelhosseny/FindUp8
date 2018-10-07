@@ -60,6 +60,7 @@ public class ProductDetailsFragment extends Fragment {
     private void bindPhotos(List<String > photos){
         RecyclerView recyclerView = getActivity().findViewById(R.id.productPhotosRecycler);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
+        /*
         StorePhotosAdapter adapter = new StorePhotosAdapter(getActivity(), photos);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false)
@@ -87,7 +88,7 @@ public class ProductDetailsFragment extends Fragment {
 
             }
         }));
-    }
+*/    }
 
 
     private void bindCommentsPhotos(){

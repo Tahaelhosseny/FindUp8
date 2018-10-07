@@ -1,17 +1,13 @@
 package khaled.example.com.findup.UI.adapters;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.makeramen.roundedimageview.RoundedTransformationBuilder;
 import com.squareup.picasso.Picasso;
@@ -19,9 +15,7 @@ import com.squareup.picasso.Transformation;
 
 import java.util.List;
 
-import khaled.example.com.findup.Helper.UI_Utility;
 import khaled.example.com.findup.R;
-import khaled.example.com.findup.models.Category;
 import khaled.example.com.findup.models.Comment;
 
 /**
@@ -35,7 +29,10 @@ public class CommentsPhotosAdapter extends RecyclerView.Adapter<CommentsPhotosAd
 
     public CommentsPhotosAdapter(Context context, List<Comment> CommentsList) {
         this.context = context;
-        this.CommentsList = CommentsList.subList(0,3);
+        if (CommentsList.size() > 3)
+            this.CommentsList = CommentsList.subList(0,3);
+        else
+            this.CommentsList = CommentsList;
     }
 
     @NonNull
@@ -49,15 +46,15 @@ public class CommentsPhotosAdapter extends RecyclerView.Adapter<CommentsPhotosAd
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Comment comment = CommentsList.get(position);
-        if (!comment.getUser_profile_pic().isEmpty()) {
+        if (!comment.getAccount_image().isEmpty()) {
             Transformation transformation = new RoundedTransformationBuilder()
                     .cornerRadiusDp(90)
-                    .oval(false)
+                    .oval(true)
                     .borderColor(Color.WHITE)
                     .borderWidthDp(10)
                     .build();
 
-            Picasso.with(holder.photoImg.getContext()).load(comment.getUser_profile_pic()).transform(transformation).placeholder(R.drawable.near_by_place_holder).into(holder.photoImg);
+            Picasso.with(holder.photoImg.getContext()).load(comment.getAccount_image()).transform(transformation).placeholder(R.drawable.near_by_place_holder).into(holder.photoImg);
 
         }
     }

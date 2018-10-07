@@ -14,9 +14,11 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import khaled.example.com.findup.Helper.Location.LocationUtility;
 import khaled.example.com.findup.R;
 import khaled.example.com.findup.UI.activities.StoreDetailsActivity;
-import khaled.example.com.findup.models.Place;
+import khaled.example.com.findup.models.CurrentLocation;
+import khaled.example.com.findup.models.Store;
 
 /**
  * Created by khaled on 7/4/18.
@@ -24,13 +26,19 @@ import khaled.example.com.findup.models.Place;
 
 public class NearMeAdapter extends RecyclerView.Adapter<NearMeAdapter.ViewHolder> {
 
-    private List<Place> places;
+    private List<Store> stores;
     private Context context;
-
-    public NearMeAdapter(Context context, List<Place> places) {
+    private CurrentLocation currentLocation = new CurrentLocation();
+    public NearMeAdapter(Context context, List<Store> stores) {
         this.context = context;
-        this.places = places;
+        this.stores = LocationUtility.SortStoresByNearest(context,stores,currentLocation.getLocationModel());
     }
+
+    public void setCurrentLocation(CurrentLocation currentLocation) {
+        this.currentLocation = currentLocation;
+    }
+
+    public void setStores(List<Store> stores) { this.stores = LocationUtility.SortStoresByNearest(context,stores,currentLocation.getLocationModel()); }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
@@ -39,6 +47,7 @@ public class NearMeAdapter extends RecyclerView.Adapter<NearMeAdapter.ViewHolder
         TextView distance;
         TextView review;
         TextView shortDesc;
+        Store store;
 
         public ViewHolder(View view) {
             super(view);
@@ -48,13 +57,11 @@ public class NearMeAdapter extends RecyclerView.Adapter<NearMeAdapter.ViewHolder
             review = view.findViewById(R.id.nearItemReview);
             shortDesc = view.findViewById(R.id.nearItemTags);
             view.setOnClickListener(this);
-
         }
 
         @Override
         public void onClick(View v) {
-            v.getContext().startActivity(new Intent(v.getContext(), StoreDetailsActivity.class));
-
+            v.getContext().startActivity(new Intent(v.getContext(), StoreDetailsActivity.class).putExtra("store_id",store.getStore_id()));
         }
     }
 
@@ -69,18 +76,18 @@ public class NearMeAdapter extends RecyclerView.Adapter<NearMeAdapter.ViewHolder
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        Place place = places.get(position);
-        holder.placeName.setText(place.getPlaceName());
-        holder.distance.setText(place.getPlaceDistane());
-        holder.review.setText(place.getPlaceReview());
-        holder.shortDesc.setText(place.getPlaceShortDescription());
-        if (!place.getPlaceImg().isEmpty())
-            Picasso.with(holder.placeImage.getContext()).load(place.getPlaceImg()).placeholder(R.drawable.near_by_place_holder).into(holder.placeImage);
+        holder.store = stores.get(position);
+        holder.placeName.setText(holder.store.getStore_name());
+        holder.distance.setText(holder.store.getPlaceDistane(context,currentLocation.getLocationModel()));
+        holder.review.setText(holder.store.getPlaceReview());
+        holder.shortDesc.setText(holder.store.getStore_desc());
+        if (!holder.store.getStore_banner().isEmpty())
+            Picasso.with(holder.placeImage.getContext()).load(holder.store.getStore_banner()).placeholder(R.drawable.near_by_place_holder).into(holder.placeImage);
 
     }
 
     @Override
     public int getItemCount() {
-        return places.size();
+        return stores.size();
     }
 }

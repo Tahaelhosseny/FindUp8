@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+
+        <variable
+            name="Info"
+            type="khaled.example.com.findup.UI.ViewModel.Fragments.StoreInfoViewModel"/>
+
+        <variable
+            name="presenter"
+            type="khaled.example.com.findup.UI.Presenter.Fragments.StoreInfoFragmentPresenter"/>
+
+    </data>
+    <ScrollView
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -397,7 +410,7 @@
                 android:drawableStart="@drawable/__1_5x"
                 android:paddingEnd="20dp"
                 android:paddingStart="10dp"
-                android:text="Get direction"
+                android:text="@string/get_directions"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/streetAddress" />
@@ -409,3 +422,4 @@
     </android.support.constraint.ConstraintLayout>
 
 </ScrollView>
+</layout>

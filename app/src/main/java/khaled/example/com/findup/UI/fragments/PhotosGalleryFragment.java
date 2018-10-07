@@ -2,14 +2,11 @@ package khaled.example.com.findup.UI.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
 import com.ramotion.cardslider.CardSliderLayoutManager;
 import com.ramotion.cardslider.CardSnapHelper;
@@ -21,8 +18,7 @@ import java.util.List;
 
 import khaled.example.com.findup.R;
 import khaled.example.com.findup.UI.adapters.GalleryAdapter;
-import khaled.example.com.findup.models.Comment;
-import khaled.example.com.findup.models.Place;
+import khaled.example.com.findup.models.Store;
 
 public class PhotosGalleryFragment extends Fragment{
 
@@ -42,8 +38,8 @@ public class PhotosGalleryFragment extends Fragment{
         url.add("https://scontent-cai1-1.xx.fbcdn.net/v/t1.0-9/20108103_1445001665586560_8405913558571444834_n.jpg?_nc_cat=0&oh=d1e92942903ee55336709c7e670b95af&oe=5BC99CF4");
         url.add("https://scontent-cai1-1.xx.fbcdn.net/v/t1.0-9/15337648_1214159182004144_1442355796478199942_n.jpg?_nc_cat=0&oh=9d510e190e24f0d97efcb03db4875f9b&oe=5BDF92C5");
 
-        Place place = new Place(2,"Genuine Coffee", "2km", "", "4.2","Indian Cafe Break $$");
-        GalleryAdapter galleryAdapter = new GalleryAdapter(getContext(),url,place);
+        Store store = new Store(2,"Genuine Coffee",  "", "4.2","Indian Cafe Break $$");
+        GalleryAdapter galleryAdapter = new GalleryAdapter(getContext(),url, store);
         recyclerView = (RecyclerView) getActivity().findViewById(R.id.photo_recyclerview);
         recyclerView.setAdapter(galleryAdapter);
         recyclerView.setHasFixedSize(true);

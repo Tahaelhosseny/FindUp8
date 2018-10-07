@@ -1,4 +1,4 @@
-package khaled.example.com.findup.UI.ViewModel;
+package khaled.example.com.findup.UI.ViewModel.Activites;
 
 import android.arch.lifecycle.ViewModel;
 

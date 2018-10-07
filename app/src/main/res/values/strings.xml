@@ -158,5 +158,15 @@
     <string name="friday">Friday</string>
     <string name="dynamic_store_loc">your location is Dynamic .. change it if you want</string>
 
+    <string name="loading_text">Loading Data</string>
+    <string name="km">Km</string>
+    <string name="m">m</string>
+    <string name="no_internet_connection">your internet connection is disabled or enabled but weak.</string>
+    <string name="no_internet_continue">Continue with outofdate data</string>
+    <string name="no_connection_try_again">Try Again</string>
+    <string name="no_internet">No Internet</string>
+    <string name="email_title_to_store">Message from FindUp User</string>
+    <string name="get_directions">Get direction</string>
+
 
 </resources>

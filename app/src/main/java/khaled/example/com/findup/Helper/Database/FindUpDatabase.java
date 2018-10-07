@@ -6,8 +6,16 @@ import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
 
 import khaled.example.com.findup.models.Category;
+import khaled.example.com.findup.models.Comment;
+import khaled.example.com.findup.models.Event;
+import khaled.example.com.findup.models.Product;
+import khaled.example.com.findup.models.ProductPhoto;
+import khaled.example.com.findup.models.Store;
+import khaled.example.com.findup.models.StorePhoto;
 
-@Database(entities = {Category.class}, version = 1, exportSchema = false)
+@Database(entities = {Category.class, Store.class,
+        Comment.class, Event.class, Product.class,
+        StorePhoto.class, ProductPhoto.class}, version = 2, exportSchema = false)
 public abstract class FindUpDatabase extends RoomDatabase{
     public abstract DaoAccess daoAccess() ;
     private static final String DATABASE_NAME = "findup.db";

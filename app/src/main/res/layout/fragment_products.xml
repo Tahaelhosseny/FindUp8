@@ -1,24 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
 
-    <android.support.constraint.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        <variable
+            name="products"
+            type="khaled.example.com.findup.UI.ViewModel.Fragments.ProductsViewModel"/>
 
+        <variable
+            name="presenter"
+            type="khaled.example.com.findup.UI.Presenter.Fragments.ProductsPresenter"/>
+
+    </data>
         <android.support.v7.widget.RecyclerView
-            xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/productsRecyclerView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:fadeScrollbars="false"
-            android:nestedScrollingEnabled="false"
-            android:scrollbars="vertical"
-            app:layout_constraintTop_toBottomOf="@+id/search_edit_text_with_filter"/>
-
-    </android.support.constraint.ConstraintLayout>
-
-</ScrollView>
+            android:layout_height="match_parent"
+            android:scrollbars="vertical" />
+</layout>

@@ -3,6 +3,7 @@ package khaled.example.com.findup.UI.fragments;
 
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -30,6 +31,9 @@ import java.util.List;
 
 import khaled.example.com.findup.UI.CustomViews.OverlapDecoration;
 import khaled.example.com.findup.R;
+import khaled.example.com.findup.UI.ViewModel.Fragments.NearMeViewModel;
+import khaled.example.com.findup.UI.ViewModel.Fragments.StoreDetailsViewModel;
+import khaled.example.com.findup.UI.ViewModel.Fragments.StoreInfoViewModel;
 import khaled.example.com.findup.UI.activities.ChatWithStoreActivity;
 import khaled.example.com.findup.UI.activities.CommentsActivity;
 import khaled.example.com.findup.UI.activities.PhotosGalleryActivity;
@@ -37,6 +41,8 @@ import khaled.example.com.findup.UI.activities.StoreDetailsActivity;
 import khaled.example.com.findup.UI.adapters.CommentsPhotosAdapter;
 import khaled.example.com.findup.UI.adapters.RecyclerTouchListener;
 import khaled.example.com.findup.UI.adapters.StorePhotosAdapter;
+import khaled.example.com.findup.databinding.FragmentNearMeBinding;
+import khaled.example.com.findup.databinding.FragmentStoreInfoBinding;
 import khaled.example.com.findup.models.Comment;
 
 /**
@@ -50,13 +56,24 @@ public class StoreInfoFragment extends Fragment implements OnMapReadyCallback {
         // Required empty public constructor
     }
 
+    public static StoreInfoFragment newInstance() {
+        StoreInfoFragment fragment = new StoreInfoFragment();
+        Bundle args = new Bundle();
+        fragment.setArguments(args);
+        return fragment;
+    }
 
+    StoreInfoViewModel storeInfoViewModel;
+    FragmentStoreInfoBinding binding;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View rootView = inflater.inflate(R.layout.fragment_store_info, container, false);
-
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_store_info, container, false);
+        View rootView = binding.getRoot();
+        //here data must be an instance of the class MarsDataProvider
+        storeInfoViewModel = new StoreInfoViewModel(getContext(),  getArguments().getInt("store_id"));
+        binding.setInfo(storeInfoViewModel);
         try {
             MapsInitializer.initialize(this.getActivity());
             mMapView = (MapView) rootView.findViewById(R.id.mapView);
@@ -72,15 +89,6 @@ public class StoreInfoFragment extends Fragment implements OnMapReadyCallback {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        List<String> photos = new ArrayList<>();
-        photos.add("");
-        photos.add("");
-        photos.add("");
-        photos.add("");
-        photos.add("");
-        bindPhotos(photos);
-
-
 
         ImageView show_comments = getActivity().findViewById(R.id.show_comments);
         show_comments.setOnClickListener(new View.OnClickListener() {
@@ -93,82 +101,11 @@ public class StoreInfoFragment extends Fragment implements OnMapReadyCallback {
         TextView add_rating = getActivity().findViewById(R.id.addRateTxt);
         add_rating.setOnClickListener(getRatingDialog());
 
-        bindCommentsPhotos();
-    }
+        storeInfoViewModel.bindCommentsPhotos(binding.commentUsersImg);
+        storeInfoViewModel.bindPhotos(binding.storePhotosRecycler);
+        storeInfoViewModel.bindStoreData(binding.aboutTxtDetails,binding.workTimeDaysInfoTxt,binding.workTimeInfoTxt,
+                binding.mailImg,binding.siteImg,binding.chatImg,binding.twitterImg,binding.snapImg);
 
-
-
-    private void bindCommentsPhotos(){
-        List<Comment> commentList = new ArrayList<>();
-        commentList.add(new Comment("Nof Ahmed",1532037763,"There are many variations of passages of larem lpsum avaliable, but the mojrity have suffeed alteration in some form, by injected humour.","https://scontent-cai1-1.xx.fbcdn.net/v/t1.0-9/26167130_1598420403578018_2434073418497810718_n.jpg?_nc_cat=0&oh=fe9593c83468b97c82a5e1623cc99030&oe=5BC620E6"));
-        commentList.add(new Comment("Ali Mohamed",1532037763,"There are many variations of passages of larem lpsum avaliable, but the mojrity have suffeed alteration in some form, by injected humour.","https://scontent-cai1-1.xx.fbcdn.net/v/t1.0-9/23032777_1542237902529602_2168190355513235328_n.jpg?_nc_cat=0&oh=bbc2dce33830def8b69357824a77d8f7&oe=5BE23CBC"));
-        commentList.add(new Comment("Mohamed Ahmed",1532037763,"There are many variations of passages of larem lpsum avaliable, but the mojrity have suffeed alteration in some form, by injected humour.","https://scontent-cai1-1.xx.fbcdn.net/v/t1.0-9/20108103_1445001665586560_8405913558571444834_n.jpg?_nc_cat=0&oh=d1e92942903ee55336709c7e670b95af&oe=5BC99CF4"));
-        commentList.add(new Comment("Walid Abd EL-Rahman",1532037763,"There are many variations of passages of larem lpsum avaliable, but the mojrity have suffeed alteration in some form, by injected humour.","https://scontent-cai1-1.xx.fbcdn.net/v/t1.0-9/15337648_1214159182004144_1442355796478199942_n.jpg?_nc_cat=0&oh=9d510e190e24f0d97efcb03db4875f9b&oe=5BDF92C5"));
-
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL,true);
-        layoutManager.setReverseLayout(true);
-        layoutManager.setStackFromEnd(true);
-
-        RecyclerView recyclerView = getActivity().findViewById(R.id.commentUsersImg);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        CommentsPhotosAdapter adapter = new CommentsPhotosAdapter(getActivity(), commentList);
-        recyclerView.setAdapter(adapter);
-        //recyclerView.setLayoutManager(layoutManager);
-
-        recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getActivity()
-                , recyclerView, new RecyclerTouchListener.ClickListener() {
-            @Override
-            public void onClick(View view, int position) {
-                startActivity(new Intent(getActivity(), CommentsActivity.class));
-            }
-
-            @Override
-            public void onLongClick(View view, int position) {
-
-            }
-        }));
-
-        recyclerView.addItemDecoration(new OverlapDecoration());
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
-    }
-    private void bindPhotos(List<String > photos){
-        RecyclerView recyclerView = getActivity().findViewById(R.id.storePhotosRecycler);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        StorePhotosAdapter adapter = new StorePhotosAdapter(getActivity(), photos);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false)
-        {
-            @Override
-            public boolean canScrollVertically() {
-                return false;
-            }
-
-            @Override
-            public boolean canScrollHorizontally() {
-                return false;
-            }
-        });
-        recyclerView.smoothScrollToPosition(0);
-        recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getActivity()
-                , recyclerView, new RecyclerTouchListener.ClickListener() {
-            @Override
-            public void onClick(View view, int position) {
-                startActivity(new Intent(getActivity(), PhotosGalleryActivity.class));
-            }
-
-            @Override
-            public void onLongClick(View view, int position) {
-
-            }
-        }));
-
-        ImageView chatImg = getActivity().findViewById(R.id.chatImg);
-        chatImg.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getActivity(), ChatWithStoreActivity.class));
-            }
-        });
     }
 
 
@@ -200,11 +137,7 @@ public class StoreInfoFragment extends Fragment implements OnMapReadyCallback {
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        googleMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(sydney.latitude - ((sydney.latitude * 14) / 1000000), sydney.longitude- ((sydney.longitude * 14) / 400000)) , 14));
-        googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+        storeInfoViewModel.onMapReadyBind(googleMap,binding.button2,binding.streetAddress);
     }
 
 

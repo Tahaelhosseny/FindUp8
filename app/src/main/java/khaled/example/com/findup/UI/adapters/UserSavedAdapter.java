@@ -18,7 +18,6 @@ import java.util.List;
 
 import khaled.example.com.findup.R;
 import khaled.example.com.findup.models.Product;
-import khaled.example.com.findup.models.UserSavedItem;
 
 /**
  * Created by khaled on 8/1/18.
@@ -72,16 +71,16 @@ public class UserSavedAdapter extends RecyclerView.Adapter<UserSavedAdapter.View
         if (!userSavedItem.getItemImg().isEmpty())
             Picasso.with(context).load(userSavedItem.getItemImg()).placeholder(R.drawable.placeholder).into(holder.userSavedImage);*/
 
-        holder.userSavedName.setText(product.getProductName());
-        holder.userSavedDesc.setText(product.getProductDescription());
+        holder.userSavedName.setText(product.getProduct_name());
+        holder.userSavedDesc.setText(product.getProduct_desc());
 
-        if (!product.getProductPhoto().isEmpty()) {
+        if (!product.getProduct_banner().isEmpty()) {
             Transformation transformation = new RoundedTransformationBuilder()
                     .cornerRadiusDp(80)
                     .oval(false)
                     .build();
 
-            Picasso.with(holder.userSavedImage.getContext()).load(product.getProductPhoto()).transform(transformation).placeholder(R.drawable.near_by_place_holder).into(holder.userSavedImage);
+            Picasso.with(holder.userSavedImage.getContext()).load(product.getProduct_banner()).transform(transformation).placeholder(R.drawable.near_by_place_holder).into(holder.userSavedImage);
 
 
         }
