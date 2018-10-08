@@ -7,7 +7,7 @@ import java.util.List;
 
 import khaled.example.com.findup.models.User;
 
-public class LoginResponse {
+public class RegisterResponse {
     @SerializedName("tag")
     @Expose
     private String tag;
@@ -17,17 +17,19 @@ public class LoginResponse {
     @SerializedName("error")
     @Expose
     private int error;
+    @SerializedName("error_msg")
+    @Expose
     private String error_msg;
     @SerializedName("data")
     @Expose
     private List<User> data;
 
-    public String getError_msg() {
-        return error_msg;
+    public List<User> getData() {
+        return data;
     }
 
-    public void setError_msg(String error_msg) {
-        this.error_msg = error_msg;
+    public void setData(List<User> data) {
+        this.data = data;
     }
 
     public String getTag() {
@@ -54,13 +56,11 @@ public class LoginResponse {
         this.error = error;
     }
 
-    public List<User> getUser_data() {
-        return data;
+    public String getError_msg() {
+        return error_msg;
     }
 
-    public void setUser_data(List<User> user_data) {
-        this.data = user_data;
+    public void setError_msg(String error_msg) {
+        this.error_msg = error_msg;
     }
-
-
 }

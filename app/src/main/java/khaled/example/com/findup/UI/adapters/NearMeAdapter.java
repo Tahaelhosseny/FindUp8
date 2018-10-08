@@ -38,7 +38,9 @@ public class NearMeAdapter extends RecyclerView.Adapter<NearMeAdapter.ViewHolder
         this.currentLocation = currentLocation;
     }
 
-    public void setStores(List<Store> stores) { this.stores = LocationUtility.SortStoresByNearest(context,stores,currentLocation.getLocationModel()); }
+    public void setStores(List<Store> stores) {
+        this.stores = LocationUtility.SortStoresByNearest(context,stores,currentLocation.getLocationModel());
+    }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 

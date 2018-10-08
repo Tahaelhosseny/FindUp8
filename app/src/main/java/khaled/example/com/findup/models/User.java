@@ -1,12 +1,30 @@
 package khaled.example.com.findup.models;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 public class User {
 
+    @SerializedName("account_id")
+    @Expose
     private String id;
+    @SerializedName("user_name")
+    @Expose
     private String name;
+    @SerializedName("image")
+    @Expose
     private String image;
+    @SerializedName("mobile")
+    @Expose
     private String mobile;
+    @SerializedName("email")
+    @Expose
     private String email;
+
+    @Override
+    public String toString() {
+        return "ID : " + getId() + "  Name : "+ getName();
+    }
 
     public String getId() {
         return id;

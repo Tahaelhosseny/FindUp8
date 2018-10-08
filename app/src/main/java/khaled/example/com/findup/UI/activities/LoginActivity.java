@@ -10,7 +10,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
-
 import khaled.example.com.findup.UI.Presenter.Activities.LoginPresenter;
 import khaled.example.com.findup.UI.ViewModel.Activites.LoginViewModel;
 import khaled.example.com.findup.databinding.ActivityLoginBinding;

@@ -14,8 +14,10 @@ import khaled.example.com.findup.Helper.Database.DBUtility;
 import khaled.example.com.findup.Helper.Remote.ApiClient;
 import khaled.example.com.findup.Helper.Remote.ApiInterface;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.StoresResponse;
+import khaled.example.com.findup.Helper.SharedPrefManger;
 import khaled.example.com.findup.Helper.UI_Utility;
 import khaled.example.com.findup.UI.activities.IntroActivity;
+import khaled.example.com.findup.UI.activities.MainActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -60,10 +62,17 @@ public class SplashScreenViewModel  extends Observable {
     }
 
     public void StartApp(){
+        SharedPrefManger sharedPrefManger = new SharedPrefManger(mContext);
+
         ((Activity) mContext).runOnUiThread(new Runnable() {
             public void run() {
-                mContext.startActivity(new Intent(mContext, IntroActivity.class));
-                ((Activity) mContext).finish();
+                if(sharedPrefManger.isIsLoggedIn()){
+                    mContext.startActivity(new Intent(mContext, MainActivity.class));
+                    ((Activity) mContext).finish();
+                }else {
+                    mContext.startActivity(new Intent(mContext, IntroActivity.class));
+                    ((Activity) mContext).finish();
+                }
             }
         });
     }

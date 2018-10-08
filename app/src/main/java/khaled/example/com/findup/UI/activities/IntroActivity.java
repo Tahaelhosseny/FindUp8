@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -43,6 +44,9 @@ import java.util.HashMap;
 import khaled.example.com.findup.Helper.instaIntegration.ApplicationData;
 import khaled.example.com.findup.Helper.instaIntegration.InstagramApp;
 import khaled.example.com.findup.R;
+import khaled.example.com.findup.UI.Presenter.Activities.SocialPresenter;
+import khaled.example.com.findup.UI.ViewModel.Activites.IntroViewModel;
+import khaled.example.com.findup.databinding.ActivityIntroBinding;
 
 public class IntroActivity extends AppCompatActivity {
 
@@ -51,13 +55,14 @@ public class IntroActivity extends AppCompatActivity {
     ImageButton  btn_facebook, btn_instagram, btn_twitter;
     TextView main;
     ProgressDialog progressDialog;
-
+    ActivityIntroBinding activityIntroBinding;
+    IntroViewModel introViewModel;
     private static final int RC_SIGN_IN = 9001;
 
     private FirebaseAuth mAuth;
     GoogleSignInOptions gso;
     GoogleSignInClient mGoogleSignInClient;
-    private CallbackManager callbackManager;
+    CallbackManager callbackManager;
     private InstagramApp mApp;
     private HashMap<String, String> userInfoHashmap = new HashMap<String, String>();
     private Handler handler = new Handler(new Handler.Callback() {
@@ -77,7 +82,22 @@ public class IntroActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_intro);
+//        setContentView(R.layout.activity_intro);
+        introViewModel = new IntroViewModel(this);
+        activityIntroBinding = DataBindingUtil.setContentView(this,R.layout.activity_intro);
+        activityIntroBinding.setIntroview(introViewModel);
+        callbackManager = CallbackManager.Factory.create();
+        activityIntroBinding.setPresenter(new SocialPresenter() {
+            @Override
+            public void LoginWithFacebook() {
+                introViewModel.fbLogin(callbackManager);
+            }
+
+            @Override
+            public void LoginWithTwitter() {
+                introViewModel.twitterLogin();
+            }
+        });
         progressDialog = new ProgressDialog(this);
         mAuth = FirebaseAuth.getInstance();
         gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -85,7 +105,6 @@ public class IntroActivity extends AppCompatActivity {
                 .requestEmail()
                 .build();
         AppEventsLogger.activateApp(getApplication());
-        callbackManager = CallbackManager.Factory.create();
 
         mApp = new InstagramApp(IntroActivity.this, ApplicationData.CLIENT_ID,
                 ApplicationData.CLIENT_SECRET, ApplicationData.CALLBACK_URL);
@@ -134,12 +153,12 @@ public class IntroActivity extends AppCompatActivity {
             }
         });
 
-        btn_facebook.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                signInFaceBook();
-            }
-        });
+//        btn_facebook.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                signInFaceBook();
+//            }
+//        });
 
         btn_instagram.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -238,19 +257,19 @@ public class IntroActivity extends AppCompatActivity {
 
         callbackManager.onActivityResult(requestCode, resultCode, data);
         // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
-        if (requestCode == RC_SIGN_IN) {
-            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-            try {
-                // Google Sign In was successful, authenticate with Firebase
-                GoogleSignInAccount account = task.getResult(ApiException.class);
-                firebaseAuthWithGoogle(account);
-                progressDialog.dismiss();
-            } catch (ApiException e) {
-                // Google Sign In failed, update UI appropriately
-                Log.w(TAG, "Google sign in failed", e);
-                progressDialog.dismiss();
-            }
-        }
+//        if (requestCode == RC_SIGN_IN) {
+//            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+//            try {
+//                // Google Sign In was successful, authenticate with Firebase
+//                GoogleSignInAccount account = task.getResult(ApiException.class);
+//                firebaseAuthWithGoogle(account);
+//                progressDialog.dismiss();
+//            } catch (ApiException e) {
+//                // Google Sign In failed, update UI appropriately
+//                Log.w(TAG, "Google sign in failed", e);
+//                progressDialog.dismiss();
+//            }
+//        }
     }
 
     private void firebaseAuthWithGoogle(GoogleSignInAccount acct) {

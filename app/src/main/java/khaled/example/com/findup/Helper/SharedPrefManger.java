@@ -41,44 +41,44 @@ public class SharedPrefManger {
     public static void setIsLoggedInAsCustomer(boolean value) {
         mSharedPref.edit().putBoolean("isLoggedInAsCustomer", value).apply();
     }
-
     public static boolean isIsLoggedInAsCustomer() {
         return mSharedPref.getBoolean("isLoggedInAsCustomer", false);
     }
 
+    //----------------------------------------------------------------------------------
     public static void setIsLoggedIn(boolean value) {
         mSharedPref.edit().putBoolean("isLoggedIn", value).apply();
     }
-
     public static boolean isIsLoggedIn() {
         return mSharedPref.getBoolean("isLoggedIn", false);
     }
 
+    public static void setUserID(String id){
+        mSharedPref.edit().putString("user_id" , id).apply();
+    }
+    public static String getUser_ID() {
+        return mSharedPref.getString("user_id", "");
+    }
+    //-----------------------------------------------------------------------------------
     public static void setCurrentLocation(CurrentLocation currentLocation){
         mSharedPref.edit().putBoolean("HaveLocation", currentLocation.isEnabled()).apply();
         mSharedPref.edit().putFloat("latitude", (float) currentLocation.getLocation().latitude).apply();
         mSharedPref.edit().putFloat("longitude", (float) currentLocation.getLocation().longitude).apply();
     }
-
     public static CurrentLocation getCurrentLocation() {
         float latitude =  mSharedPref.getFloat("latitude", 0);
         float longitude =  mSharedPref.getFloat("longitude", 0);
         CurrentLocation currentLocation = new CurrentLocation(latitude,longitude);
         return currentLocation;
     }
-
     public static Preference<Float> getLatitude() {
         RxSharedPreferences rxPreferences = RxSharedPreferences.create(mSharedPref);
         return rxPreferences.getFloat("latitude");
     }
-
-
-
     public static Preference<Float> getLongitude() {
         RxSharedPreferences rxPreferences = RxSharedPreferences.create(mSharedPref);
         return rxPreferences.getFloat("longitude");
     }
-
     public static Float getLongitudeF() {
         return mSharedPref.getFloat("longitude", 0);
     }

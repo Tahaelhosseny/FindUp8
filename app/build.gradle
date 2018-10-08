@@ -92,6 +92,15 @@ dependencies {
     //shared preferences rx
     implementation 'com.f2prateek.rx.preferences2:rx-preferences:2.0.0'
 
+    // fACEBOOK LOGIN
+    implementation 'com.facebook.android:facebook-login:4.37.0'
+
+    // Include all the Twitter APIs
+    implementation 'com.twitter.sdk.android:twitter:3.1.1'
+    // (Optional) Monetize using mopub
+    implementation 'com.twitter.sdk.android:twitter-mopub:3.1.1'
+
+
 
 }
 

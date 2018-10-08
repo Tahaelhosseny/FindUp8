@@ -20,54 +20,76 @@ import khaled.example.com.findup.Helper.Utility;
  */
 @Entity
 public class Store {
-    @NonNull
-    @PrimaryKey @ColumnInfo(name = "store_id")
+//    @NonNull
+    @PrimaryKey
+    @ColumnInfo(name = "store_id")
     private int store_id;
-    @NonNull     @ColumnInfo(name = "store_name")
+//    @NonNull
+    @ColumnInfo(name = "store_name")
     private String store_name;
-    @NonNull     @ColumnInfo(name = "store_banner")
+//    @NonNull
+    @ColumnInfo(name = "store_banner")
     private String store_banner;
-    @NonNull     @ColumnInfo(name = "store_logo")
+//    @NonNull
+    @ColumnInfo(name = "store_logo")
     private String store_logo;
     @ColumnInfo(name = "placeReview")
     private String placeReview;
-    @NonNull     @ColumnInfo(name = "store_desc")
+//    @NonNull
+    @ColumnInfo(name = "store_desc")
     private String store_desc;
-    @NonNull     @ColumnInfo(name = "store_about")
+//    @NonNull
+    @ColumnInfo(name = "store_about")
     private String store_about;
-    @NonNull     @ColumnInfo(name = "store_tags")
+//    @NonNull
+    @ColumnInfo(name = "store_tags")
     private String store_tags;
-    @NonNull     @ColumnInfo(name = "store_mobile")
+//    @NonNull
+    @ColumnInfo(name = "store_mobile")
     private String store_mobile;
-    @NonNull     @ColumnInfo(name = "store_longitude")
+//    @NonNull
+    @ColumnInfo(name = "store_longitude")
     private Double store_longitude;
-    @NonNull     @ColumnInfo(name = "store_latitude")
+//    @NonNull
+    @ColumnInfo(name = "store_latitude")
     private Double store_latitude;
-    @NonNull     @ColumnInfo(name = "store_country_id")
+//    @NonNull
+    @ColumnInfo(name = "store_country_id")
     private String store_country_id;
-    @NonNull     @ColumnInfo(name = "country_name_en")
+//    @NonNull
+    @ColumnInfo(name = "country_name_en")
     private String country_name_en;
-    @NonNull     @ColumnInfo(name = "store_city_id")
+//    @NonNull
+    @ColumnInfo(name = "store_city_id")
     private String store_city_id;
-    @NonNull     @ColumnInfo(name = "city_name_en")
+//    @NonNull
+    @ColumnInfo(name = "city_name_en")
     private String city_name_en;
-    @NonNull     @ColumnInfo(name = "store_location_type")
+//    @NonNull
+    @ColumnInfo(name = "store_location_type")
     private String store_location_type;
-    @NonNull     @ColumnInfo(name = "store_location_address")
+//    @NonNull
+    @ColumnInfo(name = "store_location_address")
     private String store_location_address;
-    @NonNull     @ColumnInfo(name = "store_cat_id")
+//    @NonNull
+    @ColumnInfo(name = "store_cat_id")
     private String store_cat_id;
-    @NonNull     @ColumnInfo(name = "store_website_link")
+//    @NonNull
+    @ColumnInfo(name = "store_website_link")
     private String store_website_link;
-    @NonNull     @ColumnInfo(name = "store_twitter_link")
+//    @NonNull
+    @ColumnInfo(name = "store_twitter_link")
     private String store_twitter_link;
-    @NonNull     @ColumnInfo(name = "store_instegram_link")
+//    @NonNull
+    @ColumnInfo(name = "store_instegram_link")
     private String store_instegram_link;
-    @NonNull     @ColumnInfo(name = "store_gmail_link")
+//    @NonNull
+    @ColumnInfo(name = "store_gmail_link")
     private String store_gmail_link;
 
 
-    @NonNull     @ColumnInfo(name = "store_rating")
+//    @NonNull
+    @ColumnInfo(name = "store_rating")
     private String store_rating;
     @Ignore
     private List<StorePhoto> store_images;

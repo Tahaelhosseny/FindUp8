@@ -5,22 +5,33 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-import khaled.example.com.findup.models.User;
+import khaled.example.com.findup.models.Category;
+import khaled.example.com.findup.models.Event;
 
-public class LoginResponse {
+public class AllEventResponse {
     @SerializedName("tag")
     @Expose
     private String tag;
+
     @SerializedName("success")
     @Expose
-    private int success;
+    private String success;
+
     @SerializedName("error")
     @Expose
-    private int error;
+    private String error;
+
+    @SerializedName("error_msg")
+    @Expose
     private String error_msg;
+
     @SerializedName("data")
     @Expose
-    private List<User> data;
+    private List<Event> data;
+
+    @SerializedName("categories")
+    @Expose
+    private List<Category> categories;
 
     public String getError_msg() {
         return error_msg;
@@ -28,6 +39,14 @@ public class LoginResponse {
 
     public void setError_msg(String error_msg) {
         this.error_msg = error_msg;
+    }
+
+    public List<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(List<Category> categories) {
+        this.categories = categories;
     }
 
     public String getTag() {
@@ -38,29 +57,27 @@ public class LoginResponse {
         this.tag = tag;
     }
 
-    public int getSuccess() {
+    public String getSuccess() {
         return success;
     }
 
-    public void setSuccess(int success) {
+    public void setSuccess(String success) {
         this.success = success;
     }
 
-    public int getError() {
+    public String getError() {
         return error;
     }
 
-    public void setError(int error) {
+    public void setError(String error) {
         this.error = error;
     }
 
-    public List<User> getUser_data() {
+    public List<Event> getData() {
         return data;
     }
 
-    public void setUser_data(List<User> user_data) {
-        this.data = user_data;
+    public void setData(List<Event> data) {
+        this.data = data;
     }
-
-
 }
