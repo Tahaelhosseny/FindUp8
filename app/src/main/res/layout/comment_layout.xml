@@ -1,38 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+
+<layout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/comments_recyclerview"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:paddingBottom="60dp"/>
+    <data>
+        <variable
+            name="ProductComments"
+            type="khaled.example.com.findup.UI.ViewModel.Fragments.ProductCommentsViewModel"/>
+        <variable
+            name="presenter"
+            type="khaled.example.com.findup.UI.Presenter.Fragments.ProductCommentsPresenter"/>
+    </data>
 
-    <Button
-        android:id="@+id/write_comment_btn"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:text="@string/comments_write_comment_btn"
-        android:textSize="20sp"
-        android:fontFamily="@font/sfcompactdisplay_semibold"
-        android:textColor="@color/material_color_white"
-        android:textAllCaps="false"
-        android:elevation="@dimen/cardview_default_elevation"
-        android:layout_marginBottom="15dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:background="@drawable/bg_form_rounded"
-        android:backgroundTint="@color/colorAccent"/>
-</android.support.constraint.ConstraintLayout>
+    <android.support.constraint.ConstraintLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/comments_recyclerview"
+            android:layout_width="0dp"
+            android:orientation="vertical"
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:paddingBottom="60dp"/>
+
+        <Button
+            android:id="@+id/write_comment_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:text="@string/comments_write_comment_btn"
+            android:textSize="20sp"
+            android:fontFamily="@font/sfcompactdisplay_semibold"
+            android:textColor="@color/material_color_white"
+            android:textAllCaps="false"
+            android:elevation="@dimen/cardview_default_elevation"
+            android:layout_marginBottom="15dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/bg_form_rounded"
+            android:backgroundTint="@color/colorAccent"/>
+    </android.support.constraint.ConstraintLayout>
+</layout>

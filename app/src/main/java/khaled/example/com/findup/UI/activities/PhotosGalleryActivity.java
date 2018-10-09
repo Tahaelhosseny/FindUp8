@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
 import khaled.example.com.findup.R;
-import khaled.example.com.findup.UI.fragments.CommentsFragment;
 import khaled.example.com.findup.UI.fragments.PhotosGalleryFragment;
 
 public class PhotosGalleryActivity extends AppCompatActivity {

@@ -4,7 +4,9 @@ import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
+import android.support.v4.media.session.PlaybackStateCompat;
 
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 /**
@@ -17,14 +19,19 @@ public class Event {
     @ColumnInfo(name = "event_id")
     private int event_id;
     @NonNull
+    @SerializedName("event_name") @Expose
     private String event_name;
     @NonNull
+    @SerializedName("event_description") @Expose
     private String event_desc;
     @NonNull
+    @SerializedName("event_start_date") @Expose
     private String event_start_date;
     @NonNull
+    @SerializedName("event_photo") @Expose
     private String event_photo;
     @NonNull
+    @SerializedName("address") @Expose
     private String event_address;
     @NonNull
     private double event_latitude;
@@ -35,12 +42,15 @@ public class Event {
     @NonNull
     private int block_flag;
     @NonNull
+    @SerializedName("store_id") @Expose
     private int store_id;
     @NonNull
     private double event_cost;
     @NonNull
+    @SerializedName("event_time") @Expose
     private String event_time;
     @NonNull
+    @SerializedName("event_days") @Expose
     private String event_days;
 
 

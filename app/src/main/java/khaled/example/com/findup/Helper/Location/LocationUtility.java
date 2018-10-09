@@ -25,6 +25,7 @@ import khaled.example.com.findup.models.Store;
 
 public class LocationUtility {
 
+
     static LocationView view;
     private final CompositeDisposable disposable = new CompositeDisposable();
 
@@ -84,7 +85,6 @@ public class LocationUtility {
     public static CurrentLocation locationToCurrentLocation(double lat, double longitude) {
         return new CurrentLocation(lat, longitude);
     }
-
     public static CurrentLocation currentLocation = new CurrentLocation();
     public static void LatitudeToAdapter(double latitude, NearMeAdapter adapter){
         currentLocation.setLocation(new LatLng(latitude,currentLocation.getLocation().longitude));
@@ -94,7 +94,6 @@ public class LocationUtility {
         currentLocation.setLocation(new LatLng(currentLocation.getLocation().latitude,longitude));
         ChangeLocationAdapter(adapter);
     }
-
     public static void LatitudeToCurrentLocationModel(double latitude, CurrentLocation currentLocation){
         currentLocation.setLocation(new LatLng(latitude,currentLocation.getLocation().longitude));
     }

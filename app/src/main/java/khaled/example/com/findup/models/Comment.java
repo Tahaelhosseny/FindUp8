@@ -5,6 +5,9 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 @Entity
 public class Comment {
     @PrimaryKey
@@ -12,6 +15,8 @@ public class Comment {
     @NonNull
     private String account_name;
     @NonNull
+    @SerializedName("account_id")
+    @Expose
     private int acc_id;
     @NonNull
     private int store_id;

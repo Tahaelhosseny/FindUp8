@@ -15,19 +15,28 @@ import com.squareup.picasso.Transformation;
 
 import java.util.List;
 
+import khaled.example.com.findup.Helper.Location.LocationUtility;
 import khaled.example.com.findup.Helper.Utility;
 import khaled.example.com.findup.R;
 import khaled.example.com.findup.models.Comment;
+import khaled.example.com.findup.models.CurrentLocation;
+import khaled.example.com.findup.models.Store;
 
 public class CommentsAdapter extends RecyclerView.Adapter<CommentsAdapter.ViewHolder> {
 
 
     private Context mContext;
     private List<Comment> commentList;
+    private CurrentLocation currentLocation = new CurrentLocation();
 
     public CommentsAdapter(Context mContext, List<Comment> commentList) {
         this.mContext = mContext;
         this.commentList = commentList;
+    }
+
+    public void setComments(List<Comment> comment) {
+        this.commentList = comment;
+        notifyDataSetChanged();
     }
 
     @NonNull

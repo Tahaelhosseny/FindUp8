@@ -1,8 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    >
+    <data>
+
+        <variable
+            name="addCommentStoreView"
+            type="khaled.example.com.findup.UI.ViewModel.Fragments.AddCommentStoreViewModel"/>
+
+        <variable
+            name="presenter"
+            type="khaled.example.com.findup.UI.Presenter.Fragments.AddCommentStorePresenter"/>
+
+    </data>
+<android.support.constraint.ConstraintLayout
+
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -56,6 +70,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:onClick="@{(v)->presenter.addCommentToStore()}"
         android:text="@string/comments_write_comment_btn"
         android:textSize="20sp"
         android:fontFamily="@font/sfcompactdisplay_semibold"
@@ -68,3 +83,4 @@
         android:background="@drawable/bg_form_rounded"
         android:backgroundTint="@color/colorAccent"/>
 </android.support.constraint.ConstraintLayout>
+</layout>
