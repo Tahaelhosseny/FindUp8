@@ -92,6 +92,7 @@
         android:id="@+id/editText_stDigit"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
+        android:maxLength="1"
         android:layout_marginTop="26dp"
         android:digits="0123456789"
         android:gravity="center"
@@ -113,6 +114,8 @@
 
     <com.santalu.maskedittext.MaskEditText
         android:id="@+id/editText_ndDigit"
+        android:maxLength="1"
+
         android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="40dp"
@@ -141,6 +144,8 @@
         android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="40dp"
+        android:maxLength="1"
+
         android:layout_marginStart="40dp"
         android:layout_marginTop="26dp"
         android:digits="0123456789"
@@ -170,7 +175,8 @@
         android:layout_marginTop="26dp"
         android:digits="0123456789"
         android:gravity="center"
-        android:inputType="numberDecimal"
+       android:maxLength="1"
+    android:inputType="numberDecimal"
         android:shadowColor="@color/colorBlack"
         android:textColor="@color/colorBlack"
         android:textColorHighlight="@color/colorWhiteGrey"

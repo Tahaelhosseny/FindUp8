@@ -34,16 +34,20 @@ public class VerifyCodeActivity extends AppCompatActivity {
         verifyResetPassCodeViewModel = new VerifyResetPassCodeViewModel(this);
         activityVerifyCodeBinding = DataBindingUtil.setContentView(this,R.layout.activity_verify_code);
         activityVerifyCodeBinding.setVerifyCode(verifyResetPassCodeViewModel);
+        String phone = getIntent().getStringExtra("mobile");
+        activityVerifyCodeBinding.txtNumber.setText(phone);
         activityVerifyCodeBinding.setPresenter(new VerifyResetPassPresenter() {
             @Override
             public void checkVerifyResetCode() {
-//                verifyResetPassCodeViewModel.checkCode("","");
+                String code = activityVerifyCodeBinding.editTextStDigit.getRawText() +  activityVerifyCodeBinding.editTextNdDigit.getRawText()+
+                        activityVerifyCodeBinding.editTextRdDigit.getRawText() + activityVerifyCodeBinding.editTextThDigit.getRawText() ;
+                verifyResetPassCodeViewModel.checkCode("","");
                 startActivity(new Intent(VerifyCodeActivity.this , ForgotPasswordActivity.class));
             }
 
             @Override
             public void resendCodeAgain() {
-
+                verifyResetPassCodeViewModel.resend_code(phone);
             }
         });
 //        setContentView(R.layout.activity_verify_code);

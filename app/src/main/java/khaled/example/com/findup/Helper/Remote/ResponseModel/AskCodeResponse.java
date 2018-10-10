@@ -18,11 +18,28 @@ public class AskCodeResponse {
     @SerializedName("error")
     @Expose
     private int error;
+    @SerializedName("error_msg")
+    @Expose
+    private int error_msg;
     @SerializedName("data")
     @Expose
     private List<AskCode> data;
 
+    public int getError_msg() {
+        return error_msg;
+    }
 
+    public void setError_msg(int error_msg) {
+        this.error_msg = error_msg;
+    }
+
+    public List<AskCode> getData() {
+        return data;
+    }
+
+    public void setData(List<AskCode> data) {
+        this.data = data;
+    }
 
     public String getTag() {
         return tag;

@@ -1,5 +1,6 @@
 package khaled.example.com.findup.UI.ViewModel.Activites;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.widget.Toast;
 
@@ -10,6 +11,8 @@ import khaled.example.com.findup.Helper.Remote.ApiInterface;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.EditProfileResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.ResetPasswordResponse;
 import khaled.example.com.findup.Helper.UI_Utility;
+import khaled.example.com.findup.UI.activities.ForgotPasswordActivity;
+import khaled.example.com.findup.UI.activities.LoginActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -29,6 +32,8 @@ public class ForgetPasswordViewModel extends Observable {
             public void onResponse(Call<ResetPasswordResponse> call, Response<ResetPasswordResponse> response) {
                 if(response.body().getSuccess() == 1){
                     Toast.makeText(mContext, "Your Password Changed Successfully", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(mContext , LoginActivity.class);
+                    mContext.startActivity(intent);
                 }else{
                     Toast.makeText(mContext, "An Error Happened", Toast.LENGTH_SHORT).show();
                 }

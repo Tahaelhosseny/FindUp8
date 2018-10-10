@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -32,11 +33,22 @@ public class ForgotPasswordActivity extends AppCompatActivity {
         forgetPasswordViewModel = new ForgetPasswordViewModel(this);
         activityForgotPasswordBinding= DataBindingUtil.setContentView(this,R.layout.activity_forgot_password);
         activityForgotPasswordBinding.setForgetPassword(forgetPasswordViewModel);
+        String phone = getIntent().getStringExtra("phone");
+        activityForgotPasswordBinding.editTextPhone.setText(phone);
         activityForgotPasswordBinding.setPresenter(new ForgetPasswordPresenter() {
             @Override
             public void UpdateNewPassword() {
-                Toast.makeText(ForgotPasswordActivity.this, "Forget Password", Toast.LENGTH_SHORT).show();
-//                forgetPasswordViewModel.updateNewPassword("","");
+                String pass = activityForgotPasswordBinding.editTextPassword.getText().toString();
+                String rePass = activityForgotPasswordBinding.editTextRepassword.getText().toString();
+                if(TextUtils.isEmpty(pass) || TextUtils.isEmpty(rePass)){
+                    Toast.makeText(ForgotPasswordActivity.this, "Please Fill The Empty Field", Toast.LENGTH_SHORT).show();
+                }else{
+                    if(pass == rePass){
+                        forgetPasswordViewModel.updateNewPassword(phone,rePass);
+                    }else{
+                        Toast.makeText(ForgotPasswordActivity.this, "Password didn't match", Toast.LENGTH_SHORT).show();
+                    }
+                }
             }
         });
 

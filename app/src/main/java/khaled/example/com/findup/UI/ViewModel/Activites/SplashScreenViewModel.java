@@ -36,15 +36,13 @@ public class SplashScreenViewModel  extends Observable {
         SharedPrefManger sharedPrefManger = new SharedPrefManger(mContext);
 
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-        Call<StoresResponse> userlogincall = apiService.GetAllStores(sharedPrefManger.getUser_ID());
+        Call<StoresResponse> userlogincall = apiService.GetAllStores(SharedPrefManger.getUser_ID());
         userlogincall.enqueue(new Callback<StoresResponse>() {
             @Override
             public void onResponse(Call<StoresResponse> call, Response<StoresResponse> response) {
                 if (response.body().getSuccess() ==1){
                     if(DBUtility.InsertStores(response.body().getData(),mContext) > 0)
                        loaded.onNext(++defult_load[0]);
-
-
                 }
                 else
                     Toast.makeText(mContext,"App have an error",Toast.LENGTH_SHORT).show();
