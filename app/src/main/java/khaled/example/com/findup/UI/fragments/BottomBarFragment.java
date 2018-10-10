@@ -29,7 +29,7 @@ public class BottomBarFragment extends Fragment {
 
     static float actionBarSize;
     public static Menu menu;
-    BottomBarAdapter adapter;
+    public static BottomBarAdapter adapter;
     public View.OnClickListener navListner =
             new View.OnClickListener() {
                 @Override
@@ -112,19 +112,19 @@ public class BottomBarFragment extends Fragment {
         PopupMenu p = new PopupMenu(getActivity(), null);
         menu = p.getMenu();
         getActivity().getMenuInflater().inflate(R.menu.bottom_navigation_items, menu);
-        bindUI(menu);
+        bindUI(menu,getActivity());
 
     }
 
-    private void bindUI(Menu menu) {
-        RecyclerView recyclerView = getActivity().findViewById(R.id.BottomBarRecyclerView);
+    public void bindUI(Menu menu,Activity activity) {
+        RecyclerView recyclerView = activity.findViewById(R.id.BottomBarRecyclerView);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         adapter = new BottomBarAdapter(menu, navListner);
         recyclerView.setAdapter(adapter);
         recyclerView.stopNestedScroll();
         recyclerView.stopScroll();
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false) {
+        recyclerView.setLayoutManager(new LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false) {
             @Override
             public boolean canScrollVertically() {
                 return false;

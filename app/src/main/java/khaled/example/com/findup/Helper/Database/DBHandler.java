@@ -45,6 +45,17 @@ public class DBHandler {
 
 
 
+
+    public static void GetHomeCategories(final Context context, final khaled.example.com.findup.Helper.Database.Interfaces.Category.Category category) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Flowable<List<Category>> listFlowable = FindUpDatabase.getAppDatabase(context).daoAccess().getCategoryInHome();
+                category.onSuccess(listFlowable);
+            }
+        }).start();
+    }
+
     /******************************************************************************
      * Stores Section
      * @param store

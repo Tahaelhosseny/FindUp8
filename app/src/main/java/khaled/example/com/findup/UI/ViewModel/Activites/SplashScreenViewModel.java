@@ -13,6 +13,7 @@ import io.reactivex.subjects.PublishSubject;
 import khaled.example.com.findup.Helper.Database.DBUtility;
 import khaled.example.com.findup.Helper.Remote.ApiClient;
 import khaled.example.com.findup.Helper.Remote.ApiInterface;
+import khaled.example.com.findup.Helper.Remote.ResponseModel.EventResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.StoresResponse;
 import khaled.example.com.findup.Helper.SharedPrefManger;
 import khaled.example.com.findup.Helper.UI_Utility;
@@ -34,15 +35,14 @@ public class SplashScreenViewModel  extends Observable {
         PublishSubject<Integer> loaded = PublishSubject.create();
 
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-        Call<StoresResponse> userlogincall = apiService.GetAllStores();
+        Call<StoresResponse> userlogincall = apiService.GetAllStores(0);
         userlogincall.enqueue(new Callback<StoresResponse>() {
             @Override
             public void onResponse(Call<StoresResponse> call, Response<StoresResponse> response) {
                 if (response.body().getSuccess() ==1){
-                    if(DBUtility.InsertStores(response.body().getData(),mContext) > 0){
-                       // loaded.onNext(++defult_load[0]);
-                        StartApp();
-                    }
+                    if(DBUtility.InsertStores(response.body().getData(),mContext) > 0)
+                       loaded.onNext(++defult_load[0]);
+
 
                 }
                 else
@@ -58,6 +58,41 @@ public class SplashScreenViewModel  extends Observable {
                 Log.e("error",t.getMessage());
 
             }
+        });
+
+        Call<EventResponse> eventResponseCall = apiService.GetAllEvents(0);
+        eventResponseCall.enqueue(new Callback<EventResponse>() {
+            @Override
+            public void onResponse(Call<EventResponse> call, Response<EventResponse> response) {
+                Log.e("url", call.request().url().toString());
+                if (response.body().getSuccess() == 1) {
+                    if (DBUtility.InsertEvents(response.body().getData(), mContext) > 0)
+                        loaded.onNext(++defult_load[0]);
+                    if (DBUtility.InsertCategories(response.body().getCategories(), mContext) > 0)
+                        loaded.onNext(++defult_load[0]);
+                } else
+                    Toast.makeText(mContext, "App have an error", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(Call<EventResponse> call, Throwable t) {
+                //Toast.makeText(mContext,"invalid data",Toast.LENGTH_SHORT).show();
+                UI_Utility.noConnection(mContext, true);
+                Log.e("event_url", call.request().url().toString());
+                Log.e("event_error", t.getMessage());
+                loaded.onNext(--defult_load[0]);
+
+
+            }
+        });
+
+
+
+        loaded.subscribe(v->{
+            if (v==2){
+                StartApp();
+            }
+            Log.i("load",v+"");
         });
     }
 

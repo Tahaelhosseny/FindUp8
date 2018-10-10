@@ -1,6 +1,7 @@
 package khaled.example.com.findup.UI.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,9 +10,12 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 import khaled.example.com.findup.R;
+import khaled.example.com.findup.UI.activities.EventDetailsActivity;
 import khaled.example.com.findup.models.Event;
 
 /**
@@ -36,15 +40,19 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder
         return new EventsAdapter.ViewHolder(itemView);
     }
 
+    public void setEvents(List<Event> events) {
+        this.events = events;
+    }
+
     @Override
     public void onBindViewHolder(@NonNull EventsAdapter.ViewHolder holder, int position) {
 
-        /*Event event = events.get(position);
-        holder.eventName.setText(event.getEvent_name());
-        holder.eventDescription.setText(event.getEvent_desc());
-        holder.eventDate.setText(event.getEvent_start_date());
-        if (!event.getEvent_photo().isEmpty())
-            Picasso.with(holder.eventsItemImg.getContext()).load(event.getEvent_photo()).placeholder(R.drawable.events_place_holder).into(holder.eventsItemImg);*/
+        holder.event = events.get(position);
+        holder.eventName.setText(holder.event.getEvent_name());
+        holder.eventDescription.setText(holder.event.getEvent_desc());
+        holder.eventDate.setText(holder.event.getEvent_start_date());
+        if (!holder.event.getEvent_photo().isEmpty())
+            Picasso.with(holder.eventsItemImg.getContext()).load(holder.event.getEvent_photo()).placeholder(R.color.material_color_grey_500).into(holder.eventsItemImg);
 
     }
 
@@ -54,7 +62,7 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-
+        Event event;
         TextView eventName;
         TextView eventDate;
         TextView eventDescription;
@@ -62,7 +70,6 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder
 
         public ViewHolder(View view) {
             super(view);
-
             eventName = view.findViewById(R.id.event_name);
             eventDescription = view.findViewById(R.id.eventDesc);
             eventDate = view.findViewById(R.id.eventDate);
@@ -71,6 +78,9 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder
 
         @Override
         public void onClick(View v) {
+            Intent i = new Intent(context, EventDetailsActivity.class);
+            i.putExtra("event_id",event.getEvent_id());
+            context.startActivity(i);
         }
     }
 }

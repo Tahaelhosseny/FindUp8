@@ -75,6 +75,21 @@ public class Utility {
         return localTime;
     }
 
+    private static List<Class> getHomeFragments(){
+        List<Class> fragmentList = new ArrayList<>();
+        fragmentList.add(MainFragment.class);
+        fragmentList.add(MapFragment.class);
+        fragmentList.add(SearchFragment.class);
+        fragmentList.add(CategoryFragment.class);
+        fragmentList.add(ProfileFragment.class);
+        return fragmentList;
+    }
+/*
+    public static String getActiveHomeFragment(Context mContext){
+        android.app.Fragment f = ((Activity)mContext).getFragmentManager().findFragmentById(R.id.main_toolbar_container);
+        f.getTag();
+    }
+*/
     private static List<String> tags = new ArrayList<>();
     public static List<String> fragmentTagsList(){
         if (tags.size() > 1)

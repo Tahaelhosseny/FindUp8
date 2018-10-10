@@ -7,6 +7,7 @@ import khaled.example.com.findup.Helper.Remote.ResponseModel.AddCommentStoreResp
 import khaled.example.com.findup.Helper.Remote.ResponseModel.CreateStoreEventResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.CurrencyResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.EditProfileResponse;
+import khaled.example.com.findup.Helper.Remote.ResponseModel.EventResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.LoginResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.MeasureDistanceResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.NotificationFlagResponse;
@@ -27,11 +28,11 @@ public interface ApiInterface {
     @GET(ApiClient.PATH_URL+"reg_login?tag=login&HashSecure="+HASH)
     Call<LoginResponse> LoginRequest(@Query("mobile") String mobile,@Query("password") String password);
 
-    @GET(ApiClient.PATH_URL+"stores?tag=get_all_stores&HashSecure="+HASH+"&account_id=1")
-    Call<StoresResponse> GetAllStores();
+    @GET(ApiClient.PATH_URL+"stores?tag=get_all_stores&HashSecure="+HASH)
+    Call<StoresResponse> GetAllStores(@Query("account_id") int account_id);
 
-    @GET(ApiClient.PATH_URL+"public_pgs?tag=home&HashSecure="+HASH+"&account_id=1")
-    Call<StoresResponse> GetAllEvents();
+    @GET(ApiClient.PATH_URL+"stores?tag=get_all_events&HashSecure="+HASH)
+    Call<EventResponse> GetAllEvents(@Query("account_id") int account_id);
 
     @GET(ApiClient.PATH_URL+"user_profile?tag=get_user_currency&HashSecure="+HASH)
     Call<CurrencyResponse> getUserCurrency(@Query("account_id") String account_id);

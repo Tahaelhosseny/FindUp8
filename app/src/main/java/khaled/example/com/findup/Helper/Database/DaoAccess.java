@@ -23,14 +23,19 @@ import khaled.example.com.findup.models.StorePhoto;
 public interface DaoAccess {
 
     //Categories table
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertCategory(Category category);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertCategories(List<Category> categoryList);
 
-    @Query("SELECT * FROM Category WHERE cat_id = :cat_id")
-    Flowable<Category> getCategoryByID(int cat_id);
+    @Query("SELECT * FROM Category WHERE show_home_flag = 1")
+    Flowable<List<Category>> getCategoryInHome();
+
+
+    @Query("SELECT * FROM Category")
+    Flowable<List<Category>> getCategories();
+
 
     @Update
     void UpdateCategory(Category category);

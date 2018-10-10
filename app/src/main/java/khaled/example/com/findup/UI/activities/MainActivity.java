@@ -7,6 +7,7 @@ import android.content.pm.Signature;
 import android.location.Address;
 import android.location.Location;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
@@ -20,14 +21,18 @@ import com.patloew.rxlocation.RxLocation;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import khaled.example.com.findup.Helper.Location.LocationUtility;
 import khaled.example.com.findup.Helper.Location.LocationView;
 import khaled.example.com.findup.Helper.SharedPrefManger;
+import khaled.example.com.findup.Helper.UI_Utility;
+import khaled.example.com.findup.Helper.Utility;
 import khaled.example.com.findup.R;
 import khaled.example.com.findup.UI.fragments.BottomBarFragment;
 import khaled.example.com.findup.UI.fragments.MainFragment;
+import khaled.example.com.findup.UI.fragments.MapFragment;
 import khaled.example.com.findup.models.CurrentLocation;
 
 public class MainActivity extends AppCompatActivity implements LocationView{
@@ -52,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements LocationView{
         rxLocation.setDefaultTimeout(15, TimeUnit.SECONDS);
         locationUtility = new LocationUtility(rxLocation);
 
-        transaction.replace(R.id.main_toolbar_container, new MainFragment()).commit();
+        transaction.replace(R.id.main_toolbar_container, new MainFragment(), new MainFragment().getClass().getName()).commit();
 
         BottomBarFragment bottomBarFragment =new BottomBarFragment();
         Bundle bundle = new Bundle();
@@ -63,8 +68,13 @@ public class MainActivity extends AppCompatActivity implements LocationView{
     public void onBackPressed() {
         if (getSupportFragmentManager().getBackStackEntryCount() == 0)
             super.onBackPressed();
-        else
-            getSupportFragmentManager().popBackStack();
+        else {
+            getSupportFragmentManager().popBackStackImmediate();
+            Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.main_toolbar_container);
+            UI_Utility.BottomNavigationMenu_icons_change(BottomBarFragment.menu, Utility.fragmentTagsList().indexOf(fragment.getClass().getName()));
+            Log.i("CurrentFragment",fragment.getClass().getName());
+            BottomBarFragment.adapter.notifyDataSetChanged();
+        }
     }
 
     @Override

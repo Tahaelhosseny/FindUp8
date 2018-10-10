@@ -5,10 +5,10 @@ import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
-@Entity(foreignKeys = @ForeignKey(entity = Store.class,
+@Entity/*(foreignKeys = @ForeignKey(entity = Store.class,
         parentColumns = "store_id",
         childColumns = "store_id",
-        onDelete = ForeignKey.CASCADE))
+        onDelete = ForeignKey.CASCADE))*/
 public class StorePhoto {
     @NonNull
     @PrimaryKey

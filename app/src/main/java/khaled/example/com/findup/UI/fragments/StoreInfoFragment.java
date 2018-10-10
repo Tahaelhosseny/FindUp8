@@ -70,13 +70,6 @@ public class StoreInfoFragment extends Fragment implements OnMapReadyCallback {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        ImageView show_comments = getActivity().findViewById(R.id.show_comments);
-        show_comments.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getContext(), CommentsActivity.class));
-            }
-        });
 
         TextView add_rating = getActivity().findViewById(R.id.addRateTxt);
         add_rating.setOnClickListener(getRatingDialog());
@@ -84,7 +77,7 @@ public class StoreInfoFragment extends Fragment implements OnMapReadyCallback {
         storeInfoViewModel.bindCommentsPhotos(binding.commentUsersImg);
         storeInfoViewModel.bindPhotos(binding.storePhotosRecycler);
         storeInfoViewModel.bindStoreData(binding.aboutTxtDetails, binding.workTimeDaysInfoTxt, binding.workTimeInfoTxt,
-                binding.mailImg, binding.siteImg, binding.chatImg, binding.twitterImg, binding.snapImg);
+                binding.mailImg, binding.siteImg, binding.chatImg, binding.twitterImg, binding.snapImg,binding.showComments);
 
     }
 

@@ -13,7 +13,7 @@ public class EventResponse {
     private int error;
     private String error_msg;
     private List<Event> data;
-    //private List<Category> categories;
+    private List<Category> categories;
 
     public String getTag() {
         return tag;
@@ -54,7 +54,7 @@ public class EventResponse {
     public void setData(List<Event> data) {
         this.data = data;
     }
-/*
+
     public List<Category> getCategories() {
         return categories;
     }
@@ -62,5 +62,5 @@ public class EventResponse {
     public void setCategories(List<Category> categories) {
         this.categories = categories;
     }
-*/
+
 }

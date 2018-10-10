@@ -1,6 +1,7 @@
 package khaled.example.com.findup.UI.fragments;
 
 
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -15,8 +16,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import khaled.example.com.findup.R;
+import khaled.example.com.findup.UI.ViewModel.Fragments.EventsViewModel;
+import khaled.example.com.findup.UI.ViewModel.Fragments.MainCatsViewModel;
 import khaled.example.com.findup.UI.adapters.MainCategoriesAdapter;
 import khaled.example.com.findup.UI.adapters.RecyclerTouchListener;
+import khaled.example.com.findup.databinding.FragmentMainCatsBinding;
 import khaled.example.com.findup.models.Category;
 
 /**
@@ -30,54 +34,24 @@ public class MainCatsFragment extends Fragment {
     }
 
 
+    MainCatsViewModel mainCatsViewModel;
+    FragmentMainCatsBinding binding;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_main_cats, container, false);
+
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_main_cats, container, false);
+        View view = binding.getRoot();
+        //here data must be an instance of the class MarsDataProvider
+        mainCatsViewModel = new MainCatsViewModel(view.getContext());
+        binding.setEvents(mainCatsViewModel);
+        return view;
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
-        List<Category> categories = new ArrayList<>();
-        categories.add(new Category(1, "Food-Trunk", "simple description", 1, 1));
-        categories.add(new Category(2, "Home Business", "simple description", 1, 1));
-        categories.add(new Category(3, "Crafts", "simple description", 1, 1));
-        categories.add(new Category(4, "Food-Trunk", "simple description", 1, 1));
-        categories.add(new Category(5, "Home Business", "simple description", 1, 1));
-        bindUI(categories);
-    }
-
-    private void bindUI(List<Category> categories) {
-        RecyclerView recyclerView = getActivity().findViewById(R.id.catsRecyclerView);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        MainCategoriesAdapter adapter = new MainCategoriesAdapter(getActivity(), categories);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false) {
-            @Override
-            public boolean canScrollVertically() {
-                return false;
-            }
-
-            @Override
-            public boolean canScrollHorizontally() {
-                return false;
-            }
-        });
-        recyclerView.smoothScrollToPosition(0);
-        recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getActivity()
-                , recyclerView, new RecyclerTouchListener.ClickListener() {
-            @Override
-            public void onClick(View view, int position) {
-            }
-
-            @Override
-            public void onLongClick(View view, int position) {
-
-            }
-        }));
+        mainCatsViewModel.InitRecyclerView(binding.catsRecyclerView);
     }
 
 }

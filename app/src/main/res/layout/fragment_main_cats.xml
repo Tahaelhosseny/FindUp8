@@ -1,10 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.RecyclerView android:id="@+id/catsRecyclerView"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:layout_gravity="center"
-    android:foregroundGravity="center"
+<layout
     xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
 
-</android.support.v7.widget.RecyclerView>
+        <variable
+            name="Events"
+            type="khaled.example.com.findup.UI.ViewModel.Fragments.MainCatsViewModel"/>
+
+        <variable
+            name="presenter"
+            type="khaled.example.com.findup.UI.Presenter.Fragments.MainCatsPresenter"/>
+
+    </data>
+        <android.support.v7.widget.RecyclerView android:id="@+id/catsRecyclerView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:foregroundGravity="center">
+
+        </android.support.v7.widget.RecyclerView>
+</layout>

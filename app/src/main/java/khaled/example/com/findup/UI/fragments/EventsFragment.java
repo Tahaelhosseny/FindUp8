@@ -2,6 +2,7 @@ package khaled.example.com.findup.UI.fragments;
 
 
 import android.content.Intent;
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -16,9 +17,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import khaled.example.com.findup.R;
+import khaled.example.com.findup.UI.ViewModel.Fragments.EventsViewModel;
+import khaled.example.com.findup.UI.ViewModel.Fragments.NearMeViewModel;
 import khaled.example.com.findup.UI.activities.EventDetailsActivity;
 import khaled.example.com.findup.UI.adapters.EventsAdapter;
 import khaled.example.com.findup.UI.adapters.RecyclerTouchListener;
+import khaled.example.com.findup.databinding.FragmentEventsBinding;
 import khaled.example.com.findup.models.Event;
 
 /**
@@ -33,10 +37,17 @@ public class EventsFragment extends Fragment {
         // Required empty public constructor
     }
 
+    EventsViewModel eventsViewModel;
+    FragmentEventsBinding binding;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_events, container, false);
+        View view = binding.getRoot();
+        //here data must be an instance of the class MarsDataProvider
+        eventsViewModel = new EventsViewModel(view.getContext());
+        binding.setEvents(eventsViewModel);
+
         String behavior;
         if (getArguments() != null && getArguments().containsKey("behavior")) {
             behavior = getArguments().getString("behavior");
@@ -45,42 +56,13 @@ public class EventsFragment extends Fragment {
             else
                 type = LinearLayoutManager.HORIZONTAL;
         }
-        return inflater.inflate(R.layout.fragment_events, container, false);
+        return view;
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        List<Event> events = new ArrayList<>();
-        /*events.add(new Event("Event", "Event Description","6 May",""));
-        events.add(new Event("Event", "Event Description","6 May",""));
-        events.add(new Event("Event", "Event Description","6 May",""));
-        events.add(new Event("Event", "Event Description","6 May",""));
-        events.add(new Event("Event", "Event Description","6 May",""));*/
-        bindUI(events);
-
+        eventsViewModel.InitRecyclerView(binding.eventsRecyclerView,type);
     }
 
-    private void bindUI(List<Event> events) {
-        RecyclerView recyclerView = getActivity().findViewById(R.id.eventsRecyclerView);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        EventsAdapter adapter = new EventsAdapter(getActivity(), events);
-        recyclerView.setAdapter(adapter);
-
-
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), type, false));
-        recyclerView.smoothScrollToPosition(0);
-        recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getActivity()
-                , recyclerView, new RecyclerTouchListener.ClickListener() {
-            @Override
-            public void onClick(View view, int position) {
-                startActivity(new Intent(getActivity(), EventDetailsActivity.class));
-            }
-
-            @Override
-            public void onLongClick(View view, int position) {
-
-            }
-        }));
-    }
 }

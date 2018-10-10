@@ -28,7 +28,14 @@ public class MainCategoriesAdapter extends RecyclerView.Adapter<MainCategoriesAd
 
     public MainCategoriesAdapter(Context context, List<Category> categoryList) {
         this.context = context;
-        this.categoryList = categoryList.subList(0, 4);
+        if (categoryList.size() > 4)
+            this.categoryList = categoryList.subList(0, 4);
+        else
+            this.categoryList = categoryList;
+    }
+
+    public void setCategoryList(List<Category> categoryList) {
+        this.categoryList = categoryList;
     }
 
     public static int getScreenWidth() {

@@ -23,7 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:background="@drawable/near_by_image_bg"
-            android:src="@drawable/events_place_holder"
+            android:src="@color/material_color_grey_500"
             android:scaleType="fitXY"
             tools:layout_editor_absoluteX="0dp"
             tools:layout_editor_absoluteY="0dp"
