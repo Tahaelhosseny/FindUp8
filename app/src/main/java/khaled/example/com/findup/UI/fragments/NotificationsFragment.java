@@ -1,7 +1,6 @@
 package khaled.example.com.findup.UI.fragments;
 
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -16,12 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import khaled.example.com.findup.R;
-import khaled.example.com.findup.UI.activities.EventDetailsActivity;
-import khaled.example.com.findup.UI.activities.NotificationsActivity;
-import khaled.example.com.findup.UI.adapters.EventsAdapter;
 import khaled.example.com.findup.UI.adapters.NotificationsAdapter;
-import khaled.example.com.findup.UI.adapters.RecyclerTouchListener;
-import khaled.example.com.findup.models.Event;
 import khaled.example.com.findup.models.Notification;
 
 /**
@@ -57,7 +51,7 @@ public class NotificationsFragment extends Fragment {
         bindUI(notifications);
     }
 
-    private void bindUI(List<Notification> notifications){
+    private void bindUI(List<Notification> notifications) {
         RecyclerView recyclerView = getActivity().findViewById(R.id.notificationsRecyclerView);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         NotificationsAdapter adapter = new NotificationsAdapter(getActivity(), notifications);

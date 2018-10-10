@@ -3,9 +3,9 @@ package khaled.example.com.findup.models;
 public class TruckProduct {
     private int productId, productPic, productPrice, productName, productDescription;
 
-    public TruckProduct(int productId,int productPic, int productPrice, int productName, int productDescription) {
+    public TruckProduct(int productId, int productPic, int productPrice, int productName, int productDescription) {
         this.productId = productId;
-        this.productPic=productPic;
+        this.productPic = productPic;
         this.productPrice = productPrice;
         this.productName = productName;
         this.productDescription = productDescription;

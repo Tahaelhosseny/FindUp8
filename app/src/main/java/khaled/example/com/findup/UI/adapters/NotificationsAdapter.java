@@ -10,51 +10,23 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.squareup.picasso.Picasso;
-
 import java.util.List;
 
 import khaled.example.com.findup.R;
 import khaled.example.com.findup.UI.activities.NotificationsActivity;
-import khaled.example.com.findup.UI.activities.StoreDetailsActivity;
 import khaled.example.com.findup.models.Notification;
 
 /**
  * Created by khaled on 8/1/18.
  */
 
-public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdapter.ViewHolder>{
+public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdapter.ViewHolder> {
     private List<Notification> notifications;
     private Context context;
 
     public NotificationsAdapter(Context context, List<Notification> notifications) {
         this.context = context;
         this.notifications = notifications;
-    }
-
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-
-        ImageView notificationImage;
-        TextView notificationType;
-        TextView notificationDesc;
-        TextView notificationDate;
-        ImageView delNotificationBtn;
-
-        public ViewHolder(View view) {
-            super(view);
-            notificationImage = view.findViewById(R.id.notificationItemImg);
-            notificationType = view.findViewById(R.id.notificationItemTypeTxt);
-            notificationDesc = view.findViewById(R.id.notificationItemDesc);
-            notificationDate = view.findViewById(R.id.notificationItemDate);
-            delNotificationBtn = view.findViewById(R.id.delNotificationBtn);
-            view.setOnClickListener(this);
-
-        }
-
-        @Override
-        public void onClick(View v) {
-            v.getContext().startActivity(new Intent(v.getContext(), NotificationsActivity.class).putExtra("sysMSG",1));
-        }
     }
 
     @NonNull
@@ -80,5 +52,30 @@ public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdap
     @Override
     public int getItemCount() {
         return notifications.size();
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+
+        ImageView notificationImage;
+        TextView notificationType;
+        TextView notificationDesc;
+        TextView notificationDate;
+        ImageView delNotificationBtn;
+
+        public ViewHolder(View view) {
+            super(view);
+            notificationImage = view.findViewById(R.id.notificationItemImg);
+            notificationType = view.findViewById(R.id.notificationItemTypeTxt);
+            notificationDesc = view.findViewById(R.id.notificationItemDesc);
+            notificationDate = view.findViewById(R.id.notificationItemDate);
+            delNotificationBtn = view.findViewById(R.id.delNotificationBtn);
+            view.setOnClickListener(this);
+
+        }
+
+        @Override
+        public void onClick(View v) {
+            v.getContext().startActivity(new Intent(v.getContext(), NotificationsActivity.class).putExtra("sysMSG", 1));
+        }
     }
 }

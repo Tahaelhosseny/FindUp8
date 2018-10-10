@@ -5,28 +5,21 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import khaled.example.com.findup.R;
-import khaled.example.com.findup.UI.ViewModel.Fragments.NearMeViewModel;
 import khaled.example.com.findup.UI.ViewModel.Fragments.ProductsViewModel;
-import khaled.example.com.findup.UI.adapters.ProductsAdapter;
-import khaled.example.com.findup.databinding.FragmentNearMeBinding;
 import khaled.example.com.findup.databinding.FragmentProductsBinding;
-import khaled.example.com.findup.models.Product;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class ProductsFragment extends Fragment {
+
+    ProductsViewModel productsViewModel;
+    FragmentProductsBinding binding;
 
     public ProductsFragment() {
         // Required empty public constructor
@@ -39,8 +32,6 @@ public class ProductsFragment extends Fragment {
         return fragment;
     }
 
-    ProductsViewModel productsViewModel;
-    FragmentProductsBinding binding;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -60,10 +51,10 @@ public class ProductsFragment extends Fragment {
         Intent i = getActivity().getIntent();
         int store_id = 1;
         if (i.hasExtra("store_id"))
-            store_id = i.getIntExtra("store_id",1);
+            store_id = i.getIntExtra("store_id", 1);
 
 
-        productsViewModel.bindStoreProducts(binding.productsRecyclerView,store_id);
+        productsViewModel.bindStoreProducts(binding.productsRecyclerView, store_id);
     }
 
 

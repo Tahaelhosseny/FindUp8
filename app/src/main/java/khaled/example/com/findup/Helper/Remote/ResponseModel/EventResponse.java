@@ -2,16 +2,18 @@ package khaled.example.com.findup.Helper.Remote.ResponseModel;
 
 import java.util.List;
 
-import khaled.example.com.findup.models.Store;
+import khaled.example.com.findup.models.Category;
+import khaled.example.com.findup.models.Event;
 
-public class StoresResponse {
+public class EventResponse {
 
 
     private String tag;
     private int success;
     private int error;
     private String error_msg;
-    private List<Store> data;
+    private List<Event> data;
+    //private List<Category> categories;
 
     public String getTag() {
         return tag;
@@ -45,12 +47,20 @@ public class StoresResponse {
         this.error_msg = error_msg;
     }
 
-    public List<Store> getData() {
+    public List<Event> getData() {
         return data;
     }
 
-    public void setData(List<Store> data) {
+    public void setData(List<Event> data) {
         this.data = data;
     }
+/*
+    public List<Category> getCategories() {
+        return categories;
+    }
 
+    public void setCategories(List<Category> categories) {
+        this.categories = categories;
+    }
+*/
 }

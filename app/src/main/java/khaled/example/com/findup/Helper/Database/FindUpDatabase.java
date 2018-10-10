@@ -16,17 +16,17 @@ import khaled.example.com.findup.models.StorePhoto;
 @Database(entities = {Category.class, Store.class,
         Comment.class, Event.class, Product.class,
         StorePhoto.class, ProductPhoto.class}, version = 2, exportSchema = false)
-public abstract class FindUpDatabase extends RoomDatabase{
-    public abstract DaoAccess daoAccess() ;
+public abstract class FindUpDatabase extends RoomDatabase {
     private static final String DATABASE_NAME = "findup.db";
     private static FindUpDatabase INSTANCE;
+
     public static FindUpDatabase getAppDatabase(Context context) {
         if (INSTANCE == null) {
             synchronized (FindUpDatabase.class) {
                 if (INSTANCE == null)
                     INSTANCE =
-                        Room.databaseBuilder(context.getApplicationContext(), FindUpDatabase.class, DATABASE_NAME)
-                                .build();
+                            Room.databaseBuilder(context.getApplicationContext(), FindUpDatabase.class, DATABASE_NAME)
+                                    .build();
             }
         }
         return INSTANCE;
@@ -35,4 +35,6 @@ public abstract class FindUpDatabase extends RoomDatabase{
     public static void destroyInstance() {
         INSTANCE = null;
     }
+
+    public abstract DaoAccess daoAccess();
 }

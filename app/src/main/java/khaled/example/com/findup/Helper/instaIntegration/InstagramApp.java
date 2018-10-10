@@ -5,7 +5,6 @@ import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
-import android.widget.Toast;
 
 import org.json.JSONObject;
 import org.json.JSONTokener;
@@ -19,9 +18,20 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.HashMap;
 
-import khaled.example.com.findup.UI.activities.IntroActivity;
-
 public class InstagramApp {
+    private static final String AUTH_URL = "https://api.instagram.com/oauth/authorize/";
+    private static final String TOKEN_URL = "https://api.instagram.com/oauth/access_token";
+    private static final String API_URL = "https://api.instagram.com/v1";
+    private static final String TAG = "InstagramAPI";
+    public static int WHAT_FINALIZE = 0;
+    /**
+     * Callback url, as set in 'Manage OAuth Costumers' page
+     * (https://developer.github.com/)
+     */
+
+    public static String mCallbackUrl = "";
+    private static int WHAT_ERROR = 1;
+    private static int WHAT_FETCH_INFO = 2;
     private InstagramSession mSession;
     private InstagramDialog mDialog;
     private OAuthAuthenticationListener mListener;
@@ -32,22 +42,24 @@ public class InstagramApp {
     private Context mCtx;
     private String mClientId;
     private String mClientSecret;
-
-    public static int WHAT_FINALIZE = 0;
-    private static int WHAT_ERROR = 1;
-    private static int WHAT_FETCH_INFO = 2;
-
-    /**
-     * Callback url, as set in 'Manage OAuth Costumers' page
-     * (https://developer.github.com/)
-     */
-
-    public static String mCallbackUrl = "";
-    private static final String AUTH_URL = "https://api.instagram.com/oauth/authorize/";
-    private static final String TOKEN_URL = "https://api.instagram.com/oauth/access_token";
-    private static final String API_URL = "https://api.instagram.com/v1";
-
-    private static final String TAG = "InstagramAPI";
+    private Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (msg.what == WHAT_ERROR) {
+                mProgress.dismiss();
+                if (msg.arg1 == 1) {
+                    mListener.onFail("Failed to get access token");
+                } else if (msg.arg1 == 2) {
+                    mListener.onFail("Failed to get user information");
+                }
+            } else if (msg.what == WHAT_FETCH_INFO) {
+                fetchUserName(mHandler);
+            } else {
+                mProgress.dismiss();
+                mListener.onSuccess();
+            }
+        }
+    };
 
     public InstagramApp(Context context, String clientId, String clientSecret,
                         String callbackUrl) {
@@ -97,10 +109,10 @@ public class InstagramApp {
                     urlConnection.setDoOutput(true);
 //urlConnection.connect();
                     OutputStreamWriter writer = new OutputStreamWriter(urlConnection.getOutputStream());
-                    writer.write("client_id="+mClientId+
-                            "&client_secret="+mClientSecret+
+                    writer.write("client_id=" + mClientId +
+                            "&client_secret=" + mClientSecret +
                             "&grant_type=authorization_code" +
-                            "&redirect_uri="+mCallbackUrl+
+                            "&redirect_uri=" + mCallbackUrl +
                             "&code=" + code);
                     writer.flush();
                     String response = streamToString(urlConnection.getInputStream());
@@ -121,6 +133,7 @@ public class InstagramApp {
             }
         }.start();
     }
+
     public void fetchUserName(final Handler mHandler) {
         mProgress.setMessage("Finalizing ...");
         new Thread() {
@@ -152,29 +165,6 @@ public class InstagramApp {
         }.start();
     }
 
-
-    private Handler mHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            if (msg.what == WHAT_ERROR) {
-                mProgress.dismiss();
-                if(msg.arg1 == 1) {
-                    mListener.onFail("Failed to get access token");
-                }
-                else if(msg.arg1 == 2) {
-                    mListener.onFail("Failed to get user information");
-                }
-            }
-            else if(msg.what == WHAT_FETCH_INFO) {
-                fetchUserName(mHandler);
-            }
-            else {
-                mProgress.dismiss();
-                mListener.onSuccess();
-            }
-        }
-    };
-
     public boolean hasAccessToken() {
         return (mAccessToken == null) ? false : true;
     }
@@ -190,16 +180,19 @@ public class InstagramApp {
     public String getId() {
         return mSession.getId();
     }
+
     public String getName() {
         return mSession.getName();
     }
-    public HashMap<String, String> getUserInfo(){
+
+    public HashMap<String, String> getUserInfo() {
         HashMap<String, String> userInfoHashmap = new HashMap<>();
         userInfoHashmap.put("user_name", getUserName());
         userInfoHashmap.put("name", getName());
         userInfoHashmap.put("user_id", getId());
         return userInfoHashmap;
     }
+
     public void authorize() {
 //Intent webAuthIntent = new Intent(Intent.ACTION_VIEW);
         //webAuthIntent.setData(Uri.parse(AUTH_URL));

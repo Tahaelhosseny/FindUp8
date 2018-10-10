@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,16 +29,20 @@ import khaled.example.com.findup.models.StorePhoto;
  * Created by khaled on 7/11/18.
  */
 
-public class StorePhotosAdapter extends RecyclerView.Adapter<StorePhotosAdapter.ViewHolder>{
+public class StorePhotosAdapter extends RecyclerView.Adapter<StorePhotosAdapter.ViewHolder> {
     private List<StorePhoto> photos;
     private Context context;
 
     public StorePhotosAdapter(Context context, List<StorePhoto> photos) {
         this.context = context;
         if (photos.size() > 4)
-            this.photos = photos.subList(0,4);
+            this.photos = photos.subList(0, 4);
         else
             this.photos = photos;
+    }
+
+    public static int getScreenWidth() {
+        return Resources.getSystem().getDisplayMetrics().widthPixels;
     }
 
     @NonNull
@@ -52,7 +55,7 @@ public class StorePhotosAdapter extends RecyclerView.Adapter<StorePhotosAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull StorePhotosAdapter.ViewHolder holder, int position) {
-        String photo = CONST.API_FILE_DOMAIN+""+CONST.IMAGES_PATH+""+photos.get(position).getPhoto_name();
+        String photo = CONST.API_FILE_DOMAIN + "" + CONST.IMAGES_PATH + "" + photos.get(position).getPhoto_name();
         /*if (!TextUtils.isEmpty(photo)){
             Picasso.with(context)
                     .load(photo)
@@ -67,9 +70,9 @@ public class StorePhotosAdapter extends RecyclerView.Adapter<StorePhotosAdapter.
 
             Picasso.with(context).load(photo).transform(transformation).placeholder(R.drawable.com_facebook_profile_picture_blank_square).into(holder.photo);
         }
-        Log.i("photo_url",photo);
+        Log.i("photo_url", photo);
 
-        holder.photo_container.setMinimumWidth(getScreenWidth()/4);
+        holder.photo_container.setMinimumWidth(getScreenWidth() / 4);
 
 
         if (position == 3) {
@@ -88,6 +91,7 @@ public class StorePhotosAdapter extends RecyclerView.Adapter<StorePhotosAdapter.
         ImageView photo;
         TextView more_txt;
         LinearLayout photo_container;
+
         public ViewHolder(View view) {
             super(view);
 
@@ -100,8 +104,5 @@ public class StorePhotosAdapter extends RecyclerView.Adapter<StorePhotosAdapter.
         public void onClick(View v) {
             context.startActivity(new Intent(context, PhotosGalleryActivity.class));
         }
-    }
-    public static int getScreenWidth() {
-        return Resources.getSystem().getDisplayMetrics().widthPixels;
     }
 }

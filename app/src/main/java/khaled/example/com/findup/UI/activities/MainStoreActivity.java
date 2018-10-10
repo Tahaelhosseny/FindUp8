@@ -1,9 +1,9 @@
 package khaled.example.com.findup.UI.activities;
 
+import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 
 import khaled.example.com.findup.R;
 import khaled.example.com.findup.UI.fragments.BottomStoreFragment;
@@ -24,7 +24,7 @@ public class MainStoreActivity extends AppCompatActivity {
 
         transaction.replace(R.id.store_main_container, new MainFragment()).commit();
 
-        BottomStoreFragment bottomStoreFragment =new BottomStoreFragment();
+        BottomStoreFragment bottomStoreFragment = new BottomStoreFragment();
         Bundle bundle = new Bundle();
         getSupportFragmentManager().beginTransaction().replace(R.id.store_bottom_container, bottomStoreFragment).commit();
     }

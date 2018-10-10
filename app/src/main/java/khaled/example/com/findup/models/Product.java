@@ -53,6 +53,10 @@ public class Product {
         return product_price;
     }
 
+    public void setProduct_price(double product_price) {
+        this.product_price = product_price;
+    }
+
     public int getProduct_likes_count() {
         return product_likes_count;
     }
@@ -91,10 +95,6 @@ public class Product {
 
     public void setProduct_banner(String product_banner) {
         this.product_banner = product_banner;
-    }
-
-    public void setProduct_price(double product_price) {
-        this.product_price = product_price;
     }
 
     public int getStore_id() {

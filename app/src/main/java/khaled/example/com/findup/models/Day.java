@@ -6,7 +6,8 @@ import android.support.annotation.NonNull;
 
 @Entity
 public class Day {
-    @NonNull @PrimaryKey
+    @NonNull
+    @PrimaryKey
     private int day_id;
     @NonNull
     private String day_name;

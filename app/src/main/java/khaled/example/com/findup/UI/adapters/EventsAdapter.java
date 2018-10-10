@@ -9,8 +9,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.squareup.picasso.Picasso;
-
 import java.util.List;
 
 import khaled.example.com.findup.R;
@@ -20,7 +18,7 @@ import khaled.example.com.findup.models.Event;
  * Created by khaled on 7/4/18.
  */
 
-public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder>{
+public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder> {
 
     private List<Event> events;
     private Context context;
@@ -30,26 +28,6 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder
         this.events = events;
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-
-        TextView eventName;
-        TextView eventDate;
-        TextView eventDescription;
-        ImageView eventsItemImg;
-        public ViewHolder(View view) {
-            super(view);
-
-            eventName = view.findViewById(R.id.event_name);
-            eventDescription = view.findViewById(R.id.eventDesc);
-            eventDate = view.findViewById(R.id.eventDate);
-            eventsItemImg=view.findViewById(R.id.eventsItemImg);
-        }
-
-        @Override
-        public void onClick(View v) {
-        }
-    }
-
     @NonNull
     @Override
     public EventsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -57,6 +35,7 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder
                 .inflate(R.layout.event_item, parent, false);
         return new EventsAdapter.ViewHolder(itemView);
     }
+
     @Override
     public void onBindViewHolder(@NonNull EventsAdapter.ViewHolder holder, int position) {
 
@@ -72,5 +51,26 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder
     @Override
     public int getItemCount() {
         return events.size();
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+
+        TextView eventName;
+        TextView eventDate;
+        TextView eventDescription;
+        ImageView eventsItemImg;
+
+        public ViewHolder(View view) {
+            super(view);
+
+            eventName = view.findViewById(R.id.event_name);
+            eventDescription = view.findViewById(R.id.eventDesc);
+            eventDate = view.findViewById(R.id.eventDate);
+            eventsItemImg = view.findViewById(R.id.eventsItemImg);
+        }
+
+        @Override
+        public void onClick(View v) {
+        }
     }
 }

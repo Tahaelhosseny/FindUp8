@@ -38,31 +38,6 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
         this.products = products;
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-
-        TextView productName;
-        TextView productPrice;
-        TextView productDescription;
-        ImageView productImg;
-        Product product;
-        public ViewHolder(View view) {
-            super(view);
-
-            productName = view.findViewById(R.id.productItemNameTxt);
-            productDescription = view.findViewById(R.id.productItemDesc);
-            productPrice = view.findViewById(R.id.productItemPrice);
-            productImg = view.findViewById(R.id.productItemImg);
-            view.setOnClickListener(this);
-        }
-
-        @Override
-        public void onClick(View v) {
-            Intent intent =new Intent(context, ProductDetailsActivity.class);
-            intent.putExtra("prod_id",product.getProduct_id());
-            v.getContext().startActivity(intent);
-        }
-    }
-
     @NonNull
     @Override
     public ProductsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -93,5 +68,31 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
     @Override
     public int getItemCount() {
         return products.size();
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+
+        TextView productName;
+        TextView productPrice;
+        TextView productDescription;
+        ImageView productImg;
+        Product product;
+
+        public ViewHolder(View view) {
+            super(view);
+
+            productName = view.findViewById(R.id.productItemNameTxt);
+            productDescription = view.findViewById(R.id.productItemDesc);
+            productPrice = view.findViewById(R.id.productItemPrice);
+            productImg = view.findViewById(R.id.productItemImg);
+            view.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(context, ProductDetailsActivity.class);
+            intent.putExtra("prod_id", product.getProduct_id());
+            v.getContext().startActivity(intent);
+        }
     }
 }

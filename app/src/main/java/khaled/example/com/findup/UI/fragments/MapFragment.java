@@ -20,21 +20,15 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-import khaled.example.com.findup.Helper.UI_Utility;
 import khaled.example.com.findup.R;
 import khaled.example.com.findup.UI.activities.FilterActivity;
-import khaled.example.com.findup.UI.activities.ForgotPasswordActivity;
-import khaled.example.com.findup.UI.activities.LoginActivity;
 
 public class MapFragment extends Fragment implements OnMapReadyCallback {
-    private View rootView;
     GoogleMap myMap;
     MapView mMapView;
     String TAG = getTag();
     HorizontalScrollView filter;
-
-
-
+    private View rootView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -81,7 +75,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     @Override
     public void onResume() {
         super.onResume();
-        if (mMapView !=null)
+        if (mMapView != null)
             mMapView.onResume();
     }
 
@@ -113,8 +107,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         view_fillter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               // UI_Utility.switchVisibility(filter);
-               // getChildFragmentManager().beginTransaction().replace(R.id.nearMeContainer, new NearMeFragment()).commit();
+                // UI_Utility.switchVisibility(filter);
+                // getChildFragmentManager().beginTransaction().replace(R.id.nearMeContainer, new NearMeFragment()).commit();
                 startActivity(new Intent(getActivity(), FilterActivity.class));
             }
         });

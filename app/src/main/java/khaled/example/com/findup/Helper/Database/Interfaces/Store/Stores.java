@@ -7,6 +7,8 @@ import khaled.example.com.findup.models.Store;
 
 public interface Stores {
     void onSuccess(Flowable<List<Store>> listFlowable);
+
     void getStoreID(Flowable<Store> storeFlowable);
+
     void onFail();
 }

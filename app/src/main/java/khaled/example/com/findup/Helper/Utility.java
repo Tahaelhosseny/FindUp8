@@ -11,14 +11,13 @@ import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
+import android.view.Menu;
 import android.widget.Toast;
 
-import com.google.android.gms.maps.model.LatLng;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.MultiplePermissionsReport;
 import com.karumi.dexter.PermissionToken;
@@ -27,6 +26,7 @@ import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -35,7 +35,11 @@ import java.util.TimeZone;
 
 import khaled.example.com.findup.R;
 import khaled.example.com.findup.UI.activities.ChatWithStoreActivity;
-import khaled.example.com.findup.UI.adapters.NearMeAdapter;
+import khaled.example.com.findup.UI.fragments.CategoryFragment;
+import khaled.example.com.findup.UI.fragments.MainFragment;
+import khaled.example.com.findup.UI.fragments.MapFragment;
+import khaled.example.com.findup.UI.fragments.ProfileFragment;
+import khaled.example.com.findup.UI.fragments.SearchFragment;
 import khaled.example.com.findup.models.CurrentLocation;
 
 public class Utility {
@@ -71,12 +75,31 @@ public class Utility {
         return localTime;
     }
 
-    public static void replaceFragment (FragmentManager manager, Fragment fragment , int containerID, int transition){
-        String fragmentTag =  fragment.getClass().getName();
-        boolean fragmentPopped = manager.popBackStackImmediate (fragmentTag, 0);
+    private static List<String> tags = new ArrayList<>();
+    public static List<String> fragmentTagsList(){
+        if (tags.size() > 1)
+            return tags;
+        else {
+            tags.clear();
+            tags.add(MainFragment.class.getName());
+            tags.add(MapFragment.class.getName());
+            tags.add(SearchFragment.class.getName());
+            tags.add(CategoryFragment.class.getName());
+            tags.add(ProfileFragment.class.getName());
+            return tags;
+        }
+
+    }
+    public static void replaceFragment(FragmentManager manager, Fragment fragment, int containerID, int transition, Menu menu) {
+        String fragmentTag = fragment.getClass().getName();
+        boolean fragmentPopped = manager.popBackStackImmediate(fragmentTag, 0);
+        if (menu !=null){
+            fragmentTagsList();
+            UI_Utility.BottomNavigationMenu_icons_change(menu, tags.indexOf(fragmentTag));
+        }
 
         FragmentTransaction ft = manager.beginTransaction();
-        if (!fragmentPopped && manager.findFragmentByTag(fragmentTag) == null){
+        if (!fragmentPopped && manager.findFragmentByTag(fragmentTag) == null) {
             ft.replace(containerID, fragment, fragmentTag);
             if (transition == 0)
                 ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
@@ -94,8 +117,19 @@ public class Utility {
         }
     }
 
-
-
+    private static String getFragmentTag(Fragment fragment){
+     if (fragment instanceof MapFragment)
+         return "map";
+     else if(fragment instanceof SearchFragment)
+        return "search";
+     else if(fragment instanceof CategoryFragment)
+         return "cat";
+     else if(fragment instanceof ProfileFragment)
+         return "profile";
+     else if(fragment instanceof MainFragment)
+         return "main";
+     else return "main";
+    }
 
     public static void UpdateCurrentLocation(final Activity activity, final Context context) {
         Dexter.withActivity(activity)
@@ -120,7 +154,7 @@ public class Utility {
                                         public void onLocationChanged(Location location) {
                                             if (location != null) {
                                                 SharedPrefManger sharedPrefManger = new SharedPrefManger(activity);
-                                                CurrentLocation currentLocation = new CurrentLocation(location.getLatitude(),location.getLongitude());
+                                                CurrentLocation currentLocation = new CurrentLocation(location.getLatitude(), location.getLongitude());
                                                 sharedPrefManger.setCurrentLocation(currentLocation);
                                             }
                                         }
@@ -132,13 +166,13 @@ public class Utility {
 
                                         @Override
                                         public void onProviderEnabled(String provider) {
-                                           // Toast.makeText(context, "من فضلك تأكد من الموافقه علي صلاحيات الوصول الي احداثيات موقعك", Toast.LENGTH_SHORT).show();
+                                            // Toast.makeText(context, "من فضلك تأكد من الموافقه علي صلاحيات الوصول الي احداثيات موقعك", Toast.LENGTH_SHORT).show();
 
                                         }
 
                                         @Override
                                         public void onProviderDisabled(String provider) {
-                                           // Toast.makeText(context, "من فضلك تأكد من الموافقه علي صلاحيات الوصول الي احداثيات موقعك", Toast.LENGTH_SHORT).show();
+                                            // Toast.makeText(context, "من فضلك تأكد من الموافقه علي صلاحيات الوصول الي احداثيات موقعك", Toast.LENGTH_SHORT).show();
                                         }
                                     });
                         }
@@ -159,10 +193,10 @@ public class Utility {
     }
 
 
-    public static void sendEmail(Context mContext, String email){
+    public static void sendEmail(Context mContext, String email) {
         Intent i = new Intent(Intent.ACTION_SEND);
         i.setType("message/rfc822");
-        i.putExtra(Intent.EXTRA_EMAIL  , new String[]{email});
+        i.putExtra(Intent.EXTRA_EMAIL, new String[]{email});
         i.putExtra(Intent.EXTRA_SUBJECT, mContext.getResources().getString(R.string.email_title_to_store));
         try {
             mContext.startActivity(Intent.createChooser(i, "Send mail..."));
@@ -171,18 +205,18 @@ public class Utility {
         }
     }
 
-    public static void OpenWebSite(Context mContext , String url){
+    public static void OpenWebSite(Context mContext, String url) {
         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
         mContext.startActivity(browserIntent);
     }
 
-    public static void OpenChatWithStore(Context mContext,int store_id){
+    public static void OpenChatWithStore(Context mContext, int store_id) {
         Intent intent = new Intent(mContext, ChatWithStoreActivity.class);
-        intent.putExtra("store_id",store_id);
+        intent.putExtra("store_id", store_id);
         mContext.startActivity(intent);
     }
 
-    public static void OpenTwitterAccount(Context mContext, String username){
+    public static void OpenTwitterAccount(Context mContext, String username) {
         Intent intent = null;
         /*try {
             // get the Twitter app if possible
@@ -193,11 +227,11 @@ public class Utility {
             // no Twitter app, revert to browser
             intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/PROFILENAME"));
         }*/
-        intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/"+username));
+        intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/" + username));
         mContext.startActivity(intent);
     }
 
-    public static void OpenSnapChatAccount(Context mContext, String username){
+    public static void OpenSnapChatAccount(Context mContext, String username) {
         try {
             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://snapchat.com/add/" + username));
             intent.setPackage("com.snapchat.android");
@@ -207,7 +241,7 @@ public class Utility {
         }
     }
 
-    public static void OpenGoogleMaps(Context mContext, double latitude, double longitude){
+    public static void OpenGoogleMaps(Context mContext, double latitude, double longitude) {
         String uri = String.format(Locale.ENGLISH, "geo:%f,%f", latitude, longitude);
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
         mContext.startActivity(intent);

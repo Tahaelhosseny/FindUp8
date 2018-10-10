@@ -48,28 +48,27 @@ public class ChatStoreFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         List<Store> stores = new ArrayList<>();
-        stores.add(new Store(1,"Black Cafe",  "https://www.butlerschocolates.com/upload/637/cms/525995/en/39710/gallery.jpg", "4.5","American Cafe Break $$"));
-        stores.add(new Store(2,"Genuine Coffee",  "https://viejas.com/wp-content/uploads/2018/01/Cafe_Patio_detail-1.jpg", "4.2","Indian Cafe Break $$"));
-        stores.add(new Store(1,"Black Cafe",  "http://www.royalhotelchilliwack.com/Content/images/Hotel-Cafe-o.jpg", "4.5","American Cafe Break $$"));
-        stores.add(new Store(2,"Genuine Coffee",  "https://www.butlerschocolates.com/upload/637/cms/525995/en/39710/gallery.jpg", "4.2","Indian Cafe Break $$"));
-        stores.add(new Store(1,"Black Cafe",  "http://www.royalhotelchilliwack.com/Content/images/Hotel-Cafe-o.jpg", "4.5","American Cafe Break $$"));
-        stores.add(new Store(2,"Genuine Coffee", "https://www.butlerschocolates.com/upload/637/cms/525995/en/39710/gallery.jpg", "4.2","Indian Cafe Break $$"));
-        stores.add(new Store(1,"Black Cafe",  "http://www.royalhotelchilliwack.com/Content/images/Hotel-Cafe-o.jpg", "4.5","American Cafe Break $$"));
-        stores.add(new Store(2,"Genuine Coffee", "https://www.butlerschocolates.com/upload/637/cms/525995/en/39710/gallery.jpg", "4.2","Indian Cafe Break $$"));
-        stores.add(new Store(1,"Black Cafe",  "http://www.royalhotelchilliwack.com/Content/images/Hotel-Cafe-o.jpg", "4.5","American Cafe Break $$"));
-        stores.add(new Store(2,"Genuine Coffee", "https://www.butlerschocolates.com/upload/637/cms/525995/en/39710/gallery.jpg", "4.2","Indian Cafe Break $$"));
-
+        stores.add(new Store(1, "Black Cafe", "https://www.butlerschocolates.com/upload/637/cms/525995/en/39710/gallery.jpg", "4.5", "American Cafe Break $$"));
+        stores.add(new Store(2, "Genuine Coffee", "https://viejas.com/wp-content/uploads/2018/01/Cafe_Patio_detail-1.jpg", "4.2", "Indian Cafe Break $$"));
+        stores.add(new Store(1, "Black Cafe", "http://www.royalhotelchilliwack.com/Content/images/Hotel-Cafe-o.jpg", "4.5", "American Cafe Break $$"));
+        stores.add(new Store(2, "Genuine Coffee", "https://www.butlerschocolates.com/upload/637/cms/525995/en/39710/gallery.jpg", "4.2", "Indian Cafe Break $$"));
+        stores.add(new Store(1, "Black Cafe", "http://www.royalhotelchilliwack.com/Content/images/Hotel-Cafe-o.jpg", "4.5", "American Cafe Break $$"));
+        stores.add(new Store(2, "Genuine Coffee", "https://www.butlerschocolates.com/upload/637/cms/525995/en/39710/gallery.jpg", "4.2", "Indian Cafe Break $$"));
+        stores.add(new Store(1, "Black Cafe", "http://www.royalhotelchilliwack.com/Content/images/Hotel-Cafe-o.jpg", "4.5", "American Cafe Break $$"));
+        stores.add(new Store(2, "Genuine Coffee", "https://www.butlerschocolates.com/upload/637/cms/525995/en/39710/gallery.jpg", "4.2", "Indian Cafe Break $$"));
+        stores.add(new Store(1, "Black Cafe", "http://www.royalhotelchilliwack.com/Content/images/Hotel-Cafe-o.jpg", "4.5", "American Cafe Break $$"));
+        stores.add(new Store(2, "Genuine Coffee", "https://www.butlerschocolates.com/upload/637/cms/525995/en/39710/gallery.jpg", "4.2", "Indian Cafe Break $$"));
 
 
         final RecyclerView recyclerView = getActivity().findViewById(R.id.stores_chat_list);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        final ChatStoresProfilePicAdapter adapter = new ChatStoresProfilePicAdapter(getActivity(), stores,2);
+        final ChatStoresProfilePicAdapter adapter = new ChatStoresProfilePicAdapter(getActivity(), stores, 2);
         recyclerView.setAdapter(adapter);
         final SnapHelper snapHelper = new LinearSnapHelper();
         snapHelper.attachToRecyclerView(recyclerView);
         recyclerView.smoothScrollToPosition(2);
 
-        LinearLayoutManager layoutManager =new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(layoutManager);
 
 
@@ -85,9 +84,6 @@ public class ChatStoreFragment extends Fragment {
         recyclerView.addOnScrollListener(
                 new MiddleItemFinder(getContext(), layoutManager,
                         callback, RecyclerView.SCROLL_STATE_IDLE));
-
-
-
 
 
         RecyclerView mMessageRecycler = getActivity().findViewById(R.id.reyclerview_message_list);

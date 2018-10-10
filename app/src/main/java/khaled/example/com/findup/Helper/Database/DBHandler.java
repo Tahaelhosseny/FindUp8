@@ -24,36 +24,26 @@ public class DBHandler {
     // ***************************************************************** //
     // **************************  Categories ************************** //
     // ***************************************************************** //
-    public static void InsertCategory(final Category category, final Context context, final DataBaseOnChangeApplied onChange){
+    public static void InsertCategory(final Category category, final Context context) {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                FindUpDatabase.getAppDatabase(context).daoAccess ().insertCategory(category);
-                onChange.onSuccess();
+                FindUpDatabase.getAppDatabase(context).daoAccess().insertCategory(category);
             }
-        }) .start();
+        }).start();
     }
 
-    public static void InsertCategories(final List<Category> categoryList, final Context context, final DataBaseOnChangeApplied onChange){
+    public static void InsertCategories(final List<Category> categoryList, final Context context, final DataBaseOnChangeApplied onChange) {
         new Thread(new Runnable() {
             @Override
             public void run() {
                 FindUpDatabase.getAppDatabase(context).daoAccess().insertCategories(categoryList);
                 onChange.onSuccess();
             }
-        }) .start();
+        }).start();
     }
 
 
-    public static void InsertStores(final List<Store> storeList, final Context context, final DataBaseOnChangeApplied onChange){
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                FindUpDatabase.getAppDatabase(context).daoAccess().insertStores(storeList);
-                onChange.onSuccess();
-            }
-        }) .start();
-    }
 
     /******************************************************************************
      * Stores Section
@@ -61,33 +51,33 @@ public class DBHandler {
      * @param context
      */
 
-    public static void InsertStore(final Store store, final Context context){
+    public static void InsertStore(final Store store, final Context context) {
         new Thread(new Runnable() {
             @Override
             public void run() {
                 FindUpDatabase.getAppDatabase(context).daoAccess().insertStore(store);
             }
-        }) .start();
+        }).start();
     }
 
-    public static void getAllStores(final Context context, final Stores stores){
+    public static void getAllStores(final Context context, final Stores stores) {
         new Thread(new Runnable() {
             @Override
             public void run() {
                 Flowable<List<Store>> listFlowable = FindUpDatabase.getAppDatabase(context).daoAccess().getAllStores();
                 stores.onSuccess(listFlowable);
             }
-        }) .start();
+        }).start();
     }
 
-    public static void getStoreByID(int store_id ,final Context context, final Stores stores){
+    public static void getStoreByID(int store_id, final Context context, final Stores stores) {
         new Thread(new Runnable() {
             @Override
             public void run() {
                 Flowable<Store> storeFlowable = FindUpDatabase.getAppDatabase(context).daoAccess().getStoreByID(store_id);
                 stores.getStoreID(storeFlowable);
             }
-        }) .start();
+        }).start();
     }
 
     /*******************************************************************************
@@ -95,23 +85,23 @@ public class DBHandler {
      * @param event
      * @param context
      */
-    public static void InsertEvent(final Event event, final Context context){
+    public static void InsertEvent(final Event event, final Context context) {
         new Thread(new Runnable() {
             @Override
             public void run() {
                 FindUpDatabase.getAppDatabase(context).daoAccess().insertEvent(event);
             }
-        }) .start();
+        }).start();
     }
 
-    public static void getAllEvents(final Context context, final Events events){
+    public static void getAllEvents(final Context context, final Events events) {
         new Thread(new Runnable() {
             @Override
             public void run() {
                 Flowable<List<Event>> listFlowable = FindUpDatabase.getAppDatabase(context).daoAccess().getAllEvents();
                 events.onSuccess(listFlowable);
             }
-        }) .start();
+        }).start();
     }
 
     /*******************************************************************************
@@ -119,33 +109,33 @@ public class DBHandler {
      * @param comment
      * @param context
      */
-    public static void InsertComment(final Comment comment, final Context context){
+    public static void InsertComment(final Comment comment, final Context context) {
         new Thread(new Runnable() {
             @Override
             public void run() {
                 FindUpDatabase.getAppDatabase(context).daoAccess().insertComment(comment);
             }
-        }) .start();
+        }).start();
     }
 
-    public static void getAllComments(final Context context, final Comments comment){
+    public static void getAllComments(final Context context, final Comments comment) {
         new Thread(new Runnable() {
             @Override
             public void run() {
                 Flowable<List<Comment>> listFlowable = FindUpDatabase.getAppDatabase(context).daoAccess().getAllComments();
                 comment.onSuccess(listFlowable);
             }
-        }) .start();
+        }).start();
     }
 
-    public static void getCommentByStoreID(int store_id , final Context context, final khaled.example.com.findup.Helper.Database.Interfaces.Comment.Comment comment){
+    public static void getCommentByStoreID(int store_id, final Context context, final khaled.example.com.findup.Helper.Database.Interfaces.Comment.Comment comment) {
         new Thread(new Runnable() {
             @Override
             public void run() {
                 Flowable<List<Comment>> listFlowable = FindUpDatabase.getAppDatabase(context).daoAccess().getCommentsByStoreID(store_id);
                 comment.onSuccess(listFlowable);
             }
-        }) .start();
+        }).start();
     }
 
     /*******************************************************************************
@@ -154,46 +144,44 @@ public class DBHandler {
      * @param context
      *
      ******************************************************************************/
-    public static void InsertPrdouct(final Product product, final Context context){
+    public static void InsertPrdouct(final Product product, final Context context) {
         new Thread(new Runnable() {
             @Override
             public void run() {
                 FindUpDatabase.getAppDatabase(context).daoAccess().insertProduct(product);
             }
-        }) .start();
+        }).start();
     }
 
-    public static void getAllProducts(final Context context, final Products products){
+    public static void getAllProducts(final Context context, final Products products) {
         new Thread(new Runnable() {
             @Override
             public void run() {
                 Flowable<List<Product>> listFlowable = FindUpDatabase.getAppDatabase(context).daoAccess().getAllProducts();
                 products.onSuccess(listFlowable);
             }
-        }) .start();
+        }).start();
     }
 
 
-
-
-    public static void getProductByStoreID(int store_id , final Context context, final Products products){
+    public static void getProductByStoreID(int store_id, final Context context, final Products products) {
         new Thread(new Runnable() {
             @Override
             public void run() {
                 Flowable<List<Product>> productFlowable = FindUpDatabase.getAppDatabase(context).daoAccess().getProductByStoreID(store_id);
                 products.onSuccess(productFlowable);
             }
-        }) .start();
+        }).start();
     }
 
-    public static void getProductByID(int prod_id , final Context context, final Products products){
+    public static void getProductByID(int prod_id, final Context context, final Products products) {
         new Thread(new Runnable() {
             @Override
             public void run() {
                 Flowable<Product> productFlowable = FindUpDatabase.getAppDatabase(context).daoAccess().getProductByID(prod_id);
                 products.getProduct(productFlowable);
             }
-        }) .start();
+        }).start();
     }
 
 
@@ -204,24 +192,24 @@ public class DBHandler {
      *
      ******************************************************************************/
 
-    public static void InsertProductPhoto(final ProductPhoto productPhoto, final Context context){
+    public static void InsertProductPhoto(final ProductPhoto productPhoto, final Context context) {
         new Thread(new Runnable() {
             @Override
             public void run() {
                 FindUpDatabase.getAppDatabase(context).daoAccess().insertProductPhoto(productPhoto);
             }
-        }) .start();
+        }).start();
     }
 
 
-    public static void getProductPhotosByProductID(int product_id , final Context context, final ProductPhotos productPhotos){
+    public static void getProductPhotosByProductID(int product_id, final Context context, final ProductPhotos productPhotos) {
         new Thread(new Runnable() {
             @Override
             public void run() {
                 Flowable<List<ProductPhoto>> productFlowable = FindUpDatabase.getAppDatabase(context).daoAccess().getProductPhotoByProductID(product_id);
                 productPhotos.onSuccess(productFlowable);
             }
-        }) .start();
+        }).start();
     }
 
 
@@ -232,7 +220,7 @@ public class DBHandler {
      *
      ******************************************************************************/
 
-    public static void InsertStorePhoto(final StorePhoto storePhotos, final Context context){
+    public static void InsertStorePhoto(final StorePhoto storePhotos, final Context context) {
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -241,7 +229,7 @@ public class DBHandler {
         }).start();
     }
 
-    public static void getStorePhotosByStoreID(int store_id , final Context context, final StorePhotos storePhotos){
+    public static void getStorePhotosByStoreID(int store_id, final Context context, final StorePhotos storePhotos) {
         new Thread(new Runnable() {
             @Override
             public void run() {

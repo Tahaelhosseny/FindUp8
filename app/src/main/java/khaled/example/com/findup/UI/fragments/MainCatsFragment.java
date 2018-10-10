@@ -42,20 +42,20 @@ public class MainCatsFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         List<Category> categories = new ArrayList<>();
-        categories.add(new Category(1,"Food-Trunk","simple description",1,1));
-        categories.add(new Category(2,"Home Business","simple description",1,1));
-        categories.add(new Category(3,"Crafts","simple description",1,1));
-        categories.add(new Category(4,"Food-Trunk","simple description",1,1));
-        categories.add(new Category(5,"Home Business","simple description",1,1));
+        categories.add(new Category(1, "Food-Trunk", "simple description", 1, 1));
+        categories.add(new Category(2, "Home Business", "simple description", 1, 1));
+        categories.add(new Category(3, "Crafts", "simple description", 1, 1));
+        categories.add(new Category(4, "Food-Trunk", "simple description", 1, 1));
+        categories.add(new Category(5, "Home Business", "simple description", 1, 1));
         bindUI(categories);
     }
 
-    private void bindUI(List<Category> categories){
+    private void bindUI(List<Category> categories) {
         RecyclerView recyclerView = getActivity().findViewById(R.id.catsRecyclerView);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         MainCategoriesAdapter adapter = new MainCategoriesAdapter(getActivity(), categories);
         recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false){
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false) {
             @Override
             public boolean canScrollVertically() {
                 return false;

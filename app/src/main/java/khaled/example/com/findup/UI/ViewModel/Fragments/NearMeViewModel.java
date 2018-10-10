@@ -12,7 +12,6 @@ import com.f2prateek.rx.preferences2.Preference;
 import java.util.ArrayList;
 import java.util.List;
 
-
 import io.reactivex.Flowable;
 import khaled.example.com.findup.Helper.Database.DBHandler;
 import khaled.example.com.findup.Helper.Database.Interfaces.Store.Stores;
@@ -29,7 +28,7 @@ public class NearMeViewModel extends java.util.Observable {
         this.mContext = mContext;
     }
 
-    public void InitRecyclerView(RecyclerView recyclerView){
+    public void InitRecyclerView(RecyclerView recyclerView) {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         NearMeAdapter adapter = new NearMeAdapter(mContext, new ArrayList<>());
         LoadStoresFromDatabase(adapter);
@@ -39,30 +38,31 @@ public class NearMeViewModel extends java.util.Observable {
     }
 
 
-    public void LoadStoresFromDatabase(NearMeAdapter adapter){
-        Utility.UpdateCurrentLocation((Activity) mContext,mContext);
+    public void LoadStoresFromDatabase(NearMeAdapter adapter) {
+        Utility.UpdateCurrentLocation((Activity) mContext, mContext);
 
         SharedPrefManger sharedPrefManger = new SharedPrefManger(mContext);
 
         Preference<Float> Latitude = sharedPrefManger.getLatitude();
-        Latitude.asObservable().subscribe(val -> LocationUtility.LatitudeToAdapter(val,adapter));
+        Latitude.asObservable().subscribe(val -> LocationUtility.LatitudeToAdapter(val, adapter));
 
         Preference<Float> Longitude = sharedPrefManger.getLongitude();
-        Longitude.asObservable().subscribe(val -> LocationUtility.LongitudeToAdapter(val,adapter));
+        Longitude.asObservable().subscribe(val -> LocationUtility.LongitudeToAdapter(val, adapter));
 
         DBHandler.getAllStores(mContext, new Stores() {
             @Override
             public void onSuccess(Flowable<List<Store>> listFlowable) {
 
                 listFlowable.subscribe(
-                        val-> {
-                            adapter.setStores(val) ;
+                        val -> {
+                            adapter.setStores(val);
                             adapter.notifyDataSetChanged();
                         },
-                        err-> Log.i("database err","store database error : "+err.getMessage())
+                        err -> Log.i("database err", "store database error : " + err.getMessage())
                 );
 
             }
+
             @Override
             public void onFail() {
 

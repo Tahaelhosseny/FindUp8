@@ -21,7 +21,7 @@ public class WriteCommentFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view =inflater.inflate(R.layout.write_comment_layout, container, false);
+        View view = inflater.inflate(R.layout.write_comment_layout, container, false);
         return view;
     }
 }

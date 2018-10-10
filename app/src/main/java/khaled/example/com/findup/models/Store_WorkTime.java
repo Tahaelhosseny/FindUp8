@@ -11,7 +11,8 @@ import android.support.annotation.NonNull;
         onDelete = ForeignKey.CASCADE))
 
 public class Store_WorkTime {
-    @NonNull @PrimaryKey
+    @NonNull
+    @PrimaryKey
     private int worktime_id;
 
     @NonNull

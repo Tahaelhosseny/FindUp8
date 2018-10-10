@@ -35,7 +35,7 @@ public class ProductPhoto {
     }
 
     public String getPhoto_name() {
-        return CONST.API_FILE_DOMAIN.concat(CONST.IMAGES_PATH)+""+photo_name;
+        return CONST.API_FILE_DOMAIN.concat(CONST.IMAGES_PATH) + "" + photo_name;
     }
 
     public void setPhoto_name(String photo_name) {

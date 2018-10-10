@@ -35,12 +35,13 @@ public class StoreDetailsViewModel extends java.util.Observable {
     private Context mContext;
     private int StoreID;
     private Store store;
+
     public StoreDetailsViewModel(Context mContext, int storeID) {
         this.mContext = mContext;
         this.StoreID = storeID;
     }
 
-    public void AssignDataToFields(ImageView storeImg, TextView storeName, TextView storeDis, TextView storeBriefTxt, TextView store_rating){
+    public void AssignDataToFields(ImageView storeImg, TextView storeName, TextView storeDis, TextView storeBriefTxt, TextView store_rating) {
         DBHandler.getStoreByID(StoreID, mContext, new Stores() {
             @Override
             public void onSuccess(Flowable<List<Store>> listFlowable) {
@@ -53,12 +54,12 @@ public class StoreDetailsViewModel extends java.util.Observable {
                 SharedPrefManger sharedPrefManger = new SharedPrefManger(mContext);
                 CurrentLocation location = new CurrentLocation();
                 Preference<Float> Latitude = sharedPrefManger.getLatitude();
-                Latitude.asObservable().subscribe(latitude -> LocationUtility.LatitudeToCurrentLocationModel(latitude,location));
+                Latitude.asObservable().subscribe(latitude -> LocationUtility.LatitudeToCurrentLocationModel(latitude, location));
 
                 Preference<Float> Longitude = sharedPrefManger.getLongitude();
-                Longitude.asObservable().subscribe(longitude -> LocationUtility.LongitudeToCurrentLocationModel(longitude,location));
+                Longitude.asObservable().subscribe(longitude -> LocationUtility.LongitudeToCurrentLocationModel(longitude, location));
 
-               Flowable<CurrentLocation> currentLocationFlowable = Flowable.fromCallable(new Callable<CurrentLocation>() {
+                Flowable<CurrentLocation> currentLocationFlowable = Flowable.fromCallable(new Callable<CurrentLocation>() {
                     @Override
                     public CurrentLocation call() throws Exception {
                         return location;
@@ -66,24 +67,24 @@ public class StoreDetailsViewModel extends java.util.Observable {
                 });
 
                 storeFlowable.subscribe(
-                        val-> {
+                        val -> {
                             ((Activity) mContext).runOnUiThread(new Runnable() {
 
                                 @Override
                                 public void run() {
                                     store = val;
-                                if (!val.getStore_banner().isEmpty())
-                                    Picasso.with(mContext).load(val.getStore_banner()).placeholder(R.drawable.near_by_place_holder).into(storeImg);
-                                storeName.setText(val.getStore_name());
-                                storeDis.setText(val.getStore_name());
-                                storeBriefTxt.setText(val.getStore_about());
-                                store_rating.setText(val.getStore_rating());
-                                currentLocationFlowable.subscribe(loca -> storeDis.setText(val.getPlaceDistane(mContext,loca.getLocationModel())));
+                                    if (!val.getStore_banner().isEmpty())
+                                        Picasso.with(mContext).load(val.getStore_banner()).placeholder(R.drawable.near_by_place_holder).into(storeImg);
+                                    storeName.setText(val.getStore_name());
+                                    storeDis.setText(val.getStore_name());
+                                    storeBriefTxt.setText(val.getStore_about());
+                                    store_rating.setText(val.getStore_rating());
+                                    currentLocationFlowable.subscribe(loca -> storeDis.setText(val.getPlaceDistane(mContext, loca.getLocationModel())));
 
                                 }
                             });
-                           },
-                        err-> Log.i("database err","store database error : "+err.getMessage())
+                        },
+                        err -> Log.i("database err", "store database error : " + err.getMessage())
 
 
                 );
@@ -97,7 +98,7 @@ public class StoreDetailsViewModel extends java.util.Observable {
     }
 
 
-    public void InitTabs(CommonTabLayout tabLayout){
+    public void InitTabs(CommonTabLayout tabLayout) {
         ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();
         mTabEntities.add(new TabEntity("Information"));
         mTabEntities.add(new TabEntity("Products"));
@@ -106,42 +107,41 @@ public class StoreDetailsViewModel extends java.util.Observable {
 
         Bundle bundle = new Bundle();
         DBHandler.getStoreByID(StoreID, mContext, new Stores() {
-                    @Override
-                    public void onSuccess(Flowable<List<Store>> listFlowable) {
+            @Override
+            public void onSuccess(Flowable<List<Store>> listFlowable) {
 
-                    }
+            }
 
-                    @Override
-                    public void getStoreID(Flowable<Store> storeFlowable) {
-                        storeFlowable.subscribe(val -> {
-                            StoreInfoFragment storeInfoFragment = new StoreInfoFragment();
-                            storeInfoFragment.setArguments(bundle);
+            @Override
+            public void getStoreID(Flowable<Store> storeFlowable) {
+                storeFlowable.subscribe(val -> {
+                    StoreInfoFragment storeInfoFragment = new StoreInfoFragment();
+                    storeInfoFragment.setArguments(bundle);
 
-                            ProductsFragment productsFragment = new ProductsFragment();
-                            bundle.putInt("store_id", val.getStore_id());
-                            productsFragment.setArguments(bundle);
+                    ProductsFragment productsFragment = new ProductsFragment();
+                    bundle.putInt("store_id", val.getStore_id());
+                    productsFragment.setArguments(bundle);
 
-                            fragmentList.add(storeInfoFragment);
-                            fragmentList.add(productsFragment);
-                            tabLayout.notifyDataSetChanged();
-                            tabLayout.setTabData(mTabEntities, (FragmentActivity) mContext,R.id.fl_change,fragmentList);
-                            tabLayout.setIconHeight(0);
-                            tabLayout.setIconVisible(false);
-                            tabLayout.getTitleView(0).setTypeface(Typeface.create("sfcompactdisplay_semibold", Typeface.NORMAL));
-                            tabLayout.getTitleView(1).setTypeface(Typeface.create("sfcompactdisplay_heavy", Typeface.NORMAL));
-                        });
-                    }
-
-                    @Override
-                    public void onFail() {
-
-                    }
+                    fragmentList.add(storeInfoFragment);
+                    fragmentList.add(productsFragment);
+                    tabLayout.notifyDataSetChanged();
+                    tabLayout.setTabData(mTabEntities, (FragmentActivity) mContext, R.id.fl_change, fragmentList);
+                    tabLayout.setIconHeight(0);
+                    tabLayout.setIconVisible(false);
+                    tabLayout.getTitleView(0).setTypeface(Typeface.create("sfcompactdisplay_semibold", Typeface.NORMAL));
+                    tabLayout.getTitleView(1).setTypeface(Typeface.create("sfcompactdisplay_heavy", Typeface.NORMAL));
                 });
+            }
+
+            @Override
+            public void onFail() {
+
+            }
+        });
 
 
         //Typeface mTypeface = Typeface.createFromAsset(getActivity().getAssets(), "fonts/sfcompactdisplay_semibold.ttf");
         // mTypeface = Typeface.createFromAsset(getContext().getAssets(), "fonts/sfcompactdisplay_semibold.ttf");
-
 
 
         //tabLayout.setupWithViewPager(viewPager);

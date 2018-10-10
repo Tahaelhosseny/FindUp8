@@ -3,7 +3,6 @@ package khaled.example.com.findup.Helper.Database.Interfaces.DataSource;
 import java.util.List;
 
 import io.reactivex.Flowable;
-import khaled.example.com.findup.models.Category;
 import khaled.example.com.findup.models.Store;
 
 public interface StoreDataSource {
@@ -25,7 +24,6 @@ public interface StoreDataSource {
      * @param store the category to be inserted or updated.
      */
     void insertOrUpdateStore(Store store);
-
 
 
     /**

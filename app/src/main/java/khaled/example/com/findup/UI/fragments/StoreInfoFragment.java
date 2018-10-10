@@ -7,9 +7,6 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,32 +15,15 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import khaled.example.com.findup.UI.CustomViews.OverlapDecoration;
 import khaled.example.com.findup.R;
-import khaled.example.com.findup.UI.ViewModel.Fragments.NearMeViewModel;
-import khaled.example.com.findup.UI.ViewModel.Fragments.StoreDetailsViewModel;
 import khaled.example.com.findup.UI.ViewModel.Fragments.StoreInfoViewModel;
-import khaled.example.com.findup.UI.activities.ChatWithStoreActivity;
 import khaled.example.com.findup.UI.activities.CommentsActivity;
-import khaled.example.com.findup.UI.activities.PhotosGalleryActivity;
-import khaled.example.com.findup.UI.activities.StoreDetailsActivity;
-import khaled.example.com.findup.UI.adapters.CommentsPhotosAdapter;
-import khaled.example.com.findup.UI.adapters.RecyclerTouchListener;
-import khaled.example.com.findup.UI.adapters.StorePhotosAdapter;
-import khaled.example.com.findup.databinding.FragmentNearMeBinding;
 import khaled.example.com.findup.databinding.FragmentStoreInfoBinding;
-import khaled.example.com.findup.models.Comment;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -51,6 +31,8 @@ import khaled.example.com.findup.models.Comment;
 public class StoreInfoFragment extends Fragment implements OnMapReadyCallback {
 
     MapView mMapView;
+    StoreInfoViewModel storeInfoViewModel;
+    FragmentStoreInfoBinding binding;
 
     public StoreInfoFragment() {
         // Required empty public constructor
@@ -63,8 +45,6 @@ public class StoreInfoFragment extends Fragment implements OnMapReadyCallback {
         return fragment;
     }
 
-    StoreInfoViewModel storeInfoViewModel;
-    FragmentStoreInfoBinding binding;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -72,14 +52,14 @@ public class StoreInfoFragment extends Fragment implements OnMapReadyCallback {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_store_info, container, false);
         View rootView = binding.getRoot();
         //here data must be an instance of the class MarsDataProvider
-        storeInfoViewModel = new StoreInfoViewModel(getContext(),  getArguments().getInt("store_id"));
+        storeInfoViewModel = new StoreInfoViewModel(getContext(), getArguments().getInt("store_id"));
         binding.setInfo(storeInfoViewModel);
         try {
             MapsInitializer.initialize(this.getActivity());
             mMapView = (MapView) rootView.findViewById(R.id.mapView);
             mMapView.onCreate(savedInstanceState);
             mMapView.getMapAsync(this);
-        }catch (Exception e){
+        } catch (Exception e) {
 
         }
 
@@ -103,13 +83,13 @@ public class StoreInfoFragment extends Fragment implements OnMapReadyCallback {
 
         storeInfoViewModel.bindCommentsPhotos(binding.commentUsersImg);
         storeInfoViewModel.bindPhotos(binding.storePhotosRecycler);
-        storeInfoViewModel.bindStoreData(binding.aboutTxtDetails,binding.workTimeDaysInfoTxt,binding.workTimeInfoTxt,
-                binding.mailImg,binding.siteImg,binding.chatImg,binding.twitterImg,binding.snapImg);
+        storeInfoViewModel.bindStoreData(binding.aboutTxtDetails, binding.workTimeDaysInfoTxt, binding.workTimeInfoTxt,
+                binding.mailImg, binding.siteImg, binding.chatImg, binding.twitterImg, binding.snapImg);
 
     }
 
 
-    private View.OnClickListener getRatingDialog(){
+    private View.OnClickListener getRatingDialog() {
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -137,9 +117,8 @@ public class StoreInfoFragment extends Fragment implements OnMapReadyCallback {
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        storeInfoViewModel.onMapReadyBind(googleMap,binding.button2,binding.streetAddress);
+        storeInfoViewModel.onMapReadyBind(googleMap, binding.button2, binding.streetAddress);
     }
-
 
 
     @Override
@@ -148,7 +127,6 @@ public class StoreInfoFragment extends Fragment implements OnMapReadyCallback {
         if (mMapView != null)
             mMapView.onLowMemory();
     }
-
 
 
     @Override
@@ -173,7 +151,7 @@ public class StoreInfoFragment extends Fragment implements OnMapReadyCallback {
     @Override
     public void onResume() {
         super.onResume();
-        if (mMapView !=null)
+        if (mMapView != null)
             mMapView.onResume();
     }
 

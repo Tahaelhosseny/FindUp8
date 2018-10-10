@@ -27,22 +27,23 @@ import khaled.example.com.findup.models.Event;
 public class EventsFragment extends Fragment {
 
 
+    int type;
+
     public EventsFragment() {
         // Required empty public constructor
     }
 
-    int type;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         String behavior;
-        if (getArguments() !=null && getArguments().containsKey("behavior")) {
+        if (getArguments() != null && getArguments().containsKey("behavior")) {
             behavior = getArguments().getString("behavior");
             if (behavior.equals("V"))
-                type=LinearLayoutManager.VERTICAL;
+                type = LinearLayoutManager.VERTICAL;
             else
-                type=LinearLayoutManager.HORIZONTAL;
+                type = LinearLayoutManager.HORIZONTAL;
         }
         return inflater.inflate(R.layout.fragment_events, container, false);
     }
@@ -60,12 +61,11 @@ public class EventsFragment extends Fragment {
 
     }
 
-    private void bindUI(List<Event> events){
+    private void bindUI(List<Event> events) {
         RecyclerView recyclerView = getActivity().findViewById(R.id.eventsRecyclerView);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         EventsAdapter adapter = new EventsAdapter(getActivity(), events);
         recyclerView.setAdapter(adapter);
-
 
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), type, false));

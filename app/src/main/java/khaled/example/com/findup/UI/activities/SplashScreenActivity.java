@@ -19,7 +19,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         //setContentView(R.layout.activity_splash_screen);
         splashScreenViewModel = new SplashScreenViewModel(this);
-        binding= DataBindingUtil.setContentView(this,R.layout.activity_splash_screen);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_splash_screen);
         binding.setLoginview(splashScreenViewModel);
         splashScreenViewModel.UpdateStoresData();
 

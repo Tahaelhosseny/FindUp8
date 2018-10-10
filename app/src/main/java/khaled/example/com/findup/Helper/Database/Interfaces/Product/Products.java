@@ -7,6 +7,8 @@ import khaled.example.com.findup.models.Product;
 
 public interface Products {
     void onSuccess(Flowable<List<Product>> listFlowable);
+
     void getProduct(Flowable<Product> productFlowable);
+
     void onFail();
 }

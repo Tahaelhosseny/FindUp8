@@ -1,8 +1,8 @@
 package khaled.example.com.findup.UI.activities;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -29,14 +29,14 @@ public class AddProductCraftActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_product_craft);
 
 
-        btn_addCraftBack=findViewById(R.id.btn_addCraftBack);
-        btn_addCraftDone=findViewById(R.id.btn_addCraftDone);
-        btn_addCraftDelete=findViewById(R.id.btn_addCraftDelete);
-        addCraftLayout=findViewById(R.id.addCraftLayout);
-        addOtherCraftLayout=findViewById(R.id.addOtherCraftLayout);
-        layoutAddWithDetails=findViewById(R.id.layoutAddWithDetails);
-        recyclerCrafProducts=findViewById(R.id.recyclerCraftProducts);
-        btn_submit=findViewById(R.id.btn_submit);
+        btn_addCraftBack = findViewById(R.id.btn_addCraftBack);
+        btn_addCraftDone = findViewById(R.id.btn_addCraftDone);
+        btn_addCraftDelete = findViewById(R.id.btn_addCraftDelete);
+        addCraftLayout = findViewById(R.id.addCraftLayout);
+        addOtherCraftLayout = findViewById(R.id.addOtherCraftLayout);
+        layoutAddWithDetails = findViewById(R.id.layoutAddWithDetails);
+        recyclerCrafProducts = findViewById(R.id.recyclerCraftProducts);
+        btn_submit = findViewById(R.id.btn_submit);
 
         addCraftLayout.setVisibility(View.VISIBLE);
         layoutAddWithDetails.setVisibility(View.GONE);
@@ -59,7 +59,7 @@ public class AddProductCraftActivity extends AppCompatActivity {
                 layoutAddWithDetails.setVisibility(View.VISIBLE);
             }
         });
-        final List<TruckProduct> truckProducts=new ArrayList<>();
+        final List<TruckProduct> truckProducts = new ArrayList<>();
         btn_addCraftDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -71,7 +71,7 @@ public class AddProductCraftActivity extends AppCompatActivity {
                 truckProducts.add(new TruckProduct(0, R.drawable.placeholder,
                         R.string.craft_price, R.string.craft_name, R.string.craft_description));
                 recyclerCrafProducts.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-                TruckProductsAdapter adapter = new TruckProductsAdapter(getApplicationContext(),truckProducts);
+                TruckProductsAdapter adapter = new TruckProductsAdapter(getApplicationContext(), truckProducts);
                 recyclerCrafProducts.setAdapter(adapter);
             }
         });

@@ -34,36 +34,6 @@ public class SendChatProductsAdapter extends RecyclerView.Adapter<SendChatProduc
         this.products = products;
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-
-        TextView productName;
-        TextView productPrice;
-        TextView productDescription;
-        ImageView productImg;
-        ImageView plus,minus;
-        TextView amount;
-        int amout_val;
-
-        public ViewHolder(View view) {
-            super(view);
-
-            productName = view.findViewById(R.id.product_title);
-            productDescription = view.findViewById(R.id.product_desc);
-            productPrice = view.findViewById(R.id.productItemPrice);
-            productImg = view.findViewById(R.id.product_image);
-
-            plus = view.findViewById(R.id.plus);
-            minus = view.findViewById(R.id.minus);
-            amount = view.findViewById(R.id.prod_amount);
-            amout_val = 0;
-        }
-
-        @Override
-        public void onClick(View v) {
-            context.startActivity(new Intent(context, ProductDetailsActivity.class));
-        }
-    }
-
     @NonNull
     @Override
     public SendChatProductsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -93,8 +63,8 @@ public class SendChatProductsAdapter extends RecyclerView.Adapter<SendChatProduc
         holder.plus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                holder.amout_val +=1;
-                holder.amount.setText(holder.amout_val+"");
+                holder.amout_val += 1;
+                holder.amount.setText(holder.amout_val + "");
             }
         });
 
@@ -113,5 +83,35 @@ public class SendChatProductsAdapter extends RecyclerView.Adapter<SendChatProduc
     @Override
     public int getItemCount() {
         return products.size();
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+
+        TextView productName;
+        TextView productPrice;
+        TextView productDescription;
+        ImageView productImg;
+        ImageView plus, minus;
+        TextView amount;
+        int amout_val;
+
+        public ViewHolder(View view) {
+            super(view);
+
+            productName = view.findViewById(R.id.product_title);
+            productDescription = view.findViewById(R.id.product_desc);
+            productPrice = view.findViewById(R.id.productItemPrice);
+            productImg = view.findViewById(R.id.product_image);
+
+            plus = view.findViewById(R.id.plus);
+            minus = view.findViewById(R.id.minus);
+            amount = view.findViewById(R.id.prod_amount);
+            amout_val = 0;
+        }
+
+        @Override
+        public void onClick(View v) {
+            context.startActivity(new Intent(context, ProductDetailsActivity.class));
+        }
     }
 }

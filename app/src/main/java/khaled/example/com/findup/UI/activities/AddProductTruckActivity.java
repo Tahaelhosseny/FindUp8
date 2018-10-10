@@ -1,8 +1,8 @@
 package khaled.example.com.findup.UI.activities;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -28,14 +28,14 @@ public class AddProductTruckActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_product_truck);
 
-        btn_addProductBack=findViewById(R.id.btn_addProductBack);
-        btn_addProductDone=findViewById(R.id.btn_addProductDone);
-        btn_addProductDelete=findViewById(R.id.btn_addProductDelete);
-        addProductLayout=findViewById(R.id.addProductLayout);
-        addOtherProductLayout=findViewById(R.id.addOtherProductLayout);
-        layoutAddWithDetails=findViewById(R.id.layoutAddWithDetails);
-        recyclerTruckProducts=findViewById(R.id.recyclerTruckProducts);
-        btn_submit=findViewById(R.id.btn_submit);
+        btn_addProductBack = findViewById(R.id.btn_addProductBack);
+        btn_addProductDone = findViewById(R.id.btn_addProductDone);
+        btn_addProductDelete = findViewById(R.id.btn_addProductDelete);
+        addProductLayout = findViewById(R.id.addProductLayout);
+        addOtherProductLayout = findViewById(R.id.addOtherProductLayout);
+        layoutAddWithDetails = findViewById(R.id.layoutAddWithDetails);
+        recyclerTruckProducts = findViewById(R.id.recyclerTruckProducts);
+        btn_submit = findViewById(R.id.btn_submit);
 
         addProductLayout.setVisibility(View.VISIBLE);
         layoutAddWithDetails.setVisibility(View.GONE);
@@ -58,7 +58,7 @@ public class AddProductTruckActivity extends AppCompatActivity {
                 layoutAddWithDetails.setVisibility(View.VISIBLE);
             }
         });
-        final List<TruckProduct> truckProducts=new ArrayList<>();
+        final List<TruckProduct> truckProducts = new ArrayList<>();
         btn_addProductDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -70,7 +70,7 @@ public class AddProductTruckActivity extends AppCompatActivity {
                 truckProducts.add(new TruckProduct(0, R.drawable.placeholder,
                         R.string.product_price, R.string.product_name, R.string.product_description));
                 recyclerTruckProducts.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-                TruckProductsAdapter adapter = new TruckProductsAdapter(getApplicationContext(),truckProducts);
+                TruckProductsAdapter adapter = new TruckProductsAdapter(getApplicationContext(), truckProducts);
                 recyclerTruckProducts.setAdapter(adapter);
             }
         });

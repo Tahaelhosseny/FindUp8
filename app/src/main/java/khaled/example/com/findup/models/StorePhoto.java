@@ -5,8 +5,6 @@ import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
-import khaled.example.com.findup.CONST;
-
 @Entity(foreignKeys = @ForeignKey(entity = Store.class,
         parentColumns = "store_id",
         childColumns = "store_id",

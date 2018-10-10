@@ -21,14 +21,18 @@ import khaled.example.com.findup.models.Category;
  * Created by khaled on 7/4/18.
  */
 
-public class MainCategoriesAdapter extends RecyclerView.Adapter<MainCategoriesAdapter.ViewHolder>{
+public class MainCategoriesAdapter extends RecyclerView.Adapter<MainCategoriesAdapter.ViewHolder> {
 
     private List<Category> categoryList;
     private Context context;
 
     public MainCategoriesAdapter(Context context, List<Category> categoryList) {
         this.context = context;
-        this.categoryList = categoryList.subList(0,4);
+        this.categoryList = categoryList.subList(0, 4);
+    }
+
+    public static int getScreenWidth() {
+        return Resources.getSystem().getDisplayMetrics().widthPixels;
     }
 
     @NonNull
@@ -42,13 +46,13 @@ public class MainCategoriesAdapter extends RecyclerView.Adapter<MainCategoriesAd
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Category category = categoryList.get(position);
-        holder.cat_bg.setCardBackgroundColor(UI_Utility.getCategoryBackgroundIDSArray(context)[position%4]);
-        if (position ==3)
+        holder.cat_bg.setCardBackgroundColor(UI_Utility.getCategoryBackgroundIDSArray(context)[position % 4]);
+        if (position == 3)
             holder.catNameText.setText(context.getResources().getString(R.string.more));
         else
             holder.catNameText.setText(category.getCat_name());
 
-         holder.category_item_container.setMinimumWidth(getScreenWidth()/4);
+        holder.category_item_container.setMinimumWidth(getScreenWidth() / 4);
 
     }
 
@@ -67,16 +71,12 @@ public class MainCategoriesAdapter extends RecyclerView.Adapter<MainCategoriesAd
             super(view);
 
             catNameText = view.findViewById(R.id.mainCatName);
-            cat_bg =  view.findViewById(R.id.category_background_layout);
+            cat_bg = view.findViewById(R.id.category_background_layout);
             category_item_container = view.findViewById(R.id.category_item_container);
         }
 
         @Override
         public void onClick(View v) {
         }
-    }
-
-    public static int getScreenWidth() {
-        return Resources.getSystem().getDisplayMetrics().widthPixels;
     }
 }

@@ -5,14 +5,13 @@ import android.content.SharedPreferences;
 
 public class InstagramSession {
 
-    private SharedPreferences sharedPref;
-    private SharedPreferences.Editor editor;
-
     private static final String SHARED = "Instagram_Preferences";
     private static final String API_USERNAME = "username";
     private static final String API_ID = "id";
     private static final String API_NAME = "name";
     private static final String API_ACCESS_TOKEN = "access_token";
+    private SharedPreferences sharedPref;
+    private SharedPreferences.Editor editor;
 
     public InstagramSession(Context context) {
         sharedPref = context.getSharedPreferences(SHARED, Context.MODE_PRIVATE);
@@ -51,15 +50,15 @@ public class InstagramSession {
     public String getUsername() {
         return sharedPref.getString(API_USERNAME, null);
     }
+
     /**
-     *
      * @return
      */
     public String getId() {
         return sharedPref.getString(API_ID, null);
     }
+
     /**
-     *
      * @return
      */
     public String getName() {

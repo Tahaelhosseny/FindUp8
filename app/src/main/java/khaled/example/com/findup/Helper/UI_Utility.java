@@ -3,13 +3,11 @@ package khaled.example.com.findup.Helper;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.support.v7.app.AlertDialog;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 
 import java.util.List;
@@ -125,17 +123,17 @@ public class UI_Utility {
             return dayList.get(0) + " - " + dayList.get(dayList.size() - 1);
         } else {
             String days = "";
-            for (int i = 0; i <dayList.size(); i++) {
+            for (int i = 0; i < dayList.size(); i++) {
                 days = days + "" + dayList.get(i).getDay_name();
-                if (i != dayList.size()-1)
-                    days = days +" - ";
+                if (i != dayList.size() - 1)
+                    days = days + " - ";
             }
             return days;
         }
     }
 
-    public static String WorkTimeToString(Store_WorkTime store_workTime){
-        return store_workTime.getWork_from_time() +" - " + store_workTime.getWork_to_time();
+    public static String WorkTimeToString(Store_WorkTime store_workTime) {
+        return store_workTime.getWork_from_time() + " - " + store_workTime.getWork_to_time();
     }
 }
 

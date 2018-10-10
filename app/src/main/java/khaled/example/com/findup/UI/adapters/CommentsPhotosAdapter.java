@@ -22,7 +22,7 @@ import khaled.example.com.findup.models.Comment;
  * Created by khaled on 7/4/18.
  */
 
-public class CommentsPhotosAdapter extends RecyclerView.Adapter<CommentsPhotosAdapter.ViewHolder>{
+public class CommentsPhotosAdapter extends RecyclerView.Adapter<CommentsPhotosAdapter.ViewHolder> {
 
     private List<Comment> CommentsList;
     private Context context;
@@ -30,7 +30,7 @@ public class CommentsPhotosAdapter extends RecyclerView.Adapter<CommentsPhotosAd
     public CommentsPhotosAdapter(Context context, List<Comment> CommentsList) {
         this.context = context;
         if (CommentsList.size() > 3)
-            this.CommentsList = CommentsList.subList(0,3);
+            this.CommentsList = CommentsList.subList(0, 3);
         else
             this.CommentsList = CommentsList;
     }
@@ -58,6 +58,7 @@ public class CommentsPhotosAdapter extends RecyclerView.Adapter<CommentsPhotosAd
 
         }
     }
+
     @Override
     public int getItemCount() {
         return CommentsList.size();

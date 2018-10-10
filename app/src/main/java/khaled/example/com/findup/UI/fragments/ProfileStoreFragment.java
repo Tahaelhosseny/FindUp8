@@ -1,21 +1,16 @@
 package khaled.example.com.findup.UI.fragments;
 
-import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import khaled.example.com.findup.R;
 import khaled.example.com.findup.UI.activities.NotificationsActivity;
-import khaled.example.com.findup.UI.activities.SettingsActivity;
 import khaled.example.com.findup.UI.activities.StoreSettingsActivity;
-import khaled.example.com.findup.UI.activities.UserSavedActivity;
 
 public class ProfileStoreFragment extends Fragment {
 

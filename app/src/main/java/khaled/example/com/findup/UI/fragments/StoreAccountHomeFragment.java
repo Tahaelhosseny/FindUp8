@@ -15,9 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import khaled.example.com.findup.R;
-import khaled.example.com.findup.UI.adapters.NotificationsAdapter;
 import khaled.example.com.findup.UI.adapters.StoreProductsReviewsAdapter;
-import khaled.example.com.findup.models.Notification;
 import khaled.example.com.findup.models.ReviewStoreItem;
 
 /**
@@ -48,7 +46,7 @@ public class StoreAccountHomeFragment extends Fragment {
         bindUI(reviewStoreItems);
     }
 
-    private void bindUI(List<ReviewStoreItem> reviewStoreItems){
+    private void bindUI(List<ReviewStoreItem> reviewStoreItems) {
         RecyclerView recyclerView = getActivity().findViewById(R.id.reviewsRecyclerView);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         StoreProductsReviewsAdapter adapter = new StoreProductsReviewsAdapter(getActivity(), reviewStoreItems);

@@ -3,17 +3,14 @@ package khaled.example.com.findup.UI.fragments;
 
 import android.animation.ValueAnimator;
 import android.content.Intent;
-import android.databinding.adapters.ExpandableListViewBindingAdapter;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ExpandableListAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -22,10 +19,7 @@ import java.util.List;
 import io.github.luizgrp.sectionedrecyclerviewadapter.SectionParameters;
 import io.github.luizgrp.sectionedrecyclerviewadapter.SectionedRecyclerViewAdapter;
 import io.github.luizgrp.sectionedrecyclerviewadapter.StatelessSection;
-import khaled.example.com.findup.Helper.UI_Utility;
 import khaled.example.com.findup.R;
-import khaled.example.com.findup.UI.activities.EventDetailsActivity;
-import khaled.example.com.findup.UI.activities.MainActivity;
 import khaled.example.com.findup.UI.activities.ProductsActivity;
 
 /**
@@ -33,21 +27,20 @@ import khaled.example.com.findup.UI.activities.ProductsActivity;
  */
 public class CategoryFragment extends Fragment {
 
-    private SectionedRecyclerViewAdapter sectionAdapter;
     static List<ExpandableSection> expandableSections;
-
-    public static ExpandableSection getExpanddedSection(){
-        for (int i = 0 ; i < expandableSections.size(); i++){
-            if (expandableSections.get(i).expanded)
-                return expandableSections.get(i);
-        }
-        return null;
-    }
+    private SectionedRecyclerViewAdapter sectionAdapter;
 
     public CategoryFragment() {
         // Required empty public constructor
     }
 
+    public static ExpandableSection getExpanddedSection() {
+        for (int i = 0; i < expandableSections.size(); i++) {
+            if (expandableSections.get(i).expanded)
+                return expandableSections.get(i);
+        }
+        return null;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -71,7 +64,7 @@ public class CategoryFragment extends Fragment {
 
         sectionAdapter = new SectionedRecyclerViewAdapter();
 
-        for (int i = 0;i<expandableSections.size();i++){
+        for (int i = 0; i < expandableSections.size(); i++) {
             sectionAdapter.addSection(expandableSections.get(i));
         }
 
@@ -81,11 +74,38 @@ public class CategoryFragment extends Fragment {
 
     }
 
+    public void changeTextSize(final TextView textView, float PstartSize, float PendSize) {
+        final float startSize = PstartSize; // Size in pixels
+        final float endSize = PendSize;
+        long animationDuration = 350; // Animation duration in ms
+        ValueAnimator animator = ValueAnimator.ofFloat(startSize, endSize);
+        animator.setDuration(animationDuration);
+
+        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+            @Override
+            public void onAnimationUpdate(ValueAnimator valueAnimator) {
+                float animatedValue = (float) valueAnimator.getAnimatedValue();
+                textView.setTextSize(animatedValue);
+            }
+        });
+        animator.start();
+    }
+
     public class ExpandableSection extends StatelessSection {
 
+        public boolean expanded = false;
         String title;
         String content;
-        public boolean expanded = false;
+
+        ExpandableSection(String title, String content) {
+            super(SectionParameters.builder()
+                    .itemResourceId(R.layout.cat_sec_content)
+                    .headerResourceId(R.layout.cat_sec_header)
+                    .build());
+
+            this.title = title;
+            this.content = content;
+        }
 
         public String getTitle() {
             return title;
@@ -100,16 +120,6 @@ public class CategoryFragment extends Fragment {
         }
 
         public void setContent(String content) {
-            this.content = content;
-        }
-
-        ExpandableSection(String title, String content) {
-            super(SectionParameters.builder()
-                    .itemResourceId(R.layout.cat_sec_content)
-                    .headerResourceId(R.layout.cat_sec_header)
-                    .build());
-
-            this.title = title;
             this.content = content;
         }
 
@@ -147,16 +157,16 @@ public class CategoryFragment extends Fragment {
 
             headerHolder.titleText.setText(title);
             if (headerHolder.titleText.getTextSize() > 50)
-                changeTextSize(headerHolder.titleText, 30,19);
+                changeTextSize(headerHolder.titleText, 30, 19);
 
             headerHolder.rootView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    for (int i = 0;i<expandableSections.size();i++){
+                    for (int i = 0; i < expandableSections.size(); i++) {
                         if (!expandableSections.get(i).expanded)
-                            changeTextSize(headerHolder.titleText, 19,30);
+                            changeTextSize(headerHolder.titleText, 19, 30);
                         else
-                            changeTextSize(headerHolder.titleText, 19,19);
+                            changeTextSize(headerHolder.titleText, 19, 19);
                         expandableSections.get(i).expanded = false;
                     }
                     expanded = !expanded;
@@ -164,23 +174,6 @@ public class CategoryFragment extends Fragment {
                 }
             });
         }
-    }
-
-    public void changeTextSize(final TextView textView, float PstartSize, float PendSize) {
-        final float startSize = PstartSize; // Size in pixels
-        final float endSize = PendSize;
-        long animationDuration = 350; // Animation duration in ms
-        ValueAnimator animator = ValueAnimator.ofFloat(startSize, endSize);
-        animator.setDuration(animationDuration);
-
-        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-            @Override
-            public void onAnimationUpdate(ValueAnimator valueAnimator) {
-                float animatedValue = (float) valueAnimator.getAnimatedValue();
-                textView.setTextSize(animatedValue);
-            }
-        });
-        animator.start();
     }
 
     private class HeaderViewHolder extends RecyclerView.ViewHolder {
@@ -206,7 +199,7 @@ public class CategoryFragment extends Fragment {
 
             rootView = view;
             contentText = view.findViewById(R.id.contentText);
-            defalut_text_size=19;
+            defalut_text_size = 19;
         }
     }
 }

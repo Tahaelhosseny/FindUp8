@@ -14,7 +14,7 @@ import java.util.List;
 import khaled.example.com.findup.R;
 import khaled.example.com.findup.models.TruckProduct;
 
-public class TruckProductsAdapter extends RecyclerView.Adapter<TruckProductsAdapter.ViewHolder>{
+public class TruckProductsAdapter extends RecyclerView.Adapter<TruckProductsAdapter.ViewHolder> {
     private List<TruckProduct> truckProducts;
     private Context context;
 
@@ -41,7 +41,7 @@ public class TruckProductsAdapter extends RecyclerView.Adapter<TruckProductsAdap
         return truckProducts.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView productName;
         TextView productPrice;
         TextView productDescription;

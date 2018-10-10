@@ -26,7 +26,7 @@ public class DepthPageTransformer implements ViewPager.PageTransformer {
             alpha = Math.max(0.1f * position + 1, 0);
         }
 
-        view.setTranslationX( translationX);
+        view.setTranslationX(translationX);
         view.setScaleX(scale);
         view.setScaleY(scale);
         view.setAlpha(alpha);

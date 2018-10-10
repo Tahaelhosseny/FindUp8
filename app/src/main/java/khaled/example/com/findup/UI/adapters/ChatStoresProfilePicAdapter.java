@@ -32,23 +32,6 @@ public class ChatStoresProfilePicAdapter extends RecyclerView.Adapter<ChatStores
         this.middle_element_position = middle_element_position;
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-
-        CircularImageView store_img;
-        TextView store_name;
-        public ViewHolder(View view) {
-            super(view);
-            store_img = view.findViewById(R.id.store_prof_pic);
-            store_name = view.findViewById(R.id.store_name);
-
-        }
-
-        @Override
-        public void onClick(View v) {
-            context.startActivity(new Intent(context, ProductDetailsActivity.class));
-        }
-    }
-
     @NonNull
     @Override
     public ChatStoresProfilePicAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -89,5 +72,23 @@ public class ChatStoresProfilePicAdapter extends RecyclerView.Adapter<ChatStores
             return 100;
         else
             return 0;
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+
+        CircularImageView store_img;
+        TextView store_name;
+
+        public ViewHolder(View view) {
+            super(view);
+            store_img = view.findViewById(R.id.store_prof_pic);
+            store_name = view.findViewById(R.id.store_name);
+
+        }
+
+        @Override
+        public void onClick(View v) {
+            context.startActivity(new Intent(context, ProductDetailsActivity.class));
+        }
     }
 }

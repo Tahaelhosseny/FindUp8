@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
@@ -13,6 +12,7 @@ import khaled.example.com.findup.R;
 public class WorkDaysActivity extends Activity {
 
     Button btn_distanceBack, btn_submit;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,7 +32,7 @@ public class WorkDaysActivity extends Activity {
         View.OnClickListener radioOnClick = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                switch (v.getId()){
+                switch (v.getId()) {
                     case R.id.all:
                         for (RadioButton radioButton : days)
                             radioButton.setChecked(true);
@@ -45,12 +45,12 @@ public class WorkDaysActivity extends Activity {
 //                mBottomSheetDialog.dismiss();
             }
         };
-        for (RadioButton radioButton : days){
+        for (RadioButton radioButton : days) {
             radioButton.setOnClickListener(radioOnClick);
         }
 
-        btn_submit=findViewById(R.id.btn_submit);
-        btn_distanceBack=findViewById(R.id.btn_distanceBack);
+        btn_submit = findViewById(R.id.btn_submit);
+        btn_distanceBack = findViewById(R.id.btn_distanceBack);
 
         btn_distanceBack.setOnClickListener(new View.OnClickListener() {
             @Override

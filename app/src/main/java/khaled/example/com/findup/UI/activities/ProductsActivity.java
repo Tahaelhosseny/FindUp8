@@ -1,14 +1,12 @@
 package khaled.example.com.findup.UI.activities;
 
-import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 
 import khaled.example.com.findup.R;
-import khaled.example.com.findup.UI.fragments.FilterFragment;
 import khaled.example.com.findup.UI.fragments.ProductsFragment;
 
 public class ProductsActivity extends AppCompatActivity {

@@ -37,7 +37,7 @@ public class PlaceholderFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_store_events, container, false);
-        Button btn_createNewEvent=rootView.findViewById(R.id.btn_createNewEvent);
+        Button btn_createNewEvent = rootView.findViewById(R.id.btn_createNewEvent);
         btn_createNewEvent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

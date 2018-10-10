@@ -10,12 +10,13 @@ import khaled.example.com.findup.R;
 public class NotificationsSettingsActivity extends AppCompatActivity {
 
     Button btn_notificationsBack;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notifications_settings);
 
-        btn_notificationsBack=findViewById(R.id.btn_notificationsBack);
+        btn_notificationsBack = findViewById(R.id.btn_notificationsBack);
 
         btn_notificationsBack.setOnClickListener(new View.OnClickListener() {
             @Override

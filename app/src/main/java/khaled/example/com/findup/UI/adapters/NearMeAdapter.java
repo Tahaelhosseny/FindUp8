@@ -29,9 +29,10 @@ public class NearMeAdapter extends RecyclerView.Adapter<NearMeAdapter.ViewHolder
     private List<Store> stores;
     private Context context;
     private CurrentLocation currentLocation = new CurrentLocation();
+
     public NearMeAdapter(Context context, List<Store> stores) {
         this.context = context;
-        this.stores = LocationUtility.SortStoresByNearest(context,stores,currentLocation.getLocationModel());
+        this.stores = LocationUtility.SortStoresByNearest(context, stores, currentLocation.getLocationModel());
     }
 
     public void setCurrentLocation(CurrentLocation currentLocation) {
@@ -39,7 +40,33 @@ public class NearMeAdapter extends RecyclerView.Adapter<NearMeAdapter.ViewHolder
     }
 
     public void setStores(List<Store> stores) {
-        this.stores = LocationUtility.SortStoresByNearest(context,stores,currentLocation.getLocationModel());
+        this.stores = LocationUtility.SortStoresByNearest(context, stores, currentLocation.getLocationModel());
+    }
+
+    @NonNull
+    @Override
+    public NearMeAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View itemView = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.near_me_item, parent, false);
+        return new NearMeAdapter.ViewHolder(itemView);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+
+        holder.store = stores.get(position);
+        holder.placeName.setText(holder.store.getStore_name());
+        holder.distance.setText(holder.store.getPlaceDistane(context, currentLocation.getLocationModel()));
+        holder.review.setText(holder.store.getPlaceReview());
+        holder.shortDesc.setText(holder.store.getStore_desc());
+        if (!holder.store.getStore_banner().isEmpty())
+            Picasso.with(holder.placeImage.getContext()).load(holder.store.getStore_banner()).placeholder(R.drawable.near_by_place_holder).into(holder.placeImage);
+
+    }
+
+    @Override
+    public int getItemCount() {
+        return stores.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -63,33 +90,7 @@ public class NearMeAdapter extends RecyclerView.Adapter<NearMeAdapter.ViewHolder
 
         @Override
         public void onClick(View v) {
-            v.getContext().startActivity(new Intent(v.getContext(), StoreDetailsActivity.class).putExtra("store_id",store.getStore_id()));
+            v.getContext().startActivity(new Intent(v.getContext(), StoreDetailsActivity.class).putExtra("store_id", store.getStore_id()));
         }
-    }
-
-    @NonNull
-    @Override
-    public NearMeAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.near_me_item, parent, false);
-        return new NearMeAdapter.ViewHolder(itemView);
-    }
-
-    @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-
-        holder.store = stores.get(position);
-        holder.placeName.setText(holder.store.getStore_name());
-        holder.distance.setText(holder.store.getPlaceDistane(context,currentLocation.getLocationModel()));
-        holder.review.setText(holder.store.getPlaceReview());
-        holder.shortDesc.setText(holder.store.getStore_desc());
-        if (!holder.store.getStore_banner().isEmpty())
-            Picasso.with(holder.placeImage.getContext()).load(holder.store.getStore_banner()).placeholder(R.drawable.near_by_place_holder).into(holder.placeImage);
-
-    }
-
-    @Override
-    public int getItemCount() {
-        return stores.size();
     }
 }

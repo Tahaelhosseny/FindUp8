@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-
 import com.willy.ratingbar.RotationRatingBar;
 
 import khaled.example.com.findup.R;
@@ -24,7 +23,7 @@ public class RatingActivity extends Activity {
             @Override
             public void onClick(View v) {
                 float currentRating = ratingBar.getRating();
-                Toast.makeText(RatingActivity.this, "Current Rating is "+currentRating, Toast.LENGTH_SHORT).show();
+                Toast.makeText(RatingActivity.this, "Current Rating is " + currentRating, Toast.LENGTH_SHORT).show();
             }
         });
     }

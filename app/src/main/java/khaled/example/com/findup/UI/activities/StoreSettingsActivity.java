@@ -1,8 +1,8 @@
 package khaled.example.com.findup.UI.activities;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -21,28 +21,28 @@ public class StoreSettingsActivity extends AppCompatActivity implements View.OnC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_store_settings);
 
-        btn_storeEditProfile=findViewById(R.id.btn_storeEditProfile);
+        btn_storeEditProfile = findViewById(R.id.btn_storeEditProfile);
         btn_storeEditProfile.setOnClickListener(this);
 
-        btn_storeNotifications=findViewById(R.id.btn_storeNotifications);
+        btn_storeNotifications = findViewById(R.id.btn_storeNotifications);
         btn_storeNotifications.setOnClickListener(this);
 
-        btn_storeLanguage=findViewById(R.id.btn_storeLanguage);
+        btn_storeLanguage = findViewById(R.id.btn_storeLanguage);
         btn_storeLanguage.setOnClickListener(this);
 
-        btn_storeInviteFriend=findViewById(R.id.btn_storeInviteFriend);
+        btn_storeInviteFriend = findViewById(R.id.btn_storeInviteFriend);
         btn_storeInviteFriend.setOnClickListener(this);
 
-        btn_storeContactUs=findViewById(R.id.btn_storeContactUs);
+        btn_storeContactUs = findViewById(R.id.btn_storeContactUs);
         btn_storeContactUs.setOnClickListener(this);
 
-        btn_storeTerms=findViewById(R.id.btn_storeTerms);
+        btn_storeTerms = findViewById(R.id.btn_storeTerms);
         btn_storeTerms.setOnClickListener(this);
 
-        btn_storeSettingsBack=findViewById(R.id.btn_storeSettingsBack);
+        btn_storeSettingsBack = findViewById(R.id.btn_storeSettingsBack);
         btn_storeSettingsBack.setOnClickListener(this);
 
-        btn_logout=findViewById(R.id.btn_logout);
+        btn_logout = findViewById(R.id.btn_logout);
         btn_logout.setOnClickListener(this);
     }
 

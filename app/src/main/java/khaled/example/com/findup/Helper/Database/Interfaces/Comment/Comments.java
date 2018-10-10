@@ -7,5 +7,6 @@ import khaled.example.com.findup.models.Comment;
 
 public interface Comments {
     void onSuccess(Flowable<List<Comment>> listFlowable);
+
     void onFail();
 }

@@ -2,7 +2,6 @@ package khaled.example.com.findup.UI.ViewModel.Activites;
 
 import android.arch.lifecycle.ViewModel;
 
-
 import khaled.example.com.findup.Helper.Database.Interfaces.DataSource.CategoryDataSource;
 import khaled.example.com.findup.models.Category;
 

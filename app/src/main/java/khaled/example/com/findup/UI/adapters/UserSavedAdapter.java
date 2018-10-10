@@ -23,35 +23,13 @@ import khaled.example.com.findup.models.Product;
  * Created by khaled on 8/1/18.
  */
 
-public class UserSavedAdapter extends RecyclerView.Adapter<UserSavedAdapter.ViewHolder>{
+public class UserSavedAdapter extends RecyclerView.Adapter<UserSavedAdapter.ViewHolder> {
     private List<Product> userSavedItems;
     private Context context;
 
     public UserSavedAdapter(Context context, List<Product> userSavedItems) {
         this.context = context;
         this.userSavedItems = userSavedItems;
-    }
-
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-
-        ImageView userSavedImage;
-        TextView userSavedName;
-        TextView userSavedDesc;
-
-        public ViewHolder(View view) {
-            super(view);
-            userSavedImage = view.findViewById(R.id.userSavedItemImg);
-            userSavedDesc = view.findViewById(R.id.userSavedItemDesc);
-            userSavedName = view.findViewById(R.id.userSavedItemName);
-            view.setOnClickListener(this);
-
-        }
-
-        @Override
-        public void onClick(View v) {
-
-
-        }
     }
 
     @NonNull
@@ -85,8 +63,31 @@ public class UserSavedAdapter extends RecyclerView.Adapter<UserSavedAdapter.View
 
         }
     }
+
     @Override
     public int getItemCount() {
         return userSavedItems.size();
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+
+        ImageView userSavedImage;
+        TextView userSavedName;
+        TextView userSavedDesc;
+
+        public ViewHolder(View view) {
+            super(view);
+            userSavedImage = view.findViewById(R.id.userSavedItemImg);
+            userSavedDesc = view.findViewById(R.id.userSavedItemDesc);
+            userSavedName = view.findViewById(R.id.userSavedItemName);
+            view.setOnClickListener(this);
+
+        }
+
+        @Override
+        public void onClick(View v) {
+
+
+        }
     }
 }

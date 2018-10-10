@@ -7,20 +7,16 @@ import android.view.View;
 
 public class MiddleItemFinder extends RecyclerView.OnScrollListener {
 
-    private
-    Context context;
-
-    private
-    LinearLayoutManager layoutManager;
-
-    private
-    MiddleItemCallback callback;
-
-    private
-    int controlState;
-
     public
     static final int ALL_STATES = 10;
+    private
+    Context context;
+    private
+    LinearLayoutManager layoutManager;
+    private
+    MiddleItemCallback callback;
+    private
+    int controlState;
 
     public MiddleItemFinder(Context context, LinearLayoutManager layoutManager, MiddleItemCallback callback, int controlState) {
         this.context = context;

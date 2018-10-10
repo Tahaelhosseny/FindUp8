@@ -23,11 +23,8 @@ import java.util.Observable;
 import io.reactivex.Flowable;
 import khaled.example.com.findup.Helper.Database.DBHandler;
 import khaled.example.com.findup.Helper.Database.Interfaces.Store.Stores;
-import khaled.example.com.findup.Helper.UI_Utility;
 import khaled.example.com.findup.Helper.Utility;
-import khaled.example.com.findup.R;
 import khaled.example.com.findup.UI.CustomViews.OverlapDecoration;
-import khaled.example.com.findup.UI.activities.ChatWithStoreActivity;
 import khaled.example.com.findup.UI.activities.CommentsActivity;
 import khaled.example.com.findup.UI.activities.PhotosGalleryActivity;
 import khaled.example.com.findup.UI.adapters.CommentsPhotosAdapter;
@@ -156,7 +153,7 @@ public class StoreInfoViewModel extends Observable {
 
     }
 
-    public void onMapReadyBind(GoogleMap googleMap, Button get_directions_btn,TextView address) {
+    public void onMapReadyBind(GoogleMap googleMap, Button get_directions_btn, TextView address) {
 
 
         if (MStore == null) {
@@ -178,7 +175,7 @@ public class StoreInfoViewModel extends Observable {
 
                             @Override
                             public void run() {
-                                bind_map_data(store, googleMap,get_directions_btn,address);
+                                bind_map_data(store, googleMap, get_directions_btn, address);
                             }
 
                         });
@@ -186,25 +183,25 @@ public class StoreInfoViewModel extends Observable {
                     });
                 }
             });
-        }else
-            bind_map_data(MStore, googleMap,get_directions_btn,address);
+        } else
+            bind_map_data(MStore, googleMap, get_directions_btn, address);
 
     }
 
-    private void bind_map_data(Store store, GoogleMap googleMap,Button get_directions_btn,TextView address) {
+    private void bind_map_data(Store store, GoogleMap googleMap, Button get_directions_btn, TextView address) {
         MStore = store;
         LatLng sydney = new LatLng(store.getStore_latitude(), store.getStore_longitude());
         googleMap.addMarker(new MarkerOptions().position(sydney).title(store.getStore_name()));
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(sydney.latitude - ((sydney.latitude * 14) / 1000000), sydney.longitude - ((sydney.longitude * 14) / 400000)), 14));
         googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 
-        get_directions_btn.setOnClickListener(v -> Utility.OpenGoogleMaps(mContext,store.getStore_latitude(),store.getStore_longitude()));
+        get_directions_btn.setOnClickListener(v -> Utility.OpenGoogleMaps(mContext, store.getStore_latitude(), store.getStore_longitude()));
         address.setText(store.getStore_location_address());
     }
 
 
-    public void bindStoreData(TextView aboutTxtDetails,TextView workTimeDaysInfoTxt,TextView workTimeInfoTxt,
-                              ImageView mailImg,ImageView siteImg,ImageView chatImg,ImageView twitterImg,ImageView snapImg) {
+    public void bindStoreData(TextView aboutTxtDetails, TextView workTimeDaysInfoTxt, TextView workTimeInfoTxt,
+                              ImageView mailImg, ImageView siteImg, ImageView chatImg, ImageView twitterImg, ImageView snapImg) {
 
         if (MStore == null) {
             DBHandler.getStoreByID(store_id, mContext, new Stores() {
@@ -223,20 +220,20 @@ public class StoreInfoViewModel extends Observable {
                     storeFlowable.subscribe(store -> {
                         ((Activity) mContext).runOnUiThread(new Runnable() {
 
-                              @Override
-                               public void run() {
-                                  MStore = store;
-                                  aboutTxtDetails.setText(store.getStore_about());
-                                  //workTimeDaysInfoTxt.setText(UI_Utility.WorkDaysToString(store.getStore_workdays()));
-                                  //workTimeInfoTxt.setText(UI_Utility.WorkTimeToString(store.getStore_worktime()));
+                                                                @Override
+                                                                public void run() {
+                                                                    MStore = store;
+                                                                    aboutTxtDetails.setText(store.getStore_about());
+                                                                    //workTimeDaysInfoTxt.setText(UI_Utility.WorkDaysToString(store.getStore_workdays()));
+                                                                    //workTimeInfoTxt.setText(UI_Utility.WorkTimeToString(store.getStore_worktime()));
 
-                                  //mailImg.setOnClickListener(v -> /*Utility.sendEmail(mContext,store.get); */);
-                                  siteImg.setOnClickListener(v -> Utility.OpenWebSite(mContext,store.getStore_website_link()));
-                                  chatImg.setOnClickListener(v-> Utility.OpenChatWithStore(mContext,store.getStore_id()));
-                                  twitterImg.setOnClickListener(v-> Utility.OpenTwitterAccount(mContext,store.getStore_twitter_link()));
-                                  //snapImg.setOnClickListener( v -> Utility.OpenSnapChatAccount(mContext,store.gets));
-                              }
-                          }
+                                                                    //mailImg.setOnClickListener(v -> /*Utility.sendEmail(mContext,store.get); */);
+                                                                    siteImg.setOnClickListener(v -> Utility.OpenWebSite(mContext, store.getStore_website_link()));
+                                                                    chatImg.setOnClickListener(v -> Utility.OpenChatWithStore(mContext, store.getStore_id()));
+                                                                    twitterImg.setOnClickListener(v -> Utility.OpenTwitterAccount(mContext, store.getStore_twitter_link()));
+                                                                    //snapImg.setOnClickListener( v -> Utility.OpenSnapChatAccount(mContext,store.gets));
+                                                                }
+                                                            }
                         );
                     });
                 }

@@ -25,13 +25,13 @@ public class ForgotPasswordActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forgot_password);
 
-        editText_phone=findViewById(R.id.editText_phone);
-        editText_password=findViewById(R.id.editText_password);
-        editText_repassword=findViewById(R.id.editText_repassword);
-        btn_submit=findViewById(R.id.btn_submit);
-        btn_back=findViewById(R.id.btn_passwordBack);
+        editText_phone = findViewById(R.id.editText_phone);
+        editText_password = findViewById(R.id.editText_password);
+        editText_repassword = findViewById(R.id.editText_repassword);
+        btn_submit = findViewById(R.id.btn_submit);
+        btn_back = findViewById(R.id.btn_passwordBack);
 
-        mobileSpinner=findViewById(R.id.mobileSpinner);
+        mobileSpinner = findViewById(R.id.mobileSpinner);
         String[] items = new String[]{"+2", "+966", "+900"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.spinner_item, items);
         mobileSpinner.setAdapter(adapter);
