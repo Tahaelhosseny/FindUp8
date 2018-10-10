@@ -116,7 +116,7 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
         SharedPrefManger.setIsLoggedIn(false);
         SharedPrefManger.setLogin_phone("");
         SharedPrefManger.setLogin_password("");
-        SharedPrefManger.setUserID("");
+        SharedPrefManger.setUserID(0);
         SharedPrefManger.setIsLoggedInAsCustomer(false);
         SharedPrefManger.setUSer_name("");
     }

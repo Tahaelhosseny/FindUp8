@@ -42,7 +42,7 @@ public class EditProfileActivity extends AppCompatActivity {
         activityEditProfileBinding.setPresenter(new EditProfilePresenter() {
             @Override
             public void editProfileData() {
-                String account_id = SharedPrefManger.getUser_ID();
+                int account_id = SharedPrefManger.getUser_ID();
                 String user_name = SharedPrefManger.getUser_name();
                 String old_password = SharedPrefManger.getLogin_password();
                 String phone = activityEditProfileBinding.editTextPhone.getRawText();

@@ -28,7 +28,7 @@ public class EditProfileViewModel extends Observable {
         this.mContext = mContext;
     }
 
-    public void sendEditProfileRequest(String account_id ,String user_name , String old_password , String new_password , String mobile ){
+    public void sendEditProfileRequest(int account_id ,String user_name , String old_password , String new_password , String mobile ){
 
         final AlertDialog alertDialog = UI_Utility.ShowProgressDialog(mContext, true);
         alertDialog.show();

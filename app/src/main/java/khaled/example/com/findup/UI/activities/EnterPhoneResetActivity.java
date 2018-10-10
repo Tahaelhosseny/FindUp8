@@ -20,11 +20,11 @@ public class EnterPhoneResetActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_enter_phone_reset);
+        /*setContentView(R.layout.activity_enter_phone_reset);
         submitToVerify = findViewById(R.id.btn_toVerifyPage);
         btn_back = findViewById(R.id.btn_toLoginPage);
         mobileSpinner=findViewById(R.id.mobileSpinner);
-        editText_phone = findViewById(R.id.edit_phone_to_verify);
+        editText_phone = findViewById(R.id.edit_phone_to_verify);*/
         String[] items = new String[]{"+2", "+966", "+900"};
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.spinner_item, items);
         mobileSpinner.setAdapter(adapter);

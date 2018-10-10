@@ -83,7 +83,7 @@ public interface ApiInterface {
 
     @POST(ApiClient.PATH_URL+"reg_login?tag=edit_profile&HashSecure="+HASH)
     @FormUrlEncoded
-    Call<EditProfileResponse> editProfileData(@Field("account_id") String account_id , @Field("username") String username
+    Call<EditProfileResponse> editProfileData(@Field("account_id") int account_id , @Field("username") String username
      ,@Field("old_password") String old_password , @Field("new_password") String new_password , @Field("mobile") String mobile );
 
     @POST(ApiClient.PATH_URL+"user_profile?tag=set_user_currency&account_id=1&HashSecure="+HASH)
