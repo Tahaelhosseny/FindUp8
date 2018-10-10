@@ -17,25 +17,30 @@ import khaled.example.com.findup.R;
 
 public class VerifyCodeActivity extends AppCompatActivity {
 
-    public int counter = 30;
+    public int counter=30;
     TextView txtNumber, txtTimer;
-    Button btnBack, btnResend;
+    Button btnBack, btnResend , btnCheckCode;
     MaskEditText editTextSt, editTextNd, editTextRd, editTextTh;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_verify_code);
-
-        txtNumber = findViewById(R.id.txtNumber);
-        txtTimer = findViewById(R.id.timer);
-        btnBack = findViewById(R.id.btn_verifyBack);
-        btnResend = findViewById(R.id.btn_resend);
-        editTextSt = findViewById(R.id.editText_stDigit);
-        editTextNd = findViewById(R.id.editText_ndDigit);
-        editTextRd = findViewById(R.id.editText_rdDigit);
-        editTextTh = findViewById(R.id.editText_thDigit);
-
+        btnCheckCode = findViewById(R.id.btn_submit_check_code);
+        txtNumber=findViewById(R.id.txtNumber);
+        txtTimer=findViewById(R.id.timer);
+        btnBack=findViewById(R.id.btn_verifyBack);
+        btnResend=findViewById(R.id.btn_resend);
+        editTextSt=findViewById(R.id.editText_stDigit);
+        editTextNd=findViewById(R.id.editText_ndDigit);
+        editTextRd=findViewById(R.id.editText_rdDigit);
+        editTextTh=findViewById(R.id.editText_thDigit);
+        btnCheckCode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(VerifyCodeActivity.this , ForgotPasswordActivity.class));finish();
+            }
+        });
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -47,18 +52,19 @@ public class VerifyCodeActivity extends AppCompatActivity {
         btnResend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(VerifyCodeActivity.this, "Resend", Toast.LENGTH_SHORT).show();
+                Toast.makeText(VerifyCodeActivity.this,"Resend",Toast.LENGTH_SHORT).show();
             }
         });
 
         editTextSt.addTextChangedListener(new TextWatcher() {
 
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (editTextSt.getText().toString().length() == 1) {
+            public void onTextChanged(CharSequence s, int start,int before, int count)
+            {
+                if(editTextSt.getText().toString().length()==1)
+                {
                     editTextNd.requestFocus();
                 }
             }
-
             public void beforeTextChanged(CharSequence s, int start,
                                           int count, int after) {
             }
@@ -70,12 +76,13 @@ public class VerifyCodeActivity extends AppCompatActivity {
 
         editTextNd.addTextChangedListener(new TextWatcher() {
 
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (editTextSt.getText().toString().length() == 1) {
+            public void onTextChanged(CharSequence s, int start,int before, int count)
+            {
+                if(editTextSt.getText().toString().length()==1)
+                {
                     editTextRd.requestFocus();
                 }
             }
-
             public void beforeTextChanged(CharSequence s, int start,
                                           int count, int after) {
                 // TODO Auto-generated method stub
@@ -90,14 +97,14 @@ public class VerifyCodeActivity extends AppCompatActivity {
 
         editTextRd.addTextChangedListener(new TextWatcher() {
 
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            public void onTextChanged(CharSequence s, int start,int before, int count)
+            {
                 // TODO Auto-generated method stub
-                if (editTextSt.getText().toString().length() == 1)     //size as per your requirement
+                if(editTextSt.getText().toString().length()==1)     //size as per your requirement
                 {
                     editTextTh.requestFocus();
                 }
             }
-
             public void beforeTextChanged(CharSequence s, int start,
                                           int count, int after) {
                 // TODO Auto-generated method stub
@@ -110,7 +117,7 @@ public class VerifyCodeActivity extends AppCompatActivity {
 
         });
 
-        new CountDownTimer(30000, 1000) {
+        new CountDownTimer(30000, 1000){
 
             @Override
             public void onTick(long l) {

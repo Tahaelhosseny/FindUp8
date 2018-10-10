@@ -1,5 +1,6 @@
 package khaled.example.com.findup.Helper.Remote;
 
+import java.util.HashMap;
 import java.util.List;
 
 import khaled.example.com.findup.CONST;
@@ -15,6 +16,7 @@ import khaled.example.com.findup.Helper.Remote.ResponseModel.NotificationRespons
 import khaled.example.com.findup.Helper.Remote.ResponseModel.RegisterResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.SaveModelResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.StoresResponse;
+import khaled.example.com.findup.Helper.Remote.ResponseModel.VerifyCodeResponse;
 import khaled.example.com.findup.models.Category;
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -52,6 +54,9 @@ public interface ApiInterface {
     @GET(ApiClient.PATH_URL+"user_profile?tag=get_user_saved&HashSecure="+HASH)
     Call<SaveModelResponse> getUserSaved(@Query("account_id") int account_id);
 
+    @GET(ApiClient.PATH_URL+"reg_login?tag=verify_code&HashSecure="+ HASH)
+    Call<VerifyCodeResponse> checkVerifyCode(@Query("mobile") String mobile , @Query("code") String code);
+
     //----------------------------------------------- Post Methods -------------------------------------------------
 
     @POST(ApiClient.PATH_URL+"reg_login?tag=signup&HashSecure="+HASH)
@@ -78,7 +83,7 @@ public interface ApiInterface {
 
     @POST(ApiClient.PATH_URL+"reg_login?tag=edit_profile&HashSecure="+HASH)
     @FormUrlEncoded
-    Call<EditProfileResponse> editProfileData(@Field("account_id") String account_id , @Field("user_name") String user_name
+    Call<EditProfileResponse> editProfileData(@Field("account_id") String account_id , @Field("username") String username
      ,@Field("old_password") String old_password , @Field("new_password") String new_password , @Field("mobile") String mobile );
 
     @POST(ApiClient.PATH_URL+"user_profile?tag=set_user_currency&account_id=1&HashSecure="+HASH)

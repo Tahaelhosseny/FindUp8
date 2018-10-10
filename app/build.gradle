@@ -88,7 +88,6 @@ dependencies {
     //location
     implementation 'com.google.android.gms:play-services-location:15.0.1'
 
-
     //shared preferences rx
     implementation 'com.f2prateek.rx.preferences2:rx-preferences:2.0.0'
 
@@ -102,8 +101,6 @@ dependencies {
 
     //Sdp lib
     implementation 'com.intuit.sdp:sdp-android:1.0.6'
-
-
 
 
 }

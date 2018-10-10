@@ -187,6 +187,20 @@
         app:layout_constraintTop_toBottomOf="@+id/editText_thDigit" />
 
     <Button
+        android:id="@+id/btn_submit_check_code"
+        android:layout_width="125dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/bg_button_rounded_null"
+        android:text="Check Code"
+        android:textAllCaps="false"
+        android:textColor="@color/colorAccent"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/timer"
+        app:layout_constraintTop_toBottomOf="@+id/timer" />
+
+    <Button
         android:id="@+id/btn_resend"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -197,7 +211,7 @@
         android:textColor="@color/colorAccent"
         android:textStyle="bold"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@id/timer"
-        app:layout_constraintTop_toBottomOf="@+id/timer" />
+        app:layout_constraintStart_toStartOf="@id/btn_submit_check_code"
+        app:layout_constraintTop_toBottomOf="@+id/btn_submit_check_code" />
 
 </android.support.constraint.ConstraintLayout>

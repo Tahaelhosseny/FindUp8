@@ -37,6 +37,7 @@ public class EditProfileViewModel extends Observable {
         editProfileCall.enqueue(new Callback<EditProfileResponse>() {
             @Override
             public void onResponse(Call<EditProfileResponse> call, Response<EditProfileResponse> response) {
+                alertDialog.dismiss();
                 if (response.body().getSuccess() == 1){
                     EditProfileAccepted(response.body().getUser_data().get(0),new_password);
                     Toast.makeText(mContext, ""+response.body().getError_msg(), Toast.LENGTH_SHORT).show();
@@ -50,9 +51,9 @@ public class EditProfileViewModel extends Observable {
             }
             @Override
             public void onFailure(Call<EditProfileResponse> call, Throwable t) {
-                Toast.makeText(mContext,"invalid data",Toast.LENGTH_SHORT).show();
-                Log.e("url",call.request().url().toString());
                 alertDialog.dismiss();
+                Toast.makeText(mContext,""+t.getMessage(),Toast.LENGTH_LONG).show();
+                Log.e("url",call.request().url().toString());
             }
         });
     }
