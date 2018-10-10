@@ -18,16 +18,17 @@ import java.util.List;
 
 import khaled.example.com.findup.R;
 import khaled.example.com.findup.models.Product;
+import khaled.example.com.findup.models.SaveModel;
 
 /**
  * Created by khaled on 8/1/18.
  */
 
 public class UserSavedAdapter extends RecyclerView.Adapter<UserSavedAdapter.ViewHolder>{
-    private List<Product> userSavedItems;
+    private List<SaveModel> userSavedItems;
     private Context context;
 
-    public UserSavedAdapter(Context context, List<Product> userSavedItems) {
+    public UserSavedAdapter(Context context, List<SaveModel> userSavedItems) {
         this.context = context;
         this.userSavedItems = userSavedItems;
     }
@@ -64,25 +65,23 @@ public class UserSavedAdapter extends RecyclerView.Adapter<UserSavedAdapter.View
 
     @Override
     public void onBindViewHolder(@NonNull UserSavedAdapter.ViewHolder holder, int position) {
-        Product product = userSavedItems.get(position);
+        SaveModel saveModel = userSavedItems.get(position);
         /*UserSavedItem userSavedItem = userSavedItems.get(position);
         holder.userSavedName.setText(userSavedItem.getItemName());
         holder.userSavedDesc.setText(userSavedItem.getItemDesc());
         if (!userSavedItem.getItemImg().isEmpty())
             Picasso.with(context).load(userSavedItem.getItemImg()).placeholder(R.drawable.placeholder).into(holder.userSavedImage);*/
 
-        holder.userSavedName.setText(product.getProduct_name());
-        holder.userSavedDesc.setText(product.getProduct_desc());
+        holder.userSavedName.setText(saveModel.getSaved_name());
+        holder.userSavedDesc.setText(saveModel.getSaved_description());
 
-        if (!product.getProduct_banner().isEmpty()) {
+        if (!saveModel.getSaved_photo().isEmpty()) {
             Transformation transformation = new RoundedTransformationBuilder()
                     .cornerRadiusDp(80)
                     .oval(false)
                     .build();
-
-            Picasso.with(holder.userSavedImage.getContext()).load(product.getProduct_banner()).transform(transformation).placeholder(R.drawable.near_by_place_holder).into(holder.userSavedImage);
-
-
+            Picasso.with(holder.userSavedImage.getContext()).load(saveModel.getSaved_photo()).transform(transformation).placeholder(R.drawable.near_by_place_holder).into(holder.userSavedImage);
+//            Picasso.with(holder.userSavedImage.getContext()).load(saveModel.getSaved_photo()).into(holder.userSavedImage);
         }
     }
     @Override

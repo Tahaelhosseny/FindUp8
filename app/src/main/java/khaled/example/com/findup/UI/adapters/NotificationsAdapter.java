@@ -68,12 +68,12 @@ public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdap
     @Override
     public void onBindViewHolder(@NonNull NotificationsAdapter.ViewHolder holder, int position) {
 
-        /*Notification notification = notifications.get(position);
+        Notification notification = notifications.get(position);
         holder.notificationType.setText(notification.getNotificationType());
         holder.notificationDesc.setText(notification.getNotificationDesc());
         holder.notificationDate.setText(notification.getNotificationDate());
         if (!notification.getNotificationImg().isEmpty())
-            Picasso.with(context).load(notification.getNotificationImg()).placeholder(R.drawable.placeholder).into(holder.notificationImage);*/
+            Picasso.with(context).load(notification.getNotificationImg()).placeholder(R.drawable.ic_launcher).into(holder.notificationImage);
 
     }
 

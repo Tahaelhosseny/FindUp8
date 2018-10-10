@@ -124,8 +124,8 @@
     <string name="sign_up">Sign Up</string>
     <string name="or">OR</string>
     <string name="craft_details">Craft Details</string>
-    <string name="From">From</string>
-    <string name="To">To</string>
+    <string name="start_day">Start Date</string>
+    <string name="end_day">End Date</string>
     <string name="start">Start at</string>
     <string name="end">End at</string>
     <array name="distance_seekbar_values">
