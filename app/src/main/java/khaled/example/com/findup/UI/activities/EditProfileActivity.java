@@ -39,15 +39,17 @@ public class EditProfileActivity extends AppCompatActivity {
         activityEditProfileBinding.setEditProfileData(editProfileViewModel);
         activityEditProfileBinding.editTextPassword.setText(SharedPrefManger.getLogin_password());
         activityEditProfileBinding.editTextUsername.setText(SharedPrefManger.getUser_name());
+        activityEditProfileBinding.editTextPhone.setText(SharedPrefManger.getLogin_phone());
         activityEditProfileBinding.setPresenter(new EditProfilePresenter() {
             @Override
             public void editProfileData() {
                 int account_id = SharedPrefManger.getUser_ID();
                 String user_name = SharedPrefManger.getUser_name();
                 String old_password = SharedPrefManger.getLogin_password();
+                String newName = activityEditProfileBinding.editTextUsername.getText().toString();
                 String phone = activityEditProfileBinding.editTextPhone.getRawText();
                 String new_password = activityEditProfileBinding.editTextPassword.getText().toString();
-                editProfileViewModel.sendEditProfileRequest(SharedPrefManger.getUser_ID() , SharedPrefManger.getUser_name(), SharedPrefManger.getLogin_password() , SharedPrefManger.getLogin_password() ,phone);
+                editProfileViewModel.sendEditProfileRequest(account_id , newName, old_password , new_password ,phone);
             }
         });
         btn_editProfileBack.setOnClickListener(new View.OnClickListener() {

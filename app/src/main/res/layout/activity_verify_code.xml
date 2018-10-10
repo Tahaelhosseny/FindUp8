@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    >
+
+    <data>
+        <variable
+            name="VerifyCode"
+            type="khaled.example.com.findup.UI.ViewModel.Activites.VerifyResetPassCodeViewModel"/>
+        <variable
+            name="presenter"
+            type="khaled.example.com.findup.UI.Presenter.Activities.VerifyResetPassPresenter"/>
+    </data>
+<android.support.constraint.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
@@ -80,6 +92,7 @@
         android:id="@+id/editText_stDigit"
         android:layout_width="50dp"
         android:layout_height="wrap_content"
+        android:maxLength="1"
         android:layout_marginTop="26dp"
         android:digits="0123456789"
         android:gravity="center"
@@ -101,6 +114,8 @@
 
     <com.santalu.maskedittext.MaskEditText
         android:id="@+id/editText_ndDigit"
+        android:maxLength="1"
+
         android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="40dp"
@@ -129,6 +144,8 @@
         android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="40dp"
+        android:maxLength="1"
+
         android:layout_marginStart="40dp"
         android:layout_marginTop="26dp"
         android:digits="0123456789"
@@ -158,7 +175,8 @@
         android:layout_marginTop="26dp"
         android:digits="0123456789"
         android:gravity="center"
-        android:inputType="numberDecimal"
+       android:maxLength="1"
+    android:inputType="numberDecimal"
         android:shadowColor="@color/colorBlack"
         android:textColor="@color/colorBlack"
         android:textColorHighlight="@color/colorWhiteGrey"
@@ -190,28 +208,37 @@
         android:id="@+id/btn_submit_check_code"
         android:layout_width="125dp"
         android:layout_height="46dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/bg_button_rounded_null"
         android:text="Check Code"
+        android:onClick="@{(v)->presenter.checkVerifyResetCode()}"
         android:textAllCaps="false"
         android:textColor="@color/colorAccent"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@id/timer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/timer" />
 
     <Button
         android:id="@+id/btn_resend"
-        android:layout_width="wrap_content"
+        android:layout_width="125dp"
+        android:onClick="@{(v)->presenter.resendCodeAgain()}"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/bg_button_rounded_null"
         android:text="Resend again"
         android:textAllCaps="false"
         android:textColor="@color/colorAccent"
-        android:textStyle="bold"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="@id/btn_submit_check_code"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_submit_check_code" />
 
 </android.support.constraint.ConstraintLayout>
+</layout>

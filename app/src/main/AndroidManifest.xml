@@ -211,9 +211,7 @@
             android:name=".UI.activities.ProductsActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
         <activity android:name=".UI.activities.EnterPhoneResetActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen">
-
-        </activity>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen"/>
     </application>
 
 </manifest>
