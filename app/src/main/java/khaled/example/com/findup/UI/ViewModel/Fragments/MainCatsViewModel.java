@@ -1,5 +1,6 @@
 package khaled.example.com.findup.UI.ViewModel.Fragments;
 
+import android.app.Activity;
 import android.content.Context;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -48,8 +49,13 @@ public class MainCatsViewModel extends Observable {
             @Override
             public void onSuccess(Flowable<List<khaled.example.com.findup.models.Category>> listFlowable) {
                 listFlowable.subscribe(val->{
-                    adapter.setCategoryList(val);
-                    adapter.notifyDataSetChanged();
+                    ((Activity) mContext).runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            adapter.setCategoryList(val);
+                            adapter.notifyDataSetChanged();
+                        }
+                    });
                 });
             }
 

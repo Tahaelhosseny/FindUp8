@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.like.LikeButton;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -77,6 +78,7 @@ public class NearMeAdapter extends RecyclerView.Adapter<NearMeAdapter.ViewHolder
         TextView review;
         TextView shortDesc;
         Store store;
+        LikeButton likeButton;
 
         public ViewHolder(View view) {
             super(view);
@@ -85,6 +87,7 @@ public class NearMeAdapter extends RecyclerView.Adapter<NearMeAdapter.ViewHolder
             distance = view.findViewById(R.id.nearItemDistance);
             review = view.findViewById(R.id.nearItemReview);
             shortDesc = view.findViewById(R.id.nearItemTags);
+            likeButton = view.findViewById(R.id.star_button);
             view.setOnClickListener(this);
         }
 

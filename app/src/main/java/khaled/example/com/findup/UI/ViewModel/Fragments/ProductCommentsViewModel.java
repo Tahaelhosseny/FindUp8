@@ -48,8 +48,13 @@ public class ProductCommentsViewModel extends Observable {
             public void onSuccess(Flowable<List<Comment>> commentFlowable) {
                 commentFlowable.subscribe(
                         val-> {
-                            adapter.setComments(val); ;
-                            adapter.notifyDataSetChanged();
+                            ((Activity) mContext).runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    adapter.setComments(val);
+                                    adapter.notifyDataSetChanged();
+                                }
+                            });
                         },
                         err-> Log.i("database err","return data database error : "+err.getMessage())
                 );
