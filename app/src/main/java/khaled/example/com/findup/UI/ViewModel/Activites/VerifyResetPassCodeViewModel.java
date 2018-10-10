@@ -41,6 +41,10 @@ public class VerifyResetPassCodeViewModel extends Observable {
         });
     }
 
+    public void resend_code(){
+
+    }
+
     private void ChangeAccepted(String mobile) {
         SharedPrefManger.setLogin_phone(mobile);
     }

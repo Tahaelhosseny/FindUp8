@@ -1,6 +1,7 @@
 package khaled.example.com.findup.UI.activities;
 
 import android.content.Intent;
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
@@ -14,8 +15,13 @@ import android.widget.Toast;
 import com.santalu.maskedittext.MaskEditText;
 
 import khaled.example.com.findup.R;
+import khaled.example.com.findup.UI.Presenter.Activities.VerifyResetPassPresenter;
+import khaled.example.com.findup.UI.ViewModel.Activites.VerifyResetPassCodeViewModel;
+import khaled.example.com.findup.databinding.ActivityVerifyCodeBinding;
 
 public class VerifyCodeActivity extends AppCompatActivity {
+    ActivityVerifyCodeBinding activityVerifyCodeBinding;
+    VerifyResetPassCodeViewModel verifyResetPassCodeViewModel;
 
     public int counter=30;
     TextView txtNumber, txtTimer;
@@ -25,7 +31,22 @@ public class VerifyCodeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_verify_code);
+        verifyResetPassCodeViewModel = new VerifyResetPassCodeViewModel(this);
+        activityVerifyCodeBinding = DataBindingUtil.setContentView(this,R.layout.activity_verify_code);
+        activityVerifyCodeBinding.setVerifyCode(verifyResetPassCodeViewModel);
+        activityVerifyCodeBinding.setPresenter(new VerifyResetPassPresenter() {
+            @Override
+            public void checkVerifyResetCode() {
+//                verifyResetPassCodeViewModel.checkCode("","");
+                startActivity(new Intent(VerifyCodeActivity.this , ForgotPasswordActivity.class));
+            }
+
+            @Override
+            public void resendCodeAgain() {
+
+            }
+        });
+//        setContentView(R.layout.activity_verify_code);
         btnCheckCode = findViewById(R.id.btn_submit_check_code);
         txtNumber=findViewById(R.id.txtNumber);
         txtTimer=findViewById(R.id.timer);

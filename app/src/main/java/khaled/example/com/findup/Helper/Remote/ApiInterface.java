@@ -1,10 +1,13 @@
 package khaled.example.com.findup.Helper.Remote;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.HashMap;
 import java.util.List;
 
 import khaled.example.com.findup.CONST;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.AddCommentStoreResponse;
+import khaled.example.com.findup.Helper.Remote.ResponseModel.AskCodeResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.CreateStoreEventResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.CurrencyResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.EditProfileResponse;
@@ -14,9 +17,11 @@ import khaled.example.com.findup.Helper.Remote.ResponseModel.MeasureDistanceResp
 import khaled.example.com.findup.Helper.Remote.ResponseModel.NotificationFlagResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.NotificationResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.RegisterResponse;
+import khaled.example.com.findup.Helper.Remote.ResponseModel.ResetPasswordResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.SaveModelResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.StoresResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.VerifyCodeResponse;
+import khaled.example.com.findup.models.AskCode;
 import khaled.example.com.findup.models.Category;
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -57,8 +62,13 @@ public interface ApiInterface {
     @GET(ApiClient.PATH_URL+"reg_login?tag=verify_code&HashSecure="+ HASH)
     Call<VerifyCodeResponse> checkVerifyCode(@Query("mobile") String mobile , @Query("code") String code);
 
+    @GET(ApiClient.PATH_URL+"reg_login?tag=forget_pass&HashSecure="+HASH)
+    Call<AskCodeResponse> getResetPasswordCode(@Query("mobile") String mobile);
+
+
     //----------------------------------------------- Post Methods -------------------------------------------------
 
+    
     @POST(ApiClient.PATH_URL+"reg_login?tag=signup&HashSecure="+HASH)
     @FormUrlEncoded
     Call<RegisterResponse> registerNewUser(@Field("user_type") String user_type , @Field("name") String user_name
@@ -81,26 +91,35 @@ public interface ApiInterface {
             , @Field("store_id") int store_id , @Field("event_longitude") double event_longitude
             , @Field("event_latitude") double event_latitude , @Field("event_photo") String event_photo);
 
+
     @POST(ApiClient.PATH_URL+"reg_login?tag=edit_profile&HashSecure="+HASH)
     @FormUrlEncoded
     Call<EditProfileResponse> editProfileData(@Field("account_id") int account_id , @Field("username") String username
      ,@Field("old_password") String old_password , @Field("new_password") String new_password , @Field("mobile") String mobile );
 
-    @POST(ApiClient.PATH_URL+"user_profile?tag=set_user_currency&account_id=1&HashSecure="+HASH)
+
+    @POST(ApiClient.PATH_URL+"user_profile?tag=set_user_currency&HashSecure="+HASH)
     @FormUrlEncoded
     Call<CurrencyResponse> setUserCurrency(@Field("currency_id") int currency_id , @Field("account_id") String account_id);
+
 
     @POST(ApiClient.PATH_URL+"user_profile?tag=set_user_distance&HashSecure="+HASH)
     @FormUrlEncoded
     Call<MeasureDistanceResponse> setUserDistance(@Field("distance_id") int distance_id , @Field("account_id") String account_id);
+
 
     @POST(ApiClient.PATH_URL+"user_profile?tag=set_user_noti_setting&HashSecure="+HASH)
     @FormUrlEncoded
     Call<NotificationFlagResponse> setNotificationFlags(@Field("account_id") String account_id , @Field("push_noti_flag") int push_noti_flag
             , @Field("chat_noti_flag") int chat_noti_flag);
 
+
     @POST(ApiClient.PATH_URL+"user_actions?tag=add_to_save&HashSecure="+HASH)
     @FormUrlEncoded
     Call<SaveModelResponse> addToSaved(@Field("account_id") String account_id , @Field("saved_id") int saved_id , @Field("saved_type") String saved_type);
 
+
+    @POST(ApiClient.PATH_URL+"reg_login?tag=update_new_pass&HashSecure="+HASH)
+    @FormUrlEncoded
+    Call<ResetPasswordResponse> resetNewPassword(@Field("mobile") String mobile , @Field("new_password") String new_password);
 }
