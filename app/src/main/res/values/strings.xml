@@ -72,6 +72,9 @@
     <string name="login">Login</string>
     <string name="forget_password">Forget Password</string>
     <string name="password">Password</string>
+    <string name="new_password">New password</string>
+    <string name="new_password_again">New password again</string>
+    <string name="confirm_change_password">Confirm Change Password</string>
     <string name="mobile">Mobile</string>
     <string name="description">Description</string>
     <string name="price">Price</string>

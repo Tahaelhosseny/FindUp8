@@ -7,10 +7,10 @@ import android.support.annotation.NonNull;
 
 import khaled.example.com.findup.CONST;
 
-@Entity(foreignKeys = @ForeignKey(entity = Product.class,
+@Entity/*(foreignKeys = @ForeignKey(entity = Product.class,
         parentColumns = "product_id",
         childColumns = "product_id",
-        onDelete = ForeignKey.CASCADE))
+        onDelete = ForeignKey.CASCADE))*/
 public class ProductPhoto {
     @NonNull
     @PrimaryKey

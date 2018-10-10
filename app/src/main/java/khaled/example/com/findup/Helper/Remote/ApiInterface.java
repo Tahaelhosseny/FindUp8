@@ -50,7 +50,7 @@ public interface ApiInterface {
     Call<NotificationResponse> getUserNotification(@Query("account_id") String account_id);
 
     @GET(ApiClient.PATH_URL+"user_profile?tag=get_user_saved&HashSecure="+HASH)
-    Call<SaveModelResponse> getUserSaved(@Query("account_id") String account_id);
+    Call<SaveModelResponse> getUserSaved(@Query("account_id") int account_id);
 
     //----------------------------------------------- Post Methods -------------------------------------------------
 
@@ -63,7 +63,7 @@ public interface ApiInterface {
 
     @POST(ApiClient.PATH_URL+"user_actions?tag=add_store_comment&HashSecure="+HASH)
     @FormUrlEncoded
-    Call<AddCommentStoreResponse> addNewStoreComment(@Field("account_id") String account_id , @Field("store_id") int store_id
+    Call<AddCommentStoreResponse> addNewStoreComment(@Field("account_id") int account_id , @Field("store_id") int store_id
      , @Field("comment") String comment);
 
 

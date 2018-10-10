@@ -28,7 +28,7 @@ public class AddCommentStoreViewModel extends Observable {
         this.mContext = mContext;
     }
 
-    public void addCommentToStore(String account_id , String comment , int store_id){
+    public void addCommentToStore(int account_id , String comment , int store_id){
         final AlertDialog alertDialog = UI_Utility.ShowProgressDialog(mContext, true);
         alertDialog.show();
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);

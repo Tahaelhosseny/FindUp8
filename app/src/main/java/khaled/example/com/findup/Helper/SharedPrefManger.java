@@ -53,11 +53,11 @@ public class SharedPrefManger {
         return mSharedPref.getBoolean("isLoggedIn", false);
     }
 
-    public static void setUserID(String id){
-        mSharedPref.edit().putString("user_id" , id).apply();
+    public static void setUserID(int id){
+        mSharedPref.edit().putInt("user_id" , id).apply();
     }
-    public static String getUser_ID() {
-        return mSharedPref.getString("user_id", "");
+    public static int getUser_ID() {
+        return mSharedPref.getInt("user_id", 0);
     }
     //-----------------------------------------------------------------------------------
     public static void setCurrentLocation(CurrentLocation currentLocation){

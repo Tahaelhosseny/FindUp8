@@ -46,7 +46,7 @@ public class WriteCommentFragment extends Fragment {
         commentText = view.findViewById(R.id.editText);
         Intent i = getActivity().getIntent();
         int store_id = i.getIntExtra("store_id",1);
-        String account_id = SharedPrefManger.getUser_ID();
+        int account_id = SharedPrefManger.getUser_ID();
         Toast.makeText(getActivity(), ""+store_id, Toast.LENGTH_SHORT).show();
         addCommentStoreViewModel = new AddCommentStoreViewModel(view.getContext());
         writeCommentLayoutBinding.setPresenter(new AddCommentStorePresenter() {

@@ -69,7 +69,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/sfcompactdisplay_semibold"
-        android:text="+9999999999"
+        android:hint="+9999999999"
         android:textAlignment="center"
         android:textColor="@color/colorBlack"
         android:textSize="24sp"

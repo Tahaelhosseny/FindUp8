@@ -33,9 +33,10 @@ public class SplashScreenViewModel  extends Observable {
     public void UpdateStoresData(){
         final int[] defult_load = {0};
         PublishSubject<Integer> loaded = PublishSubject.create();
+        SharedPrefManger sharedPrefManger = new SharedPrefManger(mContext);
 
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-        Call<StoresResponse> userlogincall = apiService.GetAllStores(0);
+        Call<StoresResponse> userlogincall = apiService.GetAllStores(sharedPrefManger.getUser_ID());
         userlogincall.enqueue(new Callback<StoresResponse>() {
             @Override
             public void onResponse(Call<StoresResponse> call, Response<StoresResponse> response) {
@@ -60,7 +61,7 @@ public class SplashScreenViewModel  extends Observable {
             }
         });
 
-        Call<EventResponse> eventResponseCall = apiService.GetAllEvents(0);
+        Call<EventResponse> eventResponseCall = apiService.GetAllEvents(sharedPrefManger.getUser_ID());
         eventResponseCall.enqueue(new Callback<EventResponse>() {
             @Override
             public void onResponse(Call<EventResponse> call, Response<EventResponse> response) {

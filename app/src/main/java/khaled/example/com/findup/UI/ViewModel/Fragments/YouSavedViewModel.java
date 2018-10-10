@@ -29,7 +29,7 @@ import retrofit2.Response;
 public class YouSavedViewModel extends Observable {
     private Context mContext;
     public YouSavedViewModel(Context mContext){this.mContext = mContext;}
-    public void getUserSaved(RecyclerView recyclerView , String account_id){
+    public void getUserSaved(RecyclerView recyclerView , int account_id){
         final AlertDialog alertDialog = UI_Utility.ShowProgressDialog(mContext, true);
         alertDialog.show();
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
