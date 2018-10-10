@@ -20,12 +20,6 @@ public class User {
     @SerializedName("email")
     @Expose
     private String email;
-
-    @Override
-    public String toString() {
-        return "ID : " + getId() + "  Name : "+ getName();
-    }
-
     public String getId() {
         return id;
     }

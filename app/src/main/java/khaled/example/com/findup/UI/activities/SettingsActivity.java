@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import khaled.example.com.findup.Helper.SharedPrefManger;
 import khaled.example.com.findup.R;
 
 public class SettingsActivity extends AppCompatActivity implements View.OnClickListener {
@@ -93,6 +94,7 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
                 break;
 
             case R.id.btn_logout:
+                LogoutAccepted();
                 startActivity(new Intent(SettingsActivity.this, SplashScreenActivity.class));
                 finish();
                 break;
@@ -108,5 +110,14 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
     @Override
     public void onPointerCaptureChanged(boolean hasCapture) {
 
+    }
+
+    public void LogoutAccepted(){
+        SharedPrefManger.setIsLoggedIn(false);
+        SharedPrefManger.setLogin_phone("");
+        SharedPrefManger.setLogin_password("");
+        SharedPrefManger.setUserID("");
+        SharedPrefManger.setIsLoggedInAsCustomer(false);
+        SharedPrefManger.setUSer_name("");
     }
 }

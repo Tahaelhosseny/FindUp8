@@ -35,15 +35,19 @@ public class EditProfileActivity extends AppCompatActivity {
         editText_phone=findViewById(R.id.editText_phone);
         btn_editProfileBack=findViewById(R.id.btn_editProfileBack);
         btn_deleteAccount=findViewById(R.id.btn_deleteAccount);
+
         activityEditProfileBinding.setEditProfileData(editProfileViewModel);
+        activityEditProfileBinding.editTextPassword.setText(SharedPrefManger.getLogin_password());
+        activityEditProfileBinding.editTextUsername.setText(SharedPrefManger.getUser_name());
         activityEditProfileBinding.setPresenter(new EditProfilePresenter() {
             @Override
             public void editProfileData() {
-//                String account_id = SharedPrefManger.getUser_ID();
-//                String user_name = SharedPrefManger.getUser_name();
-//                // get old password from edittext
-//                // get new Password from edit text
-//                editProfileViewModel.sendEditProfileRequest("" , "" , "" , "" , "");
+                String account_id = SharedPrefManger.getUser_ID();
+                String user_name = SharedPrefManger.getUser_name();
+                String old_password = SharedPrefManger.getLogin_password();
+                String phone = activityEditProfileBinding.editTextPhone.getRawText();
+                String new_password = activityEditProfileBinding.editTextPassword.getText().toString();
+                editProfileViewModel.sendEditProfileRequest(SharedPrefManger.getUser_ID() , SharedPrefManger.getUser_name(), SharedPrefManger.getLogin_password() , SharedPrefManger.getLogin_password() ,phone);
             }
         });
         btn_editProfileBack.setOnClickListener(new View.OnClickListener() {
