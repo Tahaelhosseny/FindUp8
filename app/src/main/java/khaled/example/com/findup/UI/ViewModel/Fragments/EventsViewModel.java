@@ -1,5 +1,6 @@
 package khaled.example.com.findup.UI.ViewModel.Fragments;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -43,8 +44,13 @@ public class EventsViewModel extends Observable {
             @Override
             public void onSuccess(Flowable<List<Event>> listFlowable) {
                 listFlowable.subscribe(eventList -> {
-                    adapter.setEvents(eventList);
-                    adapter.notifyDataSetChanged();
+                    ((Activity) mContext).runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            adapter.setEvents(eventList);
+                            adapter.notifyDataSetChanged();
+                        }
+                    });
                 });
             }
 

@@ -55,8 +55,13 @@ public class NearMeViewModel extends java.util.Observable {
 
                 listFlowable.subscribe(
                         val -> {
-                            adapter.setStores(val);
-                            adapter.notifyDataSetChanged();
+                            ((Activity) mContext).runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    adapter.setStores(val);
+                                    adapter.notifyDataSetChanged();
+                                }
+                            });
                         },
                         err -> Log.i("database err", "store database error : " + err.getMessage())
                 );
