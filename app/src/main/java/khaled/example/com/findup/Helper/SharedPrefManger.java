@@ -86,5 +86,20 @@ public class SharedPrefManger {
         return mSharedPref.getFloat("latitude", 0);
     }
 
+    public static void setUSer_name(String value) {
+        mSharedPref.edit().putString("user_name", value).apply();
+    }
+
+    public static String getUser_name() {
+        return mSharedPref.getString("user_name", "");
+    }
+
+    public static void setCurrencyId(String value) {
+        mSharedPref.edit().putString("currency_id", value).apply();
+    }
+
+    public static String getCurrencyId() {
+        return mSharedPref.getString("currency_id", "");
+    }
 
 }

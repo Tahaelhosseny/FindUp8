@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.RecyclerView
+<layout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+    <data>
+        <variable
+            name="UserSaved"
+            type="khaled.example.com.findup.UI.ViewModel.Fragments.YouSavedViewModel"/>
+
+        <variable
+            name="presenter"
+            type="khaled.example.com.findup.UI.Presenter.Fragments.UserSavedPresenter"/>
+    </data>
+<android.support.v7.widget.RecyclerView
     android:id="@+id/userSavedRecyclerView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,3 +19,4 @@
     android:nestedScrollingEnabled="false"
     android:orientation="vertical"
     android:scrollbars="vertical" />
+</layout>

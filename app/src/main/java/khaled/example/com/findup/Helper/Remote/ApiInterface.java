@@ -1,10 +1,20 @@
 package khaled.example.com.findup.Helper.Remote;
 
+import java.util.List;
+
 import khaled.example.com.findup.CONST;
-import khaled.example.com.findup.Helper.Remote.ResponseModel.EventResponse;
+import khaled.example.com.findup.Helper.Remote.ResponseModel.AddCommentStoreResponse;
+import khaled.example.com.findup.Helper.Remote.ResponseModel.CreateStoreEventResponse;
+import khaled.example.com.findup.Helper.Remote.ResponseModel.CurrencyResponse;
+import khaled.example.com.findup.Helper.Remote.ResponseModel.EditProfileResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.LoginResponse;
+import khaled.example.com.findup.Helper.Remote.ResponseModel.MeasureDistanceResponse;
+import khaled.example.com.findup.Helper.Remote.ResponseModel.NotificationFlagResponse;
+import khaled.example.com.findup.Helper.Remote.ResponseModel.NotificationResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.RegisterResponse;
+import khaled.example.com.findup.Helper.Remote.ResponseModel.SaveModelResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.StoresResponse;
+import khaled.example.com.findup.models.Category;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -14,26 +24,77 @@ import retrofit2.http.Query;
 
 public interface ApiInterface {
     String HASH = CONST.API_HASH;
+    @GET(ApiClient.PATH_URL+"reg_login?tag=login&HashSecure="+HASH)
+    Call<LoginResponse> LoginRequest(@Query("mobile") String mobile,@Query("password") String password);
 
-    @GET(ApiClient.PATH_URL + "reg_login?tag=login&HashSecure=" + HASH)
-    Call<LoginResponse> LoginRequest(@Query("mobile") String mobile, @Query("password") String password);
+    @GET(ApiClient.PATH_URL+"stores?tag=get_all_stores&HashSecure="+HASH+"&account_id=1")
+    Call<StoresResponse> GetAllStores();
 
-    @GET(ApiClient.PATH_URL + "stores?tag=get_all_stores&HashSecure=" + HASH)
-    Call<StoresResponse> GetAllStores(@Query("account_id") int account_id);
+    @GET(ApiClient.PATH_URL+"public_pgs?tag=home&HashSecure="+HASH+"&account_id=1")
+    Call<StoresResponse> GetAllEvents();
 
-    @GET(ApiClient.PATH_URL + "stores?tag=get_all_events&HashSecure=" + HASH)
-    Call<EventResponse> GetAllEvents(@Query("account_id") int account_id);
+    @GET(ApiClient.PATH_URL+"user_profile?tag=get_user_currency&HashSecure="+HASH)
+    Call<CurrencyResponse> getUserCurrency(@Query("account_id") String account_id);
 
-    @POST(ApiClient.PATH_URL+"reg_login?tag=signup&HashSecure=FindUpSecure_@@01072018")
+    @GET(ApiClient.PATH_URL+"user_profile?tag=get_user_measure_distance&HashSecure="+HASH)
+    Call<MeasureDistanceResponse> getUserDistance(@Query("account_id") String account_id);
+
+    @GET(ApiClient.PATH_URL+"user_profile?tag=get_all_currency&HashSecure="+HASH)
+    Call<CurrencyResponse> getAllCurrency();
+
+    @GET(ApiClient.PATH_URL+"user_profile?tag=get_measure_distance&HashSecure="+HASH)
+    Call<MeasureDistanceResponse> getAllMeasureDistance();
+
+    @GET(ApiClient.PATH_URL+"user_profile?tag=get_user_notifications&HashSecure="+HASH)
+    Call<NotificationResponse> getUserNotification(@Query("account_id") String account_id);
+
+    @GET(ApiClient.PATH_URL+"user_profile?tag=get_user_saved&HashSecure="+HASH)
+    Call<SaveModelResponse> getUserSaved(@Query("account_id") String account_id);
+
+    //----------------------------------------------- Post Methods -------------------------------------------------
+
+    @POST(ApiClient.PATH_URL+"reg_login?tag=signup&HashSecure="+HASH)
     @FormUrlEncoded
     Call<RegisterResponse> registerNewUser(@Field("user_type") String user_type , @Field("name") String user_name
                 , @Field("password") String password , @Field("mobile") String user_mob , @Field("logged_type") String logged_type
                 , @Field("email") String user_mail);
 
-    @POST(ApiClient.PATH_URL+"reg_login?tag=signup&HashSecure=FindUpSecure_@@01072018")
+
+    @POST(ApiClient.PATH_URL+"user_actions?tag=add_store_comment&HashSecure="+HASH)
     @FormUrlEncoded
-    Call<RegisterResponse> registerNewUser(@Field("user_type") String user_type , @Field("name") String user_name
-                , @Field("password") String password , @Field("mobile") String user_mob , @Field("logged_type") String logged_type
-                , @Field("email") String user_mail);
+    Call<AddCommentStoreResponse> addNewStoreComment(@Field("account_id") String account_id , @Field("store_id") int store_id
+     , @Field("comment") String comment);
+
+
+    //Create New Event
+    @POST(ApiClient.PATH_URL+"stores?tag=create_event&HashSecure="+HASH)
+    @FormUrlEncoded
+    Call<CreateStoreEventResponse> addNewStoreEvent(@Field("event_name") String event_name , @Field("event_start_date") String event_start_date
+            , @Field("event_days") String event_days , @Field("event_time") String event_time
+            , @Field("event_description") String event_description , @Field("event_address") String event_address
+            , @Field("store_id") int store_id , @Field("event_longitude") double event_longitude
+            , @Field("event_latitude") double event_latitude , @Field("event_photo") String event_photo);
+
+    @POST(ApiClient.PATH_URL+"reg_login?tag=edit_profile&HashSecure="+HASH)
+    @FormUrlEncoded
+    Call<EditProfileResponse> editProfileData(@Field("account_id") String account_id , @Field("user_name") String user_name
+     ,@Field("old_password") String old_password , @Field("new_password") String new_password , @Field("mobile") String mobile );
+
+    @POST(ApiClient.PATH_URL+"user_profile?tag=set_user_currency&account_id=1&HashSecure="+HASH)
+    @FormUrlEncoded
+    Call<CurrencyResponse> setUserCurrency(@Field("currency_id") int currency_id , @Field("account_id") String account_id);
+
+    @POST(ApiClient.PATH_URL+"user_profile?tag=set_user_distance&HashSecure="+HASH)
+    @FormUrlEncoded
+    Call<MeasureDistanceResponse> setUserDistance(@Field("distance_id") int distance_id , @Field("account_id") String account_id);
+
+    @POST(ApiClient.PATH_URL+"user_profile?tag=set_user_noti_setting&HashSecure="+HASH)
+    @FormUrlEncoded
+    Call<NotificationFlagResponse> setNotificationFlags(@Field("account_id") String account_id , @Field("push_noti_flag") int push_noti_flag
+            , @Field("chat_noti_flag") int chat_noti_flag);
+
+    @POST(ApiClient.PATH_URL+"user_actions?tag=add_to_save&HashSecure="+HASH)
+    @FormUrlEncoded
+    Call<SaveModelResponse> addToSaved(@Field("account_id") String account_id , @Field("saved_id") int saved_id , @Field("saved_type") String saved_type);
 
 }

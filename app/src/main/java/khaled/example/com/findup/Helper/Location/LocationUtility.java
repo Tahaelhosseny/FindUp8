@@ -25,9 +25,10 @@ import khaled.example.com.findup.models.Store;
 
 public class LocationUtility {
 
-    public static CurrentLocation currentLocation = new CurrentLocation();
+
     static LocationView view;
     private final CompositeDisposable disposable = new CompositeDisposable();
+
     private final RxLocation rxLocation;
     private final LocationRequest locationRequest;
 
@@ -37,57 +38,6 @@ public class LocationUtility {
         this.locationRequest = LocationRequest.create()
                 .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
                 .setInterval(5000);
-    }
-
-    public static CurrentLocation locationToCurrentLocation(double lat, double longitude) {
-        return new CurrentLocation(lat, longitude);
-    }
-
-    public static void LatitudeToAdapter(double latitude, NearMeAdapter adapter) {
-        currentLocation.setLocation(new LatLng(latitude, currentLocation.getLocation().longitude));
-        ChangeLocationAdapter(adapter);
-    }
-
-    public static void LongitudeToAdapter(double longitude, NearMeAdapter adapter) {
-        currentLocation.setLocation(new LatLng(currentLocation.getLocation().latitude, longitude));
-        ChangeLocationAdapter(adapter);
-    }
-
-    public static void LatitudeToCurrentLocationModel(double latitude, CurrentLocation currentLocation) {
-        currentLocation.setLocation(new LatLng(latitude, currentLocation.getLocation().longitude));
-    }
-
-    public static void LongitudeToCurrentLocationModel(double longitude, CurrentLocation currentLocation) {
-        currentLocation.setLocation(new LatLng(currentLocation.getLocation().latitude, longitude));
-    }
-
-    private static void ChangeLocationAdapter(NearMeAdapter adapter) {
-        adapter.setCurrentLocation(currentLocation);
-        adapter.notifyDataSetChanged();
-    }
-
-    public static float CalcDistance(Location A, Location B) {
-        return A.distanceTo(B);
-    }
-
-    public static String DisToS(Context mContext, float distance) {
-        if (distance >= 1000)
-            return String.format("%.1f", distance / 1000).concat(mContext.getResources().getString(R.string.km));
-        else
-            return distance + "" + mContext.getResources().getString(R.string.m);
-
-    }
-
-    public static List<Store> SortStoresByNearest(Context mContext, final List<Store> storeList, final Location location) {
-        if (location != null) {
-            Collections.sort(storeList, new Comparator<Store>() {
-                public int compare(Store o1, Store o2) {
-                    return (int) (o2.getPlaceDistaneFloat(location) - (o1.getPlaceDistaneFloat(location)));
-                }
-            });
-            Collections.reverse(storeList);
-        }
-        return storeList;
     }
 
     public void attachView(LocationView view) {
@@ -110,7 +60,7 @@ public class LocationUtility {
     }
 
     private Observable<Address> getAddressObservable(boolean success) {
-        if (success) {
+        if(success) {
             return rxLocation.location().updates(locationRequest)
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
@@ -129,6 +79,54 @@ public class LocationUtility {
     private Observable<Address> getAddressFromLocation(Location location) {
         return rxLocation.geocoding().fromLocation(location).toObservable()
                 .subscribeOn(Schedulers.io());
+    }
+
+
+    public static CurrentLocation locationToCurrentLocation(double lat, double longitude) {
+        return new CurrentLocation(lat, longitude);
+    }
+    public static CurrentLocation currentLocation = new CurrentLocation();
+    public static void LatitudeToAdapter(double latitude, NearMeAdapter adapter){
+        currentLocation.setLocation(new LatLng(latitude,currentLocation.getLocation().longitude));
+        ChangeLocationAdapter(adapter);
+    }
+    public static void LongitudeToAdapter(double longitude, NearMeAdapter adapter){
+        currentLocation.setLocation(new LatLng(currentLocation.getLocation().latitude,longitude));
+        ChangeLocationAdapter(adapter);
+    }
+    public static void LatitudeToCurrentLocationModel(double latitude, CurrentLocation currentLocation){
+        currentLocation.setLocation(new LatLng(latitude,currentLocation.getLocation().longitude));
+    }
+    public static void LongitudeToCurrentLocationModel(double longitude, CurrentLocation currentLocation){
+        currentLocation.setLocation(new LatLng(currentLocation.getLocation().latitude,longitude));
+    }
+
+    private static void ChangeLocationAdapter(NearMeAdapter adapter){
+        adapter.setCurrentLocation(currentLocation);
+        adapter.notifyDataSetChanged();
+    }
+
+    public static float CalcDistance(Location A, Location B) {
+        return A.distanceTo(B);
+    }
+    public static String DisToS(Context mContext,float distance){
+        if (distance >= 1000)
+            return String.format("%.1f", distance/1000).concat(mContext.getResources().getString(R.string.km));
+        else
+            return distance+""+mContext.getResources().getString(R.string.m);
+
+    }
+
+    public static List<Store> SortStoresByNearest(Context mContext,final List<Store> storeList, final Location location) {
+        if (location != null) {
+            Collections.sort(storeList, new Comparator<Store>() {
+                public int compare(Store o1, Store o2) {
+                    return (int) (o2.getPlaceDistaneFloat(location) - (o1.getPlaceDistaneFloat(location)));
+                }
+            });
+            Collections.reverse(storeList);
+        }
+        return storeList;
     }
 
 }

@@ -100,6 +100,10 @@ dependencies {
     // (Optional) Monetize using mopub
     implementation 'com.twitter.sdk.android:twitter-mopub:3.1.1'
 
+    //Sdp lib
+    implementation 'com.intuit.sdp:sdp-android:1.0.6'
+
+
 
 
 }
