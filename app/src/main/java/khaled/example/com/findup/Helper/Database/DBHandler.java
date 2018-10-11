@@ -185,12 +185,25 @@ public class DBHandler {
         }).start();
     }
 
+
     public static void getProductByID(int prod_id, final Context context, final Products products) {
         new Thread(new Runnable() {
             @Override
             public void run() {
                 Flowable<Product> productFlowable = FindUpDatabase.getAppDatabase(context).daoAccess().getProductByID(prod_id);
                 products.getProduct(productFlowable);
+            }
+        }).start();
+    }
+
+
+
+    public static void SaveStore(Store store,int if_saved, final Context context) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                FindUpDatabase.getAppDatabase(context).daoAccess().SaveStoreOperation(store.getStore_id(),if_saved);
+                //products.onSuccess(null);
             }
         }).start();
     }

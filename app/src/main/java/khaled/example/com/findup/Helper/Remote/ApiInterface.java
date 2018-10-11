@@ -116,7 +116,7 @@ public interface ApiInterface {
 
     @POST(ApiClient.PATH_URL+"user_actions?tag=add_to_save&HashSecure="+HASH)
     @FormUrlEncoded
-    Call<SaveModelResponse> addToSaved(@Field("account_id") String account_id , @Field("saved_id") int saved_id , @Field("saved_type") String saved_type);
+    Call<SaveModelResponse> addToSaved(@Field("account_id") int account_id , @Field("saved_id") int saved_id , @Field("saved_type") String saved_type);
 
 
     @POST(ApiClient.PATH_URL+"reg_login?tag=update_new_pass&HashSecure="+HASH)

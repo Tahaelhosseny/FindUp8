@@ -87,10 +87,13 @@ public class Store {
     @ColumnInfo(name = "store_gmail_link")
     private String store_gmail_link;
 
-
 //    @NonNull
     @ColumnInfo(name = "store_rating")
     private String store_rating;
+
+    @ColumnInfo(name = "if_saved")
+    private int if_saved;
+
     @Ignore
     private List<StorePhoto> store_images;
     @Ignore
@@ -350,5 +353,13 @@ public class Store {
 
     public void setStore_products(List<Product> store_products) {
         this.store_products = store_products;
+    }
+
+    public int getIf_saved() {
+        return if_saved;
+    }
+
+    public void setIf_saved(int if_saved) {
+        this.if_saved = if_saved;
     }
 }

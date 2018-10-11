@@ -71,7 +71,7 @@ public class UserSavedAdapter extends RecyclerView.Adapter<UserSavedAdapter.View
         holder.userSavedDesc.setText(userSavedItem.getItemDesc());
         if (!userSavedItem.getItemImg().isEmpty())
             Picasso.with(context).load(userSavedItem.getItemImg()).placeholder(R.drawable.placeholder).into(holder.userSavedImage);*/
-
+/*
         holder.userSavedName.setText(saveModel.getSaved_name());
         holder.userSavedDesc.setText(saveModel.getSaved_description());
 
@@ -82,8 +82,9 @@ public class UserSavedAdapter extends RecyclerView.Adapter<UserSavedAdapter.View
                     .build();
             Picasso.with(holder.userSavedImage.getContext()).load(saveModel.getSaved_photo()).transform(transformation).placeholder(R.drawable.near_by_place_holder).into(holder.userSavedImage);
 //            Picasso.with(holder.userSavedImage.getContext()).load(saveModel.getSaved_photo()).into(holder.userSavedImage);
+
         }
-    }
+  */  }
     @Override
     public int getItemCount() {
         return userSavedItems.size();
