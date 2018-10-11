@@ -37,8 +37,6 @@ public class VerifyResetPassCodeViewModel extends Observable {
                     intent.putExtra("phone" , mobile);
                     mContext.startActivity(intent);
                 }else {
-                    Toast.makeText(mContext, "hhhhhgghghg", Toast.LENGTH_SHORT).show();
-
                     Toast.makeText(mContext, ""+response.body().getError_msg(), Toast.LENGTH_SHORT).show();
                 }
             }
@@ -58,10 +56,9 @@ public class VerifyResetPassCodeViewModel extends Observable {
         sendCode.enqueue(new Callback<AskCodeResponse>() {
             @Override
             public void onResponse(Call<AskCodeResponse> call, Response<AskCodeResponse> response) {
+                alertDialog.dismiss();
                 if(response.body().getSuccess() == 1){
-                    Intent intent = new Intent(mContext , VerifyCodeActivity.class);
-                    intent.putExtra("mobile" , mobile);
-                    mContext.startActivity(intent);
+                    Toast.makeText(mContext, "Enter Your New Code", Toast.LENGTH_SHORT).show();
                 }else {
                     Toast.makeText(mContext, "Something went error", Toast.LENGTH_SHORT).show();
                 }
@@ -69,6 +66,7 @@ public class VerifyResetPassCodeViewModel extends Observable {
 
             @Override
             public void onFailure(Call<AskCodeResponse> call, Throwable t) {
+                alertDialog.dismiss();
                 Toast.makeText(mContext, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });

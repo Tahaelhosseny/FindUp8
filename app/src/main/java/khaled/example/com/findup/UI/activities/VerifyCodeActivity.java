@@ -1,5 +1,6 @@
 package khaled.example.com.findup.UI.activities;
 
+import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -39,22 +40,22 @@ public class VerifyCodeActivity extends AppCompatActivity {
         activityVerifyCodeBinding.setPresenter(new VerifyResetPassPresenter() {
             @Override
             public void checkVerifyResetCode() {
-                String code = activityVerifyCodeBinding.editTextStDigit.getRawText() +  activityVerifyCodeBinding.editTextNdDigit.getRawText()+
-                        activityVerifyCodeBinding.editTextRdDigit.getRawText() + activityVerifyCodeBinding.editTextThDigit.getRawText() ;
-                verifyResetPassCodeViewModel.checkCode("","");
-                startActivity(new Intent(VerifyCodeActivity.this , ForgotPasswordActivity.class));
+//                String code = activityVerifyCodeBinding.editTextStDigit.getRawText() +  activityVerifyCodeBinding.editTextNdDigit.getRawText()+
+//                        activityVerifyCodeBinding.editTextRdDigit.getRawText() + activityVerifyCodeBinding.editTextThDigit.getRawText() ;
+//                verifyResetPassCodeViewModel.checkCode(phone,code);
             }
+
 
             @Override
             public void resendCodeAgain() {
                 verifyResetPassCodeViewModel.resend_code(phone);
+
             }
         });
-//        setContentView(R.layout.activity_verify_code);
         btnCheckCode = findViewById(R.id.btn_submit_check_code);
         txtNumber=findViewById(R.id.txtNumber);
-        txtTimer=findViewById(R.id.timer);
         btnBack=findViewById(R.id.btn_verifyBack);
+        txtTimer = findViewById(R.id.timer);
         btnResend=findViewById(R.id.btn_resend);
         editTextSt=findViewById(R.id.editText_stDigit);
         editTextNd=findViewById(R.id.editText_ndDigit);
@@ -73,11 +74,28 @@ public class VerifyCodeActivity extends AppCompatActivity {
                 finish();
             }
         });
-
-        btnResend.setOnClickListener(new View.OnClickListener() {
+        editTextSt.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
-            public void onClick(View view) {
-                Toast.makeText(VerifyCodeActivity.this,"Resend",Toast.LENGTH_SHORT).show();
+            public void onFocusChange(View view, boolean b) {
+                editTextSt.setText("");
+            }
+        });
+        editTextNd.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                editTextNd.setText("");
+            }
+        });
+        editTextRd.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                editTextRd.setText("");
+            }
+        });
+        editTextTh.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                editTextTh.setText("");
             }
         });
 
@@ -98,12 +116,11 @@ public class VerifyCodeActivity extends AppCompatActivity {
             }
 
         });
-
         editTextNd.addTextChangedListener(new TextWatcher() {
 
             public void onTextChanged(CharSequence s, int start,int before, int count)
             {
-                if(editTextSt.getText().toString().length()==1)
+                if(editTextNd.getText().toString().length()==1)
                 {
                     editTextRd.requestFocus();
                 }
@@ -119,13 +136,12 @@ public class VerifyCodeActivity extends AppCompatActivity {
             }
 
         });
-
         editTextRd.addTextChangedListener(new TextWatcher() {
 
             public void onTextChanged(CharSequence s, int start,int before, int count)
             {
                 // TODO Auto-generated method stub
-                if(editTextSt.getText().toString().length()==1)     //size as per your requirement
+                if(editTextRd.getText().toString().length()==1)     //size as per your requirement
                 {
                     editTextTh.requestFocus();
                 }
@@ -141,8 +157,28 @@ public class VerifyCodeActivity extends AppCompatActivity {
             }
 
         });
+        editTextTh.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-        new CountDownTimer(30000, 1000){
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if(editTextSt.getText().toString().length() == 1 && editTextNd.getText().toString().length() == 1 &&
+                        editTextRd.getText().toString().length() == 1 && editTextTh.getText().toString().length() == 1){
+                    String code = activityVerifyCodeBinding.editTextStDigit.getRawText() +  activityVerifyCodeBinding.editTextNdDigit.getRawText()+
+                            activityVerifyCodeBinding.editTextRdDigit.getRawText() + activityVerifyCodeBinding.editTextThDigit.getRawText() ;
+                    verifyResetPassCodeViewModel.checkCode(phone,code);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+        new CountDownTimer(90000, 1000){
 
             @Override
             public void onTick(long l) {
