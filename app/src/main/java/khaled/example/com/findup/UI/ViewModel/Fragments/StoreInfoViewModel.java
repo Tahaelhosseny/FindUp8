@@ -1,15 +1,20 @@
 package khaled.example.com.findup.UI.ViewModel.Fragments;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -23,7 +28,13 @@ import java.util.Observable;
 import io.reactivex.Flowable;
 import khaled.example.com.findup.Helper.Database.DBHandler;
 import khaled.example.com.findup.Helper.Database.Interfaces.Store.Stores;
+import khaled.example.com.findup.Helper.Remote.ApiClient;
+import khaled.example.com.findup.Helper.Remote.ApiInterface;
+import khaled.example.com.findup.Helper.Remote.ResponseModel.AddCommentStoreResponse;
+import khaled.example.com.findup.Helper.Remote.ResponseModel.RateResponse;
+import khaled.example.com.findup.Helper.SharedPrefManger;
 import khaled.example.com.findup.Helper.Utility;
+import khaled.example.com.findup.R;
 import khaled.example.com.findup.UI.CustomViews.OverlapDecoration;
 import khaled.example.com.findup.UI.activities.CommentsActivity;
 import khaled.example.com.findup.UI.activities.PhotosGalleryActivity;
@@ -33,6 +44,9 @@ import khaled.example.com.findup.UI.adapters.StorePhotosAdapter;
 import khaled.example.com.findup.models.Comment;
 import khaled.example.com.findup.models.Store;
 import khaled.example.com.findup.models.StorePhoto;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class StoreInfoViewModel extends Observable {
     private Context mContext;
@@ -43,6 +57,8 @@ public class StoreInfoViewModel extends Observable {
         this.mContext = mContext;
         this.store_id = store_id;
     }
+
+
 
     public void bindCommentsPhotos(RecyclerView recyclerView) {
         List<Comment> commentList = new ArrayList<>();
@@ -201,7 +217,8 @@ public class StoreInfoViewModel extends Observable {
 
 
     public void bindStoreData(TextView aboutTxtDetails, TextView workTimeDaysInfoTxt, TextView workTimeInfoTxt,
-                              ImageView mailImg, ImageView siteImg, ImageView chatImg, ImageView twitterImg, ImageView snapImg,ImageView show_comments) {
+    ImageView mailImg, ImageView siteImg, ImageView chatImg, ImageView twitterImg, ImageView snapImg,ImageView show_comments
+    ) {
 
         if (MStore == null) {
             DBHandler.getStoreByID(store_id, mContext, new Stores() {
@@ -220,26 +237,53 @@ public class StoreInfoViewModel extends Observable {
                     storeFlowable.subscribe(store -> {
                         ((Activity) mContext).runOnUiThread(new Runnable() {
 
-                                                                @Override
-                                                                public void run() {
-                                                                    MStore = store;
-                                                                    aboutTxtDetails.setText(store.getStore_about());
+                           @Override
+                           public void run() {
+                                   MStore = store;
+                                   aboutTxtDetails.setText(store.getStore_about());
                                                                     //workTimeDaysInfoTxt.setText(UI_Utility.WorkDaysToString(store.getStore_workdays()));
                                                                     //workTimeInfoTxt.setText(UI_Utility.WorkTimeToString(store.getStore_worktime()));
-
                                                                     //mailImg.setOnClickListener(v -> /*Utility.sendEmail(mContext,store.get); */);
-                                                                    siteImg.setOnClickListener(v -> Utility.OpenWebSite(mContext, store.getStore_website_link()));
-                                                                    chatImg.setOnClickListener(v -> Utility.OpenChatWithStore(mContext, store.getStore_id()));
-                                                                    twitterImg.setOnClickListener(v -> Utility.OpenTwitterAccount(mContext, store.getStore_twitter_link()));
+                                   siteImg.setOnClickListener(v -> Utility.OpenWebSite(mContext, store.getStore_website_link()));
+                                   chatImg.setOnClickListener(v -> Utility.OpenChatWithStore(mContext, store.getStore_id()));
+                                   twitterImg.setOnClickListener(v -> Utility.OpenTwitterAccount(mContext, store.getStore_twitter_link()));
                                                                     //snapImg.setOnClickListener( v -> Utility.OpenSnapChatAccount(mContext,store.gets));
-                                                                    show_comments.setOnClickListener(v -> mContext.startActivity(new Intent(mContext, CommentsActivity.class).putExtra("store_id",store.getStore_id())));
-                                                                }
-                                                            }
+                                   show_comments.setOnClickListener(v -> mContext.startActivity(new Intent(mContext, CommentsActivity.class).putExtra("store_id",store.getStore_id())));
+                                   }
+                                 }
                         );
                     });
                 }
             });
         }
+    }
+
+
+    public void rateStore(float rate, int store_id){
+        if(SharedPrefManger.getUser_ID() == 0 || SharedPrefManger.getUser_ID() < 1){
+            Toast.makeText(mContext, "Please Login First Before Rate Store", Toast.LENGTH_SHORT).show();
+        }else {
+            ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
+            Call<RateResponse> rateStore = apiService.rateStore(SharedPrefManger.getUser_ID() , rate , store_id);
+            rateStore.enqueue(new Callback<RateResponse>() {
+                @Override
+                public void onResponse(Call<RateResponse> call, Response<RateResponse> response) {
+                    if (response.body().getError() == 0) {
+                        Toast.makeText(mContext, ""+store_id, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(mContext, ""+rate, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(mContext, "Successfully", Toast.LENGTH_SHORT).show();
+                    }else {
+                        Toast.makeText(mContext, ""+response.body().getError_msg(), Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<RateResponse> call, Throwable t) {
+                    Toast.makeText(mContext, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+
     }
 }
 

@@ -115,21 +115,26 @@ public class StoreDetailsViewModel extends java.util.Observable {
             @Override
             public void getStoreID(Flowable<Store> storeFlowable) {
                 storeFlowable.subscribe(val -> {
-                    StoreInfoFragment storeInfoFragment = new StoreInfoFragment();
-                    storeInfoFragment.setArguments(bundle);
+                    ((Activity) mContext).runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            StoreInfoFragment storeInfoFragment = new StoreInfoFragment();
+                            storeInfoFragment.setArguments(bundle);
 
-                    ProductsFragment productsFragment = new ProductsFragment();
-                    bundle.putInt("store_id", val.getStore_id());
-                    productsFragment.setArguments(bundle);
+                            ProductsFragment productsFragment = new ProductsFragment();
+                            bundle.putInt("store_id", val.getStore_id());
+                            productsFragment.setArguments(bundle);
 
-                    fragmentList.add(storeInfoFragment);
-                    fragmentList.add(productsFragment);
-                    tabLayout.notifyDataSetChanged();
-                    tabLayout.setTabData(mTabEntities, (FragmentActivity) mContext, R.id.fl_change, fragmentList);
-                    tabLayout.setIconHeight(0);
-                    tabLayout.setIconVisible(false);
-                    tabLayout.getTitleView(0).setTypeface(Typeface.create("sfcompactdisplay_semibold", Typeface.NORMAL));
-                    tabLayout.getTitleView(1).setTypeface(Typeface.create("sfcompactdisplay_heavy", Typeface.NORMAL));
+                            fragmentList.add(storeInfoFragment);
+                            fragmentList.add(productsFragment);
+                            tabLayout.notifyDataSetChanged();
+                            tabLayout.setTabData(mTabEntities, (FragmentActivity) mContext, R.id.fl_change, fragmentList);
+                            tabLayout.setIconHeight(0);
+                            tabLayout.setIconVisible(false);
+                            tabLayout.getTitleView(0).setTypeface(Typeface.create("sfcompactdisplay_semibold", Typeface.NORMAL));
+                            tabLayout.getTitleView(1).setTypeface(Typeface.create("sfcompactdisplay_heavy", Typeface.NORMAL));
+                        }
+                    });
                 });
             }
 

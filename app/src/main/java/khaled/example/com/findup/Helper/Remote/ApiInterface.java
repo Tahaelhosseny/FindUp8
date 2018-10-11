@@ -1,10 +1,4 @@
 package khaled.example.com.findup.Helper.Remote;
-
-import com.google.gson.annotations.SerializedName;
-
-import java.util.HashMap;
-import java.util.List;
-
 import khaled.example.com.findup.CONST;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.AddCommentStoreResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.AskCodeResponse;
@@ -16,13 +10,12 @@ import khaled.example.com.findup.Helper.Remote.ResponseModel.LoginResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.MeasureDistanceResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.NotificationFlagResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.NotificationResponse;
+import khaled.example.com.findup.Helper.Remote.ResponseModel.RateResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.RegisterResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.ResetPasswordResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.SaveModelResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.StoresResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.VerifyCodeResponse;
-import khaled.example.com.findup.models.AskCode;
-import khaled.example.com.findup.models.Category;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -59,8 +52,10 @@ public interface ApiInterface {
     @GET(ApiClient.PATH_URL+"user_profile?tag=get_user_saved&HashSecure="+HASH)
     Call<SaveModelResponse> getUserSaved(@Query("account_id") int account_id);
 
+
     @GET(ApiClient.PATH_URL+"reg_login?tag=verify_code&HashSecure="+ HASH)
     Call<VerifyCodeResponse> checkVerifyCode(@Query("mobile") String mobile , @Query("code") String code);
+
 
     @GET(ApiClient.PATH_URL+"reg_login?tag=forget_pass&HashSecure="+HASH)
     Call<AskCodeResponse> getResetPasswordCode(@Query("mobile") String mobile);
@@ -122,4 +117,16 @@ public interface ApiInterface {
     @POST(ApiClient.PATH_URL+"reg_login?tag=update_new_pass&HashSecure="+HASH)
     @FormUrlEncoded
     Call<ResetPasswordResponse> resetNewPassword(@Field("mobile") String mobile , @Field("new_password") String new_password);
+
+
+    @POST(ApiClient.PATH_URL+"user_actions?tag=add_product_rate&HashSecure="+HASH)
+    @FormUrlEncoded
+    Call<RateResponse> rateProduct(@Field("account_id") int account_id , @Field("rate") int rate , @Field("product_id") int product_id);
+
+
+    @POST(ApiClient.PATH_URL+"user_actions?tag=add_store_rate&HashSecure="+HASH)
+    @FormUrlEncoded
+    Call<RateResponse> rateStore(@Field("account_id") int account_id , @Field("rate") float rate , @Field("store_id") int store_id);
+
+
 }
