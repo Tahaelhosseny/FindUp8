@@ -53,19 +53,17 @@
 
     <ImageView
         android:id="@+id/pic_account"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:background="@null"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        android:layout_marginLeft="34dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:layout_marginStart="34dp"
-        app:srcCompat="@drawable/ic_accountpic"
+        android:layout_marginTop="16dp"
+        android:background="@null"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_editProfile"/>
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_editProfile"
+        app:srcCompat="@drawable/ic_accountpic" />
 
     <TextView
-        android:id="@+id/textView0"
+        android:id="@+id/txt_upload_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -85,8 +83,8 @@
         android:textAlignment="center"
         android:textColor="@color/colorWhiteGrey"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/textView0"
-        app:layout_constraintTop_toBottomOf="@+id/textView0" />
+        app:layout_constraintStart_toStartOf="@+id/txt_upload_image"
+        app:layout_constraintTop_toBottomOf="@+id/txt_upload_image" />
 
     <EditText
         android:id="@+id/editText_username"
