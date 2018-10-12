@@ -121,7 +121,7 @@ public interface ApiInterface {
 
     @POST(ApiClient.PATH_URL+"user_actions?tag=add_product_rate&HashSecure="+HASH)
     @FormUrlEncoded
-    Call<RateResponse> rateProduct(@Field("account_id") int account_id , @Field("rate") int rate , @Field("product_id") int product_id);
+    Call<RateResponse> rateProduct(@Field("account_id") int account_id , @Field("rate") float rate , @Field("product_id") int product_id);
 
 
     @POST(ApiClient.PATH_URL+"user_actions?tag=add_store_rate&HashSecure="+HASH)

@@ -26,7 +26,6 @@ import khaled.example.com.findup.R;
 import khaled.example.com.findup.UI.ViewModel.Fragments.StoreInfoViewModel;
 import khaled.example.com.findup.UI.activities.CommentsActivity;
 import khaled.example.com.findup.databinding.FragmentStoreInfoBinding;
-import khaled.example.com.findup.databinding.RatingCustomDialogBinding;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -104,7 +103,7 @@ public class StoreInfoFragment extends Fragment implements OnMapReadyCallback {
             @Override
             public void onClick(View view) {
                 StoreInfoViewModel storeInfoViewModel = new StoreInfoViewModel(getActivity() , store_id);
-                storeInfoViewModel.rateStore( ratingBar.getRating(), store_id);
+                storeInfoViewModel.rateStore( ratingBar.getRating());
 
             }
         });

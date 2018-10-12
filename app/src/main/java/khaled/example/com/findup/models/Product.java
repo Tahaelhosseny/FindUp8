@@ -26,12 +26,13 @@ public class Product {
     private String product_name;
     @NonNull
     private String product_desc;
+
     @NonNull
     private String product_banner;
     @Ignore
     private List<Comment> product_comments;
 
-    public Product(int product_id, double product_price, int product_likes_count, int product_comments_count, String product_name, String product_desc, String product_banner) {
+    public Product(int product_id, double product_price, int product_likes_count, int product_comments_count, String product_name, String product_desc, String product_banner ) {
         this.product_id = product_id;
         this.product_price = product_price;
         this.product_likes_count = product_likes_count;
@@ -39,7 +40,8 @@ public class Product {
         this.product_name = product_name;
         this.product_desc = product_desc;
         this.product_banner = product_banner;
-    }
+
+            }
 
     public int getProduct_id() {
         return product_id;

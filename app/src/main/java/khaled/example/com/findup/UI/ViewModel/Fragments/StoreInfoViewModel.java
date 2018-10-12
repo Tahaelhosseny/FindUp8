@@ -165,7 +165,8 @@ public class StoreInfoViewModel extends Observable {
                 });
             }
 
-        });
+        }
+        );
 
     }
 
@@ -259,7 +260,7 @@ public class StoreInfoViewModel extends Observable {
     }
 
 
-    public void rateStore(float rate, int store_id){
+    public void rateStore(float rate){
         if(SharedPrefManger.getUser_ID() == 0 || SharedPrefManger.getUser_ID() < 1){
             Toast.makeText(mContext, "Please Login First Before Rate Store", Toast.LENGTH_SHORT).show();
         }else {

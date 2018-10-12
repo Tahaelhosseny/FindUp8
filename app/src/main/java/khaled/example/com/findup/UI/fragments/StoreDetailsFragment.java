@@ -15,9 +15,7 @@ import khaled.example.com.findup.R;
 import khaled.example.com.findup.UI.ViewModel.Fragments.StoreDetailsViewModel;
 import khaled.example.com.findup.databinding.FragmentStoreDetailsBinding;
 
-/**
- * A simple {@link Fragment} subclass.
- */
+
 public class StoreDetailsFragment extends Fragment {
 
 
