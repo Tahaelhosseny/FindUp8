@@ -94,12 +94,50 @@ public class SharedPrefManger {
         return mSharedPref.getString("user_name", "");
     }
 
-    public static void setCurrencyId(String value) {
-        mSharedPref.edit().putString("currency_id", value).apply();
+
+    //-------------------------------------- User Setting ---------------------------------------------
+
+    public static void setUserSettingsId(int value){
+        mSharedPref.edit().putInt("user_settings_id" , value).apply();
+    }
+    public static int getUserSettingsId() {
+        return mSharedPref.getInt("user_settings_id", 0);
     }
 
-    public static String getCurrencyId() {
-        return mSharedPref.getString("currency_id", "");
+    public static void setPushNotiFlag(int value){
+        mSharedPref.edit().putInt("push_noti_flags" , value).apply();
     }
+    public static int getPushNotiFlag() {
+        return mSharedPref.getInt("push_noti_flags", 0);
+    }
+
+    public static void setChatNotiFlag(int value){
+        mSharedPref.edit().putInt("chat_noti_flags" , value).apply();
+    }
+    public static int getChatNotiFlag() {
+        return mSharedPref.getInt("chat_noti_flags", 0);
+    }
+
+    public static void setDistanceTypeId(int value){
+        mSharedPref.edit().putInt("distance_type_id" , value).apply();
+    }
+    public static int getDistanceTypeId() {
+        return mSharedPref.getInt("distance_type_id", 0);
+    }
+
+    public static void setCurrencyId(int value){
+        mSharedPref.edit().putInt("currency_id" , value).apply();
+    }
+    public static int getCurrencyId() {
+        return mSharedPref.getInt("currency_id", 0);
+    }
+
+    public static void setUserLanguage(String value){
+        mSharedPref.edit().putString("language" , value).apply();
+    }
+    public static String getUserLanguage() {
+        return mSharedPref.getString("language", "");
+    }
+
 
 }

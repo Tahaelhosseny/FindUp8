@@ -15,6 +15,7 @@ import khaled.example.com.findup.Helper.Remote.ResponseModel.RegisterResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.ResetPasswordResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.SaveModelResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.StoresResponse;
+import khaled.example.com.findup.Helper.Remote.ResponseModel.UserSettingsResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.VerifyCodeResponse;
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -59,6 +60,9 @@ public interface ApiInterface {
 
     @GET(ApiClient.PATH_URL+"reg_login?tag=forget_pass&HashSecure="+HASH)
     Call<AskCodeResponse> getResetPasswordCode(@Query("mobile") String mobile);
+
+    @GET(ApiClient.PATH_URL+"user_profile?tag=get_user_setting&HashSecure="+HASH)
+    Call<UserSettingsResponse> getUserSetting(@Query("account_id") int account_id);
 
 
     //----------------------------------------------- Post Methods -------------------------------------------------
