@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity implements LocationView{
     Context context;
     Toolbar toolbar;
     private RxLocation rxLocation;
+    FragmentTransaction transaction;
     LocationUtility locationUtility;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements LocationView{
         getSupportActionBar().setDisplayShowHomeEnabled(false);
 
         FragmentManager manager = getSupportFragmentManager();
-        FragmentTransaction transaction = manager.beginTransaction();
+        transaction = manager.beginTransaction();
 
 
         rxLocation = new RxLocation(this);
@@ -69,11 +70,16 @@ public class MainActivity extends AppCompatActivity implements LocationView{
         if (getSupportFragmentManager().getBackStackEntryCount() == 0)
             super.onBackPressed();
         else {
-            getSupportFragmentManager().popBackStackImmediate();
-            Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.main_toolbar_container);
-            UI_Utility.BottomNavigationMenu_icons_change(BottomBarFragment.menu, Utility.fragmentTagsList().indexOf(fragment.getClass().getName()));
-            Log.i("CurrentFragment",fragment.getClass().getName());
-            BottomBarFragment.adapter.notifyDataSetChanged();
+            try {
+                getSupportFragmentManager().popBackStackImmediate();
+                Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.main_toolbar_container);
+                UI_Utility.BottomNavigationMenu_icons_change(BottomBarFragment.menu, Utility.fragmentTagsList().indexOf(fragment.getClass().getName()));
+                Log.i("CurrentFragment",fragment.getClass().getName());
+                BottomBarFragment.adapter.notifyDataSetChanged();
+            }catch (Exception e){
+                transaction.replace(R.id.main_toolbar_container, new MainFragment(), new MainFragment().getClass().getName()).commit();
+            }
+
         }
     }
 

@@ -32,7 +32,7 @@ public class StoreDetailsFragment extends Fragment {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_store_details, container, false);
         View view = binding.getRoot();
         Intent i = ((Activity) view.getContext()).getIntent();
-        store_id = 0;
+        store_id = 1;
         if (i.hasExtra("store_id"))
             store_id = i.getIntExtra("store_id", 0);
         storeDetailsViewModel = new StoreDetailsViewModel(view.getContext(), store_id);

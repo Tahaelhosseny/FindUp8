@@ -1,9 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+
+        <variable
+            name="product"
+            type="khaled.example.com.findup.UI.ViewModel.Fragments.ProductDetailViewModel"/>
+
+        <variable
+            name="presenter"
+            type="khaled.example.com.findup.UI.Presenter.Fragments.ProductDetailsFragmentPresenter"/>
+
+    </data>
+    <ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".UI.fragments.ProductDetailsFragment">
 
     <android.support.constraint.ConstraintLayout
@@ -12,6 +25,7 @@
         android:layout_marginBottom="@dimen/dp150">
 
         <ImageView
+            android:id="@+id/product_banner"
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:background="@drawable/product_placeholder_background_image"
@@ -22,11 +36,13 @@
 
         <android.support.v7.widget.CardView
             android:id="@+id/nameLayout"
-            android:layout_width="340dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="40dp"
+            android:layout_marginStart="40dp"
             android:layout_marginTop="108dp"
-            app:cardCornerRadius="5dp"
             android:orientation="vertical"
+            app:cardCornerRadius="5dp"
             app:layout_anchor="@+id/imageView2"
             app:layout_anchorGravity="bottom|center"
             app:layout_constraintEnd_toEndOf="parent"
@@ -34,8 +50,8 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <android.support.constraint.ConstraintLayout
-                android:layout_width="320dp"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_margin="10dp">
 
                 <TextView
@@ -47,7 +63,9 @@
                     android:text="Chocklate Cake"
                     android:textColor="@color/colorBlack"
                     android:textSize="20sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/product_price"
@@ -65,28 +83,32 @@
                 <TextView
                     android:id="@+id/productStoreTxt"
                     android:layout_width="wrap_content"
-                    android:layout_height="35dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="8dp"
                     android:fontFamily="@font/sfcompactdisplay_regular"
                     android:padding="5dp"
                     android:text="Black Cafe"
                     android:textColor="@color/colorBlack"
-                    app:layout_constraintTop_toBottomOf="@id/product_name"/>
+                    app:layout_constraintStart_toStartOf="@+id/product_name"
+                    app:layout_constraintTop_toBottomOf="@+id/product_name" />
 
                 <ImageView
                     android:id="@+id/likeImg"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:padding="5dp"
-                    app:srcCompat="@drawable/like_0_5x"
-                    app:layout_constraintTop_toBottomOf="@id/productStoreTxt" />
+                    app:layout_constraintStart_toStartOf="@+id/productStoreTxt"
+                    app:layout_constraintTop_toBottomOf="@+id/productStoreTxt"
+                    app:srcCompat="@drawable/like_0_5x" />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:id="@+id/product_like_count"
+                    android:layout_width="29dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
                     android:text="2.2K"
-                    app:layout_constraintStart_toEndOf="@id/likeImg"
-                    app:layout_constraintTop_toTopOf="@id/likeImg" />
+                    app:layout_constraintBottom_toBottomOf="@+id/likeImg"
+                    app:layout_constraintStart_toEndOf="@+id/likeImg"
+                    app:layout_constraintTop_toTopOf="@+id/likeImg" />
 
             </android.support.constraint.ConstraintLayout>
 
@@ -221,82 +243,7 @@
             app:layout_constraintStart_toEndOf="@id/commentUsersNumTxt"
             app:layout_constraintTop_toTopOf="@+id/commentUsersNumTxt" />
 
-        <TextView
-            android:id="@+id/contactTxt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:fontFamily="@font/sfcompactdisplay_medium"
-            android:padding="5dp"
-            android:text="Contact"
-            android:textColor="@color/colorBlack"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.047"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/commentUsersNumTxt" />
-
-        <ImageView
-            android:id="@+id/mailImg"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
-            android:layout_marginTop="8dp"
-            android:padding="5dp"
-            app:srcCompat="@drawable/mail_1_5x"
-            app:layout_constraintStart_toStartOf="@id/contactTxt"
-            app:layout_constraintTop_toBottomOf="@+id/contactTxt" />
-
-        <ImageView
-            android:id="@+id/siteImg"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
-            android:layout_marginTop="8dp"
-            android:padding="5dp"
-            app:srcCompat="@drawable/web_1_5x"
-            app:layout_constraintStart_toEndOf="@id/mailImg"
-            app:layout_constraintTop_toBottomOf="@+id/contactTxt" />
-
-        <ImageView
-            android:id="@+id/chatImg"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
-            android:layout_marginTop="8dp"
-            android:padding="5dp"
-            app:srcCompat="@drawable/chat_1_5x"
-            app:layout_constraintStart_toEndOf="@id/siteImg"
-            app:layout_constraintTop_toBottomOf="@+id/contactTxt" />
-
-        <ImageView
-            android:id="@+id/phoneImg"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
-            android:layout_marginTop="8dp"
-            android:padding="5dp"
-            app:srcCompat="@drawable/phone_1_5x"
-            app:layout_constraintStart_toEndOf="@id/chatImg"
-            app:layout_constraintTop_toBottomOf="@+id/contactTxt" />
-
-        <ImageView
-            android:id="@+id/twitterImg"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
-            android:layout_marginTop="8dp"
-            android:padding="5dp"
-            app:srcCompat="@drawable/tiwitter_1_5x"
-            app:layout_constraintStart_toEndOf="@id/phoneImg"
-            app:layout_constraintTop_toBottomOf="@+id/contactTxt" />
-
-        <ImageView
-            android:id="@+id/snapImg"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
-            android:layout_marginTop="8dp"
-            android:padding="5dp"
-            app:srcCompat="@drawable/snap_1_5x"
-            app:layout_constraintStart_toEndOf="@id/twitterImg"
-            app:layout_constraintTop_toBottomOf="@+id/contactTxt" />
-
     </android.support.constraint.ConstraintLayout>
 
 </ScrollView>
+</layout>

@@ -1,7 +1,9 @@
 package khaled.example.com.findup.UI.fragments;
 
 
+import android.app.Activity;
 import android.content.Intent;
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -17,9 +19,12 @@ import java.util.List;
 
 import khaled.example.com.findup.R;
 import khaled.example.com.findup.UI.CustomViews.OverlapDecoration;
+import khaled.example.com.findup.UI.ViewModel.Fragments.ProductDetailViewModel;
+import khaled.example.com.findup.UI.ViewModel.Fragments.StoreDetailsViewModel;
 import khaled.example.com.findup.UI.activities.CommentsActivity;
 import khaled.example.com.findup.UI.adapters.CommentsPhotosAdapter;
 import khaled.example.com.findup.UI.adapters.RecyclerTouchListener;
+import khaled.example.com.findup.databinding.FragmentProductDetailsBinding;
 import khaled.example.com.findup.models.Comment;
 
 /**
@@ -33,17 +38,30 @@ public class ProductDetailsFragment extends Fragment {
     }
 
 
+    FragmentProductDetailsBinding binding;
+    ProductDetailViewModel productDetailViewModel;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_product_details, container, false);
+
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_product_details, container, false);
+        View view = binding.getRoot();
+
+        Intent i = ((Activity) view.getContext()).getIntent();
+        int store_id = 1;
+        if (i.hasExtra("prod_id"))
+            store_id = i.getIntExtra("prod_id", 1);
+        productDetailViewModel = new ProductDetailViewModel(view.getContext(), store_id);
+
+        return view;
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+        productDetailViewModel.bindProductData(binding.productBanner,binding.productName,binding.productPrice,binding.productStoreTxt,binding.productLikeCount,binding.aboutProduct,
+                binding.productPhotosRecycler,binding.commentUsersTxt,binding.commentUsersNumTxt);
         List<String> photos = new ArrayList<>();
         photos.add("");
         photos.add("");

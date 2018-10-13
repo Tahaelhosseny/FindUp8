@@ -1,5 +1,6 @@
 package khaled.example.com.findup.UI.ViewModel.Fragments;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
@@ -17,8 +18,10 @@ import khaled.example.com.findup.Helper.Remote.ApiInterface;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.AddCommentStoreResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.LoginResponse;
 import khaled.example.com.findup.Helper.UI_Utility;
+import khaled.example.com.findup.UI.activities.CommentsActivity;
 import khaled.example.com.findup.UI.activities.MainActivity;
 import khaled.example.com.findup.UI.activities.StoreDetailsActivity;
+import khaled.example.com.findup.models.Comment;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -40,6 +43,10 @@ public class AddCommentStoreViewModel extends Observable {
                 alertDialog.dismiss();
                 if (response.body().getError() == 0) {
                     Toast.makeText(mContext, "Comment Added To Store Successfully", Toast.LENGTH_SHORT).show();
+                    for (Comment c : response.body().getData())
+                        DBHandler.InsertComment(c,mContext);
+                    mContext.startActivity(new Intent(mContext, CommentsActivity.class).putExtra("store_id",store_id));
+                 //   ((Activity)mContext).finish();
                 }else {
                     Toast.makeText(mContext, ""+response.body().getError_msg(), Toast.LENGTH_SHORT).show();
                 }
@@ -47,7 +54,8 @@ public class AddCommentStoreViewModel extends Observable {
 
             @Override
             public void onFailure(Call<AddCommentStoreResponse> call, Throwable t) {
-
+                alertDialog.dismiss();
+                Toast.makeText(mContext, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 

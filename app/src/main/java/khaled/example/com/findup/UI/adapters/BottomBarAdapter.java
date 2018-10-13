@@ -1,5 +1,6 @@
 package khaled.example.com.findup.UI.adapters;
 
+import android.content.Context;
 import android.content.res.Resources;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
@@ -14,6 +15,7 @@ import android.widget.ImageView;
 import java.util.ArrayList;
 import java.util.List;
 
+import khaled.example.com.findup.Helper.SharedPrefManger;
 import khaled.example.com.findup.R;
 
 /**
@@ -23,18 +25,21 @@ import khaled.example.com.findup.R;
 public class BottomBarAdapter extends RecyclerView.Adapter<BottomBarAdapter.ViewHolder> {
 
     int selected = 0;
-
     private List<MenuItem> menuItemList;
     private View.OnClickListener onClickListener;
     private static Menu menu;
 
-    public BottomBarAdapter(Menu menuItemList, View.OnClickListener onClickListener) {
+    public BottomBarAdapter(Context mContext,Menu menuItemList, View.OnClickListener onClickListener) {
         this.onClickListener = onClickListener;
         this.menu = menuItemList;
         this.menuItemList = new ArrayList<>();
         for (int i = 0; i < menuItemList.size(); i++) {
+            if (menu.getItem(i).isVisible())
             this.menuItemList.add(menuItemList.getItem(i));
         }
+        SharedPrefManger sharedPrefManger = new SharedPrefManger(mContext);
+        if (!sharedPrefManger.isIsLoggedIn()&& menuItemList.size() > 0)
+            this.menuItemList.remove(this.menuItemList.size()-1);
     }
 
     public static Menu getMenu() {
@@ -76,8 +81,6 @@ public class BottomBarAdapter extends RecyclerView.Adapter<BottomBarAdapter.View
             itemImage = view.findViewById(R.id.bottomBarItemImg);
             container = view.findViewById(R.id.bottom_menu_item_container);
             view.setOnClickListener(onClickListener);
-
         }
-
     }
 }

@@ -1,9 +1,22 @@
-<android.support.constraint.ConstraintLayout
+<?xml version="1.0" encoding="utf-8"?>
+<layout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+
+        <variable
+            name="notification"
+            type="khaled.example.com.findup.UI.ViewModel.Activites.UserSettings.NotificationsSettingsViewModel"/>
+
+        <variable
+            name="presenter"
+            type="khaled.example.com.findup.UI.Presenter.Activities.UserSettings.NotificationsSettingsPresenter"/>
+
+    </data>
+<android.support.constraint.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/colorWhite"
     style="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen"
     tools:context=".UI.activities.NotificationsSettingsActivity">
@@ -44,144 +57,72 @@
         android:id="@+id/textViewNotifications"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/sfcompactdisplay_medium"
         android:text="Push Notifications"
         android:textColor="@color/colorBlack"
-        android:layout_marginLeft="16dp"
-        android:fontFamily="@font/sfcompactdisplay_medium"
         android:textSize="24sp"
-        android:layout_marginRight="25dp"
-        android:layout_marginTop="25dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_currency"/>
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_currency" />
+
     <TextView
+        android:id="@+id/textView12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:fontFamily="@font/sfcompactdisplay_medium"
         android:text="Tap to recieve notifications"
-        android:layout_marginLeft="16dp"
-        android:fontFamily="@font/sfcompactdisplay_medium"
         android:textSize="15sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewNotifications"/>
-
-    <TextView
-        android:id="@+id/textViewComments"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Comments"
-        android:textColor="@color/colorBlack"
-        android:layout_marginLeft="16dp"
-        android:fontFamily="@font/sfcompactdisplay_medium"
-        android:textSize="24sp"
-        android:layout_marginRight="25dp"
-        android:layout_marginTop="75dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewNotifications"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Tap to recieve notifications for comments"
-        android:layout_marginLeft="16dp"
-        android:fontFamily="@font/sfcompactdisplay_medium"
-        android:textSize="15sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewComments"/>
-
-    <TextView
-        android:id="@+id/textViewLikes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Likes"
-        android:textColor="@color/colorBlack"
-        android:layout_marginLeft="16dp"
-        android:fontFamily="@font/sfcompactdisplay_medium"
-        android:textSize="24sp"
-        android:layout_marginRight="25dp"
-        android:layout_marginTop="75dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewComments"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Tap to recieve notifications for likes"
-        android:layout_marginLeft="16dp"
-        android:fontFamily="@font/sfcompactdisplay_medium"
-        android:textSize="15sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewLikes"/>
+        app:layout_constraintTop_toBottomOf="@+id/textViewNotifications" />
 
     <TextView
         android:id="@+id/textViewChats"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/sfcompactdisplay_medium"
         android:text="Chats"
         android:textColor="@color/colorBlack"
-        android:layout_marginLeft="16dp"
-        android:fontFamily="@font/sfcompactdisplay_medium"
         android:textSize="24sp"
-        android:layout_marginRight="25dp"
-        android:layout_marginTop="75dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewLikes"/>
+        app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
     <TextView
+        android:id="@+id/textView15"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tap to recieve notifications for chats"
         android:layout_marginLeft="16dp"
         android:fontFamily="@font/sfcompactdisplay_medium"
+        android:text="Tap to recieve notifications for chats"
         android:textSize="15sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox_chatsNotifications"/>
+        app:layout_constraintTop_toBottomOf="@+id/textViewChats" />
 
-    <CheckBox
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    <CheckBox xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/checkBox_pushNotifications"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="25dp"
-        android:layout_marginTop="25dp"
         android:button="@null"
+        android:checked="true"
         android:drawableRight="@drawable/checkbox_selector"
         android:textColor="@color/colorAccent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_currency"
-        android:checked="true"/>
+        app:layout_constraintTop_toTopOf="@+id/textViewNotifications" />
 
-    <CheckBox
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/checkBox_commentsNotifications"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="25dp"
-        android:layout_marginTop="75dp"
-        android:button="@null"
-        android:drawableRight="@drawable/checkbox_selector"
-        android:textColor="@color/colorAccent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox_pushNotifications"/>
-
-    <CheckBox
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/checkBox_likesNotifications"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="25dp"
-        android:layout_marginTop="75dp"
-        android:button="@null"
-        android:drawableRight="@drawable/checkbox_selector"
-        android:textColor="@color/colorAccent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox_commentsNotifications"/>
-
-    <CheckBox
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    <CheckBox xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/checkBox_chatsNotifications"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="25dp"
-        android:layout_marginTop="75dp"
+        android:layout_marginTop="8dp"
         android:button="@null"
         android:drawableRight="@drawable/checkbox_selector"
         android:textColor="@color/colorAccent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox_likesNotifications"/>
+        app:layout_constraintTop_toTopOf="@+id/textViewChats" />
 </android.support.constraint.ConstraintLayout>
+</layout>

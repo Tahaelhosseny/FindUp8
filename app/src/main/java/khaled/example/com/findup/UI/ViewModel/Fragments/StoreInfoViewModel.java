@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -280,6 +281,7 @@ public class StoreInfoViewModel extends Observable {
 
                 @Override
                 public void onFailure(Call<RateResponse> call, Throwable t) {
+                    Log.e("rate_error",SharedPrefManger.getUser_ID()+" - "+rate+" - "+ store_id);
                     Toast.makeText(mContext, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });

@@ -19,9 +19,7 @@ public class Comment {
     private int acc_id;
     @NonNull
     private int store_id;
-    @NonNull
     private String comment_date;
-    @NonNull
     private long comment_date_timestamp;
     @NonNull
     private String comment;

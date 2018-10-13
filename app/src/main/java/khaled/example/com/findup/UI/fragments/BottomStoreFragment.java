@@ -88,7 +88,7 @@ public class BottomStoreFragment extends Fragment {
     private void bindUI(Menu menu) {
         RecyclerView recyclerView = getActivity().findViewById(R.id.BottomBarRecyclerView);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        adapter = new BottomBarAdapter(menu, navListner);
+        adapter = new BottomBarAdapter(getActivity(),menu, navListner);
         recyclerView.setAdapter(adapter);
         recyclerView.stopNestedScroll();
         recyclerView.stopScroll();

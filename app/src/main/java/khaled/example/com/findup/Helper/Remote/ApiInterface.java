@@ -109,7 +109,7 @@ public interface ApiInterface {
 
     @POST(ApiClient.PATH_URL+"user_profile?tag=set_user_noti_setting&HashSecure="+HASH)
     @FormUrlEncoded
-    Call<NotificationFlagResponse> setNotificationFlags(@Field("account_id") String account_id , @Field("push_noti_flag") int push_noti_flag
+    Call<NotificationFlagResponse> setNotificationFlags(@Query("account_id") int account_id , @Field("push_noti_flag") int push_noti_flag
             , @Field("chat_noti_flag") int chat_noti_flag);
 
 

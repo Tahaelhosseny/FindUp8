@@ -77,7 +77,7 @@ public class StoreDetailsViewModel extends java.util.Observable {
                                         Picasso.with(mContext).load(val.getStore_banner()).placeholder(R.drawable.near_by_place_holder).into(storeImg);
                                     storeName.setText(val.getStore_name());
                                     storeDis.setText(val.getStore_name());
-                                    storeBriefTxt.setText(val.getStore_about());
+                                    storeBriefTxt.setText(val.getStore_desc());
                                     store_rating.setText(val.getStore_rating());
                                     currentLocationFlowable.subscribe(loca -> storeDis.setText(val.getPlaceDistane(mContext, loca.getLocationModel())));
 

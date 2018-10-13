@@ -1,5 +1,6 @@
 package khaled.example.com.findup.Helper;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -114,7 +115,8 @@ public class UI_Utility {
         });
 
         AlertDialog alert = builder.create();
-        alert.show();
+        if(!((Activity) mContext).isFinishing())
+            alert.show();
         return alert;
     }
 
@@ -134,6 +136,16 @@ public class UI_Utility {
 
     public static String WorkTimeToString(Store_WorkTime store_workTime) {
         return store_workTime.getWork_from_time() + " - " + store_workTime.getWork_to_time();
+    }
+
+    public static String CountValueToString(int value,Context mContext){
+        if (value > 1000000){
+            return  String.format("%.2f",(value/1000000)).concat(mContext.getResources().getString(R.string.count_value_milion));
+        }else if (value > 1000){
+            return  String.format("%.2f",(value/1000)).concat(mContext.getResources().getString(R.string.count_value_k));
+        }else
+            return  String.valueOf(value);
+
     }
 }
 

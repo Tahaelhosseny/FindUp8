@@ -16,6 +16,7 @@ import com.squareup.picasso.Transformation;
 
 import java.util.List;
 
+import khaled.example.com.findup.Helper.UI_Utility;
 import khaled.example.com.findup.R;
 import khaled.example.com.findup.UI.activities.ProductDetailsActivity;
 import khaled.example.com.findup.models.Product;
@@ -54,6 +55,8 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
         holder.productName.setText(holder.product.getProduct_name());
         holder.productDescription.setText(holder.product.getProduct_desc());
         holder.productPrice.setText(String.valueOf(holder.product.getProduct_price()));
+        holder.productNumComments.setText(UI_Utility.CountValueToString(holder.product.getProduct_comments_count(),context));
+        holder.productNumLikes.setText(UI_Utility.CountValueToString(holder.product.getProduct_likes_count(),context));
 
         if (!holder.product.getProduct_banner().isEmpty()) {
             Transformation transformation = new RoundedTransformationBuilder()
@@ -76,6 +79,8 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
         TextView productPrice;
         TextView productDescription;
         ImageView productImg;
+        TextView productNumLikes;
+        TextView productNumComments;
         Product product;
 
         public ViewHolder(View view) {
@@ -85,6 +90,8 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
             productDescription = view.findViewById(R.id.productItemDesc);
             productPrice = view.findViewById(R.id.productItemPrice);
             productImg = view.findViewById(R.id.productItemImg);
+            productNumLikes =  view.findViewById(R.id.productNumLikes);
+            productNumComments = view.findViewById(R.id.productNumComments);
             view.setOnClickListener(this);
         }
 

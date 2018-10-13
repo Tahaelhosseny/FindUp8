@@ -23,8 +23,10 @@ public class ProductDetailsActivity extends AppCompatActivity {
             }
         });
 
+
+        ProductDetailsFragment productDetailsFragment = new ProductDetailsFragment();
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
-        transaction.replace(R.id.product_fragment_container, new ProductDetailsFragment()).commit();
+        transaction.replace(R.id.product_fragment_container, productDetailsFragment).commit();
     }
 }

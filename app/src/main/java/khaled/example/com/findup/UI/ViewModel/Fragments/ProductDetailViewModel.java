@@ -45,4 +45,33 @@ public class ProductDetailViewModel extends Observable {
         this.mContext = mContext;
         this.product_id = product_id;
     }
+
+    public void bindProductData(ImageView product_banner, TextView product_name,TextView product_price,TextView productStoreTxt,TextView product_like_count, TextView aboutProduct
+                                ,RecyclerView productPhotosRecycler,TextView commentUsersTxt,TextView commentUsersNumTxt){
+        DBHandler.getProductByID(product_id, mContext, new Products() {
+            @Override
+            public void onSuccess(Flowable<List<Product>> listFlowable) {
+
+            }
+
+            @Override
+            public void getProduct(Flowable<Product> productFlowable) {
+                productFlowable.subscribe(v->{
+                    ((Activity) mContext).runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            //TODO Start binding data from variable @v
+                            product_name.setText(v.getProduct_name());
+                        }
+                    });
+                    });
+            }
+
+            @Override
+            public void onFail() {
+
+            }
+        });
+
+    }
 }

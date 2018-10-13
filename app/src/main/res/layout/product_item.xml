@@ -12,7 +12,7 @@
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_margin="10dp"
-        app:srcCompat="@drawable/placeholder"
+        android:background="@drawable/bg_button_rounded_light_accent"
         android:scaleType="fitXY"/>
 
     <TextView

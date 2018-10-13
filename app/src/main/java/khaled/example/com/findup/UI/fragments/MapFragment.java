@@ -1,5 +1,6 @@
 package khaled.example.com.findup.UI.fragments;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,16 +13,22 @@ import android.view.ViewGroup;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageButton;
 
+import com.f2prateek.rx.preferences2.Preference;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import khaled.example.com.findup.Helper.Location.LocationUtility;
+import khaled.example.com.findup.Helper.SharedPrefManger;
+import khaled.example.com.findup.Helper.Utility;
 import khaled.example.com.findup.R;
 import khaled.example.com.findup.UI.activities.FilterActivity;
+import khaled.example.com.findup.models.CurrentLocation;
 
 public class MapFragment extends Fragment implements OnMapReadyCallback {
     GoogleMap myMap;
@@ -87,12 +94,21 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     @Override
     public void onMapReady(GoogleMap googleMap) {
         {
+            CurrentLocation currentLocation = new CurrentLocation();
+            Utility.UpdateCurrentLocation((Activity) getActivity(), getActivity());
+
+            SharedPrefManger sharedPrefManger = new SharedPrefManger(getActivity());
+            Preference<Float> Latitude = sharedPrefManger.getLatitude();
+            Latitude.asObservable().subscribe(val -> LocationUtility.LatitudeToCurrentLocationModel(val, currentLocation));
+            Preference<Float> Longitude = sharedPrefManger.getLongitude();
+            Longitude.asObservable().subscribe(val -> LocationUtility.LongitudeToCurrentLocationModel(val, currentLocation));
 
             // Add a marker in Sydney and move the camera
-            LatLng sydney = new LatLng(-34, 151);
-            googleMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
+            LatLng sydney = new LatLng(currentLocation.getLocation().latitude, currentLocation.getLocation().longitude);
+            googleMap.addMarker(new MarkerOptions().position(sydney).icon(
+                    BitmapDescriptorFactory.fromResource(R.drawable.current_location_marker)
+            ).title("Your Location"));
             googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(sydney.latitude + ((sydney.latitude * 14) / 100000), sydney.longitude), 14));
-
             googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 
         }

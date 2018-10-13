@@ -176,6 +176,8 @@
     <string name="email_title_to_store">Message from FindUp User</string>
     <string name="get_directions">Get direction</string>
     <string name="title_activity_delete_acc_verify">DeleteAccVerifyActivity</string>
+    <string name="count_value_milion">M</string>
+    <string name="count_value_k">K</string>
 
 
 </resources>

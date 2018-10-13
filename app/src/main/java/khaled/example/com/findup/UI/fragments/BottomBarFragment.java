@@ -20,6 +20,7 @@ import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 
+import khaled.example.com.findup.Helper.SharedPrefManger;
 import khaled.example.com.findup.Helper.UI_Utility;
 import khaled.example.com.findup.Helper.Utility;
 import khaled.example.com.findup.R;
@@ -108,9 +109,13 @@ public class BottomBarFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         actionBarSize = ((CoordinatorLayout.LayoutParams) (getActivity().findViewById(R.id.main_toolbar_container)).getLayoutParams()).topMargin;
-
+        SharedPrefManger sharedPrefManger = new SharedPrefManger(getActivity());
         PopupMenu p = new PopupMenu(getActivity(), null);
         menu = p.getMenu();
+
+        if (!sharedPrefManger.isIsLoggedIn() && menu.size() > 0)
+            menu.getItem(menu.size()-1).setVisible(false);
+
         getActivity().getMenuInflater().inflate(R.menu.bottom_navigation_items, menu);
         bindUI(menu,getActivity());
 
@@ -119,7 +124,7 @@ public class BottomBarFragment extends Fragment {
     public void bindUI(Menu menu,Activity activity) {
         RecyclerView recyclerView = activity.findViewById(R.id.BottomBarRecyclerView);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        adapter = new BottomBarAdapter(menu, navListner);
+        adapter = new BottomBarAdapter(activity,menu, navListner);
         recyclerView.setAdapter(adapter);
         recyclerView.stopNestedScroll();
         recyclerView.stopScroll();
