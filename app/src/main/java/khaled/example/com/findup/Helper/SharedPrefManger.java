@@ -140,4 +140,10 @@ public class SharedPrefManger {
     }
 
 
+    public static void setDistanceText(String value){
+        mSharedPref.edit().putString("distance_text" , value).apply();
+    }
+    public static String getDistanceText() {
+        return mSharedPref.getString("distance_text", "");
+    }
 }

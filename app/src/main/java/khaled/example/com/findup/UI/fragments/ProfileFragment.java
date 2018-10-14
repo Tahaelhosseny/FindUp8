@@ -8,7 +8,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
+import khaled.example.com.findup.Helper.SharedPrefManger;
 import khaled.example.com.findup.R;
 import khaled.example.com.findup.UI.activities.NotificationsActivity;
 import khaled.example.com.findup.UI.activities.ProfileChatsActivity;
@@ -33,7 +35,10 @@ public class ProfileFragment extends Fragment {
         Button btn_saved = view.findViewById(R.id.btn_saved);
         Button btn_settings = view.findViewById(R.id.btn_settings);
         Button btn_createStoreAccount = view.findViewById(R.id.btn_createStoreAccount);
-
+        TextView prof_name = view.findViewById(R.id.profile_name);
+        TextView prof_phone = view.findViewById(R.id.profile_phone);
+        prof_name.setText(SharedPrefManger.getUser_name());
+        prof_phone.setText(SharedPrefManger.getLogin_phone());
         btn_notifications.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

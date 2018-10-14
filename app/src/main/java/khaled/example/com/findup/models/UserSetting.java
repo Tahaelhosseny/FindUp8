@@ -19,6 +19,17 @@ public class UserSetting {
     @SerializedName("currency_id") @Expose
     private int currency_id;
 
+
+    public UserSetting(int setting_id, int account_id, int pust_noti_flag, int chat_noti_flag, int distance_type_id, String language, int currency_id) {
+        this.setting_id = setting_id;
+        this.account_id = account_id;
+        this.pust_noti_flag = pust_noti_flag;
+        this.chat_noti_flag = chat_noti_flag;
+        this.distance_type_id = distance_type_id;
+        this.language = language;
+        this.currency_id = currency_id;
+    }
+
     public int getSetting_id() {
         return setting_id;
     }

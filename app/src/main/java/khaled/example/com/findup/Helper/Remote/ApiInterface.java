@@ -1,8 +1,13 @@
 package khaled.example.com.findup.Helper.Remote;
+import com.google.android.gms.common.internal.ShowFirstParty;
+
+import java.io.File;
+
 import khaled.example.com.findup.CONST;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.AddCommentStoreResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.AskCodeResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.CreateStoreEventResponse;
+import khaled.example.com.findup.Helper.Remote.ResponseModel.CreateStoreResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.CurrencyResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.EditProfileResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.EventResponse;
@@ -104,7 +109,7 @@ public interface ApiInterface {
 
     @POST(ApiClient.PATH_URL+"user_profile?tag=set_user_distance&HashSecure="+HASH)
     @FormUrlEncoded
-    Call<MeasureDistanceResponse> setUserDistance(@Field("distance_id") int distance_id , @Field("account_id") String account_id);
+    Call<MeasureDistanceResponse> setUserDistance(@Field("distance_id") int distance_id , @Field("account_id") int account_id);
 
 
     @POST(ApiClient.PATH_URL+"user_profile?tag=set_user_noti_setting&HashSecure="+HASH)
@@ -132,5 +137,22 @@ public interface ApiInterface {
     @FormUrlEncoded
     Call<RateResponse> rateStore(@Field("account_id") int account_id , @Field("rate") float rate , @Field("store_id") int store_id);
 
-
+    @POST(ApiClient.PATH_URL+"stores?tag=create_store_account&HashSecure="+HASH)
+    @FormUrlEncoded
+    Call<CreateStoreResponse> createNewStore(
+            @Field("store_desc") String store_desc ,
+            @Field("country_id") int country_id ,
+            @Field("city_id") int city_id ,
+            @Field("location_type") String location_type ,
+            @Field("mobile") String mobile ,
+            @Field("password") String password ,
+            @Field("twitter_link") String twitter_link ,
+            @Field("instegram_link") String instegram_link ,
+            @Field("facebook_link") String facebook_link,
+            @Field("cat_id") int cat_id,
+            @Field("store_logo")File store_logo,
+            @Field("store_banner")File store_banner,
+            @Field("store_otherlang")String store_otherlang,
+            @Field("store_tags") String store_tags
+            );
 }

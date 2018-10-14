@@ -69,7 +69,12 @@ public class LoginViewModel extends Observable {
         userSettings.enqueue(new Callback<UserSettingsResponse>() {
             @Override
             public void onResponse(Call<UserSettingsResponse> call, Response<UserSettingsResponse> response) {
-                saveUserSettingSuccess(response.body().getUser_data().get(0));
+                if(response.body().getSuccess() == 1){
+                    saveUserSettingSuccess(response.body().getUser_data().get(0));
+                }else{
+                    UserSetting userSetting = new UserSetting(0 , account_id ,0,0,0,"en",0 );
+                    saveUserSettingSuccess(userSetting);
+                }
             }
 
             @Override

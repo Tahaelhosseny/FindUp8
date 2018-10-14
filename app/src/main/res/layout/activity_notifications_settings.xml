@@ -107,7 +107,7 @@
         android:layout_height="wrap_content"
         android:layout_marginRight="25dp"
         android:button="@null"
-        android:checked="true"
+        android:checked="false"
         android:drawableRight="@drawable/checkbox_selector"
         android:textColor="@color/colorAccent"
         app:layout_constraintEnd_toEndOf="parent"

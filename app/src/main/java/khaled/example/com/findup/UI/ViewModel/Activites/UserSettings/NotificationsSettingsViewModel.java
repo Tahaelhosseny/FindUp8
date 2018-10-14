@@ -3,6 +3,7 @@ package khaled.example.com.findup.UI.ViewModel.Activites.UserSettings;
 import android.content.Context;
 import android.util.Log;
 import android.widget.CheckBox;
+import android.widget.Toast;
 
 import java.util.Observable;
 
@@ -24,7 +25,6 @@ public class NotificationsSettingsViewModel extends Observable {
     public void BindCheckBox(CheckBox checkBox_pushNotifications, CheckBox checkBox_chatsNotifications){
         checkBox_pushNotifications.setOnCheckedChangeListener((v,b)-> ChangeNotificationSettings(checkBox_pushNotifications,checkBox_chatsNotifications));
         checkBox_chatsNotifications.setOnCheckedChangeListener((v,b)-> ChangeNotificationSettings(checkBox_pushNotifications,checkBox_chatsNotifications));
-
     }
 
     public void ChangeNotificationSettings(CheckBox checkBox_pushNotifications, CheckBox checkBox_chatsNotifications){
@@ -34,12 +34,25 @@ public class NotificationsSettingsViewModel extends Observable {
         call.enqueue(new Callback<NotificationFlagResponse>() {
             @Override
             public void onResponse(Call<NotificationFlagResponse> call, Response<NotificationFlagResponse> response) {
-                response.body().getUser_data().get(0).getChat_noti_flag();
-                checkBox_pushNotifications.setChecked((response.body().getUser_data().get(0).getPush_noti_flag()==1)?true:false);
-                checkBox_chatsNotifications.setChecked((response.body().getUser_data().get(0).getChat_noti_flag()==1)?true:false);
-                /*checkBox_pushNotifications.setChecked((response.body().getUser_data().get(0).getChat_noti_flag()==1)?true:false);
-                checkBox_pushNotifications.setChecked((response.body().getUser_data().get(0).getChat_noti_flag()==1)?true:false);
-                checkBox_pushNotifications.setChecked((response.body().getUser_data().get(0).getChat_noti_flag()==1)?true:false);*/
+                int chat = 0;int push = 0;
+                if(response.body().getSuccess() == 1){
+                    if(checkBox_chatsNotifications.isChecked()){
+                        SharedPrefManger.setChatNotiFlag(1);
+                        chat = 1;
+                    }
+                    if(checkBox_pushNotifications.isChecked()){
+                        SharedPrefManger.setPushNotiFlag(1);
+                        push = 1;
+                    }
+//                SharedPrefManger.setPushNotiFlag(push);
+//                SharedPrefManger.setChatNotiFlag(chat);
+                    Toast.makeText(mContext, "Push "+push, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(mContext, "Chat "+chat, Toast.LENGTH_SHORT).show();
+
+                }else {
+                    Toast.makeText(mContext, ""+response.body().getError_msg(), Toast.LENGTH_SHORT).show();
+                }
+
 
             }
 
