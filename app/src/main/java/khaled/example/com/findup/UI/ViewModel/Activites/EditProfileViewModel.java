@@ -14,9 +14,11 @@ import khaled.example.com.findup.Helper.Remote.ApiClient;
 import khaled.example.com.findup.Helper.Remote.ApiInterface;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.EditProfileResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.LoginResponse;
+import khaled.example.com.findup.Helper.Remote.ResponseModel.VerifyCodeResponse;
 import khaled.example.com.findup.Helper.SharedPrefManger;
 import khaled.example.com.findup.Helper.UI_Utility;
 import khaled.example.com.findup.UI.activities.MainActivity;
+import khaled.example.com.findup.UI.activities.VerifyDeleteActivity;
 import khaled.example.com.findup.models.User;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -54,6 +56,32 @@ public class EditProfileViewModel extends Observable {
                 alertDialog.dismiss();
                 Toast.makeText(mContext,""+t.getMessage(),Toast.LENGTH_LONG).show();
                 Log.e("url",call.request().url().toString());
+            }
+        });
+    }
+
+    public void sendCode(String mobile){
+        final AlertDialog alertDialog = UI_Utility.ShowProgressDialog(mContext, true);
+        alertDialog.show();
+        ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
+        Call<VerifyCodeResponse> sendCode = apiService.deleAccount(mobile);
+        sendCode.enqueue(new Callback<VerifyCodeResponse>() {
+            @Override
+            public void onResponse(Call<VerifyCodeResponse> call, Response<VerifyCodeResponse> response) {
+                alertDialog.dismiss();
+                if(response.body().getSuccess() == 1){
+                    Intent intent = new Intent(mContext , VerifyDeleteActivity.class);
+                    intent.putExtra("mobile" , mobile);
+                    mContext.startActivity(intent);
+                }else {
+                    Toast.makeText(mContext, "Something went error "+response.body().getError_msg(), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<VerifyCodeResponse> call, Throwable t) {
+                alertDialog.dismiss();
+                Toast.makeText(mContext, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }

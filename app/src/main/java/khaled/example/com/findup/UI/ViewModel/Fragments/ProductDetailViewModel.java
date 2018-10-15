@@ -61,6 +61,13 @@ public class ProductDetailViewModel extends Observable {
                         @Override
                         public void run() {
                             //TODO Start binding data from variable @v
+                            bindPhotos(productPhotosRecycler);
+                            commentUsersNumTxt.setText(""+v.getProduct_comments_count());
+                            product_price.setText(""+v.getProduct_price());
+                            productStoreTxt.setText(v.getProduct_name());
+                            product_like_count.setText(""+v.getProduct_likes_count());
+                            Picasso.with(mContext).load(v.getProduct_banner()).into(product_banner);
+                            aboutProduct.setText(v.getProduct_name());
                             product_name.setText(v.getProduct_name());
                         }
                     });
@@ -72,6 +79,59 @@ public class ProductDetailViewModel extends Observable {
 
             }
         });
+
+    }
+    public void bindPhotos(RecyclerView recyclerView) {
+        List<ProductPhoto> photos = new ArrayList<>();
+
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false) {
+            @Override
+            public boolean canScrollVertically() {
+                return false;
+            }
+
+            @Override
+            public boolean canScrollHorizontally() {
+                return false;
+            }
+        });
+        recyclerView.smoothScrollToPosition(0);
+        recyclerView.addOnItemTouchListener(new RecyclerTouchListener(mContext
+                , recyclerView, new RecyclerTouchListener.ClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+                mContext.startActivity(new Intent(mContext, PhotosGalleryActivity.class));
+            }
+
+            @Override
+            public void onLongClick(View view, int position) {
+
+            }
+        }));
+
+
+        DBHandler.getProductPhotosByProductID(product_id, mContext, new ProductPhotos() {
+            @Override
+            public void onSuccess(Flowable<List<ProductPhoto>> prListFlowable) {
+                prListFlowable.subscribe(val -> {
+                    ((Activity) mContext).runOnUiThread(new Runnable() {
+
+                        @Override
+                        public void run() {
+                            photos.clear();
+                            photos.addAll(val);
+                            ProductPhotosAdapter adapter = new ProductPhotosAdapter(mContext, val);
+                            recyclerView.setAdapter(adapter);
+                        }
+                    });
+                    //adapter.notifyDataSetChanged();
+                });
+            }
+        });
+
+
 
     }
 }

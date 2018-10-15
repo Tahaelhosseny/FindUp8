@@ -1,11 +1,10 @@
 package khaled.example.com.findup.UI.activities;
 
-import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
-import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -16,41 +15,34 @@ import android.widget.Toast;
 import com.santalu.maskedittext.MaskEditText;
 
 import khaled.example.com.findup.R;
-import khaled.example.com.findup.UI.Presenter.Activities.VerifyResetPassPresenter;
-import khaled.example.com.findup.UI.ViewModel.Activites.VerifyResetPassCodeViewModel;
-import khaled.example.com.findup.databinding.ActivityVerifyCodeBinding;
+import khaled.example.com.findup.UI.Presenter.Activities.VerifyDeletePresenter;
+import khaled.example.com.findup.UI.ViewModel.Activites.DeleteAccountViewModel;
+import khaled.example.com.findup.UI.ViewModel.Activites.EditProfileViewModel;
+import khaled.example.com.findup.databinding.ActivityVerifyDeleteBinding;
 
-public class VerifyCodeActivity extends AppCompatActivity {
-    ActivityVerifyCodeBinding activityVerifyCodeBinding;
-    VerifyResetPassCodeViewModel verifyResetPassCodeViewModel;
+public class VerifyDeleteActivity extends AppCompatActivity {
 
+    ActivityVerifyDeleteBinding binding;
+    DeleteAccountViewModel viewModel;
     public int counter=30;
     TextView txtNumber, txtTimer;
-    Button btnBack, btnResend , btnCheckCode;
+    Button btnBack, btnResend;
     MaskEditText editTextSt, editTextNd, editTextRd, editTextTh;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        verifyResetPassCodeViewModel = new VerifyResetPassCodeViewModel(this);
-        activityVerifyCodeBinding = DataBindingUtil.setContentView(this,R.layout.activity_verify_code);
-        activityVerifyCodeBinding.setVerifyCode(verifyResetPassCodeViewModel);
+        viewModel = new DeleteAccountViewModel(this);
+        binding= DataBindingUtil.setContentView(this,R.layout.activity_verify_delete);
+//        setContentView(R.layout.activity_verify_delete);
+        binding.setDeleteAccount(viewModel);
         String phone = getIntent().getStringExtra("mobile");
-        activityVerifyCodeBinding.txtNumber.setText(phone);
-        activityVerifyCodeBinding.setPresenter(new VerifyResetPassPresenter() {
+        binding.txtNumber.setText(phone);
+        binding.setPresenter(new VerifyDeletePresenter() {
             @Override
-            public void checkVerifyResetCode() {
-
-            }
-
-
-            @Override
-            public void resendCodeAgain() {
-                verifyResetPassCodeViewModel.resend_code(phone);
-
+            public void DeleteAccount() {
+//                viewModel.resend_code(phone);
             }
         });
-        btnCheckCode = findViewById(R.id.btn_submit_check_code);
         txtNumber=findViewById(R.id.txtNumber);
         btnBack=findViewById(R.id.btn_verifyBack);
         txtTimer = findViewById(R.id.timer);
@@ -59,16 +51,10 @@ public class VerifyCodeActivity extends AppCompatActivity {
         editTextNd=findViewById(R.id.editText_ndDigit);
         editTextRd=findViewById(R.id.editText_rdDigit);
         editTextTh=findViewById(R.id.editText_thDigit);
-        btnCheckCode.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(VerifyCodeActivity.this , ForgotPasswordActivity.class));finish();
-            }
-        });
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(VerifyCodeActivity.this, LoginActivity.class));
+                startActivity(new Intent(VerifyDeleteActivity.this, EditProfileActivity.class));
                 finish();
             }
         });
@@ -165,9 +151,9 @@ public class VerifyCodeActivity extends AppCompatActivity {
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 if(editTextSt.getText().toString().length() == 1 && editTextNd.getText().toString().length() == 1 &&
                         editTextRd.getText().toString().length() == 1 && editTextTh.getText().toString().length() == 1){
-                    String code = activityVerifyCodeBinding.editTextStDigit.getRawText() +  activityVerifyCodeBinding.editTextNdDigit.getRawText()+
-                            activityVerifyCodeBinding.editTextRdDigit.getRawText() + activityVerifyCodeBinding.editTextThDigit.getRawText() ;
-                    verifyResetPassCodeViewModel.checkCode(phone,code);
+                    String code = binding.editTextStDigit.getRawText() +  binding.editTextNdDigit.getRawText()+
+                            binding.editTextRdDigit.getRawText() + binding.editTextThDigit.getRawText() ;
+                    viewModel.checkCode(phone,code);
                 }
             }
 
@@ -186,15 +172,9 @@ public class VerifyCodeActivity extends AppCompatActivity {
 
             @Override
             public void onFinish() {
-                Toast.makeText(VerifyCodeActivity.this, "Timer finished!!!!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(VerifyDeleteActivity.this, "Timer finished!!!!", Toast.LENGTH_SHORT).show();
             }
         }.start();
-    }
 
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        startActivity(new Intent(VerifyCodeActivity.this, LoginActivity.class));
-        finish();
     }
 }

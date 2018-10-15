@@ -62,14 +62,7 @@ public class ProductDetailsFragment extends Fragment {
 
         productDetailViewModel.bindProductData(binding.productBanner,binding.productName,binding.productPrice,binding.productStoreTxt,binding.productLikeCount,binding.aboutProduct,
                 binding.productPhotosRecycler,binding.commentUsersTxt,binding.commentUsersNumTxt);
-        List<String> photos = new ArrayList<>();
-        photos.add("");
-        photos.add("");
-        photos.add("");
-        photos.add("");
-        photos.add("");
-        bindPhotos(photos);
-        bindCommentsPhotos();
+
     }
 
 

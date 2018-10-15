@@ -27,6 +27,8 @@ public class MeasureDistanceActivity extends Activity {
 //        setContentView(R.layout.activity_measure_distance);
 
         binding.setMessureDistance(viewModel);
+        viewModel.getAllDistance(binding.radioDistance);
+//        viewModel.getAllDistance();
         binding.setPresenter(new MessureDistancePresenter() {
             @Override
             public void setMessureDistance() {

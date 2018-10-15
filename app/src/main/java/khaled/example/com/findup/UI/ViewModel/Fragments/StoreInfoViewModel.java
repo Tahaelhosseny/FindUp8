@@ -288,6 +288,10 @@ public class StoreInfoViewModel extends Observable {
         }
 
     }
+
+    public void bindComments(){
+
+    }
 }
 
 

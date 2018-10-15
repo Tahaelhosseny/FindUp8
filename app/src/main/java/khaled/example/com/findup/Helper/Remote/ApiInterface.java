@@ -1,4 +1,6 @@
 package khaled.example.com.findup.Helper.Remote;
+import android.graphics.Bitmap;
+
 import com.google.android.gms.common.internal.ShowFirstParty;
 
 import java.io.File;
@@ -150,9 +152,17 @@ public interface ApiInterface {
             @Field("instegram_link") String instegram_link ,
             @Field("facebook_link") String facebook_link,
             @Field("cat_id") int cat_id,
-            @Field("store_logo")File store_logo,
-            @Field("store_banner")File store_banner,
+            @Field("store_logo")Bitmap store_logo,
+            @Field("store_banner")Bitmap store_banner,
             @Field("store_otherlang")String store_otherlang,
             @Field("store_tags") String store_tags
             );
+
+    @POST(ApiClient.PATH_URL+"reg_login?tag=delete_account&HashSecure="+HASH)
+    @FormUrlEncoded
+    Call<VerifyCodeResponse> deleAccount(@Field("mobile") String mobile);
+
+    @POST(ApiClient.PATH_URL+"reg_login?tag=confirm_delete_account&HashSecure="+HASH)
+    @FormUrlEncoded
+    Call<VerifyCodeResponse> confirmDeleteAccount(@Field("mobile") String mobile , @Field("verify_code") String verify_code);
 }

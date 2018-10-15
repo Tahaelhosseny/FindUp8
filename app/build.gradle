@@ -102,6 +102,7 @@ dependencies {
     //Sdp lib
     implementation 'com.intuit.sdp:sdp-android:1.0.6'
 
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
 
 
 }
