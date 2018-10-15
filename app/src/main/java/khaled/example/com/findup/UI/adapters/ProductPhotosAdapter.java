@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -52,11 +53,11 @@ public class ProductPhotosAdapter extends RecyclerView.Adapter<ProductPhotosAdap
     @Override
     public void onBindViewHolder(@NonNull ProductPhotosAdapter.ViewHolder holder, int position) {
         String photo = CONST.API_FILE_DOMAIN + "" + CONST.IMAGES_PATH + "" + photos.get(position).getPhoto_name();
-        /*if (!TextUtils.isEmpty(photo)){
+        if (!TextUtils.isEmpty(photo)){
             Picasso.with(context)
                     .load(photo)
                     .into(holder.photo);
-        }*/
+        }
 
         if (!photo.isEmpty()) {
             Transformation transformation = new RoundedTransformationBuilder()

@@ -46,7 +46,6 @@ public class ProductDetailsFragment extends Fragment {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_product_details, container, false);
         View view = binding.getRoot();
-
         Intent i = ((Activity) view.getContext()).getIntent();
         int store_id = 1;
         if (i.hasExtra("prod_id"))
@@ -64,8 +63,6 @@ public class ProductDetailsFragment extends Fragment {
                 binding.productPhotosRecycler,binding.commentUsersTxt,binding.commentUsersNumTxt);
 
     }
-
-
     private void bindPhotos(List<String> photos) {
         RecyclerView recyclerView = getActivity().findViewById(R.id.productPhotosRecycler);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -99,8 +96,6 @@ public class ProductDetailsFragment extends Fragment {
         }));
 */
     }
-
-
     private void bindCommentsPhotos() {
         List<Comment> commentList = new ArrayList<>();
         commentList.add(new Comment("Nof Ahmed", 1532037763, "There are many variations of passages of larem lpsum avaliable, but the mojrity have suffeed alteration in some form, by injected humour.", "https://scontent-cai1-1.xx.fbcdn.net/v/t1.0-9/26167130_1598420403578018_2434073418497810718_n.jpg?_nc_cat=0&oh=fe9593c83468b97c82a5e1623cc99030&oe=5BC620E6"));
