@@ -3,12 +3,14 @@ package khaled.example.com.findup.Helper.Remote.ResponseModel;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
 import khaled.example.com.findup.models.Distance;
 import khaled.example.com.findup.models.User;
+import okhttp3.Response;
 
-public class MeasureDistanceResponse {
+public class MeasureDistanceResponse{
     @SerializedName("tag")
     @Expose
     private String tag;
@@ -18,8 +20,6 @@ public class MeasureDistanceResponse {
     @SerializedName("error")
     @Expose
     private int error;
-    @SerializedName("error_msg")
-    @Expose
     private String error_msg;
     @SerializedName("data")
     @Expose

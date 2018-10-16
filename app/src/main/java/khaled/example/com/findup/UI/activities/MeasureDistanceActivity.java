@@ -5,6 +5,8 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import khaled.example.com.findup.Helper.SharedPrefManger;
@@ -18,24 +20,44 @@ public class MeasureDistanceActivity extends Activity {
     ActivityMeasureDistanceBinding binding;
     MessureDistanceViewModel viewModel;
     Button btn_distanceBack, btn_submit;
+    int distance_id = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         viewModel = new MessureDistanceViewModel(this);
         binding= DataBindingUtil.setContentView(this,R.layout.activity_measure_distance);
-//        setContentView(R.layout.activity_measure_distance);
-
+        RadioButton mile = findViewById(R.id.mile_radio);
+        RadioButton km = findViewById(R.id.km_radio);
+        if(SharedPrefManger.getDistanceTypeId() == 1){
+            km.setChecked(true);mile.setChecked(false);
+        }else if(SharedPrefManger.getDistanceTypeId() == 2){
+            km.setChecked(false);mile.setChecked(true);
+        }else{
+            km.setChecked(false);mile.setChecked(false);
+        }
         binding.setMessureDistance(viewModel);
-        viewModel.getAllDistance(binding.radioDistance);
-//        viewModel.getAllDistance();
+        binding.radioDistance.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                switch (i){
+                    case R.id.mile_radio:
+                        distance_id = 2;
+                        break;
+                    case R.id.km_radio:
+                        distance_id = 1;
+                        break;
+                    default:
+                        distance_id = 0;
+                }
+            }
+        });
         binding.setPresenter(new MessureDistancePresenter() {
             @Override
             public void setMessureDistance() {
-                // Your Method
+                viewModel.setUserMessureDistance(SharedPrefManger.getUser_ID() , distance_id);
             }
         });
-        String distance = SharedPrefManger.getDistanceText();
         btn_distanceBack = findViewById(R.id.btn_distanceBack);
         btn_distanceBack.setOnClickListener(new View.OnClickListener() {
             @Override

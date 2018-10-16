@@ -52,7 +52,6 @@ public class PCommentAdapter extends RecyclerView.Adapter<PCommentAdapter.ViewHo
                     .cornerRadiusDp(20)
                     .oval(false)
                     .build();
-
             Picasso.with(mContext).load(comment.getAccount_image()).transform(transformation).placeholder(R.drawable.com_facebook_profile_picture_blank_square).into(holder.profile_pic);
         }
     }

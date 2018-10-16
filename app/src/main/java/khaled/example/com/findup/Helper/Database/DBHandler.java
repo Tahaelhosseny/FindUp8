@@ -255,7 +255,6 @@ public class DBHandler {
             }
         }).start();
     }
-
     public static void getStorePhotosByStoreID(int store_id, final Context context, final StorePhotos storePhotos) {
         new Thread(new Runnable() {
             @Override
@@ -265,6 +264,4 @@ public class DBHandler {
             }
         }).start();
     }
-
-
 }

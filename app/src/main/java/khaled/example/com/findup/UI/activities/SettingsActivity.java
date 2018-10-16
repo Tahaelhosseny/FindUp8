@@ -28,8 +28,8 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
         btn_notifications = findViewById(R.id.btn_notifications);
         btn_notifications.setOnClickListener(this);
 
-        btn_currency = findViewById(R.id.btn_currency);
-        btn_currency.setOnClickListener(this);
+//        btn_currency = findViewById(R.id.btn_currency);
+//        btn_currency.setOnClickListener(this);
 
         btn_measureDistance = findViewById(R.id.btn_measureDistance);
         btn_measureDistance.setOnClickListener(this);
@@ -62,10 +62,6 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
 
             case R.id.btn_notifications:
                 startActivity(new Intent(SettingsActivity.this, NotificationsSettingsActivity.class));
-                break;
-
-            case R.id.btn_currency:
-                startActivity(new Intent(SettingsActivity.this, CurrencyActivity.class));
                 break;
 
             case R.id.btn_measureDistance:

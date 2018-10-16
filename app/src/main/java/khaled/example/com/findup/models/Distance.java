@@ -1,11 +1,22 @@
 package khaled.example.com.findup.models;
 
-public class Distance {
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
+import java.io.Serializable;
+
+public class Distance implements Serializable {
+    @SerializedName("distance_id")@Expose
     private int distance_id;
+    @SerializedName("distance_name")@Expose
     private String distance_name;
+    @SerializedName("distance_short_name")@Expose
     private String distance_short_name;
+    @SerializedName("distance_parent_id")@Expose
     private int distance_parent_id;
+    @SerializedName("distance_parent_value")@Expose
     private int distance_parent_value;
+    @SerializedName("user_distance_id")@Expose
     private int user_distance_id;
 
     public int getDistance_id() {

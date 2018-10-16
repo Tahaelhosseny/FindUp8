@@ -109,7 +109,7 @@ public interface ApiInterface {
     Call<CurrencyResponse> setUserCurrency(@Field("currency_id") int currency_id , @Field("account_id") String account_id);
 
 
-    @POST(ApiClient.PATH_URL+"user_profile?tag=set_user_distance&HashSecure="+HASH)
+    @POST(ApiClient.PATH_URL+"user_profile?tag=set_user_distance&HashSecure=FindUpSecure_@@01072018")
     @FormUrlEncoded
     Call<MeasureDistanceResponse> setUserDistance(@Field("distance_id") int distance_id , @Field("account_id") int account_id);
 

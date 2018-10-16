@@ -127,7 +127,6 @@ public class NearMeAdapter extends RecyclerView.Adapter<NearMeAdapter.ViewHolder
             v.getContext().startActivity(new Intent(v.getContext(), StoreDetailsActivity.class).putExtra("store_id", store.getStore_id()));
         }
     }
-
     private void SaveStore(Context mContext,Store store,int user_id,LikeButton likeButton){
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
         Call<SaveModelResponse> saveModelResponseCall = apiService.addToSaved(user_id,store.getStore_id(),"Store");
@@ -137,7 +136,6 @@ public class NearMeAdapter extends RecyclerView.Adapter<NearMeAdapter.ViewHolder
                 store.setIf_saved((response.body().getUser_data().get(0).getSave_case().equals("saved"))?1:0);
                 DBHandler.SaveStore(store,store.getIf_saved(),mContext);
             }
-
             @Override
             public void onFailure(Call<SaveModelResponse> call, Throwable t) {
                 likeButton.setLiked((store.getIf_saved()==0)?false:true);

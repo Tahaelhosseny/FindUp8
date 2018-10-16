@@ -67,17 +67,7 @@
             android:textAllCaps="false"
             android:textStyle="bold"/>
 
-        <Button
-            android:id="@+id/btn_currency"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_button_rounded_null"
-            android:fontFamily="@font/sfcompactdisplay_semibold"
-            android:text="@string/currency"
-            android:textSize="20sp"
-            android:textAlignment="viewStart"
-            android:textAllCaps="false"
-            android:textStyle="bold"/>
+
 
         <Button
             android:id="@+id/btn_measureDistance"
