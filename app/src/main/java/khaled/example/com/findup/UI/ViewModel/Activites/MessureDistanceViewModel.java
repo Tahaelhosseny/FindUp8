@@ -31,7 +31,6 @@ public class MessureDistanceViewModel extends Observable {
     private Context mContext;
     public MessureDistanceViewModel(Context mContext){this.mContext = mContext;}
     public void setUserMessureDistance(int account_id , int distance_id) {
-        Toast.makeText(mContext, ""+distance_id, Toast.LENGTH_SHORT).show();
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
         Call<MeasureDistanceResponse> setMessureDistance = apiService.setUserDistance(distance_id, account_id);
         setMessureDistance.enqueue(new Callback<MeasureDistanceResponse>() {
@@ -40,9 +39,9 @@ public class MessureDistanceViewModel extends Observable {
                 if (response.body().getSuccess() == 1) {
                     SharedPrefManger.setDistanceTypeId(distance_id);
                     SharedPrefManger.setDistanceText(response.body().getUser_data().get(0).getDistance_name());
+                    Toast.makeText(mContext, "Your Measure Updated Successfully", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(mContext, "" + response.body().getError_msg(), Toast.LENGTH_SHORT).show();
-                    Log.e("MyyData", String.valueOf(response.body().getSuccess()));
                 }
             }
             @Override

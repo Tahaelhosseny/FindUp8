@@ -5,7 +5,7 @@
     <item
         android:id="@+id/storeHome"
         android:enabled="true"
-        android:icon="@drawable/ic_home_selected"
+        android:icon="@drawable/home_sel_1_5x"
         android:title="Home"
         app:showAsAction="always"/>
     <item

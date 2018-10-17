@@ -87,7 +87,6 @@ public class IntroViewModel extends Observable {
                 });
     }
     public void twitterLogin(){}
-
     private void toast(String msg){
         Toast.makeText(mContext, ""+msg, Toast.LENGTH_SHORT).show();
     }

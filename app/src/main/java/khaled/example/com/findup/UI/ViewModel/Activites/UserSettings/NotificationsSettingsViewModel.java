@@ -26,28 +26,19 @@ public class NotificationsSettingsViewModel extends Observable {
         checkBox_pushNotifications.setOnCheckedChangeListener((v,b)-> ChangeNotificationSettings(checkBox_pushNotifications,checkBox_chatsNotifications));
         checkBox_chatsNotifications.setOnCheckedChangeListener((v,b)-> ChangeNotificationSettings(checkBox_pushNotifications,checkBox_chatsNotifications));
     }
-
     public void ChangeNotificationSettings(CheckBox checkBox_pushNotifications, CheckBox checkBox_chatsNotifications){
         SharedPrefManger sharedPrefManger = new SharedPrefManger(mContext);
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-        Call<NotificationFlagResponse> call = apiService.setNotificationFlags(sharedPrefManger.getUser_ID(),((checkBox_pushNotifications.isChecked())?1:0),((checkBox_pushNotifications.isChecked())?1:0));
+        Call<NotificationFlagResponse> call = apiService.setNotificationFlags(sharedPrefManger.getUser_ID(),((checkBox_pushNotifications.isChecked())?1:0),((checkBox_chatsNotifications.isChecked())?1:0));
         call.enqueue(new Callback<NotificationFlagResponse>() {
             @Override
             public void onResponse(Call<NotificationFlagResponse> call, Response<NotificationFlagResponse> response) {
-                int chat = 0;int push = 0;
                 if(response.body().getSuccess() == 1){
-                    if(checkBox_chatsNotifications.isChecked()){
-                        SharedPrefManger.setChatNotiFlag(1);
-                        chat = 1;
-                    }
-                    if(checkBox_pushNotifications.isChecked()){
-                        SharedPrefManger.setPushNotiFlag(1);
-                        push = 1;
-                    }
-//                SharedPrefManger.setPushNotiFlag(push);
-//                SharedPrefManger.setChatNotiFlag(chat);
-                    Toast.makeText(mContext, "Push "+push, Toast.LENGTH_SHORT).show();
-                    Toast.makeText(mContext, "Chat "+chat, Toast.LENGTH_SHORT).show();
+                    int noti = (checkBox_pushNotifications.isChecked())?1:0;
+                    SharedPrefManger.setPushNotiFlag(noti);
+                    int chat = (checkBox_chatsNotifications.isChecked())?1:0;
+                    SharedPrefManger.setChatNotiFlag(chat);
+
 
                 }else {
                     Toast.makeText(mContext, ""+response.body().getError_msg(), Toast.LENGTH_SHORT).show();

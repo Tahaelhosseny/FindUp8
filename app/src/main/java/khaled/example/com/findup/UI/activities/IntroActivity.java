@@ -152,14 +152,6 @@ public class IntroActivity extends AppCompatActivity {
                 finish();
             }
         });
-
-//        btn_facebook.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                signInFaceBook();
-//            }
-//        });
-
         btn_instagram.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -177,7 +169,7 @@ public class IntroActivity extends AppCompatActivity {
         btn_creatAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(IntroActivity.this, StoreChooseCategoryActivity.class));
+                startActivity(new Intent(IntroActivity.this, MainStoreActivity.class));
             }
         });
     }

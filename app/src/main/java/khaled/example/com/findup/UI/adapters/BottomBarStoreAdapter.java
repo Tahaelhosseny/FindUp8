@@ -18,28 +18,24 @@ import java.util.List;
 import khaled.example.com.findup.Helper.SharedPrefManger;
 import khaled.example.com.findup.R;
 
-/**
- * Created by khaled on 8/6/18.
- */
-
-public class BottomBarAdapter extends RecyclerView.Adapter<BottomBarAdapter.ViewHolder> {
+public class BottomBarStoreAdapter extends RecyclerView.Adapter<BottomBarStoreAdapter.ViewHolder> {
 
     int selected = 0;
     private List<MenuItem> menuItemList;
     private View.OnClickListener onClickListener;
     private static Menu menu;
 
-    public BottomBarAdapter(Context mContext,Menu menuItemList, View.OnClickListener onClickListener) {
+    public BottomBarStoreAdapter(Context mContext, Menu menuItemList, View.OnClickListener onClickListener) {
         this.onClickListener = onClickListener;
         this.menu = menuItemList;
         this.menuItemList = new ArrayList<>();
         for (int i = 0; i < menuItemList.size(); i++) {
             if (menu.getItem(i).isVisible())
-            this.menuItemList.add(menuItemList.getItem(i));
+                this.menuItemList.add(menuItemList.getItem(i));
         }
-        SharedPrefManger sharedPrefManger = new SharedPrefManger(mContext);
-        if (!sharedPrefManger.isIsLoggedIn()&& menuItemList.size() > 0)
-            this.menuItemList.remove(this.menuItemList.size()-1);
+//        SharedPrefManger sharedPrefManger = new SharedPrefManger(mContext);
+//        if (!sharedPrefManger.isIsLoggedIn()&& menuItemList.size() > 0)
+//            this.menuItemList.remove(this.menuItemList.size()-1);
     }
 
     public static Menu getMenu() {
@@ -52,19 +48,19 @@ public class BottomBarAdapter extends RecyclerView.Adapter<BottomBarAdapter.View
 
     @NonNull
     @Override
-    public BottomBarAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.bottom_bar_item, parent, false);
-        return new BottomBarAdapter.ViewHolder(itemView);
+        return new BottomBarStoreAdapter.ViewHolder(itemView);
     }
+
     @Override
-    public void onBindViewHolder(@NonNull BottomBarAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.itemImage.setImageDrawable(menuItemList.get(position).getIcon());
         holder.itemImage.setMinimumHeight(ConstraintLayout.MarginLayoutParams.MATCH_PARENT);
         holder.itemImage.setMinimumWidth(getScreenWidth() / getItemCount() + 1);
         holder.container.setTag(position);
     }
-
     @Override
     public int getItemCount() {
         return menuItemList.size();

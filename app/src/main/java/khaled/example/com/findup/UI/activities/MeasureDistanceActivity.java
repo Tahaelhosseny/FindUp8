@@ -9,6 +9,8 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import org.json.JSONException;
+
 import khaled.example.com.findup.Helper.SharedPrefManger;
 import khaled.example.com.findup.R;
 import khaled.example.com.findup.UI.Presenter.Activities.UserSettings.MessureDistancePresenter;
@@ -47,15 +49,22 @@ public class MeasureDistanceActivity extends Activity {
                     case R.id.km_radio:
                         distance_id = 1;
                         break;
-                    default:
-                        distance_id = 0;
                 }
             }
         });
         binding.setPresenter(new MessureDistancePresenter() {
             @Override
             public void setMessureDistance() {
-                viewModel.setUserMessureDistance(SharedPrefManger.getUser_ID() , distance_id);
+                    if(distance_id == 0){
+                        Toast.makeText(MeasureDistanceActivity.this, "Please Select Measure type", Toast.LENGTH_SHORT).show();
+                    }else{
+                        if((distance_id == 1 && SharedPrefManger.getDistanceTypeId() == 1) || (distance_id == 2 && SharedPrefManger.getDistanceTypeId() == 2)){
+                            Toast.makeText(MeasureDistanceActivity.this, "Already Selected this type", Toast.LENGTH_SHORT).show();
+                        }else{
+                            viewModel.setUserMessureDistance(SharedPrefManger.getUser_ID() , distance_id);
+                        }
+                    }
+
             }
         });
         btn_distanceBack = findViewById(R.id.btn_distanceBack);

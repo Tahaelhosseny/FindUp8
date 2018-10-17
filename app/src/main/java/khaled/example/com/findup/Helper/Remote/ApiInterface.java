@@ -1,4 +1,5 @@
 package khaled.example.com.findup.Helper.Remote;
+import android.arch.persistence.room.RawQuery;
 import android.graphics.Bitmap;
 
 import com.google.android.gms.common.internal.ShowFirstParty;
@@ -133,12 +134,12 @@ public interface ApiInterface {
 
     @POST(ApiClient.PATH_URL+"user_actions?tag=add_product_rate&HashSecure="+HASH)
     @FormUrlEncoded
-    Call<RateResponse> rateProduct(@Field("account_id") int account_id , @Field("rate") float rate , @Field("product_id") int product_id);
+    Call<RateResponse> rateProduct(@Query("account_id") int account_id , @Field("rate") float rate , @Field("product_id") int product_id);
 
 
     @POST(ApiClient.PATH_URL+"user_actions?tag=add_store_rate&HashSecure="+HASH)
     @FormUrlEncoded
-    Call<RateResponse> rateStore(@Field("account_id") int account_id , @Field("rate") float rate , @Field("store_id") int store_id);
+    Call<RateResponse> rateStore(@Query("account_id") int account_id , @Field("rate") float rate , @Field("store_id") int store_id);
 
     @POST(ApiClient.PATH_URL+"stores?tag=create_store_account&HashSecure="+HASH)
     @FormUrlEncoded

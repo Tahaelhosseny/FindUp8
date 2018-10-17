@@ -72,7 +72,7 @@ public class LoginViewModel extends Observable {
                 if(response.body().getSuccess() == 1){
                     saveUserSettingSuccess(response.body().getUser_data().get(0));
                 }else{
-                    UserSetting userSetting = new UserSetting(0 , account_id ,0,0,0,"en",0 );
+                    UserSetting userSetting = new UserSetting(0 , account_id ,0,0,1,"en",0 );
                     saveUserSettingSuccess(userSetting);
                 }
             }

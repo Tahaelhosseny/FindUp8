@@ -1,14 +1,20 @@
 package khaled.example.com.findup.UI.fragments;
 
+import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
@@ -18,12 +24,13 @@ import khaled.example.com.findup.Helper.UI_Utility;
 import khaled.example.com.findup.Helper.Utility;
 import khaled.example.com.findup.R;
 import khaled.example.com.findup.UI.adapters.BottomBarAdapter;
+import khaled.example.com.findup.UI.adapters.BottomBarStoreAdapter;
 
 public class BottomStoreFragment extends Fragment {
 
-    float actionBarSize;
-    Menu menu;
-    BottomBarAdapter adapter;
+    static float actionBarSize;
+    public static Menu menu;
+    public static BottomBarStoreAdapter adapter;
     public View.OnClickListener navListner =
             new View.OnClickListener() {
                 @Override
@@ -32,29 +39,8 @@ public class BottomStoreFragment extends Fragment {
                     int position = (int) constraintLayout.getTag();
                     UI_Utility.BottomNavigationStoreMenu_icons_change(menu, position);
                     adapter.notifyDataSetChanged();
-                    //android.support.v4.app.Fragment selectedFragment = new MainStoreFragment();
-                    Utility.replaceFragment(getActivity().getSupportFragmentManager(), new MainStoreFragment(), R.id.main_toolbar_container, 0,menu);
-                    switch (position) {
-                        case 0:
-                            //selectedFragment = new MainStoreFragment();
-                            Utility.replaceFragment(getActivity().getSupportFragmentManager(), new MainStoreFragment(), R.id.main_toolbar_container, 0,menu);
-                            //((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-                            //((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(false);
-                            break;
-                        case 1:
-                            //selectedFragment = new ChatStoreFragment();
-                            Utility.replaceFragment(getActivity().getSupportFragmentManager(), new ChatStoreFragment(), R.id.main_toolbar_container, 0,menu);
-                            //((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-                            //((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
-                            break;
-                        case 2:
-                            //selectedFragment = new ProfileStoreFragment();
-                            Utility.replaceFragment(getActivity().getSupportFragmentManager(), new ProfileStoreFragment(), R.id.main_toolbar_container, 0,menu);
-                            //((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-                            //((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(true);
-                            break;
-                    }
-                    //getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_toolbar_container, selectedFragment).commit();
+                    Fragment selectedFragment = new StoreAccountHomeFragment();
+                    ReplaceFragment(position,v.getContext(),menu);
                 }
             };
 
@@ -64,7 +50,6 @@ public class BottomStoreFragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -88,7 +73,7 @@ public class BottomStoreFragment extends Fragment {
     private void bindUI(Menu menu) {
         RecyclerView recyclerView = getActivity().findViewById(R.id.BottomBarRecyclerView);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        adapter = new BottomBarAdapter(getActivity(),menu, navListner);
+        adapter = new BottomBarStoreAdapter(getActivity(),menu, navListner);
         recyclerView.setAdapter(adapter);
         recyclerView.stopNestedScroll();
         recyclerView.stopScroll();
@@ -106,5 +91,25 @@ public class BottomStoreFragment extends Fragment {
         });
         recyclerView.smoothScrollToPosition(0);
     }
+    private static void ReplaceFragment(int position, Context mContext, Menu menu) {
+        Fragment selectedFragment;
+        switch (position) {
+            case 0:
+                selectedFragment = new StoreAccountHomeFragment();
+                Utility.replaceStoreFragment(((FragmentActivity)mContext).getSupportFragmentManager(), new StoreAccountHomeFragment(), R.id.store_main_container, 0,menu);
+                break;
+            case 1:
+                selectedFragment = new ChatStoreFragment();
+                Utility.replaceStoreFragment(((FragmentActivity)mContext).getSupportFragmentManager(), new ChatStoreFragment(), R.id.store_main_container, 0,menu);
+                break;
+            case 2:
+//                ToolbarSwitch(true,mContext);
+                selectedFragment = new ProfileStoreFragment();
+                Utility.replaceStoreFragment(((FragmentActivity)mContext).getSupportFragmentManager(), new ProfileStoreFragment(), R.id.store_main_container, 0,menu);
+
+                break;
+        }
+    }
+
 
 }

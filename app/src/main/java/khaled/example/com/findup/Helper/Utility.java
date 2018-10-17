@@ -132,6 +132,33 @@ public class Utility {
         }
     }
 
+    public static void replaceStoreFragment(FragmentManager manager, Fragment fragment, int containerID, int transition, Menu menu) {
+        String fragmentTag = fragment.getClass().getName();
+        boolean fragmentPopped = manager.popBackStackImmediate(fragmentTag, 0);
+        if (menu !=null){
+            fragmentTagsList();
+            UI_Utility.BottomNavigationStoreMenu_icons_change(menu, tags.indexOf(fragmentTag));
+        }
+
+        FragmentTransaction ft = manager.beginTransaction();
+        if (!fragmentPopped && manager.findFragmentByTag(fragmentTag) == null) {
+            ft.replace(containerID, fragment, fragmentTag);
+            if (transition == 0)
+                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+            else
+                ft.setTransition(transition);
+            ft.addToBackStack(fragmentTag);
+            ft.commit();
+        } else {
+            ft.replace(containerID, manager.findFragmentByTag(fragmentTag));
+            if (transition == 0)
+                ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+            else
+                ft.setTransition(transition);
+            ft.commit();
+        }
+    }
+
     private static String getFragmentTag(Fragment fragment){
      if (fragment instanceof MapFragment)
          return "map";

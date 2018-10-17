@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-public class Distance implements Serializable {
+public class Distance{
     @SerializedName("distance_id")@Expose
     private int distance_id;
     @SerializedName("distance_name")@Expose
