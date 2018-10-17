@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.StateListDrawable;
 import android.provider.ContactsContract;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -41,6 +42,7 @@ public class MessureDistanceViewModel extends Observable {
                     SharedPrefManger.setDistanceText(response.body().getUser_data().get(0).getDistance_name());
                 } else {
                     Toast.makeText(mContext, "" + response.body().getError_msg(), Toast.LENGTH_SHORT).show();
+                    Log.e("MyyData", String.valueOf(response.body().getSuccess()));
                 }
             }
             @Override

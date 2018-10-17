@@ -29,6 +29,7 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface ApiInterface {
@@ -109,9 +110,9 @@ public interface ApiInterface {
     Call<CurrencyResponse> setUserCurrency(@Field("currency_id") int currency_id , @Field("account_id") String account_id);
 
 
-    @POST(ApiClient.PATH_URL+"user_profile?tag=set_user_distance&HashSecure=FindUpSecure_@@01072018")
+    @POST(ApiClient.PATH_URL+"user_profile?tag=set_user_distance&account_id=&HashSecure="+HASH)
     @FormUrlEncoded
-    Call<MeasureDistanceResponse> setUserDistance(@Field("distance_id") int distance_id , @Field("account_id") int account_id);
+    Call<MeasureDistanceResponse> setUserDistance(@Field("distance_id") int distance_id , @Query("account_id") int account_id);
 
 
     @POST(ApiClient.PATH_URL+"user_profile?tag=set_user_noti_setting&HashSecure="+HASH)
