@@ -8,6 +8,9 @@ import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.google.gson.JsonParser;
+
+import java.util.List;
 import java.util.Observable;
 import io.reactivex.subjects.PublishSubject;
 import khaled.example.com.findup.Helper.Database.DBUtility;
@@ -19,9 +22,14 @@ import khaled.example.com.findup.Helper.SharedPrefManger;
 import khaled.example.com.findup.Helper.UI_Utility;
 import khaled.example.com.findup.UI.activities.IntroActivity;
 import khaled.example.com.findup.UI.activities.MainActivity;
+import khaled.example.com.findup.models.Product;
+import khaled.example.com.findup.models.ProductPhoto;
+import khaled.example.com.findup.models.Store;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import static com.facebook.FacebookSdk.getApplicationContext;
 
 public class SplashScreenViewModel  extends Observable {
     private Context mContext;
@@ -84,7 +92,6 @@ public class SplashScreenViewModel  extends Observable {
 
             }
         });
-
 
 
         loaded.subscribe(v->{

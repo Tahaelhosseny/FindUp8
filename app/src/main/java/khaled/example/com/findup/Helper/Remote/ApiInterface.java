@@ -1,6 +1,7 @@
 package khaled.example.com.findup.Helper.Remote;
 import android.arch.persistence.room.RawQuery;
 import android.graphics.Bitmap;
+import android.webkit.HttpAuthHandler;
 
 import com.google.android.gms.common.api.Api;
 import com.google.android.gms.common.internal.ShowFirstParty;
@@ -25,6 +26,7 @@ import khaled.example.com.findup.Helper.Remote.ResponseModel.RegisterResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.ResetPasswordResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.SaveModelResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.StoreAddressResponse;
+import khaled.example.com.findup.Helper.Remote.ResponseModel.StoreEditResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.StoreNotificationResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.StoresResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.UserSettingsResponse;
@@ -44,6 +46,9 @@ public interface ApiInterface {
 
     @GET(ApiClient.PATH_URL+"stores?tag=get_all_stores&HashSecure="+HASH)
     Call<StoresResponse> GetAllStores(@Query("account_id") int account_id);
+
+    @GET(ApiClient.PATH_URL+"stores?tag=get_all_stores&HashSecure="+HASH)
+    Call<StoresResponse> GetAllStoress(@Query("account_id") int account_id);
 
     @GET(ApiClient.PATH_URL+"stores?tag=get_all_events&HashSecure="+HASH)
     Call<EventResponse> GetAllEvents(@Query("account_id") int account_id);
@@ -188,8 +193,34 @@ public interface ApiInterface {
             @Field("product_price") String product_price,
             @Field("product_img") Bitmap img
     );
-
     @POST(ApiClient.PATH_URL+"stores?tag=change_store_address&HashSecure="+HASH)
     @FormUrlEncoded
-    Call<StoreAddressResponse> setStoreAddress();
+    Call<StoreAddressResponse> setStoreAddress(
+            @Field("store_id") int store_id,
+            @Field("longitude") double longitude,
+            @Field("latitude") double latitude,
+            @Field("days") String days,
+            @Field("from_time") String from_time,
+            @Field("to_time") String to_time
+    );
+
+    @POST(ApiClient.PATH_URL+"stores?tag=edit_store_profile&HashSecure="+HASH)
+    @FormUrlEncoded
+    Call<StoreEditResponse> editStoreInfo(
+            @Field("store_id") int store_id,
+            @Field("store_name") String store_name,
+            @Field("store_mobile") String mobile,
+            @Field("old_password") String old_password,
+            @Field("new_password") String new_password
+    );
+
+    @POST(ApiClient.PATH_URL+"stores?tag=edit_store_profile&HashSecure="+HASH)
+    @FormUrlEncoded
+    Call<NotificationFlagResponse> setStoreNotificationFlag(
+            @Field("push_noti_flag") int push,
+            @Field("chat_noti_flag") int chat,
+            @Field("like_noti_flag") int like,
+            @Field("comment_noti_flag") int comment,
+            @Field("store_id") int store_id
+    );
 }
