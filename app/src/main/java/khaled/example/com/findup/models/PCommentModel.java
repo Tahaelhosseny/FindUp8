@@ -14,7 +14,7 @@ public class PCommentModel {
     @NonNull
     private String account_name;
     @NonNull
-    @SerializedName("acc_id")
+    @SerializedName("account_id")
     @Expose
     private int acc_id;
     @NonNull
@@ -63,12 +63,12 @@ public class PCommentModel {
         this.acc_id = acc_id;
     }
 
-    public int getProduct_id() {
+    public int getStore_id() {
         return product_id;
     }
 
-    public void setProduct_id(@NonNull int product_id) {
-        this.product_id = product_id;
+    public void setStore_id(int store_id) {
+        this.product_id = store_id;
     }
 
     public long getDate() {

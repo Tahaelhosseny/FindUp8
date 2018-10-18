@@ -5,10 +5,10 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-import khaled.example.com.findup.models.AskCode;
-import khaled.example.com.findup.models.Currency;
+import khaled.example.com.findup.models.Notification;
+import khaled.example.com.findup.models.StoreAddress;
 
-public class AskCodeResponse {
+public class StoreAddressResponse {
     @SerializedName("tag")
     @Expose
     private String tag;
@@ -23,23 +23,7 @@ public class AskCodeResponse {
     private String error_msg;
     @SerializedName("data")
     @Expose
-    private List<AskCode> data;
-
-    public String getError_msg() {
-        return error_msg;
-    }
-
-    public void setError_msg(String error_msg) {
-        this.error_msg = error_msg;
-    }
-
-    public List<AskCode> getData() {
-        return data;
-    }
-
-    public void setData(List<AskCode> data) {
-        this.data = data;
-    }
+    private List<StoreAddress> data;
 
     public String getTag() {
         return tag;
@@ -65,12 +49,19 @@ public class AskCodeResponse {
         this.error = error;
     }
 
-    public List<AskCode> getUser_data() {
+    public String getError_msg() {
+        return error_msg;
+    }
+
+    public void setError_msg(String error_msg) {
+        this.error_msg = error_msg;
+    }
+
+    public List<StoreAddress> getData() {
         return data;
     }
 
-    public void setUser_data(List<AskCode> user_data) {
-        this.data = user_data;
+    public void setData(List<StoreAddress> data) {
+        this.data = data;
     }
-
 }

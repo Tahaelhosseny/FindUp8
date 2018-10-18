@@ -2,6 +2,7 @@ package khaled.example.com.findup.Helper.Remote;
 import android.arch.persistence.room.RawQuery;
 import android.graphics.Bitmap;
 
+import com.google.android.gms.common.api.Api;
 import com.google.android.gms.common.internal.ShowFirstParty;
 
 import java.io.File;
@@ -9,6 +10,7 @@ import java.io.File;
 import khaled.example.com.findup.CONST;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.AddCommentStoreResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.AskCodeResponse;
+import khaled.example.com.findup.Helper.Remote.ResponseModel.CreateProductResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.CreateStoreEventResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.CreateStoreResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.CurrencyResponse;
@@ -22,6 +24,8 @@ import khaled.example.com.findup.Helper.Remote.ResponseModel.RateResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.RegisterResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.ResetPasswordResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.SaveModelResponse;
+import khaled.example.com.findup.Helper.Remote.ResponseModel.StoreAddressResponse;
+import khaled.example.com.findup.Helper.Remote.ResponseModel.StoreNotificationResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.StoresResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.UserSettingsResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.VerifyCodeResponse;
@@ -73,7 +77,14 @@ public interface ApiInterface {
     @GET(ApiClient.PATH_URL+"user_profile?tag=get_user_setting&HashSecure="+HASH)
     Call<UserSettingsResponse> getUserSetting(@Query("account_id") int account_id);
 
+    @GET(ApiClient.PATH_URL+"stores?tag=get_store_setting&HashSecure="+HASH)
+    Call<UserSettingsResponse> getStoreSetting(@Query("store_id") int store_id);
 
+    @GET(ApiClient.PATH_URL+"stores?tag=get_store_notifications&HashSecure="+HASH)
+    Call<StoreNotificationResponse> getStoreNotification(@Query("store_id") int store_id);
+
+    @GET(ApiClient.PATH_URL+"stores?tag=get_store_address&HashSecure="+HASH)
+    Call<StoreAddressResponse> getStoreAddress(@Query("store_id") int store_id);
     //----------------------------------------------- Post Methods -------------------------------------------------
 
     
@@ -167,4 +178,18 @@ public interface ApiInterface {
     @POST(ApiClient.PATH_URL+"reg_login?tag=confirm_delete_account&HashSecure="+HASH)
     @FormUrlEncoded
     Call<VerifyCodeResponse> confirmDeleteAccount(@Field("mobile") String mobile , @Field("verify_code") String verify_code);
+
+    @POST(ApiClient.PATH_URL+"stores?tag=add_store_products&HashSecure="+HASH)
+    @FormUrlEncoded
+    Call<CreateProductResponse>  createStoreProduct(
+            @Field("store_id") int store_id,
+            @Field("product_name") String product_name,
+            @Field("product_desc") String description,
+            @Field("product_price") String product_price,
+            @Field("product_img") Bitmap img
+    );
+
+    @POST(ApiClient.PATH_URL+"stores?tag=change_store_address&HashSecure="+HASH)
+    @FormUrlEncoded
+    Call<StoreAddressResponse> setStoreAddress();
 }

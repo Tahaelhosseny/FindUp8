@@ -23,13 +23,6 @@ android:orientation="vertical">
     app:itemIconTint="@color/colorAccent"
     app:itemTextColor="#000" />
 
-<com.aurelhubert.ahbottomnavigation.AHBottomNavigation
-    android:visibility="visible"
-    android:layout_width="match_parent"
-    android:layout_height="60dp"
-    android:layout_gravity="bottom"
-    android:id="@+id/btm_storeNav"
-    android:background="@color/colorWhite"
-    app:menu="@menu/bottom_store_navigation"/>
+
 
 </android.support.design.widget.CoordinatorLayout>

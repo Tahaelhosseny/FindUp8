@@ -7,6 +7,7 @@ import java.util.List;
 import khaled.example.com.findup.models.Category;
 import khaled.example.com.findup.models.Comment;
 import khaled.example.com.findup.models.Event;
+import khaled.example.com.findup.models.PCommentModel;
 import khaled.example.com.findup.models.Product;
 import khaled.example.com.findup.models.ProductPhoto;
 import khaled.example.com.findup.models.Store;
@@ -24,6 +25,7 @@ public class DBUtility {
         }
         return (sum == storeList.size()) ? 1 : 0;
     }
+
 
     public static long InsertComments(List<Comment> commentList, Context mContext) {
         int sum = 0;
@@ -43,9 +45,6 @@ public class DBUtility {
         return (sum == eventList.size()) ? 1 : 0;
     }
 
-
-
-
     public static long InsertCategories(List<Category> categoryList, Context mContext) {
         int sum = 0;
         for (Category category : categoryList) {
@@ -55,24 +54,33 @@ public class DBUtility {
         return (sum == categoryList.size()) ? 1 : 0;
     }
 
-
     public static long InsertProducts(List<Product> productList, Context mContext) {
         int sum = 0;
         for (Product product : productList) {
             DBHandler.InsertPrdouct(product, mContext);
+//            DBHandler.InsertProductPhoto((ProductPhoto) productList.get(sum).getProductPhotos(), mContext);
             sum++;
         }
         return (sum == productList.size()) ? 1 : 0;
     }
 
-    public static long InsertProductPhotos(List<ProductPhoto> productPhotoList, Context mContext) {
+    public static long InsertProductPhotos(List<ProductPhoto> productPhotos, Context mContext) {
         int sum = 0;
-        for (ProductPhoto productPhoto : productPhotoList) {
+        for (ProductPhoto productPhoto : productPhotos) {
             DBHandler.InsertProductPhoto(productPhoto, mContext);
             sum++;
         }
-        return (sum == productPhotoList.size()) ? 1 : 0;
+        return (sum == productPhotos.size()) ? 1 : 0;
     }
+//
+//        public static long InsertProductComment(List<PCommentModel> pCommentModels, Context mContext) {
+//        int sum = 0;
+//        for (PCommentModel pCommentModel : pCommentModels) {
+//            DBHandler.InsertProductCommens(pCommentModel, mContext);
+//            sum++;
+//        }
+//        return (sum == pCommentModels.size()) ? 1 : 0;
+//    }
 
     public static long InsertStorePhotos(List<StorePhoto> storePhotos, Context mContext) {
         int sum = 0;

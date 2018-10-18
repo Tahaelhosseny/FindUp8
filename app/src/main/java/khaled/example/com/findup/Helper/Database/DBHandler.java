@@ -17,6 +17,7 @@ import khaled.example.com.findup.Helper.Database.Interfaces.Store.Stores;
 import khaled.example.com.findup.models.Category;
 import khaled.example.com.findup.models.Comment;
 import khaled.example.com.findup.models.Event;
+import khaled.example.com.findup.models.PCommentModel;
 import khaled.example.com.findup.models.Product;
 import khaled.example.com.findup.models.ProductPhoto;
 import khaled.example.com.findup.models.Store;
@@ -228,7 +229,6 @@ public class DBHandler {
         }).start();
     }
 
-
     public static void getProductPhotosByProductID(int product_id, final Context context, final ProductPhotos productPhotos) {
         new Thread(new Runnable() {
             @Override
@@ -255,6 +255,7 @@ public class DBHandler {
             }
         }).start();
     }
+
     public static void getStorePhotosByStoreID(int store_id, final Context context, final StorePhotos storePhotos) {
         new Thread(new Runnable() {
             @Override
@@ -264,4 +265,13 @@ public class DBHandler {
             }
         }).start();
     }
+
+//    public static void InsertProductCommens(final PCommentModel pCommentModel, final Context context) {
+//        new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                FindUpDatabase.getAppDatabase(context).daoAccess().insertProductComments(pCommentModel);
+//            }
+//        }).start();
+//    }
 }

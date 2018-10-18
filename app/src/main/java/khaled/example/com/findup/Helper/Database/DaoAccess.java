@@ -14,6 +14,7 @@ import io.reactivex.Flowable;
 import khaled.example.com.findup.models.Category;
 import khaled.example.com.findup.models.Comment;
 import khaled.example.com.findup.models.Event;
+import khaled.example.com.findup.models.PCommentModel;
 import khaled.example.com.findup.models.Product;
 import khaled.example.com.findup.models.ProductPhoto;
 import khaled.example.com.findup.models.Store;
@@ -149,10 +150,10 @@ public interface DaoAccess {
      *************************************************************************************/
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insertProductPhoto(ProductPhoto productPhoto);
+     void insertProductPhoto(ProductPhoto productPhoto);
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insertProductPhotos(List<ProductPhoto> productPhotoList);
+//    @Insert(onConflict = OnConflictStrategy.REPLACE)
+//     void insertProductComments(PCommentModel pCommentModel);
 
     @Query("SELECT * FROM ProductPhoto WHERE product_id = :prod_id")
     Flowable<List<ProductPhoto>> getProductPhotoByProductID(int prod_id);
@@ -178,5 +179,7 @@ public interface DaoAccess {
 
     @Delete
     void DeleteProductPhoto(StorePhoto storePhoto);
+
+
 
 }
