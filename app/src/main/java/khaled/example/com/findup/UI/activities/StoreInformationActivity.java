@@ -144,7 +144,7 @@ public class StoreInformationActivity extends AppCompatActivity {
                     String[] days = data.getStringArrayExtra("days");
                     workDays =  Arrays.toString(days);
                     txt_workdays.setText(workDays);
-                    createStore.setStore_workdays(workDays);
+                    createStore.setWorkDays(workDays);
                     break;
                 }
             }

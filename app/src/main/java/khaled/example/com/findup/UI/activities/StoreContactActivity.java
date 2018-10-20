@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import java.io.File;
@@ -29,6 +30,7 @@ import static khaled.example.com.findup.UI.activities.StoreInformationActivity.c
 
 public class StoreContactActivity extends AppCompatActivity {
 
+    RadioGroup radioLocation;
     RadioButton radioShowCity;
     EditText editText_country, editText_city, editText_website, editText_instagram, editText_twitter, editText_facebook;
 
@@ -43,6 +45,7 @@ public class StoreContactActivity extends AppCompatActivity {
         editText_instagram = findViewById(R.id.editText_instagram);
         editText_twitter = findViewById(R.id.editText_twitter);
         editText_facebook = findViewById(R.id.editText_facebook);
+        radioLocation = findViewById(R.id.radioLocation);
 
         Button btn_contactBack = findViewById(R.id.btn_contactBack);
         btn_contactBack.setOnClickListener(new View.OnClickListener() {
@@ -60,7 +63,7 @@ public class StoreContactActivity extends AppCompatActivity {
         btn_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                saveStore();
             }
         });
     }
@@ -84,6 +87,9 @@ public class StoreContactActivity extends AppCompatActivity {
         } else if (TextUtils.isEmpty(editText_facebook.getText().toString())){
             Toast.makeText(this, "Enter Facebook", Toast.LENGTH_LONG).show();
             return;
+        } else if (radioLocation.getCheckedRadioButtonId() == -1){
+            Toast.makeText(this, "Choose Location Type", Toast.LENGTH_LONG).show();
+            return;
         }
 
         createStore.setCountry_name_en(editText_country.getText().toString());
@@ -92,6 +98,7 @@ public class StoreContactActivity extends AppCompatActivity {
         createStore.setStore_instegram_link(editText_instagram.getText().toString());
         createStore.setStore_twitter_link(editText_twitter.getText().toString());
         createStore.setStore_facebook_link(editText_facebook.getText().toString());
+        createStore.setStore_location_type(findViewById(radioLocation.getCheckedRadioButtonId()).getTag().toString());
         File logoFile = new File(createStore.getStore_logo());
         File bannerFile = new File(createStore.getStore_banner());
         RequestBody requestlogoFile =
@@ -118,7 +125,10 @@ public class StoreContactActivity extends AppCompatActivity {
                 bodylogoFile,
                 bodybannerFile,
                 createStore.getStore_otherlang(),
-                createStore.getStore_tags());
+                createStore.getStore_tags(),
+                createStore.getWorkDays(),
+                "1:00 ",
+                "10:00");
 
         newStore.enqueue(new Callback<CreateStoreResponse>() {
             @Override

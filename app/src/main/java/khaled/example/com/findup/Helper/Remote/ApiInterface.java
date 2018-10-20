@@ -174,7 +174,10 @@ public interface ApiInterface {
             @Part("store_logo") MultipartBody.Part store_logo,
             @Part("store_banner")MultipartBody.Part store_banner,
             @Field("store_otherlang")String store_otherlang,
-            @Field("store_tags") String store_tags);
+            @Field("store_tags") String store_tags,
+            @Field("work_days") String work_days,
+            @Field("work_fromtime") String work_fromtime,
+            @Field("work_totime") String work_totime);
 
     @POST(ApiClient.PATH_URL+"reg_login?tag=delete_account&HashSecure="+HASH)
     @FormUrlEncoded

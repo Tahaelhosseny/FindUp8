@@ -125,6 +125,7 @@
                     android:fontFamily="@font/sfcompactdisplay_medium"
                     android:gravity="start"
                     android:text="@string/dynamic_location"
+                    android:tag="@string/dynamic_location"
                     android:textColor="@color/colorBlack"
                     android:textSize="16sp" />
 
@@ -139,6 +140,7 @@
                     android:fontFamily="@font/sfcompactdisplay_medium"
                     android:gravity="start"
                     android:text="@string/static_location"
+                    android:tag="@string/static_location"
                     android:textColor="@color/colorBlack"
                     android:textSize="16sp" />
 
@@ -152,6 +154,7 @@
                     android:fontFamily="@font/sfcompactdisplay_medium"
                     android:gravity="start"
                     android:text="@string/show_me_in_my_city"
+                    android:tag="@string/show_me_in_my_city"
                     android:textColor="@color/colorBlack"
                     android:textSize="16sp" />
             </RadioGroup>

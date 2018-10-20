@@ -122,16 +122,21 @@ public class Store {
     private List<Comment> store_comments;
     @Ignore
     private List<Product> store_products;
+    @Ignore
+    private String workDays;
+
+    public String getWorkDays() {
+        return workDays;
+    }
+
+    public void setWorkDays(String workDays) {
+        this.workDays = workDays;
+    }
+//@Ignore
+    //private List<Day> store_workdays;
     //@Ignore
-    private String store_workdays;
+    //private Store_WorkTime store_worktime;
 
-    public String getStore_workdays() {
-        return store_workdays;
-    }
-
-    public void setStore_workdays(String store_workdays) {
-        this.store_workdays = store_workdays;
-    }
     //@Ignore
     //private Store_WorkTime store_worktime;
 
