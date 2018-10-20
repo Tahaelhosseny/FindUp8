@@ -110,6 +110,7 @@ public class LoginViewModel extends Observable {
                 Toast.makeText(mContext, "Undefined Error", Toast.LENGTH_SHORT).show();
             }
         });*/
+
     }
 
     private void saveUserSettingSuccess(UserSetting userSetting){
