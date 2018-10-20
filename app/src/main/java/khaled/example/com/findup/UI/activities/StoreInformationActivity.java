@@ -37,7 +37,7 @@ public class StoreInformationActivity extends AppCompatActivity {
     final int appVersion = Build.VERSION.SDK_INT;
 
     TextView txt_storeName, txt_otherLanguage, txt_tags, txt_workdays;
-    EditText editText_storeName, editText_otherLanguage, editText_tags;
+    EditText editText_storeName, editText_otherLanguage, editText_tags, editText_description;
     ImageView imgLogo, imgBanner;
     Uri selectedLogo, selectedBanner;
     String workDays;
@@ -77,6 +77,7 @@ public class StoreInformationActivity extends AppCompatActivity {
         txt_workdays = findViewById(R.id.txt_workdays);
         editText_otherLanguage = findViewById(R.id.editText_otherLanguage);
         editText_tags = findViewById(R.id.editText_tags);
+        editText_description = findViewById(R.id.editText_description);
         if (getIntent().getExtras().getInt("next_id") == 2) {
             txt_storeName.setText(R.string.your_name);
             txt_otherLanguage.setVisibility(View.GONE);
@@ -173,11 +174,15 @@ public class StoreInformationActivity extends AppCompatActivity {
         } else if (TextUtils.isEmpty(editText_tags.getText().toString())){
             Toast.makeText(this, "Enter Tags", Toast.LENGTH_LONG).show();
             return;
+        } else if (TextUtils.isEmpty(editText_description.getText().toString())){
+            Toast.makeText(this, "Enter Description", Toast.LENGTH_LONG).show();
+            return;
         }
 
         createStore.setStore_name(editText_storeName.getText().toString());
         createStore.setStore_otherlang(editText_otherLanguage.getText().toString());
         createStore.setStore_tags(editText_tags.getText().toString());
+        createStore.setStore_desc(editText_description.getText().toString());
 
         Intent transferIntent = new Intent(StoreInformationActivity.this, StoreContactActivity.class);
         transferIntent.putExtra("next_id", getIntent().getExtras().getInt("next_id"));
