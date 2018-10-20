@@ -20,7 +20,7 @@ public class StoreViewModel extends Observable {
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
         Call<CreateStoreResponse> createStore = apiService.createNewStore("", 0 , 0 , "" , ""
                 , "" , "" , "" , "" , 0 , bitmap, bitmap1 , ""
-                , "");
+                , "" , "" , "" , "");
         createStore.enqueue(new Callback<CreateStoreResponse>() {
             @Override
             public void onResponse(Call<CreateStoreResponse> call, Response<CreateStoreResponse> response) {

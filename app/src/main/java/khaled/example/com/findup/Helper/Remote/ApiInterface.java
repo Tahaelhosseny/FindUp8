@@ -28,6 +28,7 @@ import khaled.example.com.findup.Helper.Remote.ResponseModel.SaveModelResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.StoreAddressResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.StoreEditResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.StoreNotificationResponse;
+import khaled.example.com.findup.Helper.Remote.ResponseModel.StoreSettingsGetResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.StoresResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.UserSettingsResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.VerifyCodeResponse;
@@ -83,7 +84,7 @@ public interface ApiInterface {
     Call<UserSettingsResponse> getUserSetting(@Query("account_id") int account_id);
 
     @GET(ApiClient.PATH_URL+"stores?tag=get_store_setting&HashSecure="+HASH)
-    Call<UserSettingsResponse> getStoreSetting(@Query("store_id") int store_id);
+    Call<StoreSettingsGetResponse> getStoreSetting(@Query("store_id") int store_id);
 
     @GET(ApiClient.PATH_URL+"stores?tag=get_store_notifications&HashSecure="+HASH)
     Call<StoreNotificationResponse> getStoreNotification(@Query("store_id") int store_id);
@@ -224,6 +225,6 @@ public interface ApiInterface {
             @Field("chat_noti_flag") int chat,
             @Field("like_noti_flag") int like,
             @Field("comment_noti_flag") int comment,
-            @Field("store_id") int store_id
+            @Query("store_id") int store_id
     );
 }

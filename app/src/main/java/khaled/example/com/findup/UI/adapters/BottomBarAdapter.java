@@ -38,7 +38,7 @@ public class BottomBarAdapter extends RecyclerView.Adapter<BottomBarAdapter.View
             this.menuItemList.add(menuItemList.getItem(i));
         }
         SharedPrefManger sharedPrefManger = new SharedPrefManger(mContext);
-        if (!sharedPrefManger.isIsLoggedIn()&& menuItemList.size() > 0)
+        if (!sharedPrefManger.isIsLoggedIn()&& SharedPrefManger.getStore_ID() == 0 && SharedPrefManger.getUser_ID() == 0 && menuItemList.size() > 0)
             this.menuItemList.remove(this.menuItemList.size()-1);
     }
 

@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import khaled.example.com.findup.Helper.SharedPrefManger;
 import khaled.example.com.findup.R;
 
 public class StoreSettingsActivity extends AppCompatActivity implements View.OnClickListener {
@@ -74,14 +75,28 @@ public class StoreSettingsActivity extends AppCompatActivity implements View.OnC
                 break;
 
             case R.id.btn_storeSettingsBack:
+                LogoutAccepted();
                 startActivity(new Intent(StoreSettingsActivity.this, IntroActivity.class));
                 finish();
                 break;
 
             case R.id.btn_logout:
+                LogoutAccepted();
                 startActivity(new Intent(StoreSettingsActivity.this, SplashScreenActivity.class));
                 finish();
                 break;
         }
+    }
+
+    public void LogoutAccepted(){
+        SharedPrefManger.setIsLoggedIn(false);
+        SharedPrefManger.setLogin_phone("");
+        SharedPrefManger.setLogin_password("");
+        SharedPrefManger.setStoreID(0);
+        SharedPrefManger.setIsLoggedInAsCustomer(false);
+        SharedPrefManger.setLoginType("");
+        SharedPrefManger.setStore_namee("");
+        SharedPrefManger.setStore_banner("");
+        SharedPrefManger.setStore_logo("");
     }
 }

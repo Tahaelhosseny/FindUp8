@@ -15,10 +15,13 @@ import java.util.Observable;
 import khaled.example.com.findup.Helper.Remote.ApiClient;
 import khaled.example.com.findup.Helper.Remote.ApiInterface;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.LoginResponse;
+import khaled.example.com.findup.Helper.Remote.ResponseModel.StoreSettingsGetResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.UserSettingsResponse;
 import khaled.example.com.findup.Helper.SharedPrefManger;
 import khaled.example.com.findup.Helper.UI_Utility;
 import khaled.example.com.findup.UI.activities.MainActivity;
+import khaled.example.com.findup.UI.activities.MainStoreActivity;
+import khaled.example.com.findup.models.StoreSetting;
 import khaled.example.com.findup.models.User;
 import khaled.example.com.findup.models.UserSetting;
 import retrofit2.Call;
@@ -41,14 +44,17 @@ public class LoginViewModel extends Observable {
         userlogincall.enqueue(new Callback<LoginResponse>() {
             @Override
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
-                if (response.body().getSuccess() == 1){
+                if (response.body().getSuccess() == 1 && response.body().getData().get(0).getLogin_type().equals("User")){
                     LoginAccepted(response.body().getUser_data().get(0),password);
                     saveUserSettings(response.body().getUser_data().get(0).getId());
                     mContext.startActivity(new Intent(mContext, MainActivity.class));
-
-                }
-                else
+                    }else if(response.body().getSuccess() ==1 && response.body().getData().get(0).getLogin_type().equals("Store")){
+                    LoginStoreAccepted(response.body().getUser_data().get(0),password);
+                    saveStoreSettings(response.body().getUser_data().get(0).getId());
+                    mContext.startActivity(new Intent(mContext, MainStoreActivity.class));
+                } else{
                     Toast.makeText(mContext,"phone or password are not correct",Toast.LENGTH_SHORT).show();
+                }
                 Log.e("url",call.request().url().toString());
                 alertDialog.dismiss();
             }
@@ -84,6 +90,28 @@ public class LoginViewModel extends Observable {
         });
     }
 
+
+    public void saveStoreSettings(int store_id){
+        ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
+        Call<StoreSettingsGetResponse> storeSetting = apiService.getStoreSetting(store_id);
+        storeSetting.enqueue(new Callback<StoreSettingsGetResponse>() {
+            @Override
+            public void onResponse(Call<StoreSettingsGetResponse> call, Response<StoreSettingsGetResponse> response) {
+                if(response.body().getSuccess() == 1){
+                    saveStoreSettingSuccess(response.body().getData().get(0));
+                }else{
+                    StoreSetting storeSetting1 = new StoreSetting(0,  store_id, 0 , 0, 0, 0, "en", 0);
+                    saveStoreSettingSuccess(storeSetting1);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<StoreSettingsGetResponse> call, Throwable t) {
+                Toast.makeText(mContext, "Undefined Error", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
     private void saveUserSettingSuccess(UserSetting userSetting){
         SharedPrefManger.setChatNotiFlag(userSetting.getChat_noti_flag());
         SharedPrefManger.setCurrencyId(userSetting.getCurrency_id());
@@ -99,6 +127,28 @@ public class LoginViewModel extends Observable {
         sharedPrefManger.setLogin_password(pass);
         sharedPrefManger.setUserID(user.getId());
         sharedPrefManger.setIsLoggedInAsCustomer(true);
-        SharedPrefManger.setUSer_name(user.getName());
+        sharedPrefManger.setUSer_name(user.getName());
+        sharedPrefManger.setLoginType(user.getLogin_type());
+    }
+    private void LoginStoreAccepted(User user,String pass){
+        SharedPrefManger sharedPrefManger = new SharedPrefManger(mContext);
+        sharedPrefManger.setIsLoggedIn(true);
+        sharedPrefManger.setLogin_phone(user.getStore_mobile());
+        sharedPrefManger.setLogin_password(pass);
+        sharedPrefManger.setStoreID(user.getStore_id());
+        sharedPrefManger.setIsLoggedInAsCustomer(false);
+        sharedPrefManger.setStore_banner(user.getStore_banner());
+        sharedPrefManger.setStore_logo(user.getStore_logo());
+        sharedPrefManger.setStore_namee(user.getStore_name());
+        sharedPrefManger.setLoginType(user.getLogin_type());
+    }
+    private void saveStoreSettingSuccess(StoreSetting storeSetting){
+        SharedPrefManger.setChatNotiFlagStore(storeSetting.getChat_noti_flag());
+        SharedPrefManger.setCurrencyIdStore(storeSetting.getCurrency_id());
+        SharedPrefManger.setPushNotiFlagStore(storeSetting.getPush_noti_flag());
+        SharedPrefManger.setLanguageStore(storeSetting.getLanguage());
+        SharedPrefManger.setStoreSettingsId(storeSetting.getSett_id());
+        SharedPrefManger.setStoreCommentsNoti(storeSetting.getComment_noti_flag());
+        SharedPrefManger.setLikesStoreNoti(storeSetting.getLike_noti_flag());
     }
 }

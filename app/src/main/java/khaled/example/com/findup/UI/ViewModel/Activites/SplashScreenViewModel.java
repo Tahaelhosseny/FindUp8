@@ -22,6 +22,7 @@ import khaled.example.com.findup.Helper.SharedPrefManger;
 import khaled.example.com.findup.Helper.UI_Utility;
 import khaled.example.com.findup.UI.activities.IntroActivity;
 import khaled.example.com.findup.UI.activities.MainActivity;
+import khaled.example.com.findup.UI.activities.MainStoreActivity;
 import khaled.example.com.findup.models.Product;
 import khaled.example.com.findup.models.ProductPhoto;
 import khaled.example.com.findup.models.Store;
@@ -107,10 +108,14 @@ public class SplashScreenViewModel  extends Observable {
 
         ((Activity) mContext).runOnUiThread(new Runnable() {
             public void run() {
-                if(sharedPrefManger.isIsLoggedIn()){
+                if(sharedPrefManger.isIsLoggedIn() && SharedPrefManger.getUser_ID() != 0 ){
                     mContext.startActivity(new Intent(mContext, MainActivity.class));
                     ((Activity) mContext).finish();
-                }else {
+                }else if(sharedPrefManger.isIsLoggedIn() && SharedPrefManger.getStore_ID() != 0 ){
+                    mContext.startActivity(new Intent(mContext, MainStoreActivity.class));
+                    ((Activity) mContext).finish();
+                }
+                else {
                     mContext.startActivity(new Intent(mContext, IntroActivity.class));
                     ((Activity) mContext).finish();
                 }

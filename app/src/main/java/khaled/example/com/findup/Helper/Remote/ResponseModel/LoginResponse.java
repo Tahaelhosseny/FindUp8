@@ -21,6 +21,9 @@ public class LoginResponse {
     @SerializedName("data")
     @Expose
     private List<User> data;
+    @SerializedName("login_type")
+    @Expose
+    private String login_type;
 
     public String getError_msg() {
         return error_msg;
@@ -62,5 +65,19 @@ public class LoginResponse {
         this.data = user_data;
     }
 
+    public List<User> getData() {
+        return data;
+    }
 
+    public void setData(List<User> data) {
+        this.data = data;
+    }
+
+    public String getLogin_type() {
+        return login_type;
+    }
+
+    public void setLogin_type(String login_type) {
+        this.login_type = login_type;
+    }
 }

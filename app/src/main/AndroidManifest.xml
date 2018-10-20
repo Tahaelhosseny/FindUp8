@@ -215,7 +215,12 @@
         <activity
             android:name=".UI.activities.EnterPhoneResetActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
-        <activity android:name=".UI.activities.VerifyDeleteActivity"
+        <activity
+            android:name=".UI.activities.VerifyDeleteActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
+        <activity android:name=".UI.activities.StoreNotificationSettActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen"
+            />
     </application>
+
 </manifest>

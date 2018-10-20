@@ -29,6 +29,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.santalu.maskedittext.MaskEditText;
+import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 
@@ -47,6 +48,7 @@ public class EditProfileActivity extends AppCompatActivity {
     TextView txt_upload_image;
     Button btn_editProfileBack;
     ImageView myImg;
+    TextView type;
     ImageButton btn_deleteAccount;
 
     @Override
@@ -67,23 +69,35 @@ public class EditProfileActivity extends AppCompatActivity {
         activityEditProfileBinding.txtUploadImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showFileChooser();
             }
         });
         activityEditProfileBinding.setEditProfileData(editProfileViewModel);
-        activityEditProfileBinding.editTextPassword.setText(SharedPrefManger.getLogin_password());
-        activityEditProfileBinding.editTextUsername.setText(SharedPrefManger.getUser_name());
-        activityEditProfileBinding.editTextPhone.setText(SharedPrefManger.getLogin_phone());
+        if(SharedPrefManger.getUser_ID() == 0){
+            type = findViewById(R.id.textView); type.setText("Store Name");
+            activityEditProfileBinding.editTextPassword.setText(SharedPrefManger.getLogin_password());
+            activityEditProfileBinding.editTextUsername.setText(SharedPrefManger.getStore_namee());
+            activityEditProfileBinding.editTextPhone.setText(SharedPrefManger.getLogin_phone());
+            Picasso.with(this).load(SharedPrefManger.getStore_logo()).placeholder(R.color.material_color_grey_500).into(activityEditProfileBinding.picAccount);
+        }else{
+            activityEditProfileBinding.editTextPassword.setText(SharedPrefManger.getLogin_password());
+            activityEditProfileBinding.editTextUsername.setText(SharedPrefManger.getUser_name());
+            activityEditProfileBinding.editTextPhone.setText(SharedPrefManger.getLogin_phone());
+        }
         activityEditProfileBinding.setPresenter(new EditProfilePresenter() {
             @Override
             public void editProfileData() {
                 int account_id = SharedPrefManger.getUser_ID();
-                String user_name = SharedPrefManger.getUser_name();
+                int store_id = SharedPrefManger.getStore_ID();
                 String old_password = SharedPrefManger.getLogin_password();
+//                Toast.makeText(EditProfileActivity.this, ""+old_password, Toast.LENGTH_SHORT).show();
                 String newName = activityEditProfileBinding.editTextUsername.getText().toString();
                 String phone = activityEditProfileBinding.editTextPhone.getRawText();
                 String new_password = activityEditProfileBinding.editTextPassword.getText().toString();
-                editProfileViewModel.sendEditProfileRequest(account_id , newName, old_password , new_password ,phone);
+                if(account_id == 0){
+                    editProfileViewModel.sendEditProfileStoreRequest(store_id , newName, old_password , new_password ,phone);
+                }else{
+                    editProfileViewModel.sendEditProfileRequest(account_id , newName, old_password , new_password ,phone);
+                }
             }
         });
         btn_editProfileBack.setOnClickListener(new View.OnClickListener() {
@@ -103,113 +117,12 @@ public class EditProfileActivity extends AppCompatActivity {
                 return true;
             }
         });
-//        btn_deleteAccount.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Toast.makeText(EditProfileActivity.this, "Delete Account", Toast.LENGTH_SHORT).show();
-//            }
-//        });
     }
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
         finish();
-    }
-    private int PICK_IMAGE_REQUEST = 1;
-
-    //storage permission code
-    private static final int STORAGE_PERMISSION_CODE = 123;
-
-    //Bitmap to get image from gallery
-    private Bitmap bitmap;
-
-    //Uri to store the image uri
-    private Uri filePath;
-
-
-
-    public void imageIntentChoose(){
-        Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
-        photoPickerIntent.setType("image/*");
-        startActivityForResult(photoPickerIntent, 1);
-    }
-
-
-    //method to show file chooser
-    private void showFileChooser() {
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent, "Select Picture"), PICK_IMAGE_REQUEST);
-    }
-
-    //handling the image chooser activity result
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
-            filePath = data.getData();
-            try {
-                bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
-                activityEditProfileBinding.picAccount.setImageBitmap(bitmap);
-                Toast.makeText(this, ""+filePath, Toast.LENGTH_SHORT).show();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    //method to get the file path from uri
-    public String getPath(Uri uri) {
-        Cursor cursor = getContentResolver().query(uri, null, null, null, null);
-        cursor.moveToFirst();
-        String document_id = cursor.getString(0);
-        document_id = document_id.substring(document_id.lastIndexOf(":") + 1);
-        cursor.close();
-
-        cursor = getContentResolver().query(
-                android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-                null, MediaStore.Images.Media._ID + " = ? ", new String[]{document_id}, null);
-        cursor.moveToFirst();
-        String path = cursor.getString(cursor.getColumnIndex(MediaStore.Images.Media.DATA));
-        cursor.close();
-        return path;
-    }
-
-
-    //Requesting permission
-    private void requestStoragePermission() {
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED)
-            return;
-
-        if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
-            //If the user has denied the permission previously your code will come to this block
-            //Here you can explain why you need this permission
-            //Explain here why you need this permission
-        }
-        //And finally ask for the permission
-        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, STORAGE_PERMISSION_CODE);
-    }
-
-
-    //This method will be called when the user will tap on allow or deny
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-
-        //Checking the request code of our request
-        if (requestCode == STORAGE_PERMISSION_CODE) {
-
-            //If permission is granted
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                //Displaying a toast
-                Toast.makeText(this, "Permission granted now you can read the storage", Toast.LENGTH_LONG).show();
-            } else {
-                //Displaying another toast if permission is not granted
-                Toast.makeText(this, "Oops you just denied the permission", Toast.LENGTH_LONG).show();
-            }
-        }
     }
 
 }

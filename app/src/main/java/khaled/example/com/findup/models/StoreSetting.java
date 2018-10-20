@@ -8,9 +8,19 @@ public class StoreSetting {
     private int chat_noti_flag;
     private int like_noti_flag;
     private int comment_noti_flag;
-    private int distance_type_id;
     private String language;
     private int currency_id;
+
+    public StoreSetting(int sett_id, int store_id, int push_noti_flag, int chat_noti_flag, int like_noti_flag, int comment_noti_flag, String language, int currency_id) {
+        this.sett_id = sett_id;
+        this.store_id = store_id;
+        this.push_noti_flag = push_noti_flag;
+        this.chat_noti_flag = chat_noti_flag;
+        this.like_noti_flag = like_noti_flag;
+        this.comment_noti_flag = comment_noti_flag;
+        this.language = language;
+        this.currency_id = currency_id;
+    }
 
     public int getSett_id() {
         return sett_id;
@@ -58,14 +68,6 @@ public class StoreSetting {
 
     public void setComment_noti_flag(int comment_noti_flag) {
         this.comment_noti_flag = comment_noti_flag;
-    }
-
-    public int getDistance_type_id() {
-        return distance_type_id;
-    }
-
-    public void setDistance_type_id(int distance_type_id) {
-        this.distance_type_id = distance_type_id;
     }
 
     public String getLanguage() {
