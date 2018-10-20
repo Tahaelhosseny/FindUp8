@@ -48,6 +48,13 @@ public class StoreSettingsActivity extends AppCompatActivity implements View.OnC
     }
 
     @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(StoreSettingsActivity.this , StoreAccountHomeActivity.class));finish();
+
+    }
+
+    @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_storeEditProfile:
@@ -55,7 +62,7 @@ public class StoreSettingsActivity extends AppCompatActivity implements View.OnC
                 break;
 
             case R.id.btn_storeNotifications:
-                startActivity(new Intent(StoreSettingsActivity.this, NotificationsActivity.class));
+                startActivity(new Intent(StoreSettingsActivity.this, StoreNotificationSettActivity.class));
                 break;
 
             case R.id.btn_storeLanguage:
@@ -76,8 +83,7 @@ public class StoreSettingsActivity extends AppCompatActivity implements View.OnC
 
             case R.id.btn_storeSettingsBack:
                 LogoutAccepted();
-                startActivity(new Intent(StoreSettingsActivity.this, IntroActivity.class));
-                finish();
+                startActivity(new Intent(StoreSettingsActivity.this , StoreAccountHomeActivity.class));finish();
                 break;
 
             case R.id.btn_logout:

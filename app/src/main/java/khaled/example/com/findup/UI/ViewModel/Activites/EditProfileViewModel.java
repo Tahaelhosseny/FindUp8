@@ -65,7 +65,7 @@ public class EditProfileViewModel extends Observable {
         final AlertDialog alertDialog = UI_Utility.ShowProgressDialog(mContext, true);
         alertDialog.show();
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-        Call<StoreEditResponse> editProfileCall = apiService.editStoreInfo(store_id , store_name , old_password , new_password , mobile);
+        Call<StoreEditResponse> editProfileCall = apiService.editStoreInfo(store_id , store_name , mobile , old_password , new_password);
         editProfileCall.enqueue(new Callback<StoreEditResponse>() {
             @Override
             public void onResponse(Call<StoreEditResponse> call, Response<StoreEditResponse> response) {

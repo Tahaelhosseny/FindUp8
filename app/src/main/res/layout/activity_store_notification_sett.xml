@@ -6,4 +6,36 @@
     android:layout_height="match_parent"
     tools:context=".UI.activities.StoreNotificationSettActivity">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_currency"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="18dp"
+        android:background="@color/colorWhite"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <Button
+            android:id="@+id/btn_notificationsBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="22dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:background="@null"
+            android:drawableLeft="@drawable/baseline_close_black_36"
+            android:drawablePadding="10dp"
+            android:fontFamily="@font/sfcompactdisplay_medium"
+            android:text="Notifications"
+            android:textAllCaps="false"
+            android:textColor="@color/colorBlack"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/pic_account"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:drawableStart="@drawable/baseline_close_black_36" />
+    </android.support.v7.widget.Toolbar>
+
 </android.support.constraint.ConstraintLayout>
