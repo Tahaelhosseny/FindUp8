@@ -30,11 +30,9 @@ import retrofit2.Response;
 
 public class LoginViewModel extends Observable {
     private Context mContext;
-
     public LoginViewModel(Context mContext) {
         this.mContext = mContext;
     }
-
     public void sendLoginRequest(String phone, final String password){
 
         final AlertDialog alertDialog = UI_Utility.ShowProgressDialog(mContext, true);
@@ -68,7 +66,6 @@ public class LoginViewModel extends Observable {
         });
     }
     //check
-
     public void saveUserSettings(int account_id){
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
         Call<UserSettingsResponse> userSettings = apiService.getUserSetting(account_id);
@@ -89,8 +86,6 @@ public class LoginViewModel extends Observable {
             }
         });
     }
-
-
     public void saveStoreSettings(int store_id){
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
         /*Call<StoreSettingsGetResponse> storeSetting = apiService.getStoreSetting(store_id);
@@ -112,7 +107,6 @@ public class LoginViewModel extends Observable {
         });*/
 
     }
-
     private void saveUserSettingSuccess(UserSetting userSetting){
         SharedPrefManger.setChatNotiFlag(userSetting.getChat_noti_flag());
         SharedPrefManger.setCurrencyId(userSetting.getCurrency_id());

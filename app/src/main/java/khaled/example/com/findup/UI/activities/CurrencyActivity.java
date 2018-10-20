@@ -1,5 +1,6 @@
 package khaled.example.com.findup.UI.activities;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -27,14 +28,13 @@ public class CurrencyActivity extends AppCompatActivity {
         activityCurrencyBinding= DataBindingUtil.setContentView(this,R.layout.activity_currency);
 
         activityCurrencyBinding.setCurrencyOperation(currencyViewModel);
-//        currencyViewModel.setCurrency(currency_id , account_id);
-//        currencyViewModel.getAllCurrency();
         btn_submit=findViewById(R.id.btn_submit);
         btn_currencyBack=findViewById(R.id.btn_currencyBack);
 
         btn_currencyBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                startActivity(new Intent(CurrencyActivity.this, StoreSettingsActivity.class));
                 finish();
             }
         });
@@ -43,6 +43,8 @@ public class CurrencyActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+        startActivity(new Intent(CurrencyActivity.this, StoreSettingsActivity.class));
         finish();
+
     }
 }
