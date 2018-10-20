@@ -13,7 +13,7 @@ import khaled.example.com.findup.R;
 
 public class StoreSettingsActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button btn_storeEditProfile, btn_storeNotifications, btn_storeLanguage,
+    Button btn_storeEditProfile, btn_storeNotifications, btn_storeLanguage, btn_currency,
             btn_storeInviteFriend, btn_storeContactUs, btn_storeTerms, btn_storeSettingsBack;
     ImageButton btn_logout;
 
@@ -24,6 +24,9 @@ public class StoreSettingsActivity extends AppCompatActivity implements View.OnC
 
         btn_storeEditProfile = findViewById(R.id.btn_storeEditProfile);
         btn_storeEditProfile.setOnClickListener(this);
+
+        btn_currency = findViewById(R.id.btn_storeCurrency);
+        btn_currency.setOnClickListener(this);
 
         btn_storeNotifications = findViewById(R.id.btn_storeNotifications);
         btn_storeNotifications.setOnClickListener(this);
@@ -59,6 +62,10 @@ public class StoreSettingsActivity extends AppCompatActivity implements View.OnC
         switch (view.getId()) {
             case R.id.btn_storeEditProfile:
                 startActivity(new Intent(StoreSettingsActivity.this, EditProfileActivity.class));
+                break;
+
+            case R.id.btn_storeCurrency:
+                startActivity(new Intent(StoreSettingsActivity.this, CurrencyActivity.class));
                 break;
 
             case R.id.btn_storeNotifications:
