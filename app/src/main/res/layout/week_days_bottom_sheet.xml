@@ -58,7 +58,7 @@
                 android:textColor="@color/material_color_black"
                 android:textSize="@dimen/sp24" />
 
-            <RadioButton
+            <CheckBox
                 android:id="@+id/all"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -75,7 +75,7 @@
                 android:textColor="@color/material_color_black_87_percent"
                 android:textSize="@dimen/sp22" />
 
-            <RadioButton
+            <CheckBox
                 android:id="@+id/saturday"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -92,7 +92,7 @@
                 android:textColor="@color/material_color_black_87_percent"
                 android:textSize="@dimen/sp22" />
 
-            <RadioButton
+            <CheckBox
                 android:id="@+id/sunday"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -110,7 +110,7 @@
                 android:textSize="@dimen/sp22" />
 
 
-            <RadioButton
+            <CheckBox
                 android:id="@+id/monday"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -127,7 +127,7 @@
                 android:textColor="@color/material_color_black_87_percent"
                 android:textSize="@dimen/sp22" />
 
-            <RadioButton
+            <CheckBox
                 android:id="@+id/tuesday"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -144,7 +144,7 @@
                 android:textColor="@color/material_color_black_87_percent"
                 android:textSize="@dimen/sp22" />
 
-            <RadioButton
+            <CheckBox
                 android:id="@+id/wednesday"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -161,7 +161,7 @@
                 android:textColor="@color/material_color_black_87_percent"
                 android:textSize="@dimen/sp22" />
 
-            <RadioButton
+            <CheckBox
                 android:id="@+id/thursday"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -178,7 +178,7 @@
                 android:textColor="@color/material_color_black_87_percent"
                 android:textSize="@dimen/sp22" />
 
-            <RadioButton
+            <CheckBox
                 android:id="@+id/friday"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

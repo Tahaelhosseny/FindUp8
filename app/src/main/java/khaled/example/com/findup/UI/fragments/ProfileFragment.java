@@ -15,6 +15,7 @@ import khaled.example.com.findup.R;
 import khaled.example.com.findup.UI.activities.NotificationsActivity;
 import khaled.example.com.findup.UI.activities.ProfileChatsActivity;
 import khaled.example.com.findup.UI.activities.SettingsActivity;
+import khaled.example.com.findup.UI.activities.StoreAccountHomeActivity;
 import khaled.example.com.findup.UI.activities.StoreChooseCategoryActivity;
 import khaled.example.com.findup.UI.activities.UserSavedActivity;
 

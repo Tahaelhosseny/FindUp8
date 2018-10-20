@@ -15,6 +15,7 @@ import io.reactivex.Flowable;
 import khaled.example.com.findup.Helper.Database.DBHandler;
 import khaled.example.com.findup.Helper.Database.Interfaces.Product.PComment;
 import khaled.example.com.findup.Helper.Utility;
+
 import khaled.example.com.findup.UI.adapters.PCommentAdapter;
 import khaled.example.com.findup.models.PCommentModel;
 
@@ -29,7 +30,7 @@ class PCommentsViewModel extends Observable {
     public void InitRecyclerView(RecyclerView recyclerView , int store_id){
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         PCommentAdapter adapter = new PCommentAdapter(mContext, commentList);
-        LoadCommentsFromDatabase(adapter , store_id);
+        //LoadCommentsFromDatabase(adapter , store_id);
         recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
         recyclerView.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false));
@@ -37,7 +38,7 @@ class PCommentsViewModel extends Observable {
     }
 
 
-    public void LoadCommentsFromDatabase(PCommentAdapter adapter , int product_id){
+//  public void LoadCommentsFromDatabase(PCommentAdapter adapter , int product_id){
 //        Utility.UpdateCurrentLocation((Activity) mContext,mContext);
 //        DBHandler.getProductCommentID(product_id, mContext, new PComment() {
 //            @Override
@@ -62,5 +63,5 @@ class PCommentsViewModel extends Observable {
 //            }
 //        });
 
-    }
+//  }
 }

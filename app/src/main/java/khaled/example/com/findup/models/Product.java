@@ -29,14 +29,14 @@ public class Product {
     @NonNull
     private String product_banner;
     @Ignore
-    private List<PCommentModel> product_comments;
+    private List<Comment> product_comments;
     @Ignore
-    private List<ProductPhoto> productPhotos;
+    private List<ProductPhoto> product_images;
     public List<ProductPhoto> getProductPhotos() {
-        return productPhotos;
+        return product_images;
     }
     public void setProductPhotos(List<ProductPhoto> productPhotos) {
-        this.productPhotos = productPhotos;
+        this.product_images = productPhotos;
     }
     public Product(int product_id, double product_price, int product_likes_count, int product_comments_count, String product_name, String product_desc, String product_banner ) {
         this.product_id = product_id;
@@ -46,7 +46,6 @@ public class Product {
         this.product_name = product_name;
         this.product_desc = product_desc;
         this.product_banner = product_banner;
-
             }
     public int getProduct_id() {
         return product_id;
@@ -102,10 +101,10 @@ public class Product {
     public void setProduct_rate(float product_rate) {
         this.product_rate = product_rate;
     }
-    public List<PCommentModel> getProduct_comments() {
+    public List<Comment> getProduct_comments() {
         return product_comments;
     }
-    public void setProduct_comments(List<PCommentModel> product_comments) {
+    public void setProduct_comments(List<Comment> product_comments) {
         this.product_comments = product_comments;
     }
 }

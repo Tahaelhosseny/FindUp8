@@ -171,7 +171,9 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
         <activity
             android:name=".UI.activities.StoreInformationActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen">
+
+        </activity>
         <activity
             android:name=".UI.activities.StoreContactActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />

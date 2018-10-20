@@ -178,24 +178,6 @@
                 app:layout_constraintBottom_toBottomOf="@+id/editText_mobile"
                 app:layout_constraintStart_toStartOf="@+id/editText_mobile" />
 
-            <com.santalu.maskedittext.MaskEditText
-                android:id="@+id/editText_mobile"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:digits="0123456789"
-                android:inputType="phone"
-                android:paddingStart="55dp"
-                android:shadowColor="@color/colorBlack"
-                android:textColor="@color/colorBlack"
-                android:textColorHighlight="@color/colorWhiteGrey"
-                android:textColorLink="@color/colorWhiteGrey"
-                android:textCursorDrawable="@drawable/color_black"
-                android:textSize="18sp"
-                android:theme="@style/MyEditText"
-                app:layout_constraintTop_toBottomOf="@+id/txt_mobile"
-                app:met_mask="| #### ## ## ###" />
-
             <TextView
                 android:id="@+id/txt_website"
                 android:layout_width="wrap_content"
@@ -290,7 +272,25 @@
                 android:textColor="@color/colorWhite"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editText_facebook"/>
+                app:layout_constraintTop_toBottomOf="@+id/editText_facebook" />
+
+            <com.santalu.maskedittext.MaskEditText
+                android:id="@+id/editText_mobile"
+                android:layout_width="266dp"
+                android:layout_height="wrap_content"
+                android:digits="0123456789"
+                android:inputType="phone"
+                android:paddingStart="55dp"
+                android:shadowColor="@color/colorBlack"
+                android:textColor="@color/colorBlack"
+                android:textColorHighlight="@color/colorWhiteGrey"
+                android:textColorLink="@color/colorWhiteGrey"
+                android:textCursorDrawable="@drawable/color_black"
+                android:textSize="18sp"
+                android:theme="@style/MyEditText"
+                app:layout_constraintTop_toBottomOf="@+id/txt_mobile"
+                app:met_mask="| #### ## ## ###"
+                tools:layout_editor_absoluteX="8dp" />
 
         </android.support.constraint.ConstraintLayout>
 

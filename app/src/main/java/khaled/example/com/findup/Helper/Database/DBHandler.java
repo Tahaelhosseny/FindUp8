@@ -1,6 +1,7 @@
 package khaled.example.com.findup.Helper.Database;
 
 import android.content.Context;
+import android.util.Log;
 
 import org.intellij.lang.annotations.Flow;
 
@@ -120,9 +121,19 @@ public class DBHandler {
 
     /*******************************************************************************
      *
-     * @param comment
+     * @param commentList
      * @param context
      */
+    public static void InsertComments(final List<Comment> commentList, final Context context) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                for (int i = 0;i<commentList.size();i++)
+                    FindUpDatabase.getAppDatabase(context).daoAccess().insertComment(commentList.get(i));
+            }
+        }).start();
+    }
+
     public static void InsertComment(final Comment comment, final Context context) {
         new Thread(new Runnable() {
             @Override
@@ -215,16 +226,18 @@ public class DBHandler {
 
     /*******************************************************************************
      *                                  Product Photos
-     * @param productPhoto
+     * @param productPhotos
      * @param context
      *
      ******************************************************************************/
 
-    public static void InsertProductPhoto(final ProductPhoto productPhoto, final Context context) {
+    public static void InsertProductPhoto(final List<ProductPhoto> productPhotos, final Context context) {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                FindUpDatabase.getAppDatabase(context).daoAccess().insertProductPhoto(productPhoto);
+                Log.e("productPhotos", ""+productPhotos.size());
+                for (int i = 0;i<productPhotos.size();i++)
+                    FindUpDatabase.getAppDatabase(context).daoAccess().insertProductPhoto(productPhotos.get(0));
             }
         }).start();
     }

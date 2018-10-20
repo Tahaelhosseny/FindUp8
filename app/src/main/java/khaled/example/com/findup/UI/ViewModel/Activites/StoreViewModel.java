@@ -16,7 +16,7 @@ public class StoreViewModel extends Observable {
     private Context mContext;
     public StoreViewModel(Context mContext){this.mContext = mContext;}
     public void CreateStore(){
-        Bitmap bitmap = null;Bitmap bitmap1 = null;
+        /*Bitmap bitmap = null;Bitmap bitmap1 = null;
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
         Call<CreateStoreResponse> createStore = apiService.createNewStore("", 0 , 0 , "" , ""
                 , "" , "" , "" , "" , 0 , bitmap, bitmap1 , ""
@@ -30,6 +30,6 @@ public class StoreViewModel extends Observable {
             public void onFailure(Call<CreateStoreResponse> call, Throwable t) {
 
             }
-        });
+        });*/
     }
 }
