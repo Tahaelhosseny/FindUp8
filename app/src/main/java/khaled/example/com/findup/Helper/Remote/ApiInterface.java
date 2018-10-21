@@ -37,6 +37,7 @@ import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Headers;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
@@ -161,24 +162,24 @@ public interface ApiInterface {
     @Multipart
     @POST(ApiClient.PATH_URL+"stores?tag=create_store_account&HashSecure="+HASH)
     Call<CreateStoreResponse> createNewStore(
-            @Part("store_name") RequestBody store_name,
-            @Part("store_desc") RequestBody store_desc ,
-            @Part("country_id") RequestBody country_id ,
-            @Part("city_id") RequestBody city_id ,
-            @Part("location_type") RequestBody location_type ,
-            @Part("mobile") RequestBody mobile ,
-            @Part("password") RequestBody password ,
-            @Part("twitter_link") RequestBody twitter_link ,
-            @Part("instegram_link") RequestBody instegram_link ,
-            @Part("facebook_link") RequestBody facebook_link,
-            @Part("cat_id") RequestBody cat_id,
+            @Part MultipartBody.Part store_name,
+            @Part MultipartBody.Part store_desc ,
+            @Part MultipartBody.Part country_id ,
+            @Part MultipartBody.Part city_id ,
+            @Part MultipartBody.Part location_type ,
+            @Part MultipartBody.Part mobile ,
+            @Part MultipartBody.Part password ,
+            @Part MultipartBody.Part twitter_link ,
+            @Part MultipartBody.Part instegram_link ,
+            @Part MultipartBody.Part facebook_link,
+            @Part MultipartBody.Part cat_id,
             @Part MultipartBody.Part store_logo,
             @Part MultipartBody.Part store_banner,
-            @Part("store_otherlang") RequestBody store_otherlang,
-            @Part("store_tags") RequestBody store_tags,
-            @Part("work_days") RequestBody work_days,
-            @Part("work_fromtime") RequestBody work_fromtime,
-            @Part("work_totime") RequestBody work_totime);
+            @Part MultipartBody.Part store_otherlang,
+            @Part MultipartBody.Part store_tags,
+            @Part MultipartBody.Part work_days,
+            @Part MultipartBody.Part work_fromtime,
+            @Part MultipartBody.Part work_totime);
 
     @POST(ApiClient.PATH_URL+"reg_login?tag=delete_account&HashSecure="+HASH)
     @FormUrlEncoded
