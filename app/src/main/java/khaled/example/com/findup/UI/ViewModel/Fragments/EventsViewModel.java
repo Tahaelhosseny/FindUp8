@@ -7,8 +7,13 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.LinearLayout;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Observable;
 
@@ -32,23 +37,36 @@ public class EventsViewModel extends Observable {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         EventsAdapter adapter = new EventsAdapter(mContext, new ArrayList<>());
         recyclerView.setAdapter(adapter);
-
         recyclerView.setLayoutManager(new LinearLayoutManager(mContext, type, false));
         recyclerView.smoothScrollToPosition(0);
         LoadDataFromDataBase(adapter);
     }
-
     private void LoadDataFromDataBase(EventsAdapter adapter){
-
-        DBHandler.getAllEvents(mContext, new Events() {
+        DBHandler.getEventByStoreID(1 ,mContext, new Events() {
             @Override
             public void onSuccess(Flowable<List<Event>> listFlowable) {
                 listFlowable.subscribe(eventList -> {
                     ((Activity) mContext).runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            adapter.setEvents(eventList);
-                            adapter.notifyDataSetChanged();
+                            boolean check = true;
+                            List<Event> events = new ArrayList<>();
+                            for(int i = 0 ; i < eventList.size() ; i++){
+                                try {
+                                    check = checkDate(eventList.get(i).getEvent_start_date());
+                                } catch (ParseException e) {
+                                    e.printStackTrace();
+                                }
+                                if(!check){
+
+                                }else{
+                                    events.add(eventList.get(i));
+                                }
+                            }
+                            if(events.size() > 0){
+                                adapter.setEvents(events);
+                                adapter.notifyDataSetChanged();
+                            }
                         }
                     });
                 });
@@ -60,4 +78,16 @@ public class EventsViewModel extends Observable {
             }
         });
     }
+
+    public boolean checkDate(String date) throws ParseException {
+        String pattern = "yyyy-MM-dd";
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+        Date datee = simpleDateFormat.parse(date);
+        if (new Date().after(datee)) {
+            return true;
+        }
+        return false;
+    }
+
+
 }

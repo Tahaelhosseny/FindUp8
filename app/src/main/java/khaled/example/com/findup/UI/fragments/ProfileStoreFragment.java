@@ -26,6 +26,7 @@ import khaled.example.com.findup.Helper.Utility;
 import khaled.example.com.findup.R;
 import khaled.example.com.findup.UI.activities.CommentsActivity;
 import khaled.example.com.findup.UI.activities.NotificationsActivity;
+import khaled.example.com.findup.UI.activities.StoreEventsActivity;
 import khaled.example.com.findup.UI.activities.StoreSettingsActivity;
 import khaled.example.com.findup.UI.adapters.NearMeAdapter;
 import khaled.example.com.findup.models.Store;
@@ -70,6 +71,7 @@ public class ProfileStoreFragment extends Fragment {
         getActivity().findViewById(R.id.btn_events).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                startActivity(new Intent(getActivity() , StoreEventsActivity.class));
             }
         });
 
@@ -88,7 +90,6 @@ public class ProfileStoreFragment extends Fragment {
             DBHandler.getStoreByID(SharedPrefManger.getStore_ID(), getActivity(), new Stores() {
                 @Override
                 public void onSuccess(Flowable<List<Store>> listFlowable) {
-
                 }
                 @Override
                 public void onFail() {
@@ -98,7 +99,6 @@ public class ProfileStoreFragment extends Fragment {
                 public void getStoreID(Flowable<Store> storeFlowable) {
                     storeFlowable.subscribe(store -> {
                         (getActivity()).runOnUiThread(new Runnable() {
-
                                                                 @Override
                                                                 public void run() {
                                                                     MStore = store;
@@ -110,7 +110,6 @@ public class ProfileStoreFragment extends Fragment {
                                                                         rating.setText(store.getStore_desc());
                                                                     }
                                                                     Picasso.with(getActivity()).load(store.getStore_banner()).into(banner);
-
                                                                 }
                                                             }
                         );

@@ -102,8 +102,8 @@ public interface DaoAccess {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertEvent(List<Event> eventList);
 
-    @Query("SELECT * FROM Event WHERE store_id = :event_id")
-    Flowable<Event> getEventByID(int event_id);
+    @Query("SELECT * FROM Event WHERE store_id = :store_id")
+    Flowable<List<Event>> getEventByID(int store_id);
 
     @Query("SELECT * FROM Event")
     Flowable<List<Event>> getAllEvents();
@@ -179,6 +179,7 @@ public interface DaoAccess {
 
     @Delete
     void DeleteProductPhoto(StorePhoto storePhoto);
+
 
 
 

@@ -42,7 +42,7 @@ public class EventsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_events, container, false);
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_events, container, false);//11842 H
         View view = binding.getRoot();
         //here data must be an instance of the class MarsDataProvider
         eventsViewModel = new EventsViewModel(view.getContext());
@@ -64,5 +64,7 @@ public class EventsFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         eventsViewModel.InitRecyclerView(binding.eventsRecyclerView,type);
     }
+
+
 
 }

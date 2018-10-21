@@ -11,6 +11,7 @@ import khaled.example.com.findup.Helper.Remote.ApiClient;
 import khaled.example.com.findup.Helper.Remote.ApiInterface;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.CreateStoreEventResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.LoginResponse;
+import khaled.example.com.findup.Helper.SharedPrefManger;
 import khaled.example.com.findup.Helper.UI_Utility;
 import khaled.example.com.findup.UI.activities.CreateEventActivity;
 import khaled.example.com.findup.UI.activities.StoreEventsActivity;
@@ -29,14 +30,14 @@ public class CreateEventViewModel extends Observable {
     public void addNewEvent(String event_name , String event_start_date,
                             String event_days , String event_time
                           , String event_description , String event_address,
-                            int store_id , double event_longitude,
+                            double event_longitude,
                             double event_latitude , String event_photo){
 
 
         final AlertDialog alertDialog = UI_Utility.ShowProgressDialog(mContext, true);
         alertDialog.show();
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-        Call<CreateStoreEventResponse> storeAddEvent = apiService.addNewStoreEvent("","" ,"","","","",0,0.0, 0.0 ,"");
+        Call<CreateStoreEventResponse> storeAddEvent = apiService.addNewStoreEvent(event_name,event_start_date ,event_days,event_time,event_description,event_address, SharedPrefManger.getStore_ID(),event_longitude, event_latitude ,event_photo);
         storeAddEvent.enqueue(new Callback<CreateStoreEventResponse>() {
             @Override
             public void onResponse(Call<CreateStoreEventResponse> call, Response<CreateStoreEventResponse> response) {

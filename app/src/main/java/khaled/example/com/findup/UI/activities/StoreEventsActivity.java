@@ -54,9 +54,6 @@ public class StoreEventsActivity extends AppCompatActivity {
         tabLayout.setTabData(mTabEntities, this, R.id.fl_change, fragmentList);
         tabLayout.setIconHeight(0);
         tabLayout.setIconVisible(false);
-        //Typeface mTypeface = Typeface.createFromAsset(getActivity().getAssets(), "fonts/sfcompactdisplay_semibold.ttf");
-        // mTypeface = Typeface.createFromAsset(getContext().getAssets(), "fonts/sfcompactdisplay_semibold.ttf");
-
         tabLayout.getTitleView(0).setTypeface(Typeface.create("sfcompactdisplay_semibold", Typeface.NORMAL));
         tabLayout.getTitleView(1).setTypeface(Typeface.create("sfcompactdisplay_heavy", Typeface.NORMAL));
 
@@ -65,23 +62,16 @@ public class StoreEventsActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_events, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
