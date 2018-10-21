@@ -3,14 +3,9 @@ package khaled.example.com.findup.UI.ViewModel.Activites;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Handler;
-import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.google.gson.JsonParser;
-
-import java.util.List;
 import java.util.Observable;
 import io.reactivex.subjects.PublishSubject;
 import khaled.example.com.findup.Helper.Database.DBUtility;
@@ -22,15 +17,9 @@ import khaled.example.com.findup.Helper.SharedPrefManger;
 import khaled.example.com.findup.Helper.UI_Utility;
 import khaled.example.com.findup.UI.activities.IntroActivity;
 import khaled.example.com.findup.UI.activities.MainActivity;
-import khaled.example.com.findup.UI.activities.MainStoreActivity;
-import khaled.example.com.findup.models.Product;
-import khaled.example.com.findup.models.ProductPhoto;
-import khaled.example.com.findup.models.Store;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
-import static com.facebook.FacebookSdk.getApplicationContext;
 
 public class SplashScreenViewModel  extends Observable {
     private Context mContext;
@@ -61,10 +50,10 @@ public class SplashScreenViewModel  extends Observable {
             @Override
             public void onFailure(Call<StoresResponse> call, Throwable t) {
                 //Toast.makeText(mContext,"invalid data",Toast.LENGTH_SHORT).show();
+                t.printStackTrace();
                 UI_Utility.noConnection(mContext,true);
                 Log.e("url",call.request().url().toString());
-                Log.e("error",t.getMessage());
-
+                Log.e("errmor",t.getMessage());
             }
         });
 
@@ -108,14 +97,10 @@ public class SplashScreenViewModel  extends Observable {
 
         ((Activity) mContext).runOnUiThread(new Runnable() {
             public void run() {
-                if(sharedPrefManger.isIsLoggedIn() && SharedPrefManger.getUser_ID() != 0 ){
+                if(sharedPrefManger.isIsLoggedIn()){
                     mContext.startActivity(new Intent(mContext, MainActivity.class));
                     ((Activity) mContext).finish();
-                }else if(sharedPrefManger.isIsLoggedIn() && SharedPrefManger.getStore_ID() != 0 ){
-                    mContext.startActivity(new Intent(mContext, MainStoreActivity.class));
-                    ((Activity) mContext).finish();
-                }
-                else {
+                }else {
                     mContext.startActivity(new Intent(mContext, IntroActivity.class));
                     ((Activity) mContext).finish();
                 }

@@ -125,6 +125,7 @@
                     android:fontFamily="@font/sfcompactdisplay_medium"
                     android:gravity="start"
                     android:text="@string/dynamic_location"
+                    android:tag="@string/dynamic_location"
                     android:textColor="@color/colorBlack"
                     android:textSize="16sp" />
 
@@ -139,6 +140,7 @@
                     android:fontFamily="@font/sfcompactdisplay_medium"
                     android:gravity="start"
                     android:text="@string/static_location"
+                    android:tag="@string/static_location"
                     android:textColor="@color/colorBlack"
                     android:textSize="16sp" />
 
@@ -152,6 +154,7 @@
                     android:fontFamily="@font/sfcompactdisplay_medium"
                     android:gravity="start"
                     android:text="@string/show_me_in_my_city"
+                    android:tag="@string/show_me_in_my_city"
                     android:textColor="@color/colorBlack"
                     android:textSize="16sp" />
             </RadioGroup>
@@ -177,24 +180,6 @@
                 android:spinnerMode="dialog"
                 app:layout_constraintBottom_toBottomOf="@+id/editText_mobile"
                 app:layout_constraintStart_toStartOf="@+id/editText_mobile" />
-
-            <com.santalu.maskedittext.MaskEditText
-                android:id="@+id/editText_mobile"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:digits="0123456789"
-                android:inputType="phone"
-                android:paddingStart="55dp"
-                android:shadowColor="@color/colorBlack"
-                android:textColor="@color/colorBlack"
-                android:textColorHighlight="@color/colorWhiteGrey"
-                android:textColorLink="@color/colorWhiteGrey"
-                android:textCursorDrawable="@drawable/color_black"
-                android:textSize="18sp"
-                android:theme="@style/MyEditText"
-                app:layout_constraintTop_toBottomOf="@+id/txt_mobile"
-                app:met_mask="| #### ## ## ###" />
 
             <TextView
                 android:id="@+id/txt_website"
@@ -290,7 +275,25 @@
                 android:textColor="@color/colorWhite"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editText_facebook"/>
+                app:layout_constraintTop_toBottomOf="@+id/editText_facebook" />
+
+            <com.santalu.maskedittext.MaskEditText
+                android:id="@+id/editText_mobile"
+                android:layout_width="266dp"
+                android:layout_height="wrap_content"
+                android:digits="0123456789"
+                android:inputType="phone"
+                android:paddingStart="55dp"
+                android:shadowColor="@color/colorBlack"
+                android:textColor="@color/colorBlack"
+                android:textColorHighlight="@color/colorWhiteGrey"
+                android:textColorLink="@color/colorWhiteGrey"
+                android:textCursorDrawable="@drawable/color_black"
+                android:textSize="18sp"
+                android:theme="@style/MyEditText"
+                app:layout_constraintTop_toBottomOf="@+id/txt_mobile"
+                app:met_mask="| #### ## ## ###"
+                tools:layout_editor_absoluteX="8dp" />
 
         </android.support.constraint.ConstraintLayout>
 

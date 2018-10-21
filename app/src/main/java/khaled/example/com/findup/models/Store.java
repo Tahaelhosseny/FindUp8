@@ -27,7 +27,18 @@ public class Store {
 //    @NonNull
     @ColumnInfo(name = "store_name")
     private String store_name;
+    @ColumnInfo(name = "store_otherlang")
+    private String store_otherlang;
 //    @NonNull
+
+    public String getStore_otherlang() {
+        return store_otherlang;
+    }
+
+    public void setStore_otherlang(String store_otherlang) {
+        this.store_otherlang = store_otherlang;
+    }
+
     @ColumnInfo(name = "store_banner")
     private String store_banner;
 //    @NonNull
@@ -80,7 +91,18 @@ public class Store {
 //    @NonNull
     @ColumnInfo(name = "store_twitter_link")
     private String store_twitter_link;
-//    @NonNull
+    @ColumnInfo(name = "store_facebook_link")
+    private String store_facebook_link;
+
+    public String getStore_facebook_link() {
+        return store_facebook_link;
+    }
+
+    public void setStore_facebook_link(String store_facebook_link) {
+        this.store_facebook_link = store_facebook_link;
+    }
+
+    //    @NonNull
     @ColumnInfo(name = "store_instegram_link")
     private String store_instegram_link;
 //    @NonNull
@@ -100,10 +122,26 @@ public class Store {
     private List<Comment> store_comments;
     @Ignore
     private List<Product> store_products;
-    //@Ignore
+    @Ignore
+    private String workDays;
+
+    public String getWorkDays() {
+        return workDays;
+    }
+
+    public void setWorkDays(String workDays) {
+        this.workDays = workDays;
+    }
+//@Ignore
     //private List<Day> store_workdays;
     //@Ignore
     //private Store_WorkTime store_worktime;
+
+    //@Ignore
+    //private Store_WorkTime store_worktime;
+
+    @Ignore
+    public Store(){}
 
     public Store(int store_id, String store_name, String store_banner, String placeReview, String store_desc) {
         this.store_id = store_id;

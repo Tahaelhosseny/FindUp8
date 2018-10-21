@@ -7,7 +7,6 @@ import java.util.List;
 import khaled.example.com.findup.models.Category;
 import khaled.example.com.findup.models.Comment;
 import khaled.example.com.findup.models.Event;
-import khaled.example.com.findup.models.PCommentModel;
 import khaled.example.com.findup.models.Product;
 import khaled.example.com.findup.models.ProductPhoto;
 import khaled.example.com.findup.models.Store;
@@ -20,12 +19,13 @@ public class DBUtility {
             DBHandler.InsertStore(store, mContext);
             InsertComments(store.getStore_comments(), mContext);
             InsertProducts(store.getStore_products(), mContext);
+            for (Product product : store.getStore_products())
+                InsertProductPhotos(product.getProductPhotos(), mContext);
             InsertStorePhotos(store.getStore_images(), mContext);
             sum++;
         }
         return (sum == storeList.size()) ? 1 : 0;
     }
-
 
     public static long InsertComments(List<Comment> commentList, Context mContext) {
         int sum = 0;
@@ -58,7 +58,6 @@ public class DBUtility {
         int sum = 0;
         for (Product product : productList) {
             DBHandler.InsertPrdouct(product, mContext);
-//            DBHandler.InsertProductPhoto((ProductPhoto) productList.get(sum).getProductPhotos(), mContext);
             sum++;
         }
         return (sum == productList.size()) ? 1 : 0;
@@ -66,10 +65,7 @@ public class DBUtility {
 
     public static long InsertProductPhotos(List<ProductPhoto> productPhotos, Context mContext) {
         int sum = 0;
-        for (ProductPhoto productPhoto : productPhotos) {
-            DBHandler.InsertProductPhoto(productPhoto, mContext);
-            sum++;
-        }
+        DBHandler.InsertProductPhoto(productPhotos, mContext);
         return (sum == productPhotos.size()) ? 1 : 0;
     }
 //

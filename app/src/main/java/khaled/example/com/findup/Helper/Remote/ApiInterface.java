@@ -28,15 +28,18 @@ import khaled.example.com.findup.Helper.Remote.ResponseModel.SaveModelResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.StoreAddressResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.StoreEditResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.StoreNotificationResponse;
-import khaled.example.com.findup.Helper.Remote.ResponseModel.StoreSettingsGetResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.StoresResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.UserSettingsResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.VerifyCodeResponse;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -47,9 +50,6 @@ public interface ApiInterface {
 
     @GET(ApiClient.PATH_URL+"stores?tag=get_all_stores&HashSecure="+HASH)
     Call<StoresResponse> GetAllStores(@Query("account_id") int account_id);
-
-    @GET(ApiClient.PATH_URL+"stores?tag=get_all_stores&HashSecure="+HASH)
-    Call<StoresResponse> GetAllStoress(@Query("account_id") int account_id);
 
     @GET(ApiClient.PATH_URL+"stores?tag=get_all_events&HashSecure="+HASH)
     Call<EventResponse> GetAllEvents(@Query("account_id") int account_id);
@@ -84,7 +84,7 @@ public interface ApiInterface {
     Call<UserSettingsResponse> getUserSetting(@Query("account_id") int account_id);
 
     @GET(ApiClient.PATH_URL+"stores?tag=get_store_setting&HashSecure="+HASH)
-    Call<StoreSettingsGetResponse> getStoreSetting(@Query("store_id") int store_id);
+    Call<UserSettingsResponse> getStoreSetting(@Query("store_id") int store_id);
 
     @GET(ApiClient.PATH_URL+"stores?tag=get_store_notifications&HashSecure="+HASH)
     Call<StoreNotificationResponse> getStoreNotification(@Query("store_id") int store_id);
@@ -158,27 +158,27 @@ public interface ApiInterface {
     @FormUrlEncoded
     Call<RateResponse> rateStore(@Query("account_id") int account_id , @Field("rate") float rate , @Field("store_id") int store_id);
 
+    @Multipart
     @POST(ApiClient.PATH_URL+"stores?tag=create_store_account&HashSecure="+HASH)
-    @FormUrlEncoded
     Call<CreateStoreResponse> createNewStore(
-            @Field("store_desc") String store_desc ,
-            @Field("country_id") int country_id ,
-            @Field("city_id") int city_id ,
-            @Field("location_type") String location_type ,
-            @Field("mobile") String mobile ,
-            @Field("password") String password ,
-            @Field("twitter_link") String twitter_link ,
-            @Field("instegram_link") String instegram_link ,
-            @Field("facebook_link") String facebook_link,
-            @Field("cat_id") int cat_id,
-            @Field("store_logo")Bitmap store_logo,
-            @Field("store_banner")Bitmap store_banner,
-            @Field("store_otherlang")String store_otherlang,
-            @Field("store_tags") String store_tags,
-            @Field("work_days") String work_days,
-            @Field("work_fromtime") String work_fromtime,
-            @Field("work_totime") String work_totime
-            );
+            @Part("store_name") RequestBody store_name,
+            @Part("store_desc") RequestBody store_desc ,
+            @Part("country_id") RequestBody country_id ,
+            @Part("city_id") RequestBody city_id ,
+            @Part("location_type") RequestBody location_type ,
+            @Part("mobile") RequestBody mobile ,
+            @Part("password") RequestBody password ,
+            @Part("twitter_link") RequestBody twitter_link ,
+            @Part("instegram_link") RequestBody instegram_link ,
+            @Part("facebook_link") RequestBody facebook_link,
+            @Part("cat_id") RequestBody cat_id,
+            @Part MultipartBody.Part store_logo,
+            @Part MultipartBody.Part store_banner,
+            @Part("store_otherlang") RequestBody store_otherlang,
+            @Part("store_tags") RequestBody store_tags,
+            @Part("work_days") RequestBody work_days,
+            @Part("work_fromtime") RequestBody work_fromtime,
+            @Part("work_totime") RequestBody work_totime);
 
     @POST(ApiClient.PATH_URL+"reg_login?tag=delete_account&HashSecure="+HASH)
     @FormUrlEncoded
@@ -225,6 +225,6 @@ public interface ApiInterface {
             @Field("chat_noti_flag") int chat,
             @Field("like_noti_flag") int like,
             @Field("comment_noti_flag") int comment,
-            @Query("store_id") int store_id
+            @Field("store_id") int store_id
     );
 }

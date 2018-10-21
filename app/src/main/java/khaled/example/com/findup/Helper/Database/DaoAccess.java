@@ -150,7 +150,7 @@ public interface DaoAccess {
      *************************************************************************************/
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-     void insertProductPhoto(ProductPhoto productPhoto);
+    void insertProductPhoto(ProductPhoto productPhoto);
 
 //    @Insert(onConflict = OnConflictStrategy.REPLACE)
 //     void insertProductComments(PCommentModel pCommentModel);

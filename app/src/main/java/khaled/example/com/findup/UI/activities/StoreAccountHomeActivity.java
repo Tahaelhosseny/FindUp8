@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import khaled.example.com.findup.R;
 import khaled.example.com.findup.UI.fragments.ProfileStoreFragment;
+import khaled.example.com.findup.UI.fragments.StoreAccountHomeFragment;
 
 public class StoreAccountHomeActivity extends AppCompatActivity {
 
@@ -27,6 +28,6 @@ public class StoreAccountHomeActivity extends AppCompatActivity {
 
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
-        transaction.replace(R.id.home_fragment_container, new ProfileStoreFragment()).commit();
+        transaction.replace(R.id.home_fragment_container, new StoreAccountHomeFragment()).commit();
     }
 }

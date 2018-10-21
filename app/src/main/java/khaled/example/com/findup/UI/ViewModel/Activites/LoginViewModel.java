@@ -88,7 +88,7 @@ public class LoginViewModel extends Observable {
     }
     public void saveStoreSettings(int store_id){
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-        Call<StoreSettingsGetResponse> storeSetting = apiService.getStoreSetting(store_id);
+        /*Call<StoreSettingsGetResponse> storeSetting = apiService.getStoreSetting(store_id);
         storeSetting.enqueue(new Callback<StoreSettingsGetResponse>() {
             @Override
             public void onResponse(Call<StoreSettingsGetResponse> call, Response<StoreSettingsGetResponse> response) {
@@ -104,7 +104,8 @@ public class LoginViewModel extends Observable {
             public void onFailure(Call<StoreSettingsGetResponse> call, Throwable t) {
                 Toast.makeText(mContext, "Undefined Error", Toast.LENGTH_SHORT).show();
             }
-        });
+        });*/
+
     }
     private void saveUserSettingSuccess(UserSetting userSetting){
         SharedPrefManger.setChatNotiFlag(userSetting.getChat_noti_flag());
