@@ -59,6 +59,12 @@ public class StoreEventsActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+//        startActivity(new Intent(StoreEventsActivity.this , StoreAccountHomeActivity.class));
+        finish();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

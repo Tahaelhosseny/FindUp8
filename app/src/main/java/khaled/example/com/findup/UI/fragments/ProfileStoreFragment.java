@@ -80,11 +80,11 @@ public class ProfileStoreFragment extends Fragment {
         ImageView store_Bg = getActivity().findViewById(R.id.profileBg);
         TextView store_desc = getActivity().findViewById(R.id.storeDesc);
         TextView store_review = getActivity().findViewById(R.id.storeReview);
-        store_name.setText(SharedPrefManger.getStore_namee());
-        bindStoreData(store_logo , store_review , store_desc , store_Bg);
+//        store_name.setText(SharedPrefManger.getStore_namee());
+        bindStoreData(store_logo , store_review , store_desc , store_Bg , store_name);
 
     }
-    public void bindStoreData(ImageView logo_image , TextView rating , TextView store_desc , ImageView banner) {
+    public void bindStoreData(ImageView logo_image , TextView rating , TextView store_desc , ImageView banner , TextView name) {
 
         if (MStore == null) {
             DBHandler.getStoreByID(SharedPrefManger.getStore_ID(), getActivity(), new Stores() {
@@ -109,6 +109,7 @@ public class ProfileStoreFragment extends Fragment {
                                                                     }else{
                                                                         rating.setText(store.getStore_desc());
                                                                     }
+                                                                    name.setText(store.getStore_name());
                                                                     Picasso.with(getActivity()).load(store.getStore_banner()).into(banner);
                                                                 }
                                                             }

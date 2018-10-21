@@ -120,6 +120,7 @@ public class CreateEventActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+        startActivity(new Intent(CreateEventActivity.this , StoreEventsActivity.class));
         finish();
     }
 
@@ -144,5 +145,6 @@ public class CreateEventActivity extends AppCompatActivity {
             }
         }
     };
+
 
 }

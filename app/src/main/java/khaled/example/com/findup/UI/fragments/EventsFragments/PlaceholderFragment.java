@@ -1,6 +1,7 @@
 package khaled.example.com.findup.UI.fragments.EventsFragments;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -26,11 +27,9 @@ import java.util.List;
 import io.reactivex.Flowable;
 import khaled.example.com.findup.Helper.Database.DBHandler;
 import khaled.example.com.findup.Helper.Database.Interfaces.Events;
-import khaled.example.com.findup.Helper.SharedPrefManger;
 import khaled.example.com.findup.R;
 import khaled.example.com.findup.UI.activities.CreateEventActivity;
 import khaled.example.com.findup.UI.adapters.EventsAdapter;
-import khaled.example.com.findup.databinding.FragmentStoreEventsBinding;
 import khaled.example.com.findup.models.Event;
 
 public class PlaceholderFragment extends Fragment {
@@ -46,6 +45,7 @@ public class PlaceholderFragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -63,7 +63,7 @@ public class PlaceholderFragment extends Fragment {
         InitEventByType(recyclerView);
         return rootView;
     }
-
+    Context mContext;
     public void InitEventByType(RecyclerView recyclerView){
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         EventsAdapter adapter = new EventsAdapter(getActivity(), new ArrayList<>());
@@ -120,5 +120,7 @@ public class PlaceholderFragment extends Fragment {
         }
         return false;
     }
+
+
 
 }

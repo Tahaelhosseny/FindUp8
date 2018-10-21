@@ -17,6 +17,7 @@ import khaled.example.com.findup.Helper.SharedPrefManger;
 import khaled.example.com.findup.Helper.UI_Utility;
 import khaled.example.com.findup.UI.activities.IntroActivity;
 import khaled.example.com.findup.UI.activities.MainActivity;
+import khaled.example.com.findup.UI.activities.MainStoreActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -98,8 +99,16 @@ public class SplashScreenViewModel  extends Observable {
         ((Activity) mContext).runOnUiThread(new Runnable() {
             public void run() {
                 if(sharedPrefManger.isIsLoggedIn()){
-                    mContext.startActivity(new Intent(mContext, MainActivity.class));
-                    ((Activity) mContext).finish();
+                    if(SharedPrefManger.getStore_ID() != 0){
+                        mContext.startActivity(new Intent(mContext, MainStoreActivity.class));
+                        ((Activity) mContext).finish();
+                    }
+                    else if(SharedPrefManger.getUser_ID() != 0) {
+                        mContext.startActivity(new Intent(mContext, MainActivity.class));
+                        ((Activity) mContext).finish();
+                    }else{
+
+                    }
                 }else {
                     mContext.startActivity(new Intent(mContext, IntroActivity.class));
                     ((Activity) mContext).finish();

@@ -53,7 +53,7 @@ public class StoreSettingsActivity extends AppCompatActivity implements View.OnC
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        startActivity(new Intent(StoreSettingsActivity.this , StoreAccountHomeActivity.class));finish();
+        finish();
 
     }
 
@@ -89,8 +89,8 @@ public class StoreSettingsActivity extends AppCompatActivity implements View.OnC
                 break;
 
             case R.id.btn_storeSettingsBack:
-                LogoutAccepted();
-                startActivity(new Intent(StoreSettingsActivity.this , StoreAccountHomeActivity.class));finish();
+//                LogoutAccepted();
+                finish();
                 break;
 
             case R.id.btn_logout:
