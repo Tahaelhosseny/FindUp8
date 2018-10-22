@@ -115,28 +115,6 @@ public class StoreContactActivity extends AppCompatActivity {
         File logoFile = new File(createStore.getStore_logo());
         File bannerFile = new File(createStore.getStore_banner());
 
-        /*@Multipart
-        @Headers({"Content-Type: application/x-www-form-urlencoded"})
-        @POST(ApiClient.PATH_URL+"stores?tag=create_store_account&HashSecure="+HASH)
-        Call<CreateStoreResponse> createNewStore(
-                @Part("store_name") RequestBody store_name,
-                @Part("store_desc") RequestBody store_desc ,
-                @Part("country_id") RequestBody country_id ,
-                @Part("city_id") RequestBody city_id ,
-                @Part("location_type") RequestBody location_type ,
-                @Part("mobile") RequestBody mobile ,
-                @Part("password") RequestBody password ,
-                @Part("twitter_link") RequestBody twitter_link ,
-                @Part("instegram_link") RequestBody instegram_link ,
-                @Part("facebook_link") RequestBody facebook_link,
-                @Part("cat_id") RequestBody cat_id,
-                @Part MultipartBody.Part store_logo,
-                @Part MultipartBody.Part store_banner,
-                @Part("store_otherlang") RequestBody store_otherlang,
-                @Part("store_tags") RequestBody store_tags,
-                @Part("work_days") RequestBody work_days,
-                @Part("work_fromtime") RequestBody work_fromtime,
-                @Part("work_totime") RequestBody work_totime);*/
 
         MultipartBody.Part store_name = MultipartBody.Part.createFormData("store_name", createStore.getStore_name());
         MultipartBody.Part store_desc = MultipartBody.Part.createFormData("store_desc", createStore.getStore_desc());
@@ -155,63 +133,11 @@ public class StoreContactActivity extends AppCompatActivity {
         MultipartBody.Part work_fromtime = MultipartBody.Part.createFormData("work_fromtime", "1:00");
         MultipartBody.Part work_totime = MultipartBody.Part.createFormData("work_totime", "10:00");
 
-        /*RequestBody name = RequestBody.create(
-                MediaType.parse("text/plain"),
-                createStore.getStore_name());
-        RequestBody desc = RequestBody.create(
-                MediaType.parse("text/plain"),
-                createStore.getStore_desc());
-        RequestBody country_id = RequestBody.create(
-                MediaType.parse("text/plain"),
-                "1");
-        RequestBody city_id = RequestBody.create(
-                MediaType.parse("text/plain"),
-                "1");
-        RequestBody loc_type = RequestBody.create(
-                MediaType.parse("text/plain"),
-                createStore.getStore_location_type());
-        RequestBody mobile = RequestBody.create(
-                MediaType.parse("text/plain"),
-                createStore.getStore_mobile());
-        RequestBody pass = RequestBody.create(
-                MediaType.parse("text/plain"),
-                "pass");
-        RequestBody twit = RequestBody.create(
-                MediaType.parse("text/plain"),
-                createStore.getStore_twitter_link());
-        RequestBody insta = RequestBody.create(
-                MediaType.parse("text/plain"),
-                createStore.getStore_instegram_link());
-        RequestBody face = RequestBody.create(
-                MediaType.parse("text/plain"),
-                createStore.getStore_facebook_link());
-        RequestBody catId = RequestBody.create(
-                MediaType.parse("text/plain"),
-                createStore.getStore_cat_id());
-        RequestBody lang = RequestBody.create(
-                MediaType.parse("text/plain"),
-                createStore.getStore_otherlang());
-        RequestBody tags = RequestBody.create(
-                MediaType.parse("text/plain"),
-                createStore.getStore_tags());
-        RequestBody days = RequestBody.create(
-                MediaType.parse("text/plain"),
-                createStore.getWorkDays());
-        RequestBody timeFrom = RequestBody.create(
-                MediaType.parse("text/plain"),
-                "1:00 ");
-        RequestBody timeTo = RequestBody.create(
-                MediaType.parse("text/plain"),
-                "10:00");*/
-        RequestBody requestlogoFile =
-                RequestBody.create(MediaType.parse("image/png"), logoFile);
-        RequestBody requestbannerFile =
-                RequestBody.create(MediaType.parse("image/png"), bannerFile);
+        RequestBody requestlogoFile = RequestBody.create(MediaType.parse("image/png"), logoFile);
+        RequestBody requestbannerFile = RequestBody.create(MediaType.parse("image/png"), bannerFile);
 
-        MultipartBody.Part bodylogoFile =
-                MultipartBody.Part.createFormData("store_logo", logoFile.getName(), requestlogoFile);
-        MultipartBody.Part bodybannerFile =
-                MultipartBody.Part.createFormData("store_banner", bannerFile.getName(), requestbannerFile);
+        MultipartBody.Part bodylogoFile = MultipartBody.Part.createFormData("store_logo", logoFile.getName(), requestlogoFile);
+        MultipartBody.Part bodybannerFile = MultipartBody.Part.createFormData("store_banner", bannerFile.getName(), requestbannerFile);
 
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
         Call<CreateStoreResponse> newStore =  apiService.createNewStore(

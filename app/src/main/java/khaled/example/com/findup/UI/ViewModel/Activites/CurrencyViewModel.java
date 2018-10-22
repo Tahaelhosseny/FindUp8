@@ -1,26 +1,38 @@
 package khaled.example.com.findup.UI.ViewModel.Activites;
 
 import android.content.Context;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 
+import com.google.android.exoplayer.C;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Observable;
 
 import khaled.example.com.findup.Helper.Remote.ApiClient;
 import khaled.example.com.findup.Helper.Remote.ApiInterface;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.CurrencyResponse;
+import khaled.example.com.findup.UI.adapters.PCommentAdapter;
+import khaled.example.com.findup.UI.adapters.RadioButtonAdapter;
+import khaled.example.com.findup.models.Currency;
+import khaled.example.com.findup.models.PCommentModel;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class CurrencyViewModel extends Observable {
     private Context mContext;
+    private List<Currency> currencyList = new ArrayList<>();
     public CurrencyViewModel(Context mContext){
         this.mContext = mContext;
     }
 
-    public void setCurrency(int currency_id , String account_id){
+    public void setCurrency(int currency_id , int store_id){
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-        Call<CurrencyResponse> setUserCurrency = apiService.setUserCurrency(currency_id , account_id);
+        Call<CurrencyResponse> setUserCurrency = apiService.setUserCurrency(currency_id , store_id);
         setUserCurrency.enqueue(new Callback<CurrencyResponse>() {
             @Override
             public void onResponse(Call<CurrencyResponse> call, Response<CurrencyResponse> response) {
@@ -37,14 +49,22 @@ public class CurrencyViewModel extends Observable {
             }
         });
     }
-    public void getAllCurrency(){
+    public void getAllCurrency(RecyclerView recyclerView){
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
         Call<CurrencyResponse> getAllCurrency = apiService.getAllCurrency();
         getAllCurrency.enqueue(new Callback<CurrencyResponse>() {
             @Override
             public void onResponse(Call<CurrencyResponse> call, Response<CurrencyResponse> response) {
                 if(response.body().getSuccess() == 1){
+                    List<Currency> currency = new ArrayList<>();
+                    for (int i = 0 ; i < response.body().getUser_data().size() ; i ++){
+                        currency.add(response.body().getUser_data().get(i));
+                    }
+                    if(currency.size() < 1){
 
+                    }else{
+                        InitRecyclerView(recyclerView , currency);
+                    }
                 }else{
 
                 }
@@ -55,5 +75,13 @@ public class CurrencyViewModel extends Observable {
 
             }
         });
+    }
+    public void InitRecyclerView(RecyclerView recyclerView , List<Currency> currency){
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        RadioButtonAdapter adapter = new RadioButtonAdapter(mContext, currency);
+        recyclerView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+        recyclerView.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false));
+        recyclerView.smoothScrollToPosition(0);
     }
 }

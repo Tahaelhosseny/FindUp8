@@ -1,61 +1,121 @@
 package khaled.example.com.findup.UI.activities;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.databinding.DataBindingUtil;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.os.Build;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.squareup.picasso.Picasso;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 
+import javax.sql.PooledConnection;
+
+import khaled.example.com.findup.Helper.SharedPrefManger;
 import khaled.example.com.findup.R;
 import khaled.example.com.findup.UI.Presenter.Activities.CreateEventPresenter;
 import khaled.example.com.findup.UI.ViewModel.Activites.CreateEventViewModel;
 import khaled.example.com.findup.databinding.ActivityCreateEventBinding;
+import khaled.example.com.findup.models.Event;
 
 public class CreateEventActivity extends AppCompatActivity {
-
-    private TextView start_result_txt , end_result_txt , day_start_txt , day_end_txt;
+    private static final int PICK_BANNER = 1;
+    Event eventToCreate;
+    Uri selectedBanner;
+    private TextView start_result_txt , end_result_txt , day_start_txt ;
+    private EditText editText_days;
     static final int DIALOG_ID = 0;
     int hour_text , minute_text;
     int status = 0;
+    final int appVersion = Build.VERSION.SDK_INT;
     int date_status = 0;
     DatePickerDialog datePickerDialog;
     Calendar calendar;
     ActivityCreateEventBinding activityCreateEventBinding;
     CreateEventViewModel createEventViewModel;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         createEventViewModel = new CreateEventViewModel(this);
         activityCreateEventBinding= DataBindingUtil.setContentView(this,R.layout.activity_create_event);
+        if (appVersion > Build.VERSION_CODES.LOLLIPOP_MR1) {
+            if (!checkIfAlreadyhavePermission()) {
+                ActivityCompat.requestPermissions(CreateEventActivity.this, new String[]{android.Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
+            }
+        }
+        eventToCreate = new Event();
+        editText_days = findViewById(R.id.edit_days);
         start_result_txt = findViewById(R.id.start_at_txt_time);
         end_result_txt = findViewById(R.id.end_at_txt_time);
         day_start_txt = findViewById(R.id.txt_day_work_start);
-        day_end_txt = findViewById(R.id.txt_day_work_end);
         Button btn_submit = findViewById(R.id.btn_submit);
         Button btn_createEventBack=findViewById(R.id.btn_createEventBack);
         activityCreateEventBinding.setCreateStoreEvents(createEventViewModel);
+        activityCreateEventBinding.picBanner.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                pickImg(PICK_BANNER);
+            }
+        });
         activityCreateEventBinding.setPresenter(new CreateEventPresenter() {
             @Override
             public void addNewStoreEvent() {
-                Toast.makeText(CreateEventActivity.this, "To View Model Method that add this event", Toast.LENGTH_SHORT).show();
-//                createEventViewModel.addNewEvent();
+                if(eventToCreate.getEvent_photo() == null){
+                    Toast.makeText(CreateEventActivity.this, "Choose Event Photo", Toast.LENGTH_SHORT).show();
+                }else if(TextUtils.isEmpty(activityCreateEventBinding.editTextEventName.getText())){
+                    Toast.makeText(CreateEventActivity.this, "Specify Event Name", Toast.LENGTH_SHORT).show();
+                } else if(TextUtils.isEmpty(activityCreateEventBinding.editTextOtherLanguage.getText())){
+                    Toast.makeText(CreateEventActivity.this, "Specify Event Language", Toast.LENGTH_SHORT).show();
+                }else if(TextUtils.isEmpty(activityCreateEventBinding.editTextDescription.getText())){
+                    Toast.makeText(CreateEventActivity.this, "Specify Event Description", Toast.LENGTH_SHORT).show();
+                }else if(activityCreateEventBinding.startAtTxtTime.getText().equals("00") || activityCreateEventBinding.endAtTxtTime.getText().equals("00")){
+                    Toast.makeText(CreateEventActivity.this, "Specify Event Start Time And End Time", Toast.LENGTH_SHORT).show();
+                }else if(activityCreateEventBinding.txtDayWorkStart.getText().equals("Start Date")){
+                    Toast.makeText(CreateEventActivity.this, "Specify Event Date", Toast.LENGTH_SHORT).show();
+                }else if(TextUtils.isEmpty(editText_days.getText().toString())){
+                    Toast.makeText(CreateEventActivity.this, "Specify Days", Toast.LENGTH_SHORT).show();
+                }else {
+                    return;
+                }
+                eventToCreate.setEvent_name(String.valueOf(activityCreateEventBinding.txtEventName.getText()));
+                eventToCreate.setEvent_address("Address");
+                eventToCreate.setStore_id(String.valueOf(SharedPrefManger.getStore_ID()));
+                eventToCreate.setEvent_latitude("30.0");eventToCreate.setEvent_longitude("30.0");
+                eventToCreate.setEvent_desc(String.valueOf(activityCreateEventBinding.editTextDescription.getText()));
+                eventToCreate.setLanguage(String.valueOf(activityCreateEventBinding.txtOtherLanguage.getText()));
+                eventToCreate.setEvent_start_date(String.valueOf(activityCreateEventBinding.startAtTxtTime.getText()));
+                eventToCreate.setEvent_days(editText_days.getText().toString());
+                eventToCreate.setEvent_time(String.valueOf(activityCreateEventBinding.startAtTxtTime.getText())+String.valueOf(activityCreateEventBinding.endAtTxtTime.getText()));
+                createEventViewModel.addNewEvent(eventToCreate);
             }
         });
         start_result_txt.setOnClickListener(new View.OnClickListener() {
@@ -80,13 +140,7 @@ public class CreateEventActivity extends AppCompatActivity {
 
             }
         });
-        day_end_txt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                date_status = 2;
-                pickDate();
-            }
-        });
+
         btn_createEventBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -103,19 +157,54 @@ public class CreateEventActivity extends AppCompatActivity {
         int year = calendar.get(Calendar.YEAR);
         datePickerDialog = new DatePickerDialog(CreateEventActivity.this, new DatePickerDialog.OnDateSetListener() {
             @Override
-            public void onDateSet(DatePicker datePicker, int mYear, int mMonth, int mDay) {
-                SimpleDateFormat simpledateformat = new SimpleDateFormat("EEEE");
-                Date date = new Date(mYear, mMonth, mDay-1);
-                String dayOfWeek = simpledateformat.format(date);
-                if(date_status == 1){
-                    day_start_txt.setText(dayOfWeek);
-                }else{
-                    day_end_txt.setText(dayOfWeek);
-                }
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                day = day;
+                year = year;
+                month = month+1;
+                day_start_txt.setText("Start Date");
+                day_start_txt.setText(day + "-" + month + "-" + year);
             }
         },day , month , year
         );
         datePickerDialog.show();
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode == Activity.RESULT_OK && data != null){
+            switch(requestCode) {
+                case (PICK_BANNER) : {
+                    selectedBanner = data.getData();
+                    assert selectedBanner != null;
+                    InputStream is = null;
+                    try {
+                        is = getContentResolver().openInputStream(selectedBanner);
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                    Bitmap bitmap = BitmapFactory.decodeStream(is);
+                    try {
+                        is.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    activityCreateEventBinding.picBanner.setImageBitmap(bitmap);
+//                    Picasso.with(CreateEventActivity.this).load(String.valueOf(bitmap)).into(activityCreateEventBinding.picBanner);
+                    eventToCreate.setEvent_photo(selectedBanner.getPath());
+                    break;
+                }
+            }
+        }
+    }
+
+    private void pickImg(int pickerTag){
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent, "Select Picture"), pickerTag);
+    }
+    private boolean checkIfAlreadyhavePermission() {
+        int result = ContextCompat.checkSelfPermission(this, android.Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        return result == PackageManager.PERMISSION_GRANTED;
     }
     @Override
     public void onBackPressed() {
@@ -123,7 +212,6 @@ public class CreateEventActivity extends AppCompatActivity {
         startActivity(new Intent(CreateEventActivity.this , StoreEventsActivity.class));
         finish();
     }
-
     private void  showTimeDialog(){
         showDialog(DIALOG_ID);
         }

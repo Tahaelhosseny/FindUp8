@@ -94,39 +94,33 @@ public interface ApiInterface {
     Call<StoreAddressResponse> getStoreAddress(@Query("store_id") int store_id);
     //----------------------------------------------- Post Methods -------------------------------------------------
 
-    
+
     @POST(ApiClient.PATH_URL+"reg_login?tag=signup&HashSecure="+HASH)
     @FormUrlEncoded
     Call<RegisterResponse> registerNewUser(@Field("user_type") String user_type , @Field("name") String user_name
-                , @Field("password") String password , @Field("mobile") String user_mob , @Field("logged_type") String logged_type
-                , @Field("email") String user_mail);
+            , @Field("password") String password , @Field("mobile") String user_mob , @Field("logged_type") String logged_type
+            , @Field("email") String user_mail);
 
 
     @POST(ApiClient.PATH_URL+"user_actions?tag=add_store_comment&HashSecure="+HASH)
     @FormUrlEncoded
     Call<AddCommentStoreResponse> addNewStoreComment(@Field("account_id") int account_id , @Field("store_id") int store_id
-     , @Field("comment") String comment);
+            , @Field("comment") String comment);
 
 
     //Create New Event
-    @POST(ApiClient.PATH_URL+"stores?tag=create_event&HashSecure="+HASH)
-    @FormUrlEncoded
-    Call<CreateStoreEventResponse> addNewStoreEvent(@Field("event_name") String event_name , @Field("event_start_date") String event_start_date
-            , @Field("event_days") String event_days , @Field("event_time") String event_time
-            , @Field("event_description") String event_description , @Field("event_address") String event_address
-            , @Field("store_id") int store_id , @Field("event_longitude") double event_longitude
-            , @Field("event_latitude") double event_latitude , @Field("event_photo") String event_photo);
+
 
 
     @POST(ApiClient.PATH_URL+"reg_login?tag=edit_profile&HashSecure="+HASH)
     @FormUrlEncoded
     Call<EditProfileResponse> editProfileData(@Field("account_id") int account_id , @Field("username") String username
-     ,@Field("old_password") String old_password , @Field("new_password") String new_password , @Field("mobile") String mobile );
+            ,@Field("old_password") String old_password , @Field("new_password") String new_password , @Field("mobile") String mobile );
 
 
     @POST(ApiClient.PATH_URL+"user_profile?tag=set_user_currency&HashSecure="+HASH)
     @FormUrlEncoded
-    Call<CurrencyResponse> setUserCurrency(@Field("currency_id") int currency_id , @Field("account_id") String account_id);
+    Call<CurrencyResponse> setUserCurrency(@Field("currency_id") int currency_id , @Query("store_id") int store_id);
 
 
     @POST(ApiClient.PATH_URL+"user_profile?tag=set_user_distance&account_id=&HashSecure="+HASH)
@@ -180,6 +174,20 @@ public interface ApiInterface {
             @Part MultipartBody.Part work_days,
             @Part MultipartBody.Part work_fromtime,
             @Part MultipartBody.Part work_totime);
+
+    @POST(ApiClient.PATH_URL+"stores?tag=create_event&HashSecure="+HASH)
+    @Multipart
+    Call<CreateStoreEventResponse> addNewStoreEvent(
+            @Part MultipartBody.Part event_name ,
+            @Part MultipartBody.Part event_start_date,
+            @Part MultipartBody.Part event_days ,
+            @Part MultipartBody.Part event_time,
+            @Part MultipartBody.Part event_description ,
+            @Part MultipartBody.Part event_address,
+            @Part MultipartBody.Part store_id ,
+            @Part MultipartBody.Part event_longitude,
+            @Part MultipartBody.Part event_latitude ,
+            @Part MultipartBody.Part event_photo);
 
     @POST(ApiClient.PATH_URL+"reg_login?tag=delete_account&HashSecure="+HASH)
     @FormUrlEncoded

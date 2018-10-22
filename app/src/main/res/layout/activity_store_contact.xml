@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.StoreContactActivity">
+    tools:context="UI.activities.StoreContactActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar_contact"
@@ -293,8 +293,8 @@
                 android:theme="@style/MyEditText"
                 app:layout_constraintTop_toBottomOf="@+id/txt_mobile"
                 app:met_mask="| #### ## ## ###"
-                tools:layout_editor_absoluteX="8dp" />
-
+                tools:layout_editor_absoluteX="8dp"
+                tools:ignore="MissingConstraints" />
         </android.support.constraint.ConstraintLayout>
 
     </ScrollView>

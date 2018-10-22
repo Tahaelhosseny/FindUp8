@@ -13,6 +13,15 @@ public class Currency {
     @SerializedName("user_currency")
     @Expose
     private int user_currency;
+    boolean isSelected;
+
+    public boolean isSelected() {
+        return isSelected;
+    }
+
+    public void setSelected(boolean selected) {
+        isSelected = selected;
+    }
 
     public int getCurrency_id() {
         return currency_id;

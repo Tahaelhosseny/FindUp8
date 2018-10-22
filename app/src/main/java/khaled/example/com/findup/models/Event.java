@@ -29,6 +29,15 @@ public class Event {
     private String publish_flag;
     private String block_flag;
     private String if_saved;
+    private String language;
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
+    }
 
     public String getEvent_id() {
         return event_id;

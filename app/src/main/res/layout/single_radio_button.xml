@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RadioButton android:id="@+id/radio_adapter"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="end"
+    android:layout_margin="@dimen/_10sdp"
+    android:button="@null"
+    android:drawableEnd="@drawable/radio_button_selector"
+    android:fontFamily="@font/sfcompactdisplay_medium"
+    android:gravity="start"
+    android:text="@string/united_states_dollar"
+    android:textColor="@color/material_color_black_87_percent"
+    android:textSize="22sp"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/searchCurrency"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" />

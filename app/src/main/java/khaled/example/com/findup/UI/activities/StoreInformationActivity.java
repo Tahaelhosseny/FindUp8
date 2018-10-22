@@ -100,13 +100,6 @@ public class StoreInformationActivity extends AppCompatActivity {
                 finish();
             }
         });
-
-
-
-       /* final BottomSheetDialog mBottomSheetDialog = new BottomSheetDialog(this);
-        View sheetView = getLayoutInflater().inflate(R.layout.week_days_bottom_sheet, null);
-        mBottomSheetDialog.setContentView(sheetView);
-*/
         LinearLayout add_days = findViewById(R.id.add_days);
 
 

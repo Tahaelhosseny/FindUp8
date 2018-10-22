@@ -38,6 +38,7 @@ public class CurrencyActivity extends AppCompatActivity {
                 finish();
             }
         });
+        currencyViewModel.getAllCurrency(activityCurrencyBinding.currencyAllAdapter);
     }
 
     @Override
