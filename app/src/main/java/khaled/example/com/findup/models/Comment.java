@@ -11,6 +11,7 @@ import com.google.gson.annotations.SerializedName;
 public class Comment {
     @PrimaryKey
     private int comment_id;
+
     @NonNull
     private String account_name;
     @NonNull
@@ -27,9 +28,19 @@ public class Comment {
     private String account_image;
     @NonNull
     private String block_flag;
+    @NonNull
+    private int product_id;
 
 
     public Comment() {
+    }
+
+    public int getProduct_id() {
+        return product_id;
+    }
+
+    public void setProduct_id(int product_id) {
+        this.product_id = product_id;
     }
 
     public Comment(String account_name, long date, String comment, String account_image) {

@@ -52,23 +52,20 @@ public class ProductPhotosAdapter extends RecyclerView.Adapter<ProductPhotosAdap
 
     @Override
     public void onBindViewHolder(@NonNull ProductPhotosAdapter.ViewHolder holder, int position) {
-        String photo = CONST.API_FILE_DOMAIN + "" + CONST.IMAGES_PATH + "" + photos.get(position).getPhoto_name();
-        if (!TextUtils.isEmpty(photo)){
-            Picasso.with(context)
-                    .load(photo)
-                    .into(holder.photo);
-        }
+//        String photo = CONST.API_FILE_DOMAIN + "" + CONST.IMAGES_PATH + "" + photos.get(position).getPhoto_name();
+        ProductPhoto productPhoto = photos.get(position);
+        //
 
-        if (!photo.isEmpty()) {
+
+        if (!productPhoto.getPhoto_name().isEmpty()) {
             Transformation transformation = new RoundedTransformationBuilder()
                     .cornerRadiusDp(20)
                     .oval(false)
                     .build();
-
-            Picasso.with(context).load(photo).transform(transformation).placeholder(R.drawable.com_facebook_profile_picture_blank_square).into(holder.photo);
+            Picasso.with(context).load(productPhoto.getPhoto_name()).transform(transformation).placeholder(R.drawable.com_facebook_profile_picture_blank_square).into(holder.photo);
         }
-        Log.i("photo_url", photo);
-
+        Log.i("photo_url", productPhoto.getPhoto_name());
+        Log.i("Array Size " , ""+photos.size());
         holder.photo_container.setMinimumWidth(getScreenWidth() / 4);
 
 

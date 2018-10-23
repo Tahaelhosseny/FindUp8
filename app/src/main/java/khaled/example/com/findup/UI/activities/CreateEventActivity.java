@@ -13,11 +13,14 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
+import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Base64;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -30,6 +33,7 @@ import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
+import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -104,18 +108,13 @@ public class CreateEventActivity extends AppCompatActivity {
                 }else if(TextUtils.isEmpty(editText_days.getText().toString())){
                     Toast.makeText(CreateEventActivity.this, "Specify Days", Toast.LENGTH_SHORT).show();
                 }else {
-                    return;
                 }
-                eventToCreate.setEvent_name(String.valueOf(activityCreateEventBinding.txtEventName.getText()));
-                eventToCreate.setEvent_address("Address");
-                eventToCreate.setStore_id(String.valueOf(SharedPrefManger.getStore_ID()));
-                eventToCreate.setEvent_latitude("30.0");eventToCreate.setEvent_longitude("30.0");
-                eventToCreate.setEvent_desc(String.valueOf(activityCreateEventBinding.editTextDescription.getText()));
-                eventToCreate.setLanguage(String.valueOf(activityCreateEventBinding.txtOtherLanguage.getText()));
-                eventToCreate.setEvent_start_date(String.valueOf(activityCreateEventBinding.startAtTxtTime.getText()));
-                eventToCreate.setEvent_days(editText_days.getText().toString());
-                eventToCreate.setEvent_time(String.valueOf(activityCreateEventBinding.startAtTxtTime.getText())+String.valueOf(activityCreateEventBinding.endAtTxtTime.getText()));
-                createEventViewModel.addNewEvent(eventToCreate);
+                createEventViewModel.addNewEvent(String.valueOf(activityCreateEventBinding.editTextEventName.getText()) ,
+                        String.valueOf(activityCreateEventBinding.txtDayWorkStart.getText()) ,
+                        editText_days.getText().toString() ,
+                        (String.valueOf(activityCreateEventBinding.startAtTxtTime.getText())+String.valueOf( activityCreateEventBinding.endAtTxtTime.getText())),
+                        String.valueOf(activityCreateEventBinding.editTextDescription.getText()),
+                        "Address" , SharedPrefManger.getStore_ID() , 31.0 , 31.0 , eventToCreate.getEvent_photo());
             }
         });
         start_result_txt.setOnClickListener(new View.OnClickListener() {
@@ -170,32 +169,37 @@ public class CreateEventActivity extends AppCompatActivity {
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (resultCode == Activity.RESULT_OK && data != null){
+        if (resultCode == Activity.RESULT_OK && data != null && data.getData() != null){
             switch(requestCode) {
                 case (PICK_BANNER) : {
                     selectedBanner = data.getData();
-                    assert selectedBanner != null;
-                    InputStream is = null;
+                    Bitmap selectedImageBitmap = null;
                     try {
-                        is = getContentResolver().openInputStream(selectedBanner);
-                    } catch (FileNotFoundException e) {
-                        e.printStackTrace();
-                    }
-                    Bitmap bitmap = BitmapFactory.decodeStream(is);
-                    try {
-                        is.close();
+                        selectedImageBitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), selectedBanner);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                    activityCreateEventBinding.picBanner.setImageBitmap(bitmap);
-//                    Picasso.with(CreateEventActivity.this).load(String.valueOf(bitmap)).into(activityCreateEventBinding.picBanner);
-                    eventToCreate.setEvent_photo(selectedBanner.getPath());
+                    activityCreateEventBinding.picBanner.setImageBitmap(selectedImageBitmap);
+                    ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+                    selectedImageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
+                    byte[] byteArrayImage = byteArrayOutputStream.toByteArray();
+                    String encodedImage = Base64.encodeToString(byteArrayImage, Base64.DEFAULT);
+                    Log.e("Image" , encodedImage);
+                    eventToCreate.setEvent_photo(encodedImage);
                     break;
                 }
             }
         }
     }
 
+
+//    public static String encodeImage(Bitmap thumbnail) {
+//        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+//        thumbnail.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+//        byte[] b = baos.toByteArray();
+//        String imageEncoded = Base64.encodeToString(b,Base64.URL_SAFE);
+//        return imageEncoded;
+//    }
     private void pickImg(int pickerTag){
         Intent intent = new Intent();
         intent.setType("image/*");

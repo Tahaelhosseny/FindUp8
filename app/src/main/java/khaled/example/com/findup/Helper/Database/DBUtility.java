@@ -19,8 +19,10 @@ public class DBUtility {
             DBHandler.InsertStore(store, mContext);
             InsertComments(store.getStore_comments(), mContext);
             InsertProducts(store.getStore_products(), mContext);
-            for (Product product : store.getStore_products())
+            for (Product product : store.getStore_products()) {
                 InsertProductPhotos(product.getProductPhotos(), mContext);
+                InsertComments(product.getProduct_comments() , mContext);
+            }
             InsertStorePhotos(store.getStore_images(), mContext);
             sum++;
         }
@@ -28,6 +30,15 @@ public class DBUtility {
     }
 
     public static long InsertComments(List<Comment> commentList, Context mContext) {
+        int sum = 0;
+        for (Comment comment : commentList) {
+            DBHandler.InsertComment(comment, mContext);
+            sum++;
+        }
+        return (sum == commentList.size()) ? 1 : 0;
+    }
+
+    public static long InsertProductComments(List<Comment> commentList, Context mContext) {
         int sum = 0;
         for (Comment comment : commentList) {
             DBHandler.InsertComment(comment, mContext);
@@ -65,19 +76,12 @@ public class DBUtility {
 
     public static long InsertProductPhotos(List<ProductPhoto> productPhotos, Context mContext) {
         int sum = 0;
-        DBHandler.InsertProductPhoto(productPhotos, mContext);
+        for (ProductPhoto productPhoto : productPhotos){
+            DBHandler.ProductPhotos(productPhoto, mContext);
+            sum++;
+        }
         return (sum == productPhotos.size()) ? 1 : 0;
     }
-//
-//        public static long InsertProductComment(List<PCommentModel> pCommentModels, Context mContext) {
-//        int sum = 0;
-//        for (PCommentModel pCommentModel : pCommentModels) {
-//            DBHandler.InsertProductCommens(pCommentModel, mContext);
-//            sum++;
-//        }
-//        return (sum == pCommentModels.size()) ? 1 : 0;
-//    }
-
     public static long InsertStorePhotos(List<StorePhoto> storePhotos, Context mContext) {
         int sum = 0;
         for (StorePhoto storePhoto : storePhotos) {

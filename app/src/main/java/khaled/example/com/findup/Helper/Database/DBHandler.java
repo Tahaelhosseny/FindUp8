@@ -153,6 +153,7 @@ public class DBHandler {
         }).start();
     }
 
+
     public static void getAllComments(final Context context, final Comments comment) {
         new Thread(new Runnable() {
             @Override
@@ -289,12 +290,12 @@ public class DBHandler {
         }).start();
     }
 
-//    public static void InsertProductCommens(final PCommentModel pCommentModel, final Context context) {
-//        new Thread(new Runnable() {
-//            @Override
-//            public void run() {
-//                FindUpDatabase.getAppDatabase(context).daoAccess().insertProductComments(pCommentModel);
-//            }
-//        }).start();
-//    }
+    public static void ProductPhotos(final ProductPhoto productPhoto, final Context context) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+               FindUpDatabase.getAppDatabase(context).daoAccess().insertProductPhoto(productPhoto);
+            }
+        }).start();
+    }
 }

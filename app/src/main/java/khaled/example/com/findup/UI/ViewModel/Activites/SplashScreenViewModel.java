@@ -44,7 +44,7 @@ public class SplashScreenViewModel  extends Observable {
                        loaded.onNext(++defult_load[0]);
                 }
                 else
-                    Toast.makeText(mContext,"App have an error",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(mContext,"App have an error Store "+response.body().getError_msg(),Toast.LENGTH_SHORT).show();
                 Log.e("url",call.request().url().toString());
             }
 
@@ -69,7 +69,7 @@ public class SplashScreenViewModel  extends Observable {
                     if (DBUtility.InsertCategories(response.body().getCategories(), mContext) > 0)
                         loaded.onNext(++defult_load[0]);
                 } else
-                    Toast.makeText(mContext, "App have an error", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(mContext, "App have an error Event "+response.body().getError_msg(), Toast.LENGTH_SHORT).show();
             }
 
             @Override

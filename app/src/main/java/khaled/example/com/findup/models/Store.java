@@ -30,15 +30,12 @@ public class Store {
     @ColumnInfo(name = "store_otherlang")
     private String store_otherlang;
 //    @NonNull
-
     public String getStore_otherlang() {
         return store_otherlang;
     }
-
     public void setStore_otherlang(String store_otherlang) {
         this.store_otherlang = store_otherlang;
     }
-
     @ColumnInfo(name = "store_banner")
     private String store_banner;
 //    @NonNull

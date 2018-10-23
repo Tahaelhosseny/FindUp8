@@ -107,7 +107,7 @@ public class ProfileStoreFragment extends Fragment {
                                                                     if(store.getStore_rating() == null){
                                                                         rating.setText("0.0");
                                                                     }else{
-                                                                        rating.setText(store.getStore_desc());
+                                                                        rating.setText(store.getStore_rating());
                                                                     }
                                                                     name.setText(store.getStore_name());
                                                                     Picasso.with(getActivity()).load(store.getStore_banner()).into(banner);

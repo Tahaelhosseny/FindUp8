@@ -176,18 +176,19 @@ public interface ApiInterface {
             @Part MultipartBody.Part work_totime);
 
     @POST(ApiClient.PATH_URL+"stores?tag=create_event&HashSecure="+HASH)
-    @Multipart
+    @FormUrlEncoded
     Call<CreateStoreEventResponse> addNewStoreEvent(
-            @Part MultipartBody.Part event_name ,
-            @Part MultipartBody.Part event_start_date,
-            @Part MultipartBody.Part event_days ,
-            @Part MultipartBody.Part event_time,
-            @Part MultipartBody.Part event_description ,
-            @Part MultipartBody.Part event_address,
-            @Part MultipartBody.Part store_id ,
-            @Part MultipartBody.Part event_longitude,
-            @Part MultipartBody.Part event_latitude ,
-            @Part MultipartBody.Part event_photo);
+            @Field("event_name") String event_name,
+            @Field("event_start_date") String event_start_date,
+            @Field("event_days") String event_days,
+            @Field("event_time") String event_time,
+            @Field("event_description") String event_description,
+            @Field("event_address") String event_address,
+            @Field("store_id") int store_id,
+            @Field("event_longitude") double event_longitude,
+            @Field("event_latitude") double event_latitude,
+            @Field("event_photo_base64") String event_photo_base64
+    );
 
     @POST(ApiClient.PATH_URL+"reg_login?tag=delete_account&HashSecure="+HASH)
     @FormUrlEncoded
