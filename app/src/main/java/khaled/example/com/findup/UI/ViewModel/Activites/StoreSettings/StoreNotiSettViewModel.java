@@ -30,6 +30,7 @@ public class StoreNotiSettViewModel extends Observable {
     }
     public void ChangeNotificationSettings(CheckBox checkBox_pushNotifications, CheckBox checkBox_chatsNotifications
             , CheckBox checkBox_likeNotifications, CheckBox checkBox_commentNotifications){
+        Toast.makeText(mContext, "Change noti Setting", Toast.LENGTH_SHORT).show();
         SharedPrefManger sharedPrefManger = new SharedPrefManger(mContext);
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
         Call<NotificationFlagResponse> call = apiService.setStoreNotificationFlag(((checkBox_pushNotifications.isChecked())?1:0),((checkBox_chatsNotifications.isChecked())?1:0)
@@ -39,9 +40,9 @@ public class StoreNotiSettViewModel extends Observable {
             public void onResponse(Call<NotificationFlagResponse> call, Response<NotificationFlagResponse> response) {
                 if(response.body().getSuccess() == 1){
                     int noti = (checkBox_pushNotifications.isChecked())?1:0;
-                    SharedPrefManger.setPushNotiFlag(noti);
+                    SharedPrefManger.setPushNotiFlagStore(noti);
                     int chat = (checkBox_chatsNotifications.isChecked())?1:0;
-                    SharedPrefManger.setChatNotiFlag(chat);
+                    SharedPrefManger.setChatNotiFlagStore(chat);
                     int like = (checkBox_likeNotifications.isChecked())?1:0;
                     SharedPrefManger.setLikesStoreNoti(like);
                     int comment = (checkBox_commentNotifications.isChecked())?1:0;
@@ -53,7 +54,12 @@ public class StoreNotiSettViewModel extends Observable {
             @Override
             public void onFailure(Call<NotificationFlagResponse> call, Throwable t) {
                 Log.e("url",call.request().url().toString());
-                Log.e("Passed",sharedPrefManger.getUser_ID()+" - "+((checkBox_pushNotifications.isChecked())?1:0)+" - "+((checkBox_pushNotifications.isChecked())?1:0));
+                Toast.makeText(mContext, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
+                Log.e("Passed",sharedPrefManger.getUser_ID()+" - "+
+                        ((checkBox_pushNotifications.isChecked())?1:0)+" - "+
+                        ((checkBox_pushNotifications.isChecked())?1:0)+" - " +
+                        ((checkBox_likeNotifications.isChecked())?1:0)+" - "+
+                        ((checkBox_commentNotifications.isChecked())?1:0));
             }
         });
     }

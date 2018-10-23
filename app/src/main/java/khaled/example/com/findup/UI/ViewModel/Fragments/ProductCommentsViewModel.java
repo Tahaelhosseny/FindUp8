@@ -85,7 +85,6 @@ public class ProductCommentsViewModel extends Observable {
                     ((Activity)mContext).runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-//                            Toast.makeText(mContext, ""+val.get(0).getProduct_id(), Toast.LENGTH_SHORT).show();
                             adapter.setComments(val);
                             adapter.notifyDataSetChanged();
                         }

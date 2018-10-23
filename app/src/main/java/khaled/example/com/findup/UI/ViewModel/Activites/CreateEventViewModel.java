@@ -54,7 +54,7 @@ public class CreateEventViewModel extends Observable {
             @Override
             public void onFailure(Call<CreateStoreEventResponse> call, Throwable t) {
                 alertDialog.dismiss();
-                Toast.makeText(mContext, "Error Failler : "+t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext, "Error Fail : "+t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }

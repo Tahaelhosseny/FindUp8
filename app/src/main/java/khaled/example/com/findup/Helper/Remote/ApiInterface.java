@@ -228,13 +228,13 @@ public interface ApiInterface {
             @Field("new_password") String new_password
     );
 
-    @POST(ApiClient.PATH_URL+"stores?tag=edit_store_profile&HashSecure="+HASH)
+    @POST(ApiClient.PATH_URL+"stores?tag=set_store_noti_setting&HashSecure="+HASH)
     @FormUrlEncoded
     Call<NotificationFlagResponse> setStoreNotificationFlag(
             @Field("push_noti_flag") int push,
             @Field("chat_noti_flag") int chat,
             @Field("like_noti_flag") int like,
             @Field("comment_noti_flag") int comment,
-            @Field("store_id") int store_id
+            @Query("store_id") int store_id
     );
 }
