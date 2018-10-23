@@ -17,18 +17,19 @@ import java.util.List;
 
 import khaled.example.com.findup.Helper.Utility;
 import khaled.example.com.findup.R;
+import khaled.example.com.findup.models.Comment;
 import khaled.example.com.findup.models.PCommentModel;
 
 public class PCommentAdapter extends RecyclerView.Adapter<PCommentAdapter.ViewHolder> {
     private Context mContext;
-    private List<PCommentModel> commentList;
+    private List<Comment> commentList;
 
-    public PCommentAdapter(Context mContext, List<PCommentModel> commentList) {
+    public PCommentAdapter(Context mContext, List<Comment> commentList) {
         this.mContext = mContext;
         this.commentList = commentList;
     }
 
-    public void setComments(List<PCommentModel> comment) {
+    public void setComments(List<Comment> comment) {
         this.commentList = comment;
         notifyDataSetChanged();
     }
@@ -43,7 +44,7 @@ public class PCommentAdapter extends RecyclerView.Adapter<PCommentAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        PCommentModel comment = commentList.get(position);
+        Comment comment = commentList.get(position);
         holder.username.setText(comment.getAccount_name());
         holder.date.setText(Utility.getDate(comment.getDate()));
         holder.comment_txt.setText(comment.getComment());

@@ -250,7 +250,8 @@ public class StoreInfoViewModel extends Observable {
                                    chatImg.setOnClickListener(v -> Utility.OpenChatWithStore(mContext, store.getStore_id()));
                                    twitterImg.setOnClickListener(v -> Utility.OpenTwitterAccount(mContext, store.getStore_twitter_link()));
                                                                     //snapImg.setOnClickListener( v -> Utility.OpenSnapChatAccount(mContext,store.gets));
-                                   show_comments.setOnClickListener(v -> mContext.startActivity(new Intent(mContext, CommentsActivity.class).putExtra("store_id",store.getStore_id())));
+                                   show_comments.setOnClickListener(v ->
+                                           mContext.startActivity(new Intent(mContext, CommentsActivity.class).putExtra("store_id",store.getStore_id())));
                                    }
                                  }
                         );

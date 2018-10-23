@@ -85,6 +85,9 @@ public interface DaoAccess {
     @Query("SELECT * FROM Comment WHERE store_id = :store_id")
     Flowable<List<Comment>> getCommentsByStoreID(int store_id);
 
+    @Query("SELECT * FROM Comment WHERE product_id = :product_id")
+    Flowable<List<Comment>> getCommentsByProductID(int product_id);
+
     @Query("SELECT * FROM Comment")
     Flowable<List<Comment>> getAllComments();
 

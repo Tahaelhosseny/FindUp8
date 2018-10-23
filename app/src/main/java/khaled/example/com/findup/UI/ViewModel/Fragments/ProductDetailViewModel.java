@@ -49,7 +49,8 @@ public class ProductDetailViewModel extends Observable {
     }
 
     public void bindProductData(ImageView product_banner, TextView product_name,TextView product_price,TextView productStoreTxt,TextView product_like_count, TextView aboutProduct
-                                ,RecyclerView productPhotosRecycler,TextView commentUsersTxt,TextView commentUsersNumTxt){
+                                ,RecyclerView productPhotosRecycler,TextView commentUsersTxt,TextView commentUsersNumTxt
+     , ImageView pComments){
         DBHandler.getProductByID(product_id, mContext, new Products() {
             @Override
             public void onSuccess(Flowable<List<Product>> listFlowable) {
@@ -63,6 +64,7 @@ public class ProductDetailViewModel extends Observable {
                         @Override
                         public void run() {
                             //TODO Start binding data from variable @v
+
                             bindPhotos(productPhotosRecycler);
                             commentUsersNumTxt.setText(""+v.getProduct_comments_count());
                             product_price.setText(""+v.getProduct_price());
@@ -71,6 +73,8 @@ public class ProductDetailViewModel extends Observable {
                             Picasso.with(mContext).load(v.getProduct_banner()).into(product_banner);
                             aboutProduct.setText(v.getProduct_name());
                             product_name.setText(v.getProduct_name());
+                            pComments.setOnClickListener(v ->
+                                    mContext.startActivity(new Intent(mContext, CommentsActivity.class).putExtra("product_id",product_id)));
                         }
                     });
                     });
@@ -81,6 +85,10 @@ public class ProductDetailViewModel extends Observable {
 
             }
         });
+
+    }
+    public void showProductComments(int id){
+        Intent intent = new Intent(mContext , CommentsActivity.class).putExtra("product_id" , id);
 
     }
     public void bindPhotos(RecyclerView recyclerView) {

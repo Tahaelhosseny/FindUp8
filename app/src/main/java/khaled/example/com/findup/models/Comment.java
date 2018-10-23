@@ -10,8 +10,9 @@ import com.google.gson.annotations.SerializedName;
 @Entity
 public class Comment {
     @PrimaryKey
+    private int i_comment_id;
+    @NonNull
     private int comment_id;
-
     @NonNull
     private String account_name;
     @NonNull
@@ -28,7 +29,7 @@ public class Comment {
     private String account_image;
     @NonNull
     private String block_flag;
-    @NonNull
+    @NonNull@SerializedName("product_id")@Expose
     private int product_id;
 
 
@@ -64,6 +65,14 @@ public class Comment {
 
     public void setAccount_name(String account_name) {
         this.account_name = account_name;
+    }
+
+    public int getI_comment_id() {
+        return i_comment_id;
+    }
+
+    public void setI_comment_id(int i_comment_id) {
+        this.i_comment_id = i_comment_id;
     }
 
     public int getAcc_id() {

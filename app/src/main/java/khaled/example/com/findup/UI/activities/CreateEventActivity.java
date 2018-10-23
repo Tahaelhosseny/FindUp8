@@ -180,26 +180,19 @@ public class CreateEventActivity extends AppCompatActivity {
                         e.printStackTrace();
                     }
                     activityCreateEventBinding.picBanner.setImageBitmap(selectedImageBitmap);
-                    ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-                    selectedImageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
-                    byte[] byteArrayImage = byteArrayOutputStream.toByteArray();
-                    String encodedImage = Base64.encodeToString(byteArrayImage, Base64.DEFAULT);
-                    Log.e("Image" , encodedImage);
+                    ByteArrayOutputStream baos=new  ByteArrayOutputStream();
+                    selectedImageBitmap.compress(Bitmap.CompressFormat.PNG,100, baos);
+                    byte [] b=baos.toByteArray();
+                    String encodedImage=Base64.encodeToString(b, Base64.DEFAULT);
+                    Log.i("Image" , encodedImage);
+                    encodedImage = encodedImage.replace("\\s+","");
+                    encodedImage = encodedImage.replace("\n" , "").replace("\r" , "");
                     eventToCreate.setEvent_photo(encodedImage);
                     break;
                 }
             }
         }
     }
-
-
-//    public static String encodeImage(Bitmap thumbnail) {
-//        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-//        thumbnail.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-//        byte[] b = baos.toByteArray();
-//        String imageEncoded = Base64.encodeToString(b,Base64.URL_SAFE);
-//        return imageEncoded;
-//    }
     private void pickImg(int pickerTag){
         Intent intent = new Intent();
         intent.setType("image/*");

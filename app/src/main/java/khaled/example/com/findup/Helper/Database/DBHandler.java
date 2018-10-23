@@ -174,6 +174,16 @@ public class DBHandler {
         }).start();
     }
 
+    public static void getCommentByProductID(int product_id , final Context context, final khaled.example.com.findup.Helper.Database.Interfaces.Comment.Comment comment) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Flowable<List<Comment>> listFlowable = FindUpDatabase.getAppDatabase(context).daoAccess().getCommentsByProductID(product_id);
+                comment.onSuccess(listFlowable);
+            }
+        }).start();
+    }
+
 
     /*******************************************************************************
      *                                  Products

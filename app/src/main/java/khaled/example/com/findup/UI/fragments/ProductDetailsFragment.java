@@ -60,41 +60,9 @@ public class ProductDetailsFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         productDetailViewModel.bindProductData(binding.productBanner,binding.productName,binding.productPrice,binding.productStoreTxt,binding.productLikeCount,binding.aboutProduct,
-                binding.productPhotosRecycler,binding.commentUsersTxt,binding.commentUsersNumTxt);
+                binding.productPhotosRecycler,binding.commentUsersTxt,binding.commentUsersNumTxt,
+            binding.showProductComment);
 
-    }
-    private void bindPhotos(List<String> photos) {
-        RecyclerView recyclerView = getActivity().findViewById(R.id.productPhotosRecycler);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        /*
-        StorePhotosAdapter adapter = new StorePhotosAdapter(getActivity(), photos);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false)
-        {
-            @Override
-            public boolean canScrollVertically() {
-                return false;
-            }
-
-            @Override
-            public boolean canScrollHorizontally() {
-                return false;
-            }
-        });
-        recyclerView.smoothScrollToPosition(0);
-        recyclerView.addOnItemTouchListener(new RecyclerTouchListener(getActivity()
-                , recyclerView, new RecyclerTouchListener.ClickListener() {
-            @Override
-            public void onClick(View view, int position) {
-                startActivity(new Intent(getActivity(), PhotosGalleryActivity.class));
-            }
-
-            @Override
-            public void onLongClick(View view, int position) {
-
-            }
-        }));
-*/
     }
     private void bindCommentsPhotos() {
         List<Comment> commentList = new ArrayList<>();

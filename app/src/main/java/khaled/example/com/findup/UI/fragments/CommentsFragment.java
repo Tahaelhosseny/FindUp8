@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import khaled.example.com.findup.R;
 import khaled.example.com.findup.UI.ViewModel.Fragments.ProductCommentsViewModel;
@@ -35,12 +36,25 @@ public class CommentsFragment extends Fragment {
         RecyclerView recyclerView = getActivity().findViewById(R.id.comments_recyclerview);
 
         Intent i = getActivity().getIntent();
-        int store_id = 1;
-        if (i.hasExtra("store_id"))
-            store_id = i.getIntExtra("store_id",1);
-
-
-        productCommentsViewModel.InitRecyclerView(commentLayoutBinding.commentsRecyclerview,store_id);
+        int store_id = 0;
+        int product_id = 0;
+        if (i.hasExtra("store_id")) {
+            store_id = i.getIntExtra("store_id", 0);
+        }
+        else if(i.hasExtra("product_id")){
+            product_id = i.getIntExtra("product_id" , 0);
+        }else{
+            Toast.makeText(getActivity(), "Something went error", Toast.LENGTH_SHORT).show();
+        }
+        if(store_id == 0){
+            productCommentsViewModel.InitRecyclerView(commentLayoutBinding.commentsRecyclerview,product_id , 2);
+            Toast.makeText(getActivity(), "Product ID : "+ product_id, Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "P Store ID : "+store_id, Toast.LENGTH_SHORT).show();
+        }else{
+            productCommentsViewModel.InitRecyclerView(commentLayoutBinding.commentsRecyclerview,store_id , 1);
+            Toast.makeText(getActivity(), "Store ID : "+ store_id, Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "S Product ID : "+product_id, Toast.LENGTH_SHORT).show();
+        }
         Button write_comment = getActivity().findViewById(R.id.write_comment_btn);
         write_comment.setOnClickListener(new View.OnClickListener() {
             @Override

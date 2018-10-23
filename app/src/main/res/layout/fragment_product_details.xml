@@ -239,6 +239,7 @@
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/forward_0_5x"
             app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/show_product_comment"
             app:layout_constraintHorizontal_bias="0.887"
             app:layout_constraintStart_toEndOf="@id/commentUsersNumTxt"
             app:layout_constraintTop_toTopOf="@+id/commentUsersNumTxt" />
