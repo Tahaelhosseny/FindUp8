@@ -217,8 +217,18 @@ public class DBHandler {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                for (int i = 0;i<commentList.size();i++)
+                for (int i = 0; i < commentList.size();i++)
                     FindUpDatabase.getAppDatabase(context).daoAccess().insertComment(commentList.get(i));
+            }
+        }).start();
+    }
+
+    public static void InsertProductsComments(final List<ProductComment> commentList, final Context context) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                for (int i = 0;i<commentList.size();i++)
+                    FindUpDatabase.getAppDatabase(context).daoAccess().insertProductComment(commentList.get(i));
             }
         }).start();
     }

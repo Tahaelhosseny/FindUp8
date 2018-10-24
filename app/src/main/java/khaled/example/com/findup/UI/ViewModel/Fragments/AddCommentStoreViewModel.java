@@ -10,7 +10,9 @@ import java.util.Observable;
 import khaled.example.com.findup.Helper.Database.DBHandler;
 import khaled.example.com.findup.Helper.Remote.ApiClient;
 import khaled.example.com.findup.Helper.Remote.ApiInterface;
+import khaled.example.com.findup.Helper.Remote.ResponseModel.AddCommentProductResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.AddCommentStoreResponse;
+import khaled.example.com.findup.Helper.SharedPrefManger;
 import khaled.example.com.findup.Helper.UI_Utility;
 import khaled.example.com.findup.UI.activities.CommentsActivity;
 import khaled.example.com.findup.models.Comment;
@@ -33,7 +35,7 @@ public class AddCommentStoreViewModel extends Observable {
             @Override
             public void onResponse(Call<AddCommentStoreResponse> call, Response<AddCommentStoreResponse> response) {
                 alertDialog.dismiss();
-                if (response.body().getError() == 0) {
+                if (response.body().getSuccess() == 1) {
                     Toast.makeText(mContext, "Comment Added To Store Successfully", Toast.LENGTH_SHORT).show();
                     DBHandler.InsertComments(response.body().getData(),mContext);
                     mContext.startActivity(new Intent(mContext, CommentsActivity.class).putExtra("store_id",store_id));
@@ -50,6 +52,32 @@ public class AddCommentStoreViewModel extends Observable {
             }
         });
 
+    }
+
+    public void addCommentToProduct(String comment , int product_id){
+        final AlertDialog alertDialog = UI_Utility.ShowProgressDialog(mContext, true);
+        alertDialog.show();
+        ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
+        Call<AddCommentProductResponse> addCommentProduct = apiInterface.addNewProductComment(SharedPrefManger.getUser_ID() , product_id , comment);
+        addCommentProduct.enqueue(new Callback<AddCommentProductResponse>() {
+            @Override
+            public void onResponse(Call<AddCommentProductResponse> call, Response<AddCommentProductResponse> response) {
+                alertDialog.dismiss();
+                if(response.body().getSuccess() == 1){
+                    Toast.makeText(mContext, "Comment Added To Product Successfully", Toast.LENGTH_SHORT).show();
+                    DBHandler.InsertProductsComments(response.body().getData() , mContext);
+                    mContext.startActivity(new Intent(mContext , CommentsActivity.class).putExtra("product_id" , product_id));
+                }else{
+                    Toast.makeText(mContext, ""+response.body().getError_msg(), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<AddCommentProductResponse> call, Throwable t) {
+                alertDialog.dismiss();
+                Toast.makeText(mContext, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
 }

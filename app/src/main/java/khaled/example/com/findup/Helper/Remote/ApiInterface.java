@@ -11,6 +11,7 @@ import com.mopub.common.util.Json;
 import java.io.File;
 
 import khaled.example.com.findup.CONST;
+import khaled.example.com.findup.Helper.Remote.ResponseModel.AddCommentProductResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.AddCommentStoreResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.AskCodeResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.CreateProductResponse;
@@ -109,6 +110,10 @@ public interface ApiInterface {
             , @Field("comment") String comment);
 
 
+    @POST(ApiClient.PATH_URL+"user_actions?tag=add_product_comment&HashSecure="+HASH)
+    @FormUrlEncoded
+    Call<AddCommentProductResponse> addNewProductComment(@Field("account_id") int account_id , @Field("product_id") int product_id
+            , @Field("comment") String comment);
     //Create New Event
 
 

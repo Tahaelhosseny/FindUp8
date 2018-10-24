@@ -113,12 +113,11 @@ public class ProductComment {
         this.comment_date_timestamp = comment_date_timestamp;
     }
 
-    @NonNull
     public String getBlock_flag() {
-        return block_flag;
+        return "0";
     }
 
-    public void setBlock_flag(@NonNull String block_flag) {
-        this.block_flag = block_flag;
+    public void setBlock_flag( String block_flag) {
+        this.block_flag = "0";
     }
 }

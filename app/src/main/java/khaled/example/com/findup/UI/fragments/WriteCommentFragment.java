@@ -45,8 +45,8 @@ public class WriteCommentFragment extends Fragment {
         write_new_comment_btn = view.findViewById(R.id.write_comment_btn);
         commentText = view.findViewById(R.id.editText);
         Intent i = getActivity().getIntent();
-        int store_id = i.getIntExtra("store_id",1);
-        int account_id = SharedPrefManger.getUser_ID();
+        int store_id = i.getIntExtra("store_id", 0);
+        int product_id =  i.getIntExtra("product_id" , 0);
         Toast.makeText(getActivity(), ""+store_id, Toast.LENGTH_SHORT).show();
         addCommentStoreViewModel = new AddCommentStoreViewModel(view.getContext());
         writeCommentLayoutBinding.setPresenter(new AddCommentStorePresenter() {
@@ -56,7 +56,13 @@ public class WriteCommentFragment extends Fragment {
                 if(comment.isEmpty()){
                     Toast.makeText(getActivity(), "Please Enter Comment Field", Toast.LENGTH_SHORT).show();
                 }else{
-                    addCommentStoreViewModel.addCommentToStore(SharedPrefManger.getUser_ID() , commentText.getText().toString() , store_id);
+                    if(product_id == 0){
+                        Toast.makeText(getActivity(), "Here Store", Toast.LENGTH_SHORT).show();
+                        addCommentStoreViewModel.addCommentToStore(SharedPrefManger.getUser_ID() , commentText.getText().toString() , store_id);
+                    }else{
+                        Toast.makeText(getActivity(), "Here Product", Toast.LENGTH_SHORT).show();
+                        addCommentStoreViewModel.addCommentToProduct(commentText.getText().toString() , product_id);
+                    }
                 }
             }
         });
