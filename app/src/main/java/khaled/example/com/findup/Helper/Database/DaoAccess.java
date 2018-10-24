@@ -16,8 +16,8 @@ import khaled.example.com.findup.models.Comment;
 import khaled.example.com.findup.models.Event;
 import khaled.example.com.findup.models.NotificationStore;
 import khaled.example.com.findup.models.NotificationUser;
-import khaled.example.com.findup.models.PCommentModel;
 import khaled.example.com.findup.models.Product;
+import khaled.example.com.findup.models.ProductComment;
 import khaled.example.com.findup.models.ProductPhoto;
 import khaled.example.com.findup.models.Store;
 import khaled.example.com.findup.models.StorePhoto;
@@ -41,6 +41,9 @@ public interface DaoAccess {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertCategories(List<Category> categoryList);
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void insertProductComment(ProductComment commentModel);
 
     @Query("SELECT * FROM Category WHERE show_home_flag = 1")
     Flowable<List<Category>> getCategoryInHome();
@@ -100,8 +103,8 @@ public interface DaoAccess {
     @Query("SELECT * FROM Comment WHERE store_id = :store_id")
     Flowable<List<Comment>> getCommentsByStoreID(int store_id);
 
-    @Query("SELECT * FROM Comment WHERE product_id = :product_id")
-    Flowable<List<Comment>> getCommentsByProductID(int product_id);
+    @Query("SELECT * FROM ProductComment WHERE product_id = :product_id")
+    Flowable<List<ProductComment>> getCommentsByProductID(int product_id);
 
     @Query("SELECT * FROM Comment")
     Flowable<List<Comment>> getAllComments();

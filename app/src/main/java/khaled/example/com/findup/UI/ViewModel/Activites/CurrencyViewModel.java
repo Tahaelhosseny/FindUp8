@@ -6,8 +6,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 
-import com.google.android.exoplayer.C;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
@@ -15,10 +13,8 @@ import java.util.Observable;
 import khaled.example.com.findup.Helper.Remote.ApiClient;
 import khaled.example.com.findup.Helper.Remote.ApiInterface;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.CurrencyResponse;
-import khaled.example.com.findup.UI.adapters.PCommentAdapter;
 import khaled.example.com.findup.UI.adapters.RadioButtonAdapter;
 import khaled.example.com.findup.models.Currency;
-import khaled.example.com.findup.models.PCommentModel;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

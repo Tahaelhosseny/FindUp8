@@ -10,6 +10,7 @@ import khaled.example.com.findup.models.Event;
 import khaled.example.com.findup.models.NotificationStore;
 import khaled.example.com.findup.models.NotificationUser;
 import khaled.example.com.findup.models.Product;
+import khaled.example.com.findup.models.ProductComment;
 import khaled.example.com.findup.models.ProductPhoto;
 import khaled.example.com.findup.models.Store;
 import khaled.example.com.findup.models.StorePhoto;
@@ -24,7 +25,7 @@ public class DBUtility {
             InsertProducts(store.getStore_products(), mContext);
             for (Product product : store.getStore_products()) {
                 InsertProductPhotos(product.getProductPhotos(), mContext);
-                InsertComments(product.getProduct_comments() , mContext);
+                InsertProductComments(product.getProduct_comments() , mContext);
             }
             InsertStorePhotos(store.getStore_images(), mContext);
             sum++;
@@ -62,10 +63,10 @@ public class DBUtility {
         }
         return (sum == commentList.size()) ? 1 : 0;
     }
-    public static long InsertProductComments(List<Comment> commentList, Context mContext) {
+    public static long InsertProductComments(List<ProductComment> commentList, Context mContext) {
         int sum = 0;
-        for (Comment comment : commentList) {
-            DBHandler.InsertComment(comment, mContext);
+        for (ProductComment comment : commentList) {
+            DBHandler.InsertProductComments(comment, mContext);
             sum++;
         }
         return (sum == commentList.size()) ? 1 : 0;

@@ -3,8 +3,6 @@ package khaled.example.com.findup.Helper.Database;
 import android.content.Context;
 import android.util.Log;
 
-import org.intellij.lang.annotations.Flow;
-
 import java.util.List;
 
 import io.reactivex.Flowable;
@@ -13,6 +11,7 @@ import khaled.example.com.findup.Helper.Database.Interfaces.DataBaseOnChangeAppl
 import khaled.example.com.findup.Helper.Database.Interfaces.Events;
 import khaled.example.com.findup.Helper.Database.Interfaces.Notifications.NotificationsStoreI;
 import khaled.example.com.findup.Helper.Database.Interfaces.Notifications.NotificationsUserI;
+import khaled.example.com.findup.Helper.Database.Interfaces.Product.PComment;
 import khaled.example.com.findup.Helper.Database.Interfaces.Product.ProductPhotos;
 import khaled.example.com.findup.Helper.Database.Interfaces.Product.Products;
 import khaled.example.com.findup.Helper.Database.Interfaces.SavedItem.SavedItem;
@@ -23,13 +22,12 @@ import khaled.example.com.findup.models.Comment;
 import khaled.example.com.findup.models.Event;
 import khaled.example.com.findup.models.NotificationStore;
 import khaled.example.com.findup.models.NotificationUser;
-import khaled.example.com.findup.models.PCommentModel;
 import khaled.example.com.findup.models.Product;
+import khaled.example.com.findup.models.ProductComment;
 import khaled.example.com.findup.models.ProductPhoto;
 import khaled.example.com.findup.models.Store;
 import khaled.example.com.findup.models.StorePhoto;
 import khaled.example.com.findup.models.UserSavedItem;
-
 public class DBHandler {
 
     //*****************************Notifications************************************* //
@@ -55,6 +53,24 @@ public class DBHandler {
             @Override
             public void run() {
                 FindUpDatabase.getAppDatabase(context).daoAccess().insertSavedItem(userSavedItem);
+            }
+        }).start();
+    }
+//
+    public static void InsertProductComments(final ProductComment commentModel, final Context context) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                FindUpDatabase.getAppDatabase(context).daoAccess().insertProductComment(commentModel);
+            }
+        }).start();
+    }
+
+    public static void DeleteSavedItem(final UserSavedItem userSavedItem, final Context context) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                FindUpDatabase.getAppDatabase(context).daoAccess().deleteSavedItem(userSavedItem);
             }
         }).start();
     }
@@ -237,11 +253,11 @@ public class DBHandler {
         }).start();
     }
 
-    public static void getCommentByProductID(int product_id , final Context context, final khaled.example.com.findup.Helper.Database.Interfaces.Comment.Comment comment) {
+    public static void getCommentByProductID(int product_id , final Context context, final PComment comment) {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                Flowable<List<Comment>> listFlowable = FindUpDatabase.getAppDatabase(context).daoAccess().getCommentsByProductID(product_id);
+                Flowable<List<ProductComment>> listFlowable = FindUpDatabase.getAppDatabase(context).daoAccess().getCommentsByProductID(product_id);
                 comment.onSuccess(listFlowable);
             }
         }).start();

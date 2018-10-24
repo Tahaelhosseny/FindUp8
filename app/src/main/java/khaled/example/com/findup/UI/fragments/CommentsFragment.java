@@ -46,14 +46,10 @@ public class CommentsFragment extends Fragment {
         }else{
             Toast.makeText(getActivity(), "Something went error", Toast.LENGTH_SHORT).show();
         }
-        if(store_id == 0){
-            productCommentsViewModel.InitRecyclerView(commentLayoutBinding.commentsRecyclerview,product_id , 2);
-            Toast.makeText(getActivity(), "Product ID : "+ product_id, Toast.LENGTH_SHORT).show();
-            Toast.makeText(getActivity(), "P Store ID : "+store_id, Toast.LENGTH_SHORT).show();
-        }else{
+        if(product_id == 0){
             productCommentsViewModel.InitRecyclerView(commentLayoutBinding.commentsRecyclerview,store_id , 1);
-            Toast.makeText(getActivity(), "Store ID : "+ store_id, Toast.LENGTH_SHORT).show();
-            Toast.makeText(getActivity(), "S Product ID : "+product_id, Toast.LENGTH_SHORT).show();
+        }else{
+            productCommentsViewModel.InitRecyclerView(commentLayoutBinding.commentsRecyclerview,product_id , 2);
         }
         Button write_comment = getActivity().findViewById(R.id.write_comment_btn);
         write_comment.setOnClickListener(new View.OnClickListener() {

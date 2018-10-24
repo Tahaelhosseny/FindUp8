@@ -29,7 +29,7 @@ public class Product {
     @NonNull
     private String product_banner;
     @Ignore
-    private List<Comment> product_comments;
+    private List<ProductComment> product_comments;
     @Ignore
     private List<ProductPhoto> product_images;
     public List<ProductPhoto> getProductPhotos() {
@@ -100,10 +100,10 @@ public class Product {
     public void setProduct_rate(float product_rate) {
         this.product_rate = product_rate;
     }
-    public List<Comment> getProduct_comments() {
+    public List<ProductComment> getProduct_comments() {
         return product_comments;
     }
-    public void setProduct_comments(List<Comment> product_comments) {
+    public void setProduct_comments(List<ProductComment> product_comments) {
         this.product_comments = product_comments;
     }
 }

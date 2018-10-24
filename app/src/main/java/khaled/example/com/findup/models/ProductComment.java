@@ -6,20 +6,19 @@ import android.support.annotation.NonNull;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-
 @Entity
-public class PCommentModel {
+public class ProductComment {
     @PrimaryKey
     private int comment_id;
     @NonNull
     private String account_name;
     @NonNull
-    @SerializedName("account_id")
-    @Expose
-    private int acc_id;
+    private int account_id;
     @NonNull
     private int product_id;
+    @NonNull
     private String comment_date;
+    @NonNull
     private long comment_date_timestamp;
     @NonNull
     private String comment;
@@ -30,15 +29,9 @@ public class PCommentModel {
 
 
 
-    public PCommentModel() {
+    public ProductComment() {
     }
 
-    public PCommentModel(String account_name, long date, String comment, String account_image) {
-        this.account_name = account_name;
-        this.comment_date_timestamp = date;
-        this.comment = comment;
-        this.account_image = account_image;
-    }
 
     public int getComment_id() {
         return comment_id;
@@ -56,12 +49,18 @@ public class PCommentModel {
         this.account_name = account_name;
     }
 
-    public int getAcc_id() {
-        return acc_id;
+    public int getAccount_id() {
+        return account_id;
+    }
+    public void setAccount_id( int account_id) {
+        this.account_id = account_id;
+    }
+    public int getProduct_id() {
+        return product_id;
     }
 
-    public void setAcc_id(int acc_id) {
-        this.acc_id = acc_id;
+    public void setProduct_id( int product_id) {
+        this.product_id = product_id;
     }
 
     public int getStore_id() {

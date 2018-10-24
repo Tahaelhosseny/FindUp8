@@ -18,14 +18,17 @@ import io.reactivex.Flowable;
 import khaled.example.com.findup.Helper.Database.DBHandler;
 
 import khaled.example.com.findup.Helper.Database.Interfaces.Comment.Comments;
+import khaled.example.com.findup.Helper.Database.Interfaces.Product.PComment;
 import khaled.example.com.findup.Helper.Utility;
 import khaled.example.com.findup.UI.adapters.CommentsAdapter;
 import khaled.example.com.findup.UI.adapters.PCommentAdapter;
 import khaled.example.com.findup.models.Comment;
+import khaled.example.com.findup.models.ProductComment;
 
 public class ProductCommentsViewModel extends Observable {
     private Context mContext;
     private List<Comment> commentList = new ArrayList<>();
+    private List<ProductComment> prodcutCommentList = new ArrayList<>();
 
     public ProductCommentsViewModel(Context mContext) {
         this.mContext = mContext;
@@ -34,13 +37,16 @@ public class ProductCommentsViewModel extends Observable {
     public void InitRecyclerView(RecyclerView recyclerView , int id , int type){
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         CommentsAdapter adapter = new CommentsAdapter(mContext, commentList);
-        PCommentAdapter adapter1 = new PCommentAdapter(mContext , commentList);
+        PCommentAdapter adapter1 = new PCommentAdapter(mContext , prodcutCommentList);
         if(type ==1){
             LoadCommentsFromDatabase(adapter , id);
+            recyclerView.setAdapter(adapter);
+
         }else{
             LoadProductComments(adapter1 , id);
+            recyclerView.setAdapter(adapter1);
+
         }
-        recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
         recyclerView.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false));
         recyclerView.smoothScrollToPosition(0);
@@ -76,25 +82,28 @@ public class ProductCommentsViewModel extends Observable {
         }
 
     public  void LoadProductComments(PCommentAdapter adapter , int id){
-        Toast.makeText(mContext, "Load Product Method", Toast.LENGTH_SHORT).show();
-        Utility.UpdateCurrentLocation((Activity) mContext, mContext);
-        DBHandler.getCommentByProductID(id, mContext, new khaled.example.com.findup.Helper.Database.Interfaces.Comment.Comment() {
+//        Toast.makeText(mContext, "Load Product Method", Toast.LENGTH_SHORT).show();
+        DBHandler.getCommentByProductID(id, mContext, new PComment() {
             @Override
-            public void onSuccess(Flowable<List<Comment>> commentFlowable) {
-                commentFlowable.subscribe(val ->{
-                    ((Activity)mContext).runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            adapter.setComments(val);
-                            adapter.notifyDataSetChanged();
-                        }
-                    });
-                });
+            public void onSuccess(Flowable<List<ProductComment>> commentFlowable) {
+                commentFlowable.subscribe(
+                        val -> {
+                            ((Activity) mContext).runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    adapter.setComments(val);
+                                    adapter.notifyDataSetChanged();
+                                    Log.e("Size" , String.valueOf(val.size()));
+                                }
+                            });
+                        },
+                        err -> Log.i("database err", "return data database error : " + err.getMessage())
+                );
             }
 
             @Override
             public void onFail() {
-
+                Toast.makeText(mContext, "Failed To Load Data", Toast.LENGTH_SHORT).show();
             }
         });
     }
