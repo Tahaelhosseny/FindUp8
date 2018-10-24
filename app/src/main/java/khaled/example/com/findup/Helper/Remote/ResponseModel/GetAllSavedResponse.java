@@ -5,10 +5,10 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-import khaled.example.com.findup.models.Distance;
-import khaled.example.com.findup.models.NotificationUser;
+import khaled.example.com.findup.models.SaveModel;
+import khaled.example.com.findup.models.UserSavedItem;
 
-public class NotificationResponse {
+public class GetAllSavedResponse {
     @SerializedName("tag")
     @Expose
     private String tag;
@@ -23,7 +23,7 @@ public class NotificationResponse {
     private String error_msg;
     @SerializedName("data")
     @Expose
-    private List<NotificationUser> data;
+    private List<UserSavedItem> data;
 
     public String getError_msg() {
         return error_msg;
@@ -57,11 +57,11 @@ public class NotificationResponse {
         this.error = error;
     }
 
-    public List<NotificationUser> getUser_data() {
+    public List<UserSavedItem> getUser_data() {
         return data;
     }
 
-    public void setUser_data(List<NotificationUser> user_data) {
+    public void setUser_data(List<UserSavedItem> user_data) {
         this.data = user_data;
     }
 }

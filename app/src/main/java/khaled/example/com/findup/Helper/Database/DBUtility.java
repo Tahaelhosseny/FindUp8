@@ -7,10 +7,13 @@ import java.util.List;
 import khaled.example.com.findup.models.Category;
 import khaled.example.com.findup.models.Comment;
 import khaled.example.com.findup.models.Event;
+import khaled.example.com.findup.models.NotificationStore;
+import khaled.example.com.findup.models.NotificationUser;
 import khaled.example.com.findup.models.Product;
 import khaled.example.com.findup.models.ProductPhoto;
 import khaled.example.com.findup.models.Store;
 import khaled.example.com.findup.models.StorePhoto;
+import khaled.example.com.findup.models.UserSavedItem;
 
 public class DBUtility {
     public static long InsertStores(List<Store> storeList, Context mContext) {
@@ -28,7 +31,29 @@ public class DBUtility {
         }
         return (sum == storeList.size()) ? 1 : 0;
     }
-
+    public static long InsertUserNotification(List<NotificationUser> notification, Context mContext){
+        int sum = 0 ;
+        for(NotificationUser notificationUser : notification){
+            DBHandler.InsertUserNotifications(notificationUser , mContext);
+            sum++;
+        }
+        return (sum == notification.size()) ? 1 : 0;
+    }
+    public static long InsertStoreNotification(List<NotificationStore> notification, Context mContext){
+        int sum = 0 ;
+        for(NotificationStore notificationStore : notification){
+            DBHandler.InsertStoreNotifications(notificationStore , mContext);
+            sum++;
+        }
+        return (sum == notification.size()) ? 1 : 0;
+    }
+    public static long InsertAllSavedUserItem(List<UserSavedItem> items , Context mContext){
+        int sum = 0;
+        for (UserSavedItem userSavedItem : items){
+            DBHandler.InsertSavedItem(userSavedItem , mContext);
+        }
+        return (sum == items.size()) ? 1 : 0;
+    }
     public static long InsertComments(List<Comment> commentList, Context mContext) {
         int sum = 0;
         for (Comment comment : commentList) {
@@ -37,7 +62,6 @@ public class DBUtility {
         }
         return (sum == commentList.size()) ? 1 : 0;
     }
-
     public static long InsertProductComments(List<Comment> commentList, Context mContext) {
         int sum = 0;
         for (Comment comment : commentList) {
@@ -46,7 +70,6 @@ public class DBUtility {
         }
         return (sum == commentList.size()) ? 1 : 0;
     }
-
     public static long InsertEvents(List<Event> eventList, Context mContext) {
         int sum = 0;
         for (Event event : eventList) {
@@ -55,7 +78,6 @@ public class DBUtility {
         }
         return (sum == eventList.size()) ? 1 : 0;
     }
-
     public static long InsertCategories(List<Category> categoryList, Context mContext) {
         int sum = 0;
         for (Category category : categoryList) {
@@ -64,7 +86,6 @@ public class DBUtility {
         }
         return (sum == categoryList.size()) ? 1 : 0;
     }
-
     public static long InsertProducts(List<Product> productList, Context mContext) {
         int sum = 0;
         for (Product product : productList) {
@@ -73,7 +94,6 @@ public class DBUtility {
         }
         return (sum == productList.size()) ? 1 : 0;
     }
-
     public static long InsertProductPhotos(List<ProductPhoto> productPhotos, Context mContext) {
         int sum = 0;
         for (ProductPhoto productPhoto : productPhotos){

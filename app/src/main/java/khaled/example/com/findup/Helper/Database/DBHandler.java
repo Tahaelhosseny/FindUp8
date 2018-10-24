@@ -11,20 +11,83 @@ import io.reactivex.Flowable;
 import khaled.example.com.findup.Helper.Database.Interfaces.Comment.Comments;
 import khaled.example.com.findup.Helper.Database.Interfaces.DataBaseOnChangeApplied;
 import khaled.example.com.findup.Helper.Database.Interfaces.Events;
+import khaled.example.com.findup.Helper.Database.Interfaces.Notifications.NotificationsStoreI;
+import khaled.example.com.findup.Helper.Database.Interfaces.Notifications.NotificationsUserI;
 import khaled.example.com.findup.Helper.Database.Interfaces.Product.ProductPhotos;
 import khaled.example.com.findup.Helper.Database.Interfaces.Product.Products;
+import khaled.example.com.findup.Helper.Database.Interfaces.SavedItem.SavedItem;
 import khaled.example.com.findup.Helper.Database.Interfaces.Store.StorePhotos;
 import khaled.example.com.findup.Helper.Database.Interfaces.Store.Stores;
 import khaled.example.com.findup.models.Category;
 import khaled.example.com.findup.models.Comment;
 import khaled.example.com.findup.models.Event;
+import khaled.example.com.findup.models.NotificationStore;
+import khaled.example.com.findup.models.NotificationUser;
 import khaled.example.com.findup.models.PCommentModel;
 import khaled.example.com.findup.models.Product;
 import khaled.example.com.findup.models.ProductPhoto;
 import khaled.example.com.findup.models.Store;
 import khaled.example.com.findup.models.StorePhoto;
+import khaled.example.com.findup.models.UserSavedItem;
 
 public class DBHandler {
+
+    //*****************************Notifications************************************* //
+    public static void InsertUserNotifications(final NotificationUser notificationUser, final Context context) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                FindUpDatabase.getAppDatabase(context).daoAccess().insertUserNotification(notificationUser);
+            }
+        }).start();
+    }
+    public static void InsertStoreNotifications(final NotificationStore notificationStore, final Context context) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                FindUpDatabase.getAppDatabase(context).daoAccess().insertStoreNotification(notificationStore);
+            }
+        }).start();
+    }
+
+    public static void InsertSavedItem(final UserSavedItem userSavedItem, final Context context) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                FindUpDatabase.getAppDatabase(context).daoAccess().insertSavedItem(userSavedItem);
+            }
+        }).start();
+    }
+
+    public static void getAllSavedItem(final Context context, final SavedItem savedItem) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Flowable<List<UserSavedItem>> listFlowable = FindUpDatabase.getAppDatabase(context).daoAccess().getAllSaved();
+                savedItem.onSuccess(listFlowable);
+            }
+        }).start();
+    }
+
+    public static void getAllUserNotification(final Context context, final NotificationsUserI notificationsUserI) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Flowable<List<NotificationUser>> listFlowable = FindUpDatabase.getAppDatabase(context).daoAccess().getAllUserNotification();
+                notificationsUserI.onSuccess(listFlowable);
+            }
+        }).start();
+    }
+
+    public static void getAllStoreNotification(final Context context, final NotificationsStoreI notificationsStoreI) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Flowable<List<NotificationStore>> listFlowable = FindUpDatabase.getAppDatabase(context).daoAccess().getAllStoreNotification();
+                notificationsStoreI.onSuccess(listFlowable);
+            }
+        }).start();
+    }
     // ***************************************************************** //
     // **************************  Categories ************************** //
     // ***************************************************************** //

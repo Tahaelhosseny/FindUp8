@@ -17,6 +17,7 @@ import khaled.example.com.findup.Helper.Remote.ResponseModel.CreateStoreResponse
 import khaled.example.com.findup.Helper.Remote.ResponseModel.CurrencyResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.EditProfileResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.EventResponse;
+import khaled.example.com.findup.Helper.Remote.ResponseModel.GetAllSavedResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.LoginResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.MeasureDistanceResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.NotificationFlagResponse;
@@ -28,6 +29,7 @@ import khaled.example.com.findup.Helper.Remote.ResponseModel.SaveModelResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.StoreAddressResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.StoreEditResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.StoreNotificationResponse;
+import khaled.example.com.findup.Helper.Remote.ResponseModel.StoreSettingsGetResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.StoresResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.UserSettingsResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.VerifyCodeResponse;
@@ -71,7 +73,7 @@ public interface ApiInterface {
     Call<NotificationResponse> getUserNotification(@Query("account_id") String account_id);
 
     @GET(ApiClient.PATH_URL+"user_profile?tag=get_user_saved&HashSecure="+HASH)
-    Call<SaveModelResponse> getUserSaved(@Query("account_id") int account_id);
+    Call<GetAllSavedResponse> getUserSaved(@Query("account_id") int account_id);
 
 
     @GET(ApiClient.PATH_URL+"reg_login?tag=verify_code&HashSecure="+ HASH)
@@ -85,7 +87,7 @@ public interface ApiInterface {
     Call<UserSettingsResponse> getUserSetting(@Query("account_id") int account_id);
 
     @GET(ApiClient.PATH_URL+"stores?tag=get_store_setting&HashSecure="+HASH)
-    Call<UserSettingsResponse> getStoreSetting(@Query("store_id") int store_id);
+    Call<StoreSettingsGetResponse> getStoreSetting(@Query("store_id") int store_id);
 
     @GET(ApiClient.PATH_URL+"stores?tag=get_store_notifications&HashSecure="+HASH)
     Call<StoreNotificationResponse> getStoreNotification(@Query("store_id") int store_id);

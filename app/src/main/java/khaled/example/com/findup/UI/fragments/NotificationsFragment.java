@@ -29,7 +29,6 @@ import khaled.example.com.findup.UI.adapters.NotificationsAdapter;
 import khaled.example.com.findup.UI.adapters.RecyclerTouchListener;
 import khaled.example.com.findup.databinding.FragmentNotificationsBinding;
 import khaled.example.com.findup.models.Event;
-import khaled.example.com.findup.models.Notification;
 
 /**
  * Created by khaled on 8/1/18.
@@ -60,14 +59,8 @@ public class NotificationsFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        userNotificatonViewModel.getUserNotification(fragmentNotificationsBinding.notificationsRecyclerView, "1");
+        userNotificatonViewModel.InitRecycler(fragmentNotificationsBinding.notificationsRecyclerView);
 
-        fragmentNotificationsBinding.setPresenter(new UserNotificationPresenter() {
-            @Override
-            public void LoadUserNotification() {
-                userNotificatonViewModel.getUserNotification(fragmentNotificationsBinding.notificationsRecyclerView, "1");
-            }
-        });
 
 
     }

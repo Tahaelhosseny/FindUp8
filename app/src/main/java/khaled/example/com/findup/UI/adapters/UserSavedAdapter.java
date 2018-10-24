@@ -17,20 +17,27 @@ import com.squareup.picasso.Transformation;
 import java.util.List;
 
 import khaled.example.com.findup.R;
+import khaled.example.com.findup.models.Category;
 import khaled.example.com.findup.models.Product;
 import khaled.example.com.findup.models.SaveModel;
+import khaled.example.com.findup.models.UserSavedItem;
 
 /**
  * Created by khaled on 8/1/18.
  */
 
 public class UserSavedAdapter extends RecyclerView.Adapter<UserSavedAdapter.ViewHolder>{
-    private List<SaveModel> userSavedItems;
+    private List<UserSavedItem> userSavedItems;
     private Context context;
 
-    public UserSavedAdapter(Context context, List<SaveModel> userSavedItems) {
+    public UserSavedAdapter(Context context, List<UserSavedItem> userSavedItems) {
         this.context = context;
         this.userSavedItems = userSavedItems;
+    }
+
+    public void setSavedList(List<UserSavedItem> userSavedItems) {
+        this.userSavedItems = userSavedItems;
+        notifyDataSetChanged();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -45,16 +52,11 @@ public class UserSavedAdapter extends RecyclerView.Adapter<UserSavedAdapter.View
             userSavedDesc = view.findViewById(R.id.userSavedItemDesc);
             userSavedName = view.findViewById(R.id.userSavedItemName);
             view.setOnClickListener(this);
-
         }
-
         @Override
         public void onClick(View v) {
-
-
         }
     }
-
     @NonNull
     @Override
     public UserSavedAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -65,12 +67,16 @@ public class UserSavedAdapter extends RecyclerView.Adapter<UserSavedAdapter.View
 
     @Override
     public void onBindViewHolder(@NonNull UserSavedAdapter.ViewHolder holder, int position) {
-        SaveModel saveModel = userSavedItems.get(position);
-        /*UserSavedItem userSavedItem = userSavedItems.get(position);
-        holder.userSavedName.setText(userSavedItem.getItemName());
-        holder.userSavedDesc.setText(userSavedItem.getItemDesc());
-        if (!userSavedItem.getItemImg().isEmpty())
-            Picasso.with(context).load(userSavedItem.getItemImg()).placeholder(R.drawable.placeholder).into(holder.userSavedImage);*/
+        holder.userSavedName.setText(userSavedItems.get(position).getItemName());
+        holder.userSavedDesc.setText(userSavedItems.get(position).getItemDesc());
+        if (!userSavedItems.get(position).getItemImg().isEmpty()) {
+//            Picasso.with(context).load(userSavedItems.get(position).getItemImg()).placeholder(R.drawable.placeholder).into(holder.userSavedImage);
+                Transformation transformation = new RoundedTransformationBuilder()
+                        .cornerRadiusDp(80)
+                        .oval(false)
+                        .build();
+                Picasso.with(holder.userSavedImage.getContext()).load(userSavedItems.get(position).getItemImg()).transform(transformation).placeholder(R.drawable.near_by_place_holder).into(holder.userSavedImage);
+        }
 /*
         holder.userSavedName.setText(saveModel.getSaved_name());
         holder.userSavedDesc.setText(saveModel.getSaved_description());
@@ -83,8 +89,8 @@ public class UserSavedAdapter extends RecyclerView.Adapter<UserSavedAdapter.View
             Picasso.with(holder.userSavedImage.getContext()).load(saveModel.getSaved_photo()).transform(transformation).placeholder(R.drawable.near_by_place_holder).into(holder.userSavedImage);
 //            Picasso.with(holder.userSavedImage.getContext()).load(saveModel.getSaved_photo()).into(holder.userSavedImage);
 
-        }
-  */  }
+        }*/
+    }
     @Override
     public int getItemCount() {
         return userSavedItems.size();

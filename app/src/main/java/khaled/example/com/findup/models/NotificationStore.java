@@ -1,34 +1,45 @@
 package khaled.example.com.findup.models;
 
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-
-/**
- * Created by khaled on 8/1/18.
- */
-
-public class Notification {
+@Entity
+public class NotificationStore {
     @SerializedName("noti_id")
     @Expose
+    @PrimaryKey @NonNull
     private int notificationId;
     @SerializedName("noti_title")
-    @Expose
+    @Expose @NonNull
     private String notificationType;
     @SerializedName("noti_desc")
-    @Expose
+    @Expose @NonNull
     private String notificationDate;
     @SerializedName("noti_date")
-    @Expose
+    @Expose @NonNull
     private String notificationDesc;
     @SerializedName("noti_image")
-    @Expose
+    @Expose @NonNull
     private String notificationImg;
     @SerializedName("noti_type")
-    @Expose
+    @Expose @NonNull
     private String notificationTitle;
     @SerializedName("read_flag")
-    @Expose
+    @Expose @NonNull
     private int read_flag;
+    @SerializedName("store_id")@Expose @NonNull
+    private int store_id;
+
+    public int getStore_id() {
+        return store_id;
+    }
+
+    public void setStore_id(int store_id) {
+        this.store_id = store_id;
+    }
 
     public int getNotificationId() {
         return notificationId;

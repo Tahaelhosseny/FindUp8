@@ -14,11 +14,14 @@ import io.reactivex.Flowable;
 import khaled.example.com.findup.models.Category;
 import khaled.example.com.findup.models.Comment;
 import khaled.example.com.findup.models.Event;
+import khaled.example.com.findup.models.NotificationStore;
+import khaled.example.com.findup.models.NotificationUser;
 import khaled.example.com.findup.models.PCommentModel;
 import khaled.example.com.findup.models.Product;
 import khaled.example.com.findup.models.ProductPhoto;
 import khaled.example.com.findup.models.Store;
 import khaled.example.com.findup.models.StorePhoto;
+import khaled.example.com.findup.models.UserSavedItem;
 
 @Dao
 public interface DaoAccess {
@@ -26,6 +29,15 @@ public interface DaoAccess {
     //Categories table
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertCategory(Category category);
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void insertUserNotification(NotificationUser notificationUser);
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void insertStoreNotification(NotificationStore notificationStore);
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void insertSavedItem(UserSavedItem userSavedItem);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertCategories(List<Category> categoryList);
@@ -60,18 +72,21 @@ public interface DaoAccess {
 
     @Query("SELECT * FROM store")
     Flowable<List<Store>> getAllStores();
-
-
     @Query("UPDATE store set if_saved =:if_saved WHERE store_id = :store_id")
     void SaveStoreOperation(int store_id,int if_saved);
-
     @Update
     void UpdateStore(Store store);
-
     @Delete
     void DeleteStore(Store store);
+    @Query("SELECT * FROM UserSavedItem")
+    Flowable<List<UserSavedItem>> getAllSaved();
+    @Delete
+    void deleteSavedItem(UserSavedItem userSavedItem);
+    @Query("SELECT * FROM NotificationUser")
+    Flowable<List<NotificationUser>> getAllUserNotification();
 
-
+    @Query("SELECT * FROM NotificationStore")
+    Flowable<List<NotificationStore>> getAllStoreNotification();
     //Comments table
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertComment(Comment comment);

@@ -5,7 +5,8 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-import khaled.example.com.findup.models.Notification;
+import khaled.example.com.findup.models.NotificationStore;
+import khaled.example.com.findup.models.NotificationUser;
 import khaled.example.com.findup.models.StoreSetting;
 
 public class StoreNotificationResponse {
@@ -23,7 +24,7 @@ public class StoreNotificationResponse {
     private String error_msg;
     @SerializedName("data")
     @Expose
-    private List<Notification> data;
+    private List<NotificationStore> data;
 
     public String getTag() {
         return tag;
@@ -57,11 +58,11 @@ public class StoreNotificationResponse {
         this.error_msg = error_msg;
     }
 
-    public List<Notification> getData() {
+    public List<NotificationStore> getData() {
         return data;
     }
 
-    public void setData(List<Notification> data) {
+    public void setData(List<NotificationStore> data) {
         this.data = data;
     }
 }

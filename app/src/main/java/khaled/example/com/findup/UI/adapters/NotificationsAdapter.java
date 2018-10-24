@@ -10,25 +10,42 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.makeramen.roundedimageview.RoundedTransformationBuilder;
 import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Transformation;
 
 import java.util.List;
 
+import khaled.example.com.findup.Helper.SharedPrefManger;
 import khaled.example.com.findup.R;
 import khaled.example.com.findup.UI.activities.NotificationsActivity;
-import khaled.example.com.findup.models.Notification;
+import khaled.example.com.findup.models.NotificationStore;
+import khaled.example.com.findup.models.NotificationUser;
+import khaled.example.com.findup.models.UserSavedItem;
 
 /**
  * Created by khaled on 8/1/18.
  */
 
 public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdapter.ViewHolder> {
-    private List<Notification> notifications;
+    private List<NotificationUser> notifications;
     private Context context;
-
-    public NotificationsAdapter(Context context, List<Notification> notifications) {
+    private List<NotificationStore> notificationStoreList;
+    public NotificationsAdapter(Context context, List<NotificationUser> notifications) {
         this.context = context;
         this.notifications = notifications;
+    }
+    public NotificationsAdapter(List<NotificationStore> notificationStoreList , Context context){
+        this.context = context;
+        this.notificationStoreList = notificationStoreList;
+    }
+    public void setNotificationUser(List<NotificationUser> notificationUser) {
+        this.notifications = notificationUser;
+        notifyDataSetChanged();
+    }
+    public void setNotificationStore(List<NotificationStore> notificationStore) {
+        this.notificationStoreList = notificationStore;
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -41,13 +58,26 @@ public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdap
 
     @Override
     public void onBindViewHolder(@NonNull NotificationsAdapter.ViewHolder holder, int position) {
-
-        Notification notification = notifications.get(position);
-        holder.notificationType.setText(notification.getNotificationType());
-        holder.notificationDesc.setText(notification.getNotificationDesc());
-        holder.notificationDate.setText(notification.getNotificationDate());
-        if (!notification.getNotificationImg().isEmpty())
-            Picasso.with(context).load(notification.getNotificationImg()).placeholder(R.drawable.ic_launcher).into(holder.notificationImage);
+        if(SharedPrefManger.getUser_ID() != 0 && SharedPrefManger.getStore_ID() == 0){
+            NotificationUser notification = notifications.get(position);
+            holder.notificationType.setText(notification.getNotificationTitle());
+            holder.notificationDesc.setText(notification.getNotificationDesc());
+            holder.notificationDate.setText(notification.getNotificationDate());
+            if (!notification.getNotificationImg().isEmpty()) {
+                Transformation transformation = new RoundedTransformationBuilder()
+                        .cornerRadiusDp(80)
+                        .oval(false)
+                        .build();
+                Picasso.with(holder.notificationImage.getContext()).load(notification.getNotificationImg()).transform(transformation).placeholder(R.drawable.near_by_place_holder).into(holder.notificationImage);
+            }
+        }else{
+            NotificationStore notification = notificationStoreList.get(position);
+            holder.notificationType.setText(notification.getNotificationTitle());
+            holder.notificationDesc.setText(notification.getNotificationDesc());
+            holder.notificationDate.setText(notification.getNotificationDate());
+            if (!notification.getNotificationImg().isEmpty())
+                Picasso.with(context).load(notification.getNotificationImg()).placeholder(R.drawable.ic_launcher).into(holder.notificationImage);
+        }
 
     }
 

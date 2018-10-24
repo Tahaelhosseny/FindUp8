@@ -24,7 +24,6 @@ import khaled.example.com.findup.UI.ViewModel.Fragments.YouSavedViewModel;
 import khaled.example.com.findup.UI.adapters.NotificationsAdapter;
 import khaled.example.com.findup.UI.adapters.UserSavedAdapter;
 import khaled.example.com.findup.databinding.FragmentUserSavedBinding;
-import khaled.example.com.findup.models.Notification;
 import khaled.example.com.findup.models.Product;
 import khaled.example.com.findup.models.UserSavedItem;
 
@@ -57,14 +56,8 @@ public class UserSavedFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        userSavedViewModel.getUserSaved(fragmentUserSavedBinding.userSavedRecyclerView, SharedPrefManger.getUser_ID());
+        userSavedViewModel.InitRecycler(fragmentUserSavedBinding.userSavedRecyclerView);
 
-        fragmentUserSavedBinding.setPresenter(new UserSavedPresenter() {
-            @Override
-            public void LoadUserSaved() {
-                userSavedViewModel.getUserSaved(fragmentUserSavedBinding.userSavedRecyclerView, SharedPrefManger.getUser_ID());
-            }
-        });
 
     }
 }

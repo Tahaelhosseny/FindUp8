@@ -22,7 +22,6 @@ import khaled.example.com.findup.R;
 import khaled.example.com.findup.UI.ViewModel.Activites.CurrencyViewModel;
 import khaled.example.com.findup.UI.activities.NotificationsActivity;
 import khaled.example.com.findup.models.Currency;
-import khaled.example.com.findup.models.Notification;
 
 public class RadioButtonAdapter extends RecyclerView.Adapter<RadioButtonAdapter.ViewHolder> {
     private List<Currency> currencyList;

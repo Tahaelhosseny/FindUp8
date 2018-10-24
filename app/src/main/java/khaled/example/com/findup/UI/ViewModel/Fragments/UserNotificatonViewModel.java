@@ -1,16 +1,23 @@
 package khaled.example.com.findup.UI.ViewModel.Fragments;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 
+import io.reactivex.Flowable;
+import khaled.example.com.findup.Helper.Database.DBHandler;
+import khaled.example.com.findup.Helper.Database.Interfaces.Notifications.NotificationsUserI;
+import khaled.example.com.findup.Helper.Database.Interfaces.SavedItem.SavedItem;
 import khaled.example.com.findup.Helper.Remote.ApiClient;
 import khaled.example.com.findup.Helper.Remote.ApiInterface;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.NotificationResponse;
@@ -18,42 +25,42 @@ import khaled.example.com.findup.Helper.UI_Utility;
 import khaled.example.com.findup.UI.activities.SettingsActivity;
 import khaled.example.com.findup.UI.adapters.CommentsAdapter;
 import khaled.example.com.findup.UI.adapters.NotificationsAdapter;
-import khaled.example.com.findup.models.Notification;
+import khaled.example.com.findup.UI.adapters.UserSavedAdapter;
+import khaled.example.com.findup.models.NotificationUser;
+import khaled.example.com.findup.models.UserSavedItem;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class UserNotificatonViewModel extends Observable {
     private Context mContext;
+    List<NotificationUser> notificationUsers = new ArrayList<>();
     public UserNotificatonViewModel(Context mContext){this.mContext = mContext;}
-    public void getUserNotification(RecyclerView recyclerView , String account_id){
-        final AlertDialog alertDialog = UI_Utility.ShowProgressDialog(mContext, true);
-        alertDialog.show();
-        ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-        Call<NotificationResponse> getUserNotification = apiService.getUserNotification(account_id);
-        getUserNotification.enqueue(new Callback<NotificationResponse>() {
+    public void InitRecycler(RecyclerView recyclerView){
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        NotificationsAdapter adapter = new NotificationsAdapter(mContext, notificationUsers);
+        LoadNotificationUserFromDatabase(adapter);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false));
+        recyclerView.smoothScrollToPosition(0);
+    }
+    private void LoadNotificationUserFromDatabase(NotificationsAdapter adapter){
+        DBHandler.getAllUserNotification(mContext, new NotificationsUserI() {
             @Override
-            public void onResponse(Call<NotificationResponse> call, Response<NotificationResponse> response) {
-                alertDialog.dismiss();
-                if(response.body().getSuccess() == 1){
-                    List<Notification> userNotification = response.body().getUser_data();
-                    recyclerView.setItemAnimator(new DefaultItemAnimator());
-                    NotificationsAdapter adapter = new NotificationsAdapter(mContext, userNotification);
-                    recyclerView.setAdapter(adapter);
-                    adapter.notifyDataSetChanged();
-                    recyclerView.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false));
-                    recyclerView.smoothScrollToPosition(0);
-                }else{
-                    Toast.makeText(mContext, ""+response.body().getError_msg(), Toast.LENGTH_SHORT).show();
-                    mContext.startActivity(new Intent(mContext , SettingsActivity.class));
-                }
-            }
-
-            @Override
-            public void onFailure(Call<NotificationResponse> call, Throwable t) {
-                Toast.makeText(mContext, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
+            public void onSuccess(Flowable<List<NotificationUser>> listFlowable) {
+                listFlowable.subscribe(
+                        val -> {
+                            ((Activity) mContext).runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    adapter.setNotificationUser(val);
+                                    adapter.notifyDataSetChanged();
+                                }
+                            });
+                        },
+                        err -> Log.i("database err", "store database error : " + err.getMessage())
+                );
             }
         });
-
     }
 }

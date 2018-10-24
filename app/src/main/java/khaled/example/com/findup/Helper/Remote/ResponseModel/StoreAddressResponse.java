@@ -5,7 +5,6 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-import khaled.example.com.findup.models.Notification;
 import khaled.example.com.findup.models.StoreAddress;
 
 public class StoreAddressResponse {
