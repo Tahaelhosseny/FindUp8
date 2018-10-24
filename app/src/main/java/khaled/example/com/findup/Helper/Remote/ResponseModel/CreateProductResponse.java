@@ -8,17 +8,12 @@ import java.util.List;
 import khaled.example.com.findup.models.AskCode;
 
 public class CreateProductResponse {
-    @SerializedName("tag")
-    @Expose
     private String tag;
-    @SerializedName("success")
-    @Expose
+
     private int success;
-    @SerializedName("error")
-    @Expose
+
     private int error;
-    @SerializedName("error_msg")
-    @Expose
+
     private String error_msg;
 
     public String getError_msg() {
@@ -28,8 +23,6 @@ public class CreateProductResponse {
     public void setError_msg(String error_msg) {
         this.error_msg = error_msg;
     }
-
-
 
     public String getTag() {
         return tag;

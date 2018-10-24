@@ -93,28 +93,7 @@ public class CreateEventActivity extends AppCompatActivity {
         activityCreateEventBinding.setPresenter(new CreateEventPresenter() {
             @Override
             public void addNewStoreEvent() {
-                if(eventToCreate.getEvent_photo() == null){
-                    Toast.makeText(CreateEventActivity.this, "Choose Event Photo", Toast.LENGTH_SHORT).show();
-                }else if(TextUtils.isEmpty(activityCreateEventBinding.editTextEventName.getText())){
-                    Toast.makeText(CreateEventActivity.this, "Specify Event Name", Toast.LENGTH_SHORT).show();
-                } else if(TextUtils.isEmpty(activityCreateEventBinding.editTextOtherLanguage.getText())){
-                    Toast.makeText(CreateEventActivity.this, "Specify Event Language", Toast.LENGTH_SHORT).show();
-                }else if(TextUtils.isEmpty(activityCreateEventBinding.editTextDescription.getText())){
-                    Toast.makeText(CreateEventActivity.this, "Specify Event Description", Toast.LENGTH_SHORT).show();
-                }else if(activityCreateEventBinding.startAtTxtTime.getText().equals("00") || activityCreateEventBinding.endAtTxtTime.getText().equals("00")){
-                    Toast.makeText(CreateEventActivity.this, "Specify Event Start Time And End Time", Toast.LENGTH_SHORT).show();
-                }else if(activityCreateEventBinding.txtDayWorkStart.getText().equals("Start Date")){
-                    Toast.makeText(CreateEventActivity.this, "Specify Event Date", Toast.LENGTH_SHORT).show();
-                }else if(TextUtils.isEmpty(editText_days.getText().toString())){
-                    Toast.makeText(CreateEventActivity.this, "Specify Days", Toast.LENGTH_SHORT).show();
-                }else {
-                }
-                createEventViewModel.addNewEvent(String.valueOf(activityCreateEventBinding.editTextEventName.getText()) ,
-                        String.valueOf(activityCreateEventBinding.txtDayWorkStart.getText()) ,
-                        editText_days.getText().toString() ,
-                        (String.valueOf(activityCreateEventBinding.startAtTxtTime.getText())+String.valueOf( activityCreateEventBinding.endAtTxtTime.getText())),
-                        String.valueOf(activityCreateEventBinding.editTextDescription.getText()),
-                        "Address" , SharedPrefManger.getStore_ID() , 31.0 , 31.0 , eventToCreate.getEvent_photo());
+                saveEvent();
             }
         });
         start_result_txt.setOnClickListener(new View.OnClickListener() {
@@ -180,19 +159,51 @@ public class CreateEventActivity extends AppCompatActivity {
                         e.printStackTrace();
                     }
                     activityCreateEventBinding.picBanner.setImageBitmap(selectedImageBitmap);
-                    ByteArrayOutputStream baos=new  ByteArrayOutputStream();
+                    /*ByteArrayOutputStream baos=new  ByteArrayOutputStream();
                     selectedImageBitmap.compress(Bitmap.CompressFormat.PNG,100, baos);
                     byte [] b=baos.toByteArray();
                     String encodedImage=Base64.encodeToString(b, Base64.DEFAULT);
                     Log.i("Image" , encodedImage);
                     encodedImage = encodedImage.replace("\\s+","");
-                    encodedImage = encodedImage.replace("\n" , "").replace("\r" , "");
-                    eventToCreate.setEvent_photo(encodedImage);
+                    encodedImage = encodedImage.replace("\n" , "").replace("\r" , "");*/
+                    eventToCreate.setEvent_photo(selectedBanner.getPath());
                     break;
                 }
             }
         }
     }
+
+    private void saveEvent(){
+        if(eventToCreate.getEvent_photo() == null){
+            Toast.makeText(CreateEventActivity.this, "Choose Event Photo", Toast.LENGTH_SHORT).show();
+            return;
+        }else if(TextUtils.isEmpty(activityCreateEventBinding.editTextEventName.getText())){
+            Toast.makeText(CreateEventActivity.this, "Specify Event Name", Toast.LENGTH_SHORT).show();
+            return;
+        } else if(TextUtils.isEmpty(activityCreateEventBinding.editTextOtherLanguage.getText())){
+            Toast.makeText(CreateEventActivity.this, "Specify Event Language", Toast.LENGTH_SHORT).show();
+            return;
+        }else if(TextUtils.isEmpty(activityCreateEventBinding.editTextDescription.getText())){
+            Toast.makeText(CreateEventActivity.this, "Specify Event Description", Toast.LENGTH_SHORT).show();
+            return;
+        }else if(activityCreateEventBinding.startAtTxtTime.getText().equals("00") || activityCreateEventBinding.endAtTxtTime.getText().equals("00")){
+            Toast.makeText(CreateEventActivity.this, "Specify Event Start Time And End Time", Toast.LENGTH_SHORT).show();
+            return;
+        }else if(activityCreateEventBinding.txtDayWorkStart.getText().equals("Start Date")){
+            Toast.makeText(CreateEventActivity.this, "Specify Event Date", Toast.LENGTH_SHORT).show();
+            return;
+        }else if(TextUtils.isEmpty(editText_days.getText().toString())){
+            Toast.makeText(CreateEventActivity.this, "Specify Days", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        createEventViewModel.addNewEvent(String.valueOf(activityCreateEventBinding.editTextEventName.getText()) ,
+                String.valueOf(activityCreateEventBinding.txtDayWorkStart.getText()) ,
+                editText_days.getText().toString() ,
+                (String.valueOf(activityCreateEventBinding.startAtTxtTime.getText())+String.valueOf( activityCreateEventBinding.endAtTxtTime.getText())),
+                String.valueOf(activityCreateEventBinding.editTextDescription.getText()),
+                "Address" , SharedPrefManger.getStore_ID() , 31.0 , 31.0 , eventToCreate.getEvent_photo());
+    }
+
     private void pickImg(int pickerTag){
         Intent intent = new Intent();
         intent.setType("image/*");

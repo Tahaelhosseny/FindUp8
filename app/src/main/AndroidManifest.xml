@@ -16,6 +16,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:hardwareAccelerated="false"
+        android:largeHeap="true"
         android:theme="@style/AppTheme"
         android:windowSoftInputMode="stateHidden">
         <meta-data
@@ -29,7 +31,9 @@
             android:name=".UI.activities.MainActivity"
             android:label="@string/find_things"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            android:windowSoftInputMode="adjustPan" />
+            android:windowSoftInputMode="adjustPan" >
+
+        </activity>
         <activity
             android:name=".UI.activities.SplashScreenActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen">
@@ -165,7 +169,9 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
         <activity
             android:name=".UI.activities.AddProductTruckActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen">
+
+        </activity>
         <activity
             android:name=".UI.activities.AddProductCraftActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
@@ -179,7 +185,9 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
         <activity
             android:name=".UI.activities.StoreChooseCategoryActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" >
+
+        </activity>
         <activity
             android:name=".UI.activities.StoreCraftCategoryActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />

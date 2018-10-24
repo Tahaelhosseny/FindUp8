@@ -45,8 +45,7 @@ public class Product {
         this.product_comments_count = product_comments_count;
         this.product_name = product_name;
         this.product_desc = product_desc;
-        this.product_banner = product_banner;
-            }
+        this.product_banner = product_banner; }
     public int getProduct_id() {
         return product_id;
     }

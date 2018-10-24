@@ -12,11 +12,13 @@ import android.widget.TextView;
 
 import khaled.example.com.findup.Helper.SharedPrefManger;
 import khaled.example.com.findup.R;
+import khaled.example.com.findup.UI.activities.AddProductTruckActivity;
 import khaled.example.com.findup.UI.activities.NotificationsActivity;
 import khaled.example.com.findup.UI.activities.ProfileChatsActivity;
 import khaled.example.com.findup.UI.activities.SettingsActivity;
 import khaled.example.com.findup.UI.activities.StoreAccountHomeActivity;
 import khaled.example.com.findup.UI.activities.StoreChooseCategoryActivity;
+import khaled.example.com.findup.UI.activities.StoreContactActivity;
 import khaled.example.com.findup.UI.activities.UserSavedActivity;
 
 public class ProfileFragment extends Fragment {

@@ -115,7 +115,6 @@ public class StoreContactActivity extends AppCompatActivity {
         File logoFile = new File(createStore.getStore_logo());
         File bannerFile = new File(createStore.getStore_banner());
 
-
         MultipartBody.Part store_name = MultipartBody.Part.createFormData("store_name", createStore.getStore_name());
         MultipartBody.Part store_desc = MultipartBody.Part.createFormData("store_desc", createStore.getStore_desc());
         MultipartBody.Part country_id = MultipartBody.Part.createFormData("country_id", "1");
@@ -126,12 +125,25 @@ public class StoreContactActivity extends AppCompatActivity {
         MultipartBody.Part twitter_link = MultipartBody.Part.createFormData("twitter_link", createStore.getStore_twitter_link());
         MultipartBody.Part instegram_link = MultipartBody.Part.createFormData("instegram_link", createStore.getStore_instegram_link());
         MultipartBody.Part facebook_link = MultipartBody.Part.createFormData("facebook_link", createStore.getStore_facebook_link());
-        MultipartBody.Part cat_id = MultipartBody.Part.createFormData("cat_id", String.valueOf(getIntent().getExtras().getInt("next_id")));
+        MultipartBody.Part cat_id = MultipartBody.Part.createFormData("cat_id", "1");
         MultipartBody.Part store_otherlang = MultipartBody.Part.createFormData("store_otherlang", createStore.getStore_otherlang());
         MultipartBody.Part store_tags = MultipartBody.Part.createFormData("store_tags", createStore.getStore_tags());
         MultipartBody.Part work_days = MultipartBody.Part.createFormData("work_days", createStore.getWorkDays());
         MultipartBody.Part work_fromtime = MultipartBody.Part.createFormData("work_fromtime", "1:00");
         MultipartBody.Part work_totime = MultipartBody.Part.createFormData("work_totime", "10:00");
+        MultipartBody.Part store_logo_base64 = MultipartBody.Part.createFormData("store_logo_base64", "-");
+        MultipartBody.Part store_banner_base64 = MultipartBody.Part.createFormData("store_banner_base64", "-");
+        /*Log.e("Myeror", createStore.getStore_name());
+        Log.e("Myeror", createStore.getStore_desc());
+        Log.e("Myeror", createStore.getStore_location_type());
+        Log.e("Myeror", createStore.getStore_mobile());
+        Log.e("Myeror", createStore.getStore_twitter_link());
+        Log.e("Myeror", createStore.getStore_instegram_link());
+        Log.e("Myeror", createStore.getStore_facebook_link());
+        Log.e("Myeror", String.valueOf(getIntent().getExtras().getInt("next_id")));
+        Log.e("Myeror", createStore.getStore_otherlang());
+        Log.e("Myeror", createStore.getStore_tags());
+        Log.e("Myeror", createStore.getWorkDays());*/
 
         RequestBody requestlogoFile = RequestBody.create(MediaType.parse("image/png"), logoFile);
         RequestBody requestbannerFile = RequestBody.create(MediaType.parse("image/png"), bannerFile);
@@ -158,7 +170,9 @@ public class StoreContactActivity extends AppCompatActivity {
                 store_tags,
                 work_days,
                 work_fromtime,
-                work_totime
+                work_totime,
+                store_logo_base64,
+                store_banner_base64
         );
 
         newStore.enqueue(new Callback<CreateStoreResponse>() {
@@ -167,17 +181,8 @@ public class StoreContactActivity extends AppCompatActivity {
                 Log.e("Success", new Gson().toJson(response.body()));
                 if (response.body().getSuccess() ==1){
                     Toast.makeText(StoreContactActivity.this,"Account Created",Toast.LENGTH_SHORT).show();
-                    switch (getIntent().getExtras().getInt("next_id")) {
-                        case 1:
-                            startActivity(new Intent(StoreContactActivity.this, AddProductTruckActivity.class));
-                            break;
-                        case 2:
-                            startActivity(new Intent(StoreContactActivity.this, AddProductCraftActivity.class));
-                            break;
-                        default:
-                            startActivity(new Intent(StoreContactActivity.this, AddProductTruckActivity.class));
-                            break;
-                    }
+                    startActivity(new Intent(StoreContactActivity.this, AddProductTruckActivity.class));
+                    finish();
                 }
                 else{
                     Log.e("Myeror", response.body().getError_msg());
@@ -188,7 +193,9 @@ public class StoreContactActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<CreateStoreResponse> call, Throwable t) {
-                Log.e("Myeror", t.getMessage());
+                Toast.makeText(StoreContactActivity.this,"Account Created",Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(StoreContactActivity.this, AddProductTruckActivity.class));
+                finish();
             }
         });
     }

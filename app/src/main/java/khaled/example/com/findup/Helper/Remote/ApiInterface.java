@@ -5,6 +5,8 @@ import android.webkit.HttpAuthHandler;
 
 import com.google.android.gms.common.api.Api;
 import com.google.android.gms.common.internal.ShowFirstParty;
+import com.google.gson.JsonObject;
+import com.mopub.common.util.Json;
 
 import java.io.File;
 
@@ -75,10 +77,8 @@ public interface ApiInterface {
     @GET(ApiClient.PATH_URL+"user_profile?tag=get_user_saved&HashSecure="+HASH)
     Call<GetAllSavedResponse> getUserSaved(@Query("account_id") int account_id);
 
-
     @GET(ApiClient.PATH_URL+"reg_login?tag=verify_code&HashSecure="+ HASH)
     Call<VerifyCodeResponse> checkVerifyCode(@Query("mobile") String mobile , @Query("code") String code);
-
 
     @GET(ApiClient.PATH_URL+"reg_login?tag=forget_pass&HashSecure="+HASH)
     Call<AskCodeResponse> getResetPasswordCode(@Query("mobile") String mobile);
@@ -95,7 +95,6 @@ public interface ApiInterface {
     @GET(ApiClient.PATH_URL+"stores?tag=get_store_address&HashSecure="+HASH)
     Call<StoreAddressResponse> getStoreAddress(@Query("store_id") int store_id);
     //----------------------------------------------- Post Methods -------------------------------------------------
-
 
     @POST(ApiClient.PATH_URL+"reg_login?tag=signup&HashSecure="+HASH)
     @FormUrlEncoded
@@ -175,21 +174,24 @@ public interface ApiInterface {
             @Part MultipartBody.Part store_tags,
             @Part MultipartBody.Part work_days,
             @Part MultipartBody.Part work_fromtime,
-            @Part MultipartBody.Part work_totime);
+            @Part MultipartBody.Part work_totime,
+            @Part MultipartBody.Part store_logo_base64,
+            @Part MultipartBody.Part store_banner_base64);
 
+    @Multipart
     @POST(ApiClient.PATH_URL+"stores?tag=create_event&HashSecure="+HASH)
-    @FormUrlEncoded
     Call<CreateStoreEventResponse> addNewStoreEvent(
-            @Field("event_name") String event_name,
-            @Field("event_start_date") String event_start_date,
-            @Field("event_days") String event_days,
-            @Field("event_time") String event_time,
-            @Field("event_description") String event_description,
-            @Field("event_address") String event_address,
-            @Field("store_id") int store_id,
-            @Field("event_longitude") double event_longitude,
-            @Field("event_latitude") double event_latitude,
-            @Field("event_photo_base64") String event_photo_base64
+            @Part MultipartBody.Part event_name,
+            @Part MultipartBody.Part event_photo,
+            @Part MultipartBody.Part event_start_date,
+            @Part MultipartBody.Part event_days,
+            @Part MultipartBody.Part event_time,
+            @Part MultipartBody.Part event_description,
+            @Part MultipartBody.Part event_address,
+            @Part MultipartBody.Part store_id,
+            @Part MultipartBody.Part event_longitude,
+            @Part MultipartBody.Part event_latitude,
+            @Part MultipartBody.Part event_photo_base64
     );
 
     @POST(ApiClient.PATH_URL+"reg_login?tag=delete_account&HashSecure="+HASH)
@@ -200,15 +202,41 @@ public interface ApiInterface {
     @FormUrlEncoded
     Call<VerifyCodeResponse> confirmDeleteAccount(@Field("mobile") String mobile , @Field("verify_code") String verify_code);
 
+    @Multipart
     @POST(ApiClient.PATH_URL+"stores?tag=add_store_products&HashSecure="+HASH)
-    @FormUrlEncoded
     Call<CreateProductResponse>  createStoreProduct(
-            @Field("store_id") int store_id,
-            @Field("product_name") String product_name,
-            @Field("product_desc") String description,
-            @Field("product_price") String product_price,
-            @Field("product_img") Bitmap img
+            @Part MultipartBody.Part store_id,
+            @Part MultipartBody.Part product_name,
+            @Part MultipartBody.Part description,
+            @Part MultipartBody.Part product_price,
+            @Part MultipartBody.Part product_img,
+            @Part MultipartBody.Part product_img_base64
     );
+
+    @Multipart
+    @Headers({"Content-Type: application/x-www-form-urlencoded"})
+    @POST(ApiClient.PATH_URL+"stores?tag=create_store_account&HashSecure="+HASH)
+    Call<CreateStoreResponse> createNewStore(
+            @Part("store_name") RequestBody store_name,
+            @Part("store_desc") RequestBody store_desc ,
+            @Part("country_id") RequestBody country_id ,
+            @Part("city_id") RequestBody city_id ,
+            @Part("location_type") RequestBody location_type ,
+            @Part("mobile") RequestBody mobile ,
+            @Part("password") RequestBody password ,
+            @Part("twitter_link") RequestBody twitter_link ,
+            @Part("instegram_link") RequestBody instegram_link ,
+            @Part("facebook_link") RequestBody facebook_link,
+            @Part("cat_id") RequestBody cat_id,
+            @Part MultipartBody.Part store_logo,
+            @Part MultipartBody.Part store_banner,
+            @Part("store_otherlang") RequestBody store_otherlang,
+            @Part("store_tags") RequestBody store_tags,
+            @Part("work_days") RequestBody work_days,
+            @Part("work_fromtime") RequestBody work_fromtime,
+            @Part("work_totime") RequestBody work_totime);
+
+
     @POST(ApiClient.PATH_URL+"stores?tag=change_store_address&HashSecure="+HASH)
     @FormUrlEncoded
     Call<StoreAddressResponse> setStoreAddress(

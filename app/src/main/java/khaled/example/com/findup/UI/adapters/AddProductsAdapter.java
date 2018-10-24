@@ -12,33 +12,38 @@ import android.widget.TextView;
 import java.util.List;
 
 import khaled.example.com.findup.R;
-import khaled.example.com.findup.models.TruckProduct;
+import khaled.example.com.findup.models.AddProduct;
 
-public class TruckProductsAdapter extends RecyclerView.Adapter<TruckProductsAdapter.ViewHolder> {
-    private List<TruckProduct> truckProducts;
+public class AddProductsAdapter extends RecyclerView.Adapter<AddProductsAdapter.ViewHolder> {
+    private List<AddProduct> addProducts;
     private Context context;
 
-    public TruckProductsAdapter(Context context, List<TruckProduct> truckProducts) {
+    public AddProductsAdapter(Context context, List<AddProduct> addProducts) {
         this.context = context;
-        this.truckProducts = truckProducts;
+        this.addProducts = addProducts;
     }
 
 
     @NonNull
     @Override
-    public TruckProductsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public AddProductsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.product_truck_item, parent, false);
-        return new TruckProductsAdapter.ViewHolder(view);
+        return new AddProductsAdapter.ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        TruckProduct truckProduct = truckProducts.get(position);
+        AddProduct addProduct = addProducts.get(position);
+
+        holder.productName.setText(addProduct.getProductName());
+        holder.productDescription.setText(addProduct.getProductDescription());
+        holder.productPrice.setText(addProduct.getProductPrice());
+        holder.productImg.setImageBitmap(addProduct.getProductPic());
     }
 
     @Override
     public int getItemCount() {
-        return truckProducts.size();
+        return addProducts.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {

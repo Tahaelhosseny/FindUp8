@@ -14,8 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import khaled.example.com.findup.R;
-import khaled.example.com.findup.UI.adapters.TruckProductsAdapter;
-import khaled.example.com.findup.models.TruckProduct;
+import khaled.example.com.findup.UI.adapters.AddProductsAdapter;
+import khaled.example.com.findup.models.AddProduct;
 
 public class AddProductCraftActivity extends AppCompatActivity {
 
@@ -27,7 +27,6 @@ public class AddProductCraftActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_product_craft);
-
 
         btn_addCraftBack = findViewById(R.id.btn_addCraftBack);
         btn_addCraftDone = findViewById(R.id.btn_addCraftDone);
@@ -59,20 +58,20 @@ public class AddProductCraftActivity extends AppCompatActivity {
                 layoutAddWithDetails.setVisibility(View.VISIBLE);
             }
         });
-        final List<TruckProduct> truckProducts = new ArrayList<>();
+        final List<AddProduct> addProducts = new ArrayList<>();
         btn_addCraftDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                addCraftLayout.setVisibility(View.INVISIBLE);
+                /*addCraftLayout.setVisibility(View.INVISIBLE);
                 layoutAddWithDetails.setVisibility(View.GONE);
                 addOtherCraftLayout.setVisibility(View.VISIBLE);
                 recyclerCrafProducts.setVisibility(View.VISIBLE);
                 btn_submit.setVisibility(View.VISIBLE);
-                truckProducts.add(new TruckProduct(0, R.drawable.placeholder,
+                addProducts.add(new AddProduct(0, R.drawable.placeholder,
                         R.string.craft_price, R.string.craft_name, R.string.craft_description));
                 recyclerCrafProducts.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-                TruckProductsAdapter adapter = new TruckProductsAdapter(getApplicationContext(), truckProducts);
-                recyclerCrafProducts.setAdapter(adapter);
+                AddProductsAdapter adapter = new AddProductsAdapter(getApplicationContext(), addProducts);
+                recyclerCrafProducts.setAdapter(adapter);*/
             }
         });
         addOtherCraftLayout.setOnClickListener(new View.OnClickListener() {
