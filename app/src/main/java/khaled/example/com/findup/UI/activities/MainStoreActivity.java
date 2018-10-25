@@ -34,7 +34,7 @@ public class MainStoreActivity extends AppCompatActivity {
 
         /*getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         getSupportActionBar().setDisplayShowHomeEnabled(false);*/
-        insertSoreNotification();
+        //insertSoreNotification();
         FragmentManager manager = getSupportFragmentManager();
         transaction = manager.beginTransaction();
         transaction.replace(R.id.store_main_container, new MainStoreFragment(), new MainStoreFragment().getClass().getName()).commit();

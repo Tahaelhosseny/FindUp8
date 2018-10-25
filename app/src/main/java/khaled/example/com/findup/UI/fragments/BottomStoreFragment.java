@@ -67,7 +67,6 @@ public class BottomStoreFragment extends Fragment {
         menu = p.getMenu();
         getActivity().getMenuInflater().inflate(R.menu.bottom_store_navigation, menu);
         bindUI(menu);
-
     }
 
     private void bindUI(Menu menu) {
