@@ -74,6 +74,7 @@ public class StoreAccountHomeFragment extends Fragment {
                             (getActivity()).runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
+                                    Log.e("Val Pro" , String.valueOf(val.size()));
                                     adapter.setProduct(val);
                                     adapter.notifyDataSetChanged();
                                 }
