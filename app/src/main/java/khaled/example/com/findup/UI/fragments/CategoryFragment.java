@@ -71,8 +71,11 @@ public class CategoryFragment extends Fragment {
                                 @Override
                                 public void run() {
                                     for (int i = 0 ; i < val.size() ; i++){
-                                        expandableSections.add(new ExpandableSection(""+val.get(i).getCat_name() , ""+val.get(i).getCat_desc()));
+                                        sectionAdapter.addSection(new ExpandableSection(""+val.get(i).getCat_name() , ""+val.get(i).getCat_desc()));
                                     }
+                                    RecyclerView recyclerView = getActivity().findViewById(R.id.categoryRecyclerview);
+                                    recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+                                    recyclerView.setAdapter(sectionAdapter);
                                 }
                             });
                         }
@@ -89,16 +92,6 @@ public class CategoryFragment extends Fragment {
 //        expandableSections.add(new ExpandableSection(getString(R.string.stores), getString(R.string.truck_description)));
 //        expandableSections.add(new ExpandableSection(getString(R.string.booth), getString(R.string.truck_description)));
 //        expandableSections.add(new ExpandableSection(getString(R.string.others), getString(R.string.truck_description)));
-
-        Log.e("Section Size" , String.valueOf(expandableSections.size()));
-        for (int i = 0; i < expandableSections.size(); i++) {
-            sectionAdapter.addSection(expandableSections.get(i));
-        }
-
-        RecyclerView recyclerView = getActivity().findViewById(R.id.categoryRecyclerview);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recyclerView.setAdapter(sectionAdapter);
-
     }
 
     public void changeTextSize(final TextView textView, float PstartSize, float PendSize) {

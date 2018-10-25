@@ -38,6 +38,11 @@
             android:name=".UI.activities.SplashScreenActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen">
 
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".UI.activities.LoginActivity"
@@ -206,11 +211,7 @@
         <activity
             android:name=".UI.activities.MainStoreActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".UI.activities.ChatWithStoreActivity"

@@ -12,6 +12,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import khaled.example.com.findup.R;
+import khaled.example.com.findup.models.Product;
 import khaled.example.com.findup.models.ReviewStoreItem;
 
 public class StoreProductsReviewsAdapter extends RecyclerView.Adapter<StoreProductsReviewsAdapter.ViewHolder> {
@@ -21,6 +22,10 @@ public class StoreProductsReviewsAdapter extends RecyclerView.Adapter<StoreProdu
 
     public StoreProductsReviewsAdapter(Context context, List<ReviewStoreItem> reviewStoreItems) {
         this.context = context;
+        this.reviewStoreItems = reviewStoreItems;
+    }
+
+    public void setProducts(List<ReviewStoreItem> reviewStoreItems) {
         this.reviewStoreItems = reviewStoreItems;
     }
 

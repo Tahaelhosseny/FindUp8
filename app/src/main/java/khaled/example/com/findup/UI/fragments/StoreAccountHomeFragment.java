@@ -1,6 +1,7 @@
 package khaled.example.com.findup.UI.fragments;
 
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -14,8 +15,13 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.reactivex.Flowable;
+import khaled.example.com.findup.Helper.Database.DBHandler;
+import khaled.example.com.findup.Helper.Database.Interfaces.Product.Products;
+import khaled.example.com.findup.Helper.SharedPrefManger;
 import khaled.example.com.findup.R;
 import khaled.example.com.findup.UI.adapters.StoreProductsReviewsAdapter;
+import khaled.example.com.findup.models.Product;
 import khaled.example.com.findup.models.ReviewStoreItem;
 
 /**
@@ -23,6 +29,7 @@ import khaled.example.com.findup.models.ReviewStoreItem;
  */
 public class StoreAccountHomeFragment extends Fragment {
 
+    StoreProductsReviewsAdapter adapter;
 
     public StoreAccountHomeFragment() {
         // Required empty public constructor
@@ -40,6 +47,9 @@ public class StoreAccountHomeFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         List<ReviewStoreItem> reviewStoreItems = new ArrayList<>();
+
+
+
         reviewStoreItems.add(new ReviewStoreItem());
         reviewStoreItems.add(new ReviewStoreItem());
         reviewStoreItems.add(new ReviewStoreItem());
@@ -49,7 +59,7 @@ public class StoreAccountHomeFragment extends Fragment {
     private void bindUI(List<ReviewStoreItem> reviewStoreItems) {
         RecyclerView recyclerView = getActivity().findViewById(R.id.reviewsRecyclerView);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        StoreProductsReviewsAdapter adapter = new StoreProductsReviewsAdapter(getActivity(), reviewStoreItems);
+        adapter = new StoreProductsReviewsAdapter(getActivity(), reviewStoreItems);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         recyclerView.smoothScrollToPosition(0);
