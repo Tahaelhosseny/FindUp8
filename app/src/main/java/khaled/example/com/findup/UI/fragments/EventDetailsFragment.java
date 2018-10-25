@@ -1,5 +1,7 @@
 package khaled.example.com.findup.UI.fragments;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -21,13 +23,14 @@ import khaled.example.com.findup.R;
 public class EventDetailsFragment extends Fragment implements OnMapReadyCallback {
 
     private MapView mMapView;
-
+    String event_id;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_event_details, container, false);
-
+        Intent i = ((Activity) rootView.getContext()).getIntent();
+        event_id = i.getStringExtra("event_id");
         try {
             MapsInitializer.initialize(this.getActivity());
             mMapView = (MapView) rootView.findViewById(R.id.mapView);
@@ -44,7 +47,11 @@ public class EventDetailsFragment extends Fragment implements OnMapReadyCallback
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+        LoadEventData(event_id);
         bindUI();
+    }
+
+    private void LoadEventData(String event_id) {
     }
 
     private void bindUI() {

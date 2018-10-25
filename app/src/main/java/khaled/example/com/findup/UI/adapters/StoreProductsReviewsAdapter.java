@@ -63,7 +63,7 @@ public class StoreProductsReviewsAdapter extends RecyclerView.Adapter<StoreProdu
         }
         holder.productDesc.setText(product.getProduct_desc());
         holder.productName.setText(product.getProduct_name());
-        loadComments(holder.commentUserImg , holder.commentBody , holder.commentTime , holder.comment_user ,  product.getProduct_id());
+        loadComments(holder.commentUserImg , holder.commentBody , holder.commentTime , holder.comment_user ,  product.getProduct_id() , holder.viewPrevtxt);
 
     }
 
@@ -102,7 +102,7 @@ public class StoreProductsReviewsAdapter extends RecyclerView.Adapter<StoreProdu
         }
     }
 
-    private void loadComments(ImageView img , TextView coment , TextView date , TextView name, int id){
+    private void loadComments(ImageView img , TextView coment , TextView date , TextView name, int id , TextView pervious){
         DBHandler.getSpecificComment(context, id, new PComment() {
             @Override
             public void onSuccess(Flowable<List<ProductComment>> commentFlowable) {
@@ -130,6 +130,7 @@ public class StoreProductsReviewsAdapter extends RecyclerView.Adapter<StoreProdu
                                     coment.setText("There is No Comment Until now Fro this product");
                                     img.setVisibility(View.GONE);
                                     name.setVisibility(View.GONE);
+                                    pervious.setVisibility(View.GONE);
                                 }
                             }
                         })
