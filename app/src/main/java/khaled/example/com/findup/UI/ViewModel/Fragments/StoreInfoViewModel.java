@@ -103,7 +103,7 @@ public class StoreInfoViewModel extends Observable {
                 , recyclerView, new RecyclerTouchListener.ClickListener() {
             @Override
             public void onClick(View view, int position) {
-                mContext.startActivity(new Intent(mContext, CommentsActivity.class));
+                mContext.startActivity(new Intent(mContext, CommentsActivity.class).putExtra("store_id" , store_id));
             }
 
             @Override

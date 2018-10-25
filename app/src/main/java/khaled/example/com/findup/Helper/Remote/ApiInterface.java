@@ -18,6 +18,8 @@ import khaled.example.com.findup.Helper.Remote.ResponseModel.CreateProductRespon
 import khaled.example.com.findup.Helper.Remote.ResponseModel.CreateStoreEventResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.CreateStoreResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.CurrencyResponse;
+import khaled.example.com.findup.Helper.Remote.ResponseModel.DeleteSavedResponse;
+import khaled.example.com.findup.Helper.Remote.ResponseModel.DeleteStoreProductResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.EditProfileResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.EventResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.GetAllSavedResponse;
@@ -272,4 +274,12 @@ public interface ApiInterface {
             @Field("comment_noti_flag") int comment,
             @Query("store_id") int store_id
     );
+
+    @POST(ApiClient.PATH_URL+"user_actions?tag=delete_save&HashSecure="+HASH)
+    @FormUrlEncoded
+    Call<DeleteSavedResponse> deleteSavedItem(@Field("account_id") int account_id , @Field("saved_id") int saved_id , @Field("saved_type") String saved_type);
+
+    @POST(ApiClient.PATH_URL+"stores?tag=delete_store_products&HashSecure="+HASH)
+    @FormUrlEncoded
+    Call<DeleteStoreProductResponse> deleteStoreProduct(@Field("product_id") int product_id , @Field("store_id") int store_id);
 }

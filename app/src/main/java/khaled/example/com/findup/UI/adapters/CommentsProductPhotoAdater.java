@@ -19,16 +19,12 @@ import khaled.example.com.findup.R;
 import khaled.example.com.findup.models.Comment;
 import khaled.example.com.findup.models.ProductComment;
 
-/**
- * Created by khaled on 7/4/18.
- */
+public class CommentsProductPhotoAdater extends RecyclerView.Adapter<CommentsProductPhotoAdater.ViewHolder> {
 
-public class CommentsPhotosAdapter extends RecyclerView.Adapter<CommentsPhotosAdapter.ViewHolder> {
-
-    private List<Comment> CommentsList;
+    private List<ProductComment> CommentsList;
     private Context context;
 
-    public CommentsPhotosAdapter(Context context, List<Comment> CommentsList) {
+    public CommentsProductPhotoAdater(Context context, List<ProductComment> CommentsList) {
         this.context = context;
         if (CommentsList.size() > 3)
             this.CommentsList = CommentsList.subList(0, 3);
@@ -38,15 +34,15 @@ public class CommentsPhotosAdapter extends RecyclerView.Adapter<CommentsPhotosAd
 
     @NonNull
     @Override
-    public CommentsPhotosAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public CommentsProductPhotoAdater.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.comments_photos_item, parent, false);
-        return new ViewHolder(itemView);
+        return new CommentsProductPhotoAdater.ViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Comment comment = CommentsList.get(position);
+    public void onBindViewHolder(@NonNull CommentsProductPhotoAdater.ViewHolder holder, int position) {
+        ProductComment comment = CommentsList.get(position);
         if (!comment.getAccount_image().isEmpty()) {
             Transformation transformation = new RoundedTransformationBuilder()
                     .cornerRadiusDp(90)
@@ -54,7 +50,6 @@ public class CommentsPhotosAdapter extends RecyclerView.Adapter<CommentsPhotosAd
                     .borderColor(Color.WHITE)
                     .borderWidthDp(10)
                     .build();
-
             Picasso.with(holder.photoImg.getContext()).load(comment.getAccount_image()).transform(transformation).placeholder(R.drawable.near_by_place_holder).into(holder.photoImg);
 
         }

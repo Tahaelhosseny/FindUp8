@@ -20,6 +20,7 @@ import java.util.Observable;
 
 import io.reactivex.Flowable;
 import khaled.example.com.findup.Helper.Database.DBHandler;
+import khaled.example.com.findup.Helper.Database.Interfaces.Product.PComment;
 import khaled.example.com.findup.Helper.Database.Interfaces.Product.ProductPhotos;
 import khaled.example.com.findup.Helper.Database.Interfaces.Product.Products;
 import khaled.example.com.findup.Helper.Database.Interfaces.Store.Stores;
@@ -28,12 +29,14 @@ import khaled.example.com.findup.UI.CustomViews.OverlapDecoration;
 import khaled.example.com.findup.UI.activities.CommentsActivity;
 import khaled.example.com.findup.UI.activities.PhotosGalleryActivity;
 import khaled.example.com.findup.UI.adapters.CommentsPhotosAdapter;
+import khaled.example.com.findup.UI.adapters.CommentsProductPhotoAdater;
 import khaled.example.com.findup.UI.adapters.NearMeAdapter;
 import khaled.example.com.findup.UI.adapters.ProductPhotosAdapter;
 import khaled.example.com.findup.UI.adapters.RecyclerTouchListener;
 import khaled.example.com.findup.UI.adapters.StorePhotosAdapter;
 import khaled.example.com.findup.models.Comment;
 import khaled.example.com.findup.models.Product;
+import khaled.example.com.findup.models.ProductComment;
 import khaled.example.com.findup.models.ProductPhoto;
 import khaled.example.com.findup.models.Store;
 import khaled.example.com.findup.models.StorePhoto;
@@ -50,7 +53,7 @@ public class ProductDetailViewModel extends Observable {
 
     public void bindProductData(ImageView product_banner, TextView product_name,TextView product_price,TextView productStoreTxt,TextView product_like_count, TextView aboutProduct
                                 ,RecyclerView productPhotosRecycler,TextView commentUsersTxt,TextView commentUsersNumTxt
-     , ImageView pComments){
+     , ImageView pComments , RecyclerView commentPhoto){
         DBHandler.getProductByID(product_id, mContext, new Products() {
             @Override
             public void onSuccess(Flowable<List<Product>> listFlowable) {
@@ -64,7 +67,7 @@ public class ProductDetailViewModel extends Observable {
                         @Override
                         public void run() {
                             //TODO Start binding data from variable @v
-
+                            bindCommentsPhotos(commentPhoto);
                             bindPhotos(productPhotosRecycler);
                             commentUsersNumTxt.setText(""+v.getProduct_comments_count());
                             product_price.setText(""+v.getProduct_price());
@@ -142,4 +145,61 @@ public class ProductDetailViewModel extends Observable {
             }
         });
         }
+
+    public void bindCommentsPhotos(RecyclerView recyclerView) {
+        List<ProductComment> commentList = new ArrayList<>();
+
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, true);
+        layoutManager.setReverseLayout(true);
+        layoutManager.setStackFromEnd(true);
+
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        CommentsProductPhotoAdater adapter = new CommentsProductPhotoAdater(mContext, commentList);
+        recyclerView.setAdapter(adapter);
+
+
+        DBHandler.getCommentByProductID(product_id, mContext, new PComment() {
+                    @Override
+                    public void onSuccess(Flowable<List<ProductComment>> commentFlowable) {
+                        commentFlowable.subscribe(val -> {
+                            ((Activity) mContext).runOnUiThread(new Runnable() {
+
+                                @Override
+                                public void run() {
+                                    commentList.clear();
+                                    commentList.addAll(val);
+                                    recyclerView.setAdapter(adapter);
+                                }
+                            });
+                            //adapter.notifyDataSetChanged();
+                        });
+                    }
+
+                    @Override
+                    public void onFail() {
+
+                    }
+                });
+
+                //recyclerView.setLayoutManager(layoutManager);
+
+                recyclerView.addOnItemTouchListener(new RecyclerTouchListener(mContext
+                        , recyclerView, new RecyclerTouchListener.ClickListener() {
+                    @Override
+                    public void onClick(View view, int position) {
+                        mContext.startActivity(new Intent(mContext, CommentsActivity.class).putExtra("product_id" ,product_id ));
+                    }
+
+                    @Override
+                    public void onLongClick(View view, int position) {
+
+                    }
+                }));
+
+        recyclerView.addItemDecoration(new OverlapDecoration());
+        recyclerView.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false));
+
+    }
+
 }

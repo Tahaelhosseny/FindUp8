@@ -61,7 +61,7 @@ public class ProductDetailsFragment extends Fragment {
 
         productDetailViewModel.bindProductData(binding.productBanner,binding.productName,binding.productPrice,binding.productStoreTxt,binding.productLikeCount,binding.aboutProduct,
                 binding.productPhotosRecycler,binding.commentUsersTxt,binding.commentUsersNumTxt,
-            binding.showProductComment);
+            binding.showProductComment , binding.commentUsersImg);
 
     }
     private void bindCommentsPhotos() {
