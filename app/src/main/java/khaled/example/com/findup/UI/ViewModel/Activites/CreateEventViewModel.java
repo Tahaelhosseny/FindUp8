@@ -37,7 +37,7 @@ public class CreateEventViewModel extends Observable {
     }
 
     public void addNewEvent(String event_name , String event_start , String event_day  , String event_time ,
-                            String event_desc , String event_address , int store_id , double longt , double lat , String photo){
+                            String event_desc , String event_address , int store_id , String longt , String lat , String photo){
         final AlertDialog alertDialog = UI_Utility.ShowProgressDialog(mContext, true);
         alertDialog.show();
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
@@ -48,8 +48,8 @@ public class CreateEventViewModel extends Observable {
         MultipartBody.Part time = MultipartBody.Part.createFormData("event_time", event_time);
         MultipartBody.Part desc = MultipartBody.Part.createFormData("event_description", event_desc);
         MultipartBody.Part address = MultipartBody.Part.createFormData("event_address", event_address);
-        MultipartBody.Part longtude = MultipartBody.Part.createFormData("event_longitude",""+longt);
-        MultipartBody.Part latitude = MultipartBody.Part.createFormData("event_latitude", ""+lat);
+        MultipartBody.Part longtude = MultipartBody.Part.createFormData("event_longitude", longt);
+        MultipartBody.Part latitude = MultipartBody.Part.createFormData("event_latitude",  lat);
         MultipartBody.Part event_photo_base64 = MultipartBody.Part.createFormData("event_photo_base64", "-");
         File bannerFile = new File(photo);
         RequestBody requestbannerFile = RequestBody.create(MediaType.parse("image/png"), bannerFile);

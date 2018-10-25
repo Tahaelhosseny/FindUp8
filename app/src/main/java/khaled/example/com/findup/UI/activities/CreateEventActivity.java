@@ -31,6 +31,10 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
+import com.google.android.gms.common.GooglePlayServicesRepairableException;
+import com.google.android.gms.location.places.Place;
+import com.google.android.gms.location.places.ui.PlacePicker;
 import com.squareup.picasso.Picasso;
 
 import java.io.ByteArrayOutputStream;
@@ -53,6 +57,7 @@ import khaled.example.com.findup.models.Event;
 
 public class CreateEventActivity extends AppCompatActivity {
     private static final int PICK_BANNER = 1;
+    private static final int PLACE_PICKER_REQUEST = 2;
     Event eventToCreate;
     Uri selectedBanner;
     private TextView start_result_txt , end_result_txt , day_start_txt ;
@@ -66,6 +71,7 @@ public class CreateEventActivity extends AppCompatActivity {
     Calendar calendar;
     ActivityCreateEventBinding activityCreateEventBinding;
     CreateEventViewModel createEventViewModel;
+    Button mapBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,7 +87,7 @@ public class CreateEventActivity extends AppCompatActivity {
         start_result_txt = findViewById(R.id.start_at_txt_time);
         end_result_txt = findViewById(R.id.end_at_txt_time);
         day_start_txt = findViewById(R.id.txt_day_work_start);
-        Button btn_submit = findViewById(R.id.btn_submit);
+        mapBtn = findViewById(R.id.setLocBtn);
         Button btn_createEventBack=findViewById(R.id.btn_createEventBack);
         activityCreateEventBinding.setCreateStoreEvents(createEventViewModel);
         activityCreateEventBinding.picBanner.setOnClickListener(new View.OnClickListener() {
@@ -127,6 +133,19 @@ public class CreateEventActivity extends AppCompatActivity {
             }
         });
 
+        mapBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    pickAddress();
+                } catch (GooglePlayServicesNotAvailableException e) {
+                    e.printStackTrace();
+                } catch (GooglePlayServicesRepairableException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
     }
     private void pickDate(){
         calendar = Calendar.getInstance();
@@ -168,6 +187,11 @@ public class CreateEventActivity extends AppCompatActivity {
                     encodedImage = encodedImage.replace("\n" , "").replace("\r" , "");*/
                     eventToCreate.setEvent_photo(selectedBanner.getPath());
                     break;
+                   }
+             case (PLACE_PICKER_REQUEST):{
+                 Place place = PlacePicker.getPlace(this, data);
+                 eventToCreate.setEvent_latitude(String.valueOf(place.getLatLng().latitude));
+                 eventToCreate.setEvent_longitude(String.valueOf(place.getLatLng().longitude));
                 }
             }
         }
@@ -195,13 +219,16 @@ public class CreateEventActivity extends AppCompatActivity {
         }else if(TextUtils.isEmpty(editText_days.getText().toString())){
             Toast.makeText(CreateEventActivity.this, "Specify Days", Toast.LENGTH_SHORT).show();
             return;
+        }else if(TextUtils.isEmpty(eventToCreate.getEvent_latitude())){
+            Toast.makeText(CreateEventActivity.this, "Specify Address", Toast.LENGTH_SHORT).show();
+            return;
         }
         createEventViewModel.addNewEvent(String.valueOf(activityCreateEventBinding.editTextEventName.getText()) ,
                 String.valueOf(activityCreateEventBinding.txtDayWorkStart.getText()) ,
                 editText_days.getText().toString() ,
                 (String.valueOf(activityCreateEventBinding.startAtTxtTime.getText())+String.valueOf( activityCreateEventBinding.endAtTxtTime.getText())),
                 String.valueOf(activityCreateEventBinding.editTextDescription.getText()),
-                "Address" , SharedPrefManger.getStore_ID() , 31.0 , 31.0 , eventToCreate.getEvent_photo());
+                "Address" , SharedPrefManger.getStore_ID() , eventToCreate.getEvent_longitude() , eventToCreate.getEvent_latitude() , eventToCreate.getEvent_photo());
     }
 
     private void pickImg(int pickerTag){
@@ -242,5 +269,9 @@ public class CreateEventActivity extends AppCompatActivity {
         }
     };
 
+    private void pickAddress() throws GooglePlayServicesNotAvailableException, GooglePlayServicesRepairableException {
+        PlacePicker.IntentBuilder builder = new PlacePicker.IntentBuilder();
 
+        startActivityForResult(builder.build(this), PLACE_PICKER_REQUEST);
+    }
 }

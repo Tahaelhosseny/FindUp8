@@ -87,7 +87,8 @@ public class ProfileStoreFragment extends Fragment {
     public void bindStoreData(ImageView logo_image , TextView rating , TextView store_desc , ImageView banner , TextView name) {
 
         if (MStore == null) {
-            DBHandler.getStoreByID(SharedPrefManger.getStore_ID(), getActivity(), new Stores() {
+            SharedPrefManger sharedPrefManger = new SharedPrefManger(getActivity());
+            DBHandler.getStoreByID(sharedPrefManger.getStore_ID(), getActivity(), new Stores() {
                 @Override
                 public void onSuccess(Flowable<List<Store>> listFlowable) {
                 }
