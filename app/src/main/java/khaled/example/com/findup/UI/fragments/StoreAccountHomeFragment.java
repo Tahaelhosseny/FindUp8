@@ -61,10 +61,9 @@ public class StoreAccountHomeFragment extends Fragment {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
-        recyclerView.smoothScrollToPosition(0);
     }
     private void LoadProduct(){
-        DBHandler.getStoreProducts(getActivity(), SharedPrefManger.getStore_ID(), new Products() {
+        DBHandler.getProductByStoreID(SharedPrefManger.getStore_ID(), getActivity(), new Products() {
             @Override
             public void onSuccess(Flowable<List<Product>> listFlowable) {
                 listFlowable.subscribe(

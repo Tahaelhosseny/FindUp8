@@ -38,6 +38,7 @@ public class StoreProductsReviewsAdapter extends RecyclerView.Adapter<StoreProdu
 
     public void setProduct(List<Product> reviewStoreItems){
         this.reviewStoreItems = reviewStoreItems;
+        Log.e("MyVal" , String.valueOf(reviewStoreItems.size()));
     }
 
 
