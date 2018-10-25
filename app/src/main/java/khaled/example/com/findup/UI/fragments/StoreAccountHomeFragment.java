@@ -35,6 +35,7 @@ import khaled.example.com.findup.models.ReviewStoreItem;
  */
 public class StoreAccountHomeFragment extends Fragment {
 
+    StoreProductsReviewsAdapter adapter;
 
     public StoreAccountHomeFragment() {
         // Required empty public constructor
@@ -51,21 +52,18 @@ public class StoreAccountHomeFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-
-        bindUI();
+        adapter = new StoreProductsReviewsAdapter(getActivity(), new ArrayList<Product>());
+        LoadProduct();
     }
 
     private void bindUI() {
-        List<Product> storeProducts = new ArrayList<>();
         RecyclerView recyclerView = getActivity().findViewById(R.id.reviewsRecyclerView);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        StoreProductsReviewsAdapter adapter = new StoreProductsReviewsAdapter(getActivity(), storeProducts);
-        LoadProduct(adapter);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         recyclerView.smoothScrollToPosition(0);
     }
-    private void LoadProduct(StoreProductsReviewsAdapter adapter){
+    private void LoadProduct(){
         DBHandler.getStoreProducts(getActivity(), SharedPrefManger.getStore_ID(), new Products() {
             @Override
             public void onSuccess(Flowable<List<Product>> listFlowable) {
@@ -77,6 +75,7 @@ public class StoreAccountHomeFragment extends Fragment {
                                     Log.e("Val Pro" , String.valueOf(val.size()));
                                     adapter.setProduct(val);
                                     adapter.notifyDataSetChanged();
+                                    bindUI();
                                 }
                             });
                         }
