@@ -100,7 +100,6 @@ public class CategoryFragment extends Fragment {
         recyclerView.setAdapter(sectionAdapter);
 
     }
-
     public void changeTextSize(final TextView textView, float PstartSize, float PendSize) {
         final float startSize = PstartSize; // Size in pixels
         final float endSize = PendSize;
@@ -117,7 +116,6 @@ public class CategoryFragment extends Fragment {
         });
         animator.start();
     }
-
     public class ExpandableSection extends StatelessSection {
 
         public boolean expanded = false;
@@ -202,7 +200,6 @@ public class CategoryFragment extends Fragment {
             });
         }
     }
-
     private class HeaderViewHolder extends RecyclerView.ViewHolder {
 
         private View rootView;
@@ -214,7 +211,6 @@ public class CategoryFragment extends Fragment {
             titleText = view.findViewById(R.id.titleText);
         }
     }
-
     public class ItemViewHolder extends RecyclerView.ViewHolder {
 
         public View rootView;

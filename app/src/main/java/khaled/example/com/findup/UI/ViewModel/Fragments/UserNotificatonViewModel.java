@@ -16,16 +16,19 @@ import java.util.Observable;
 
 import io.reactivex.Flowable;
 import khaled.example.com.findup.Helper.Database.DBHandler;
+import khaled.example.com.findup.Helper.Database.Interfaces.Notifications.NotificationsStoreI;
 import khaled.example.com.findup.Helper.Database.Interfaces.Notifications.NotificationsUserI;
 import khaled.example.com.findup.Helper.Database.Interfaces.SavedItem.SavedItem;
 import khaled.example.com.findup.Helper.Remote.ApiClient;
 import khaled.example.com.findup.Helper.Remote.ApiInterface;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.NotificationResponse;
+import khaled.example.com.findup.Helper.SharedPrefManger;
 import khaled.example.com.findup.Helper.UI_Utility;
 import khaled.example.com.findup.UI.activities.SettingsActivity;
 import khaled.example.com.findup.UI.adapters.CommentsAdapter;
 import khaled.example.com.findup.UI.adapters.NotificationsAdapter;
 import khaled.example.com.findup.UI.adapters.UserSavedAdapter;
+import khaled.example.com.findup.models.NotificationStore;
 import khaled.example.com.findup.models.NotificationUser;
 import khaled.example.com.findup.models.UserSavedItem;
 import retrofit2.Call;
@@ -35,12 +38,22 @@ import retrofit2.Response;
 public class UserNotificatonViewModel extends Observable {
     private Context mContext;
     List<NotificationUser> notificationUsers = new ArrayList<>();
+    List<NotificationStore> notificationStore = new ArrayList<>();
+
     public UserNotificatonViewModel(Context mContext){this.mContext = mContext;}
     public void InitRecycler(RecyclerView recyclerView){
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         NotificationsAdapter adapter = new NotificationsAdapter(mContext, notificationUsers);
-        LoadNotificationUserFromDatabase(adapter);
-        recyclerView.setAdapter(adapter);
+        NotificationsAdapter adapterStore = new NotificationsAdapter(notificationStore , mContext);
+        if(SharedPrefManger.getStore_ID() != 0 && SharedPrefManger.getUser_ID() == 0){
+            LoadNotificationStoreFromDatabase(adapterStore);
+            recyclerView.setAdapter(adapterStore);
+
+        }else{
+            LoadNotificationUserFromDatabase(adapter);
+            recyclerView.setAdapter(adapter);
+
+        }
         recyclerView.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false));
         recyclerView.smoothScrollToPosition(0);
     }
@@ -54,6 +67,26 @@ public class UserNotificatonViewModel extends Observable {
                                 @Override
                                 public void run() {
                                     adapter.setNotificationUser(val);
+                                    adapter.notifyDataSetChanged();
+                                }
+                            });
+                        },
+                        err -> Log.i("database err", "store database error : " + err.getMessage())
+                );
+            }
+        });
+    }
+
+    private void LoadNotificationStoreFromDatabase(NotificationsAdapter adapter){
+        DBHandler.getAllStoreNotification(mContext, new NotificationsStoreI() {
+            @Override
+            public void onSuccess(Flowable<List<NotificationStore>> listFlowable) {
+                listFlowable.subscribe(
+                        val -> {
+                            ((Activity) mContext).runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    adapter.setNotificationStore(val);
                                     adapter.notifyDataSetChanged();
                                 }
                             });

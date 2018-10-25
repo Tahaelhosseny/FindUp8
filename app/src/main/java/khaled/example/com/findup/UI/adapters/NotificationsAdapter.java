@@ -83,7 +83,11 @@ public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdap
 
     @Override
     public int getItemCount() {
-        return notifications.size();
+        if(SharedPrefManger.getStore_ID() != 0){
+            return notificationStoreList.size();
+        }else{
+            return notifications.size();
+        }
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {

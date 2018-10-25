@@ -52,7 +52,7 @@ public class LoginViewModel extends Observable {
 
                     }else if(response.body().getSuccess() ==1 && response.body().getData().get(0).getLogin_type().equals("Store")){
                     LoginStoreAccepted(response.body().getUser_data().get(0),password);
-                    saveStoreSetting(response.body().getUser_data().get(0).getStore_id());
+                    saveStoreSetting(response.body().getUser_data().get(0).getId());
                     mContext.startActivity(new Intent(mContext, MainStoreActivity.class));
                 } else{
                     Toast.makeText(mContext,"phone or password are not correct",Toast.LENGTH_SHORT).show();
@@ -133,7 +133,7 @@ public class LoginViewModel extends Observable {
         sharedPrefManger.setIsLoggedIn(true);
         sharedPrefManger.setLogin_phone(user.getStore_mobile());
         sharedPrefManger.setLogin_password(pass);
-        sharedPrefManger.setStoreID(user.getStore_id());
+        sharedPrefManger.setStoreID(user.getId());
         sharedPrefManger.setIsLoggedInAsCustomer(false);
         sharedPrefManger.setStore_banner(user.getStore_banner());
         sharedPrefManger.setStore_logo(user.getStore_logo());

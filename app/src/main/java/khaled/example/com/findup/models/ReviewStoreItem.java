@@ -5,7 +5,7 @@ import java.util.List;
 public class ReviewStoreItem {
 
     private String productName, productDesc, productImg;
-    private List<Comment> productComments;
+    private List<ProductComment> productComments;
 
     public String getProductName() {
         return productName;
@@ -31,11 +31,11 @@ public class ReviewStoreItem {
         this.productImg = productImg;
     }
 
-    public List<Comment> getProductComments() {
+    public List<ProductComment> getProductComments() {
         return productComments;
     }
 
-    public void setProductComments(List<Comment> productComments) {
+    public void setProductComments(List<ProductComment> productComments) {
         this.productComments = productComments;
     }
 }

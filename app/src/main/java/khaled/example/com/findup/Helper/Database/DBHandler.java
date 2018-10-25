@@ -149,6 +149,25 @@ public class DBHandler {
         }).start();
     }
 
+    public static void getSpecificComment(final Context context, int product_id , final PComment comment) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Flowable<List<ProductComment>> listFlowable = FindUpDatabase.getAppDatabase(context).daoAccess().getSpecificComment(product_id);
+                comment.onSuccess(listFlowable);
+            }
+        }).start();
+    }
+    public static void getStoreProducts(final Context context, int store_id , final Products products) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Flowable<List<Product>> listFlowable = FindUpDatabase.getAppDatabase(context).daoAccess().getStoreProducts(store_id);
+                products.onSuccess(listFlowable);
+            }
+        }).start();
+    }
+
     /******************************************************************************
      * Stores Section
      * @param store

@@ -103,11 +103,9 @@ public class SplashScreenViewModel  extends Observable {
                         mContext.startActivity(new Intent(mContext, MainStoreActivity.class));
                         ((Activity) mContext).finish();
                     }
-                    else if(SharedPrefManger.getUser_ID() != 0) {
+                    else{
                         mContext.startActivity(new Intent(mContext, MainActivity.class));
                         ((Activity) mContext).finish();
-                    }else{
-
                     }
                 }else {
                     mContext.startActivity(new Intent(mContext, IntroActivity.class));

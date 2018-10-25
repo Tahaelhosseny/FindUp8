@@ -34,7 +34,7 @@ public class MainStoreActivity extends AppCompatActivity {
 
         /*getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         getSupportActionBar().setDisplayShowHomeEnabled(false);*/
-        //insertSoreNotification();
+        insertSoreNotification();
         FragmentManager manager = getSupportFragmentManager();
         transaction = manager.beginTransaction();
         transaction.replace(R.id.store_main_container, new MainStoreFragment(), new MainStoreFragment().getClass().getName()).commit();
@@ -58,11 +58,12 @@ public class MainStoreActivity extends AppCompatActivity {
                     }
                     Log.e("Notification Store " , "Insertion Success");
                 }else{
-                    Log.e("Noti Store " , "There is Not Notification to this account yet Account ID : "+ SharedPrefManger.getUser_ID());
+                    Log.e("Noti Store " , "There is Not Notification to this account yet Account ID : "+ SharedPrefManger.getStore_ID());
                 }
             }
 
             @Override
+
             public void onFailure(Call<StoreNotificationResponse> call, Throwable t) {
                 Log.e("Noti Store Failler " , t.getMessage());
 

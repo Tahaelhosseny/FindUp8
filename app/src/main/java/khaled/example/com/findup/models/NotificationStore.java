@@ -12,19 +12,19 @@ public class NotificationStore {
     @Expose
     @PrimaryKey @NonNull
     private int notificationId;
-    @SerializedName("noti_title")
+    @SerializedName("noti_type")
     @Expose @NonNull
     private String notificationType;
-    @SerializedName("noti_desc")
+    @SerializedName("noti_date")
     @Expose @NonNull
     private String notificationDate;
-    @SerializedName("noti_date")
+    @SerializedName("noti_desc")
     @Expose @NonNull
     private String notificationDesc;
     @SerializedName("noti_image")
     @Expose @NonNull
     private String notificationImg;
-    @SerializedName("noti_type")
+    @SerializedName("noti_title")
     @Expose @NonNull
     private String notificationTitle;
     @SerializedName("read_flag")

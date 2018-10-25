@@ -8,6 +8,8 @@ import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
 import android.arch.persistence.room.Update;
 
+import org.intellij.lang.annotations.Flow;
+
 import java.util.List;
 
 import io.reactivex.Flowable;
@@ -48,6 +50,8 @@ public interface DaoAccess {
     @Query("SELECT * FROM Category WHERE show_home_flag = 1")
     Flowable<List<Category>> getCategoryInHome();
 
+    @Query("SELECT * FROM ProductComment WHERE comment_id = (SELECT MAX(comment_id) FROM ProductComment WHERE product_id = :product_id)")
+    Flowable<List<ProductComment>> getSpecificComment(int product_id);
 
     @Query("SELECT * FROM Category")
     Flowable<List<Category>> getCategories();
@@ -75,6 +79,7 @@ public interface DaoAccess {
 
     @Query("SELECT * FROM store")
     Flowable<List<Store>> getAllStores();
+
     @Query("UPDATE store set if_saved =:if_saved WHERE store_id = :store_id")
     void SaveStoreOperation(int store_id,int if_saved);
     @Update
@@ -102,6 +107,9 @@ public interface DaoAccess {
 
     @Query("SELECT * FROM Comment WHERE store_id = :store_id")
     Flowable<List<Comment>> getCommentsByStoreID(int store_id);
+
+    @Query("SELECT * FROM Product WHERE store_id = :store_id")
+    Flowable<List<Product>> getStoreProducts(int store_id);
 
     @Query("SELECT * FROM ProductComment WHERE product_id = :product_id")
     Flowable<List<ProductComment>> getCommentsByProductID(int product_id);

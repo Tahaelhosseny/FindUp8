@@ -178,13 +178,6 @@ public class CreateEventActivity extends AppCompatActivity {
                         e.printStackTrace();
                     }
                     activityCreateEventBinding.picBanner.setImageBitmap(selectedImageBitmap);
-                    /*ByteArrayOutputStream baos=new  ByteArrayOutputStream();
-                    selectedImageBitmap.compress(Bitmap.CompressFormat.PNG,100, baos);
-                    byte [] b=baos.toByteArray();
-                    String encodedImage=Base64.encodeToString(b, Base64.DEFAULT);
-                    Log.i("Image" , encodedImage);
-                    encodedImage = encodedImage.replace("\\s+","");
-                    encodedImage = encodedImage.replace("\n" , "").replace("\r" , "");*/
                     eventToCreate.setEvent_photo(selectedBanner.getPath());
                     break;
                    }
