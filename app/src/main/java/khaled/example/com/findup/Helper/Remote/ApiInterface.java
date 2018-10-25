@@ -242,8 +242,6 @@ public interface ApiInterface {
             @Part("work_days") RequestBody work_days,
             @Part("work_fromtime") RequestBody work_fromtime,
             @Part("work_totime") RequestBody work_totime);
-
-
     @POST(ApiClient.PATH_URL+"stores?tag=change_store_address&HashSecure="+HASH)
     @FormUrlEncoded
     Call<StoreAddressResponse> setStoreAddress(
@@ -254,7 +252,6 @@ public interface ApiInterface {
             @Field("from_time") String from_time,
             @Field("to_time") String to_time
     );
-
     @POST(ApiClient.PATH_URL+"stores?tag=edit_store_profile&HashSecure="+HASH)
     @FormUrlEncoded
     Call<StoreEditResponse> editStoreInfo(

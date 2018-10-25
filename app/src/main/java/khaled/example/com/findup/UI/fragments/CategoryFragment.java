@@ -2,12 +2,14 @@ package khaled.example.com.findup.UI.fragments;
 
 
 import android.animation.ValueAnimator;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +21,9 @@ import java.util.List;
 import io.github.luizgrp.sectionedrecyclerviewadapter.SectionParameters;
 import io.github.luizgrp.sectionedrecyclerviewadapter.SectionedRecyclerViewAdapter;
 import io.github.luizgrp.sectionedrecyclerviewadapter.StatelessSection;
+import io.reactivex.Flowable;
+import khaled.example.com.findup.Helper.Database.DBHandler;
+import khaled.example.com.findup.Helper.Database.Interfaces.Category.Category;
 import khaled.example.com.findup.R;
 import khaled.example.com.findup.UI.activities.ProductsActivity;
 
@@ -53,17 +58,39 @@ public class CategoryFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+
         expandableSections = new ArrayList<>();
-        expandableSections.add(new ExpandableSection(getString(R.string.events), getString(R.string.truck_description)));
-        expandableSections.add(new ExpandableSection(getString(R.string.home_business), getString(R.string.truck_description)));
-        expandableSections.add(new ExpandableSection(getString(R.string.craft), getString(R.string.craft_description)));
-        expandableSections.add(new ExpandableSection(getString(R.string.food_truck), getString(R.string.truck_description)));
-        expandableSections.add(new ExpandableSection(getString(R.string.stores), getString(R.string.truck_description)));
-        expandableSections.add(new ExpandableSection(getString(R.string.booth), getString(R.string.truck_description)));
-        expandableSections.add(new ExpandableSection(getString(R.string.others), getString(R.string.truck_description)));
-
         sectionAdapter = new SectionedRecyclerViewAdapter();
+        List<Category> cat = new ArrayList<>();
+        DBHandler.GetAllCategories(getActivity(), new Category() {
+            @Override
+            public void onSuccess(Flowable<List<khaled.example.com.findup.models.Category>> listFlowable) {
+                listFlowable.subscribe(
+                        val -> {
+                            (getActivity()).runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    for (int i = 0 ; i < val.size() ; i++){
+                                        expandableSections.add(new ExpandableSection(""+val.get(i).getCat_name() , ""+val.get(i).getCat_desc()));
+                                    }
+                                }
+                            });
+                        }
+                );
+            }
+            @Override
+            public void onFail() {
+            }
+        });
+//        expandableSections.add(new ExpandableSection(getString(R.string.events), getString(R.string.truck_description)));
+//        expandableSections.add(new ExpandableSection(getString(R.string.home_business), getString(R.string.truck_description)));
+//        expandableSections.add(new ExpandableSection(getString(R.string.craft), getString(R.string.craft_description)));
+//        expandableSections.add(new ExpandableSection(getString(R.string.food_truck), getString(R.string.truck_description)));
+//        expandableSections.add(new ExpandableSection(getString(R.string.stores), getString(R.string.truck_description)));
+//        expandableSections.add(new ExpandableSection(getString(R.string.booth), getString(R.string.truck_description)));
+//        expandableSections.add(new ExpandableSection(getString(R.string.others), getString(R.string.truck_description)));
 
+        Log.e("Section Size" , String.valueOf(expandableSections.size()));
         for (int i = 0; i < expandableSections.size(); i++) {
             sectionAdapter.addSection(expandableSections.get(i));
         }
@@ -96,8 +123,8 @@ public class CategoryFragment extends Fragment {
         public boolean expanded = false;
         String title;
         String content;
-
-        ExpandableSection(String title, String content) {
+        int id;
+        ExpandableSection(String title, String content ) {
             super(SectionParameters.builder()
                     .itemResourceId(R.layout.cat_sec_content)
                     .headerResourceId(R.layout.cat_sec_header)

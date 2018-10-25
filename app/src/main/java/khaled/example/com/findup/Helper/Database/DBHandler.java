@@ -139,6 +139,16 @@ public class DBHandler {
         }).start();
     }
 
+    public static void GetAllCategories(final Context context, final khaled.example.com.findup.Helper.Database.Interfaces.Category.Category category) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Flowable<List<Category>> listFlowable = FindUpDatabase.getAppDatabase(context).daoAccess().getCategories();
+                category.onSuccess(listFlowable);
+            }
+        }).start();
+    }
+
     /******************************************************************************
      * Stores Section
      * @param store
