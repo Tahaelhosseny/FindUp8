@@ -27,8 +27,8 @@ public class FilterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_filter);
         TabLayout tabLayout =  findViewById(R.id.welcome_slide_tab);
-        tabLayout.addTab(tabLayout.newTab().setText("Filter"));
         tabLayout.addTab(tabLayout.newTab().setText("Sort"));
+        tabLayout.addTab(tabLayout.newTab().setText("Filter"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
         final ViewPager viewPager =  findViewById(R.id.welcome_view_pager);

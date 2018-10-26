@@ -2,6 +2,63 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:orientation="vertical"
     android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginLeft="@dimen/_5sdp"
+        android:id="@+id/by_cat_txt"
+        android:textSize="@dimen/_15sdp"
+        android:layout_height="wrap_content"
+        android:text="By Category"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/category_filter_recycler"
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginLeft="@dimen/_25sdp"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginLeft="@dimen/_5sdp"
+        android:id="@+id/by_product_id"
+        android:textSize="@dimen/_15sdp"
+        android:layout_height="wrap_content"
+        android:text="By Product"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginLeft="@dimen/_5sdp"
+        android:textSize="@dimen/_15sdp"
+        android:id="@+id/by_saved_id"
+        android:layout_height="wrap_content"
+        android:text="By Saved"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:id="@+id/by_liked_id"
+        android:layout_marginLeft="@dimen/_5sdp"
+        android:textSize="@dimen/_15sdp"
+        android:layout_height="wrap_content"
+        android:text="By Liked"/>
+
+    <Button
+        android:id="@+id/apply_sort"
+        android:layout_width="@dimen/_200sdp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_40sdp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:background="@drawable/bg_button_rounded_accent"
+        android:fontFamily="@font/sfcompactdisplay_medium"
+        android:text="Apply"
+        android:textColor="@color/material_color_white"
+        android:textAllCaps="false"
+        android:textStyle="bold" />
+
 
 </LinearLayout>
