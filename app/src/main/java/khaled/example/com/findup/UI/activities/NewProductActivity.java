@@ -117,7 +117,6 @@ public class NewProductActivity extends AppCompatActivity {
                     t.printStackTrace();
                 }
             });*/
-
             Intent resultIntent = new Intent();
             resultIntent.putExtra("opr_type", 2);
             resultIntent.putExtra("pro_pos", pro_pos);
