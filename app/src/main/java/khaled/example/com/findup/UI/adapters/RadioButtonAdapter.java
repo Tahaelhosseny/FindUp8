@@ -12,6 +12,7 @@ import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -70,6 +71,8 @@ public class RadioButtonAdapter extends RecyclerView.Adapter<RadioButtonAdapter.
 
                     lastChecked = cb;
                     lastCheckedPos = clickedPos;
+//                    SharedPrefManger.setPermentCurrency(cb.getId());
+//                    Toast.makeText(context, "Last Checked : "+SharedPrefManger.getPermantCurrency(), Toast.LENGTH_SHORT).show();
                 }
                 else
                     lastChecked = null;

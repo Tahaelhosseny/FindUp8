@@ -271,6 +271,14 @@ public class DBHandler {
         }).start();
     }
 
+    public static void DeleteSaved(final int id, final Context context) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                FindUpDatabase.getAppDatabase(context).daoAccess().deleteSavedbyID(id);
+            }
+        }).start();
+    }
 
     public static void getAllComments(final Context context, final Comments comment) {
         new Thread(new Runnable() {
@@ -278,6 +286,16 @@ public class DBHandler {
             public void run() {
                 Flowable<List<Comment>> listFlowable = FindUpDatabase.getAppDatabase(context).daoAccess().getAllComments();
                 comment.onSuccess(listFlowable);
+            }
+        }).start();
+    }
+
+    public static void getSavedID( String  name   , String desc , final Context context, final SavedItem savedItem) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Flowable<List<UserSavedItem>> listFlowable = FindUpDatabase.getAppDatabase(context).daoAccess().getSavedID(desc , name);
+                savedItem.onSuccess(listFlowable);
             }
         }).start();
     }

@@ -25,6 +25,7 @@ public class UserSavedItem {
     @SerializedName("saved_type")@Expose
     private String itemType;
 
+
     public UserSavedItem(int itemId, String itemName, String itemDesc, String itemImg, String itemType) {
         this.itemId = itemId;
         this.itemName = itemName;
