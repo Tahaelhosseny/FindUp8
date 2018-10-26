@@ -45,7 +45,7 @@ public class MainCatsViewModel extends Observable {
     }
 
     public void LoadDataFromDataBase(MainCategoriesAdapter adapter){
-        DBHandler.GetHomeCategories(mContext, new Category() {
+        DBHandler.GetAllCategories(mContext, new Category() {
             @Override
             public void onSuccess(Flowable<List<khaled.example.com.findup.models.Category>> listFlowable) {
                 listFlowable.subscribe(val->{
@@ -58,7 +58,6 @@ public class MainCatsViewModel extends Observable {
                     });
                 });
             }
-
             @Override
             public void onFail() {
 

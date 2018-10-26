@@ -71,8 +71,8 @@ public class RadioButtonAdapter extends RecyclerView.Adapter<RadioButtonAdapter.
 
                     lastChecked = cb;
                     lastCheckedPos = clickedPos;
-//                    SharedPrefManger.setPermentCurrency(cb.getId());
-//                    Toast.makeText(context, "Last Checked : "+SharedPrefManger.getPermantCurrency(), Toast.LENGTH_SHORT).show();
+                    SharedPrefManger.setPermentCurrency(cb.getId());
+                    Toast.makeText(context, "Last Checked : "+SharedPrefManger.getPermantCurrency(), Toast.LENGTH_SHORT).show();
                 }
                 else
                     lastChecked = null;

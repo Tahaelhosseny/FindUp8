@@ -202,11 +202,11 @@ public class SharedPrefManger {
         return mSharedPref.getInt("store_likes", 0);
     }
 
-//    public static void setPermentCurrency(int id){
-//        mSharedPref.edit().putInt("permant_currency" , id).apply();
-//    }
-//    public static int getPermantCurrency(){
-//        return mSharedPref.getInt("permant_currency" , 0);
-//    }
+    public static void setPermentCurrency(int id){
+        mSharedPref.edit().putInt("permant_currency" , id).apply();
+    }
+    public static int getPermantCurrency(){
+        return mSharedPref.getInt("permant_currency" , 0);
+    }
 
 }

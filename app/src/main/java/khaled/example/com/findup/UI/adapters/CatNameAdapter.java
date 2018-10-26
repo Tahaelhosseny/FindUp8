@@ -26,15 +26,14 @@ public class CatNameAdapter  extends RecyclerView.Adapter<CatNameAdapter.ViewHol
 
     private Context mContext;
     private List<Category> categories;
-    private CurrentLocation currentLocation = new CurrentLocation();
 
     public CatNameAdapter(Context mContext, List<Category> categories) {
         this.mContext = mContext;
         this.categories = categories;
     }
 
-    public void setComments(List<Category> comment) {
-        this.categories = comment;
+    public void setCategories(List<Category> categories) {
+        this.categories = categories;
         notifyDataSetChanged();
     }
 
@@ -42,13 +41,14 @@ public class CatNameAdapter  extends RecyclerView.Adapter<CatNameAdapter.ViewHol
     @Override
     public CatNameAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.comment_item, parent, false);
+                .inflate(R.layout.single_cat_item, parent, false);
         return new CatNameAdapter.ViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(@NonNull CatNameAdapter.ViewHolder holder, int position) {
         Category category = categories.get(position);
+
         holder.cat_name.setText(category.getCat_name());
     }
 
