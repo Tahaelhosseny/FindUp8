@@ -63,9 +63,9 @@
     <string name="create_store_account">Create Store Account</string>
     <string name="profile_notification">Notifications</string>
     <string name="system_message">System Message</string>
-    <string name="add_your_first_product">Add Your First Product</string>
+    <string name="add_your_first_product">Add Your Product</string>
     <string name="add_your_first_craft">Add Your First Craft</string>
-    <string name="add_your_first_product_hint">Add your first product with picture, name, description and price</string>
+    <string name="add_your_first_product_hint">Add your product with picture, name, description and price</string>
     <string name="add_your_first_craft_hint">Add your first craft with picture, name, description and price</string>
     <string name="add_product">Add Products</string>
     <string name="don_t_have_account_create_one">Don\'t have Account..Create one</string>

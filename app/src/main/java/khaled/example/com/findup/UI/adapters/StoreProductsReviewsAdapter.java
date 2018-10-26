@@ -127,7 +127,7 @@ public class StoreProductsReviewsAdapter extends RecyclerView.Adapter<StoreProdu
                                 }
                                 if(val.size()  == 0){
                                     date.setVisibility(View.GONE);
-                                    coment.setText("There is No Comment Until now Fro this product");
+                                    coment.setText("No Comment For this product");
                                     img.setVisibility(View.GONE);
                                     name.setVisibility(View.GONE);
                                     pervious.setVisibility(View.GONE);
