@@ -49,11 +49,18 @@ public class RadioButtonAdapter extends RecyclerView.Adapter<RadioButtonAdapter.
         holder.radioButton.setText(currency.getCurrency_title());holder.radioButton.setId(currency.getCurrency_id());
         holder.radioButton.setChecked(currency.isSelected());
         holder.radioButton.setTag(new Integer(position));
+        int id = SharedPrefManger.getCurrencyIdStore();
+        if(holder.radioButton.getId() == id){
+            holder.radioButton.setChecked(true);
+            lastChecked = holder.radioButton;
+//            lastCheckedPos = 0;
+        }
         if(position == 0 && currencyList.get(0).isSelected() && holder.radioButton.isChecked())
         {
             lastChecked = holder.radioButton;
             lastCheckedPos = 0;
         }
+
         holder.radioButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v)

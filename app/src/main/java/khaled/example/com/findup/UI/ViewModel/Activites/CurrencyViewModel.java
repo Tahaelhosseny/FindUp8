@@ -13,6 +13,8 @@ import java.util.Observable;
 import khaled.example.com.findup.Helper.Remote.ApiClient;
 import khaled.example.com.findup.Helper.Remote.ApiInterface;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.CurrencyResponse;
+import khaled.example.com.findup.Helper.SharedPrefManger;
+import khaled.example.com.findup.UI.activities.CurrencyActivity;
 import khaled.example.com.findup.UI.adapters.RadioButtonAdapter;
 import khaled.example.com.findup.models.Currency;
 import retrofit2.Call;
@@ -33,7 +35,8 @@ public class CurrencyViewModel extends Observable {
             @Override
             public void onResponse(Call<CurrencyResponse> call, Response<CurrencyResponse> response) {
                 if(response.body().getSuccess() == 1){
-
+                    SharedPrefManger.setCurrencyIdStore(currency_id);
+                    Toast.makeText(mContext, "Value That Saved Successfully "+SharedPrefManger.getCurrencyIdStore(), Toast.LENGTH_SHORT).show();
                 }else{
                     Toast.makeText(mContext, ""+response.body().getError_msg(), Toast.LENGTH_SHORT).show();
                 }

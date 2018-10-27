@@ -56,6 +56,9 @@ public interface DaoAccess {
     @Query("SELECT * FROM Category")
     Flowable<List<Category>> getCategories();
 
+    @Query("SELECT * FROM Store WHERE store_cat_id = :cat_id")
+    Flowable<List<Store>> getStoreByCat(int cat_id);
+
 
     @Update
     void UpdateCategory(Category category);

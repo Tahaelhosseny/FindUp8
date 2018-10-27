@@ -25,6 +25,7 @@ import io.reactivex.Flowable;
 import khaled.example.com.findup.Helper.Database.DBHandler;
 import khaled.example.com.findup.Helper.Database.Interfaces.Category.Category;
 import khaled.example.com.findup.R;
+import khaled.example.com.findup.UI.activities.CategeoryStoresAcivity;
 import khaled.example.com.findup.UI.activities.ProductsActivity;
 
 /**
@@ -71,7 +72,7 @@ public class CategoryFragment extends Fragment {
                                 @Override
                                 public void run() {
                                     for (int i = 0 ; i < val.size() ; i++){
-                                        sectionAdapter.addSection(new ExpandableSection(""+val.get(i).getCat_name() , ""+val.get(i).getCat_desc()));
+                                        sectionAdapter.addSection(new ExpandableSection(""+val.get(i).getCat_name() , ""+val.get(i).getCat_desc() , val.get(i).getCat_id()));
                                     }
                                     RecyclerView recyclerView = getActivity().findViewById(R.id.categoryRecyclerview);
                                     recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -85,13 +86,6 @@ public class CategoryFragment extends Fragment {
             public void onFail() {
             }
         });
-//        expandableSections.add(new ExpandableSection(getString(R.string.events), getString(R.string.truck_description)));
-//        expandableSections.add(new ExpandableSection(getString(R.string.home_business), getString(R.string.truck_description)));
-//        expandableSections.add(new ExpandableSection(getString(R.string.craft), getString(R.string.craft_description)));
-//        expandableSections.add(new ExpandableSection(getString(R.string.food_truck), getString(R.string.truck_description)));
-//        expandableSections.add(new ExpandableSection(getString(R.string.stores), getString(R.string.truck_description)));
-//        expandableSections.add(new ExpandableSection(getString(R.string.booth), getString(R.string.truck_description)));
-//        expandableSections.add(new ExpandableSection(getString(R.string.others), getString(R.string.truck_description)));
     }
     public void changeTextSize(final TextView textView, float PstartSize, float PendSize) {
         final float startSize = PstartSize; // Size in pixels
@@ -115,12 +109,12 @@ public class CategoryFragment extends Fragment {
         String title;
         String content;
         int id;
-        ExpandableSection(String title, String content ) {
+        ExpandableSection(String title, String content , int id) {
             super(SectionParameters.builder()
                     .itemResourceId(R.layout.cat_sec_content)
                     .headerResourceId(R.layout.cat_sec_header)
                     .build());
-
+            this.id = id;
             this.title = title;
             this.content = content;
         }
@@ -158,7 +152,7 @@ public class CategoryFragment extends Fragment {
             itemHolder.rootView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    startActivity(new Intent(getActivity(), ProductsActivity.class));
+                    startActivity(new Intent(getActivity(), CategeoryStoresAcivity.class).putExtra("id" , id));
                 }
             });
             //changeTextSize(itemHolder.contentText,itemHolder.contentText.getTextSize(),((ItemViewHolder) holder).defalut_text_size);

@@ -39,6 +39,17 @@ public class CurrencyActivity extends AppCompatActivity {
             }
         });
         currencyViewModel.getAllCurrency(activityCurrencyBinding.currencyAllAdapter);
+        activityCurrencyBinding.setPresenter(new CurrencyPresenter() {
+            @Override
+            public void setUserCurrency() {
+                int currency_id = SharedPrefManger.getPermantCurrency();
+                currencyViewModel.setCurrency(currency_id , SharedPrefManger.getStore_ID() );
+            }
+            @Override
+            public void LoadAllCurrency() {
+
+            }
+        });
     }
 
     @Override

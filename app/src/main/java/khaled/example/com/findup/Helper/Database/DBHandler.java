@@ -149,6 +149,16 @@ public class DBHandler {
         }).start();
     }
 
+    public static void getStoreByCatid(final int cat_id , final Context context, final Stores stores) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Flowable<List<Store>> listFlowable = FindUpDatabase.getAppDatabase(context).daoAccess().getStoreByCat(cat_id);
+                stores.onSuccess(listFlowable);
+            }
+        }).start();
+    }
+
     public static void getSpecificComment(final Context context, int product_id , final PComment comment) {
         new Thread(new Runnable() {
             @Override

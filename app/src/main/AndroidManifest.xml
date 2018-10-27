@@ -26,11 +26,12 @@
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
+
         <activity
             android:name=".UI.activities.MainActivity"
             android:label="@string/find_things"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            android:windowSoftInputMode="adjustPan"></activity>
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".UI.activities.SplashScreenActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen">
@@ -166,21 +167,19 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
         <activity
             android:name=".UI.activities.AddProductTruckActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen">
-
-        </activity>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen"></activity>
         <activity
             android:name=".UI.activities.AddProductCraftActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
         <activity
             android:name=".UI.activities.StoreInformationActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen"></activity>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
         <activity
             android:name=".UI.activities.StoreContactActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
         <activity
             android:name=".UI.activities.StoreChooseCategoryActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen"></activity>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
         <activity
             android:name=".UI.activities.StoreCraftCategoryActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
@@ -202,7 +201,7 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
         <activity
             android:name=".UI.activities.MainStoreActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen"></activity>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
         <activity
             android:name=".UI.activities.ChatWithStoreActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
@@ -224,12 +223,16 @@
         <activity
             android:name=".UI.activities.StoreNotificationSettActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
-        <activity android:name=".UI.activities.NewProductActivity"
+        <activity
+            android:name=".UI.activities.NewProductActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".UI.activities.AddProductTruckActivity" />
         </activity>
+        <activity android:name=".UI.activities.CategeoryStoresAcivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"
+            />
     </application>
 
 </manifest>

@@ -126,7 +126,7 @@ public interface ApiInterface {
             ,@Field("old_password") String old_password , @Field("new_password") String new_password , @Field("mobile") String mobile );
 
 
-    @POST(ApiClient.PATH_URL+"user_profile?tag=set_user_currency&HashSecure="+HASH)
+    @POST(ApiClient.PATH_URL+"stores?tag=set_store_currency&HashSecure="+HASH)
     @FormUrlEncoded
     Call<CurrencyResponse> setUserCurrency(@Field("currency_id") int currency_id , @Query("store_id") int store_id);
 
