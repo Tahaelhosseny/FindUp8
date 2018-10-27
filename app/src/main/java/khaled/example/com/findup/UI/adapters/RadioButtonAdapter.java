@@ -70,6 +70,8 @@ public class RadioButtonAdapter extends RecyclerView.Adapter<RadioButtonAdapter.
 
                 if(cb.isChecked())
                 {
+
+
                     if(lastChecked != null)
                     {
                         lastChecked.setChecked(false);
