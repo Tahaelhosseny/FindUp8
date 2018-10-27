@@ -13,11 +13,14 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
+
+import com.google.gson.Gson;
 
 import java.io.File;
 
@@ -27,7 +30,6 @@ import khaled.example.com.findup.Helper.Remote.ResponseModel.CreateProductRespon
 import khaled.example.com.findup.Helper.Remote.ResponseModel.DeleteStoreProductResponse;
 import khaled.example.com.findup.Helper.SharedPrefManger;
 import khaled.example.com.findup.R;
-import khaled.example.com.findup.UI.adapters.AddProductsAdapter;
 import khaled.example.com.findup.models.AddProduct;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -46,11 +48,20 @@ public class NewProductActivity extends AppCompatActivity {
     int pro_pos = -1;
     int pro_id = -1;
     ApiInterface apiService;
+    SharedPrefManger sharedPrefManger;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_product);
+        sharedPrefManger = new SharedPrefManger(this);
+
+        btn_addProductDone = findViewById(R.id.btn_addProductDone);
+        btn_addProductDelete = findViewById(R.id.btn_addProductDelete);
+        editText_productName = findViewById(R.id.editText_productName);
+        editText_productDescription = findViewById(R.id.editText_productDescription);
+        editText_product_price = findViewById(R.id.editText_product_price);
+        pic_product = findViewById(R.id.pic_product);
 
         if (appVersion > Build.VERSION_CODES.LOLLIPOP_MR1) {
             if (!checkIfAlreadyhavePermission()) {
@@ -72,13 +83,6 @@ public class NewProductActivity extends AppCompatActivity {
         }
 
         apiService = ApiClient.getClient().create(ApiInterface.class);
-
-        btn_addProductDone = findViewById(R.id.btn_addProductDone);
-        btn_addProductDelete = findViewById(R.id.btn_addProductDelete);
-        editText_productName = findViewById(R.id.editText_productName);
-        editText_productDescription = findViewById(R.id.editText_productDescription);
-        editText_product_price = findViewById(R.id.product_price);
-        pic_product = findViewById(R.id.pic_product);
 
         pic_product.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -104,11 +108,16 @@ public class NewProductActivity extends AppCompatActivity {
 
     private void deleteProduct() {
         if (pro_id != -1 && pro_pos != -1){
-            /*Call<DeleteStoreProductResponse> deleteProduct = apiService.deleteStoreProduct(pro_id, SharedPrefManger.getStore_ID());
+
+            Call<DeleteStoreProductResponse> deleteProduct = apiService.deleteStoreProduct(pro_id, sharedPrefManger.getStore_ID());
             deleteProduct.enqueue(new Callback<DeleteStoreProductResponse>() {
                 @Override
                 public void onResponse(Call<DeleteStoreProductResponse> call, Response<DeleteStoreProductResponse> response) {
                     Toast.makeText(NewProductActivity.this, "Product Deleted", Toast.LENGTH_LONG).show();
+                    Intent resultIntent = new Intent();
+                    resultIntent.putExtra("opr_type", 2);
+                    resultIntent.putExtra("pro_pos", pro_pos);
+                    setResult(Activity.RESULT_OK, resultIntent);
                     finish();
                 }
 
@@ -116,12 +125,7 @@ public class NewProductActivity extends AppCompatActivity {
                 public void onFailure(Call<DeleteStoreProductResponse> call, Throwable t) {
                     t.printStackTrace();
                 }
-            });*/
-            Intent resultIntent = new Intent();
-            resultIntent.putExtra("opr_type", 2);
-            resultIntent.putExtra("pro_pos", pro_pos);
-            setResult(Activity.RESULT_OK, resultIntent);
-            finish();
+            });
         }
     }
 
@@ -159,7 +163,9 @@ public class NewProductActivity extends AppCompatActivity {
 
         Bitmap bitmap = BitmapFactory.decodeFile(selectedProduct.getPath());
 
-        AddProduct addProduct = new AddProduct(editText_product_price.getText().toString(),
+        AddProduct addProduct = new AddProduct(
+                -1,
+                editText_product_price.getText().toString(),
                 editText_productName.getText().toString(),
                 editText_productDescription.getText().toString(),
                 bitmap);
@@ -170,11 +176,11 @@ public class NewProductActivity extends AppCompatActivity {
         MultipartBody.Part product_img =
                 MultipartBody.Part.createFormData("product_img", imgFile.getName(), requestImgFile);
 
-        MultipartBody.Part store_id = MultipartBody.Part.createFormData("store_id", "1");
+        MultipartBody.Part store_id = MultipartBody.Part.createFormData("store_id", ""+sharedPrefManger.getStore_ID());
         MultipartBody.Part product_name = MultipartBody.Part.createFormData("product_name", addProduct.getProductName());
         MultipartBody.Part description = MultipartBody.Part.createFormData("product_desc", addProduct.getProductDescription());
         MultipartBody.Part product_price = MultipartBody.Part.createFormData("product_price", addProduct.getProductPrice());
-        MultipartBody.Part product_img_base64 = MultipartBody.Part.createFormData("product_img_base64", "-");
+        MultipartBody.Part product_img_base64 = MultipartBody.Part.createFormData("product_img_base64", "frfrfrfrbnbmnb");
 
         Call<CreateProductResponse> newProduct = apiService.createStoreProduct(store_id,
                 product_name,
@@ -183,15 +189,25 @@ public class NewProductActivity extends AppCompatActivity {
                 product_img,
                 product_img_base64
         );
-        /*newProduct.enqueue(new Callback<CreateProductResponse>() {
+        newProduct.enqueue(new Callback<CreateProductResponse>() {
             @Override
             public void onResponse(Call<CreateProductResponse> call, Response<CreateProductResponse> response) {
                 Log.e("Success", new Gson().toJson(response.body()));
                 if (response.body().getSuccess() ==1){
-                    Toast.makeText(AddProductTruckActivity.this,"Product Added",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(NewProductActivity.this,"Product Added",Toast.LENGTH_SHORT).show();
+                    Intent resultIntent = new Intent();
+                    resultIntent.putExtra("opr_type", 1);
+                    resultIntent.putExtra("pro_id", response.body().getData().get(0).getProduct_id());
+                    resultIntent.putExtra("pro_name", editText_productName.getText().toString());
+                    resultIntent.putExtra("pro_name", editText_productName.getText().toString());
+                    resultIntent.putExtra("pro_desc", editText_productDescription.getText().toString());
+                    resultIntent.putExtra("pro_price", editText_product_price.getText().toString());
+                    resultIntent.putExtra("pro_img", selectedProduct.getPath());
+                    setResult(Activity.RESULT_OK, resultIntent);
+                    finish();
                 }
                 else{
-                    Toast.makeText(AddProductTruckActivity.this,"Error adding product",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(NewProductActivity.this,"Error adding product",Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -199,16 +215,7 @@ public class NewProductActivity extends AppCompatActivity {
             public void onFailure(Call<CreateProductResponse> call, Throwable t) {
                 t.printStackTrace();
             }
-        });*/
-
-        Intent resultIntent = new Intent();
-        resultIntent.putExtra("opr_type", 1);
-        resultIntent.putExtra("pro_name", editText_productName.getText().toString());
-        resultIntent.putExtra("pro_desc", editText_productDescription.getText().toString());
-        resultIntent.putExtra("pro_price", editText_product_price.getText().toString());
-        resultIntent.putExtra("pro_img", selectedProduct.getPath());
-        setResult(Activity.RESULT_OK, resultIntent);
-        finish();
+        });
     }
 
     private void pickImg(){

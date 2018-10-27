@@ -1,11 +1,8 @@
 package khaled.example.com.findup.Helper.Remote.ResponseModel;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
-
 import java.util.List;
 
-import khaled.example.com.findup.models.AskCode;
+import khaled.example.com.findup.models.Product;
 
 public class CreateProductResponse {
     private String tag;
@@ -15,6 +12,16 @@ public class CreateProductResponse {
     private int error;
 
     private String error_msg;
+
+    private List<Product> data;
+
+    public List<Product> getData() {
+        return data;
+    }
+
+    public void setData(List<Product> data) {
+        this.data = data;
+    }
 
     public String getError_msg() {
         return error_msg;
@@ -47,6 +54,5 @@ public class CreateProductResponse {
     public void setError(int error) {
         this.error = error;
     }
-
 
 }
