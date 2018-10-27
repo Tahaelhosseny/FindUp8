@@ -120,9 +120,14 @@ public interface DaoAccess {
     @Update
     void UpdateEvent(Comment comment);
 
-    @Delete
-    void DeleteEvent(Comment Comment);
+    @Query("DELETE FROM UserSavedItem WHERE itemId = :id")
+    void deleteSavedbyID(int id);
 
+    @Query("SELECT * FROM UserSavedItem WHERE itemDesc = :desc AND itemName = :name")
+    Flowable<List<UserSavedItem>> getSavedID(String desc  , String name);
+
+    @Delete
+    void DeleteSaved(UserSavedItem userSavedItem);
 
     //Events table
     @Insert(onConflict = OnConflictStrategy.REPLACE)

@@ -1,5 +1,6 @@
 package khaled.example.com.findup.UI.adapters;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.common.util.DbUtils;
 import com.like.LikeButton;
@@ -18,10 +20,13 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import io.reactivex.Flowable;
 import khaled.example.com.findup.Helper.Database.DBHandler;
+import khaled.example.com.findup.Helper.Database.Interfaces.SavedItem.SavedItem;
 import khaled.example.com.findup.Helper.Location.LocationUtility;
 import khaled.example.com.findup.Helper.Remote.ApiClient;
 import khaled.example.com.findup.Helper.Remote.ApiInterface;
+import khaled.example.com.findup.Helper.Remote.ResponseModel.DeleteSavedResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.SaveModelResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.StoresResponse;
 import khaled.example.com.findup.Helper.SharedPrefManger;
@@ -29,6 +34,7 @@ import khaled.example.com.findup.R;
 import khaled.example.com.findup.UI.activities.StoreDetailsActivity;
 import khaled.example.com.findup.models.CurrentLocation;
 import khaled.example.com.findup.models.Store;
+import khaled.example.com.findup.models.StoreProducts;
 import khaled.example.com.findup.models.UserSavedItem;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -93,6 +99,30 @@ public class NearMeAdapter extends RecyclerView.Adapter<NearMeAdapter.ViewHolder
             @Override
             public void unLiked(LikeButton likeButton) {
                 SaveStore(context,holder.store,sharedPrefManger.getUser_ID(),likeButton);
+                DBHandler.getSavedID(stores.get(position).getStore_name(), stores.get(position).getStore_desc(), context, new SavedItem() {
+                    @Override
+                    public void onSuccess(Flowable<List<UserSavedItem>> listFlowable) {
+                        listFlowable.subscribe(val ->
+                                {
+                                    ((Activity) context).runOnUiThread(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            for(int i = 0 ; i < val.size() ; i++) {
+                                                deleteSavedStore(context, val.get(i).getItemId(), stores.get(position), likeButton);
+                                                Log.e("Item Deleted" , "Success");
+                                            }
+                                        }
+                                    });
+                                }
+                        );
+
+                    }
+
+                    @Override
+                    public void onFail() {
+
+                    }
+                });
             }
         });
 
@@ -137,10 +167,31 @@ public class NearMeAdapter extends RecyclerView.Adapter<NearMeAdapter.ViewHolder
             public void onResponse(Call<SaveModelResponse> call, Response<SaveModelResponse> response) {
                 store.setIf_saved((response.body().getUser_data().get(0).getSave_case().equals("saved"))?1:0);
                 DBHandler.SaveStore(store,store.getIf_saved(),mContext);
+                if(response.body().getUser_data().get(0).getSave_case().equals("saved")) {
+                    UserSavedItem userSavedItem = new UserSavedItem(response.body().getUser_data().get(0).getSave_id(),store.getStore_name(), store.getStore_desc(), store.getStore_logo(), "Store");
+                    DBHandler.InsertSavedItem(userSavedItem , context);
+
+                }
             }
             @Override
             public void onFailure(Call<SaveModelResponse> call, Throwable t) {
                 likeButton.setLiked((store.getIf_saved()==0)?false:true);
+                Log.i("saved_error",t.getMessage());
+            }
+        });
+    }
+    private void deleteSavedStore(Context context , int saved_id  , Store store , LikeButton likeButton){
+        ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
+        Call<DeleteSavedResponse> deleteSavedResponseCall = apiService.deleteSavedItem(SharedPrefManger.getUser_ID() , saved_id);
+        deleteSavedResponseCall.enqueue(new Callback<DeleteSavedResponse>() {
+            @Override
+            public void onResponse(Call<DeleteSavedResponse> call, Response<DeleteSavedResponse> response) {
+                store.setIf_saved(0);
+                DBHandler.DeleteSaved(saved_id,context);
+            }
+            @Override
+            public void onFailure(Call<DeleteSavedResponse> call, Throwable t) {
+//                likeButton.setLiked(false);
                 Log.i("saved_error",t.getMessage());
             }
         });

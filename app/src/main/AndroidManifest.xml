@@ -26,7 +26,6 @@
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
-
         <activity
             android:name=".UI.activities.MainActivity"
             android:label="@string/find_things"
@@ -34,7 +33,13 @@
             android:windowSoftInputMode="adjustPan"></activity>
         <activity
             android:name=".UI.activities.SplashScreenActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"></activity>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".UI.activities.LoginActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen">
@@ -162,11 +167,7 @@
         <activity
             android:name=".UI.activities.AddProductTruckActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".UI.activities.AddProductCraftActivity"
