@@ -128,9 +128,9 @@ public class StoreContactActivity extends AppCompatActivity {
         MultipartBody.Part cat_id = MultipartBody.Part.createFormData("cat_id", "1");
         MultipartBody.Part store_otherlang = MultipartBody.Part.createFormData("store_otherlang", createStore.getStore_otherlang());
         MultipartBody.Part store_tags = MultipartBody.Part.createFormData("store_tags", createStore.getStore_tags());
-        MultipartBody.Part work_days = MultipartBody.Part.createFormData("work_days", createStore.getWorkDays());
+        /*MultipartBody.Part work_days = MultipartBody.Part.createFormData("work_days", createStore.getWorkDays());
         MultipartBody.Part work_fromtime = MultipartBody.Part.createFormData("work_fromtime", "1:00");
-        MultipartBody.Part work_totime = MultipartBody.Part.createFormData("work_totime", "10:00");
+        MultipartBody.Part work_totime = MultipartBody.Part.createFormData("work_totime", "10:00");*/
         MultipartBody.Part store_logo_base64 = MultipartBody.Part.createFormData("store_logo_base64", "-");
         MultipartBody.Part store_banner_base64 = MultipartBody.Part.createFormData("store_banner_base64", "-");
         /*Log.e("Myeror", createStore.getStore_name());
@@ -168,9 +168,6 @@ public class StoreContactActivity extends AppCompatActivity {
                 bodybannerFile,
                 store_otherlang,
                 store_tags,
-                work_days,
-                work_fromtime,
-                work_totime,
                 store_logo_base64,
                 store_banner_base64
         );
@@ -193,9 +190,7 @@ public class StoreContactActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<CreateStoreResponse> call, Throwable t) {
-                Toast.makeText(StoreContactActivity.this,"Account Created",Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(StoreContactActivity.this, AddProductTruckActivity.class));
-                finish();
+
             }
         });
     }
@@ -204,5 +199,13 @@ public class StoreContactActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         finish();
+    }
+
+    private void nextStep(){
+        if (radioLocation.getCheckedRadioButtonId() == R.id.radioDynamicLocation){
+            Toast.makeText(StoreContactActivity.this,"Account Created",Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(StoreContactActivity.this, AddProductTruckActivity.class));
+            finish();
+        }
     }
 }

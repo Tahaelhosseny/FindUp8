@@ -35,11 +35,6 @@
         <activity
             android:name=".UI.activities.SplashScreenActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".UI.activities.LoginActivity"
@@ -167,7 +162,13 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
         <activity
             android:name=".UI.activities.AddProductTruckActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen"></activity>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".UI.activities.AddProductCraftActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
@@ -179,7 +180,9 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
         <activity
             android:name=".UI.activities.StoreChooseCategoryActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen">
+
+        </activity>
         <activity
             android:name=".UI.activities.StoreCraftCategoryActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />

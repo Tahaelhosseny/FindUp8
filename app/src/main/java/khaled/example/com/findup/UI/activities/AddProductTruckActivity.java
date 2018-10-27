@@ -82,7 +82,7 @@ public class AddProductTruckActivity extends AppCompatActivity {
                             adapter.notifyDataSetChanged();
                             break;
                         case 2:
-                            products.remove(data.getStringExtra("pro_pos"));
+                            products.remove(data.getIntExtra("pro_pos",-1));
                             adapter.notifyDataSetChanged();
                             break;
                     }
@@ -106,7 +106,6 @@ public class AddProductTruckActivity extends AppCompatActivity {
                         .putExtra("pro_price", products.get(position).getProductPrice())
                         .putExtra("pro_img", products.get(position).getProductImgPath())
                         ,0);
-
             }
 
             @Override

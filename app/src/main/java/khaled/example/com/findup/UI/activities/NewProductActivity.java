@@ -3,11 +3,13 @@ package khaled.example.com.findup.UI.activities;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -138,7 +140,7 @@ public class NewProductActivity extends AppCompatActivity {
                 case (1) : {
                     selectedProduct = data.getData();
                     assert selectedProduct != null;
-                    Bitmap bitmap = BitmapFactory.decodeFile(selectedProduct.getPath());
+                    Bitmap bitmap = BitmapFactory.decodeFile(selectedProduct.getLastPathSegment().substring(4));
                     pic_product.setImageBitmap(bitmap);
                     break;
                 }
@@ -161,7 +163,7 @@ public class NewProductActivity extends AppCompatActivity {
             return;
         }
 
-        Bitmap bitmap = BitmapFactory.decodeFile(selectedProduct.getPath());
+        Bitmap bitmap = BitmapFactory.decodeFile(selectedProduct.getLastPathSegment().substring(4));
 
         AddProduct addProduct = new AddProduct(
                 -1,
@@ -170,7 +172,7 @@ public class NewProductActivity extends AppCompatActivity {
                 editText_productDescription.getText().toString(),
                 bitmap);
 
-        File imgFile = new File(selectedProduct.getPath());
+        File imgFile = new File(selectedProduct.getLastPathSegment().substring(4));
         RequestBody requestImgFile =
                 RequestBody.create(MediaType.parse("image/png"), imgFile);
         MultipartBody.Part product_img =
@@ -180,15 +182,12 @@ public class NewProductActivity extends AppCompatActivity {
         MultipartBody.Part product_name = MultipartBody.Part.createFormData("product_name", addProduct.getProductName());
         MultipartBody.Part description = MultipartBody.Part.createFormData("product_desc", addProduct.getProductDescription());
         MultipartBody.Part product_price = MultipartBody.Part.createFormData("product_price", addProduct.getProductPrice());
-        MultipartBody.Part product_img_base64 = MultipartBody.Part.createFormData("product_img_base64", "frfrfrfrbnbmnb");
 
         Call<CreateProductResponse> newProduct = apiService.createStoreProduct(store_id,
                 product_name,
                 description,
                 product_price,
-                product_img,
-                product_img_base64
-        );
+                product_img);
         newProduct.enqueue(new Callback<CreateProductResponse>() {
             @Override
             public void onResponse(Call<CreateProductResponse> call, Response<CreateProductResponse> response) {
