@@ -105,6 +105,7 @@ public class AddProductTruckActivity extends AppCompatActivity {
                         .putExtra("pro_price", products.get(position).getProductPrice())
                         .putExtra("pro_img", products.get(position).getProductImgPath())
                         ,0);
+
             }
 
             @Override
