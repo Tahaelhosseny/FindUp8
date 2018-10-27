@@ -78,7 +78,7 @@ public class AddProductTruckActivity extends AppCompatActivity {
                     switch (data.getIntExtra("opr_type", 0)){
                         case 1:
                             Bitmap bitmap = BitmapFactory.decodeFile(data.getStringExtra("pro_img"));
-                            products.add(new AddProduct(data.getStringExtra("pro_price"), data.getStringExtra("pro_name"),data.getStringExtra("pro_desc"),bitmap));
+                            products.add(new AddProduct(data.getIntExtra("pro_id", -1),data.getStringExtra("pro_price"), data.getStringExtra("pro_name"),data.getStringExtra("pro_desc"),bitmap));
                             adapter.notifyDataSetChanged();
                             break;
                         case 2:
@@ -100,7 +100,8 @@ public class AddProductTruckActivity extends AppCompatActivity {
             @Override
             public void onClick(View view, int position) {
                 startActivityForResult(new Intent(AddProductTruckActivity.this, NewProductActivity.class)
-                                .putExtra("pro_pos",position).putExtra("pro_name", products.get(position).getProductName())
+                        .putExtra("pro_id", products.get(position).getProductId())
+                        .putExtra("pro_pos",position).putExtra("pro_name", products.get(position).getProductName())
                         .putExtra("pro_desc", products.get(position).getProductDescription())
                         .putExtra("pro_price", products.get(position).getProductPrice())
                         .putExtra("pro_img", products.get(position).getProductImgPath())

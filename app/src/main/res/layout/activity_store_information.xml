@@ -83,7 +83,7 @@ android:layout_width="match_parent">
                 android:textColor="@color/colorWhiteGrey"
                 android:textStyle="bold"
                 android:textSize="@dimen/sp18"
-                app:layout_constraintTop_toBottomOf="@id/pic_banner"/>
+                app:layout_constraintTop_toBottomOf="@+id/pic_banner"/>
 
             <EditText
                 android:id="@+id/editText_storeName"
@@ -124,109 +124,6 @@ android:layout_width="match_parent">
                 android:textCursorDrawable="@drawable/color_black"
                 android:textSize="@dimen/sp18"/>
             <TextView
-                android:id="@+id/txt_workTime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/activity_vertical_margin"
-                android:layout_marginTop="@dimen/activity_vertical_margin"
-                android:text="@string/work_time"
-                android:fontFamily="@font/sfcompactdisplay_semibold"
-                android:textColor="@color/colorWhiteGrey"
-                android:textStyle="bold"
-                android:textSize="@dimen/sp18"
-                app:layout_constraintTop_toBottomOf="@+id/editText_otherLanguage"/>
-            <TextView
-                android:id="@+id/txt_days"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/activity_vertical_margin"
-                android:layout_marginTop="@dimen/activity_vertical_margin"
-                android:text="@string/days"
-                android:fontFamily="@font/sfcompactdisplay_regular"
-                android:textColor="@color/colorWhiteGrey"
-                android:textSize="@dimen/sp18"
-                app:layout_constraintTop_toBottomOf="@+id/txt_workTime"/>
-            <TextView
-                android:id="@+id/txt_workdays"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/activity_vertical_margin"
-                android:layout_marginTop="5dp"
-                android:fontFamily="@font/sfcompactdisplay_regular"
-                android:text="@string/work_days"
-                android:textColor="@color/colorBlack"
-                android:textSize="@dimen/sp16"
-                app:layout_constraintTop_toBottomOf="@+id/txt_days"/>
-            <TextView
-                android:id="@+id/txt_time"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/activity_vertical_margin"
-                android:layout_marginTop="@dimen/activity_vertical_margin"
-                android:text="@string/time"
-                android:fontFamily="@font/sfcompactdisplay_regular"
-                android:textColor="@color/colorWhiteGrey"
-                android:textSize="@dimen/sp18"
-                app:layout_constraintTop_toBottomOf="@+id/txt_workdays"/>
-
-            <EditText
-                android:id="@+id/editText_time"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/activity_vertical_margin"
-                app:layout_constraintTop_toBottomOf="@+id/txt_time"
-                android:inputType="text"
-                android:textColor="@color/colorBlack"
-                android:theme="@style/MyEditText"
-                android:textColorHighlight="@color/colorWhiteGrey"
-                android:textColorLink="@color/colorWhiteGrey"
-                android:textCursorDrawable="@drawable/color_black"
-                android:textSize="@dimen/sp18"/>
-
-            <LinearLayout
-                android:id="@+id/layoutAddDays"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/editText_time"
-                android:orientation="vertical"
-                android:clickable="true"
-                android:focusable="true">
-
-                <LinearLayout
-                    android:id="@+id/add_days"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginBottom="5dp">
-
-                    <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        app:srcCompat="@drawable/ic_add"
-                        android:layout_marginTop="@dimen/activity_vertical_margin"
-                        android:layout_marginStart="@dimen/activity_vertical_margin"
-                        android:layout_marginEnd="5dp"
-                        android:layout_marginBottom="5dp"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="@string/add_days"
-                        android:paddingBottom="5dp"
-                        android:textSize="@dimen/sp16"
-                        android:theme="@style/MyEditText"
-                        android:textColor="@color/material_color_black_87_percent"
-                        android:fontFamily="@font/sfcompactdisplay_light"
-                        android:gravity="bottom" />
-                </LinearLayout>
-                <View
-                    android:layout_width="fill_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/colorWhiteGrey"
-                    android:layout_marginEnd="20dp"
-                    android:layout_marginStart="4dp"/>
-            </LinearLayout>
-            <TextView
                 android:id="@+id/txt_tags"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -236,7 +133,7 @@ android:layout_width="match_parent">
                 android:textColor="@color/colorWhiteGrey"
                 android:textStyle="bold"
                 android:textSize="@dimen/sp18"
-                app:layout_constraintTop_toBottomOf="@+id/layoutAddDays"/>
+                app:layout_constraintTop_toBottomOf="@+id/editText_otherLanguage"/>
 
             <EditText
                 android:id="@+id/editText_tags"

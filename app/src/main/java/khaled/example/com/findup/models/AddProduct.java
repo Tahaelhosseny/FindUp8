@@ -3,6 +3,26 @@ package khaled.example.com.findup.models;
 import android.graphics.Bitmap;
 
 public class AddProduct {
+    private int productId;
+
+    public int getProductId() {
+        return productId;
+    }
+
+    public void setProductId(int productId) {
+        this.productId = productId;
+    }
+
+    public AddProduct(int productId, String productPrice, String productName, String productDescription, Bitmap productPic) {
+        this.productId = productId;
+        this.productPrice = productPrice;
+        this.productName = productName;
+        this.productDescription = productDescription;
+        this.productPic = productPic;
+    }
+
+    private String productPrice, productName, productDescription,productImgPath;
+
     public String getProductImgPath() {
         return productImgPath;
     }
@@ -11,15 +31,7 @@ public class AddProduct {
         this.productImgPath = productImgPath;
     }
 
-    private String productPrice, productName, productDescription, productImgPath;
     private Bitmap productPic;
-
-    public AddProduct(String productPrice, String productName, String productDescription, Bitmap productPic) {
-        this.productPrice = productPrice;
-        this.productName = productName;
-        this.productDescription = productDescription;
-        this.productPic = productPic;
-    }
 
     public String getProductPrice() {
         return productPrice;

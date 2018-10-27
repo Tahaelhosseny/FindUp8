@@ -40,7 +40,9 @@ public class CategoryFragment extends Fragment {
     }
 
     public static ExpandableSection getExpanddedSection() {
+        Log.e("MyDat", ""+expandableSections.size());
         for (int i = 0; i < expandableSections.size(); i++) {
+            Log.e("MyDat", ""+expandableSections.get(i).expanded);
             if (expandableSections.get(i).expanded)
                 return expandableSections.get(i);
         }
@@ -71,7 +73,8 @@ public class CategoryFragment extends Fragment {
                                 @Override
                                 public void run() {
                                     for (int i = 0 ; i < val.size() ; i++){
-                                        sectionAdapter.addSection(new ExpandableSection(""+val.get(i).getCat_name() , ""+val.get(i).getCat_desc()));
+                                        expandableSections.add(new ExpandableSection(""+val.get(i).getCat_name() , ""+val.get(i).getCat_desc()));
+                                        sectionAdapter.addSection(expandableSections.get(i));
                                     }
                                     RecyclerView recyclerView = getActivity().findViewById(R.id.categoryRecyclerview);
                                     recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));

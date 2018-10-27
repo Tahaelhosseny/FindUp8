@@ -30,7 +30,6 @@ import khaled.example.com.findup.Helper.Remote.ResponseModel.CreateProductRespon
 import khaled.example.com.findup.Helper.Remote.ResponseModel.DeleteStoreProductResponse;
 import khaled.example.com.findup.Helper.SharedPrefManger;
 import khaled.example.com.findup.R;
-import khaled.example.com.findup.UI.adapters.AddProductsAdapter;
 import khaled.example.com.findup.models.AddProduct;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -49,11 +48,13 @@ public class NewProductActivity extends AppCompatActivity {
     int pro_pos = -1;
     int pro_id = -1;
     ApiInterface apiService;
+    SharedPrefManger sharedPrefManger;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_product);
+        sharedPrefManger = new SharedPrefManger(this);
 
         btn_addProductDone = findViewById(R.id.btn_addProductDone);
         btn_addProductDelete = findViewById(R.id.btn_addProductDelete);
@@ -107,7 +108,8 @@ public class NewProductActivity extends AppCompatActivity {
 
     private void deleteProduct() {
         if (pro_id != -1 && pro_pos != -1){
-            Call<DeleteStoreProductResponse> deleteProduct = apiService.deleteStoreProduct(pro_id, SharedPrefManger.getStore_ID());
+
+            Call<DeleteStoreProductResponse> deleteProduct = apiService.deleteStoreProduct(pro_id, sharedPrefManger.getStore_ID());
             deleteProduct.enqueue(new Callback<DeleteStoreProductResponse>() {
                 @Override
                 public void onResponse(Call<DeleteStoreProductResponse> call, Response<DeleteStoreProductResponse> response) {
@@ -161,7 +163,9 @@ public class NewProductActivity extends AppCompatActivity {
 
         Bitmap bitmap = BitmapFactory.decodeFile(selectedProduct.getPath());
 
-        AddProduct addProduct = new AddProduct(editText_product_price.getText().toString(),
+        AddProduct addProduct = new AddProduct(
+                -1,
+                editText_product_price.getText().toString(),
                 editText_productName.getText().toString(),
                 editText_productDescription.getText().toString(),
                 bitmap);
@@ -172,11 +176,11 @@ public class NewProductActivity extends AppCompatActivity {
         MultipartBody.Part product_img =
                 MultipartBody.Part.createFormData("product_img", imgFile.getName(), requestImgFile);
 
-        MultipartBody.Part store_id = MultipartBody.Part.createFormData("store_id", "1");
+        MultipartBody.Part store_id = MultipartBody.Part.createFormData("store_id", ""+sharedPrefManger.getStore_ID());
         MultipartBody.Part product_name = MultipartBody.Part.createFormData("product_name", addProduct.getProductName());
         MultipartBody.Part description = MultipartBody.Part.createFormData("product_desc", addProduct.getProductDescription());
         MultipartBody.Part product_price = MultipartBody.Part.createFormData("product_price", addProduct.getProductPrice());
-        MultipartBody.Part product_img_base64 = MultipartBody.Part.createFormData("product_img_base64", "-");
+        MultipartBody.Part product_img_base64 = MultipartBody.Part.createFormData("product_img_base64", "frfrfrfrbnbmnb");
 
         Call<CreateProductResponse> newProduct = apiService.createStoreProduct(store_id,
                 product_name,
@@ -193,6 +197,8 @@ public class NewProductActivity extends AppCompatActivity {
                     Toast.makeText(NewProductActivity.this,"Product Added",Toast.LENGTH_SHORT).show();
                     Intent resultIntent = new Intent();
                     resultIntent.putExtra("opr_type", 1);
+                    resultIntent.putExtra("pro_id", response.body().getData().get(0).getProduct_id());
+                    resultIntent.putExtra("pro_name", editText_productName.getText().toString());
                     resultIntent.putExtra("pro_name", editText_productName.getText().toString());
                     resultIntent.putExtra("pro_desc", editText_productDescription.getText().toString());
                     resultIntent.putExtra("pro_price", editText_product_price.getText().toString());

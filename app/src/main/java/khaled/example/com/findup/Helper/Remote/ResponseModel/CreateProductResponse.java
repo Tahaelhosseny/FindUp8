@@ -1,5 +1,9 @@
 package khaled.example.com.findup.Helper.Remote.ResponseModel;
 
+import java.util.List;
+
+import khaled.example.com.findup.models.Product;
+
 public class CreateProductResponse {
     private String tag;
 
@@ -8,6 +12,16 @@ public class CreateProductResponse {
     private int error;
 
     private String error_msg;
+
+    private List<Product> data;
+
+    public List<Product> getData() {
+        return data;
+    }
+
+    public void setData(List<Product> data) {
+        this.data = data;
+    }
 
     public String getError_msg() {
         return error_msg;

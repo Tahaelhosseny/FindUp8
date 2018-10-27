@@ -16,13 +16,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.Arrays;
-
-import khaled.example.com.findup.Manifest;
 import khaled.example.com.findup.R;
 import khaled.example.com.findup.models.Store;
 
@@ -36,11 +32,10 @@ public class StoreInformationActivity extends AppCompatActivity {
 
     final int appVersion = Build.VERSION.SDK_INT;
 
-    TextView txt_storeName, txt_otherLanguage, txt_tags, txt_workdays;
+    TextView txt_storeName, txt_otherLanguage, txt_tags;
     EditText editText_storeName, editText_otherLanguage, editText_tags, editText_description;
     ImageView imgLogo, imgBanner;
     Uri selectedLogo, selectedBanner;
-    String workDays;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,8 +69,6 @@ public class StoreInformationActivity extends AppCompatActivity {
         txt_storeName = findViewById(R.id.txt_storeName);
         txt_otherLanguage = findViewById(R.id.txt_otherLanguage);
         txt_tags = findViewById(R.id.txt_tags);
-        txt_workdays = findViewById(R.id.txt_workdays);
-        editText_otherLanguage = findViewById(R.id.editText_otherLanguage);
         editText_tags = findViewById(R.id.editText_tags);
         editText_description = findViewById(R.id.editText_description);
         if (getIntent().getExtras().getInt("next_id") == 2) {
@@ -100,17 +93,6 @@ public class StoreInformationActivity extends AppCompatActivity {
                 finish();
             }
         });
-        LinearLayout add_days = findViewById(R.id.add_days);
-
-
-        add_days.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //mBottomSheetDialog.show();
-                startActivityForResult(new Intent(StoreInformationActivity.this, WorkDaysActivity.class), 3);
-            }
-        });
-
     }
 
     @Override
@@ -134,13 +116,13 @@ public class StoreInformationActivity extends AppCompatActivity {
                     createStore.setStore_banner(selectedBanner.getPath());
                     break;
                 }
-                case (PICK_WORK_DAYS) : {
+                /*case (PICK_WORK_DAYS) : {
                     String[] days = data.getStringArrayExtra("days");
                     workDays =  Arrays.toString(days);
                     txt_workdays.setText(workDays);
                     createStore.setWorkDays(workDays);
                     break;
-                }
+                }*/
             }
         }
     }
