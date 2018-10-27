@@ -1,12 +1,5 @@
 package khaled.example.com.findup.Helper.Remote.ResponseModel;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
-
-import java.util.List;
-
-import khaled.example.com.findup.models.AskCode;
-
 public class CreateProductResponse {
     private String tag;
 
@@ -47,6 +40,5 @@ public class CreateProductResponse {
     public void setError(int error) {
         this.error = error;
     }
-
 
 }

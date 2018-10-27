@@ -18,6 +18,7 @@ import java.util.List;
 import khaled.example.com.findup.R;
 
 import khaled.example.com.findup.UI.adapters.AddProductsAdapter;
+import khaled.example.com.findup.UI.adapters.RecyclerTouchListener;
 import khaled.example.com.findup.models.AddProduct;
 
 public class AddProductTruckActivity extends AppCompatActivity {
@@ -33,6 +34,7 @@ public class AddProductTruckActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_product_truck);
         products = new ArrayList<>();
+        adapter = new AddProductsAdapter(this, products);
 
         btn_addProductBack = findViewById(R.id.btn_addProductBack);
 
@@ -72,15 +74,18 @@ public class AddProductTruckActivity extends AppCompatActivity {
 
         if (resultCode == Activity.RESULT_OK && data != null){
             switch(requestCode) {
-                case 1: {
-                    Bitmap bitmap = BitmapFactory.decodeFile(data.getStringExtra("pro_img"));
-                    products.add(new AddProduct(data.getStringExtra("pro_price"), data.getStringExtra("pro_name"),data.getStringExtra("pro_desc"),bitmap));
-                    adapter.notifyDataSetChanged();
-                    break;
-                }
-                case 2:{
-                    products.remove(data.getStringExtra("pro_pos"));
-                    adapter.notifyDataSetChanged();
+                case 0: {
+                    switch (data.getIntExtra("opr_type", 0)){
+                        case 1:
+                            Bitmap bitmap = BitmapFactory.decodeFile(data.getStringExtra("pro_img"));
+                            products.add(new AddProduct(data.getStringExtra("pro_price"), data.getStringExtra("pro_name"),data.getStringExtra("pro_desc"),bitmap));
+                            adapter.notifyDataSetChanged();
+                            break;
+                        case 2:
+                            products.remove(data.getStringExtra("pro_pos"));
+                            adapter.notifyDataSetChanged();
+                            break;
+                    }
                     break;
                 }
             }
@@ -90,6 +95,23 @@ public class AddProductTruckActivity extends AppCompatActivity {
     private void bindUI(){
         recyclerTruckProducts.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         recyclerTruckProducts.setAdapter(adapter);
+        recyclerTruckProducts.addOnItemTouchListener(new RecyclerTouchListener(this,
+                recyclerTruckProducts, new RecyclerTouchListener.ClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+                startActivityForResult(new Intent(AddProductTruckActivity.this, NewProductActivity.class)
+                                .putExtra("pro_pos",position).putExtra("pro_name", products.get(position).getProductName())
+                        .putExtra("pro_desc", products.get(position).getProductDescription())
+                        .putExtra("pro_price", products.get(position).getProductPrice())
+                        .putExtra("pro_img", products.get(position).getProductImgPath())
+                        ,0);
+            }
+
+            @Override
+            public void onLongClick(View view, int position) {
+
+            }
+        }));
     }
 
     @Override

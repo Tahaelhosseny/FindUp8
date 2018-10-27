@@ -3,7 +3,15 @@ package khaled.example.com.findup.models;
 import android.graphics.Bitmap;
 
 public class AddProduct {
-    private String productPrice, productName, productDescription;
+    public String getProductImgPath() {
+        return productImgPath;
+    }
+
+    public void setProductImgPath(String productImgPath) {
+        this.productImgPath = productImgPath;
+    }
+
+    private String productPrice, productName, productDescription, productImgPath;
     private Bitmap productPic;
 
     public AddProduct(String productPrice, String productName, String productDescription, Bitmap productPic) {
