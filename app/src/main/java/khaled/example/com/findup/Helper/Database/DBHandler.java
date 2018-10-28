@@ -247,6 +247,16 @@ public class DBHandler {
         }).start();
     }
 
+    public static void getEventByEventID(int event_id , final Context context, final Events events) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Flowable<List<Event>> listFlowable = FindUpDatabase.getAppDatabase(context).daoAccess().getEventByEventID(event_id);
+                events.onSuccess(listFlowable);
+            }
+        }).start();
+    }
+
     /*******************************************************************************
      *
      * @param commentList

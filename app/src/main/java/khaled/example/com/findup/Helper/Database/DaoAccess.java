@@ -47,6 +47,9 @@ public interface DaoAccess {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertProductComment(ProductComment commentModel);
 
+    @Query("SELECT * FROM Event WHERE event_id = :event_id")
+    Flowable<List<Event>> getEventByEventID(int event_id);
+
     @Query("SELECT * FROM Category WHERE show_home_flag = 1")
     Flowable<List<Category>> getCategoryInHome();
 

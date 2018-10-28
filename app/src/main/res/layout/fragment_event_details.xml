@@ -1,7 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+
+        <variable
+            name="EventDetails"
+            type="khaled.example.com.findup.UI.ViewModel.Fragments.EventDataViewModel"/>
+
+        <variable
+            name="presenter"
+            type="khaled.example.com.findup.UI.Presenter.Fragments.EventDataPresenter"/>
+
+    </data>
+<android.support.constraint.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:scrollbars="vertical"
@@ -238,3 +252,4 @@
     </android.support.constraint.ConstraintLayout>
 
 </android.support.constraint.ConstraintLayout>
+</layout>

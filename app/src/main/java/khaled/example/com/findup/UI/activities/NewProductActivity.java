@@ -140,7 +140,7 @@ public class NewProductActivity extends AppCompatActivity {
                 case (1) : {
                     selectedProduct = data.getData();
                     assert selectedProduct != null;
-                    Bitmap bitmap = BitmapFactory.decodeFile(selectedProduct.getLastPathSegment().substring(4));
+                    Bitmap bitmap = BitmapFactory.decodeFile(selectedProduct.getLastPathSegment());
                     pic_product.setImageBitmap(bitmap);
                     break;
                 }
@@ -163,7 +163,7 @@ public class NewProductActivity extends AppCompatActivity {
             return;
         }
 
-        Bitmap bitmap = BitmapFactory.decodeFile(selectedProduct.getLastPathSegment().substring(4));
+        Bitmap bitmap = BitmapFactory.decodeFile(selectedProduct.getLastPathSegment());
 
         AddProduct addProduct = new AddProduct(
                 -1,
@@ -172,7 +172,7 @@ public class NewProductActivity extends AppCompatActivity {
                 editText_productDescription.getText().toString(),
                 bitmap);
 
-        File imgFile = new File(selectedProduct.getLastPathSegment().substring(4));
+        File imgFile = new File(selectedProduct.getLastPathSegment());
         RequestBody requestImgFile =
                 RequestBody.create(MediaType.parse("image/png"), imgFile);
         MultipartBody.Part product_img =

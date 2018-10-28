@@ -53,7 +53,6 @@ public class RadioButtonAdapter extends RecyclerView.Adapter<RadioButtonAdapter.
         if(holder.radioButton.getId() == id){
             holder.radioButton.setChecked(true);
             lastChecked = holder.radioButton;
-//            lastCheckedPos = 0;
         }
         if(position == 0 && currencyList.get(0).isSelected() && holder.radioButton.isChecked())
         {
@@ -89,16 +88,6 @@ public class RadioButtonAdapter extends RecyclerView.Adapter<RadioButtonAdapter.
                 currencyList.get(clickedPos).setSelected(cb.isChecked());
             }
         });
-//        holder.radioButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-//                CurrencyViewModel currencyViewModel = new CurrencyViewModel(context);
-//                holder.radioButton.setChecked(b);
-//                currencyViewModel.setCurrency(holder.radioButton.getId() , SharedPrefManger.getStore_ID());
-//            }
-//        });
-
-
     }
 
     @Override

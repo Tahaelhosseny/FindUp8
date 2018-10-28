@@ -2,6 +2,7 @@ package khaled.example.com.findup.UI.fragments;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -18,37 +19,45 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import khaled.example.com.findup.R;
+import khaled.example.com.findup.UI.ViewModel.Fragments.EventDataViewModel;
+import khaled.example.com.findup.UI.ViewModel.Fragments.EventsViewModel;
+import khaled.example.com.findup.databinding.FragmentEventDetailsBinding;
 
 
 public class EventDetailsFragment extends Fragment implements OnMapReadyCallback {
-
+    FragmentEventDetailsBinding binding;
+    EventDataViewModel viewModel;
     private MapView mMapView;
     String event_id;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View rootView = inflater.inflate(R.layout.fragment_event_details, container, false);
-        Intent i = ((Activity) rootView.getContext()).getIntent();
+
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_event_details, container, false);//11842 H
+        View view = binding.getRoot();
+        Intent i = ((Activity)view.getContext()).getIntent();
         event_id = i.getStringExtra("event_id");
+        //here data must be an instance of the class MarsDataProvider
+        viewModel = new EventDataViewModel(view.getContext() , event_id);
+        binding.setEventDetails(viewModel);
+
         try {
             MapsInitializer.initialize(this.getActivity());
-            mMapView = (MapView) rootView.findViewById(R.id.mapView);
+            mMapView = (MapView) view.findViewById(R.id.mapView);
             mMapView.onCreate(savedInstanceState);
             mMapView.getMapAsync(this);
         } catch (Exception e) {
 
         }
 
-        return rootView;
+        return view;
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        LoadEventData(event_id);
-        bindUI();
+        viewModel.BindUI(binding.eventName , binding.storeName , binding.imageView2 , binding.dateTxt , binding.locationTxt , binding.ticketPriceTxt , binding.aboutTxtDetails);
     }
 
     private void LoadEventData(String event_id) {

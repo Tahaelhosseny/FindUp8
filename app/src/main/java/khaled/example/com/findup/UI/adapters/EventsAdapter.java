@@ -3,6 +3,8 @@ package khaled.example.com.findup.UI.adapters;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.constraint.ConstraintLayout;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -53,7 +55,12 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder
         holder.eventDate.setText(holder.event.getEvent_start_date());
         if (!holder.event.getEvent_photo().isEmpty())
             Picasso.with(holder.eventsItemImg.getContext()).load(holder.event.getEvent_photo()).placeholder(R.color.material_color_grey_500).into(holder.eventsItemImg);
-
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                context.startActivity(new Intent(context , EventDetailsActivity.class).putExtra("event_id" , events.get(position).getEvent_id()));
+            }
+        });
     }
 
     @Override
@@ -61,12 +68,13 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder
         return events.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class ViewHolder extends RecyclerView.ViewHolder {
         Event event;
         TextView eventName;
         TextView eventDate;
         TextView eventDescription;
         ImageView eventsItemImg;
+        CardView cardView;
 
         public ViewHolder(View view) {
             super(view);
@@ -74,13 +82,9 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder
             eventDescription = view.findViewById(R.id.eventDesc);
             eventDate = view.findViewById(R.id.eventDate);
             eventsItemImg = view.findViewById(R.id.eventsItemImg);
+            cardView = view.findViewById(R.id.main_event_constarint);
         }
 
-        @Override
-        public void onClick(View v) {
-            Intent i = new Intent(context, EventDetailsActivity.class);
-            i.putExtra("event_id",event.getEvent_id());
-            context.startActivity(i);
-        }
+
     }
 }
