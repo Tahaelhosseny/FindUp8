@@ -41,7 +41,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/storeName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/sfcompactdisplay_regular"
@@ -58,13 +58,14 @@
         android:layout_height="wrap_content"
         android:layout_gravity="start|center"
         android:layout_marginTop="224dp"
-        android:src="@drawable/calendar_0_5x"
+        app:srcCompat="@drawable/calendar_0_5x"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.044"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/dateTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
@@ -84,7 +85,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="264dp"
-        android:src="@drawable/map_0_5x"
+        app:srcCompat="@drawable/map_0_5x"
         app:layout_anchor="@+id/calImg"
         app:layout_anchorGravity="bottom"
         app:layout_constraintEnd_toEndOf="parent"
@@ -93,6 +94,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/locationTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -112,7 +114,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="304dp"
-        android:src="@drawable/ticket_0_5x"
+        app:srcCompat="@drawable/ticket_0_5x"
         app:layout_anchor="@+id/calImg"
         app:layout_anchorGravity="bottom"
         app:layout_constraintEnd_toEndOf="parent"
@@ -121,6 +123,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/ticketPriceTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -161,10 +164,8 @@
         android:text="The Red and Black The Red and Black The Red and Black The Red and Black The Red and Black The Red and Black The Red and Black"
         android:textColor="@color/colorBlack"
         android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/aboutTxt"
-        app:layout_constraintTop_toBottomOf="@id/aboutTxt"/>
+        app:layout_constraintTop_toBottomOf="@+id/aboutTxt"
+        app:layout_constraintStart_toStartOf="@id/aboutTxt"/>
 
     <TextView
         android:id="@+id/addressTxt"
@@ -173,14 +174,13 @@
         android:layout_marginTop="4dp"
         android:fontFamily="@font/sfcompactdisplay_regular"
         android:padding="5dp"
+        android:layout_margin="15dp"
         android:text="Address"
         android:textColor="@color/colorBlack"
         android:textSize="14sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.049"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/aboutTxtDetails"/>
+        app:layout_constraintTop_toBottomOf="@id/aboutTxtDetails"
+        app:layout_constraintStart_toStartOf="parent"/>
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
@@ -217,7 +217,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/getDirectionBtn"
             android:layout_width="wrap_content"
             android:layout_height="35dp"
             android:layout_marginBottom="8dp"

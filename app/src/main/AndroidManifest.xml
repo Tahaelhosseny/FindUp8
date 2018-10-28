@@ -97,7 +97,13 @@
         </activity>
         <activity
             android:name=".UI.activities.EventDetailsActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" >
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
         <activity
             android:name=".UI.activities.StoreDetailsActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
@@ -163,11 +169,7 @@
         <activity
             android:name=".UI.activities.AddProductTruckActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".UI.activities.AddProductCraftActivity"

@@ -188,6 +188,7 @@ public class NewProductActivity extends AppCompatActivity {
                 description,
                 product_price,
                 product_img);
+
         newProduct.enqueue(new Callback<CreateProductResponse>() {
             @Override
             public void onResponse(Call<CreateProductResponse> call, Response<CreateProductResponse> response) {
