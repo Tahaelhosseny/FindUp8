@@ -46,7 +46,7 @@ public class SearchFragment extends Fragment {
             public void onClick(View v) {
                 //UI_Utility.switchVisibility(filter);
                 //getChildFragmentManager().beginTransaction().replace(R.id.nearMeContainer, new NearMeFragment()).commit();
-                startActivity(new Intent(getActivity(), FilterActivity.class));
+                startActivity(new Intent(getActivity(), FilterActivity.class).putExtra("from" , "search"));
             }
         });
 
