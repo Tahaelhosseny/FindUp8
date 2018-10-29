@@ -77,8 +77,7 @@ public class AddProductTruckActivity extends AppCompatActivity {
                 case 0: {
                     switch (data.getIntExtra("opr_type", 0)){
                         case 1:
-                            Bitmap bitmap = BitmapFactory.decodeFile(data.getStringExtra("pro_img"));
-                            products.add(new AddProduct(data.getIntExtra("pro_id", -1),data.getStringExtra("pro_price"), data.getStringExtra("pro_name"),data.getStringExtra("pro_desc"),bitmap));
+                            products.add(new AddProduct(data.getIntExtra("pro_id", -1),data.getStringExtra("pro_price"), data.getStringExtra("pro_name"),data.getStringExtra("pro_desc"),data.getStringExtra("pro_img")));
                             adapter.notifyDataSetChanged();
                             break;
                         case 2:

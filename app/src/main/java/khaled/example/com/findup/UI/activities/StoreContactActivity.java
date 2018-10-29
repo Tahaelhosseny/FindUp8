@@ -21,7 +21,9 @@ import khaled.example.com.findup.Helper.Remote.ApiClient;
 import khaled.example.com.findup.Helper.Remote.ApiInterface;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.CreateStoreResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.StoresResponse;
+import khaled.example.com.findup.Helper.SharedPrefManger;
 import khaled.example.com.findup.R;
+import khaled.example.com.findup.models.CreateStore;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -122,28 +124,19 @@ public class StoreContactActivity extends AppCompatActivity {
         MultipartBody.Part location_type = MultipartBody.Part.createFormData("location_type", createStore.getStore_location_type());
         MultipartBody.Part mobile = MultipartBody.Part.createFormData("mobile", createStore.getStore_mobile());
         MultipartBody.Part password = MultipartBody.Part.createFormData("password", "pass");
+        MultipartBody.Part website_link = MultipartBody.Part.createFormData("website_link", createStore.getStore_website_link());
         MultipartBody.Part twitter_link = MultipartBody.Part.createFormData("twitter_link", createStore.getStore_twitter_link());
         MultipartBody.Part instegram_link = MultipartBody.Part.createFormData("instegram_link", createStore.getStore_instegram_link());
         MultipartBody.Part facebook_link = MultipartBody.Part.createFormData("facebook_link", createStore.getStore_facebook_link());
         MultipartBody.Part cat_id = MultipartBody.Part.createFormData("cat_id", "1");
+        MultipartBody.Part user_id = MultipartBody.Part.createFormData("parent_user_id", "1");
         MultipartBody.Part store_otherlang = MultipartBody.Part.createFormData("store_otherlang", createStore.getStore_otherlang());
         MultipartBody.Part store_tags = MultipartBody.Part.createFormData("store_tags", createStore.getStore_tags());
         /*MultipartBody.Part work_days = MultipartBody.Part.createFormData("work_days", createStore.getWorkDays());
         MultipartBody.Part work_fromtime = MultipartBody.Part.createFormData("work_fromtime", "1:00");
-        MultipartBody.Part work_totime = MultipartBody.Part.createFormData("work_totime", "10:00");*/
+        MultipartBody.Part work_totime = MultipartBody.Part.createFormData("work_totime", "10:00");
         MultipartBody.Part store_logo_base64 = MultipartBody.Part.createFormData("store_logo_base64", "-");
-        MultipartBody.Part store_banner_base64 = MultipartBody.Part.createFormData("store_banner_base64", "-");
-        /*Log.e("Myeror", createStore.getStore_name());
-        Log.e("Myeror", createStore.getStore_desc());
-        Log.e("Myeror", createStore.getStore_location_type());
-        Log.e("Myeror", createStore.getStore_mobile());
-        Log.e("Myeror", createStore.getStore_twitter_link());
-        Log.e("Myeror", createStore.getStore_instegram_link());
-        Log.e("Myeror", createStore.getStore_facebook_link());
-        Log.e("Myeror", String.valueOf(getIntent().getExtras().getInt("next_id")));
-        Log.e("Myeror", createStore.getStore_otherlang());
-        Log.e("Myeror", createStore.getStore_tags());
-        Log.e("Myeror", createStore.getWorkDays());*/
+        MultipartBody.Part store_banner_base64 = MultipartBody.Part.createFormData("store_banner_base64", "-");*/
 
         RequestBody requestlogoFile = RequestBody.create(MediaType.parse("image/png"), logoFile);
         RequestBody requestbannerFile = RequestBody.create(MediaType.parse("image/png"), bannerFile);
@@ -160,6 +153,7 @@ public class StoreContactActivity extends AppCompatActivity {
                 location_type,
                 mobile,
                 password,
+                website_link,
                 twitter_link,
                 instegram_link,
                 facebook_link,
@@ -168,29 +162,19 @@ public class StoreContactActivity extends AppCompatActivity {
                 bodybannerFile,
                 store_otherlang,
                 store_tags,
-                store_logo_base64,
-                store_banner_base64
+                user_id
         );
 
         newStore.enqueue(new Callback<CreateStoreResponse>() {
             @Override
             public void onResponse(Call<CreateStoreResponse> call, Response<CreateStoreResponse> response) {
                 Log.e("Success", new Gson().toJson(response.body()));
-                if (response.body().getSuccess() ==1){
-                    Toast.makeText(StoreContactActivity.this,"Account Created",Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(StoreContactActivity.this, AddProductTruckActivity.class));
-                    finish();
-                }
-                else{
-                    Log.e("Myeror", response.body().getError_msg());
-                    Toast.makeText(StoreContactActivity.this,response.body().getError_msg(),Toast.LENGTH_SHORT).show();
-                }
-
+                nextStep(response.body().getData().get(0).getStore_id());
             }
 
             @Override
             public void onFailure(Call<CreateStoreResponse> call, Throwable t) {
-
+                t.printStackTrace();
             }
         });
     }
@@ -201,10 +185,16 @@ public class StoreContactActivity extends AppCompatActivity {
         finish();
     }
 
-    private void nextStep(){
+    private void nextStep(int storeId){
+        SharedPrefManger sharedPrefManger = new SharedPrefManger(this);
+        sharedPrefManger.setStoreID(storeId);
+        Toast.makeText(StoreContactActivity.this,""+storeId,Toast.LENGTH_SHORT).show();
         if (radioLocation.getCheckedRadioButtonId() == R.id.radioDynamicLocation){
             Toast.makeText(StoreContactActivity.this,"Account Created",Toast.LENGTH_SHORT).show();
             startActivity(new Intent(StoreContactActivity.this, AddProductTruckActivity.class));
+            finish();
+        } else {
+            startActivity(new Intent(StoreContactActivity.this, WorkDaysActivity.class));
             finish();
         }
     }

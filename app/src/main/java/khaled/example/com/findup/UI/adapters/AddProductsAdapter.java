@@ -1,6 +1,8 @@
 package khaled.example.com.findup.UI.adapters;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -38,7 +40,9 @@ public class AddProductsAdapter extends RecyclerView.Adapter<AddProductsAdapter.
         holder.productName.setText(addProduct.getProductName());
         holder.productDescription.setText(addProduct.getProductDescription());
         holder.productPrice.setText(addProduct.getProductPrice());
-        holder.productImg.setImageBitmap(addProduct.getProductPic());
+
+        Bitmap bitmap = BitmapFactory.decodeFile(addProduct.getProductImgPath());
+        holder.productImg.setImageBitmap(bitmap);
     }
 
     @Override

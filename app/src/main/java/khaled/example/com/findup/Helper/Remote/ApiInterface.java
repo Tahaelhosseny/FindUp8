@@ -171,6 +171,7 @@ public interface ApiInterface {
             @Part MultipartBody.Part location_type ,
             @Part MultipartBody.Part mobile ,
             @Part MultipartBody.Part password ,
+            @Part MultipartBody.Part website_link ,
             @Part MultipartBody.Part twitter_link ,
             @Part MultipartBody.Part instegram_link ,
             @Part MultipartBody.Part facebook_link,
@@ -179,8 +180,7 @@ public interface ApiInterface {
             @Part MultipartBody.Part store_banner,
             @Part MultipartBody.Part store_otherlang,
             @Part MultipartBody.Part store_tags,
-            @Part MultipartBody.Part store_logo_base64,
-            @Part MultipartBody.Part store_banner_base64);
+            @Part MultipartBody.Part user_id);
 
     @Multipart
     @POST(ApiClient.PATH_URL+"stores?tag=create_event&HashSecure="+HASH)

@@ -13,12 +13,12 @@ public class AddProduct {
         this.productId = productId;
     }
 
-    public AddProduct(int productId, String productPrice, String productName, String productDescription, Bitmap productPic) {
+    public AddProduct(int productId, String productPrice, String productName, String productDescription, String productImgPath) {
         this.productId = productId;
         this.productPrice = productPrice;
         this.productName = productName;
         this.productDescription = productDescription;
-        this.productPic = productPic;
+        this.productImgPath = productImgPath;
     }
 
     private String productPrice, productName, productDescription,productImgPath;
