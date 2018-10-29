@@ -135,7 +135,7 @@ public class StoreContactActivity extends AppCompatActivity {
         /*MultipartBody.Part work_days = MultipartBody.Part.createFormData("work_days", createStore.getWorkDays());
         MultipartBody.Part work_fromtime = MultipartBody.Part.createFormData("work_fromtime", "1:00");
         MultipartBody.Part work_totime = MultipartBody.Part.createFormData("work_totime", "10:00");
-        MultipartBody.Part store_logo_base64 = MultipartBody.Part.createFormData("store_logo_base64", "-");
+        MultipartBody.Part store_logo_base64 = MultipartBody.Part.createFormData("store_logo_base64", "");
         MultipartBody.Part store_banner_base64 = MultipartBody.Part.createFormData("store_banner_base64", "-");*/
 
         RequestBody requestlogoFile = RequestBody.create(MediaType.parse("image/png"), logoFile);
