@@ -31,6 +31,7 @@ import khaled.example.com.findup.Helper.Remote.ResponseModel.RateResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.RegisterResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.ResetPasswordResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.SaveModelResponse;
+import khaled.example.com.findup.Helper.Remote.ResponseModel.SearchStoreResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.StoreAddressResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.StoreEditResponse;
 import khaled.example.com.findup.Helper.Remote.ResponseModel.StoreNotificationResponse;
@@ -253,8 +254,18 @@ public interface ApiInterface {
     @FormUrlEncoded
     Call<DeleteStoreProductResponse> deleteStoreProduct(@Field("product_id") int product_id , @Field("store_id") int store_id);
 
-    @POST(ApiClient.PATH_URL+""+HASH)
+    @POST(ApiClient.PATH_URL+"strsearch?tag=search_stores&HashSecure="+HASH)
     @FormUrlEncoded
-    Call<StoresResponse> getFilteredStores();
-
+    Call<SearchStoreResponse> getFilteredStores(
+            @Query("account_id") int account_id ,
+            @Field("search_text") String search_text ,
+            @Field("filter_price") String filter_price,
+            @Field("filter_rate") String filter_rate,
+            @Field("filter_opennow") String filter_opennow,
+            @Field("filter_distance") String filter_distance,
+            @Field("search_from") String search_from,
+            @Field("longitude") String longitude,
+            @Field("latitude") String latitude,
+            @Field("filter_by") String filter_by,
+            @Field("filter_byid") String filter_byid);
 }

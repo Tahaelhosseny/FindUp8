@@ -45,10 +45,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             mMapView = (MapView) rootView.findViewById(R.id.map);
             mMapView.onCreate(savedInstanceState);
             mMapView.getMapAsync(this);
-
             getChildFragmentManager().beginTransaction().replace(R.id.nearMeContainer, new NearMeFragment()).commit();
-
-
         } catch (InflateException e) {
             Log.e(TAG, "Inflate exception");
         }
@@ -125,7 +122,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             public void onClick(View v) {
                 // UI_Utility.switchVisibility(filter);
                 // getChildFragmentManager().beginTransaction().replace(R.id.nearMeContainer, new NearMeFragment()).commit();
-                startActivity(new Intent(getActivity(), FilterActivity.class));
+                startActivity(new Intent(getActivity(), FilterActivity.class).putExtra("from" , "map"));
             }
         });
     }
