@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,8 +58,13 @@ public class CatNameAdapter  extends RecyclerView.Adapter<CatNameAdapter.ViewHol
             @Override
             public void onClick(View view) {
                 filterData.setFilter_by("Category");filterData.setFilter_byid(String.valueOf(category.getCat_id()));
-                holder.cat_name.setTextColor(Color.parseColor("#F24E8E"));
-
+                if (TextUtils.equals(holder.cat_name.getTag().toString(),"inactive")){
+                    holder.cat_name.setTextColor(Color.parseColor("#F24E8E"));
+                    holder.cat_name.setTag("active");
+                } else{
+                    holder.cat_name.setTextColor(mContext.getResources().getColor(R.color.tw__composer_deep_gray));
+                    holder.cat_name.setTag("inactive");
+                }
             }
         });
     }

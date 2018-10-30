@@ -174,7 +174,7 @@ public interface ApiInterface {
 
     @POST(ApiClient.PATH_URL+"user_actions?tag=add_store_rate&HashSecure="+HASH)
     @FormUrlEncoded
-    Call<RateResponse> rateStore(@Query("account_id") int account_id , @Field("rate") float rate , @Field("store_id") int store_id);
+    Call<String> rateStore(@Field("account_id") int account_id , @Field("rate") float rate , @Field("store_id") int store_id);
 
     @Multipart
     @POST(ApiClient.PATH_URL+"stores?tag=create_store_account&HashSecure="+HASH)
