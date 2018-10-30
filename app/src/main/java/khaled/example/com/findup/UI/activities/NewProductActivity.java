@@ -80,6 +80,7 @@ public class NewProductActivity extends AppCompatActivity {
             editText_productName.setText(getIntent().getStringExtra("pro_name"));
             editText_productDescription.setText(getIntent().getStringExtra("pro_desc"));
             editText_product_price.setText(getIntent().getStringExtra("pro_price"));
+            Log.e("Success", getIntent().getStringExtra("pro_img"));
             Bitmap bitmap = BitmapFactory.decodeFile(getIntent().getStringExtra("pro_img"));
             pic_product.setImageBitmap(bitmap);
         }
@@ -140,7 +141,7 @@ public class NewProductActivity extends AppCompatActivity {
                 case (1) : {
                     selectedProduct = data.getData();
                     assert selectedProduct != null;
-                    Bitmap bitmap = BitmapFactory.decodeFile(selectedProduct.getLastPathSegment());
+                    Bitmap bitmap = BitmapFactory.decodeFile(selectedProduct.getPath());
                     pic_product.setImageBitmap(bitmap);
                     break;
                 }
@@ -149,7 +150,10 @@ public class NewProductActivity extends AppCompatActivity {
     }
 
     private void addProduct(){
-        if (TextUtils.isEmpty(editText_productName.getText().toString())){
+        if (pro_pos != -1){
+            Toast.makeText(this, "Product Already Added", Toast.LENGTH_LONG).show();
+            return;
+        }  else if (TextUtils.isEmpty(editText_productName.getText().toString())){
             Toast.makeText(this, "Enter Product Name", Toast.LENGTH_LONG).show();
             return;
         } else if (TextUtils.isEmpty(editText_productDescription.getText().toString())){
@@ -163,16 +167,14 @@ public class NewProductActivity extends AppCompatActivity {
             return;
         }
 
-        Bitmap bitmap = BitmapFactory.decodeFile(selectedProduct.getLastPathSegment());
-
         AddProduct addProduct = new AddProduct(
                 -1,
                 editText_product_price.getText().toString(),
                 editText_productName.getText().toString(),
                 editText_productDescription.getText().toString(),
-                bitmap);
+                selectedProduct.getPath());
 
-        File imgFile = new File(selectedProduct.getLastPathSegment());
+        File imgFile = new File(selectedProduct.getPath());
         RequestBody requestImgFile =
                 RequestBody.create(MediaType.parse("image/png"), imgFile);
         MultipartBody.Part product_img =

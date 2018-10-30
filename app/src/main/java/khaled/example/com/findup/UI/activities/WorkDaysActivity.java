@@ -13,6 +13,8 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import khaled.example.com.findup.Helper.Remote.ApiClient;
+import khaled.example.com.findup.Helper.Remote.ApiInterface;
 import khaled.example.com.findup.R;
 
 public class WorkDaysActivity extends Activity {
@@ -75,6 +77,8 @@ public class WorkDaysActivity extends Activity {
                 resultIntent.putExtra("days", listOfDays.toArray(new String[0]));
                 setResult(Activity.RESULT_OK, resultIntent);
                 finish();
+
+                ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
             }
         });
     }
