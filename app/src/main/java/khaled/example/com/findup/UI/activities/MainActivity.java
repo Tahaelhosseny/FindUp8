@@ -87,53 +87,57 @@ public class MainActivity extends AppCompatActivity implements LocationView{
         rxLocation = new RxLocation(this);
         rxLocation.setDefaultTimeout(15, TimeUnit.SECONDS);
         locationUtility = new LocationUtility(rxLocation);
-        DBHandler.getAllStores(this, new Stores() {
-            @Override
-            public void onSuccess(Flowable<List<Store>> listFlowable) {
-                listFlowable.subscribe(val->{
-                    (MainActivity.this).runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            filteredMapDataStore.clear();
-                            for (int i = 0 ; i < val.size() ; i++){
-                                filteredMapDataStore.add(val.get(i));
+        if(filteredMapDataEvent.size() == 0){
+            DBHandler.getAllEvents(this, new Events() {
+                @Override
+                public void onSuccess(Flowable<List<Event>> listFlowable) {
+                    listFlowable.subscribe(val->{
+                        (MainActivity.this).runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                filteredMapDataEvent.clear();
+                                for (int i = 0 ; i < val.size() ; i++){
+                                    filteredMapDataEvent.add(val.get(i));
+                                }
+                                Log.e("F Event Size" , String.valueOf(filteredMapDataEvent.size()));
                             }
-                            Log.e("Store Size " , String.valueOf(filteredMapDataStore.size()));
-                        }
+                        });
                     });
-                });
-            }
-            @Override
-            public void getStoreID(Flowable<Store> storeFlowable) {
+                }
 
-            }
-            @Override
-            public void onFail() {
+                @Override
+                public void onFail() {
 
-            }
-        });
-        DBHandler.getAllEvents(this, new Events() {
-            @Override
-            public void onSuccess(Flowable<List<Event>> listFlowable) {
-                listFlowable.subscribe(val->{
-                    (MainActivity.this).runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            filteredMapDataEvent.clear();
-                            for (int i = 0 ; i < val.size() ; i++){
-                                filteredMapDataEvent.add(val.get(i));
+                }
+            });
+        }
+        if (filteredMapDataStore.size() == 0){
+            DBHandler.getAllStores(this, new Stores() {
+                @Override
+                public void onSuccess(Flowable<List<Store>> listFlowable) {
+                    listFlowable.subscribe(val->{
+                        (MainActivity.this).runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                filteredMapDataStore.clear();
+                                for (int i = 0 ; i < val.size() ; i++){
+                                    filteredMapDataStore.add(val.get(i));
+                                }
+                                Log.e("Store Size " , String.valueOf(filteredMapDataStore.size()));
                             }
-                            Log.e("F Event Size" , String.valueOf(filteredMapDataEvent.size()));
-                        }
+                        });
                     });
-                });
-            }
+                }
+                @Override
+                public void getStoreID(Flowable<Store> storeFlowable) {
 
-            @Override
-            public void onFail() {
+                }
+                @Override
+                public void onFail() {
 
-            }
-        });
+                }
+            });
+        }
         transaction.replace(R.id.main_toolbar_container, new MainFragment(), new MainFragment().getClass().getName()).commit();
         BottomBarFragment bottomBarFragment =new BottomBarFragment();
         Bundle bundle = new Bundle();

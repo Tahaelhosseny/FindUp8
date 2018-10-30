@@ -34,7 +34,6 @@ public class FilterFragment extends Fragment {
         // Required empty public constructor
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -103,10 +102,17 @@ public class FilterFragment extends Fragment {
             @Override
             public void onSeeking(SeekParams seekParams) {
                 if (seekParams.thumbPosition == 3){
-                    filterData.setFilter_distance("50000 KM");
-                }else {
-                    filterData.setFilter_distance(seekParams.tickText);
+                    filterData.setFilter_distance("50000");
+                }else if(seekParams.thumbPosition == 0){
+                    filterData.setFilter_distance("0.5");
+                }else if(seekParams.thumbPosition == 1){
+                    filterData.setFilter_distance("2");
+                }else if(seekParams.thumbPosition == 2){
+                    filterData.setFilter_distance("4");
+                }else{
+                    filterData.setFilter_distance("0.5");
                 }
+
                 }
 
             @Override

@@ -76,24 +76,36 @@ public class SortFilterViewModel extends Observable {
         getFiltered.enqueue(new Callback<SearchStoreResponse>() {
             @Override
             public void onResponse(Call<SearchStoreResponse> call, Response<SearchStoreResponse> response) {
-                if(response.body().getSuccess() == 1){
-                    filteredMapDataStore.clear();
-                    filteredMapDataStore.clear();
+                if (response.body().getSuccess() == 1) {
                     List<Store> stores = response.body().getData().get(0).getStores();
                     List<Event> events = response.body().getData().get(0).getEvents();
-                    for (int i = 0 ; i < stores.size() ; i++){
+                    if (stores.size() == 0 && events.size() > 0) {
+                        filteredMapDataStore.clear();
+                    } else if(stores.size() > 0 && events.size() == 0){
+                        filteredMapDataEvent.clear();
+                    }else if(stores.size() == 0 && events.size() == 0){
+                        filteredMapDataEvent.clear();filteredMapDataStore.clear();
+                    }
+                    if (events.size() == 0) {
+                        Toast.makeText(mContext, "There is no data match this search from events", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(mContext, "We found " + events.size() + " event that match your search", Toast.LENGTH_SHORT).show();
+                    }
+                    if (stores.size() == 0) {
+                        Toast.makeText(mContext, "There is no data match this search from stores", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(mContext, "We found " + stores.size() + " store that match your search", Toast.LENGTH_SHORT).show();
+                    }
+                    for (int i = 0; i < stores.size(); i++) {
                         filteredMapDataStore.add(stores.get(i));
                     }
-                    for (int i = 0 ; i < events.size() ; i++){
+                    for (int i = 0; i < events.size(); i++) {
                         filteredMapDataEvent.add(events.get(i));
                     }
-                    Toast.makeText(mContext, "Your Data Updated Store " +filteredMapDataStore.size() + " Event " + filteredMapDataEvent.size() , Toast.LENGTH_SHORT).show();
-                    ((Activity) mContext).finish();
-                }else{
-                    Toast.makeText(mContext, ""+response.body().getError_msg(), Toast.LENGTH_SHORT).show();
+
+
                 }
             }
-
             @Override
             public void onFailure(Call<SearchStoreResponse> call, Throwable t) {
                 Toast.makeText(mContext, ""+t.getMessage(), Toast.LENGTH_SHORT).show();

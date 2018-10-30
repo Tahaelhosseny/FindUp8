@@ -70,22 +70,27 @@ public class SortFragment extends Fragment {
 
             }
         });
-
         binding.applySort.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(TextUtils.isEmpty(filterData.getFilter_distance())){
-                    Toast.makeText(getActivity(), "Please Specify Distance", Toast.LENGTH_SHORT).show();return;
+                    Toast.makeText(getActivity(), "Please Specify Distance", Toast.LENGTH_SHORT).show();
+                    return;
                 } if(TextUtils.isEmpty(filterData.getFilter_rate())){
-                    Toast.makeText(getActivity(), "Please Specify Rate", Toast.LENGTH_SHORT).show();return;
+                    Toast.makeText(getActivity(), "Please Specify Rate", Toast.LENGTH_SHORT).show();
+                    return;
                 } if(TextUtils.isEmpty(filterData.getFilter_opennow())){
-                    Toast.makeText(getActivity(), "Please Specify Time", Toast.LENGTH_SHORT).show();return;
+                    Toast.makeText(getActivity(), "Please Specify Time", Toast.LENGTH_SHORT).show();
+                    return;
                 } if(TextUtils.isEmpty(filterData.getFilter_price())){
-                    Toast.makeText(getActivity(), "Please Specify Price", Toast.LENGTH_SHORT).show();return;
+                    Toast.makeText(getActivity(), "Please Specify Price", Toast.LENGTH_SHORT).show();
+                    return;
                 } if(TextUtils.isEmpty(filterData.getFilter_by())){
-                    Toast.makeText(getActivity(), "Please Specify Filter By", Toast.LENGTH_SHORT).show();return;
+                    Toast.makeText(getActivity(), "Please Specify Filter By", Toast.LENGTH_SHORT).show();
+                    return;
                 } if(filterData.getFilter_by().equals("Category") && TextUtils.isEmpty(filterData.getFilter_byid())){
-                    Toast.makeText(getActivity(), "Please Specify the type of category", Toast.LENGTH_SHORT).show();return;
+                    Toast.makeText(getActivity(), "Please Specify the type of category", Toast.LENGTH_SHORT).show();
+                    return;
                 }
                 viewModel.getFilteredData();
             }
