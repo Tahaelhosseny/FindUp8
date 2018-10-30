@@ -98,6 +98,20 @@ public interface ApiInterface {
 
     @GET(ApiClient.PATH_URL+"stores?tag=get_store_address&HashSecure="+HASH)
     Call<StoreAddressResponse> getStoreAddress(@Query("store_id") int store_id);
+
+    @GET(ApiClient.PATH_URL+"strsearch?tag=search_stores&HashSecure="+HASH)
+    Call<SearchStoreResponse> getFilteredStores(
+            @Query("account_id") int account_id ,
+            @Query("search_text") String search_text ,
+            @Query("filter_price") String filter_price,
+            @Query("filter_rate") String filter_rate,
+            @Query("filter_opennow") String filter_opennow,
+            @Query("filter_distance") String filter_distance,
+            @Query("search_from") String search_from,
+            @Query("longitude") String longitude,
+            @Query("latitude") String latitude,
+            @Query("filter_by") String filter_by,
+            @Query("filter_byid") String filter_byid);
     //----------------------------------------------- Post Methods -------------------------------------------------
 
     @POST(ApiClient.PATH_URL+"reg_login?tag=signup&HashSecure="+HASH)
@@ -254,18 +268,5 @@ public interface ApiInterface {
     @FormUrlEncoded
     Call<DeleteStoreProductResponse> deleteStoreProduct(@Field("product_id") int product_id , @Field("store_id") int store_id);
 
-    @POST(ApiClient.PATH_URL+"strsearch?tag=search_stores&HashSecure="+HASH)
-    @FormUrlEncoded
-    Call<SearchStoreResponse> getFilteredStores(
-            @Query("account_id") int account_id ,
-            @Field("search_text") String search_text ,
-            @Field("filter_price") String filter_price,
-            @Field("filter_rate") String filter_rate,
-            @Field("filter_opennow") String filter_opennow,
-            @Field("filter_distance") String filter_distance,
-            @Field("search_from") String search_from,
-            @Field("longitude") String longitude,
-            @Field("latitude") String latitude,
-            @Field("filter_by") String filter_by,
-            @Field("filter_byid") String filter_byid);
+
 }
