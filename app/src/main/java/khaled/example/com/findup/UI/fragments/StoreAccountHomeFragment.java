@@ -34,7 +34,7 @@ import khaled.example.com.findup.models.ReviewStoreItem;
  * A simple {@link Fragment} subclass.
  */
 public class StoreAccountHomeFragment extends Fragment {
-
+    RecyclerView recyclerView;
     StoreProductsReviewsAdapter adapter;
 
     public StoreAccountHomeFragment() {
@@ -51,13 +51,12 @@ public class StoreAccountHomeFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
+        recyclerView = getActivity().findViewById(R.id.reviewsRecyclerView);
         adapter = new StoreProductsReviewsAdapter(getActivity(), new ArrayList<Product>());
         LoadProduct();
     }
 
     private void bindUI() {
-        RecyclerView recyclerView = getActivity().findViewById(R.id.reviewsRecyclerView);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
