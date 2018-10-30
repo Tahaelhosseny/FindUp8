@@ -27,4 +27,10 @@ public class StoreDetailsActivity extends AppCompatActivity {
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.replace(R.id.store_fragment_container, new StoreDetailsFragment()).commit();
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
 }
