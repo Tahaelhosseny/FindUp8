@@ -267,8 +267,20 @@ public class StoreInfoViewModel extends Observable {
             Toast.makeText(mContext, "Please Login First Before Rate Store", Toast.LENGTH_SHORT).show();
         }else {
             ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-            Call<RateResponse> rateStore = apiService.rateStore(SharedPrefManger.getUser_ID() , rate , store_id);
-            rateStore.enqueue(new Callback<RateResponse>() {
+            Call<String> rateStore = apiService.rateStore(1 , rate , 5);
+            rateStore.enqueue(new Callback<String>() {
+                @Override
+                public void onResponse(Call<String> call, Response<String> response) {
+                    Log.e("rate_error",response.body());
+                    Log.e("rate_error",SharedPrefManger.getUser_ID()+" - "+rate+" - "+ store_id);
+                }
+
+                @Override
+                public void onFailure(Call<String> call, Throwable t) {
+
+                }
+            });
+            /*rateStore.enqueue(new Callback<RateResponse>() {
                 @Override
                 public void onResponse(Call<RateResponse> call, Response<RateResponse> response) {
                     if (response.body().getError() == 0) {
@@ -285,7 +297,7 @@ public class StoreInfoViewModel extends Observable {
                     Log.e("rate_error",SharedPrefManger.getUser_ID()+" - "+rate+" - "+ store_id);
                     Toast.makeText(mContext, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
                 }
-            });
+            });*/
         }
 
     }

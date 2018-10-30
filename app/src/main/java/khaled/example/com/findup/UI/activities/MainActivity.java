@@ -110,7 +110,8 @@ public class MainActivity extends AppCompatActivity implements LocationView{
 
     private void insertUserNotification(){
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-        Call<NotificationResponse> userNotification = apiService.getUserNotification(String.valueOf(SharedPrefManger.getUser_ID()));
+        SharedPrefManger sharedPrefManger = new SharedPrefManger(this);
+        Call<NotificationResponse> userNotification = apiService.getUserNotification(String.valueOf(sharedPrefManger.getUser_ID()));
         userNotification.enqueue(new Callback<NotificationResponse>() {
             @Override
             public void onResponse(Call<NotificationResponse> call, Response<NotificationResponse> response) {
