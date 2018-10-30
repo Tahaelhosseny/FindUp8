@@ -19,6 +19,8 @@ import khaled.example.com.findup.UI.adapters.TabPagerAdapter;
 import khaled.example.com.findup.UI.fragments.FilterFragment;
 import khaled.example.com.findup.models.CurrentLocation;
 
+import static khaled.example.com.findup.UI.activities.MainActivity.filterData;
+
 /**
  * Created by khaled on 8/1/18.
  */
@@ -54,6 +56,8 @@ public class FilterActivity extends AppCompatActivity {
         CurrentLocation currentLocation = SharedPrefManger.getCurrentLocation();
         Log.e("Long" , String.valueOf(currentLocation.getLocationModel().getLongitude()));
         Log.e("Lat" , String.valueOf(currentLocation.getLocationModel().getLatitude()));
+        filterData.setLongitude(String.valueOf(currentLocation.getLocationModel().getLongitude()));
+        filterData.setLatitude(String.valueOf(currentLocation.getLocationModel().getLatitude()));
     }
 
     @Override

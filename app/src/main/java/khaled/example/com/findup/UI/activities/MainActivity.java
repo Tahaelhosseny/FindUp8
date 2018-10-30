@@ -34,6 +34,7 @@ import io.reactivex.Flowable;
 import khaled.example.com.findup.Helper.Database.DBHandler;
 import khaled.example.com.findup.Helper.Database.DBUtility;
 import khaled.example.com.findup.Helper.Database.Interfaces.Events;
+import khaled.example.com.findup.Helper.Database.Interfaces.Product.Products;
 import khaled.example.com.findup.Helper.Database.Interfaces.Store.Stores;
 import khaled.example.com.findup.Helper.Location.LocationUtility;
 import khaled.example.com.findup.Helper.Location.LocationView;
@@ -53,6 +54,7 @@ import khaled.example.com.findup.UI.fragments.MapFragment;
 import khaled.example.com.findup.models.CurrentLocation;
 import khaled.example.com.findup.models.Event;
 import khaled.example.com.findup.models.FilterQueries;
+import khaled.example.com.findup.models.Product;
 import khaled.example.com.findup.models.SaveModel;
 import khaled.example.com.findup.models.Store;
 import khaled.example.com.findup.models.UserSavedItem;
@@ -64,6 +66,10 @@ public class MainActivity extends AppCompatActivity implements LocationView{
     public static FilterQueries filterData;
     public static List<Store>filteredMapDataStore;
     public static List<Event>filteredMapDataEvent;
+    public static List<Product> searchedProducts;
+    public static List<Event> searchedEvents;
+    public static List<Store> searchedStore;
+
     Context context;
     Toolbar toolbar;
     private RxLocation rxLocation;
@@ -76,6 +82,7 @@ public class MainActivity extends AppCompatActivity implements LocationView{
         filterData = new FilterQueries();
         filteredMapDataEvent = new ArrayList<>();
         filteredMapDataStore = new ArrayList<>();
+        searchedEvents = new ArrayList<>(); searchedProducts = new ArrayList<>(); searchedStore = new ArrayList<>();
         toolbar =  findViewById(R.id.toolbar_top);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
@@ -124,6 +131,84 @@ public class MainActivity extends AppCompatActivity implements LocationView{
                                     filteredMapDataStore.add(val.get(i));
                                 }
                                 Log.e("Store Size " , String.valueOf(filteredMapDataStore.size()));
+                            }
+                        });
+                    });
+                }
+                @Override
+                public void getStoreID(Flowable<Store> storeFlowable) {
+
+                }
+                @Override
+                public void onFail() {
+
+                }
+            });
+        }
+        if(searchedEvents.size() == 0){
+            DBHandler.getAllEvents(this, new Events() {
+                @Override
+                public void onSuccess(Flowable<List<Event>> listFlowable) {
+                    listFlowable.subscribe(val->{
+                        (MainActivity.this).runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                searchedEvents.clear();
+                                for (int i = 0 ; i < val.size() ; i++){
+                                    searchedEvents.add(val.get(i));
+                                }
+                                Log.e("F Event Size" , String.valueOf(searchedEvents.size()));
+                            }
+                        });
+                    });
+                }
+
+                @Override
+                public void onFail() {
+
+                }
+            });
+        }
+        if (searchedProducts.size() == 0){
+            DBHandler.getAllProducts(this, new Products() {
+                @Override
+                public void onSuccess(Flowable<List<Product>> listFlowable) {
+                    listFlowable.subscribe(val->{
+                        (MainActivity.this).runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                searchedProducts.clear();
+                                for (int i = 0 ; i < val.size() ; i++){
+                                    searchedProducts.add(val.get(i));
+                                }
+                                Log.e("F Event Size" , String.valueOf(searchedProducts.size()));
+                            }
+                        });
+                    });
+                }
+                @Override
+                public void getProduct(Flowable<Product> productFlowable) {
+
+                }
+                @Override
+                public void onFail() {
+
+                }
+            });
+        }
+        if(searchedStore.size() == 0){
+            DBHandler.getAllStores(this, new Stores() {
+                @Override
+                public void onSuccess(Flowable<List<Store>> listFlowable) {
+                    listFlowable.subscribe(val->{
+                        (MainActivity.this).runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                searchedStore.clear();
+                                for (int i = 0 ; i < val.size() ; i++){
+                                    searchedStore.add(val.get(i));
+                                }
+                                Log.e("Store Size " , String.valueOf(searchedStore.size()));
                             }
                         });
                     });

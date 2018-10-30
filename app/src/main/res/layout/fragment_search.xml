@@ -11,6 +11,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:scrollbars="vertical"
+    android:background="@color/colorWhite"
     android:nestedScrollingEnabled="false"
     android:scrollbarSize="@dimen/material_baseline_grid_3.5x"
     android:scrollbarStyle="insideOverlay"
@@ -41,7 +42,7 @@
     </FrameLayout>
 
     <TextView
-        android:id="@+id/popularTxt"
+        android:id="@+id/storeTxt"
         style="@style/text_style"
         android:textSize="@dimen/main_activity_title_font_size"
         android:layout_width="wrap_content"
@@ -50,46 +51,68 @@
         android:layout_marginStart="@dimen/search_activity_title_marginStart"
         android:layout_marginTop="@dimen/search_activity_title_marginTop"
         android:fontFamily="@font/sfcompactdisplay_heavy"
-        android:text="Popular"
+        android:text="Store"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/catsContainer" />
 
     <FrameLayout
-        android:id="@+id/popularProductsContainer"
+        android:id="@+id/store_container"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/popularTxt">
+        app:layout_constraintTop_toBottomOf="@+id/storeTxt">
 
     </FrameLayout>
 
     <TextView
-        android:id="@+id/suggestedTxt"
+        android:id="@+id/eventTxt"
         style="@style/text_style"
-        android:textSize="@dimen/main_activity_title_font_size"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/search_activity_title_marginLeft"
         android:layout_marginStart="@dimen/search_activity_title_marginStart"
-        android:layout_marginTop="@dimen/search_activity_title_marginTop"
+        android:layout_marginTop="28dp"
         android:fontFamily="@font/sfcompactdisplay_heavy"
-        android:text="Suggested"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/popularProductsContainer" />
+        android:text="Event"
+        android:textSize="@dimen/main_activity_title_font_size"
+        app:layout_constraintStart_toStartOf="@id/store_container"
+        app:layout_constraintTop_toBottomOf="@+id/store_container" />
 
     <FrameLayout
-        android:id="@+id/suggestedProductsContainer"
+        android:id="@+id/event_container"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:minHeight="300dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/suggestedTxt">
+        app:layout_constraintTop_toBottomOf="@+id/eventTxt">
 
     </FrameLayout>
+
+    <TextView
+        android:id="@+id/productTxt"
+        style="@style/text_style"
+        android:textSize="@dimen/main_activity_title_font_size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/search_activity_title_marginLeft"
+        android:layout_marginStart="@dimen/search_activity_title_marginStart"
+        android:layout_marginTop="@dimen/search_activity_title_marginTop"
+        android:fontFamily="@font/sfcompactdisplay_heavy"
+        android:text="Product"
+        app:layout_constraintStart_toStartOf="@id/event_container"
+        app:layout_constraintTop_toBottomOf="@+id/event_container" />
+    <FrameLayout
+        android:id="@+id/product_container"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:minHeight="300dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/productTxt"/>
 
 </android.support.constraint.ConstraintLayout>
 

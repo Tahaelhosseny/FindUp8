@@ -12,6 +12,9 @@ import android.widget.ImageButton;
 
 import khaled.example.com.findup.R;
 import khaled.example.com.findup.UI.activities.FilterActivity;
+import khaled.example.com.findup.UI.fragments.SearchedFragments.EventSearchedFragment;
+import khaled.example.com.findup.UI.fragments.SearchedFragments.ProductSearchedFragment;
+import khaled.example.com.findup.UI.fragments.SearchedFragments.StoreSearchedFragment;
 
 import static khaled.example.com.findup.UI.activities.MainActivity.filterData;
 
@@ -39,16 +42,17 @@ public class SearchFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         getActivity().overridePendingTransition(R.anim.abc_slide_in_bottom, R.anim.abc_slide_out_top);
         getChildFragmentManager().beginTransaction().replace(R.id.catsContainer, new MainCatsFragment()).commit();
-        getChildFragmentManager().beginTransaction().replace(R.id.popularProductsContainer, new ProductsFragment()).commit();
-        getChildFragmentManager().beginTransaction().replace(R.id.suggestedProductsContainer, new SuggestedProductsFragment()).commit();
+        getChildFragmentManager().beginTransaction().replace(R.id.store_container, new StoreSearchedFragment()).commit();
+        getChildFragmentManager().beginTransaction().replace(R.id.event_container, new EventSearchedFragment()).commit();
+        getChildFragmentManager().beginTransaction().replace(R.id.product_container, new ProductSearchedFragment()).commit();
+
 
         ImageButton view_fillter = getActivity().findViewById(R.id.search_filter);
         view_fillter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 filterData.setSearch_from("");
-                //UI_Utility.switchVisibility(filter);
-                //getChildFragmentManager().beginTransaction().replace(R.id.nearMeContainer, new NearMeFragment()).commit();
+
                 startActivity(new Intent(getActivity(), FilterActivity.class));
             }
         });

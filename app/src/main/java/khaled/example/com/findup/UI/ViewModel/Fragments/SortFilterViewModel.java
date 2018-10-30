@@ -21,6 +21,7 @@ import khaled.example.com.findup.Helper.SharedPrefManger;
 import khaled.example.com.findup.UI.adapters.CatNameAdapter;
 import khaled.example.com.findup.UI.adapters.MainCategoriesAdapter;
 import khaled.example.com.findup.models.Event;
+import khaled.example.com.findup.models.Product;
 import khaled.example.com.findup.models.Store;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -29,6 +30,9 @@ import retrofit2.Response;
 import static khaled.example.com.findup.UI.activities.MainActivity.filterData;
 import static khaled.example.com.findup.UI.activities.MainActivity.filteredMapDataEvent;
 import static khaled.example.com.findup.UI.activities.MainActivity.filteredMapDataStore;
+import static khaled.example.com.findup.UI.activities.MainActivity.searchedEvents;
+import static khaled.example.com.findup.UI.activities.MainActivity.searchedProducts;
+import static khaled.example.com.findup.UI.activities.MainActivity.searchedStore;
 
 
 public class SortFilterViewModel extends Observable {
@@ -73,36 +77,64 @@ public class SortFilterViewModel extends Observable {
                 ,filterData.getFilter_rate(),filterData.getFilter_opennow(),filterData.getFilter_distance()
                 ,filterData.getSearch_from(),"0.0",
                 "0.0",filterData.getFilter_by(),filterData.getFilter_byid());
-        getFiltered.enqueue(new Callback<SearchStoreResponse>() {
+            getFiltered.enqueue(new Callback<SearchStoreResponse>() {
             @Override
             public void onResponse(Call<SearchStoreResponse> call, Response<SearchStoreResponse> response) {
                 if (response.body().getSuccess() == 1) {
-                    List<Store> stores = response.body().getData().get(0).getStores();
-                    List<Event> events = response.body().getData().get(0).getEvents();
-                    if (stores.size() == 0 && events.size() > 0) {
-                        filteredMapDataStore.clear();
-                    } else if(stores.size() > 0 && events.size() == 0){
-                        filteredMapDataEvent.clear();
-                    }else if(stores.size() == 0 && events.size() == 0){
-                        filteredMapDataEvent.clear();filteredMapDataStore.clear();
-                    }
-                    if (events.size() == 0) {
-                        Toast.makeText(mContext, "There is no data match this search from events", Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(mContext, "We found " + events.size() + " event that match your search", Toast.LENGTH_SHORT).show();
-                    }
-                    if (stores.size() == 0) {
-                        Toast.makeText(mContext, "There is no data match this search from stores", Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(mContext, "We found " + stores.size() + " store that match your search", Toast.LENGTH_SHORT).show();
-                    }
-                    for (int i = 0; i < stores.size(); i++) {
-                        filteredMapDataStore.add(stores.get(i));
-                    }
-                    for (int i = 0; i < events.size(); i++) {
-                        filteredMapDataEvent.add(events.get(i));
-                    }
+                    if(filterData.getSearch_from().equals("FromMap")) {
+                        List<Store> stores = response.body().getData().get(0).getStores();
+                        List<Event> events = response.body().getData().get(0).getEvents();
+                        if (events.size() == 0) {
+                            Toast.makeText(mContext, "There is no data match this search from events", Toast.LENGTH_SHORT).show();
+                        } else {
+                            filteredMapDataEvent.clear();
+                            Toast.makeText(mContext, "We found " + events.size() + " event that match your search", Toast.LENGTH_SHORT).show();
+                        }
+                        if (stores.size() == 0) {
+                            Toast.makeText(mContext, "There is no data match this search from stores", Toast.LENGTH_SHORT).show();
+                        } else {
+                            filteredMapDataStore.clear();
+                            Toast.makeText(mContext, "We found " + stores.size() + " store that match your search", Toast.LENGTH_SHORT).show();
+                        }
 
+                        for (int i = 0; i < stores.size(); i++) {
+                            filteredMapDataStore.add(stores.get(i));
+                        }
+                        for (int i = 0; i < events.size(); i++) {
+                            filteredMapDataEvent.add(events.get(i));
+                        }
+                    }else{
+                        List<Store> stores = response.body().getData().get(0).getStores();
+                        List<Event> events = response.body().getData().get(0).getEvents();
+                        List<Product> products = response.body().getData().get(0).getProducts();
+                        if(products.size() == 0){
+                            Toast.makeText(mContext, "There is no data match this search from products", Toast.LENGTH_SHORT).show();
+                        }else {
+                            searchedProducts.clear();
+                            Toast.makeText(mContext, "We found " + products.size() + " products that match your search", Toast.LENGTH_SHORT).show();
+                        }
+                        if (events.size() == 0) {
+                            Toast.makeText(mContext, "There is no data match this search from events", Toast.LENGTH_SHORT).show();
+                        } else {
+                            searchedEvents.clear();
+                            Toast.makeText(mContext, "We found " + events.size() + " event that match your search", Toast.LENGTH_SHORT).show();
+                        }
+                        if (stores.size() == 0) {
+                            Toast.makeText(mContext, "There is no data match this search from stores", Toast.LENGTH_SHORT).show();
+                        } else {
+                            searchedStore.clear();
+                            Toast.makeText(mContext, "We found " + stores.size() + " store that match your search", Toast.LENGTH_SHORT).show();
+                        }
+                        for (int i = 0; i < stores.size(); i++) {
+                            searchedStore.add(stores.get(i));
+                        }
+                        for (int i = 0; i < events.size(); i++) {
+                            searchedEvents.add(events.get(i));
+                        }
+                        for (int i = 0; i < products.size(); i++) {
+                            searchedProducts.add(products.get(i));
+                        }
+                    }
 
                 }
             }
