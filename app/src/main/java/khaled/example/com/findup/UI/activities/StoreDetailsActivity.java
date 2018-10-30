@@ -1,5 +1,6 @@
 package khaled.example.com.findup.UI.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -31,6 +32,7 @@ public class StoreDetailsActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+        startActivity(new Intent(StoreDetailsActivity.this , MainActivity.class));
         finish();
     }
 }

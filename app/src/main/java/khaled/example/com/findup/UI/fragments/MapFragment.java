@@ -2,6 +2,7 @@ package khaled.example.com.findup.UI.fragments;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -31,6 +32,7 @@ import khaled.example.com.findup.UI.activities.FilterActivity;
 import khaled.example.com.findup.models.CurrentLocation;
 
 import static khaled.example.com.findup.UI.activities.MainActivity.filterData;
+import static khaled.example.com.findup.UI.activities.MainActivity.filteredMapDataEvent;
 
 public class MapFragment extends Fragment implements OnMapReadyCallback {
     GoogleMap myMap;
@@ -103,6 +105,13 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             Longitude.asObservable().subscribe(val -> LocationUtility.LongitudeToCurrentLocationModel(val, currentLocation));
 
             // Add a marker in Sydney and move the camera
+//            for (int i = 0 ; i < filteredMapDataEvent.size() ; i++){
+//               LatLng m = new LatLng(Double.parseDouble(filteredMapDataEvent.get(i).getEvent_latitude()) , Double.parseDouble(filteredMapDataEvent.get(i).getEvent_longitude())) ;
+//               googleMap.addMarker(new MarkerOptions().position(m).icon(BitmapDescriptorFactory.fromResource(R.drawable.current_location_marker))
+//               .title(filteredMapDataEvent.get(i).getEvent_name()));
+//                googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(m.latitude + ((m.latitude * 14) / 100000), m.longitude), 14));
+//                googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+//            }
             LatLng sydney = new LatLng(currentLocation.getLocation().latitude, currentLocation.getLocation().longitude);
             googleMap.addMarker(new MarkerOptions().position(sydney).icon(
                     BitmapDescriptorFactory.fromResource(R.drawable.current_location_marker)
