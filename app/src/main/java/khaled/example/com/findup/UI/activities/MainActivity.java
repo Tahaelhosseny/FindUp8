@@ -26,11 +26,15 @@ import com.patloew.rxlocation.RxLocation;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import io.reactivex.Flowable;
 import khaled.example.com.findup.Helper.Database.DBHandler;
 import khaled.example.com.findup.Helper.Database.DBUtility;
+import khaled.example.com.findup.Helper.Database.Interfaces.Events;
+import khaled.example.com.findup.Helper.Database.Interfaces.Store.Stores;
 import khaled.example.com.findup.Helper.Location.LocationUtility;
 import khaled.example.com.findup.Helper.Location.LocationView;
 import khaled.example.com.findup.Helper.Remote.ApiClient;
@@ -47,8 +51,10 @@ import khaled.example.com.findup.UI.fragments.BottomBarFragment;
 import khaled.example.com.findup.UI.fragments.MainFragment;
 import khaled.example.com.findup.UI.fragments.MapFragment;
 import khaled.example.com.findup.models.CurrentLocation;
+import khaled.example.com.findup.models.Event;
 import khaled.example.com.findup.models.FilterQueries;
 import khaled.example.com.findup.models.SaveModel;
+import khaled.example.com.findup.models.Store;
 import khaled.example.com.findup.models.UserSavedItem;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -56,7 +62,8 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity implements LocationView{
     public static FilterQueries filterData;
-
+    public static List<Store>filteredMapDataStore;
+    public static List<Event>filteredMapDataEvent;
     Context context;
     Toolbar toolbar;
     private RxLocation rxLocation;
@@ -67,11 +74,12 @@ public class MainActivity extends AppCompatActivity implements LocationView{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         filterData = new FilterQueries();
+        filteredMapDataEvent = new ArrayList<>();
+        filteredMapDataStore = new ArrayList<>();
         toolbar =  findViewById(R.id.toolbar_top);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         getSupportActionBar().setDisplayShowHomeEnabled(false);
-
         insertUserNotification();
         getUserSaved();
         FragmentManager manager = getSupportFragmentManager();
@@ -79,6 +87,51 @@ public class MainActivity extends AppCompatActivity implements LocationView{
         rxLocation = new RxLocation(this);
         rxLocation.setDefaultTimeout(15, TimeUnit.SECONDS);
         locationUtility = new LocationUtility(rxLocation);
+        DBHandler.getAllStores(this, new Stores() {
+            @Override
+            public void onSuccess(Flowable<List<Store>> listFlowable) {
+                listFlowable.subscribe(val->{
+                    (MainActivity.this).runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            for (int i = 0 ; i < val.size() ; i++){
+                                filteredMapDataStore.add(val.get(i));
+                            }
+                            Log.e("Store Size " , String.valueOf(filteredMapDataStore.size()));
+                        }
+                    });
+                });
+            }
+            @Override
+            public void getStoreID(Flowable<Store> storeFlowable) {
+
+            }
+            @Override
+            public void onFail() {
+
+            }
+        });
+        DBHandler.getAllEvents(this, new Events() {
+            @Override
+            public void onSuccess(Flowable<List<Event>> listFlowable) {
+                listFlowable.subscribe(val->{
+                    (MainActivity.this).runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            for (int i = 0 ; i < val.size() ; i++){
+                                filteredMapDataEvent.add(val.get(i));
+                            }
+                            Log.e("F Event Size" , String.valueOf(filteredMapDataEvent.size()));
+                        }
+                    });
+                });
+            }
+
+            @Override
+            public void onFail() {
+
+            }
+        });
         transaction.replace(R.id.main_toolbar_container, new MainFragment(), new MainFragment().getClass().getName()).commit();
         BottomBarFragment bottomBarFragment =new BottomBarFragment();
         Bundle bundle = new Bundle();
@@ -107,7 +160,6 @@ public class MainActivity extends AppCompatActivity implements LocationView{
         });
 
     }
-
     private void insertUserNotification(){
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
         Call<NotificationResponse> userNotification = apiService.getUserNotification(String.valueOf(SharedPrefManger.getUser_ID()));

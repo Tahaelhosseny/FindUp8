@@ -13,6 +13,8 @@ import android.widget.ImageButton;
 import khaled.example.com.findup.R;
 import khaled.example.com.findup.UI.activities.FilterActivity;
 
+import static khaled.example.com.findup.UI.activities.MainActivity.filterData;
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -44,9 +46,10 @@ public class SearchFragment extends Fragment {
         view_fillter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                filterData.setSearch_from("");
                 //UI_Utility.switchVisibility(filter);
                 //getChildFragmentManager().beginTransaction().replace(R.id.nearMeContainer, new NearMeFragment()).commit();
-                startActivity(new Intent(getActivity(), FilterActivity.class).putExtra("from" , "search"));
+                startActivity(new Intent(getActivity(), FilterActivity.class));
             }
         });
 

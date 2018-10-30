@@ -47,7 +47,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             mMapView = (MapView) rootView.findViewById(R.id.map);
             mMapView.onCreate(savedInstanceState);
             mMapView.getMapAsync(this);
-            getChildFragmentManager().beginTransaction().replace(R.id.nearMeContainer, new NearMeFragment()).commit();
+            getChildFragmentManager().beginTransaction().replace(R.id.nearMeContainer, new FilteredDataFragment()).commit();
         } catch (InflateException e) {
             Log.e(TAG, "Inflate exception");
         }
