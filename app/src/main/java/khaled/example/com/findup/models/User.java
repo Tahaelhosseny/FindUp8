@@ -8,13 +8,13 @@ public class User {
     @SerializedName("user_id")
     @Expose
     private int id;
-    @SerializedName("name")
+    @SerializedName("user_name")
     @Expose
     private String name;
-    @SerializedName("image")
+    @SerializedName("user_image")
     @Expose
     private String image;
-    @SerializedName("mobile")
+    @SerializedName("user_mobile")
     @Expose
     private String mobile;
     @SerializedName("email")
