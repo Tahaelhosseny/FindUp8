@@ -94,6 +94,7 @@ public class MainActivity extends AppCompatActivity implements LocationView{
                     (MainActivity.this).runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
+                            filteredMapDataStore.clear();
                             for (int i = 0 ; i < val.size() ; i++){
                                 filteredMapDataStore.add(val.get(i));
                             }
@@ -118,6 +119,7 @@ public class MainActivity extends AppCompatActivity implements LocationView{
                     (MainActivity.this).runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
+                            filteredMapDataEvent.clear();
                             for (int i = 0 ; i < val.size() ; i++){
                                 filteredMapDataEvent.add(val.get(i));
                             }

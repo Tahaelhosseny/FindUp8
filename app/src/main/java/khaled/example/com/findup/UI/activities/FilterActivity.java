@@ -7,14 +7,17 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import khaled.example.com.findup.Helper.SharedPrefManger;
 import khaled.example.com.findup.R;
 import khaled.example.com.findup.UI.adapters.TabPagerAdapter;
 import khaled.example.com.findup.UI.fragments.FilterFragment;
+import khaled.example.com.findup.models.CurrentLocation;
 
 /**
  * Created by khaled on 8/1/18.
@@ -48,6 +51,9 @@ public class FilterActivity extends AppCompatActivity {
             public void onTabReselected(TabLayout.Tab tab) {
             }
         });
+        CurrentLocation currentLocation = SharedPrefManger.getCurrentLocation();
+        Log.e("Long" , String.valueOf(currentLocation.getLocationModel().getLongitude()));
+        Log.e("Lat" , String.valueOf(currentLocation.getLocationModel().getLatitude()));
     }
 
     @Override

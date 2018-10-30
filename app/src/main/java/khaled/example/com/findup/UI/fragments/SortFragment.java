@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,7 +55,7 @@ public class SortFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 filterData.setFilter_byid(""); filterData.setFilter_by("product");
-                binding.byLikedId.setTextColor(Color.parseColor("#F24E8E"));
+                binding.byProductId.setTextColor(Color.parseColor("#F24E8E"));
                 binding.bySavedId.setTextColor(getResources().getColor(R.color.tw__composer_deep_gray));
                 binding.byLikedId.setTextColor(getResources().getColor(R.color.tw__composer_deep_gray));
             }
@@ -63,7 +64,7 @@ public class SortFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 filterData.setFilter_byid(""); filterData.setFilter_by("saved");
-                binding.byLikedId.setTextColor(Color.parseColor("#F24E8E"));
+                binding.bySavedId.setTextColor(Color.parseColor("#F24E8E"));
                 binding.byLikedId.setTextColor(getResources().getColor(R.color.tw__composer_deep_gray));
                 binding.byProductId.setTextColor(getResources().getColor(R.color.tw__composer_deep_gray));
 
@@ -73,20 +74,20 @@ public class SortFragment extends Fragment {
         binding.applySort.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(filterData.getFilter_distance().isEmpty()){
+                if(TextUtils.isEmpty(filterData.getFilter_distance())){
                     Toast.makeText(getActivity(), "Please Specify Distance", Toast.LENGTH_SHORT).show();return;
-                } if(filterData.getFilter_rate().isEmpty()){
+                } if(TextUtils.isEmpty(filterData.getFilter_rate())){
                     Toast.makeText(getActivity(), "Please Specify Rate", Toast.LENGTH_SHORT).show();return;
-                } if(filterData.getFilter_opennow().isEmpty()){
+                } if(TextUtils.isEmpty(filterData.getFilter_opennow())){
                     Toast.makeText(getActivity(), "Please Specify Time", Toast.LENGTH_SHORT).show();return;
-                } if(filterData.getFilter_price().isEmpty()){
+                } if(TextUtils.isEmpty(filterData.getFilter_price())){
                     Toast.makeText(getActivity(), "Please Specify Price", Toast.LENGTH_SHORT).show();return;
-                } if(filterData.getFilter_by().isEmpty()){
+                } if(TextUtils.isEmpty(filterData.getFilter_by())){
                     Toast.makeText(getActivity(), "Please Specify Filter By", Toast.LENGTH_SHORT).show();return;
-                } if(filterData.getFilter_by().equals("Category") && filterData.getFilter_byid().isEmpty()){
-                    Toast.makeText(getActivity(), "Please Specify the type of category", Toast.LENGTH_SHORT).show();
+                } if(filterData.getFilter_by().equals("Category") && TextUtils.isEmpty(filterData.getFilter_byid())){
+                    Toast.makeText(getActivity(), "Please Specify the type of category", Toast.LENGTH_SHORT).show();return;
                 }
-
+                viewModel.getFilteredData();
             }
         });
     }

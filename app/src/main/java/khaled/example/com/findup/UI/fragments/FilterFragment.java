@@ -45,23 +45,14 @@ public class FilterFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        Button applyBtn = getActivity().findViewById(R.id.applyBtn);
         priceRadio = getActivity().findViewById(R.id.priceRadioGroup);
         timeRadio = getActivity().findViewById(R.id.timeRadioGroup);
         rateGroup = getActivity().findViewById(R.id.ratingBar);
         distanceSeekBar = getActivity().findViewById(R.id.distance_seekbar);
-        getRatingSelected(rateGroup);getRadioPriceSelected(priceRadio);getTimeRadio(timeRadio);
+        getRatingSelected(rateGroup);
+        getRadioPriceSelected(priceRadio);
+        getTimeRadio(timeRadio);
         getDistanceSeekBarSelected(distanceSeekBar);
-        applyBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getActivity(), "Price : "+ filterData.getFilter_price(), Toast.LENGTH_SHORT).show();
-                Toast.makeText(getActivity(), "Time : "+ filterData.getFilter_opennow(), Toast.LENGTH_SHORT).show();
-                Toast.makeText(getActivity(), "Rate : "+ filterData.getFilter_rate(), Toast.LENGTH_SHORT).show();
-                Toast.makeText(getActivity(), "Distance : "+ filterData.getFilter_distance(), Toast.LENGTH_SHORT).show();
-                Toast.makeText(getActivity(), "Sort " + (filterData.getFilter_by() + " " + filterData.getFilter_byid()), Toast.LENGTH_SHORT).show();
-            }
-        });
     }
 
     private void getRadioPriceSelected(RadioRealButtonGroup priceRadio) {
@@ -77,9 +68,9 @@ public class FilterFragment extends Fragment {
             @Override
             public void onClickedButton(RadioRealButton button, int position) {
                 if (position == 0){
-                    filterData.setFilter_opennow("Open Now");
+                    filterData.setFilter_opennow("true");
                 }else{
-                    filterData.setFilter_opennow("Open at");
+                    filterData.setFilter_opennow("false");
                 }
             }
         });

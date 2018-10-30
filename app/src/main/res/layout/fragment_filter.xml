@@ -227,20 +227,6 @@
             app:rrbg_selectorColor="@color/material_color_red_700"
             app:rrbg_selectorSize="0dp"/>
 
-        <Button
-            android:id="@+id/applyBtn"
-            android:layout_width="@dimen/_200sdp"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_15sdp"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:background="@drawable/bg_button_rounded_accent"
-            android:fontFamily="@font/sfcompactdisplay_medium"
-            android:text="Apply"
-            android:textColor="@color/material_color_white"
-            android:textAllCaps="false"
-            android:textStyle="bold" />
-
     </LinearLayout>
 
 </ScrollView>

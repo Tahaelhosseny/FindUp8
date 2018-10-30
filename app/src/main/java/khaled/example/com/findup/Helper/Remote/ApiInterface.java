@@ -63,17 +63,9 @@ public interface ApiInterface {
     @GET(ApiClient.PATH_URL+"stores?tag=get_all_events&HashSecure="+HASH)
     Call<EventResponse> GetAllEvents(@Query("account_id") int account_id);
 
-    @GET(ApiClient.PATH_URL+"user_profile?tag=get_user_currency&HashSecure="+HASH)
-    Call<CurrencyResponse> getUserCurrency(@Query("account_id") String account_id);
-
-    @GET(ApiClient.PATH_URL+"user_profile?tag=get_user_measure_distance&HashSecure="+HASH)
-    Call<MeasureDistanceResponse> getUserDistance(@Query("account_id") String account_id);
-
     @GET(ApiClient.PATH_URL+"user_profile?tag=get_all_currency&HashSecure="+HASH)
     Call<CurrencyResponse> getAllCurrency();
 
-    @GET(ApiClient.PATH_URL+"user_profile?tag=get_measure_distance&HashSecure="+HASH)
-    Call<MeasureDistanceResponse> getAllMeasureDistance();
 
     @GET(ApiClient.PATH_URL+"user_profile?tag=get_user_notifications&HashSecure="+HASH)
     Call<NotificationResponse> getUserNotification(@Query("account_id") String account_id);

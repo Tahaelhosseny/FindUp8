@@ -1,12 +1,18 @@
 package khaled.example.com.findup.Helper.Remote.ResponseModel;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 import khaled.example.com.findup.models.Search;
 
 public class SearchStoreResponse {
+    @SerializedName("tag") @Expose
     private String tag;
+    @SerializedName("success") @Expose
     private int success;
+    @SerializedName("error") @Expose
     private int error;
     private String error_msg;
     private List<Search> data;
@@ -36,7 +42,7 @@ public class SearchStoreResponse {
     }
 
     public String getError_msg() {
-        return error_msg;
+        return "Problem";
     }
 
     public void setError_msg(String error_msg) {
