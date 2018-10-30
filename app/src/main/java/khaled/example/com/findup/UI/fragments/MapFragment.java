@@ -30,6 +30,8 @@ import khaled.example.com.findup.R;
 import khaled.example.com.findup.UI.activities.FilterActivity;
 import khaled.example.com.findup.models.CurrentLocation;
 
+import static khaled.example.com.findup.UI.activities.MainActivity.filterData;
+
 public class MapFragment extends Fragment implements OnMapReadyCallback {
     GoogleMap myMap;
     MapView mMapView;
@@ -120,9 +122,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         view_fillter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // UI_Utility.switchVisibility(filter);
-                // getChildFragmentManager().beginTransaction().replace(R.id.nearMeContainer, new NearMeFragment()).commit();
-                startActivity(new Intent(getActivity(), FilterActivity.class).putExtra("from" , "map"));
+                filterData.setSearch_from("FromMap");
+                startActivity(new Intent(getActivity(), FilterActivity.class));
             }
         });
     }
