@@ -9,6 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Category"
+        android:textColor="@color/tw__composer_deep_gray"
         android:id="@+id/single_cat_txt"
         android:textSize="@dimen/_15sdp"/>
 

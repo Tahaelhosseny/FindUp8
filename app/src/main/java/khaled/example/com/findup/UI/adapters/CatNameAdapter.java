@@ -1,6 +1,7 @@
 package khaled.example.com.findup.UI.adapters;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -20,6 +21,8 @@ import khaled.example.com.findup.R;
 import khaled.example.com.findup.models.Category;
 import khaled.example.com.findup.models.Comment;
 import khaled.example.com.findup.models.CurrentLocation;
+
+import static khaled.example.com.findup.UI.activities.MainActivity.filterData;
 
 public class CatNameAdapter  extends RecyclerView.Adapter<CatNameAdapter.ViewHolder> {
 
@@ -50,6 +53,14 @@ public class CatNameAdapter  extends RecyclerView.Adapter<CatNameAdapter.ViewHol
         Category category = categories.get(position);
 
         holder.cat_name.setText(category.getCat_name());
+        holder.cat_name.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                filterData.setFilter_by("Category");filterData.setFilter_byid(String.valueOf(category.getCat_id()));
+                holder.cat_name.setTextColor(Color.parseColor("#F24E8E"));
+
+            }
+        });
     }
 
     @Override

@@ -39,24 +39,28 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:rrb_text="$"
+                android:id="@+id/radio_1"
                 app:rrb_textColor="@color/material_color_grey_600"/>
 
             <co.ceryle.radiorealbutton.RadioRealButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:rrb_text="$$"
+                android:id="@+id/radio_2"
                 app:rrb_textColor="@color/material_color_grey_600"/>
 
             <co.ceryle.radiorealbutton.RadioRealButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:rrb_text="$$$"
+                android:id="@+id/radio_3"
                 app:rrb_textColor="@color/material_color_grey_600"/>
 
             <co.ceryle.radiorealbutton.RadioRealButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:rrb_text="$$$$"
+                android:id="@+id/radio_4"
                 app:rrb_textColor="@color/material_color_grey_600"/>
 
         </co.ceryle.radiorealbutton.RadioRealButtonGroup>
@@ -127,6 +131,7 @@
                 <RadioButton
                     android:layout_width="@dimen/_10sdp"
                     android:layout_height="@dimen/_10sdp"
+                    android:id="@+id/rate1"
                     android:background="@drawable/customized_rating_selector"
                     android:button="@null"
                     android:layout_marginEnd="@dimen/start_margin_left"
@@ -137,6 +142,7 @@
                     android:layout_height="@dimen/_14sdp"
                     android:background="@drawable/customized_rating_selector"
                     android:button="@null"
+                    android:id="@+id/rate2"
                     android:layout_marginEnd="@dimen/start_margin_left"
                     android:layout_marginTop="@dimen/_8sdp"
                   />
@@ -146,11 +152,13 @@
                     android:fontFamily="@font/sfcompactdisplay_medium"
                     android:background="@drawable/customized_rating_selector"
                     android:button="@null"
+                    android:id="@+id/rate3"
                     android:layout_marginTop="@dimen/_3sdp"
                     android:layout_marginEnd="@dimen/start_margin_left" />
                 <RadioButton
                     android:layout_width="@dimen/_25sdp"
                     android:layout_height="@dimen/_25sdp"
+                    android:id="@+id/rate4"
                     android:background="@drawable/customized_rating_selector"
                     android:button="@null"
                     android:layout_marginEnd="@dimen/start_margin_left" />
@@ -160,6 +168,7 @@
                     android:fontFamily="@font/sfcompactdisplay_medium"
                     android:background="@drawable/customized_rating_selector"
                     android:button="@null"
+                    android:id="@+id/rate5"
                     android:layout_marginEnd="@dimen/start_margin_left"
                     android:gravity="bottom"
                     android:layout_marginTop="@dimen/_3sdp"/>

@@ -21,6 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_marginTop="@dimen/_10sdp"
         android:layout_marginLeft="@dimen/_5sdp"
+        android:textColor="@color/tw__composer_deep_gray"
         android:id="@+id/by_cat_txt"
         android:textSize="@dimen/_15sdp"
         android:layout_height="wrap_content"
@@ -36,6 +37,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_marginTop="@dimen/_10sdp"
+        android:textColor="@color/tw__composer_deep_gray"
         android:layout_marginLeft="@dimen/_5sdp"
         android:id="@+id/by_product_id"
         android:textSize="@dimen/_15sdp"
@@ -47,6 +49,7 @@
         android:layout_marginLeft="@dimen/_5sdp"
         android:textSize="@dimen/_15sdp"
         android:id="@+id/by_saved_id"
+        android:textColor="@color/tw__composer_deep_gray"
         android:layout_height="wrap_content"
         android:text="By Saved"/>
     <TextView
@@ -55,6 +58,7 @@
         android:id="@+id/by_liked_id"
         android:layout_marginLeft="@dimen/_5sdp"
         android:textSize="@dimen/_15sdp"
+        android:textColor="@color/tw__composer_deep_gray"
         android:layout_height="wrap_content"
         android:text="By Liked"/>
 

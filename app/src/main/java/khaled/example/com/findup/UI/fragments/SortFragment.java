@@ -1,6 +1,7 @@
 package khaled.example.com.findup.UI.fragments;
 
 import android.databinding.DataBindingUtil;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -8,11 +9,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import khaled.example.com.findup.R;
 import khaled.example.com.findup.UI.ViewModel.Fragments.SortFilterViewModel;
 import khaled.example.com.findup.UI.ViewModel.Fragments.UserNotificatonViewModel;
 import khaled.example.com.findup.databinding.FragmentSortBinding;
+
+import static khaled.example.com.findup.UI.activities.MainActivity.filterData;
 
 public class SortFragment extends Fragment {
 
@@ -37,5 +41,53 @@ public class SortFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         viewModel.InitCatRecycler(binding.categoryFilterRecycler);
+        binding.byLikedId.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                filterData.setFilter_byid(""); filterData.setFilter_by("liked");
+                binding.byLikedId.setTextColor(Color.parseColor("#F24E8E"));
+                binding.bySavedId.setTextColor(getResources().getColor(R.color.tw__composer_deep_gray));
+                binding.byProductId.setTextColor(getResources().getColor(R.color.tw__composer_deep_gray));
+            }
+        });
+        binding.byProductId.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                filterData.setFilter_byid(""); filterData.setFilter_by("product");
+                binding.byLikedId.setTextColor(Color.parseColor("#F24E8E"));
+                binding.bySavedId.setTextColor(getResources().getColor(R.color.tw__composer_deep_gray));
+                binding.byLikedId.setTextColor(getResources().getColor(R.color.tw__composer_deep_gray));
+            }
+        });
+        binding.bySavedId.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                filterData.setFilter_byid(""); filterData.setFilter_by("saved");
+                binding.byLikedId.setTextColor(Color.parseColor("#F24E8E"));
+                binding.byLikedId.setTextColor(getResources().getColor(R.color.tw__composer_deep_gray));
+                binding.byProductId.setTextColor(getResources().getColor(R.color.tw__composer_deep_gray));
+
+            }
+        });
+
+        binding.applySort.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(filterData.getFilter_distance().isEmpty()){
+                    Toast.makeText(getActivity(), "Please Specify Distance", Toast.LENGTH_SHORT).show();return;
+                } if(filterData.getFilter_rate().isEmpty()){
+                    Toast.makeText(getActivity(), "Please Specify Rate", Toast.LENGTH_SHORT).show();return;
+                } if(filterData.getFilter_opennow().isEmpty()){
+                    Toast.makeText(getActivity(), "Please Specify Time", Toast.LENGTH_SHORT).show();return;
+                } if(filterData.getFilter_price().isEmpty()){
+                    Toast.makeText(getActivity(), "Please Specify Price", Toast.LENGTH_SHORT).show();return;
+                } if(filterData.getFilter_by().isEmpty()){
+                    Toast.makeText(getActivity(), "Please Specify Filter By", Toast.LENGTH_SHORT).show();return;
+                } if(filterData.getFilter_by().equals("Category") && filterData.getFilter_byid().isEmpty()){
+                    Toast.makeText(getActivity(), "Please Specify the type of category", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
     }
 }

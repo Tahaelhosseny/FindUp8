@@ -47,6 +47,7 @@ import khaled.example.com.findup.UI.fragments.BottomBarFragment;
 import khaled.example.com.findup.UI.fragments.MainFragment;
 import khaled.example.com.findup.UI.fragments.MapFragment;
 import khaled.example.com.findup.models.CurrentLocation;
+import khaled.example.com.findup.models.FilterQueries;
 import khaled.example.com.findup.models.SaveModel;
 import khaled.example.com.findup.models.UserSavedItem;
 import retrofit2.Call;
@@ -54,6 +55,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity implements LocationView{
+    public static FilterQueries filterData;
+
     Context context;
     Toolbar toolbar;
     private RxLocation rxLocation;
@@ -63,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements LocationView{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        filterData = new FilterQueries();
         toolbar =  findViewById(R.id.toolbar_top);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
