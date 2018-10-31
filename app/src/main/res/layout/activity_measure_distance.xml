@@ -8,11 +8,11 @@
 
         <variable
             name="MessureDistance"
-            type="khaled.example.com.findup.UI.ViewModel.Activites.MessureDistanceViewModel"/>
+            type="findupproducts.example.com.findup.UI.ViewModel.Activites.MessureDistanceViewModel"/>
 
         <variable
             name="presenter"
-            type="khaled.example.com.findup.UI.Presenter.Activities.UserSettings.MessureDistancePresenter"/>
+            type="findupproducts.example.com.findup.UI.Presenter.Activities.UserSettings.MessureDistancePresenter"/>
 
     </data>
 <android.support.constraint.ConstraintLayout

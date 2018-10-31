@@ -2,8 +2,9 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 27
+    buildToolsVersion "27.0.3"
     defaultConfig {
-        applicationId "khaled.example.com.findup"
+        applicationId "findupproducts.example.com.findup"
         minSdkVersion 19
         targetSdkVersion 27
         versionCode 1
@@ -22,7 +23,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    buildToolsVersion '27.0.3'
     compileOptions {
         targetCompatibility 1.8
         sourceCompatibility 1.8

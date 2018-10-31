@@ -8,10 +8,10 @@
     <data>
         <variable
             name="VerifyCode"
-            type="khaled.example.com.findup.UI.ViewModel.Activites.VerifyResetPassCodeViewModel"/>
+            type="findupproducts.example.com.findup.UI.ViewModel.Activites.VerifyResetPassCodeViewModel"/>
         <variable
             name="presenter"
-            type="khaled.example.com.findup.UI.Presenter.Activities.VerifyResetPassPresenter"/>
+            type="findupproducts.example.com.findup.UI.Presenter.Activities.VerifyResetPassPresenter"/>
     </data>
 <android.support.constraint.ConstraintLayout
     android:layout_width="match_parent"

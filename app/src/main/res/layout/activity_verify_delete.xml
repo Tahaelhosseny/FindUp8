@@ -8,10 +8,10 @@
     <data>
         <variable
             name="DeleteAccount"
-            type="khaled.example.com.findup.UI.ViewModel.Activites.DeleteAccountViewModel"/>
+            type="findupproducts.example.com.findup.UI.ViewModel.Activites.DeleteAccountViewModel"/>
         <variable
             name="presenter"
-            type="khaled.example.com.findup.UI.Presenter.Activities.VerifyDeletePresenter"/>
+            type="findupproducts.example.com.findup.UI.Presenter.Activities.VerifyDeletePresenter"/>
     </data>
 
 <android.support.constraint.ConstraintLayout android:layout_width="match_parent"

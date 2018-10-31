@@ -8,11 +8,11 @@
 
         <variable
             name="addCommentStoreView"
-            type="khaled.example.com.findup.UI.ViewModel.Fragments.AddCommentStoreViewModel"/>
+            type="findupproducts.example.com.findup.UI.ViewModel.Fragments.AddCommentStoreViewModel"/>
 
         <variable
             name="presenter"
-            type="khaled.example.com.findup.UI.Presenter.Fragments.AddCommentStorePresenter"/>
+            type="findupproducts.example.com.findup.UI.Presenter.Fragments.AddCommentStorePresenter"/>
 
     </data>
 <android.support.constraint.ConstraintLayout

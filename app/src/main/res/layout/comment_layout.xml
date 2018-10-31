@@ -7,10 +7,10 @@
     <data>
         <variable
             name="ProductComments"
-            type="khaled.example.com.findup.UI.ViewModel.Fragments.ProductCommentsViewModel"/>
+            type="findupproducts.example.com.findup.UI.ViewModel.Fragments.ProductCommentsViewModel"/>
         <variable
             name="presenter"
-            type="khaled.example.com.findup.UI.Presenter.Fragments.ProductCommentsPresenter"/>
+            type="findupproducts.example.com.findup.UI.Presenter.Fragments.ProductCommentsPresenter"/>
     </data>
 
     <android.support.constraint.ConstraintLayout

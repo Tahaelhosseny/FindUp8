@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:1010916849238:android:83fd650308d41519",
         "android_client_info": {
-          "package_name": "khaled.example.com.findup"
+          "package_name": "findupproducts.example.com.findup"
         }
       },
       "oauth_client": [
@@ -18,7 +18,7 @@
           "client_id": "1010916849238-o4iunc362r2c65qra2bll370uplt0jbf.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "khaled.example.com.findup",
+            "package_name": "findupproducts.example.com.findup",
             "certificate_hash": "9c57971e11d998c83bd42c13db1fbb91cc0c16fb"
           }
         },

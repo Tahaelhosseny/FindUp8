@@ -7,11 +7,11 @@
 
         <variable
             name="product"
-            type="khaled.example.com.findup.UI.ViewModel.Fragments.ProductDetailViewModel"/>
+            type="findupproducts.example.com.findup.UI.ViewModel.Fragments.ProductDetailViewModel"/>
 
         <variable
             name="presenter"
-            type="khaled.example.com.findup.UI.Presenter.Fragments.ProductDetailsFragmentPresenter"/>
+            type="findupproducts.example.com.findup.UI.Presenter.Fragments.ProductDetailsFragmentPresenter"/>
 
     </data>
     <ScrollView

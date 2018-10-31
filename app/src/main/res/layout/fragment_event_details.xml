@@ -8,11 +8,11 @@
 
         <variable
             name="EventDetails"
-            type="khaled.example.com.findup.UI.ViewModel.Fragments.EventDataViewModel"/>
+            type="findupproducts.example.com.findup.UI.ViewModel.Fragments.EventDataViewModel"/>
 
         <variable
             name="presenter"
-            type="khaled.example.com.findup.UI.Presenter.Fragments.EventDataPresenter"/>
+            type="findupproducts.example.com.findup.UI.Presenter.Fragments.EventDataPresenter"/>
 
     </data>
 <android.support.constraint.ConstraintLayout

@@ -7,10 +7,10 @@
     <data>
         <variable
             name="CatStores"
-            type="khaled.example.com.findup.UI.ViewModel.Activites.CatStoreViewModel"/>
+            type="findupproducts.example.com.findup.UI.ViewModel.Activites.CatStoreViewModel"/>
         <variable
             name="presenter"
-            type="khaled.example.com.findup.UI.Presenter.Activities.CatStorePresenter"/>
+            type="findupproducts.example.com.findup.UI.Presenter.Activities.CatStorePresenter"/>
     </data>
 <LinearLayout
     android:layout_width="match_parent"

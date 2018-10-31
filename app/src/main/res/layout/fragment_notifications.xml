@@ -5,11 +5,11 @@
     <data>
         <variable
             name="UserNotifications"
-            type="khaled.example.com.findup.UI.ViewModel.Fragments.UserNotificatonViewModel"/>
+            type="findupproducts.example.com.findup.UI.ViewModel.Fragments.UserNotificatonViewModel"/>
 
         <variable
             name="presenter"
-            type="khaled.example.com.findup.UI.Presenter.Fragments.UserNotificationPresenter"/>
+            type="findupproducts.example.com.findup.UI.Presenter.Fragments.UserNotificationPresenter"/>
     </data>
 <android.support.v7.widget.RecyclerView
     android:id="@+id/notificationsRecyclerView"

@@ -6,10 +6,10 @@
     <data>
         <variable
             name="EnterPhoneToReset"
-            type="khaled.example.com.findup.UI.ViewModel.Activites.EnterPhoneResetViewModel"/>
+            type="findupproducts.example.com.findup.UI.ViewModel.Activites.EnterPhoneResetViewModel"/>
         <variable
             name="presenter"
-            type="khaled.example.com.findup.UI.Presenter.Activities.EnterPhoneResetPresenter"/>
+            type="findupproducts.example.com.findup.UI.Presenter.Activities.EnterPhoneResetPresenter"/>
     </data>
 <android.support.constraint.ConstraintLayout
 

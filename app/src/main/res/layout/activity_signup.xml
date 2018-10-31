@@ -9,11 +9,11 @@
 
         <variable
             name="loginview"
-            type="khaled.example.com.findup.UI.ViewModel.Activites.RegisterViewModel"/>
+            type="findupproducts.example.com.findup.UI.ViewModel.Activites.RegisterViewModel"/>
 
         <variable
             name="presenter"
-            type="khaled.example.com.findup.UI.Presenter.Activities.RegisterPresenter"/>
+            type="findupproducts.example.com.findup.UI.Presenter.Activities.RegisterPresenter"/>
 
     </data>
 

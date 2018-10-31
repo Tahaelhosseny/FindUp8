@@ -8,10 +8,10 @@
     <data>
         <variable
             name="CreateStoreEvents"
-            type="khaled.example.com.findup.UI.ViewModel.Activites.CreateEventViewModel"/>
+            type="findupproducts.example.com.findup.UI.ViewModel.Activites.CreateEventViewModel"/>
         <variable
             name="presenter"
-            type="khaled.example.com.findup.UI.Presenter.Activities.CreateEventPresenter"/>
+            type="findupproducts.example.com.findup.UI.Presenter.Activities.CreateEventPresenter"/>
     </data>
     <ScrollView
 

@@ -3,11 +3,11 @@
     <data>
         <variable
             name="CurrencyOperation"
-            type="khaled.example.com.findup.UI.ViewModel.Activites.CurrencyViewModel"/>
+            type="findupproducts.example.com.findup.UI.ViewModel.Activites.CurrencyViewModel"/>
 
         <variable
             name="presenter"
-            type="khaled.example.com.findup.UI.Presenter.Activities.CurrencyPresenter"/>
+            type="findupproducts.example.com.findup.UI.Presenter.Activities.CurrencyPresenter"/>
     </data>
 
 <android.support.constraint.ConstraintLayout
