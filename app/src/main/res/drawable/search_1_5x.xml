@@ -6,13 +6,13 @@
     android:viewportHeight="23">
 
     <group
-            android:translateX="-175.000000"
-            android:translateY="-871.000000">
+        android:translateX="-175.000000"
+        android:translateY="-871.000000">
         <group
-                android:translateY="857.000000">
+            android:translateY="857.000000">
             <group
-                    android:translateX="176.000000"
-                    android:translateY="15.000000">
+                android:translateX="176.000000"
+                android:translateY="15.000000">
                 <path
                     android:fillColor="#A8B6C8"
                     android:fillType="evenOdd"

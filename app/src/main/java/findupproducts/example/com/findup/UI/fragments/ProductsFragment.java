@@ -1,4 +1,4 @@
-package khaled.example.com.findup.UI.fragments;
+package findupproducts.example.com.findup.UI.fragments;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
@@ -9,9 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import khaled.example.com.findup.R;
-import khaled.example.com.findup.UI.ViewModel.Fragments.ProductsViewModel;
-import khaled.example.com.findup.databinding.FragmentProductsBinding;
+import findupproducts.example.com.findup.R;
+import findupproducts.example.com.findup.UI.ViewModel.Fragments.ProductsViewModel;
+import findupproducts.example.com.findup.databinding.FragmentProductsBinding;
 public class ProductsFragment extends Fragment {
 
     ProductsViewModel productsViewModel;

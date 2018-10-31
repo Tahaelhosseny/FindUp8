@@ -8,7 +8,6 @@ import android.widget.Toast;
 
 import findupproducts.example.com.findup.R;
 import findupproducts.example.com.findup.UI.ViewModel.Activites.CatStoreViewModel;
-import findupproducts.example.com.findup.UI.ViewModel.Activites.EditProfileViewModel;
 import findupproducts.example.com.findup.databinding.ActivityCategeoryStoresAcivityBinding;
 
 public class CategeoryStoresAcivity extends AppCompatActivity {

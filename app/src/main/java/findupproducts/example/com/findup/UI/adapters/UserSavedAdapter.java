@@ -1,4 +1,4 @@
-package khaled.example.com.findup.UI.adapters;
+package findupproducts.example.com.findup.UI.adapters;
 
 
 import android.content.Context;
@@ -19,18 +19,18 @@ import com.makeramen.roundedimageview.RoundedTransformationBuilder;
 
 import java.util.List;
 
-import khaled.example.com.findup.Helper.Database.DBHandler;
-import khaled.example.com.findup.Helper.Remote.ApiClient;
-import khaled.example.com.findup.Helper.Remote.ApiInterface;
-import khaled.example.com.findup.Helper.Remote.ResponseModel.SaveModelResponse;
-import khaled.example.com.findup.Helper.SharedPrefManger;
-import khaled.example.com.findup.R;
-import khaled.example.com.findup.models.Category;
-import khaled.example.com.findup.models.Product;
-import khaled.example.com.findup.models.SaveModel;
-import khaled.example.com.findup.models.Search;
-import khaled.example.com.findup.models.Store;
-import khaled.example.com.findup.models.UserSavedItem;
+import findupproducts.example.com.findup.Helper.Database.DBHandler;
+import findupproducts.example.com.findup.Helper.Remote.ApiClient;
+import findupproducts.example.com.findup.Helper.Remote.ApiInterface;
+import findupproducts.example.com.findup.Helper.Remote.ResponseModel.SaveModelResponse;
+import findupproducts.example.com.findup.Helper.SharedPrefManger;
+import findupproducts.example.com.findup.R;
+import findupproducts.example.com.findup.models.Category;
+import findupproducts.example.com.findup.models.Product;
+import findupproducts.example.com.findup.models.SaveModel;
+import findupproducts.example.com.findup.models.Search;
+import findupproducts.example.com.findup.models.Store;
+import findupproducts.example.com.findup.models.UserSavedItem;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

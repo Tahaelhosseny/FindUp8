@@ -25,7 +25,6 @@ import findupproducts.example.com.findup.Helper.Database.Interfaces.Store.Stores
 import findupproducts.example.com.findup.Helper.Location.LocationUtility;
 import findupproducts.example.com.findup.Helper.SharedPrefManger;
 import findupproducts.example.com.findup.R;
-import findupproducts.example.com.findup.UI.fragments.ProductsFragment;
 import findupproducts.example.com.findup.UI.fragments.StoreInfoFragment;
 import findupproducts.example.com.findup.models.CurrentLocation;
 import findupproducts.example.com.findup.models.Store;
@@ -121,7 +120,7 @@ public class StoreDetailsViewModel extends java.util.Observable {
                             StoreInfoFragment storeInfoFragment = new StoreInfoFragment();
                             storeInfoFragment.setArguments(bundle);
 
-                            ProductsFragment productsFragment = new ProductsFragment();
+                            findupproducts.example.com.findup.UI.fragments.ProductsFragment productsFragment = new findupproducts.example.com.findup.UI.fragments.ProductsFragment();
                             bundle.putInt("store_id", val.getStore_id());
                             productsFragment.setArguments(bundle);
 
