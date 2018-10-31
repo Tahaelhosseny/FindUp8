@@ -5,8 +5,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
 xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".UI.activities.StoreEventsActivity$PlaceholderFragment" >
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:id="@+id/layoutAddEvents"
