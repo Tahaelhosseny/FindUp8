@@ -69,7 +69,7 @@
                     android:layout_marginTop="@dimen/_5sdp"
                     android:layout_marginLeft="@dimen/_4sdp"
                     android:layout_height="15dp"
-                    android:background="@drawable/__0_5x" />
+                    android:background="@drawable/_0_5x" />
             </LinearLayout>
             <TextView
                 android:id="@+id/txt_store_desc"
