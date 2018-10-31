@@ -5,11 +5,11 @@
 
         <variable
             name="products"
-            type="khaled.example.com.findup.UI.ViewModel.Fragments.ProductsViewModel"/>
+            type="findupproducts.example.com.findup.UI.ViewModel.Fragments.ProductsViewModel"/>
 
         <variable
             name="presenter"
-            type="khaled.example.com.findup.UI.Presenter.Fragments.ProductsPresenter"/>
+            type="findupproducts.example.com.findup.UI.Presenter.Fragments.ProductsPresenter"/>
 
     </data>
         <android.support.v7.widget.RecyclerView

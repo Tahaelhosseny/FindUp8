@@ -1,0 +1,81 @@
+package findupproducts.example.com.findup.UI.adapters;
+
+import android.content.Context;
+import android.content.res.Resources;
+import android.support.annotation.NonNull;
+import android.support.constraint.ConstraintLayout;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import findupproducts.example.com.findup.Helper.SharedPrefManger;
+import findupproducts.example.com.findup.R;
+
+public class BottomBarStoreAdapter extends RecyclerView.Adapter<BottomBarStoreAdapter.ViewHolder> {
+
+    int selected = 0;
+    private List<MenuItem> menuItemList;
+    private View.OnClickListener onClickListener;
+    private static Menu menu;
+
+    public BottomBarStoreAdapter(Context mContext, Menu menuItemList, View.OnClickListener onClickListener) {
+        this.onClickListener = onClickListener;
+        this.menu = menuItemList;
+        this.menuItemList = new ArrayList<>();
+        for (int i = 0; i < menuItemList.size(); i++) {
+            if (menu.getItem(i).isVisible())
+                this.menuItemList.add(menuItemList.getItem(i));
+        }
+//        SharedPrefManger sharedPrefManger = new SharedPrefManger(mContext);
+//        if (!sharedPrefManger.isIsLoggedIn()&& menuItemList.size() > 0)
+//            this.menuItemList.remove(this.menuItemList.size()-1);
+    }
+
+    public static Menu getMenu() {
+        return menu;
+    }
+
+    public static int getScreenWidth() {
+        return Resources.getSystem().getDisplayMetrics().widthPixels;
+    }
+
+    @NonNull
+    @Override
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View itemView = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.bottom_bar_item, parent, false);
+        return new BottomBarStoreAdapter.ViewHolder(itemView);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        holder.itemImage.setImageDrawable(menuItemList.get(position).getIcon());
+        holder.itemImage.setMinimumHeight(ConstraintLayout.MarginLayoutParams.MATCH_PARENT);
+        holder.itemImage.setMinimumWidth(getScreenWidth() / getItemCount() + 1);
+        holder.container.setTag(position);
+    }
+    @Override
+    public int getItemCount() {
+        return menuItemList.size();
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder {
+
+        ImageView itemImage;
+        ConstraintLayout container;
+
+        public ViewHolder(View view) {
+            super(view);
+            itemImage = view.findViewById(R.id.bottomBarItemImg);
+            container = view.findViewById(R.id.bottom_menu_item_container);
+            view.setOnClickListener(onClickListener);
+        }
+    }
+}

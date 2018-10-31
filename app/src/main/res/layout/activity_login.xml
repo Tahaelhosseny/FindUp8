@@ -7,11 +7,11 @@
 
             <variable
                 name="loginview"
-                type="khaled.example.com.findup.UI.ViewModel.Activites.LoginViewModel"/>
+                type="findupproducts.example.com.findup.UI.ViewModel.Activites.LoginViewModel"/>
 
             <variable
                 name="presenter"
-                type="khaled.example.com.findup.UI.Presenter.Activities.LoginPresenter"/>
+                type="findupproducts.example.com.findup.UI.Presenter.Activities.LoginPresenter"/>
 
         </data>
     <android.support.constraint.ConstraintLayout

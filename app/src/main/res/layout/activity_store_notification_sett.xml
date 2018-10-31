@@ -7,11 +7,11 @@
 
         <variable
             name="StoreNotification"
-            type="khaled.example.com.findup.UI.ViewModel.Activites.StoreSettings.StoreNotiSettViewModel"/>
+            type="findupproducts.example.com.findup.UI.ViewModel.Activites.StoreSettings.StoreNotiSettViewModel"/>
 
         <variable
             name="presenter"
-            type="khaled.example.com.findup.UI.Presenter.Activities.StoreNotiSettPresneter"/>
+            type="findupproducts.example.com.findup.UI.Presenter.Activities.StoreNotiSettPresneter"/>
 
     </data>
 <android.support.constraint.ConstraintLayout

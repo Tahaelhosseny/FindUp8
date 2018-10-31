@@ -2600,26 +2600,26 @@
     <property name="ExportApk.SignV1" value="true" />
     <property name="ExportApk.SignV2" value="true" />
     <property name="DEBUGGABLE_DEVICE" value="genymotion-google_nexus_5x___7_1_0___api_25___1080x1920-192.168.57.101:5555" />
-    <property name="DEBUGGABLE_PROCESS" value="khaled.example.com.findup" />
+    <property name="DEBUGGABLE_PROCESS" value="findupproducts.example.com.findup" />
     <property name="SHOW_ALL_PROCESSES" value="false" />
     <property name="settings.editor.selected.configurable" value="settings.github" />
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="khaled.example.com.findup.Helper.Database" />
-      <recent name="khaled.example.com.findup.Helper" />
+      <recent name="findupproducts.example.com.findup.Helper.Database" />
+      <recent name="findupproducts.example.com.findup.Helper" />
     </key>
     <key name="android.template.packageName">
-      <recent name="khaled.example.com.findup.activities" />
+      <recent name="findupproducts.example.com.findup.activities" />
     </key>
     <key name="android.template.parentActivityClass">
-      <recent name="khaled.example.com.findup.activities.MainActivity" />
+      <recent name="findupproducts.example.com.findup.activities.MainActivity" />
       <recent name="" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="khaled.example.com.findup.fragments" />
-      <recent name="khaled.example.com.findup.adapters" />
-      <recent name="khaled.example.com.findup.activities" />
+      <recent name="findupproducts.example.com.findup.fragments" />
+      <recent name="findupproducts.example.com.findup.adapters" />
+      <recent name="findupproducts.example.com.findup.activities" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app/src/main/java/khaled/example/com/findup/Helper/Remote" />
@@ -3180,7 +3180,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/captures/khaled.example.com.findup_2018.08.09_02.16.li">
+    <entry file="file://$PROJECT_DIR$/captures/findupproducts.example.com.findup_2018.08.09_02.16.li">
       <provider selected="true" editor-type-id="capture-editor">
         <state />
       </provider>
@@ -3273,8 +3273,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/AndroidStudio/DeviceExplorer/genymotion-google_nexus_5x___7_1_0___api_25___1080x1920-192.168.57.101_5555/data/data/khaled.example.com.findup/shared_prefs/khaled.example.com.findup_preferences.xml" />
-    <entry file="file://$USER_HOME$/AndroidStudio/DeviceExplorer/genymotion-google_nexus_5x___7_1_0___api_25___1080x1920-192.168.57.101_5555/data/data/khaled.example.com.findup/shared_prefs/MapviewInitializerPreferences.xml" />
+    <entry file="file://$USER_HOME$/AndroidStudio/DeviceExplorer/genymotion-google_nexus_5x___7_1_0___api_25___1080x1920-192.168.57.101_5555/data/data/findupproducts.example.com.findup/shared_prefs/findupproducts.example.com.findup_preferences.xml" />
+    <entry file="file://$USER_HOME$/AndroidStudio/DeviceExplorer/genymotion-google_nexus_5x___7_1_0___api_25___1080x1920-192.168.57.101_5555/data/data/findupproducts.example.com.findup/shared_prefs/MapviewInitializerPreferences.xml" />
     <entry file="file://$PROJECT_DIR$/app/src/main/java/khaled/example/com/findup/UI/activities/StoreEventsActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">

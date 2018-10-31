@@ -5,11 +5,11 @@
 
         <variable
             name="NearMe"
-            type="khaled.example.com.findup.UI.ViewModel.Fragments.NearMeViewModel"/>
+            type="findupproducts.example.com.findup.UI.ViewModel.Fragments.NearMeViewModel"/>
 
         <variable
             name="presenter"
-            type="khaled.example.com.findup.UI.Presenter.Fragments.NearMePresenter"/>
+            type="findupproducts.example.com.findup.UI.Presenter.Fragments.NearMePresenter"/>
 
     </data>
 <android.support.v7.widget.RecyclerView android:id="@+id/nearMeRecyclerView"

@@ -5,11 +5,11 @@
 
         <variable
             name="NearMe"
-            type="khaled.example.com.findup.UI.ViewModel.Fragments.StoreDetailsViewModel"/>
+            type="findupproducts.example.com.findup.UI.ViewModel.Fragments.StoreDetailsViewModel"/>
 
         <variable
             name="presenter"
-            type="khaled.example.com.findup.UI.Presenter.Fragments.StoreDetailsPresenter"/>
+            type="findupproducts.example.com.findup.UI.Presenter.Fragments.StoreDetailsPresenter"/>
 
     </data>
     <android.support.constraint.ConstraintLayout

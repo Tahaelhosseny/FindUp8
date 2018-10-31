@@ -5,11 +5,11 @@
 
         <variable
             name="SortFrag"
-            type="khaled.example.com.findup.UI.ViewModel.Fragments.SortFilterViewModel"/>
+            type="findupproducts.example.com.findup.UI.ViewModel.Fragments.SortFilterViewModel"/>
 
         <variable
             name="presenter"
-            type="khaled.example.com.findup.UI.Presenter.Fragments.SortFilterPresenter"/>
+            type="findupproducts.example.com.findup.UI.Presenter.Fragments.SortFilterPresenter"/>
 
     </data>
 <LinearLayout
