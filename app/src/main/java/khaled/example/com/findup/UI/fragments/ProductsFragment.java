@@ -12,26 +12,19 @@ import android.view.ViewGroup;
 import khaled.example.com.findup.R;
 import khaled.example.com.findup.UI.ViewModel.Fragments.ProductsViewModel;
 import khaled.example.com.findup.databinding.FragmentProductsBinding;
-
-/**
- * A simple {@link Fragment} subclass.
- */
 public class ProductsFragment extends Fragment {
 
     ProductsViewModel productsViewModel;
     FragmentProductsBinding binding;
-
     public ProductsFragment() {
         // Required empty public constructor
     }
-
     public static ProductsFragment newInstance() {
         ProductsFragment fragment = new ProductsFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
     }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -44,7 +37,6 @@ public class ProductsFragment extends Fragment {
         binding.setProducts(productsViewModel);
         return view;
     }
-
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -56,6 +48,4 @@ public class ProductsFragment extends Fragment {
 
         productsViewModel.bindStoreProducts(binding.productsRecyclerView, store_id);
     }
-
-
 }

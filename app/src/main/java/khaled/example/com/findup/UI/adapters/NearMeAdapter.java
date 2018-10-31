@@ -99,30 +99,6 @@ public class NearMeAdapter extends RecyclerView.Adapter<NearMeAdapter.ViewHolder
             @Override
             public void unLiked(LikeButton likeButton) {
                 SaveStore(context,holder.store,sharedPrefManger.getUser_ID(),likeButton);
-                DBHandler.getSavedID(stores.get(position).getStore_name(), stores.get(position).getStore_desc(), context, new SavedItem() {
-                    @Override
-                    public void onSuccess(Flowable<List<UserSavedItem>> listFlowable) {
-                        listFlowable.subscribe(val ->
-                                {
-                                    ((Activity) context).runOnUiThread(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            for(int i = 0 ; i < val.size() ; i++) {
-                                                deleteSavedStore(context, val.get(i).getItemId(), stores.get(position), likeButton);
-                                                Log.e("Item Deleted" , "Success");
-                                            }
-                                        }
-                                    });
-                                }
-                        );
-
-                    }
-
-                    @Override
-                    public void onFail() {
-
-                    }
-                });
             }
         });
 
@@ -165,33 +141,20 @@ public class NearMeAdapter extends RecyclerView.Adapter<NearMeAdapter.ViewHolder
         saveModelResponseCall.enqueue(new Callback<SaveModelResponse>() {
             @Override
             public void onResponse(Call<SaveModelResponse> call, Response<SaveModelResponse> response) {
-                store.setIf_saved((response.body().getUser_data().get(0).getSave_case().equals("saved"))?1:0);
-                DBHandler.SaveStore(store,store.getIf_saved(),mContext);
-                if(response.body().getUser_data().get(0).getSave_case().equals("saved")) {
-                    UserSavedItem userSavedItem = new UserSavedItem(response.body().getUser_data().get(0).getSave_id(),store.getStore_name(), store.getStore_desc(), store.getStore_logo(), "Store");
-                    DBHandler.InsertSavedItem(userSavedItem , context);
 
+                if(response.body().getUser_data().get(0).getSave_case().equals("saved")) {
+                    store.setIf_saved(1);
+                    DBHandler.SaveStore(store,store.getIf_saved(),mContext);
+                    likeButton.setLiked(true);
+                }else {
+                    store.setIf_saved(0);
+                    DBHandler.SaveStore(store,store.getIf_saved(),mContext);
+                    likeButton.setLiked(false);
                 }
             }
             @Override
             public void onFailure(Call<SaveModelResponse> call, Throwable t) {
-                likeButton.setLiked((store.getIf_saved()==0)?false:true);
-                Log.i("saved_error",t.getMessage());
-            }
-        });
-    }
-    private void deleteSavedStore(Context context , int saved_id  , Store store , LikeButton likeButton){
-        ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-        Call<DeleteSavedResponse> deleteSavedResponseCall = apiService.deleteSavedItem(SharedPrefManger.getUser_ID() , saved_id);
-        deleteSavedResponseCall.enqueue(new Callback<DeleteSavedResponse>() {
-            @Override
-            public void onResponse(Call<DeleteSavedResponse> call, Response<DeleteSavedResponse> response) {
-                store.setIf_saved(0);
-                DBHandler.DeleteSaved(saved_id,context);
-            }
-            @Override
-            public void onFailure(Call<DeleteSavedResponse> call, Throwable t) {
-//                likeButton.setLiked(false);
+                likeButton.setLiked(false);
                 Log.i("saved_error",t.getMessage());
             }
         });

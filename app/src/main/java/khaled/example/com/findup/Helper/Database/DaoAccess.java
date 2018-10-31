@@ -132,6 +132,9 @@ public interface DaoAccess {
     @Query("SELECT * FROM UserSavedItem WHERE itemDesc = :desc AND itemName = :name")
     Flowable<List<UserSavedItem>> getSavedID(String desc  , String name);
 
+    @Query("SELECT * FROM Store WHERE if_saved = 1")
+    Flowable<List<Store>> getSavedStore();
+
     @Delete
     void DeleteSaved(UserSavedItem userSavedItem);
 

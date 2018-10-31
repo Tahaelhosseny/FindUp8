@@ -75,12 +75,12 @@ public class DBHandler {
         }).start();
     }
 
-    public static void getAllSavedItem(final Context context, final SavedItem savedItem) {
+    public static void getAllSavedItem(final Context context, final Stores stores) {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                Flowable<List<UserSavedItem>> listFlowable = FindUpDatabase.getAppDatabase(context).daoAccess().getAllSaved();
-                savedItem.onSuccess(listFlowable);
+                Flowable<List<Store>> listFlowable = FindUpDatabase.getAppDatabase(context).daoAccess().getSavedStore();
+                stores.onSuccess(listFlowable);
             }
         }).start();
     }
