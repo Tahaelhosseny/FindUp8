@@ -2,6 +2,7 @@ package findupproducts.example.com.findup.UI.fragments;
 
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -12,6 +13,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.google.android.gms.common.util.DbUtils;
 
@@ -24,6 +26,7 @@ import findupproducts.example.com.findup.Helper.Database.Interfaces.Notification
 import findupproducts.example.com.findup.Helper.Database.Interfaces.Product.Products;
 import findupproducts.example.com.findup.Helper.SharedPrefManger;
 import findupproducts.example.com.findup.R;
+import findupproducts.example.com.findup.UI.activities.SetLocationActivity;
 import findupproducts.example.com.findup.UI.adapters.NotificationsAdapter;
 import findupproducts.example.com.findup.UI.adapters.StoreProductsReviewsAdapter;
 import findupproducts.example.com.findup.models.NotificationUser;
@@ -34,7 +37,7 @@ import findupproducts.example.com.findup.models.ReviewStoreItem;
  * A simple {@link Fragment} subclass.
  */
 public class StoreAccountHomeFragment extends Fragment {
-    RecyclerView recyclerView;
+
     StoreProductsReviewsAdapter adapter;
 
     public StoreAccountHomeFragment() {
@@ -51,18 +54,27 @@ public class StoreAccountHomeFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        recyclerView = getActivity().findViewById(R.id.reviewsRecyclerView);
+
+        Button setLocBtn = getActivity().findViewById(R.id.setLocBtn);
+        setLocBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().startActivity(new Intent(getActivity(), SetLocationActivity.class));
+            }
+        });
+
         adapter = new StoreProductsReviewsAdapter(getActivity(), new ArrayList<Product>());
         LoadProduct();
     }
 
     private void bindUI() {
+        RecyclerView recyclerView = getActivity().findViewById(R.id.reviewsRecyclerView);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
     }
     private void LoadProduct(){
-        DBHandler.getProductByStoreID(1, getActivity(), new Products() {
+        DBHandler.getProductByStoreID(SharedPrefManger.getStore_ID(), getActivity(), new Products() {
             @Override
             public void onSuccess(Flowable<List<Product>> listFlowable) {
                 listFlowable.subscribe(

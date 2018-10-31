@@ -44,7 +44,6 @@ public class LoginViewModel extends Observable {
         userlogincall.enqueue(new Callback<LoginResponse>() {
             @Override
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
-                Toast.makeText(mContext,response.body().getData().get(0).getLogin_type(),Toast.LENGTH_LONG).show();
                 if (response.body().getSuccess() == 1 && response.body().getData().get(0).getLogin_type().equals("User")){
                     Toast.makeText(mContext, "User Id " + response.body().getData().get(0).getId(), Toast.LENGTH_SHORT).show();
                     LoginAccepted(response.body().getUser_data().get(0),password);

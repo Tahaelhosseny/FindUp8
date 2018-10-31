@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.gms.maps.MapView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:map="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        map:layout_constraintEnd_toEndOf="parent"
+        map:layout_constraintStart_toStartOf="parent"
+        map:layout_constraintTop_toTopOf="parent"
+        tools:context=".UI.activities.MapsActivity" />
+
+    <Button
+        android:id="@+id/closeBtn"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/close_black_0_5x"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:fontFamily="@font/sfcompactdisplay_heavy"
+        android:text="Set Your New Location"
+        android:textSize="@dimen/toolbar_font_size"
+        app:layout_constraintStart_toEndOf="@id/closeBtn"
+        app:layout_constraintTop_toTopOf="@+id/closeBtn"
+        app:layout_constraintBottom_toBottomOf="@+id/closeBtn"/>
+
+    <Button
+        android:id="@+id/btn_submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_button_rounded_accent"
+        android:layout_margin="@dimen/activity_vertical_margin"
+        android:text="@string/btn_submit"
+        android:textAllCaps="false"
+        android:textColor="@color/colorWhite"
+        android:textStyle="bold"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:background="@drawable/bg_form_rounded"
+        app:layout_constraintBottom_toTopOf="@id/btn_submit">
+        
+        <TextView
+            android:id="@+id/timeTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/time"
+            android:textSize="16sp"
+            android:fontFamily="@font/sfcompactdisplay_semibold"
+            android:textColor="@color/material_color_black"
+            android:layout_marginBottom="5dp"
+            app:layout_constraintBottom_toTopOf="@+id/fromTxt"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <TextView
+            android:id="@+id/fromTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="From: "
+            android:fontFamily="@font/sfcompactdisplay_regular"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+        
+        <TextView
+            android:id="@+id/toTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="To: "
+            android:fontFamily="@font/sfcompactdisplay_regular"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="15dp"
+            android:layout_marginLeft="15dp"/>
+
+        <TextView
+            android:id="@+id/daysTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Days"
+            android:textSize="16sp"
+            android:layout_marginBottom="5dp"
+            android:textColor="@color/material_color_black"
+            android:fontFamily="@font/sfcompactdisplay_semibold"
+            app:layout_constraintBottom_toTopOf="@+id/daysLayout"/>
+        
+        <LinearLayout
+            android:id="@+id/daysLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@id/timeTxt">
+
+            <CheckBox
+                android:id="@+id/saturday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginRight="16dp"
+                android:button="@null"
+                android:drawableEnd="@drawable/radio_button_selector"
+                android:fontFamily="@font/sfcompactdisplay_regular"
+                android:gravity="start"
+                android:text="@string/saturday"/>
+
+            <CheckBox
+                android:id="@+id/sunday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginRight="16dp"
+                android:button="@null"
+                android:drawableEnd="@drawable/radio_button_selector"
+                android:fontFamily="@font/sfcompactdisplay_regular"
+                android:gravity="start"
+                android:text="@string/sunday"/>
+
+
+            <CheckBox
+                android:id="@+id/monday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginRight="16dp"
+                android:button="@null"
+                android:drawableEnd="@drawable/radio_button_selector"
+                android:fontFamily="@font/sfcompactdisplay_regular"
+                android:gravity="start"
+                android:text="@string/monday"/>
+
+            <CheckBox
+                android:id="@+id/tuesday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginRight="16dp"
+                android:button="@null"
+                android:drawableEnd="@drawable/radio_button_selector"
+                android:fontFamily="@font/sfcompactdisplay_regular"
+                android:gravity="start"
+                android:text="@string/tuesday"/>
+
+            <CheckBox
+                android:id="@+id/wednesday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginRight="16dp"
+                android:button="@null"
+                android:drawableEnd="@drawable/radio_button_selector"
+                android:fontFamily="@font/sfcompactdisplay_regular"
+                android:gravity="start"
+                android:text="@string/wednesday"/>
+
+            <CheckBox
+                android:id="@+id/thursday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginRight="16dp"
+                android:button="@null"
+                android:drawableEnd="@drawable/radio_button_selector"
+                android:fontFamily="@font/sfcompactdisplay_regular"
+                android:gravity="start"
+                android:text="@string/thursday"/>
+
+            <CheckBox
+                android:id="@+id/friday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginRight="16dp"
+                android:button="@null"
+                android:drawableEnd="@drawable/radio_button_selector"
+                android:fontFamily="@font/sfcompactdisplay_regular"
+                android:gravity="start"
+                android:text="@string/friday"/>
+            
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/locationTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Location"
+            android:textSize="16sp"
+            android:fontFamily="@font/sfcompactdisplay_semibold"
+            android:textColor="@color/material_color_black"
+            android:layout_marginBottom="5dp"
+            app:layout_constraintBottom_toTopOf="@+id/locationDetailsTxt"/>
+
+        <TextView
+            android:id="@+id/locationDetailsTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Place Name"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="@font/sfcompactdisplay_regular"
+            app:layout_constraintBottom_toTopOf="@id/daysTxt"/>
+        
+    </android.support.constraint.ConstraintLayout>
+
+</android.support.constraint.ConstraintLayout>

@@ -14,7 +14,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import findupproducts.example.com.findup.R;
-import findupproducts.example.com.findup.UI.adapters.AddProductsAdapter;
 import findupproducts.example.com.findup.models.AddProduct;
 
 public class AddProductCraftActivity extends AppCompatActivity {
