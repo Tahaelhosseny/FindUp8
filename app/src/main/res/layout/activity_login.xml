@@ -46,21 +46,12 @@
             android:textColor="@color/colorBlack"
             android:textSize="24sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/pic_account"
+            app:layout_constraintBottom_toTopOf="@+id/textView4"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </android.support.v7.widget.Toolbar>
 
 
-    <ImageView
-        android:id="@+id/pic_account"
-        android:layout_width="@dimen/login_photo_size"
-        android:layout_height="@dimen/login_photo_size"
-        android:layout_marginBottom="16dp"
-        app:srcCompat="@drawable/ic_accountpic"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_login"
-        android:layout_marginStart="34dp" />
 
 
     <TextView
@@ -68,14 +59,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:drawableStart="@drawable/ic_phonenumber"
+        android:layout_marginStart="34dp"
+        android:drawableStart="@drawable/_ic_phonenumber"
         android:text="@string/mobile"
         android:drawablePadding="@dimen/login_text_padding_from_drawable"
         android:textAlignment="center"
         android:textColor="@color/colorWhiteGrey"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/pic_account"
-        app:layout_constraintTop_toBottomOf="@+id/pic_account" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_login" />
 
     <Spinner
         android:id="@+id/mobileSpinner"
@@ -115,7 +107,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="34dp"
         android:layout_marginTop="16dp"
-        android:drawableStart="@drawable/ic_password"
+        android:drawableStart="@drawable/_ic_password"
         android:drawablePadding="@dimen/login_text_padding_from_drawable"
         android:text="@string/password"
         android:textAlignment="center"
@@ -161,7 +153,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
-        android:background="@drawable/bg_button_rounded_accent"
+        android:background="@drawable/_bg_button_rounded_accent"
         android:text="@string/login"
         android:textAllCaps="false"
         android:textColor="@color/colorWhite"
@@ -171,19 +163,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_forgotPassword"/>
 
-    <Button
-        android:id="@+id/btn_signup"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        tools:layout_editor_absoluteX="34dp"
-        android:background="@null"
-        android:text="@string/don_t_have_account_create_one"
-        android:textAllCaps="false"
-        android:textColor="@color/colorBlack"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_login" />
 
 </android.support.constraint.ConstraintLayout>
 </layout>

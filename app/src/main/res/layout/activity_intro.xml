@@ -100,7 +100,7 @@
         android:layout_marginStart="@dimen/activity_vertical_margin"
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:textColor="@color/material_color_white"
-        android:background="@drawable/bg_button_rounded_accent"
+        android:background="@drawable/_bg_button_rounded_accent"
         android:fontFamily="@font/sfcompactdisplay_medium"
         android:text="@string/sign_up"
         android:textAllCaps="false"

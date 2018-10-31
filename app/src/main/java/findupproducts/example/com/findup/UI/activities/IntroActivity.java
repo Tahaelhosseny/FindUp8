@@ -130,14 +130,14 @@ public class IntroActivity extends AppCompatActivity {
         btn_instagram=findViewById(R.id.btn_instagram);
         btn_twitter=findViewById(R.id.btn_twitter);
 
-        btn_skip.setOnClickListener(new View.OnClickListener() {
+        activityIntroBinding.btnSkip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
             startActivity(new Intent(IntroActivity.this,MainActivity.class));
             }
         });
 
-        btn_login.setOnClickListener(new View.OnClickListener() {
+        activityIntroBinding.btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(IntroActivity.this, LoginActivity.class));
@@ -145,7 +145,7 @@ public class IntroActivity extends AppCompatActivity {
             }
         });
 
-        btn_signup.setOnClickListener(new View.OnClickListener() {
+        activityIntroBinding.btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(IntroActivity.this, SignupActivity.class));
