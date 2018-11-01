@@ -52,7 +52,6 @@ public class EventDetailsFragment extends Fragment implements OnMapReadyCallback
         } catch (Exception e) {
 
         }
-
         return view;
     }
 
