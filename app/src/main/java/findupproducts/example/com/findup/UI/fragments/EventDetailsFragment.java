@@ -82,5 +82,6 @@ public class EventDetailsFragment extends Fragment implements OnMapReadyCallback
                 BitmapDescriptorFactory.fromResource(R.drawable.map_marker)
         ).title(event.getEvent_name()));
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(eventLoc,4));*/
+
     }
 }
