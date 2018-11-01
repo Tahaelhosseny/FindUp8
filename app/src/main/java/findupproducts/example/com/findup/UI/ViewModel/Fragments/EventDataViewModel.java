@@ -22,6 +22,7 @@ import findupproducts.example.com.findup.models.Store;
 public class EventDataViewModel {
     private Context mContext;
     String event_id;
+    public static Event event;
     public EventDataViewModel(Context mContext , String  event_id){
         this.mContext = mContext; this.event_id = event_id;
     }
@@ -35,6 +36,7 @@ public class EventDataViewModel {
                     ((Activity) mContext).runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
+                            event = val.get(0);
                             for (int i = 0 ; i < val.size() ; i++){
                                 event_name.setText(val.get(i).getEvent_name());
                                 DBHandler.getStoreByID(Integer.parseInt(val.get(i).getStore_id()), mContext, new Stores() {

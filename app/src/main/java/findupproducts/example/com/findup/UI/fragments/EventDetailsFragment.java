@@ -15,6 +15,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
@@ -22,6 +23,8 @@ import findupproducts.example.com.findup.R;
 import findupproducts.example.com.findup.UI.ViewModel.Fragments.EventDataViewModel;
 import findupproducts.example.com.findup.UI.ViewModel.Fragments.EventsViewModel;
 import findupproducts.example.com.findup.databinding.FragmentEventDetailsBinding;
+
+import static findupproducts.example.com.findup.UI.ViewModel.Fragments.EventDataViewModel.event;
 
 
 public class EventDetailsFragment extends Fragment implements OnMapReadyCallback {
@@ -73,5 +76,11 @@ public class EventDetailsFragment extends Fragment implements OnMapReadyCallback
         googleMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(sydney.latitude - ((sydney.latitude * 14) / 1000000), sydney.longitude - ((sydney.longitude * 14) / 400000)), 14));
         googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+
+        /*LatLng eventLoc = new LatLng(Double.parseDouble(event.getEvent_latitude()),Double.parseDouble(event.getEvent_latitude()));
+        googleMap.addMarker(new MarkerOptions().position(eventLoc).icon(
+                BitmapDescriptorFactory.fromResource(R.drawable.map_marker)
+        ).title(event.getEvent_name()));
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(eventLoc,4));*/
     }
 }
