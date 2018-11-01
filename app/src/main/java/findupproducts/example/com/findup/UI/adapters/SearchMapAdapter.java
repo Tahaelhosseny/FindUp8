@@ -99,7 +99,11 @@ public class SearchMapAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         }
 
         public void populateStore(Store store){
-            Picasso.with(context).load(store.getStore_banner()).into(banner);name.setText(store.getStore_name());
+            Transformation transformation = new RoundedTransformationBuilder()
+                    .cornerRadiusDp(0 , 15).cornerRadiusDp(1 , 15)
+                    .oval(false)
+                    .build();
+            Picasso.with(context).load(store.getStore_banner()).transform(transformation).placeholder(R.drawable.near_by_place_holder).into(banner);
             description.setText(store.getStore_desc());type.setText("Store");
             constraintLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -127,7 +131,12 @@ public class SearchMapAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         }
 
         public void populateEvent(Event event){
-            Picasso.with(context).load(event.getEvent_photo()).into(banner);name.setText(event.getEvent_name());
+            Transformation transformation = new RoundedTransformationBuilder()
+                    .cornerRadiusDp(0 , 15).cornerRadiusDp(1 , 15)
+                    .oval(false)
+                    .build();
+            Picasso.with(context).load(event.getEvent_photo()).transform(transformation).placeholder(R.drawable.near_by_place_holder).into(banner);
+            name.setText(event.getEvent_name());
             description.setText(event.getEvent_desc());type.setText("Event");
             constraintLayout.setOnClickListener(new View.OnClickListener() {
                 @Override

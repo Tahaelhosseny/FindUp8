@@ -59,7 +59,7 @@ public class SerachedAdapter extends RecyclerView.Adapter<SerachedAdapter.ViewHo
             holder.searched_desc.setText(store.getStore_desc());
             if (!store.getStore_banner().isEmpty()) {
                 Transformation transformation = new RoundedTransformationBuilder()
-                        .cornerRadiusDp(80)
+                        .cornerRadiusDp(50)
                         .oval(false)
                         .build();
                 Picasso.with(holder.searched_img.getContext()).load(store.getStore_banner()).transform(transformation).placeholder(R.drawable.near_by_place_holder).into(holder.searched_img);
@@ -76,7 +76,7 @@ public class SerachedAdapter extends RecyclerView.Adapter<SerachedAdapter.ViewHo
             holder.searched_desc.setText(event.getEvent_desc());
             if (!event.getEvent_photo().isEmpty()) {
                 Transformation transformation = new RoundedTransformationBuilder()
-                        .cornerRadiusDp(80)
+                        .cornerRadiusDp(50)
                         .oval(false)
                         .build();
                 Picasso.with(holder.searched_img.getContext()).load(event.getEvent_photo()).transform(transformation).placeholder(R.drawable.near_by_place_holder).into(holder.searched_img);

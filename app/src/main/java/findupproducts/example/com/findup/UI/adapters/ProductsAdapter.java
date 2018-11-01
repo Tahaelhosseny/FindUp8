@@ -60,7 +60,7 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
 
         if (!holder.product.getProduct_banner().isEmpty()) {
             Transformation transformation = new RoundedTransformationBuilder()
-                    .cornerRadiusDp(80)
+                    .cornerRadiusDp(50)
                     .oval(false)
                     .build();
             Picasso.with(holder.productImg.getContext()).load(holder.product.getProduct_banner()).transform(transformation).placeholder(R.drawable.near_by_place_holder).into(holder.productImg);

@@ -27,6 +27,7 @@
             android:layout_height="100dp"
             android:scaleType="fitXY"
             android:layout_marginBottom="5dp"
+            app:layout_constraintCircleRadius="15dp"
             android:minHeight="100dp"
             app:srcCompat="@color/material_color_grey_500"
             app:layout_constraintBottom_toTopOf="@+id/nearItemName"

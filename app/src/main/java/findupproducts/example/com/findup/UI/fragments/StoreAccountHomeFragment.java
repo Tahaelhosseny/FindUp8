@@ -54,7 +54,7 @@ public class StoreAccountHomeFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
+        RecyclerView recyclerView = getActivity().findViewById(R.id.reviewsRecyclerView);
         Button setLocBtn = getActivity().findViewById(R.id.setLocBtn);
         setLocBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,16 +64,15 @@ public class StoreAccountHomeFragment extends Fragment {
         });
 
         adapter = new StoreProductsReviewsAdapter(getActivity(), new ArrayList<Product>());
-        LoadProduct();
+        LoadProduct(recyclerView);
     }
 
-    private void bindUI() {
-        RecyclerView recyclerView = getActivity().findViewById(R.id.reviewsRecyclerView);
+    private void bindUI(RecyclerView recyclerView) {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
     }
-    private void LoadProduct(){
+    private void LoadProduct(RecyclerView recyclerView){
         DBHandler.getProductByStoreID(SharedPrefManger.getStore_ID(), getActivity(), new Products() {
             @Override
             public void onSuccess(Flowable<List<Product>> listFlowable) {
@@ -85,7 +84,7 @@ public class StoreAccountHomeFragment extends Fragment {
                                     Log.e("Val Pro" , String.valueOf(val.size()));
                                     adapter.setProduct(val);
                                     adapter.notifyDataSetChanged();
-                                    bindUI();
+                                    bindUI(recyclerView);
                                 }
                             });
                         }

@@ -82,7 +82,7 @@ public class UserSavedAdapter extends RecyclerView.Adapter<UserSavedAdapter.View
         holder.userSavedDesc.setText(userSavedItems.get(position).getStore_desc());
         if (!userSavedItems.get(position).getStore_banner().isEmpty()) {
                 Transformation transformation = new RoundedTransformationBuilder()
-                        .cornerRadiusDp(80)
+                        .cornerRadiusDp(40)
                         .oval(false)
                         .build();
                 Picasso.with(holder.userSavedImage.getContext()).load(userSavedItems.get(position).getStore_banner()).transform(transformation).placeholder(R.drawable.near_by_place_holder).into(holder.userSavedImage);

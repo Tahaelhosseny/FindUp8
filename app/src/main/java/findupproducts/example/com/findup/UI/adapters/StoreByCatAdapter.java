@@ -73,13 +73,13 @@ public class StoreByCatAdapter extends RecyclerView.Adapter<StoreByCatAdapter.Vi
         }
         if (!store.getStore_logo().isEmpty()) {
             Transformation transformation = new RoundedTransformationBuilder()
-                    .cornerRadiusDp(80)
+                    .cornerRadiusDp(50)
                     .oval(false)
                     .build();
             Picasso.with(holder.img_store_logo.getContext()).load(store.getStore_banner()).transform(transformation).into(holder.img_store_logo);
         }else {
             Transformation transformation = new RoundedTransformationBuilder()
-                    .cornerRadiusDp(80)
+                    .cornerRadiusDp(50)
                     .oval(false)
                     .build();
             Picasso.with(holder.img_store_logo.getContext()).load(store.getStore_banner()).transform(transformation).into(holder.img_store_logo);

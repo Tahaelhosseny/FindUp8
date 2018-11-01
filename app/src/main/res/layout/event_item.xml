@@ -21,9 +21,9 @@
 
         <ImageView
             android:id="@+id/eventsItemImg"
-            android:layout_width="match_parent"
+            app:layout_constraintCircleRadius="15dp"
+            android:layout_width="362dp"
             android:layout_height="100dp"
-            android:background="@drawable/near_by_image_bg"
             android:src="@color/material_color_grey_500"
             android:scaleType="fitXY"
             tools:layout_editor_absoluteX="0dp"

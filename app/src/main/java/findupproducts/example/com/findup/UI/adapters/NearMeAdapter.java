@@ -16,7 +16,9 @@ import android.widget.Toast;
 import com.google.android.gms.common.util.DbUtils;
 import com.like.LikeButton;
 import com.like.OnLikeListener;
+import com.makeramen.roundedimageview.RoundedTransformationBuilder;
 import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Transformation;
 
 import java.util.List;
 
@@ -84,9 +86,13 @@ public class NearMeAdapter extends RecyclerView.Adapter<NearMeAdapter.ViewHolder
         holder.shortDesc.setText(holder.store.getStore_desc());
 
 
-        if (!holder.store.getStore_banner().isEmpty())
-            Picasso.with(holder.placeImage.getContext()).load(holder.store.getStore_banner()).placeholder(R.color.material_color_grey_500).into(holder.placeImage);
-
+        if (!holder.store.getStore_banner().isEmpty()) {
+            Transformation transformation = new RoundedTransformationBuilder().cornerRadiusDp(0 , 15)
+                    .cornerRadiusDp(1 , 15)
+                    .oval(false)
+                    .build();
+            Picasso.with(context).load(stores.get(position).getStore_banner()).transform(transformation).placeholder(R.drawable.near_by_place_holder).into(holder.placeImage);
+        }
         if (!SharedPrefManger.isIsLoggedIn())
             holder.likeButton.setVisibility(View.INVISIBLE);
         holder.likeButton.setLiked((holder.store.getIf_saved()==0)?false:true);

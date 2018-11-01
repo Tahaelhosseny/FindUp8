@@ -12,7 +12,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.makeramen.roundedimageview.RoundedTransformationBuilder;
 import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Transformation;
 
 import java.util.List;
 
@@ -53,8 +55,13 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder
         holder.eventName.setText(holder.event.getEvent_name());
         holder.eventDescription.setText(holder.event.getEvent_desc());
         holder.eventDate.setText(holder.event.getEvent_start_date());
-        if (!holder.event.getEvent_photo().isEmpty())
-            Picasso.with(holder.eventsItemImg.getContext()).load(holder.event.getEvent_photo()).placeholder(R.color.material_color_grey_500).into(holder.eventsItemImg);
+        if (!holder.event.getEvent_photo().isEmpty()) {
+            Transformation transformation = new RoundedTransformationBuilder().cornerRadiusDp(0, 5)
+                    .cornerRadiusDp(1, 5)
+                    .oval(false)
+                    .build();
+            Picasso.with(context).load(events.get(position).getEvent_photo()).transform(transformation).placeholder(R.drawable.near_by_place_holder).into(holder.eventsItemImg);
+        }
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
