@@ -53,7 +53,6 @@ public class FilteredDataFragment extends android.support.v4.app.Fragment {
         InitRecyclerView(filtered_recycler);
     }
 
-
     public void InitRecyclerView(RecyclerView recyclerView) {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         SearchMapAdapter adapter = new SearchMapAdapter(getActivity() , filteredMapDataStore , filteredMapDataEvent);

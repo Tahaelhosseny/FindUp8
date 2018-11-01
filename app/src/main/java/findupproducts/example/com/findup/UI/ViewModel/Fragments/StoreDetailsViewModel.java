@@ -127,7 +127,9 @@ public class StoreDetailsViewModel extends java.util.Observable {
                             fragmentList.add(storeInfoFragment);
                             fragmentList.add(productsFragment);
                             tabLayout.notifyDataSetChanged();
-                            tabLayout.setTabData(mTabEntities, (FragmentActivity) mContext, R.id.fl_change, fragmentList);
+                            try{
+                                tabLayout.setTabData(mTabEntities, (FragmentActivity) mContext, R.id.fl_change, fragmentList);
+                            }catch (Exception e){e.printStackTrace();}
                             tabLayout.setIconHeight(0);
                             tabLayout.setIconVisible(false);
                             tabLayout.getTitleView(0).setTypeface(Typeface.create("sfcompactdisplay_semibold", Typeface.NORMAL));

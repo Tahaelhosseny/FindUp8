@@ -24,14 +24,20 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.List;
+
 import findupproducts.example.com.findup.Helper.Location.LocationUtility;
 import findupproducts.example.com.findup.Helper.SharedPrefManger;
 import findupproducts.example.com.findup.Helper.Utility;
 import findupproducts.example.com.findup.R;
 import findupproducts.example.com.findup.UI.activities.FilterActivity;
 import findupproducts.example.com.findup.models.CurrentLocation;
+import findupproducts.example.com.findup.models.Event;
+import findupproducts.example.com.findup.models.Store;
 
 import static findupproducts.example.com.findup.UI.activities.MainActivity.filterData;
+import static findupproducts.example.com.findup.UI.activities.MainActivity.filteredMapDataEvent;
+import static findupproducts.example.com.findup.UI.activities.MainActivity.filteredMapDataStore;
 
 public class MapFragment extends Fragment implements OnMapReadyCallback {
     GoogleMap myMap;
@@ -118,8 +124,18 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(sydney.latitude + ((sydney.latitude * 14) / 100000), sydney.longitude), 14));
             googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 
-        }
+            for (Store store : filteredMapDataStore){
+                googleMap.addMarker(new MarkerOptions().position(new LatLng(store.getStore_latitude(),store.getStore_longitude())).icon(
+                        BitmapDescriptorFactory.fromResource(R.drawable.current_location_marker)
+                ).title(store.getStore_name()));
+            }
 
+            for (Event event : filteredMapDataEvent){
+                googleMap.addMarker(new MarkerOptions().position(new LatLng(Double.parseDouble(event.getEvent_latitude()),Double.parseDouble(event.getEvent_longitude()))).icon(
+                        BitmapDescriptorFactory.fromResource(R.drawable.current_location_marker)
+                ).title(event.getEvent_name()));
+            }
+        }
     }
 
     @Override
