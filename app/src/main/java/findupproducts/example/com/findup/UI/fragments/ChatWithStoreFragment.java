@@ -3,6 +3,7 @@ package findupproducts.example.com.findup.UI.fragments;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.databinding.DataBindingUtil;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -23,8 +24,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import findupproducts.example.com.findup.R;
+import findupproducts.example.com.findup.UI.ViewModel.Fragments.ChatStoreViewModel;
+import findupproducts.example.com.findup.UI.ViewModel.Fragments.ChatWithContactViewModel;
 import findupproducts.example.com.findup.UI.adapters.MessageListAdapter;
 import findupproducts.example.com.findup.UI.adapters.SendChatProductsAdapter;
+import findupproducts.example.com.findup.databinding.FragmentChatWithGenBinding;
 import findupproducts.example.com.findup.models.Product;
 import findupproducts.example.com.findup.models.UserMessage;
 
@@ -33,6 +37,8 @@ import findupproducts.example.com.findup.models.UserMessage;
  */
 public class ChatWithStoreFragment extends Fragment {
 
+    FragmentChatWithGenBinding binding;
+    ChatWithContactViewModel viewModel;
 
     public ChatWithStoreFragment() {
         // Required empty public constructor
@@ -42,14 +48,18 @@ public class ChatWithStoreFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_chat_with_gen, container, false);
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_chat_with_gen, container, false);
+        View view = binding.getRoot();
+        //here data must be an instance of the class MarsDataProvider
+        viewModel = new ChatWithContactViewModel(view.getContext());
+        binding.setStoreContact(viewModel);
+        return view;
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
+        viewModel.GetContact(binding.recyclerContactList);
         RecyclerView mMessageRecycler = getActivity().findViewById(R.id.reyclerview_message_list);
         List<UserMessage> messageList = new ArrayList<>();
         messageList.add(new UserMessage(1, "Hi ahmed!"));

@@ -99,7 +99,7 @@ public class BottomStoreFragment extends Fragment {
                 break;
             case 1:
                 selectedFragment = new ChatStoreFragment();
-                Utility.replaceStoreFragment(((FragmentActivity)mContext).getSupportFragmentManager(), new ChatStoreFragment(), R.id.store_main_container, 0,menu);
+                Utility.replaceStoreFragment(((FragmentActivity)mContext).getSupportFragmentManager(), new ChatWithStoreFragment(), R.id.store_main_container, 0,menu);
                 break;
             case 2:
 //                ToolbarSwitch(true,mContext);
