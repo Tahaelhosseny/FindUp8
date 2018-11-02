@@ -23,6 +23,8 @@ import findupproducts.example.com.findup.Helper.Remote.ResponseModel.DeleteStore
 import findupproducts.example.com.findup.Helper.Remote.ResponseModel.EditProfileResponse;
 import findupproducts.example.com.findup.Helper.Remote.ResponseModel.EventResponse;
 import findupproducts.example.com.findup.Helper.Remote.ResponseModel.GetAllSavedResponse;
+import findupproducts.example.com.findup.Helper.Remote.ResponseModel.GetChatContactResponse;
+import findupproducts.example.com.findup.Helper.Remote.ResponseModel.GetFullChatResponse;
 import findupproducts.example.com.findup.Helper.Remote.ResponseModel.LoginResponse;
 import findupproducts.example.com.findup.Helper.Remote.ResponseModel.MeasureDistanceResponse;
 import findupproducts.example.com.findup.Helper.Remote.ResponseModel.NotificationFlagResponse;
@@ -32,6 +34,7 @@ import findupproducts.example.com.findup.Helper.Remote.ResponseModel.RegisterRes
 import findupproducts.example.com.findup.Helper.Remote.ResponseModel.ResetPasswordResponse;
 import findupproducts.example.com.findup.Helper.Remote.ResponseModel.SaveModelResponse;
 import findupproducts.example.com.findup.Helper.Remote.ResponseModel.SearchStoreResponse;
+import findupproducts.example.com.findup.Helper.Remote.ResponseModel.SendChatResponse;
 import findupproducts.example.com.findup.Helper.Remote.ResponseModel.StoreAddressResponse;
 import findupproducts.example.com.findup.Helper.Remote.ResponseModel.StoreEditResponse;
 import findupproducts.example.com.findup.Helper.Remote.ResponseModel.StoreNotificationResponse;
@@ -104,6 +107,12 @@ public interface ApiInterface {
             @Query("latitude") String latitude,
             @Query("filter_by") String filter_by,
             @Query("filter_byid") String filter_byid);
+
+    @GET(ApiClient.PATH_URL+"chat?tag=get_contact_chatting&HashSecure="+HASH)
+    Call<GetChatContactResponse> getContacts(@Query("current_id") int current_id , @Query("current_type") String current_type);
+
+    @GET(ApiClient.PATH_URL+"chat?tag=get_chat_history&HashSecure="+HASH)
+    Call<GetFullChatResponse> getChatHistory(@Query("account_id") int account_id , @Query("store_id") int store_id , @Query("current_type") String current_type);
     //----------------------------------------------- Post Methods -------------------------------------------------
 
     @POST(ApiClient.PATH_URL+"reg_login?tag=signup&HashSecure="+HASH)
@@ -260,5 +269,15 @@ public interface ApiInterface {
     @FormUrlEncoded
     Call<DeleteStoreProductResponse> deleteStoreProduct(@Field("product_id") int product_id , @Field("store_id") int store_id);
 
+    @POST(ApiClient.PATH_URL+"chat?tag=send_chat_msg&HashSecure="+HASH)
+    @FormUrlEncoded
+    Call<SendChatResponse> sendMessage(
+            @Field("sender_id") int sender_id ,
+            @Field("receiver_id") int receiver_id,
+            @Field("sender_type") String sender_type,
+            @Field("receiver_type") String receiver_type,
+            @Field("msg_title") String msg_title,
+            @Field("msg_body") String msg_body
+    );
 
 }
