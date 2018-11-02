@@ -36,7 +36,6 @@ public class ChatStoresProfilePicAdapter extends RecyclerView.Adapter<ChatStores
     @Override
     public ChatStoresProfilePicAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView;
-
         if (0 == viewType)
             itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.chat_stores_profile_item, parent, false);
         else
