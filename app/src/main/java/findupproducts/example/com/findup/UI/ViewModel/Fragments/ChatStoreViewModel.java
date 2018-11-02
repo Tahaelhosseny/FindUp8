@@ -13,12 +13,14 @@ import java.util.Observable;
 
 import findupproducts.example.com.findup.Helper.Remote.ApiClient;
 import findupproducts.example.com.findup.Helper.Remote.ApiInterface;
+import findupproducts.example.com.findup.Helper.Remote.ResponseModel.GetFullChatResponse;
 import findupproducts.example.com.findup.Helper.Remote.ResponseModel.SearchStoreResponse;
 import findupproducts.example.com.findup.Helper.Remote.ResponseModel.StoresResponse;
 import findupproducts.example.com.findup.Helper.SharedPrefManger;
 import findupproducts.example.com.findup.R;
 import findupproducts.example.com.findup.UI.CustomViews.MiddleItemFinder;
 import findupproducts.example.com.findup.UI.adapters.ChatStoresProfilePicAdapter;
+import findupproducts.example.com.findup.models.GetChat;
 import findupproducts.example.com.findup.models.Store;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -46,6 +48,26 @@ public class ChatStoreViewModel extends Observable {
             }
         });
 
+    }
+
+    public void getFullChat(){
+        ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
+        Call<GetFullChatResponse> getFullChat = apiService.getChatHistory(SharedPrefManger.getUser_ID() , 1 , "User");
+        getFullChat.enqueue(new Callback<GetFullChatResponse>() {
+            @Override
+            public void onResponse(Call<GetFullChatResponse> call, Response<GetFullChatResponse> response) {
+                if(response.body().getSuccess() == 1){
+                    List<GetChat> chatMessages = response.body().getGetChatMessage();
+                }else {
+                    Toast.makeText(mContext, "Error Occurred", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<GetFullChatResponse> call, Throwable t) {
+                Toast.makeText(mContext, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void InitRecycler(List<Store> stores , RecyclerView recyclerView){

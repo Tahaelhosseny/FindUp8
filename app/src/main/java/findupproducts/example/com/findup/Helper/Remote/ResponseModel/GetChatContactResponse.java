@@ -9,7 +9,7 @@ public class GetChatContactResponse {
     private String tag;
     private int success;
     private int error;
-    private List<GetContact> getStoreContacts;
+    private List<GetContact> data;
 
     public String getTag() {
         return tag;
@@ -36,10 +36,10 @@ public class GetChatContactResponse {
     }
 
     public List<GetContact> getGetStoreContacts() {
-        return getStoreContacts;
+        return data;
     }
 
     public void setGetStoreContacts(List<GetContact> getStoreContacts) {
-        this.getStoreContacts = getStoreContacts;
+        this.data = getStoreContacts;
     }
 }

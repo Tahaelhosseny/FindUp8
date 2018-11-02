@@ -8,7 +8,7 @@ public class GetFullChatResponse {
     private String tag;
     private int success;
     private int error;
-    private List<GetChat> getChatMessage;
+    private List<GetChat> data;
 
     public String getTag() {
         return tag;
@@ -35,10 +35,10 @@ public class GetFullChatResponse {
     }
 
     public List<GetChat> getGetChatMessage() {
-        return getChatMessage;
+        return data;
     }
 
     public void setGetChatMessage(List<GetChat> getChatMessage) {
-        this.getChatMessage = getChatMessage;
+        this.data = getChatMessage;
     }
 }
