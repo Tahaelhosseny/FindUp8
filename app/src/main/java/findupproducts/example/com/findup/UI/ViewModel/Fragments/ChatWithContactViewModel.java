@@ -6,7 +6,10 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.LinearSnapHelper;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SnapHelper;
+import android.util.Log;
 import android.widget.Toast;
+
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +25,7 @@ import findupproducts.example.com.findup.Helper.SharedPrefManger;
 import findupproducts.example.com.findup.UI.CustomViews.MiddleItemFinder;
 import findupproducts.example.com.findup.UI.adapters.ChatStoreContactPicAdapter;
 import findupproducts.example.com.findup.UI.adapters.ChatStoresProfilePicAdapter;
+import findupproducts.example.com.findup.UI.adapters.MessageListAdapter;
 import findupproducts.example.com.findup.models.GetChat;
 import findupproducts.example.com.findup.models.GetContact;
 import findupproducts.example.com.findup.models.Store;
@@ -72,14 +76,18 @@ public class ChatWithContactViewModel extends Observable {
         });
     }
 
-    private void getFullChatInStoreUI(){
+    public void getFullChatInStoreUI(RecyclerView mMessageRecycler){
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-        Call<GetFullChatResponse> getFullChat = apiService.getChatHistory(9 , SharedPrefManger.getStore_ID() , "Store");
+        Call<GetFullChatResponse> getFullChat = apiService.getChatHistory(1 , SharedPrefManger.getStore_ID() , "Store");
         getFullChat.enqueue(new Callback<GetFullChatResponse>() {
             @Override
             public void onResponse(Call<GetFullChatResponse> call, Response<GetFullChatResponse> response) {
                 if(response.body().getSuccess() == 1){
-                    List<GetChat> chatMessages = response.body().getGetChatMessage();
+                    Log.e("MyData", new Gson().toJson(response.body()));
+                    MessageListAdapter mMessageAdapter = new MessageListAdapter(mContext, response.body().getGetChatMessage());
+                    mMessageRecycler.setLayoutManager(new LinearLayoutManager(mContext));
+                    mMessageRecycler.setAdapter(mMessageAdapter);
+                    mMessageRecycler.scrollToPosition(response.body().getGetChatMessage().size()-1);
                 }else {
                     Toast.makeText(mContext, "Error Occurred", Toast.LENGTH_SHORT).show();
                 }
