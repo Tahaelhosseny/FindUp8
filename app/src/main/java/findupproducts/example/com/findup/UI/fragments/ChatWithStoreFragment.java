@@ -68,9 +68,9 @@ public class ChatWithStoreFragment extends Fragment {
         messageList.add(new UserMessage(1, "Good man"));
         messageList.add(new UserMessage(2, "Thank you"));
         messageList.add(new UserMessage(1, "Good bye"));
-        MessageListAdapter mMessageAdapter = new MessageListAdapter(getActivity(), messageList);
+        //MessageListAdapter mMessageAdapter = new MessageListAdapter(getActivity(), messageList);
         mMessageRecycler.setLayoutManager(new LinearLayoutManager(getActivity()));
-        mMessageRecycler.setAdapter(mMessageAdapter);
+        //mMessageRecycler.setAdapter(mMessageAdapter);
 
 
         final List<Product> products = new ArrayList<>();

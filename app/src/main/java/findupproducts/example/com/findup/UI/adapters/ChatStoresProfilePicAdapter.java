@@ -51,7 +51,7 @@ public class ChatStoresProfilePicAdapter extends RecyclerView.Adapter<ChatStores
 
         holder.store_name.setText(store.getStore_name());
         if (!store.getStore_banner().isEmpty()) {
-            Picasso.with(holder.store_img.getContext()).load(store.getStore_banner()).placeholder(R.drawable.near_by_place_holder).into(holder.store_img);
+            //Picasso.with(holder.store_img.getContext()).load(store.getStore_banner()).into(holder.store_img);
         }
 
     }
@@ -82,7 +82,6 @@ public class ChatStoresProfilePicAdapter extends RecyclerView.Adapter<ChatStores
             super(view);
             store_img = view.findViewById(R.id.store_prof_pic);
             store_name = view.findViewById(R.id.store_name);
-
         }
 
         @Override

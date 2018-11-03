@@ -10,6 +10,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import findupproducts.example.com.findup.R;
+import findupproducts.example.com.findup.models.GetChat;
 import findupproducts.example.com.findup.models.UserMessage;
 
 public class MessageListAdapter extends RecyclerView.Adapter {
@@ -17,9 +18,9 @@ public class MessageListAdapter extends RecyclerView.Adapter {
     private static final int VIEW_TYPE_MESSAGE_RECEIVED = 2;
 
     private Context mContext;
-    private List<UserMessage> mMessageList;
+    private List<GetChat> mMessageList;
 
-    public MessageListAdapter(Context context, List<UserMessage> messageList) {
+    public MessageListAdapter(Context context, List<GetChat> messageList) {
         mContext = context;
         mMessageList = messageList;
     }
@@ -32,9 +33,9 @@ public class MessageListAdapter extends RecyclerView.Adapter {
     // Determines the appropriate ViewType according to the sender of the message.
     @Override
     public int getItemViewType(int position) {
-        UserMessage message = mMessageList.get(position);
+        GetChat message = mMessageList.get(position);
 
-        if (message.getUserType() == VIEW_TYPE_MESSAGE_SENT) {
+        if (message.getSender_type().equals("User")) {
             // If the current user is the sender of the message
             return VIEW_TYPE_MESSAGE_SENT;
         } else {
@@ -64,7 +65,7 @@ public class MessageListAdapter extends RecyclerView.Adapter {
     // Passes the message object to a ViewHolder so that the contents can be bound to UI.
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        UserMessage message = mMessageList.get(position);
+        GetChat message = mMessageList.get(position);
 
         switch (holder.getItemViewType()) {
             case VIEW_TYPE_MESSAGE_SENT:
@@ -84,8 +85,8 @@ public class MessageListAdapter extends RecyclerView.Adapter {
             messageText = itemView.findViewById(R.id.text_message_body);
         }
 
-        void bind(UserMessage message) {
-            messageText.setText(message.getMsgBody());
+        void bind(GetChat message) {
+            messageText.setText(message.getMsg_body());
         }
     }
 
@@ -98,8 +99,8 @@ public class MessageListAdapter extends RecyclerView.Adapter {
             messageText = itemView.findViewById(R.id.text_message_body);
         }
 
-        void bind(UserMessage message) {
-            messageText.setText(message.getMsgBody());
+        void bind(GetChat message) {
+            messageText.setText(message.getMsg_body());
         }
     }
 }

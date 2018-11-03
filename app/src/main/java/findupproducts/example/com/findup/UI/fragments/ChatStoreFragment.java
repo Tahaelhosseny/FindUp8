@@ -9,14 +9,22 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.LinearSnapHelper;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SnapHelper;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
+
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import findupproducts.example.com.findup.Helper.Remote.ApiClient;
+import findupproducts.example.com.findup.Helper.Remote.ApiInterface;
+import findupproducts.example.com.findup.Helper.Remote.ResponseModel.GetFullChatResponse;
+import findupproducts.example.com.findup.Helper.SharedPrefManger;
 import findupproducts.example.com.findup.R;
 import findupproducts.example.com.findup.UI.CustomViews.MiddleItemFinder;
 import findupproducts.example.com.findup.UI.ViewModel.Fragments.ChatStoreViewModel;
@@ -24,8 +32,12 @@ import findupproducts.example.com.findup.UI.ViewModel.Fragments.ProductCommentsV
 import findupproducts.example.com.findup.UI.adapters.ChatStoresProfilePicAdapter;
 import findupproducts.example.com.findup.UI.adapters.MessageListAdapter;
 import findupproducts.example.com.findup.databinding.FragmentChatStoreBinding;
+import findupproducts.example.com.findup.models.GetChat;
 import findupproducts.example.com.findup.models.Store;
 import findupproducts.example.com.findup.models.UserMessage;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ChatStoreFragment extends Fragment {
 
@@ -59,16 +71,35 @@ public class ChatStoreFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         viewModel.GetStoresForChat(binding.storesChatList);
         RecyclerView mMessageRecycler = getActivity().findViewById(R.id.reyclerview_message_list);
-        List<UserMessage> messageList = new ArrayList<>();
+        /*List<UserMessage> messageList = new ArrayList<>();
         messageList.add(new UserMessage(1, "Hi ahmed!"));
         messageList.add(new UserMessage(2, "hi man!"));
         messageList.add(new UserMessage(1, "how are you"));
         messageList.add(new UserMessage(1, "Good man"));
         messageList.add(new UserMessage(2, "Thank you"));
-        messageList.add(new UserMessage(1, "Good bye"));
-        MessageListAdapter mMessageAdapter = new MessageListAdapter(getActivity(), messageList);
-        mMessageRecycler.setLayoutManager(new LinearLayoutManager(getActivity()));
-        mMessageRecycler.setAdapter(mMessageAdapter);
+        messageList.add(new UserMessage(1, "Good"));*/
+
+        ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
+        Call<GetFullChatResponse> getFullChat = apiService.getChatHistory(SharedPrefManger.getUser_ID() , 1 , "User");
+        getFullChat.enqueue(new Callback<GetFullChatResponse>() {
+            @Override
+            public void onResponse(Call<GetFullChatResponse> call, Response<GetFullChatResponse> response) {
+                if(response.body().getSuccess() == 1){
+                    Log.e("MyData", new Gson().toJson(response.body()));
+                    MessageListAdapter mMessageAdapter = new MessageListAdapter(getActivity(), response.body().getGetChatMessage());
+                    mMessageRecycler.setLayoutManager(new LinearLayoutManager(getActivity()));
+                    mMessageRecycler.setAdapter(mMessageAdapter);
+                    mMessageRecycler.scrollToPosition(response.body().getGetChatMessage().size()-1);
+                }else {
+                    Toast.makeText(getActivity(), "Error Occurred", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<GetFullChatResponse> call, Throwable t) {
+                Toast.makeText(getActivity(), ""+t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
 
 
         Button addBtn = getActivity().findViewById(R.id.addBtn);

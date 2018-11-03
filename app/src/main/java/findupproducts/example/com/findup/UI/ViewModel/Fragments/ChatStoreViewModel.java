@@ -72,11 +72,11 @@ public class ChatStoreViewModel extends Observable {
 
     private void InitRecycler(List<Store> stores , RecyclerView recyclerView){
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        final ChatStoresProfilePicAdapter adapter = new ChatStoresProfilePicAdapter(mContext, stores , 2);
+        final ChatStoresProfilePicAdapter adapter = new ChatStoresProfilePicAdapter(mContext, stores , stores.size()/2);
         recyclerView.setAdapter(adapter);
         final SnapHelper snapHelper = new LinearSnapHelper();
         snapHelper.attachToRecyclerView(recyclerView);
-        recyclerView.smoothScrollToPosition(2);
+        //recyclerView.smoothScrollToPosition(2);
         LinearLayoutManager layoutManager = new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(layoutManager);
 
