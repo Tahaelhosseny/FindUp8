@@ -6,19 +6,19 @@
     android:viewportHeight="59">
 
     <group
-            android:translateX="-37.000000"
-            android:translateY="-109.000000">
+        android:translateX="-37.000000"
+        android:translateY="-109.000000">
         <group
-                android:translateX="37.000000"
-                android:translateY="109.000000">
+            android:translateX="37.000000"
+            android:translateY="109.000000">
             <path
                 android:fillColor="#DEE1E6"
                 android:fillType="evenOdd"
                 android:strokeWidth="1"
                 android:pathData="M 15 0 L 44.0437361 0 Q 59.0437361 0 59.0437361 15 L 59.0437361 44 Q 59.0437361 59 44.0437361 59 L 15 59 Q 0 59 0 44 L 0 15 Q 0 0 15 0 Z" />
             <group
-                    android:translateX="9.000000"
-                    android:translateY="9.000000">
+                android:translateX="9.000000"
+                android:translateY="9.000000">
                 <path
                     android:fillColor="#A8B6C8"
                     android:strokeWidth="1"

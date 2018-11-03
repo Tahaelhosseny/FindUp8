@@ -70,36 +70,8 @@ public class ChatStoreFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         viewModel.GetStoresForChat(binding.storesChatList);
-        RecyclerView mMessageRecycler = getActivity().findViewById(R.id.reyclerview_message_list);
-        /*List<UserMessage> messageList = new ArrayList<>();
-        messageList.add(new UserMessage(1, "Hi ahmed!"));
-        messageList.add(new UserMessage(2, "hi man!"));
-        messageList.add(new UserMessage(1, "how are you"));
-        messageList.add(new UserMessage(1, "Good man"));
-        messageList.add(new UserMessage(2, "Thank you"));
-        messageList.add(new UserMessage(1, "Good"));*/
+        viewModel.getFullChat(binding.reyclerviewMessageList);
 
-        ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-        Call<GetFullChatResponse> getFullChat = apiService.getChatHistory(SharedPrefManger.getUser_ID() , 1 , "User");
-        getFullChat.enqueue(new Callback<GetFullChatResponse>() {
-            @Override
-            public void onResponse(Call<GetFullChatResponse> call, Response<GetFullChatResponse> response) {
-                if(response.body().getSuccess() == 1){
-                    Log.e("MyData", new Gson().toJson(response.body()));
-                    MessageListAdapter mMessageAdapter = new MessageListAdapter(getActivity(), response.body().getGetChatMessage());
-                    mMessageRecycler.setLayoutManager(new LinearLayoutManager(getActivity()));
-                    mMessageRecycler.setAdapter(mMessageAdapter);
-                    mMessageRecycler.scrollToPosition(response.body().getGetChatMessage().size()-1);
-                }else {
-                    Toast.makeText(getActivity(), "Error Occurred", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<GetFullChatResponse> call, Throwable t) {
-                Toast.makeText(getActivity(), ""+t.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
 
 
         Button addBtn = getActivity().findViewById(R.id.addBtn);

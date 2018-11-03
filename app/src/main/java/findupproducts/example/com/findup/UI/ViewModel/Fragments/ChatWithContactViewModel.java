@@ -16,6 +16,7 @@ import findupproducts.example.com.findup.Helper.Remote.ApiClient;
 import findupproducts.example.com.findup.Helper.Remote.ApiInterface;
 import findupproducts.example.com.findup.Helper.Remote.ResponseModel.GetChatContactResponse;
 import findupproducts.example.com.findup.Helper.Remote.ResponseModel.GetFullChatResponse;
+import findupproducts.example.com.findup.Helper.Remote.ResponseModel.SendChatResponse;
 import findupproducts.example.com.findup.Helper.Remote.ResponseModel.StoresResponse;
 import findupproducts.example.com.findup.Helper.SharedPrefManger;
 import findupproducts.example.com.findup.UI.CustomViews.MiddleItemFinder;
@@ -48,6 +49,24 @@ public class ChatWithContactViewModel extends Observable {
 
             @Override
             public void onFailure(Call<GetChatContactResponse> call, Throwable t) {
+                Toast.makeText(mContext, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    public void sendMessageToUser(String message , int user_id){
+        ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
+        Call<SendChatResponse> sendMessage = apiService.sendMessage(SharedPrefManger.getStore_ID() , user_id , "Store" , "User" , "" ,message );
+        sendMessage.enqueue(new Callback<SendChatResponse>() {
+            @Override
+            public void onResponse(Call<SendChatResponse> call, Response<SendChatResponse> response) {
+                if(response.body().getSuccess() == 1){
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<SendChatResponse> call, Throwable t) {
                 Toast.makeText(mContext, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
