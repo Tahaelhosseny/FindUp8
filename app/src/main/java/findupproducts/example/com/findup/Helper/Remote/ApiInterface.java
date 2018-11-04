@@ -25,6 +25,7 @@ import findupproducts.example.com.findup.Helper.Remote.ResponseModel.EventRespon
 import findupproducts.example.com.findup.Helper.Remote.ResponseModel.GetAllSavedResponse;
 import findupproducts.example.com.findup.Helper.Remote.ResponseModel.GetChatContactResponse;
 import findupproducts.example.com.findup.Helper.Remote.ResponseModel.GetFullChatResponse;
+import findupproducts.example.com.findup.Helper.Remote.ResponseModel.LikeProductResponse;
 import findupproducts.example.com.findup.Helper.Remote.ResponseModel.LoginResponse;
 import findupproducts.example.com.findup.Helper.Remote.ResponseModel.MeasureDistanceResponse;
 import findupproducts.example.com.findup.Helper.Remote.ResponseModel.NotificationFlagResponse;
@@ -279,5 +280,9 @@ public interface ApiInterface {
             @Field("msg_title") String msg_title,
             @Field("msg_body") String msg_body
     );
+
+    @POST(ApiClient.PATH_URL+"user_actions?tag=add_product_like&HashSecure="+HASH)
+    @FormUrlEncoded
+    Call<LikeProductResponse> likeProduct(@Field("account_id") int account_id , @Field("product_id") int product_id);
 
 }

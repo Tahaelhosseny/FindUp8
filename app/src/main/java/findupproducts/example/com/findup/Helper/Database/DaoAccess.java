@@ -87,6 +87,9 @@ public interface DaoAccess {
     @Query("SELECT * FROM store")
     Flowable<List<Store>> getAllStores();
 
+    @Query("UPDATE Product set if_liked = :if_liked AND product_likes_count = :count WHERE product_id = :product_id")
+    void likeProduct(int count , int product_id , int if_liked);
+
     @Query("UPDATE store set if_saved =:if_saved WHERE store_id = :store_id")
     void SaveStoreOperation(int store_id,int if_saved);
     @Update

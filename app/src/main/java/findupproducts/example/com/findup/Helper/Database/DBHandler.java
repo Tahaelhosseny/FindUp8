@@ -417,6 +417,16 @@ public class DBHandler {
         }).start();
     }
 
+    public static void likeProduct(int count , Product product,int if_liked, final Context context) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                FindUpDatabase.getAppDatabase(context).daoAccess().likeProduct(count , product.getProduct_id(),if_liked);
+                //products.onSuccess(null);
+            }
+        }).start();
+    }
+
 
     /*******************************************************************************
      *                                  Product Photos

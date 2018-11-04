@@ -28,6 +28,8 @@ public class Product {
     private String product_desc;
     @NonNull
     private String product_banner;
+    @NonNull
+    private int if_liked;
     @Ignore
     private List<ProductComment> product_comments;
     @Ignore
@@ -70,6 +72,24 @@ public class Product {
     public void setProduct_comments_count(int product_comments_count) {
         this.product_comments_count = product_comments_count;
     }
+
+    @NonNull
+    public int getIf_liked() {
+        return if_liked;
+    }
+
+    public void setIf_liked(@NonNull int if_liked) {
+        this.if_liked = if_liked;
+    }
+
+    public List<ProductPhoto> getProduct_images() {
+        return product_images;
+    }
+
+    public void setProduct_images(List<ProductPhoto> product_images) {
+        this.product_images = product_images;
+    }
+
     public String getProduct_name() {
         return product_name;
     }
