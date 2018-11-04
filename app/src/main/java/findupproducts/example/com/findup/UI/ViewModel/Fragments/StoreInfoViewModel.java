@@ -267,37 +267,25 @@ public class StoreInfoViewModel extends Observable {
             Toast.makeText(mContext, "Please Login First Before Rate Store", Toast.LENGTH_SHORT).show();
         }else {
             ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-            Call<String> rateStore = apiService.rateStore(1 , rate , 5);
-            rateStore.enqueue(new Callback<String>() {
-                @Override
-                public void onResponse(Call<String> call, Response<String> response) {
-                    Log.e("rate_error",response.body());
-                    Log.e("rate_error",SharedPrefManger.getUser_ID()+" - "+rate+" - "+ store_id);
-                }
-
-                @Override
-                public void onFailure(Call<String> call, Throwable t) {
-
-                }
-            });
-            /*rateStore.enqueue(new Callback<RateResponse>() {
+            Call<RateResponse> rateStore = apiService.rateStore(SharedPrefManger.getUser_ID() , rate , store_id);
+            rateStore.enqueue(new Callback<RateResponse>() {
                 @Override
                 public void onResponse(Call<RateResponse> call, Response<RateResponse> response) {
-                    if (response.body().getError() == 0) {
-                        Toast.makeText(mContext, ""+store_id, Toast.LENGTH_SHORT).show();
-                        Toast.makeText(mContext, ""+rate, Toast.LENGTH_SHORT).show();
-                        Toast.makeText(mContext, "Successfully", Toast.LENGTH_SHORT).show();
-                    }else {
-                        Toast.makeText(mContext, ""+response.body().getError_msg(), Toast.LENGTH_SHORT).show();
+                    if(response.body().getSuccess() == 1){
+                        Toast.makeText(mContext, "Store_id : " + store_id, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(mContext, "Account ID : "+SharedPrefManger.getUser_ID(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(mContext, "Rate : "+rate, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(mContext, "Rate Successful", Toast.LENGTH_SHORT).show();
+                    }else{
+                        Toast.makeText(mContext, "Failed To Rate", Toast.LENGTH_SHORT).show();
                     }
                 }
 
                 @Override
                 public void onFailure(Call<RateResponse> call, Throwable t) {
-                    Log.e("rate_error",SharedPrefManger.getUser_ID()+" - "+rate+" - "+ store_id);
                     Toast.makeText(mContext, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
                 }
-            });*/
+            });
         }
 
     }

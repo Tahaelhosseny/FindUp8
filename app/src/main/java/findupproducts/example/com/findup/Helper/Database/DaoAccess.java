@@ -28,6 +28,7 @@ import findupproducts.example.com.findup.models.UserSavedItem;
 @Dao
 public interface DaoAccess {
 
+
     //Categories table
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertCategory(Category category);
@@ -125,6 +126,12 @@ public interface DaoAccess {
 
     @Update
     void UpdateEvent(Comment comment);
+
+    @Query("DELETE FROM Store")
+    void deleteAllStoreData();
+
+    @Query("DELETE FROM Event")
+    void deleteAllEventData();
 
     @Query("DELETE FROM UserSavedItem WHERE itemId = :id")
     void deleteSavedbyID(int id);

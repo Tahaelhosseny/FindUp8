@@ -7,6 +7,8 @@ import android.util.Log;
 import android.widget.Toast;
 
 import java.util.Observable;
+
+import findupproducts.example.com.findup.Helper.Database.DBHandler;
 import io.reactivex.subjects.PublishSubject;
 import findupproducts.example.com.findup.Helper.Database.DBUtility;
 import findupproducts.example.com.findup.Helper.Remote.ApiClient;
@@ -33,13 +35,13 @@ public class SplashScreenViewModel  extends Observable {
         final int[] defult_load = {0};
         PublishSubject<Integer> loaded = PublishSubject.create();
         SharedPrefManger sharedPrefManger = new SharedPrefManger(mContext);
-
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
         Call<StoresResponse> userlogincall = apiService.GetAllStores(SharedPrefManger.getUser_ID());
         userlogincall.enqueue(new Callback<StoresResponse>() {
             @Override
             public void onResponse(Call<StoresResponse> call, Response<StoresResponse> response) {
                 if (response.body().getSuccess() ==1){
+                    DBHandler.deleteAllStoreData(mContext);
                     if(DBUtility.InsertStores(response.body().getData(),mContext) > 0)
                        loaded.onNext(++defult_load[0]);
                 }
@@ -64,6 +66,7 @@ public class SplashScreenViewModel  extends Observable {
             public void onResponse(Call<EventResponse> call, Response<EventResponse> response) {
                 Log.e("url", call.request().url().toString());
                 if (response.body().getSuccess() == 1) {
+                    DBHandler.deleteAllEventData(mContext);
                     if (DBUtility.InsertEvents(response.body().getData(), mContext) > 0)
                         loaded.onNext(++defult_load[0]);
                     if (DBUtility.InsertCategories(response.body().getCategories(), mContext) > 0)

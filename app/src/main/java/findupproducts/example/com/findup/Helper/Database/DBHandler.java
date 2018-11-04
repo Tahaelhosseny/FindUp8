@@ -290,6 +290,23 @@ public class DBHandler {
             }
         }).start();
     }
+    public static void deleteAllStoreData(final Context context){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                FindUpDatabase.getAppDatabase(context).daoAccess().deleteAllStoreData();
+            }
+        }).start();
+    }
+
+    public static void deleteAllEventData(final Context context){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                FindUpDatabase.getAppDatabase(context).daoAccess().deleteAllEventData();
+            }
+        }).start();
+    }
 
     public static void DeleteSaved(final int id, final Context context) {
         new Thread(new Runnable() {

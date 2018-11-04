@@ -1,35 +1,35 @@
 {
   "project_info": {
-    "project_number": "1010916849238",
-    "firebase_url": "https://findup-e89ae.firebaseio.com",
-    "project_id": "findup-e89ae",
-    "storage_bucket": "findup-e89ae.appspot.com"
+    "project_number": "112810143791",
+    "firebase_url": "https://findup-1531916397798.firebaseio.com",
+    "project_id": "findup-1531916397798",
+    "storage_bucket": "findup-1531916397798.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1010916849238:android:83fd650308d41519",
+        "mobilesdk_app_id": "1:112810143791:android:2e329dd1d5509578",
         "android_client_info": {
           "package_name": "findupproducts.example.com.findup"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1010916849238-o4iunc362r2c65qra2bll370uplt0jbf.apps.googleusercontent.com",
+          "client_id": "112810143791-3hgr8avehlpmvkmgdmrv2detj12nitpb.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "findupproducts.example.com.findup",
-            "certificate_hash": "9c57971e11d998c83bd42c13db1fbb91cc0c16fb"
+            "certificate_hash": "fbb8f0da25a11225e3ec75860e4c61304a9bc677"
           }
         },
         {
-          "client_id": "1010916849238-q2g9sr19c87rc0imjh1n24q4c38kgdtt.apps.googleusercontent.com",
+          "client_id": "112810143791-h7icgvh7h040jl3lc1gd0e5khvhonf6l.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAb-VN7RhBuqEGpMzekSEM-kVl1HyhSyVM"
+          "current_key": "AIzaSyB8SpuVHcAEcLuzCwZ0Swh0AZnftf0ucw4"
         }
       ],
       "services": {
@@ -40,8 +40,16 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "1010916849238-q2g9sr19c87rc0imjh1n24q4c38kgdtt.apps.googleusercontent.com",
+              "client_id": "112810143791-h7icgvh7h040jl3lc1gd0e5khvhonf6l.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "112810143791-f1k309oal8g6lrsgn1ureffrpiu5gke0.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "co.thecodelab.FindUpApp",
+                "app_store_id": "1323841816"
+              }
             }
           ]
         },
