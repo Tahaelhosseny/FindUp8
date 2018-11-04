@@ -1,8 +1,12 @@
 package findupproducts.example.com.findup.UI.activities;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+
+import com.bumptech.glide.Glide;
 
 import findupproducts.example.com.findup.R;
 import findupproducts.example.com.findup.UI.Presenter.Activities.SplashScreenPresenter;
@@ -20,15 +24,20 @@ public class SplashScreenActivity extends AppCompatActivity {
         //setContentView(R.layout.activity_splash_screen);
         splashScreenViewModel = new SplashScreenViewModel(this);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_splash_screen);
-        binding.setLoginview(splashScreenViewModel);
-        splashScreenViewModel.UpdateStoresData();
 
-        binding.setPresenter(new SplashScreenPresenter() {
+        new Handler().postDelayed(new Runnable() {
             @Override
-            public void LoadStoreData() {
+            public void run() {
+                binding.setLoginview(splashScreenViewModel);
                 splashScreenViewModel.UpdateStoresData();
-            }
-        });
 
+                binding.setPresenter(new SplashScreenPresenter() {
+                    @Override
+                    public void LoadStoreData() {
+                        splashScreenViewModel.UpdateStoresData();
+                    }
+                });
+            }
+        }, 3000);
     }
 }
