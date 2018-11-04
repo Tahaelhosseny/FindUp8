@@ -11,6 +11,7 @@ import findupproducts.example.com.findup.models.CurrentLocation;
 
 public class SharedPrefManger {
 
+    private static final String TAG_TOKEN = "tagtoken";
     private static SharedPreferences mSharedPref;
     public SharedPrefManger(Context mContext) {
         init(mContext);
@@ -208,5 +209,11 @@ public class SharedPrefManger {
     public static int getPermantCurrency(){
         return mSharedPref.getInt("permant_currency" , 0);
     }
+
+    //-----------------------------------------Notification --------------------------------------------
+     public static boolean saveToken(String token){
+        mSharedPref.edit().putString(TAG_TOKEN , token).apply();
+        return true;
+     }
 
 }
