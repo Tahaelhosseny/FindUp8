@@ -59,8 +59,14 @@ public class ChatWithStoreFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        viewModel.GetContact(binding.recyclerContactList);
-        viewModel.getFullChatInStoreUI(binding.reyclerviewMessageList);
+        viewModel.GetContact(binding.recyclerContactList,binding.reyclerviewMessageList);
+
+        binding.sendBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                viewModel.sendMessageToUser(binding.chatboxEdit);
+            }
+        });
 
 //        final Dialog dialog = initDialog(products);
 //        final EditText msg = dialog.findViewById(R.id.chatboxEdit);

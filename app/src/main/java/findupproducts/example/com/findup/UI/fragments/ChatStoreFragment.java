@@ -69,13 +69,15 @@ public class ChatStoreFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        viewModel.GetStoresForChat(binding.storesChatList);
-        viewModel.getFullChat(binding.reyclerviewMessageList);
+        viewModel.GetStoresForChat(binding.storesChatList,binding.reyclerviewMessageList);
+        //viewModel.getFullChat(binding.reyclerviewMessageList);
 
-
-
-        Button addBtn = getActivity().findViewById(R.id.addBtn);
-
+        binding.sendBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                viewModel.sendMessageToStore(binding.chatboxEdit);
+            }
+        });
     }
 
 

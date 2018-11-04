@@ -45,7 +45,6 @@ public class LoginViewModel extends Observable {
             @Override
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                 if (response.body().getSuccess() == 1 && response.body().getData().get(0).getLogin_type().equals("User")){
-                    Toast.makeText(mContext, "User Id " + response.body().getData().get(0).getId(), Toast.LENGTH_SHORT).show();
                     LoginAccepted(response.body().getUser_data().get(0),password);
                     saveUserSettings(response.body().getUser_data().get(0).getId());
                     mContext.startActivity(new Intent(mContext, MainActivity.class));

@@ -274,7 +274,7 @@ public interface ApiInterface {
     @FormUrlEncoded
     Call<SendChatResponse> sendMessage(
             @Field("sender_id") int sender_id ,
-            @Field("receiver_id") int receiver_id,
+            @Field("reciever_id") int receiver_id,
             @Field("sender_type") String sender_type,
             @Field("receiver_type") String receiver_type,
             @Field("msg_title") String msg_title,

@@ -12,6 +12,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -104,17 +105,17 @@ public class StoreInformationActivity extends AppCompatActivity {
                 case (PICK_LOGO) : {
                     selectedLogo = data.getData();
                     assert selectedLogo != null;
-                    Bitmap bitmap = BitmapFactory.decodeFile(selectedLogo.getPath());
+                    Bitmap bitmap = BitmapFactory.decodeFile(getImgPath(selectedLogo));
                     imgLogo.setImageBitmap(bitmap);
-                    createStore.setStore_logo(selectedLogo.getPath());
+                    createStore.setStore_logo(getImgPath(selectedLogo));
                     break;
                 }
                 case (PICK_BANNER) : {
                     selectedBanner = data.getData();
                     assert selectedBanner != null;
-                    Bitmap bitmap = BitmapFactory.decodeFile(selectedBanner.getPath());
+                    Bitmap bitmap = BitmapFactory.decodeFile(getImgPath(selectedBanner));
                     imgBanner.setImageBitmap(bitmap);
-                    createStore.setStore_banner(selectedBanner.getPath());
+                    createStore.setStore_banner(getImgPath(selectedBanner));
                     break;
                 }
                 /*case (PICK_WORK_DAYS) : {
@@ -163,6 +164,14 @@ public class StoreInformationActivity extends AppCompatActivity {
         Intent transferIntent = new Intent(StoreInformationActivity.this, StoreContactActivity.class);
         transferIntent.putExtra("next_id", getIntent().getExtras().getInt("next_id"));
         startActivity(transferIntent);
+    }
+
+    private String getImgPath(Uri imgUri){
+        Log.e("MyData", imgUri.getPath());
+        if (imgUri.getPath().contains(":"))
+            return imgUri.getPath().substring(imgUri.getPath().indexOf(":")+1);
+        else
+            return imgUri.getPath();
     }
 
     @Override

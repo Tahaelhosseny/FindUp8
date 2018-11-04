@@ -16,13 +16,15 @@ import findupproducts.example.com.findup.models.UserMessage;
 public class MessageListAdapter extends RecyclerView.Adapter {
     private static final int VIEW_TYPE_MESSAGE_SENT = 1;
     private static final int VIEW_TYPE_MESSAGE_RECEIVED = 2;
+    String curType;
 
     private Context mContext;
     private List<GetChat> mMessageList;
 
-    public MessageListAdapter(Context context, List<GetChat> messageList) {
+    public MessageListAdapter(Context context, List<GetChat> messageList,String curType) {
         mContext = context;
         mMessageList = messageList;
+        this.curType = curType;
     }
 
     @Override
@@ -35,12 +37,22 @@ public class MessageListAdapter extends RecyclerView.Adapter {
     public int getItemViewType(int position) {
         GetChat message = mMessageList.get(position);
 
-        if (message.getSender_type().equals("User")) {
-            // If the current user is the sender of the message
-            return VIEW_TYPE_MESSAGE_SENT;
+        if (curType.equals("user")){
+            if (message.getSender_type().equals("User")) {
+                // If the current user is the sender of the message
+                return VIEW_TYPE_MESSAGE_SENT;
+            } else {
+                // If some other user sent the message
+                return VIEW_TYPE_MESSAGE_RECEIVED;
+            }
         } else {
-            // If some other user sent the message
-            return VIEW_TYPE_MESSAGE_RECEIVED;
+            if (message.getSender_type().equals("Store")) {
+                // If the current user is the sender of the message
+                return VIEW_TYPE_MESSAGE_SENT;
+            } else {
+                // If some other user sent the message
+                return VIEW_TYPE_MESSAGE_RECEIVED;
+            }
         }
     }
 
