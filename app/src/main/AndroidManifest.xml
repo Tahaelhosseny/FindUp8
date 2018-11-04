@@ -239,6 +239,22 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
         <activity android:name=".UI.activities.SetLocationActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen"></activity>
+
+
+        <service
+            android:name=".Helper.FirebaseMessaging.MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+
+        <service
+            android:name=".Helper.FirebaseMessaging.FirebaseInstanceIDService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+            </intent-filter>
+        </service>
+
     </application>
 
 </manifest>
