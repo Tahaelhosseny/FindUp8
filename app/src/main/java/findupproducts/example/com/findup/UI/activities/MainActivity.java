@@ -21,6 +21,9 @@ import android.util.Base64;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 import com.google.gson.annotations.SerializedName;
 import com.patloew.rxlocation.RxLocation;
 
@@ -30,6 +33,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import findupproducts.example.com.findup.Helper.Remote.ResponseModel.TokenResponse;
 import io.reactivex.Flowable;
 import findupproducts.example.com.findup.Helper.Database.DBHandler;
 import findupproducts.example.com.findup.Helper.Database.DBUtility;
@@ -79,6 +83,16 @@ public class MainActivity extends AppCompatActivity implements LocationView{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(MainActivity.this, new OnSuccessListener<InstanceIdResult>() {
+            @Override
+            public void onSuccess(InstanceIdResult instanceIdResult) {
+                String token = instanceIdResult.getToken();
+                updateToken(token);
+                Log.e("Token" , token);
+                Toast.makeText(MainActivity.this, ""+token, Toast.LENGTH_LONG).show();
+
+            }
+        });
         filterData = new FilterQueries();
         filteredMapDataEvent = new ArrayList<>();
         filteredMapDataStore = new ArrayList<>();
@@ -309,6 +323,25 @@ public class MainActivity extends AppCompatActivity implements LocationView{
     }
     @Override
     public void onAddressUpdate(Address address) {
+    }
 
+    private void updateToken(String token){
+        ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
+        Call<TokenResponse> updateToken = apiInterface.updateToken(SharedPrefManger.getUser_ID() , "User" , token);
+        updateToken.enqueue(new Callback<TokenResponse>() {
+            @Override
+            public void onResponse(Call<TokenResponse> call, Response<TokenResponse> response) {
+                if(response.body().getSuccess() == 1){
+                    Toast.makeText(MainActivity.this, "Success "+response.body().getError_msg(), Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(MainActivity.this, ""+response.body().getError_msg(), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<TokenResponse> call, Throwable t) {
+                Toast.makeText(MainActivity.this, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

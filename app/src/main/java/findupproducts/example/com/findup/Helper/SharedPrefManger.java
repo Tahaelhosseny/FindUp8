@@ -43,7 +43,6 @@ public class SharedPrefManger {
     public static String getLogin_type() {
         return mSharedPref.getString("login_type", "");
     }
-
     //----------------------------------------------------------------------------------
     public static void setIsLoggedIn(boolean value) {
         mSharedPref.edit().putBoolean("isLoggedIn", value).apply();
@@ -113,9 +112,7 @@ public class SharedPrefManger {
     public static String getStore_banner() {
         return mSharedPref.getString("store_banner", "");
     }
-
     //-------------------------------------- User Setting ---------------------------------------------
-
     public static void setUserSettingsId(int value){
         mSharedPref.edit().putInt("user_settings_id" , value).apply();
     }
@@ -159,7 +156,6 @@ public class SharedPrefManger {
         return mSharedPref.getString("distance_text", "");
     }
     //----------------------------------------------------------------------------------------------------------------
-
     public static void setStoreSettingsId(int value){
         mSharedPref.edit().putInt("store_settings_id" , value).apply();
     }
@@ -202,18 +198,19 @@ public class SharedPrefManger {
     public static int getLikeStoreNoti() {
         return mSharedPref.getInt("store_likes", 0);
     }
-
     public static void setPermentCurrency(int id){
         mSharedPref.edit().putInt("permant_currency" , id).apply();
     }
     public static int getPermantCurrency(){
         return mSharedPref.getInt("permant_currency" , 0);
     }
+    //-----------------------------------------Notification -----------------------------------------------------------
 
-    //-----------------------------------------Notification --------------------------------------------
-     public static boolean saveToken(String token){
-        mSharedPref.edit().putString(TAG_TOKEN , token).apply();
-        return true;
+     public static void saveToken(String token){
+        mSharedPref.edit().putString("token" , token).apply();
+     }
+     public static String getToken(){
+        return mSharedPref.getString("token" , "");
      }
 
 }

@@ -6,12 +6,18 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 
 import findupproducts.example.com.findup.Helper.Database.DBHandler;
 import findupproducts.example.com.findup.Helper.Remote.ApiClient;
 import findupproducts.example.com.findup.Helper.Remote.ApiInterface;
 import findupproducts.example.com.findup.Helper.Remote.ResponseModel.NotificationResponse;
 import findupproducts.example.com.findup.Helper.Remote.ResponseModel.StoreNotificationResponse;
+import findupproducts.example.com.findup.Helper.Remote.ResponseModel.TokenResponse;
 import findupproducts.example.com.findup.Helper.SharedPrefManger;
 import findupproducts.example.com.findup.Helper.UI_Utility;
 import findupproducts.example.com.findup.Helper.Utility;
@@ -31,7 +37,16 @@ public class MainStoreActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_store);
+        FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(MainStoreActivity.this, new OnSuccessListener<InstanceIdResult>() {
+            @Override
+            public void onSuccess(InstanceIdResult instanceIdResult) {
+                String token = instanceIdResult.getToken();
+                updateToken(token);
+                Log.e("Token" , token);
+                Toast.makeText(MainStoreActivity.this, ""+token, Toast.LENGTH_LONG).show();
 
+            }
+        });
         /*getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         getSupportActionBar().setDisplayShowHomeEnabled(false);*/
         insertSoreNotification();
@@ -88,5 +103,25 @@ public class MainStoreActivity extends AppCompatActivity {
             }
 
         }
+    }
+
+    private void updateToken(String token){
+        ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
+        Call<TokenResponse> updateToken = apiInterface.updateToken(SharedPrefManger.getStore_ID() , "Store" , token);
+        updateToken.enqueue(new Callback<TokenResponse>() {
+            @Override
+            public void onResponse(Call<TokenResponse> call, Response<TokenResponse> response) {
+                if(response.body().getSuccess() == 1){
+                    Toast.makeText(MainStoreActivity.this, "Success "+response.body().getError_msg(), Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(MainStoreActivity.this, ""+response.body().getError_msg(), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<TokenResponse> call, Throwable t) {
+                Toast.makeText(MainStoreActivity.this, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

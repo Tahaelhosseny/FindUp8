@@ -41,6 +41,7 @@ import findupproducts.example.com.findup.Helper.Remote.ResponseModel.StoreEditRe
 import findupproducts.example.com.findup.Helper.Remote.ResponseModel.StoreNotificationResponse;
 import findupproducts.example.com.findup.Helper.Remote.ResponseModel.StoreSettingsGetResponse;
 import findupproducts.example.com.findup.Helper.Remote.ResponseModel.StoresResponse;
+import findupproducts.example.com.findup.Helper.Remote.ResponseModel.TokenResponse;
 import findupproducts.example.com.findup.Helper.Remote.ResponseModel.UserSettingsResponse;
 import findupproducts.example.com.findup.Helper.Remote.ResponseModel.VerifyCodeResponse;
 import okhttp3.MultipartBody;
@@ -285,4 +286,7 @@ public interface ApiInterface {
     @FormUrlEncoded
     Call<LikeProductResponse> likeProduct(@Field("account_id") int account_id , @Field("product_id") int product_id);
 
+    @POST(ApiClient.PATH_URL+"reg_login?tag=on_open&HashSecure="+HASH)
+    @FormUrlEncoded
+    Call<TokenResponse> updateToken(@Field("user_id") int user_id , @Field("user_type") String user_type , @Field("device_token") String device_token);
 }

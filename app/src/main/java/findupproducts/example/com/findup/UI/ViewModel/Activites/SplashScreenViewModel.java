@@ -44,7 +44,7 @@ public class SplashScreenViewModel  extends Observable {
 //                    DBHandler.deleteAllStoreData(mContext);
                     if(DBUtility.InsertStores(response.body().getData(),mContext) > 0){
                         loaded.onNext(++defult_load[0]);
-                        Toast.makeText(mContext, "Store Aded", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(mContext, "Store Added", Toast.LENGTH_SHORT).show();
                     }
                 }
                 else
@@ -57,6 +57,7 @@ public class SplashScreenViewModel  extends Observable {
                 //Toast.makeText(mContext,"invalid data",Toast.LENGTH_SHORT).show();
                 t.printStackTrace();
                 UI_Utility.noConnection(mContext,true);
+                Toast.makeText(mContext, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
                 Log.e("url",call.request().url().toString());
                 Log.e("errmor",t.getMessage());
             }
