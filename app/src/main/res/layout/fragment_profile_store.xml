@@ -131,7 +131,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/bg_button_rounded_null"
-        android:drawableStart="@drawable/settings_1_5x"
+        android:drawableStart="@drawable/ic_settings"
         android:drawablePadding="10dp"
         android:layout_marginTop="10dp"
         android:text="@string/settings"

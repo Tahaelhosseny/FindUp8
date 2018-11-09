@@ -5,31 +5,31 @@
     <item
         android:id="@+id/home"
         android:enabled="true"
-        android:icon="@drawable/home_sel_1_5x"
+        android:icon="@drawable/ic_home_selected"
         android:title="Home"
         app:showAsAction="always"/>
     <item
         android:id="@+id/map"
         android:enabled="true"
-        android:icon="@drawable/map_1_5x"
+        android:icon="@drawable/ic_map_unselected"
         android:title="map"
         app:showAsAction="always"/>
     <item
         android:id="@+id/search"
         android:enabled="true"
-        android:icon="@drawable/search_1_5x"
+        android:icon="@drawable/ic_search_unselected"
         android:title="search"
         app:showAsAction="always"/>
     <item
         android:id="@+id/category"
         android:enabled="true"
-        android:icon="@drawable/category_1_5x"
+        android:icon="@drawable/ic_category_unselected"
         android:title="category"
         app:showAsAction="always"/>
     <item
         android:id="@+id/profile"
         android:enabled="true"
-        android:icon="@drawable/__1_5x"
+        android:icon="@drawable/__2x"
         android:title="profile"
         app:showAsAction="always"/>
 

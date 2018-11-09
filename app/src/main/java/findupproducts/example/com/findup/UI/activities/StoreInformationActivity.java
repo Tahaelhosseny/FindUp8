@@ -14,14 +14,24 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+
+import findupproducts.example.com.findup.Helper.Remote.ApiClient;
+import findupproducts.example.com.findup.Helper.Remote.ApiInterface;
+import findupproducts.example.com.findup.Helper.Remote.ResponseModel.CountriesResponse;
 import findupproducts.example.com.findup.R;
+import findupproducts.example.com.findup.models.Country;
 import findupproducts.example.com.findup.models.Store;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class StoreInformationActivity extends AppCompatActivity {
 
@@ -95,6 +105,8 @@ public class StoreInformationActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        initiateCountries();
     }
 
     @Override
@@ -164,6 +176,27 @@ public class StoreInformationActivity extends AppCompatActivity {
         Intent transferIntent = new Intent(StoreInformationActivity.this, StoreContactActivity.class);
         transferIntent.putExtra("next_id", getIntent().getExtras().getInt("next_id"));
         startActivity(transferIntent);
+    }
+
+    private void initiateCountries(){
+        ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
+        Call<CountriesResponse> getCountries = apiService.getCountries("");
+        getCountries.enqueue(new Callback<CountriesResponse>() {
+            @Override
+            public void onResponse(Call<CountriesResponse> call, Response<CountriesResponse> response) {
+                Log.e("MyData", new Gson().toJson(response.body().getData()));
+                String[] c = new String[response.body().getData().size()];
+                for (int i = 0; i < response.body().getData().size(); i++)
+                    c[i] = response.body().getData().get(i).getName_en();
+
+                createStore.setCounriesList(c);
+            }
+
+            @Override
+            public void onFailure(Call<CountriesResponse> call, Throwable t) {
+                t.printStackTrace();
+            }
+        });
     }
 
     private String getImgPath(Uri imgUri){

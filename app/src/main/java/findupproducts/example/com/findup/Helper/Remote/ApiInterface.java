@@ -14,6 +14,8 @@ import findupproducts.example.com.findup.CONST;
 import findupproducts.example.com.findup.Helper.Remote.ResponseModel.AddCommentProductResponse;
 import findupproducts.example.com.findup.Helper.Remote.ResponseModel.AddCommentStoreResponse;
 import findupproducts.example.com.findup.Helper.Remote.ResponseModel.AskCodeResponse;
+import findupproducts.example.com.findup.Helper.Remote.ResponseModel.CitiesResponse;
+import findupproducts.example.com.findup.Helper.Remote.ResponseModel.CountriesResponse;
 import findupproducts.example.com.findup.Helper.Remote.ResponseModel.CreateProductResponse;
 import findupproducts.example.com.findup.Helper.Remote.ResponseModel.CreateStoreEventResponse;
 import findupproducts.example.com.findup.Helper.Remote.ResponseModel.CreateStoreResponse;
@@ -114,6 +116,12 @@ public interface ApiInterface {
 
     @GET(ApiClient.PATH_URL+"chat?tag=get_chat_history&HashSecure="+HASH)
     Call<GetFullChatResponse> getChatHistory(@Query("account_id") int account_id , @Query("store_id") int store_id , @Query("current_type") String current_type);
+
+    @GET(ApiClient.PATH_URL+"stores?tag=get_countries&HashSecure="+HASH)
+    Call<CountriesResponse> getCountries(@Query("srchcountry") String srchcountry);
+
+    @GET(ApiClient.PATH_URL+"stores?tag=get_cities&HashSecure="+HASH)
+    Call<CitiesResponse> getCountryCities(@Query("country_id") int country_id , @Query("srchcity") String srchcity);
     //----------------------------------------------- Post Methods -------------------------------------------------
 
     @POST(ApiClient.PATH_URL+"reg_login?tag=signup&HashSecure="+HASH)
@@ -284,5 +292,4 @@ public interface ApiInterface {
     @POST(ApiClient.PATH_URL+"user_actions?tag=add_product_like&HashSecure="+HASH)
     @FormUrlEncoded
     Call<LikeProductResponse> likeProduct(@Field("account_id") int account_id , @Field("product_id") int product_id);
-
 }

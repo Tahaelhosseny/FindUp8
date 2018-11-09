@@ -76,21 +76,23 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:visibility="gone"/>
 
             <EditText
                 android:id="@+id/chatboxEdit"
-                android:layout_width="220dp"
+                android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center"
                 android:layout_margin="5dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
                 android:background="@drawable/bg_chat_edit"
                 android:hint="Say Something..."
                 android:maxLines="6"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintStart_toEndOf="@id/addBtn"
+                app:layout_constraintEnd_toStartOf="@+id/sendBtn"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Button
@@ -98,7 +100,7 @@
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:layout_margin="5dp"
-                android:background="@drawable/ic_love_icon"
+                android:background="@drawable/ic_saved_on"
                 android:clickable="true"
                 android:gravity="center"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -110,7 +112,7 @@
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:layout_margin="5dp"
-                android:background="@drawable/ic_love_icon"
+                android:background="@drawable/ic_saved_on"
                 android:clickable="true"
                 android:gravity="center"
                 app:layout_constraintBottom_toBottomOf="parent"

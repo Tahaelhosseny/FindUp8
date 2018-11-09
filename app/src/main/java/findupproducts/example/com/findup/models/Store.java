@@ -122,6 +122,17 @@ public class Store {
     @Ignore
     private String workDays;
 
+    @Ignore
+    private String[] counriesList;
+
+    public String[] getCounriesList() {
+        return counriesList;
+    }
+
+    public void setCounriesList(String[] counriesList) {
+        this.counriesList = counriesList;
+    }
+
     public String getWorkDays() {
         return workDays;
     }

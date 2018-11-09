@@ -59,7 +59,7 @@
         android:background="@drawable/search_background"
         android:drawablePadding="10dp"
         android:hint="@string/currency_search_hint"
-        android:drawableStart="@drawable/search_1_5x"
+        android:drawableStart="@drawable/places_ic_search"
         android:iconifiedByDefault="false"
         android:queryHint="Search on currency"
         app:layout_constraintEnd_toEndOf="parent"

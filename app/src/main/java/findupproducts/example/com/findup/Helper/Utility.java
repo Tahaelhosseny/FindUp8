@@ -14,7 +14,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
+
 import android.view.Menu;
 import android.widget.Toast;
 
@@ -36,10 +36,13 @@ import java.util.TimeZone;
 import findupproducts.example.com.findup.R;
 import findupproducts.example.com.findup.UI.activities.ChatWithStoreActivity;
 import findupproducts.example.com.findup.UI.fragments.CategoryFragment;
+import findupproducts.example.com.findup.UI.fragments.ChatWithStoreFragment;
 import findupproducts.example.com.findup.UI.fragments.MainFragment;
 import findupproducts.example.com.findup.UI.fragments.MapFragment;
 import findupproducts.example.com.findup.UI.fragments.ProfileFragment;
+import findupproducts.example.com.findup.UI.fragments.ProfileStoreFragment;
 import findupproducts.example.com.findup.UI.fragments.SearchFragment;
+import findupproducts.example.com.findup.UI.fragments.StoreAccountHomeFragment;
 import findupproducts.example.com.findup.models.CurrentLocation;
 
 public class Utility {
@@ -105,6 +108,19 @@ public class Utility {
         }
 
     }
+    private static List<String> storeTags = new ArrayList<>();
+    public static List<String> storeFragmentTagsList(){
+        if (storeTags.size() > 1)
+            return storeTags;
+        else {
+            storeTags.clear();
+            storeTags.add(StoreAccountHomeFragment.class.getName());
+            storeTags.add(ChatWithStoreFragment.class.getName());
+            storeTags.add(ProfileStoreFragment.class.getName());
+            return storeTags;
+        }
+
+    }
     public static void replaceFragment(FragmentManager manager, Fragment fragment, int containerID, int transition, Menu menu) {
         String fragmentTag = fragment.getClass().getName();
         boolean fragmentPopped = manager.popBackStackImmediate(fragmentTag, 0);
@@ -136,8 +152,8 @@ public class Utility {
         String fragmentTag = fragment.getClass().getName();
         boolean fragmentPopped = manager.popBackStackImmediate(fragmentTag, 0);
         if (menu !=null){
-            fragmentTagsList();
-            UI_Utility.BottomNavigationStoreMenu_icons_change(menu, tags.indexOf(fragmentTag));
+            storeFragmentTagsList();
+            UI_Utility.BottomNavigationStoreMenu_icons_change(menu, storeTags.indexOf(fragmentTag));
         }
 
         FragmentTransaction ft = manager.beginTransaction();

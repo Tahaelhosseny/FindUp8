@@ -80,7 +80,7 @@ public class MainStoreActivity extends AppCompatActivity {
             try {
                 getSupportFragmentManager().popBackStackImmediate();
                 Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.store_main_container);
-                UI_Utility.BottomNavigationStoreMenu_icons_change(BottomStoreFragment.menu, Utility.fragmentTagsList().indexOf(fragment.getClass().getName()));
+                UI_Utility.BottomNavigationStoreMenu_icons_change(BottomStoreFragment.menu, Utility.storeFragmentTagsList().indexOf(fragment.getClass().getName()));
                 Log.i("CurrentFragment",fragment.getClass().getName());
                 BottomStoreFragment.adapter.notifyDataSetChanged();
             }catch (Exception e){
