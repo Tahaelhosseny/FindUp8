@@ -104,7 +104,7 @@
             android:layout_marginTop="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_love_icon"
+            app:srcCompat="@drawable/ic_saved_on"
             android:contentDescription="@string/love" />
 
         <com.like.LikeButton
@@ -115,8 +115,8 @@
             app:circle_start_color="@color/material_color_grey_700"
             app:icon_size="25dp"
             android:elevation="@dimen/cardview_default_elevation"
-            app:like_drawable="@drawable/ic_love_icon"
-            app:unlike_drawable="@drawable/ic_unlove_icon"
+            app:like_drawable="@drawable/ic_saved_on"
+            app:unlike_drawable="@drawable/ic_saved_off"
             android:id="@+id/star_button"
             android:layout_width="25dp"
             android:layout_height="25dp"

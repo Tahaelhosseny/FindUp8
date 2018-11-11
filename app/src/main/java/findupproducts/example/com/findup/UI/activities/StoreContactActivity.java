@@ -6,6 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -19,6 +22,7 @@ import java.io.File;
 import findupproducts.example.com.findup.Helper.Database.DBUtility;
 import findupproducts.example.com.findup.Helper.Remote.ApiClient;
 import findupproducts.example.com.findup.Helper.Remote.ApiInterface;
+import findupproducts.example.com.findup.Helper.Remote.ResponseModel.CountriesResponse;
 import findupproducts.example.com.findup.Helper.Remote.ResponseModel.CreateStoreResponse;
 import findupproducts.example.com.findup.Helper.Remote.ResponseModel.StoresResponse;
 import findupproducts.example.com.findup.Helper.SharedPrefManger;
@@ -41,7 +45,8 @@ public class StoreContactActivity extends AppCompatActivity {
 
     RadioGroup radioLocation;
     RadioButton radioShowCity;
-    EditText editText_country, editText_city, editText_website, editText_instagram, editText_twitter, editText_facebook, editText_mobile;
+    EditText editText_website, editText_instagram, editText_twitter, editText_facebook, editText_mobile;
+    AutoCompleteTextView editText_country , editText_city;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +81,8 @@ public class StoreContactActivity extends AppCompatActivity {
                 saveStore();
             }
         });
+
+        loadCountries();
     }
 
     private void saveStore(){
@@ -197,5 +204,34 @@ public class StoreContactActivity extends AppCompatActivity {
             startActivity(new Intent(StoreContactActivity.this, WorkDaysActivity.class));
             finish();
         }
+    }
+
+    private void loadCountries(){
+        if (createStore.getCounriesList() == null)
+            return;
+
+        ArrayAdapter arrayAdapter= new ArrayAdapter<>(StoreContactActivity.this, android.R.layout.simple_dropdown_item_1line, createStore.getCounriesList());
+        editText_country.setAdapter(arrayAdapter);
+        editText_country.setInputType(0);
+
+        editText_country.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus)
+                    editText_country.showDropDown();
+            }
+        });
+
+        editText_country.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                editText_country.setEnabled(false);
+                showCities(parent.getItemAtPosition(position).toString());
+            }
+        });
+    }
+
+    private void showCities(String s) {
+
     }
 }

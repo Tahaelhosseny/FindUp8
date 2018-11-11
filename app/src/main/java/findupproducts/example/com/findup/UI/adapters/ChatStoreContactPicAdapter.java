@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.mikhaellopez.circularimageview.CircularImageView;
 import com.squareup.picasso.Picasso;
 
@@ -49,7 +50,7 @@ public class ChatStoreContactPicAdapter extends RecyclerView.Adapter<ChatStoreCo
 
         holder.store_name.setText(contact.getName());
         if (!contact.getImage().isEmpty()) {
-            Picasso.with(context).load(contact.getImage()).placeholder(R.drawable.near_by_place_holder).into(holder.store_img);
+            Glide.with(context).load(contact.getImage()).into(holder.store_img);
         }
 
     }

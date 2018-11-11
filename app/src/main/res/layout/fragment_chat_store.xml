@@ -91,17 +91,16 @@
             android:hint="Say Something..."
             android:maxLines="6"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/imgBtn"
+            app:layout_constraintEnd_toStartOf="@+id/sendBtn"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
 
         <Button
             android:id="@+id/sendBtn"
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_margin="5dp"
-            android:background="@drawable/ic_love_icon"
+            android:background="@drawable/ic_saved_on"
             android:clickable="true"
             android:gravity="center"
             app:layout_constraintEnd_toStartOf="@id/emojiBtn"
@@ -113,7 +112,7 @@
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_margin="5dp"
-            android:background="@drawable/ic_love_icon"
+            android:background="@drawable/ic_saved_on"
             android:clickable="true"
             android:gravity="center"
             app:layout_constraintEnd_toEndOf="parent"

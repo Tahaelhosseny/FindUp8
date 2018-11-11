@@ -18,7 +18,7 @@
             android:layout_weight="4"
             android:background="@android:color/transparent"
             android:drawablePadding="10dp"
-            android:drawableStart="@drawable/search_1_5x"
+            android:drawableStart="@drawable/places_ic_search"
             android:fontFamily="@font/sfcompactdisplay_medium"
             android:hint="@string/search_hint"
             android:imeOptions="actionSearch"
@@ -36,6 +36,6 @@
             android:layout_weight="1"
             android:background="@android:color/transparent"
             android:minWidth="40dp"
-            app:srcCompat="@drawable/filterbtn_0_5x" />
+            app:srcCompat="@drawable/__3x" />
 </LinearLayout>
 

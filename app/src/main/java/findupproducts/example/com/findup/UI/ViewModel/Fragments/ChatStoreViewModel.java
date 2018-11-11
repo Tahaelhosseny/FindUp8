@@ -57,7 +57,8 @@ public class ChatStoreViewModel extends Observable {
             }
             @Override
             public void onFailure(Call<StoresResponse> call, Throwable t) {
-                Toast.makeText(mContext, "Failure : " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(mContext, "Failure : " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                t.printStackTrace();
             }
         });
 
@@ -72,7 +73,7 @@ public class ChatStoreViewModel extends Observable {
         sendMessage.enqueue(new Callback<SendChatResponse>() {
             @Override
             public void onResponse(Call<SendChatResponse> call, Response<SendChatResponse> response) {
-                Log.e("MyData", new Gson().toJson(response.body()));
+                //Log.e("MyData", new Gson().toJson(response.body()));
                 if(response.body().getSuccess() == 1){
                     Log.e("MyData", "msg sent");
                     GetChat newMsg = new GetChat();

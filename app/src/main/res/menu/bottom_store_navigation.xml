@@ -5,7 +5,7 @@
     <item
         android:id="@+id/storeHome"
         android:enabled="true"
-        android:icon="@drawable/home_sel_1_5x"
+        android:icon="@drawable/ic_home_selected"
         android:title="Home"
         app:showAsAction="always"/>
     <item
@@ -18,7 +18,7 @@
     <item
         android:id="@+id/storeProfile"
         android:enabled="true"
-        android:icon="@drawable/__1_5x"
+        android:icon="@drawable/__2x"
         android:title="Profile"
         app:showAsAction="always"/>
 

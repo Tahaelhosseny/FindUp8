@@ -14,10 +14,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <com.mikhaellopez.circularimageview.CircularImageView
+        <com.felix.bottomnavygation.Util.RoundedImageView
             android:id="@+id/store_prof_pic"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
             android:src="@drawable/product_placeholder_background_image"
             app:civ_border="true"
             app:civ_border_color="@color/colorBlack"
@@ -29,7 +29,6 @@
             android:id="@+id/store_name"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:layout_marginTop="8dp"
             android:fontFamily="@font/sfcompactdisplay_regular"
             android:foregroundGravity="center"
             android:gravity="center"

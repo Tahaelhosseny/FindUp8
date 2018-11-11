@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.felix.bottomnavygation.Util.RoundedImageView;
 import com.mikhaellopez.circularimageview.CircularImageView;
 import com.squareup.picasso.Picasso;
 
@@ -51,7 +53,7 @@ public class ChatStoresProfilePicAdapter extends RecyclerView.Adapter<ChatStores
 
         holder.store_name.setText(store.getStore_name());
         if (!store.getStore_banner().isEmpty()) {
-            //Picasso.with(holder.store_img.getContext()).load(store.getStore_banner()).into(holder.store_img);
+            Glide.with(context).load(store.getStore_banner()).into(holder.store_img);
         }
 
     }
@@ -75,7 +77,7 @@ public class ChatStoresProfilePicAdapter extends RecyclerView.Adapter<ChatStores
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        CircularImageView store_img;
+        RoundedImageView store_img;
         TextView store_name;
 
         public ViewHolder(View view) {
