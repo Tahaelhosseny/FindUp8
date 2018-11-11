@@ -74,7 +74,6 @@ public class MainActivity extends AppCompatActivity implements LocationView{
     public static List<Event> searchedEvents;
     public static List<Store> searchedStore;
 
-    Context context;
     Toolbar toolbar;
     private RxLocation rxLocation;
     FragmentTransaction transaction;

@@ -28,6 +28,7 @@ public class Product {
     private String product_desc;
     @NonNull
     private String product_banner;
+
     @NonNull
     private int if_liked;
     @Ignore

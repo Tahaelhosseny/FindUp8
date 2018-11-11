@@ -121,24 +121,24 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             googleMap.addMarker(new MarkerOptions().position(sydney).icon(
                     BitmapDescriptorFactory.fromResource(R.drawable.current_location_marker)
             ).title("Your Location"));
-            //googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(sydney.latitude + ((sydney.latitude * 14) / 100000), sydney.longitude), 14));
+            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(sydney.latitude + ((sydney.latitude * 14) / 100000), sydney.longitude), 14));
             googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 
             for (Store store : filteredMapDataStore){
                 LatLng storeLoc = new LatLng(store.getStore_latitude(),store.getStore_longitude());
                 googleMap.addMarker(new MarkerOptions().position(storeLoc).icon(
-                        BitmapDescriptorFactory.fromResource(R.drawable.ic_map)
+                        BitmapDescriptorFactory.fromResource(R.drawable.current_location_marker)
                 ).title(store.getStore_name()));
-                googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(storeLoc,4));
+                googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(storeLoc.latitude + ((storeLoc.latitude * 14) / 100000), storeLoc.longitude), 14));
             }
 
-            /*for (Event event : filteredMapDataEvent){
-                double latitude = Double.valueOf(event.getEvent_latitude().trim());
+            for (Event event : filteredMapDataEvent){
+                double latitude = Double.valueOf(event.getEvent_latitude());
                 double longitude = Double.valueOf(event.getEvent_longitude().trim());
                 googleMap.addMarker(new MarkerOptions().position(new LatLng(latitude,longitude)).icon(
                         BitmapDescriptorFactory.fromResource(R.drawable.current_location_marker)
                 ).title(event.getEvent_name()));
-            }*/
+            }
         }
     }
 

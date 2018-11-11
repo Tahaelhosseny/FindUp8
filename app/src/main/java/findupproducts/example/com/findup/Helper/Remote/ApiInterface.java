@@ -65,7 +65,7 @@ public interface ApiInterface {
     Call<LoginResponse> LoginRequest(@Query("mobile") String mobile,@Query("password") String password);
 
     @GET(ApiClient.PATH_URL+"stores?tag=get_all_stores&HashSecure="+HASH)
-    Call<StoresResponse> GetAllStores(@Query("account_id") int account_id);
+    Call<StoresResponse> GetAllStores(@Query("account_id") String account_id);
 
     @GET(ApiClient.PATH_URL+"stores?tag=get_all_events&HashSecure="+HASH)
     Call<EventResponse> GetAllEvents(@Query("account_id") int account_id);
