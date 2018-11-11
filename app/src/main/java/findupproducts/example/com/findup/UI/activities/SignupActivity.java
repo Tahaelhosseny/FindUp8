@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -29,6 +31,7 @@ public class SignupActivity extends AppCompatActivity {
     Spinner mobileSpinner;
     RegisterViewModel registerViewModel;
     ActivitySignupBinding registerBinding;
+    String phoneKey = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +46,7 @@ public class SignupActivity extends AppCompatActivity {
             public void RegisterLoadData() {
                 String name , phone , pass;
                 name = registerBinding.editTextUsername.getText().toString();
-                phone = registerBinding.editTextPhone.getRawText();
+                phone = phoneKey + registerBinding.editTextPhone.getRawText();
                 pass  = registerBinding.editTextPassword.getText().toString();
                 registerViewModel.sendRegisterRequest(name,pass , phone , extras.getString("Email"));
 
@@ -68,6 +71,18 @@ public class SignupActivity extends AppCompatActivity {
             public boolean onLongClick(View view) {
                 mobileSpinner.performClick();
                 return true;
+            }
+        });
+
+        mobileSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                phoneKey = adapterView.getItemAtPosition(i).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
             }
         });
 

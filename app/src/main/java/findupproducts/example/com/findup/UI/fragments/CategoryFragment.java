@@ -109,6 +109,15 @@ public class CategoryFragment extends Fragment {
         public boolean expanded = false;
         String title;
         String content;
+
+        public int getId() {
+            return id;
+        }
+
+        public void setId(int id) {
+            this.id = id;
+        }
+
         int id;
         ExpandableSection(String title, String content , int id) {
             super(SectionParameters.builder()

@@ -22,11 +22,14 @@ import java.io.File;
 import findupproducts.example.com.findup.Helper.Database.DBUtility;
 import findupproducts.example.com.findup.Helper.Remote.ApiClient;
 import findupproducts.example.com.findup.Helper.Remote.ApiInterface;
+import findupproducts.example.com.findup.Helper.Remote.ResponseModel.CitiesResponse;
 import findupproducts.example.com.findup.Helper.Remote.ResponseModel.CountriesResponse;
 import findupproducts.example.com.findup.Helper.Remote.ResponseModel.CreateStoreResponse;
 import findupproducts.example.com.findup.Helper.Remote.ResponseModel.StoresResponse;
 import findupproducts.example.com.findup.Helper.SharedPrefManger;
 import findupproducts.example.com.findup.R;
+import findupproducts.example.com.findup.models.City;
+import findupproducts.example.com.findup.models.Country;
 import findupproducts.example.com.findup.models.CreateStore;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -47,11 +50,15 @@ public class StoreContactActivity extends AppCompatActivity {
     RadioButton radioShowCity;
     EditText editText_website, editText_instagram, editText_twitter, editText_facebook, editText_mobile;
     AutoCompleteTextView editText_country , editText_city;
+    ApiInterface apiService;
+    int countryId = -1;
+    int cityId = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_store_contact);
+        apiService = ApiClient.getClient().create(ApiInterface.class);
 
         editText_country = findViewById(R.id.editText_country);
         editText_city = findViewById(R.id.editText_city);
@@ -86,10 +93,10 @@ public class StoreContactActivity extends AppCompatActivity {
     }
 
     private void saveStore(){
-        if (TextUtils.isEmpty(editText_country.getText().toString())){
+        if (TextUtils.isEmpty(editText_country.getText().toString()) && countryId != -1){
             Toast.makeText(this, "Enter Country", Toast.LENGTH_LONG).show();
             return;
-        } else if (TextUtils.isEmpty(editText_city.getText().toString())){
+        } else if (TextUtils.isEmpty(editText_city.getText().toString()) && cityId != -1){
             Toast.makeText(this, "Enter City", Toast.LENGTH_LONG).show();
             return;
         } else if (TextUtils.isEmpty(editText_mobile.getText().toString())){
@@ -126,8 +133,8 @@ public class StoreContactActivity extends AppCompatActivity {
 
         MultipartBody.Part store_name = MultipartBody.Part.createFormData("store_name", createStore.getStore_name());
         MultipartBody.Part store_desc = MultipartBody.Part.createFormData("store_desc", createStore.getStore_desc());
-        MultipartBody.Part country_id = MultipartBody.Part.createFormData("country_id", "1");
-        MultipartBody.Part city_id = MultipartBody.Part.createFormData("city_id", "1");
+        MultipartBody.Part country_id = MultipartBody.Part.createFormData("country_id", ""+countryId);
+        MultipartBody.Part city_id = MultipartBody.Part.createFormData("city_id", ""+cityId);
         MultipartBody.Part location_type = MultipartBody.Part.createFormData("location_type", createStore.getStore_location_type());
         MultipartBody.Part mobile = MultipartBody.Part.createFormData("mobile", createStore.getStore_mobile());
         MultipartBody.Part password = MultipartBody.Part.createFormData("password", "pass");
@@ -151,7 +158,7 @@ public class StoreContactActivity extends AppCompatActivity {
         MultipartBody.Part bodylogoFile = MultipartBody.Part.createFormData("store_logo", logoFile.getName(), requestlogoFile);
         MultipartBody.Part bodybannerFile = MultipartBody.Part.createFormData("store_banner", bannerFile.getName(), requestbannerFile);
 
-        ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
+
         Call<CreateStoreResponse> newStore =  apiService.createNewStore(
                 store_name,
                 store_desc,
@@ -210,7 +217,11 @@ public class StoreContactActivity extends AppCompatActivity {
         if (createStore.getCounriesList() == null)
             return;
 
-        ArrayAdapter arrayAdapter= new ArrayAdapter<>(StoreContactActivity.this, android.R.layout.simple_dropdown_item_1line, createStore.getCounriesList());
+        String[] countries = new String[createStore.getCounriesList().size()];
+        for (int i = 0; i < createStore.getCounriesList().size(); i++)
+            countries[i] = createStore.getCounriesList().get(i).getName_en();
+
+        ArrayAdapter arrayAdapter= new ArrayAdapter<>(StoreContactActivity.this, android.R.layout.simple_dropdown_item_1line, countries);
         editText_country.setAdapter(arrayAdapter);
         editText_country.setInputType(0);
 
@@ -225,13 +236,55 @@ public class StoreContactActivity extends AppCompatActivity {
         editText_country.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                editText_country.setEnabled(false);
                 showCities(parent.getItemAtPosition(position).toString());
             }
         });
     }
 
     private void showCities(String s) {
+        Log.e("MyData", s);
+        for (Country country : createStore.getCounriesList()){
+            if (s.equals(country.getName_en()))
+                countryId = country.getCountry_id();
+        }
+        Log.e("MyData", ""+countryId);
 
+        Call<CitiesResponse> getCities = apiService.getCountryCities(countryId,"");
+        getCities.enqueue(new Callback<CitiesResponse>() {
+            @Override
+            public void onResponse(Call<CitiesResponse> call, Response<CitiesResponse> response) {
+                Log.e("MyData", new Gson().toJson(response.body().getData()));
+                String[] cities = new String[response.body().getData().size()];
+                for (int i = 0; i < response.body().getData().size(); i++)
+                    cities[i] = response.body().getData().get(i).getName_en();
+                ArrayAdapter arrayAdapter= new ArrayAdapter<>(StoreContactActivity.this, android.R.layout.simple_dropdown_item_1line, cities);
+                editText_city.setAdapter(arrayAdapter);
+                editText_city.setInputType(0);
+
+                editText_city.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        showCities(parent.getItemAtPosition(position).toString());
+                        for (City city : response.body().getData()){
+                            if (parent.getItemAtPosition(position).toString().equals(city.getName_en()))
+                                cityId = city.getCity_id();
+                        }
+                    }
+                });
+
+                editText_city.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                    @Override
+                    public void onFocusChange(View v, boolean hasFocus) {
+                        if (hasFocus)
+                            editText_city.showDropDown();
+                    }
+                });
+            }
+
+            @Override
+            public void onFailure(Call<CitiesResponse> call, Throwable t) {
+
+            }
+        });
     }
 }

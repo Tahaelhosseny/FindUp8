@@ -185,11 +185,7 @@ public class StoreInformationActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<CountriesResponse> call, Response<CountriesResponse> response) {
                 Log.e("MyData", new Gson().toJson(response.body().getData()));
-                String[] c = new String[response.body().getData().size()];
-                for (int i = 0; i < response.body().getData().size(); i++)
-                    c[i] = response.body().getData().get(i).getName_en();
-
-                createStore.setCounriesList(c);
+                createStore.setCounriesList(response.body().getData());
             }
 
             @Override
