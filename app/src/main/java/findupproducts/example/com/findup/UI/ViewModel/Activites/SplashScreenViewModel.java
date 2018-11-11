@@ -36,7 +36,7 @@ public class SplashScreenViewModel  extends Observable {
         PublishSubject<Integer> loaded = PublishSubject.create();
         SharedPrefManger sharedPrefManger = new SharedPrefManger(mContext);
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-        Call<StoresResponse> userlogincall = apiService.GetAllStores(SharedPrefManger.getUser_ID());
+        Call<StoresResponse> userlogincall = apiService.GetAllStores(String.valueOf(SharedPrefManger.getUser_ID()));
         userlogincall.enqueue(new Callback<StoresResponse>() {
             @Override
             public void onResponse(Call<StoresResponse> call, Response<StoresResponse> response) {

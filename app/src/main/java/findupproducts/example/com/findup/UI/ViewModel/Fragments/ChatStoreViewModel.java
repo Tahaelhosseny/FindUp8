@@ -44,7 +44,7 @@ public class ChatStoreViewModel extends Observable {
 
     public void GetStoresForChat(RecyclerView storesRecyclerView, RecyclerView mMessageRecycler){
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-        Call<StoresResponse> getStoresForChat = apiService.GetAllStores(SharedPrefManger.getUser_ID());
+        Call<StoresResponse> getStoresForChat = apiService.GetAllStores(String.valueOf(SharedPrefManger.getUser_ID()));
         getStoresForChat.enqueue(new Callback<StoresResponse>() {
             @Override
             public void onResponse(Call<StoresResponse> call, Response<StoresResponse> response) {
