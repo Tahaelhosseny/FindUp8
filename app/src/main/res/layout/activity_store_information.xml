@@ -90,6 +90,7 @@
                 android:textColorLink="@color/colorWhiteGrey"
                 android:textCursorDrawable="@drawable/color_black"
                 android:textSize="@dimen/sp18"
+                android:background="@drawable/bg_edit"
                 app:layout_constraintTop_toBottomOf="@+id/txt_storeName" />
 
             <TextView
@@ -108,7 +109,6 @@
                 android:id="@+id/editText_otherLanguage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/activity_vertical_margin"
                 app:layout_constraintTop_toBottomOf="@+id/txt_otherLanguage"
                 android:inputType="text"
                 android:theme="@style/MyEditText"
@@ -116,6 +116,7 @@
                 android:textColorHighlight="@color/colorWhiteGrey"
                 android:textColorLink="@color/colorWhiteGrey"
                 android:textCursorDrawable="@drawable/color_black"
+                android:background="@drawable/bg_edit"
                 android:textSize="@dimen/sp18"/>
             <TextView
                 android:id="@+id/txt_tags"
@@ -133,7 +134,6 @@
                 android:id="@+id/editText_tags"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/activity_vertical_margin"
                 app:layout_constraintTop_toBottomOf="@+id/txt_tags"
                 android:inputType="text"
                 android:shadowColor="@color/colorBlack"
@@ -142,6 +142,7 @@
                 android:textColorHighlight="@color/colorWhiteGrey"
                 android:textColorLink="@color/colorWhiteGrey"
                 android:textCursorDrawable="@drawable/color_black"
+                android:background="@drawable/bg_edit"
                 android:textSize="@dimen/sp18"/>
             <TextView
                 android:id="@+id/txt_description"
@@ -160,7 +161,6 @@
                 android:theme="@style/MyEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="@dimen/activity_vertical_margin"
                 app:layout_constraintTop_toBottomOf="@+id/txt_description"
                 android:inputType="textMultiLine"
                 android:maxLines="4"
@@ -168,12 +168,12 @@
                 android:textColorHighlight="@color/colorWhiteGrey"
                 android:textColorLink="@color/colorWhiteGrey"
                 android:textCursorDrawable="@drawable/color_black"
+                android:background="@drawable/bg_edit"
                 android:textSize="@dimen/sp18"/>
             <Button
                 android:id="@+id/btn_next"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/activity_vertical_margin"
                 android:layout_marginTop="@dimen/activity_vertical_margin"
                 android:background="@drawable/bg_button_rounded_accent"
                 android:text="@string/next"
