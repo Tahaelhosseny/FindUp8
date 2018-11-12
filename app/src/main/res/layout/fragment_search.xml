@@ -84,7 +84,6 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:minHeight="300dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/eventTxt">
@@ -99,7 +98,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/search_activity_title_marginLeft"
         android:layout_marginStart="@dimen/search_activity_title_marginStart"
-        android:layout_marginTop="@dimen/search_activity_title_marginTop"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/sfcompactdisplay_heavy"
         android:text="Product"
         app:layout_constraintStart_toStartOf="@id/event_container"

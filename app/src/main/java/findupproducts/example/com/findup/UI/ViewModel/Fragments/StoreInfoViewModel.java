@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -157,8 +158,13 @@ public class StoreInfoViewModel extends Observable {
                         @Override
                         public void run() {
                             photos.clear();
-                            photos.addAll(val);
-                            StorePhotosAdapter adapter = new StorePhotosAdapter(mContext, val);
+                            if(val.size() > 0){
+                                photos.addAll(val);
+                            }else{
+                                StorePhoto storePhoto = new StorePhoto(1 , "https://ibb.co/eCCs2q" , store_id);
+                                photos.add(storePhoto);
+                            }
+                            StorePhotosAdapter adapter = new StorePhotosAdapter(mContext, photos);
                             recyclerView.setAdapter(adapter);
                         }
                     });
@@ -220,7 +226,7 @@ public class StoreInfoViewModel extends Observable {
 
     public void bindStoreData(TextView aboutTxtDetails, TextView workTimeDaysInfoTxt, TextView workTimeInfoTxt,
     ImageView mailImg, ImageView siteImg, ImageView chatImg, ImageView twitterImg, ImageView snapImg,ImageView show_comments
-    ) {
+     , ImageView phoneImg) {
 
         if (MStore == null) {
             DBHandler.getStoreByID(store_id, mContext, new Stores() {
@@ -242,20 +248,26 @@ public class StoreInfoViewModel extends Observable {
                            @Override
                            public void run() {
                                    MStore = store;
-                                   if(!store.getStore_instegram_link().equals("")){
-                                       twitterImg.setOnClickListener(v -> Utility.OpenTwitterAccount(mContext, store.getStore_twitter_link()));
+                                   if(!store.getStore_mobile().equals("") || !TextUtils.isEmpty(store.getStore_mobile())){
+                                       phoneImg.setOnClickListener(v -> Utility.callPhone(mContext , store.getStore_mobile()));
+                                   }else {
+                                        phoneImg.setVisibility(View.GONE);
                                    }
-                                   if(store.getStore_facebook_link() != null){
-                                       twitterImg.setOnClickListener(v -> Utility.OpenTwitterAccount(mContext, store.getStore_twitter_link()));
-                                   }
-                                   if(store.getStore_website_link() != null){
+                                   snapImg.setVisibility(View.GONE);
+                                   if(!store.getStore_website_link().equals("")|| !TextUtils.isEmpty(store.getStore_website_link())){
                                        siteImg.setOnClickListener(v -> Utility.OpenWebSite(mContext, store.getStore_website_link()));
+                                   }else{
+                                       siteImg.setVisibility(View.GONE);
                                    }
-                                   if(!store.getStore_twitter_link().equals("")){
+                                   if(!store.getStore_twitter_link().equals("")  || !TextUtils.isEmpty(store.getStore_twitter_link())){
                                        twitterImg.setOnClickListener(v -> Utility.OpenTwitterAccount(mContext, store.getStore_twitter_link()));
+                                   }else{
+                                       twitterImg.setVisibility(View.GONE);
                                    }
-                                   if(store.getStore_gmail_link() != null){
-                                       mailImg.setOnClickListener(v -> Utility.OpenWebSite(mContext, store.getStore_website_link()));
+                                   if(!TextUtils.isEmpty(store.getStore_gmail_link())){
+                                       mailImg.setOnClickListener(v -> Utility.sendEmail(mContext, store.getStore_gmail_link()));
+                                   }else{
+                                       mailImg.setVisibility(View.GONE);
                                    }
                                    aboutTxtDetails.setText(store.getStore_about());
                                    chatImg.setOnClickListener(v -> Utility.OpenChatWithStore(mContext, String.valueOf(store.getStore_id()), store.getStore_name()));
@@ -299,9 +311,6 @@ public class StoreInfoViewModel extends Observable {
 
     }
 
-    public void bindComments(){
-
-    }
 }
 
 

@@ -75,8 +75,8 @@ public class SortFilterViewModel extends Observable {
         Call<SearchStoreResponse> getFiltered = apiService.getFilteredStores(SharedPrefManger.getUser_ID(),
                 filterData.getSearch_text(), filterData.getFilter_price()
                 ,filterData.getFilter_rate(),filterData.getFilter_opennow(),filterData.getFilter_distance()
-                ,filterData.getSearch_from(),"0.0",
-                "0.0",filterData.getFilter_by(),filterData.getFilter_byid());
+                ,filterData.getSearch_from(), String.valueOf(SharedPrefManger.getCurrentLocation().getLocationModel().getLongitude()),
+                String.valueOf(SharedPrefManger.getCurrentLocation().getLocationModel().getLatitude()),filterData.getFilter_by(),filterData.getFilter_byid());
             getFiltered.enqueue(new Callback<SearchStoreResponse>() {
             @Override
             public void onResponse(Call<SearchStoreResponse> call, Response<SearchStoreResponse> response) {

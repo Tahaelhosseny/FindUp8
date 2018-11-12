@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.InflateException;
 import android.view.LayoutInflater;
@@ -44,6 +45,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     MapView mMapView;
     String TAG = getTag();
     HorizontalScrollView filter;
+
     private View rootView;
 
     @Override
@@ -109,14 +111,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             Preference<Float> Longitude = sharedPrefManger.getLongitude();
             Longitude.asObservable().subscribe(val -> LocationUtility.LongitudeToCurrentLocationModel(val, currentLocation));
 
-            // Add a marker in Sydney and move the camera
-//            for (int i = 0 ; i < filteredMapDataEvent.size() ; i++){
-//               LatLng m = new LatLng(Double.parseDouble(filteredMapDataEvent.get(i).getEvent_latitude()) , Double.parseDouble(filteredMapDataEvent.get(i).getEvent_longitude())) ;
-//               googleMap.addMarker(new MarkerOptions().position(m).icon(BitmapDescriptorFactory.fromResource(R.drawable.current_location_marker))
-//               .title(filteredMapDataEvent.get(i).getEvent_name()));
-//                googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(m.latitude + ((m.latitude * 14) / 100000), m.longitude), 14));
-//                googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-//            }
             LatLng sydney = new LatLng(currentLocation.getLocation().latitude, currentLocation.getLocation().longitude);
             googleMap.addMarker(new MarkerOptions().position(sydney).icon(
                     BitmapDescriptorFactory.fromResource(R.drawable.current_location_marker)
@@ -141,12 +135,29 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             }
         }
     }
-
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         ImageButton view_fillter = getActivity().findViewById(R.id.search_filter);
         filter = getActivity().findViewById(R.id.filter);
+        CardView distace = filter.findViewById(R.id.distance_card);
+        CardView price = filter.findViewById(R.id.price_card);
+        CardView saved = filter.findViewById(R.id.saved_card);
+        CardView like = filter.findViewById(R.id.liked_card);
+        if(filterData.getFilter_distance() != null ){
+            distace.setVisibility(View.VISIBLE);
+        }
+        if(filterData.getFilter_price() != null ){
+            price.setVisibility(View.VISIBLE);
+        }
+        if(filterData.getFilter_by() != null){
+            if(filterData.getFilter_by() == "liked"){
+                like.setVisibility(View.VISIBLE);
+            }
+            if(filterData.getFilter_by() == "saved"){
+                saved.setVisibility(View.VISIBLE);
+            }
+        }
         view_fillter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

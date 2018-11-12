@@ -71,8 +71,11 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
         holder.productNumLikes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                likeProduct(holder.product , holder.productNumLikes);
+                if(SharedPrefManger.getUser_ID() == 0){
+                    Toast.makeText(context, "Please Login First To Can Like Products", Toast.LENGTH_SHORT).show();
+                }else{
+                    likeProduct(holder.product , holder.productNumLikes);
+                }
             }
         });
         if (!holder.product.getProduct_banner().isEmpty()) {

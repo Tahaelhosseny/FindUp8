@@ -79,7 +79,7 @@ public class Utility {
         return localTime;
     }
 
-    private static List<Class> getHomeFragments(){
+    private static List<Class> getHomeFragments() {
         List<Class> fragmentList = new ArrayList<>();
         fragmentList.add(MainFragment.class);
         fragmentList.add(MapFragment.class);
@@ -88,14 +88,16 @@ public class Utility {
         fragmentList.add(ProfileFragment.class);
         return fragmentList;
     }
-/*
-    public static String getActiveHomeFragment(Context mContext){
-        android.app.Fragment f = ((Activity)mContext).getFragmentManager().findFragmentById(R.id.main_toolbar_container);
-        f.getTag();
-    }
-*/
+
+    /*
+        public static String getActiveHomeFragment(Context mContext){
+            android.app.Fragment f = ((Activity)mContext).getFragmentManager().findFragmentById(R.id.main_toolbar_container);
+            f.getTag();
+        }
+    */
     private static List<String> tags = new ArrayList<>();
-    public static List<String> fragmentTagsList(){
+
+    public static List<String> fragmentTagsList() {
         if (tags.size() > 1)
             return tags;
         else {
@@ -109,8 +111,10 @@ public class Utility {
         }
 
     }
+
     private static List<String> storeTags = new ArrayList<>();
-    public static List<String> storeFragmentTagsList(){
+
+    public static List<String> storeFragmentTagsList() {
         if (storeTags.size() > 1)
             return storeTags;
         else {
@@ -122,10 +126,11 @@ public class Utility {
         }
 
     }
+
     public static void replaceFragment(FragmentManager manager, Fragment fragment, int containerID, int transition, Menu menu) {
         String fragmentTag = fragment.getClass().getName();
         boolean fragmentPopped = manager.popBackStackImmediate(fragmentTag, 0);
-        if (menu !=null){
+        if (menu != null) {
             fragmentTagsList();
             UI_Utility.BottomNavigationMenu_icons_change(menu, tags.indexOf(fragmentTag));
         }
@@ -152,7 +157,7 @@ public class Utility {
     public static void replaceStoreFragment(FragmentManager manager, Fragment fragment, int containerID, int transition, Menu menu) {
         String fragmentTag = fragment.getClass().getName();
         boolean fragmentPopped = manager.popBackStackImmediate(fragmentTag, 0);
-        if (menu !=null){
+        if (menu != null) {
             storeFragmentTagsList();
             UI_Utility.BottomNavigationStoreMenu_icons_change(menu, storeTags.indexOf(fragmentTag));
         }
@@ -176,18 +181,18 @@ public class Utility {
         }
     }
 
-    private static String getFragmentTag(Fragment fragment){
-     if (fragment instanceof MapFragment)
-         return "map";
-     else if(fragment instanceof SearchFragment)
-        return "search";
-     else if(fragment instanceof CategoryFragment)
-         return "cat";
-     else if(fragment instanceof ProfileFragment)
-         return "profile";
-     else if(fragment instanceof MainFragment)
-         return "main";
-     else return "main";
+    private static String getFragmentTag(Fragment fragment) {
+        if (fragment instanceof MapFragment)
+            return "map";
+        else if (fragment instanceof SearchFragment)
+            return "search";
+        else if (fragment instanceof CategoryFragment)
+            return "cat";
+        else if (fragment instanceof ProfileFragment)
+            return "profile";
+        else if (fragment instanceof MainFragment)
+            return "main";
+        else return "main";
     }
 
     public static void UpdateCurrentLocation(final Activity activity, final Context context) {
@@ -265,14 +270,14 @@ public class Utility {
     }
 
     public static void OpenWebSite(Context mContext, String url) {
-        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://"+url));
         mContext.startActivity(browserIntent);
     }
 
-    public static void OpenChatWithStore(Context mContext, String store_id , String name) {
+    public static void OpenChatWithStore(Context mContext, String store_id, String name) {
         Intent intent = new Intent(mContext, SpecificChatWithStore.class);
         intent.putExtra("store_id", store_id);
-        intent.putExtra("store_name" , name);
+        intent.putExtra("store_name", name);
         mContext.startActivity(intent);
     }
 
@@ -299,6 +304,11 @@ public class Utility {
         } catch (Exception e) {
             mContext.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://snapchat.com/add/" + username)));
         }
+    }
+
+    public static void callPhone(Context context, String phone) {
+        Intent intent = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", phone, null));
+        context.startActivity(intent);
     }
 
     public static void OpenGoogleMaps(Context mContext, double latitude, double longitude) {
