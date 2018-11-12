@@ -60,7 +60,7 @@ public class SignupActivity extends AppCompatActivity {
 
         editText_phone=findViewById(R.id.editText_phone);
         editText_password=findViewById(R.id.editText_password);
-        btn_login=findViewById(R.id.btn_login);
+//        btn_login=findViewById(R.id.btn_login);
         btn_signupBack=findViewById(R.id.btn_signupBack);
         mobileSpinner=findViewById(R.id.mobileSpinner);
         String[] items = new String[]{"+2", "+966", "+900"};
@@ -93,20 +93,13 @@ public class SignupActivity extends AppCompatActivity {
             }
         });
 
-//        btn_signup.setOnClickListener(new View.OnClickListener() {
+//        btn_login.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
-//                Toast.makeText(SignupActivity.this,"signup",Toast.LENGTH_SHORT).show();
+//                startActivity(new Intent(SignupActivity.this, LoginActivity.class));
+//                finish();
 //            }
 //        });
-
-        btn_login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(SignupActivity.this, LoginActivity.class));
-                finish();
-            }
-        });
 
         btn_signupBack.setOnClickListener(new View.OnClickListener() {
             @Override
