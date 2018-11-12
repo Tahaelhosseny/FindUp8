@@ -95,7 +95,9 @@ public class MainActivity extends AppCompatActivity implements LocationView{
         filterData = new FilterQueries();
         filteredMapDataEvent = new ArrayList<>();
         filteredMapDataStore = new ArrayList<>();
-        searchedEvents = new ArrayList<>(); searchedProducts = new ArrayList<>(); searchedStore = new ArrayList<>();
+        searchedEvents = new ArrayList<>();
+        searchedProducts = new ArrayList<>();
+        searchedStore = new ArrayList<>();
         toolbar =  findViewById(R.id.toolbar_top);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
@@ -219,7 +221,11 @@ public class MainActivity extends AppCompatActivity implements LocationView{
                             public void run() {
                                 searchedStore.clear();
                                 for (int i = 0 ; i < val.size() ; i++){
-                                    searchedStore.add(val.get(i));
+                                    if(i < 5){
+                                        searchedStore.add(val.get(i));
+                                    }else{
+                                        break;
+                                    }
                                 }
                                 Log.e("Store Size " , String.valueOf(searchedStore.size()));
                             }

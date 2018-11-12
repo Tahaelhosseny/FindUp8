@@ -35,6 +35,7 @@ import java.util.TimeZone;
 
 import findupproducts.example.com.findup.R;
 import findupproducts.example.com.findup.UI.activities.ChatWithStoreActivity;
+import findupproducts.example.com.findup.UI.activities.SpecificChatWithStore;
 import findupproducts.example.com.findup.UI.fragments.CategoryFragment;
 import findupproducts.example.com.findup.UI.fragments.ChatWithStoreFragment;
 import findupproducts.example.com.findup.UI.fragments.MainFragment;
@@ -268,9 +269,10 @@ public class Utility {
         mContext.startActivity(browserIntent);
     }
 
-    public static void OpenChatWithStore(Context mContext, int store_id) {
-        Intent intent = new Intent(mContext, ChatWithStoreActivity.class);
+    public static void OpenChatWithStore(Context mContext, String store_id , String name) {
+        Intent intent = new Intent(mContext, SpecificChatWithStore.class);
         intent.putExtra("store_id", store_id);
+        intent.putExtra("store_name" , name);
         mContext.startActivity(intent);
     }
 

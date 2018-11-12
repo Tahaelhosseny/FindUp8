@@ -242,14 +242,23 @@ public class StoreInfoViewModel extends Observable {
                            @Override
                            public void run() {
                                    MStore = store;
+                                   if(!store.getStore_instegram_link().equals("")){
+                                       twitterImg.setOnClickListener(v -> Utility.OpenTwitterAccount(mContext, store.getStore_twitter_link()));
+                                   }
+                                   if(store.getStore_facebook_link() != null){
+                                       twitterImg.setOnClickListener(v -> Utility.OpenTwitterAccount(mContext, store.getStore_twitter_link()));
+                                   }
+                                   if(store.getStore_website_link() != null){
+                                       siteImg.setOnClickListener(v -> Utility.OpenWebSite(mContext, store.getStore_website_link()));
+                                   }
+                                   if(!store.getStore_twitter_link().equals("")){
+                                       twitterImg.setOnClickListener(v -> Utility.OpenTwitterAccount(mContext, store.getStore_twitter_link()));
+                                   }
+                                   if(store.getStore_gmail_link() != null){
+                                       mailImg.setOnClickListener(v -> Utility.OpenWebSite(mContext, store.getStore_website_link()));
+                                   }
                                    aboutTxtDetails.setText(store.getStore_about());
-                                                                    //workTimeDaysInfoTxt.setText(UI_Utility.WorkDaysToString(store.getStore_workdays()));
-                                                                    //workTimeInfoTxt.setText(UI_Utility.WorkTimeToString(store.getStore_worktime()));
-                                                                    //mailImg.setOnClickListener(v -> /*Utility.sendEmail(mContext,store.get); */);
-                                   siteImg.setOnClickListener(v -> Utility.OpenWebSite(mContext, store.getStore_website_link()));
-                                   chatImg.setOnClickListener(v -> Utility.OpenChatWithStore(mContext, store.getStore_id()));
-                                   twitterImg.setOnClickListener(v -> Utility.OpenTwitterAccount(mContext, store.getStore_twitter_link()));
-                                                                    //snapImg.setOnClickListener( v -> Utility.OpenSnapChatAccount(mContext,store.gets));
+                                   chatImg.setOnClickListener(v -> Utility.OpenChatWithStore(mContext, String.valueOf(store.getStore_id()), store.getStore_name()));
                                    show_comments.setOnClickListener(v ->
                                            mContext.startActivity(new Intent(mContext, CommentsActivity.class).putExtra("store_id",store.getStore_id())));
                                    }

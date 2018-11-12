@@ -130,13 +130,6 @@ public class StoreInformationActivity extends AppCompatActivity {
                     createStore.setStore_banner(getImgPath(selectedBanner));
                     break;
                 }
-                /*case (PICK_WORK_DAYS) : {
-                    String[] days = data.getStringArrayExtra("days");
-                    workDays =  Arrays.toString(days);
-                    txt_workdays.setText(workDays);
-                    createStore.setWorkDays(workDays);
-                    break;
-                }*/
             }
         }
     }

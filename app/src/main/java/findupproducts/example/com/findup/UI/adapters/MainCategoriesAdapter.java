@@ -1,6 +1,7 @@
 package findupproducts.example.com.findup.UI.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
@@ -15,6 +16,7 @@ import java.util.List;
 
 import findupproducts.example.com.findup.Helper.UI_Utility;
 import findupproducts.example.com.findup.R;
+import findupproducts.example.com.findup.UI.activities.CategeoryStoresAcivity;
 import findupproducts.example.com.findup.models.Category;
 
 /**
@@ -22,10 +24,8 @@ import findupproducts.example.com.findup.models.Category;
  */
 
 public class MainCategoriesAdapter extends RecyclerView.Adapter<MainCategoriesAdapter.ViewHolder> {
-
     private List<Category> categoryList;
     private Context context;
-
     public MainCategoriesAdapter(Context context, List<Category> categoryList) {
         this.context = context;
         if (categoryList.size() > 4)
@@ -33,15 +33,12 @@ public class MainCategoriesAdapter extends RecyclerView.Adapter<MainCategoriesAd
         else
             this.categoryList = categoryList;
     }
-
     public void setCategoryList(List<Category> categoryList) {
         this.categoryList = categoryList;
     }
-
     public static int getScreenWidth() {
         return Resources.getSystem().getDisplayMetrics().widthPixels;
     }
-
     @NonNull
     @Override
     public MainCategoriesAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -49,7 +46,6 @@ public class MainCategoriesAdapter extends RecyclerView.Adapter<MainCategoriesAd
                 .inflate(R.layout.main_cats_item, parent, false);
         return new ViewHolder(itemView);
     }
-
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Category category = categoryList.get(position);
@@ -60,30 +56,28 @@ public class MainCategoriesAdapter extends RecyclerView.Adapter<MainCategoriesAd
             holder.catNameText.setText(category.getCat_name());
 
         holder.category_item_container.setMinimumWidth(getScreenWidth() / 4);
+        holder.cat_bg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                context.startActivity(new Intent(context , CategeoryStoresAcivity.class).putExtra("id" , category.getCat_id()));
+            }
+        });
 
     }
-
     @Override
     public int getItemCount() {
         return categoryList.size();
     }
-
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-
+    public class ViewHolder extends RecyclerView.ViewHolder{
         TextView catNameText;
         CardView cat_bg;
         LinearLayout category_item_container;
-
         public ViewHolder(View view) {
             super(view);
-
             catNameText = view.findViewById(R.id.mainCatName);
             cat_bg = view.findViewById(R.id.category_background_layout);
             category_item_container = view.findViewById(R.id.category_item_container);
         }
 
-        @Override
-        public void onClick(View v) {
-        }
     }
 }
