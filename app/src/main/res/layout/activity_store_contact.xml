@@ -89,6 +89,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="text"
                 android:maxLines="1"
+                android:enabled="false"
                 android:shadowColor="@color/colorBlack"
                 android:textColor="@color/colorBlack"
                 android:textColorHighlight="@color/colorWhiteGrey"

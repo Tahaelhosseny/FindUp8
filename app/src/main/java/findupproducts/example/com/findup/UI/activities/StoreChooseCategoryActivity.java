@@ -46,11 +46,12 @@ public class StoreChooseCategoryActivity extends AppCompatActivity {
             Toast.makeText(this, "Choose Category", Toast.LENGTH_LONG).show();
             return;
         }
-        if (expandableSection.getTitle().equals(view.getContext().getResources().getString(R.string.events)))
+        Toast.makeText(this, expandableSection.getTitle(), Toast.LENGTH_LONG).show();
+        if (expandableSection.getTitle().equals("EVENTS"))
             startActivity(new Intent(view.getContext(), StoreEventsActivity.class));
         else {
             Intent transferIntent = new Intent(StoreChooseCategoryActivity.this, StoreInformationActivity.class);
-            transferIntent.putExtra("next_id", getIntent().getExtras().getInt("next_id"));
+            transferIntent.putExtra("cat_id",expandableSection.getId());
             startActivity(transferIntent);
         }
     }
