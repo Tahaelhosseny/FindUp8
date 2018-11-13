@@ -129,7 +129,8 @@ public interface ApiInterface {
     @FormUrlEncoded
     Call<RegisterResponse> registerNewUser(@Field("user_type") String user_type , @Field("name") String user_name
             , @Field("password") String password , @Field("mobile") String user_mob , @Field("logged_type") String logged_type
-            , @Field("email") String user_mail);
+            , @Field("email") String user_mail
+            , @Field("device_token") String deviceToken);
 
 
     @POST(ApiClient.PATH_URL+"user_actions?tag=add_store_comment&HashSecure="+HASH)

@@ -63,7 +63,7 @@ public class StorePhotosAdapter extends RecyclerView.Adapter<StorePhotosAdapter.
                         .oval(false)
                         .build();
 
-                Picasso.with(context).load(photo).transform(transformation).placeholder(R.drawable.ic_launcher).into(holder.photo);
+                Picasso.with(context).load(photo).transform(transformation).placeholder(R.mipmap.ic_launcher).into(holder.photo);
             }
             Log.i("photo_url", photo);
 

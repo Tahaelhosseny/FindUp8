@@ -7,6 +7,8 @@ import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+
 import java.util.List;
 import java.util.Observable;
 
@@ -34,10 +36,11 @@ public class RegisterViewModel extends Observable {
         final AlertDialog alertDialog = UI_Utility.ShowProgressDialog(mContext, true);
         alertDialog.show();
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-        Call<RegisterResponse> userRegisterCall = apiService.registerNewUser("user",name , password , mobile , "normal" , email);
+        Call<RegisterResponse> userRegisterCall = apiService.registerNewUser("user",name , password , mobile , "normal" , email, "");
         userRegisterCall.enqueue(new Callback<RegisterResponse>() {
             @Override
             public void onResponse(Call<RegisterResponse> call, Response<RegisterResponse> response) {
+            Log.e("MyData", new Gson().toJson(response.body()));
                 if (response.body().getSuccess() == 1){
                     userData = response.body().getData();
                     RegisterAccepted(mobile , password , userData.get(0).getId());

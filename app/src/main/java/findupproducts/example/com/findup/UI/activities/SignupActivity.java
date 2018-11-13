@@ -47,6 +47,7 @@ public class SignupActivity extends AppCompatActivity {
                 String name , phone , pass;
                 name = registerBinding.editTextUsername.getText().toString();
                 phone = phoneKey + registerBinding.editTextPhone.getRawText();
+                phone = phone.replace("+","");
                 pass  = registerBinding.editTextPassword.getText().toString();
                 registerViewModel.sendRegisterRequest(name,pass , phone , extras.getString("Email"));
 

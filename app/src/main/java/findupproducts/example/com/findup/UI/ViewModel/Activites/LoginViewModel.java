@@ -8,6 +8,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
@@ -44,17 +46,18 @@ public class LoginViewModel extends Observable {
         userlogincall.enqueue(new Callback<LoginResponse>() {
             @Override
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
-                if (response.body().getSuccess() == 1 && response.body().getData().get(0).getLogin_type().equals("User")){
-                    LoginAccepted(response.body().getUser_data().get(0),password);
+                Log.e("MyData", new Gson().toJson(response.body()));
+                if (response.body().getSuccess() == 1 && response.body().getData().get(0).getLogin_type().equals("User")) {
+                    LoginAccepted(response.body().getUser_data().get(0), password);
                     saveUserSettings(response.body().getUser_data().get(0).getId());
                     mContext.startActivity(new Intent(mContext, MainActivity.class));
 
-                    }else if(response.body().getSuccess() ==1 && response.body().getData().get(0).getLogin_type().equals("Store")){
-                    LoginStoreAccepted(response.body().getUser_data().get(0),password);
+                } else if (response.body().getSuccess() == 1 && response.body().getData().get(0).getLogin_type().equals("Store")) {
+                    LoginStoreAccepted(response.body().getUser_data().get(0), password);
                     saveStoreSetting(response.body().getUser_data().get(0).getId());
                     mContext.startActivity(new Intent(mContext, MainStoreActivity.class));
-                } else{
-                    Toast.makeText(mContext,"phone or password are not correct",Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(mContext, "phone or password are not correct", Toast.LENGTH_SHORT).show();
                 }
                 Log.e("url",call.request().url().toString());
                 alertDialog.dismiss();
