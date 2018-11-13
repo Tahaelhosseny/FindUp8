@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#C0000000"
-    tools:context=".UI.activities.MeasureDistanceActivity"
-    android:padding="16dp">
+    android:padding="16dp"
+    tools:context=".UI.activities.MeasureDistanceActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar_distance"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="18dp"
         android:background="@null"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,25 +22,29 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@null"
+            android:drawableLeft="@drawable/baseline_close_black_36"
+            android:drawableStart="@drawable/baseline_close_black_36"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:drawableStart="@drawable/baseline_close_white_36dp"
-            android:drawableLeft="@drawable/baseline_close_white_36dp" />
+            app:layout_constraintTop_toTopOf="parent" />
     </android.support.v7.widget.Toolbar>
 
     <LinearLayout
         android:id="@+id/layout"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginBottom="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
         android:background="@drawable/bg_form_rounded"
         android:orientation="vertical"
         android:padding="16dp"
         app:layout_constraintBottom_toTopOf="@+id/btn_submit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.8"
-        tools:layout_editor_absoluteX="40dp">
+        app:layout_constraintVertical_bias="0.8">
+
         <LinearLayout
             android:id="@+id/fragment_history_menu_bottom"
             android:layout_width="match_parent"

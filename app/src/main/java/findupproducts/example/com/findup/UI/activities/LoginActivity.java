@@ -5,6 +5,7 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import findupproducts.example.com.findup.UI.Presenter.Activities.LoginPresenter;
 import findupproducts.example.com.findup.UI.ViewModel.Activites.LoginViewModel;
@@ -14,6 +15,8 @@ import findupproducts.example.com.findup.R;
 public class LoginActivity extends AppCompatActivity {
     ActivityLoginBinding binding;
     LoginViewModel loginViewModel;
+    String phoneKey = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +28,8 @@ public class LoginActivity extends AppCompatActivity {
             public void LoginLoadData() {
                 String phone = binding.editTextPhone.getRawText();
                 String pass  = binding.editTextPassword.getText().toString();
+                phone = phoneKey + phone;
+                phone = phone.replace("+","");
                 loginViewModel.sendLoginRequest(phone,pass);
             }
         });
@@ -37,6 +42,18 @@ public class LoginActivity extends AppCompatActivity {
             public boolean onLongClick(View view) {
                 binding.mobileSpinner.performClick();
                 return true;
+            }
+        });
+
+        binding.mobileSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                phoneKey = adapterView.getItemAtPosition(i).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
             }
         });
 

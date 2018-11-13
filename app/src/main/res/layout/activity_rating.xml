@@ -63,8 +63,8 @@
             app:srb_clearRatingEnabled="true"
             app:srb_starPadding="10dp"
             android:layout_marginBottom="@dimen/activity_horizontal_margin"
-            app:srb_drawableEmpty="@drawable/ic_rating_star_off"
-            app:srb_drawableFilled="@drawable/ic_rating_star_on"/>
+            app:srb_drawableEmpty="@drawable/__copy_4_2x"
+            app:srb_drawableFilled="@drawable/__copy_3_3x"/>
 
         <Button
             android:layout_width="match_parent"

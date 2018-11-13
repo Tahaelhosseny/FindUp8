@@ -71,7 +71,7 @@
                     android:layout_marginBottom="@dimen/activity_vertical_margin"
                     android:layout_marginTop="@dimen/activity_vertical_margin"
                     android:contentDescription="@string/store_name"
-                    app:srcCompat="@drawable/ic_banner" />
+                    app:srcCompat="@drawable/group_5_copy_3x" />
 
                 <TextView
                     android:id="@+id/txt_eventName"

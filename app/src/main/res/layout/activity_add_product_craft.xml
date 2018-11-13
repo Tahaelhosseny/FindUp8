@@ -85,37 +85,7 @@
                     android:layout_weight="1"
                     android:layout_marginTop="@dimen/activity_vertical_margin"
                     android:layout_marginBottom="@dimen/activity_vertical_margin"
-                    app:srcCompat="@drawable/ic_accountpic"
-                    android:background="@null"
-                    android:contentDescription="@string/add_product"/>
-                <ImageButton
-                    android:id="@+id/pic_craft2"
-                    android:layout_width="0dp"
-                    android:layout_height="50dp"
-                    android:layout_weight="1"
-                    android:layout_marginTop="@dimen/activity_vertical_margin"
-                    android:layout_marginBottom="@dimen/activity_vertical_margin"
-                    app:srcCompat="@drawable/ic_accountpic"
-                    android:background="@null"
-                    android:contentDescription="@string/add_product"/>
-                <ImageButton
-                    android:id="@+id/pic_craft3"
-                    android:layout_width="0dp"
-                    android:layout_height="50dp"
-                    android:layout_weight="1"
-                    android:layout_marginTop="@dimen/activity_vertical_margin"
-                    android:layout_marginBottom="@dimen/activity_vertical_margin"
-                    app:srcCompat="@drawable/ic_accountpic"
-                    android:background="@null"
-                    android:contentDescription="@string/add_product"/>
-                <ImageButton
-                    android:id="@+id/pic_craft4"
-                    android:layout_width="0dp"
-                    android:layout_height="50dp"
-                    android:layout_weight="1"
-                    android:layout_marginTop="@dimen/activity_vertical_margin"
-                    android:layout_marginBottom="@dimen/activity_vertical_margin"
-                    app:srcCompat="@drawable/ic_accountpic"
+                    app:srcCompat="@drawable/group_5_2x"
                     android:background="@null"
                     android:contentDescription="@string/add_product"/>
             </LinearLayout>
@@ -222,7 +192,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/ic_add"
+                app:srcCompat="@drawable/dark2___add_3x"
                 android:layout_gravity="center_vertical"
                 android:padding="@dimen/activity_vertical_margin"
                 android:contentDescription="@string/add_your_first_craft" />
@@ -269,7 +239,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/ic_add"
+                app:srcCompat="@drawable/dark2___add_3x"
                 android:layout_gravity="center_vertical"
                 android:padding="@dimen/activity_vertical_margin"
                 android:contentDescription="@string/add_your_first_craft" />

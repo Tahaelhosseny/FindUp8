@@ -109,7 +109,7 @@
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:background="@android:color/transparent"
-            android:src="@drawable/ic_add"
+            android:src="@drawable/dark2___add_3x"
             android:text="Button"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -120,7 +120,7 @@
             android:layout_height="24dp"
             android:layout_marginStart="8dp"
             android:background="@android:color/transparent"
-            android:src="@drawable/ic_rating_star_on"
+            android:src="@drawable/dark2___add_3x"
             android:text="Button"
             app:layout_constraintStart_toEndOf="@+id/prod_amount"
             app:layout_constraintTop_toTopOf="parent" />

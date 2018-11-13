@@ -30,35 +30,35 @@ public class UI_Utility {
     }
 
     public static void BottomNavigationMenu_icons_change(Menu menu, int Selected) {
-        menu.findItem(R.id.home).setIcon(R.drawable.ic_home_unselected);
-        menu.findItem(R.id.map).setIcon(R.drawable.ic_map_unselected);
-        menu.findItem(R.id.search).setIcon(R.drawable.ic_search_unselected);
-        menu.findItem(R.id.category).setIcon(R.drawable.ic_category_unselected);
-        menu.findItem(R.id.profile).setIcon(R.drawable.__2x);
+        menu.findItem(R.id.home).setIcon(R.drawable.home_unselected_3x);
+        menu.findItem(R.id.map).setIcon(R.drawable.map_3x);
+        menu.findItem(R.id.search).setIcon(R.drawable.search_3x);
+        menu.findItem(R.id.category).setIcon(R.drawable.category_3x);
+        menu.findItem(R.id.profile).setIcon(R.drawable._2_3x);
 
         if (Selected == 0)
-            menu.getItem(Selected).setIcon(R.drawable.ic_home_selected);
+            menu.getItem(Selected).setIcon(R.drawable.home_sel_3x);
         if (Selected == 1)
-            menu.getItem(Selected).setIcon(R.drawable.ic_map_selected);
+            menu.getItem(Selected).setIcon(R.drawable.map_sel_3x);
         if (Selected == 2)
-            menu.getItem(Selected).setIcon(R.drawable.ic_search_selected);
+            menu.getItem(Selected).setIcon(R.drawable.search_sel_3x);
         if (Selected == 3)
-            menu.getItem(Selected).setIcon(R.drawable.ic_category_selected);
+            menu.getItem(Selected).setIcon(R.drawable.category_sel_3x);
         if (Selected == 4)
-            menu.getItem(Selected).setIcon(R.drawable.__2x);
+            menu.getItem(Selected).setIcon(R.drawable._2_3x);
     }
 
     public static void BottomNavigationStoreMenu_icons_change(Menu menu, int Selected) {
-        menu.findItem(R.id.storeHome).setIcon(R.drawable.ic_home_unselected);
-        menu.findItem(R.id.storeChat).setIcon(R.drawable.ic_chat_unselected);
-        menu.findItem(R.id.storeProfile).setIcon(R.drawable.__2x);
+        menu.findItem(R.id.storeHome).setIcon(R.drawable.home_unselected_3x);
+        menu.findItem(R.id.storeChat).setIcon(R.drawable.chat_3x);
+        menu.findItem(R.id.storeProfile).setIcon(R.drawable._2_3x);
 
         if (Selected == 0)
-            menu.getItem(Selected).setIcon(R.drawable.ic_home_selected);
+            menu.getItem(Selected).setIcon(R.drawable.home_sel_3x);
         if (Selected == 1)
-            menu.getItem(Selected).setIcon(R.drawable.ic_chat_selected);
+            menu.getItem(Selected).setIcon(R.drawable.chat_selected_3x);
         if (Selected == 2)
-            menu.getItem(Selected).setIcon(R.drawable.__2x);
+            menu.getItem(Selected).setIcon(R.drawable._2_3x);
     }
 
     public static void switchVisibility(View view) {

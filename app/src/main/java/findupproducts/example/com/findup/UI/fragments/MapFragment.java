@@ -127,7 +127,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             for (Store store : filteredMapDataStore){
                 LatLng storeLoc = new LatLng(store.getStore_latitude(),store.getStore_longitude());
                 googleMap.addMarker(new MarkerOptions().position(storeLoc).icon(
-                        BitmapDescriptorFactory.fromResource(R.drawable.ic_map)
+                        BitmapDescriptorFactory.fromResource(R.drawable.combined_shape_3x)
                 ).title(store.getStore_name()));
                 googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(storeLoc,4));
             }

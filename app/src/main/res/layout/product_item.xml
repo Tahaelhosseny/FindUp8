@@ -69,7 +69,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:drawablePadding="3dp"
-        android:drawableStart="@drawable/chat_comment_oval_speech_bubble_with_text_lines_3x"
+        android:drawableStart="@drawable/chat_comment_oval_speech_bubble_with_text_lines"
         android:fontFamily="@font/sfcompactdisplay_light"
         android:text="567"
         android:textColor="@color/material_color_grey_600"
@@ -89,7 +89,7 @@
         android:textSize="18sp"
         android:textColor="@color/material_color_grey_600"
         android:drawablePadding="3dp"
-        android:drawableStart="@drawable/ic_like"
+        android:drawableStart="@drawable/like"
         app:layout_constraintStart_toEndOf="@id/productNumComments"
         app:layout_constraintTop_toBottomOf="@+id/productItemPrice" />
 

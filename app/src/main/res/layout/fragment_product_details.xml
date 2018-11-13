@@ -99,7 +99,7 @@
                     android:padding="5dp"
                     app:layout_constraintStart_toStartOf="@+id/productStoreTxt"
                     app:layout_constraintTop_toBottomOf="@+id/productStoreTxt"
-                    app:srcCompat="@drawable/ic_like" />
+                    app:srcCompat="@drawable/like_3x" />
 
                 <TextView
                     android:id="@+id/product_like_count"

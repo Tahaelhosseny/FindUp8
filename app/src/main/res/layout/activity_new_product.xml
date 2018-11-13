@@ -52,7 +52,7 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="@dimen/activity_vertical_margin"
                 android:layout_marginBottom="@dimen/activity_vertical_margin"
-                app:srcCompat="@drawable/ic_accountpic"
+                app:srcCompat="@drawable/group_5_2x"
                 android:background="@null"
                 android:contentDescription="@string/add_product"/>
 

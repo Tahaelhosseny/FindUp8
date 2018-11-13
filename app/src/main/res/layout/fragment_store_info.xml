@@ -156,7 +156,7 @@
             android:layout_height="55dp"
             android:layout_marginTop="8dp"
             android:padding="5dp"
-            app:srcCompat="@drawable/ic_mail_icon"
+            app:srcCompat="@drawable/mail_3x"
             app:layout_constraintStart_toStartOf="@id/contactTxt"
             app:layout_constraintTop_toBottomOf="@+id/contactTxt" />
 
@@ -176,7 +176,7 @@
             android:layout_height="match_parent"
             android:layout_marginTop="8dp"
             android:padding="5dp"
-            app:srcCompat="@drawable/ic_chat_icon"
+            app:srcCompat="@drawable/chat2_3x"
             app:layout_constraintStart_toEndOf="@id/siteImg"
             app:layout_constraintTop_toBottomOf="@+id/contactTxt" />
 
@@ -186,7 +186,7 @@
             android:layout_height="55dp"
             android:layout_marginTop="8dp"
             android:padding="5dp"
-            app:srcCompat="@drawable/ic_phone_icon"
+            app:srcCompat="@drawable/phone_3x"
             app:layout_constraintStart_toEndOf="@id/chatImg"
             app:layout_constraintTop_toBottomOf="@+id/contactTxt" />
 
@@ -196,7 +196,7 @@
             android:layout_height="55dp"
             android:layout_marginTop="8dp"
             android:padding="5dp"
-            app:srcCompat="@drawable/ic_twitter_icon"
+            app:srcCompat="@drawable/tiwitter_3x"
             app:layout_constraintStart_toEndOf="@id/phoneImg"
             app:layout_constraintTop_toBottomOf="@+id/contactTxt" />
 
@@ -206,7 +206,7 @@
             android:layout_height="55dp"
             android:layout_marginTop="8dp"
             android:padding="5dp"
-            app:srcCompat="@drawable/ic_snap_icon"
+            app:srcCompat="@drawable/snap_3x"
             app:layout_constraintStart_toEndOf="@id/twitterImg"
             app:layout_constraintTop_toBottomOf="@+id/contactTxt" />
 
@@ -407,7 +407,7 @@
                 android:textAllCaps="false"
                 android:background="@drawable/get_directions_button_bg"
                 android:drawablePadding="20dp"
-                android:drawableStart="@drawable/__2x"
+                android:drawableStart="@drawable/_2_3x"
                 android:paddingEnd="20dp"
                 android:paddingStart="10dp"
                 android:text="@string/get_directions"

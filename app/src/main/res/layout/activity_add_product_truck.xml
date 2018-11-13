@@ -62,9 +62,9 @@
         android:clickable="true">
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_add"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:srcCompat="@drawable/dark2___add_3x"
             android:layout_gravity="center_vertical"
             android:padding="@dimen/activity_vertical_margin"
             android:contentDescription="@string/add_your_first_product" />

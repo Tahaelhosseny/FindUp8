@@ -42,7 +42,7 @@
             android:layout_height="match_parent"
             android:scaleType="fitXY"
             app:cardCornerRadius="20dp"
-            android:src="@drawable/ic_main_icon"/>
+            android:src="@mipmap/ic_launcher"/>
 
     </android.support.v7.widget.CardView>
 </LinearLayout>
