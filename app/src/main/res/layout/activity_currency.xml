@@ -47,7 +47,7 @@
             app:layout_constraintBottom_toTopOf="@+id/pic_account"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:drawableStart="@drawable/baseline_close_black_36" />
+            android:drawableStart="@drawable/baseline_close_black_18" />
     </android.support.v7.widget.Toolbar>
 
     <EditText

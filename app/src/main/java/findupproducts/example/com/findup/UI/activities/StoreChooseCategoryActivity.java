@@ -46,7 +46,7 @@ public class StoreChooseCategoryActivity extends AppCompatActivity {
             Toast.makeText(this, "Choose Category", Toast.LENGTH_LONG).show();
             return;
         }
-        Toast.makeText(this, expandableSection.getTitle(), Toast.LENGTH_LONG).show();
+        Toast.makeText(this, ""+expandableSection.getId(), Toast.LENGTH_LONG).show();
         if (expandableSection.getTitle().equals("EVENTS"))
             startActivity(new Intent(view.getContext(), StoreEventsActivity.class));
         else {

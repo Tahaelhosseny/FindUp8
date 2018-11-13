@@ -26,8 +26,8 @@
             android:background="@null"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:drawableStart="@drawable/baseline_close_black_36"
-            android:drawableLeft="@drawable/baseline_close_black_36" />
+            android:drawableStart="@drawable/baseline_close_black_18"
+            android:drawableLeft="@drawable/baseline_close_black_18" />
     </android.support.v7.widget.Toolbar>
 
     <LinearLayout

@@ -141,7 +141,7 @@ public class NewProductActivity extends AppCompatActivity {
                 case (1) : {
                     selectedProduct = data.getData();
                     assert selectedProduct != null;
-                    Bitmap bitmap = BitmapFactory.decodeFile(selectedProduct.getPath());
+                    Bitmap bitmap = BitmapFactory.decodeFile(getImgPath(selectedProduct));
                     pic_product.setImageBitmap(bitmap);
                     break;
                 }
@@ -172,9 +172,9 @@ public class NewProductActivity extends AppCompatActivity {
                 editText_product_price.getText().toString(),
                 editText_productName.getText().toString(),
                 editText_productDescription.getText().toString(),
-                selectedProduct.getPath());
+                getImgPath(selectedProduct));
 
-        File imgFile = new File(selectedProduct.getPath());
+        File imgFile = new File(getImgPath(selectedProduct));
         RequestBody requestImgFile =
                 RequestBody.create(MediaType.parse("image/png"), imgFile);
         MultipartBody.Part product_img =
@@ -204,7 +204,7 @@ public class NewProductActivity extends AppCompatActivity {
                     resultIntent.putExtra("pro_name", editText_productName.getText().toString());
                     resultIntent.putExtra("pro_desc", editText_productDescription.getText().toString());
                     resultIntent.putExtra("pro_price", editText_product_price.getText().toString());
-                    resultIntent.putExtra("pro_img", selectedProduct.getPath());
+                    resultIntent.putExtra("pro_img", getImgPath(selectedProduct));
                     setResult(Activity.RESULT_OK, resultIntent);
                     finish();
                 }
@@ -230,5 +230,13 @@ public class NewProductActivity extends AppCompatActivity {
     private boolean checkIfAlreadyhavePermission() {
         int result = ContextCompat.checkSelfPermission(this, android.Manifest.permission.WRITE_EXTERNAL_STORAGE);
         return result == PackageManager.PERMISSION_GRANTED;
+    }
+
+    private String getImgPath(Uri imgUri){
+        Log.e("MyData", imgUri.getPath());
+        if (imgUri.getPath().contains(":"))
+            return imgUri.getPath().substring(imgUri.getPath().indexOf(":")+1);
+        else
+            return imgUri.getPath();
     }
 }

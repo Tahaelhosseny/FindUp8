@@ -39,7 +39,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="4dp"
             android:background="@null"
-            android:drawableLeft="@drawable/baseline_close_black_36"
+            android:drawableLeft="@drawable/baseline_close_black_18"
             android:drawablePadding="10dp"
             android:fontFamily="@font/sfcompactdisplay_medium"
             android:text="Notifications"
@@ -50,7 +50,7 @@
             app:layout_constraintBottom_toTopOf="@+id/pic_account"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:drawableStart="@drawable/baseline_close_black_36" />
+            android:drawableStart="@drawable/baseline_close_black_18" />
     </android.support.v7.widget.Toolbar>
 
     <TextView

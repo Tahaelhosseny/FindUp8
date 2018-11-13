@@ -177,6 +177,8 @@
                 android:layout_marginTop="@dimen/activity_vertical_margin"
                 android:background="@drawable/bg_button_rounded_accent"
                 android:text="@string/next"
+                android:fontFamily="@font/sfcompactdisplay_semibold"
+                android:textSize="18sp"
                 android:textAllCaps="false"
                 android:textColor="@color/colorWhite"
                 android:textStyle="bold"

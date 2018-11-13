@@ -110,6 +110,8 @@ public class ChatStoreViewModel extends Observable {
                     mMessageRecycler.scrollToPosition(response.body().getGetChatMessage().size()-1);
                     mMessageAdapter.notifyDataSetChanged();
                 }else {
+                    messageList.clear();
+                    mMessageAdapter.notifyDataSetChanged();
                     Toast.makeText(mContext, "No Chat with this store", Toast.LENGTH_SHORT).show();
                 }
             }

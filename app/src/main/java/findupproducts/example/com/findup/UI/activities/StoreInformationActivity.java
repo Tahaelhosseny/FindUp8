@@ -60,6 +60,9 @@ public class StoreInformationActivity extends AppCompatActivity {
             }
         }
 
+        if (getIntent().hasExtra("cat_id"))
+            createStore.setStore_cat_id(""+getIntent().getIntExtra("cat_id",-1));
+
         imgLogo = findViewById(R.id.pic_logo);
         imgBanner = findViewById(R.id.pic_banner);
         imgLogo.setOnClickListener(new View.OnClickListener() {

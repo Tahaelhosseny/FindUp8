@@ -100,7 +100,7 @@
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:layout_margin="5dp"
-                android:background="@drawable/fav_3x"
+                android:background="@drawable/send_msg"
                 android:clickable="true"
                 android:gravity="center"
                 app:layout_constraintBottom_toBottomOf="parent"

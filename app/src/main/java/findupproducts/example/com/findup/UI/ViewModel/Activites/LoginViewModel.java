@@ -128,7 +128,7 @@ public class LoginViewModel extends Observable {
         Toast.makeText(mContext, ""+user.getId(), Toast.LENGTH_SHORT).show();
         sharedPrefManger.setIsLoggedInAsCustomer(true);
         sharedPrefManger.setUSer_name(user.getName());
-        sharedPrefManger.setLoginType(user.getLogin_type());
+        sharedPrefManger.setLoginType("user");
     }
     private void LoginStoreAccepted(User user,String pass){
         SharedPrefManger sharedPrefManger = new SharedPrefManger(mContext);
@@ -140,7 +140,7 @@ public class LoginViewModel extends Observable {
         sharedPrefManger.setStore_banner(user.getStore_banner());
         sharedPrefManger.setStore_logo(user.getStore_logo());
         sharedPrefManger.setStore_namee(user.getStore_name());
-        sharedPrefManger.setLoginType(user.getLogin_type());
+        sharedPrefManger.setLoginType("store");
     }
     private void saveStoreSettingSuccess(StoreSetting storeSetting){
         SharedPrefManger.setChatNotiFlagStore(storeSetting.getChat_noti_flag());

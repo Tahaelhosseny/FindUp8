@@ -116,7 +116,7 @@
             app:icon_size="25dp"
             android:elevation="@dimen/cardview_default_elevation"
             app:like_drawable="@drawable/fav"
-            app:unlike_drawable="@drawable/heart_on"
+            app:unlike_drawable="@drawable/heart_black_3x"
             android:id="@+id/star_button"
             android:layout_width="25dp"
             android:layout_height="25dp"

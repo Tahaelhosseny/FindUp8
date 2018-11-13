@@ -82,7 +82,8 @@ public class MainActivity extends AppCompatActivity implements LocationView{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        if (SharedPrefManger.getUser_ID() == 0) {
+        SharedPrefManger sharedPrefManger = new SharedPrefManger(this);
+        if (sharedPrefManger.getUser_ID() == 0) {
             FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(MainActivity.this, new OnSuccessListener<InstanceIdResult>() {
                 @Override
                 public void onSuccess(InstanceIdResult instanceIdResult) {

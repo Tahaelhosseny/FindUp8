@@ -36,7 +36,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="4dp"
             android:background="@null"
-            android:drawableLeft="@drawable/baseline_close_black_36"
+            android:drawableLeft="@drawable/baseline_close_black_18"
             android:drawablePadding="10dp"
             android:fontFamily="@font/sfcompactdisplay_medium"
             android:text="Category Stores"

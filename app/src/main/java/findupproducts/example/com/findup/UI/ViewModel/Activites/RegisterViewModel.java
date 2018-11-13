@@ -65,6 +65,8 @@ public class RegisterViewModel extends Observable {
     private void RegisterAccepted(String mobile , String password , int user_id){
         SharedPrefManger sharedPrefManger = new SharedPrefManger(mContext);
         sharedPrefManger.setIsLoggedIn(true);
+        sharedPrefManger.setIsLoggedIn(true);
+        sharedPrefManger.setLoginType("user");
         sharedPrefManger.setLogin_phone(mobile);
         sharedPrefManger.setLogin_password(password);
         sharedPrefManger.setUserID(user_id);

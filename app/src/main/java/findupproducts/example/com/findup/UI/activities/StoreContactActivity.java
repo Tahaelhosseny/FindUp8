@@ -32,6 +32,7 @@ import findupproducts.example.com.findup.R;
 import findupproducts.example.com.findup.models.City;
 import findupproducts.example.com.findup.models.Country;
 import findupproducts.example.com.findup.models.CreateStore;
+import findupproducts.example.com.findup.models.User;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -183,7 +184,7 @@ public class StoreContactActivity extends AppCompatActivity {
         MultipartBody.Part twitter_link = MultipartBody.Part.createFormData("twitter_link", createStore.getStore_twitter_link());
         MultipartBody.Part instegram_link = MultipartBody.Part.createFormData("instegram_link", createStore.getStore_instegram_link());
         MultipartBody.Part facebook_link = MultipartBody.Part.createFormData("facebook_link", createStore.getStore_facebook_link());
-        MultipartBody.Part cat_id = MultipartBody.Part.createFormData("cat_id", "1");
+        MultipartBody.Part cat_id = MultipartBody.Part.createFormData("cat_id", createStore.getStore_cat_id());
         MultipartBody.Part user_id = MultipartBody.Part.createFormData("parent_user_id", "1");
         MultipartBody.Part store_otherlang = MultipartBody.Part.createFormData("store_otherlang", createStore.getStore_otherlang());
         MultipartBody.Part store_tags = MultipartBody.Part.createFormData("store_tags", createStore.getStore_tags());
@@ -244,6 +245,8 @@ public class StoreContactActivity extends AppCompatActivity {
 
     private void nextStep(int storeId){
         SharedPrefManger sharedPrefManger = new SharedPrefManger(this);
+        sharedPrefManger.setIsLoggedIn(true);
+        sharedPrefManger.setLoginType("store");
         sharedPrefManger.setStoreID(storeId);
         Toast.makeText(StoreContactActivity.this,""+storeId,Toast.LENGTH_SHORT).show();
         if (radioLocation.getCheckedRadioButtonId() == R.id.radioDynamicLocation){
@@ -329,5 +332,18 @@ public class StoreContactActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void LoginStoreAccepted(User user, String pass){
+        SharedPrefManger sharedPrefManger = new SharedPrefManger(this);
+        sharedPrefManger.setIsLoggedIn(true);
+        sharedPrefManger.setLogin_phone(user.getStore_mobile());
+        sharedPrefManger.setLogin_password(pass);
+        sharedPrefManger.setStoreID(user.getId());
+        sharedPrefManger.setIsLoggedInAsCustomer(false);
+        sharedPrefManger.setStore_banner(user.getStore_banner());
+        sharedPrefManger.setStore_logo(user.getStore_logo());
+        sharedPrefManger.setStore_namee(user.getStore_name());
+        sharedPrefManger.setLoginType("store");
     }
 }

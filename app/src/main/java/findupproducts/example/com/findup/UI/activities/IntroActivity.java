@@ -169,7 +169,7 @@ public class IntroActivity extends AppCompatActivity {
         btn_creatAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(IntroActivity.this, StoreInformationActivity.class));
+                startActivity(new Intent(IntroActivity.this, StoreChooseCategoryActivity.class));
             }
         });
     }

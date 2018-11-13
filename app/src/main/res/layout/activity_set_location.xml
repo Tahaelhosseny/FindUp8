@@ -23,7 +23,7 @@
         android:layout_height="25dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:background="@drawable/baseline_close_black_36"
+        android:background="@drawable/baseline_close_black_18"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 

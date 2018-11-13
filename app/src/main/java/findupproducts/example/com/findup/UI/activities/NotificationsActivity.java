@@ -34,7 +34,7 @@ public class NotificationsActivity extends AppCompatActivity {
         if (getIntent().hasExtra("sysMSG")) {
             transaction.replace(R.id.notification_fragment_container, new SystemMsgFragment()).commit();
             //back_btn.setBackground(this.getResources().getDrawable(R.drawable.baseline_close_black_36));
-            back_btn.setCompoundDrawablesWithIntrinsicBounds(R.drawable.baseline_close_black_36, 0, 0, 0);
+            back_btn.setCompoundDrawablesWithIntrinsicBounds(R.drawable.baseline_close_black_18, 0, 0, 0);
 
             back_btn.setText(this.getResources().getString(R.string.system_message));
         } else {
