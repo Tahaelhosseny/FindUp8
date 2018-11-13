@@ -65,6 +65,7 @@
         <item name="colorControlActivated">@color/colorWhiteGrey</item>
         <item name="colorAccent">@color/colorWhiteGrey</item>
         <item name="android:textCursorDrawable">@drawable/color_black</item>
+        <item name="android:background">@drawable/bg_edit</item>
     </style>
 
     <style name="AppTheme.NoActionBar">

@@ -58,11 +58,15 @@ public class SetLocationActivity extends AppCompatActivity implements OnMapReady
     CheckBox[] days;
     StringBuilder selectedDays;
     String from, to;
+    boolean newStore = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_set_location);
+
+        if (getIntent().hasExtra("new_store"))
+            newStore = true;
 
         placeTxt = findViewById(R.id.locationDetailsTxt);
         fromTxt = findViewById(R.id.fromTxt);
@@ -192,7 +196,11 @@ public class SetLocationActivity extends AppCompatActivity implements OnMapReady
             public void onResponse(Call<StoreAddressResponse> call, Response<StoreAddressResponse> response) {
                 if(response.body().getSuccess() == 1){
                     Toast.makeText(SetLocationActivity.this, "Address Set Success", Toast.LENGTH_SHORT).show();
-                    SetLocationActivity.this.finish();
+                    if (newStore){
+                        startActivity(new Intent(SetLocationActivity.this, AddProductTruckActivity.class));
+                        SetLocationActivity.this.finish();
+                    }else
+                        SetLocationActivity.this.finish();
                 }else{
                     Toast.makeText(SetLocationActivity.this, "Error adding Event", Toast.LENGTH_SHORT).show();
                 }

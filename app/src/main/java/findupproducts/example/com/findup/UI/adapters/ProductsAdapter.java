@@ -71,8 +71,11 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
         holder.productNumLikes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                likeProduct(holder.product , holder.productNumLikes);
+                if(SharedPrefManger.getUser_ID() == 0){
+                    Toast.makeText(context, "Please Login First To Can Like Products", Toast.LENGTH_SHORT).show();
+                }else{
+                    likeProduct(holder.product , holder.productNumLikes);
+                }
             }
         });
         if (!holder.product.getProduct_banner().isEmpty()) {
@@ -83,7 +86,7 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
             Picasso.with(holder.productImg.getContext()).load(holder.product.getProduct_banner()).transform(transformation).placeholder(R.drawable.near_by_place_holder).into(holder.productImg);
         }
         if(holder.product.getIf_liked() == 1){
-            holder.productNumLikes.setCompoundDrawablesWithIntrinsicBounds(R.drawable.like ,0,0,0);
+            holder.productNumLikes.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_like ,0,0,0);
         }
 
     }
@@ -129,15 +132,17 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
                 if (response.body().getSuccess() == 1){
                     if(response.body().getData().get(0).getLike_case().equals("like")){
                         product.setIf_liked(1);
+                        int count = product.getProduct_likes_count();
                         DBHandler.likeProduct(product.getProduct_likes_count()+1 , product,1,context);
-                        textView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.like ,0,0,0);
-                        textView.setText(String.valueOf(product.getProduct_likes_count()+1));
+                        textView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_like ,0,0,0);
+                        textView.setText(String.valueOf(count+1));
                     }
                     if(response.body().getData().get(0).getLike_case().equals("unlike")){
                         product.setIf_liked(0);
+                        int count = product.getProduct_likes_count();
                         DBHandler.likeProduct(product.getProduct_comments_count()-1, product,0,context);
-                        textView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.like ,0,0,0);
-                        textView.setText(String.valueOf(product.getProduct_likes_count()-1));
+                        textView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_like ,0,0,0);
+                        textView.setText(String.valueOf(count -1));
                     }
                 }
             }

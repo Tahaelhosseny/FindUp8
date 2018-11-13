@@ -27,15 +27,12 @@ import findupproducts.example.com.findup.models.Event;
  */
 
 public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder> {
-
     private List<Event> events;
     private Context context;
-
     public EventsAdapter(Context context, List<Event> events) {
         this.context = context;
         this.events = events;
     }
-
     @NonNull
     @Override
     public EventsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -43,14 +40,11 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder
                 .inflate(R.layout.event_item, parent, false);
         return new EventsAdapter.ViewHolder(itemView);
     }
-
     public void setEvents(List<Event> events) {
         this.events = events;
     }
-
     @Override
     public void onBindViewHolder(@NonNull EventsAdapter.ViewHolder holder, int position) {
-
         holder.event = events.get(position);
         holder.eventName.setText(holder.event.getEvent_name());
         holder.eventDescription.setText(holder.event.getEvent_desc());
@@ -74,7 +68,6 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder
     public int getItemCount() {
         return events.size();
     }
-
     public class ViewHolder extends RecyclerView.ViewHolder {
         Event event;
         TextView eventName;
@@ -82,7 +75,6 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder
         TextView eventDescription;
         ImageView eventsItemImg;
         CardView cardView;
-
         public ViewHolder(View view) {
             super(view);
             eventName = view.findViewById(R.id.event_name);

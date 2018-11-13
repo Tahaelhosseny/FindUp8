@@ -123,13 +123,13 @@ public class Store {
     private String workDays;
 
     @Ignore
-    private String[] counriesList;
+    private List<Country> counriesList;
 
-    public String[] getCounriesList() {
+    public List<Country> getCounriesList() {
         return counriesList;
     }
 
-    public void setCounriesList(String[] counriesList) {
+    public void setCounriesList(List<Country> counriesList) {
         this.counriesList = counriesList;
     }
 

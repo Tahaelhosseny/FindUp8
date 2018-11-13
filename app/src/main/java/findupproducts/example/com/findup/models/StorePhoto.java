@@ -17,6 +17,7 @@ public class StorePhoto {
     @NonNull
     private int store_id;
 
+
     public StorePhoto(int photo_id, String photo_name, int store_id) {
         this.photo_id = photo_id;
         this.photo_name = photo_name;

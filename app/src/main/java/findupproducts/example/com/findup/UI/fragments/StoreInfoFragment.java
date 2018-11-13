@@ -88,7 +88,7 @@ public class StoreInfoFragment extends Fragment implements OnMapReadyCallback {
         storeInfoViewModel.bindPhotos(binding.storePhotosRecycler);
         storeInfoViewModel.bindStoreData(binding.aboutTxtDetails, binding.workTimeDaysInfoTxt, binding.workTimeInfoTxt,
                 binding.mailImg, binding.siteImg, binding.chatImg, binding.twitterImg, binding.snapImg,binding.showComments
-                );
+                , binding.phoneImg);
     }
     private void showRate(){
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(getActivity());

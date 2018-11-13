@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -29,6 +31,7 @@ public class SignupActivity extends AppCompatActivity {
     Spinner mobileSpinner;
     RegisterViewModel registerViewModel;
     ActivitySignupBinding registerBinding;
+    String phoneKey = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +46,7 @@ public class SignupActivity extends AppCompatActivity {
             public void RegisterLoadData() {
                 String name , phone , pass;
                 name = registerBinding.editTextUsername.getText().toString();
-                phone = registerBinding.editTextPhone.getRawText();
+                phone = phoneKey + registerBinding.editTextPhone.getRawText();
                 pass  = registerBinding.editTextPassword.getText().toString();
                 registerViewModel.sendRegisterRequest(name,pass , phone , extras.getString("Email"));
 
@@ -57,7 +60,7 @@ public class SignupActivity extends AppCompatActivity {
 
         editText_phone=findViewById(R.id.editText_phone);
         editText_password=findViewById(R.id.editText_password);
-        btn_login=findViewById(R.id.btn_login);
+//        btn_login=findViewById(R.id.btn_login);
         btn_signupBack=findViewById(R.id.btn_signupBack);
         mobileSpinner=findViewById(R.id.mobileSpinner);
         String[] items = new String[]{"+2", "+966", "+900"};
@@ -71,6 +74,18 @@ public class SignupActivity extends AppCompatActivity {
             }
         });
 
+        mobileSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                phoneKey = adapterView.getItemAtPosition(i).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
         pic_account.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -78,20 +93,13 @@ public class SignupActivity extends AppCompatActivity {
             }
         });
 
-//        btn_signup.setOnClickListener(new View.OnClickListener() {
+//        btn_login.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
-//                Toast.makeText(SignupActivity.this,"signup",Toast.LENGTH_SHORT).show();
+//                startActivity(new Intent(SignupActivity.this, LoginActivity.class));
+//                finish();
 //            }
 //        });
-
-        btn_login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(SignupActivity.this, LoginActivity.class));
-                finish();
-            }
-        });
 
         btn_signupBack.setOnClickListener(new View.OnClickListener() {
             @Override

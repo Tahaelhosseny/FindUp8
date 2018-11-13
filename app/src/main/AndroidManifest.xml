@@ -18,8 +18,8 @@
         android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
         android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
         android:windowSoftInputMode="stateHidden">
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -42,7 +42,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".UI.activities.LoginActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen">
@@ -104,7 +103,7 @@
         </activity>
         <activity
             android:name=".UI.activities.EventDetailsActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen"></activity>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
         <activity
             android:name=".UI.activities.StoreDetailsActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
@@ -169,7 +168,7 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
         <activity
             android:name=".UI.activities.AddProductTruckActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen"></activity>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
         <activity
             android:name=".UI.activities.AddProductCraftActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
@@ -181,7 +180,7 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
         <activity
             android:name=".UI.activities.StoreChooseCategoryActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen"></activity>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
         <activity
             android:name=".UI.activities.StoreCraftCategoryActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
@@ -203,9 +202,7 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
         <activity
             android:name=".UI.activities.MainStoreActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" >
-
-        </activity>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen"></activity>
         <activity
             android:name=".UI.activities.ChatWithStoreActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
@@ -237,8 +234,10 @@
         <activity
             android:name=".UI.activities.CategeoryStoresAcivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
-        <activity android:name=".UI.activities.SetLocationActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen"></activity>
+        <activity
+            android:name=".UI.activities.SetLocationActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
+
         <service
             android:name=".Helper.FirebaseMessaging.MyFirebaseMessagingService"
             android:exported="false">
@@ -246,6 +245,9 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
+
+        <activity android:name=".UI.activities.SpecificChatWithStore"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen"/>
 
     </application>
 

@@ -74,7 +74,6 @@ public class MainActivity extends AppCompatActivity implements LocationView{
     public static List<Event> searchedEvents;
     public static List<Store> searchedStore;
 
-    Context context;
     Toolbar toolbar;
     private RxLocation rxLocation;
     FragmentTransaction transaction;
@@ -83,20 +82,36 @@ public class MainActivity extends AppCompatActivity implements LocationView{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(MainActivity.this, new OnSuccessListener<InstanceIdResult>() {
-            @Override
-            public void onSuccess(InstanceIdResult instanceIdResult) {
-                String token = instanceIdResult.getToken();
-                updateToken(token);
-                Log.e("Token" , token);
-                Toast.makeText(MainActivity.this, ""+token, Toast.LENGTH_LONG).show();
+        if (SharedPrefManger.getUser_ID() == 0) {
+            FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(MainActivity.this, new OnSuccessListener<InstanceIdResult>() {
+                @Override
+                public void onSuccess(InstanceIdResult instanceIdResult) {
+                    String token = instanceIdResult.getToken();
+//                    updateToken(token);
+                    Log.e("Token" , token);
+//                    Toast.makeText(MainActivity.this, ""+token, Toast.LENGTH_LONG).show();
 
-            }
-        });
+                }
+            });
+
+        }else {
+            FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(MainActivity.this, new OnSuccessListener<InstanceIdResult>() {
+                @Override
+                public void onSuccess(InstanceIdResult instanceIdResult) {
+                    String token = instanceIdResult.getToken();
+                    updateToken(token);
+                    Log.e("Token" , token);
+                    Toast.makeText(MainActivity.this, ""+token, Toast.LENGTH_LONG).show();
+
+                }
+            });
+        }
         filterData = new FilterQueries();
         filteredMapDataEvent = new ArrayList<>();
         filteredMapDataStore = new ArrayList<>();
-        searchedEvents = new ArrayList<>(); searchedProducts = new ArrayList<>(); searchedStore = new ArrayList<>();
+        searchedEvents = new ArrayList<>();
+        searchedProducts = new ArrayList<>();
+        searchedStore = new ArrayList<>();
         toolbar =  findViewById(R.id.toolbar_top);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
@@ -169,7 +184,11 @@ public class MainActivity extends AppCompatActivity implements LocationView{
                             public void run() {
                                 searchedEvents.clear();
                                 for (int i = 0 ; i < val.size() ; i++){
-                                    searchedEvents.add(val.get(i));
+                                    if(i < 5){
+                                        searchedEvents.add(val.get(i));
+                                    }else{
+                                        break;
+                                    }
                                 }
                                 Log.e("F Event Size" , String.valueOf(searchedEvents.size()));
                             }
@@ -193,7 +212,11 @@ public class MainActivity extends AppCompatActivity implements LocationView{
                             public void run() {
                                 searchedProducts.clear();
                                 for (int i = 0 ; i < val.size() ; i++){
-                                    searchedProducts.add(val.get(i));
+                                    if(i < 5){
+                                        searchedProducts.add(val.get(i));
+                                    }else{
+                                        break;
+                                    }
                                 }
                                 Log.e("F Event Size" , String.valueOf(searchedProducts.size()));
                             }
@@ -220,7 +243,11 @@ public class MainActivity extends AppCompatActivity implements LocationView{
                             public void run() {
                                 searchedStore.clear();
                                 for (int i = 0 ; i < val.size() ; i++){
-                                    searchedStore.add(val.get(i));
+                                    if(i < 5){
+                                        searchedStore.add(val.get(i));
+                                    }else{
+                                        break;
+                                    }
                                 }
                                 Log.e("Store Size " , String.valueOf(searchedStore.size()));
                             }
@@ -303,7 +330,8 @@ public class MainActivity extends AppCompatActivity implements LocationView{
                 Log.i("CurrentFragment",fragment.getClass().getName());
                 BottomBarFragment.adapter.notifyDataSetChanged();
             }catch (Exception e){
-                transaction.replace(R.id.main_toolbar_container, new MainFragment(), new MainFragment().getClass().getName()).commit();
+//                transaction.replace(R.id.main_toolbar_container, new MainFragment(), new MainFragment().getClass().getName()).commit();
+
             }
 
         }

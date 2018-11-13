@@ -59,7 +59,8 @@ public class EventDetailsFragment extends Fragment implements OnMapReadyCallback
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        viewModel.BindUI(binding.eventName , binding.storeName , binding.imageView2 , binding.dateTxt , binding.locationTxt , binding.ticketPriceTxt , binding.aboutTxtDetails);
+        viewModel.BindUI(binding.eventName , binding.storeName , binding.imageView2 , binding.dateTxt
+                , binding.locationTxt , binding.ticketPriceTxt , binding.aboutTxtDetails);
     }
 
     private void LoadEventData(String event_id) {

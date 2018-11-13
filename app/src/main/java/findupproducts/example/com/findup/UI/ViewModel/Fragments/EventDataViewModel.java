@@ -65,6 +65,7 @@ public class EventDataViewModel {
                                 location.setText(val.get(i).getEvent_address());
                                 price.setText(val.get(i).getEvent_cost());
                                 about.setText(val.get(i).getEvent_desc());
+                                Toast.makeText(mContext, ""+val.get(i).getEvent_photo(), Toast.LENGTH_SHORT).show();
                                 Picasso.with(mContext).load(val.get(i).getEvent_photo()).into(event_banner);
                             }
                         }

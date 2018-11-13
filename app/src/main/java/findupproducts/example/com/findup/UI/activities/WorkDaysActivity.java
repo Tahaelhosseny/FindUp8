@@ -77,8 +77,6 @@ public class WorkDaysActivity extends Activity {
                 resultIntent.putExtra("days", listOfDays.toArray(new String[0]));
                 setResult(Activity.RESULT_OK, resultIntent);
                 finish();
-
-                ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
             }
         });
     }

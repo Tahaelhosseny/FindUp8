@@ -130,13 +130,6 @@ public class StoreInformationActivity extends AppCompatActivity {
                     createStore.setStore_banner(getImgPath(selectedBanner));
                     break;
                 }
-                /*case (PICK_WORK_DAYS) : {
-                    String[] days = data.getStringArrayExtra("days");
-                    workDays =  Arrays.toString(days);
-                    txt_workdays.setText(workDays);
-                    createStore.setWorkDays(workDays);
-                    break;
-                }*/
             }
         }
     }
@@ -154,10 +147,21 @@ public class StoreInformationActivity extends AppCompatActivity {
     }
 
     private void nextStep(){
+        String storeLang, storeTags, storeDesc;
+        storeLang = "";
+        storeTags = "";
+        storeDesc = "";
+
         if (TextUtils.isEmpty(editText_storeName.getText().toString())){
             Toast.makeText(this, "Enter Store Name", Toast.LENGTH_LONG).show();
             return;
-        } else if (TextUtils.isEmpty(editText_otherLanguage.getText().toString())){
+        } else if (selectedLogo == null){
+            Toast.makeText(this, "Select Logo", Toast.LENGTH_LONG).show();
+            return;
+        } else if (selectedBanner == null){
+            Toast.makeText(this, "Select Banner", Toast.LENGTH_LONG).show();
+            return;
+        }/*else if (TextUtils.isEmpty(editText_otherLanguage.getText().toString())){
             Toast.makeText(this, "Enter Language", Toast.LENGTH_LONG).show();
             return;
         } else if (TextUtils.isEmpty(editText_tags.getText().toString())){
@@ -166,12 +170,12 @@ public class StoreInformationActivity extends AppCompatActivity {
         } else if (TextUtils.isEmpty(editText_description.getText().toString())){
             Toast.makeText(this, "Enter Description", Toast.LENGTH_LONG).show();
             return;
-        }
+        }*/
 
         createStore.setStore_name(editText_storeName.getText().toString());
-        createStore.setStore_otherlang(editText_otherLanguage.getText().toString());
-        createStore.setStore_tags(editText_tags.getText().toString());
-        createStore.setStore_desc(editText_description.getText().toString());
+        createStore.setStore_otherlang(storeLang);
+        createStore.setStore_tags(storeTags);
+        createStore.setStore_desc(storeDesc);
 
         Intent transferIntent = new Intent(StoreInformationActivity.this, StoreContactActivity.class);
         transferIntent.putExtra("next_id", getIntent().getExtras().getInt("next_id"));
@@ -185,11 +189,7 @@ public class StoreInformationActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<CountriesResponse> call, Response<CountriesResponse> response) {
                 Log.e("MyData", new Gson().toJson(response.body().getData()));
-                String[] c = new String[response.body().getData().size()];
-                for (int i = 0; i < response.body().getData().size(); i++)
-                    c[i] = response.body().getData().get(i).getName_en();
-
-                createStore.setCounriesList(c);
+                createStore.setCounriesList(response.body().getData());
             }
 
             @Override
