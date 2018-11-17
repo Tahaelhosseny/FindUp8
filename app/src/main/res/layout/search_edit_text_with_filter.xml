@@ -30,12 +30,11 @@
 
         <ImageButton
             android:id="@+id/search_filter"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
             android:layout_marginEnd="5dp"
             android:layout_weight="1"
             android:background="@android:color/transparent"
-            android:minWidth="40dp"
             android:layout_gravity="center"
             app:srcCompat="@drawable/filterbtn_3x" />
 </LinearLayout>

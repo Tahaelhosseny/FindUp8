@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -27,7 +28,7 @@ public class SignupActivity extends AppCompatActivity {
     ImageButton pic_account;
     EditText editText_username, editText_password;
     MaskEditText editText_phone;
-    Button btn_login, btn_signup, btn_signupBack;
+    Button btn_signupBack;
     Spinner mobileSpinner;
     RegisterViewModel registerViewModel;
     ActivitySignupBinding registerBinding;
@@ -41,15 +42,33 @@ public class SignupActivity extends AppCompatActivity {
         registerBinding.setLoginview(registerViewModel);
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
+        registerBinding.editTextMail.setText(extras.getString("Email"));
         registerBinding.setPresenter(new RegisterPresenter() {
             @Override
             public void RegisterLoadData() {
-                String name , phone , pass;
+                String name , phone , pass , mail;
                 name = registerBinding.editTextUsername.getText().toString();
                 phone = phoneKey + registerBinding.editTextPhone.getRawText();
                 phone = phone.replace("+","");
                 pass  = registerBinding.editTextPassword.getText().toString();
-                registerViewModel.sendRegisterRequest(name,pass , phone , extras.getString("Email"));
+                mail = registerBinding.editTextMail.getText().toString();
+                if (TextUtils.isEmpty(name)){
+                    Toast.makeText(SignupActivity.this, "Please Enter User Name", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (TextUtils.isEmpty(mail)){
+                    Toast.makeText(SignupActivity.this, "Please Enter Email", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (TextUtils.isEmpty(phone)){
+                    Toast.makeText(SignupActivity.this, "Please Enter Phone", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (TextUtils.isEmpty(pass)){
+                    Toast.makeText(SignupActivity.this, "Please Enter Password", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                registerViewModel.sendRegisterRequest(name,pass , phone , mail);
 
             }
         });
@@ -57,11 +76,8 @@ public class SignupActivity extends AppCompatActivity {
         editText_username=findViewById(R.id.editText_username);
         Toast.makeText(this, ""+extras.getString("Name"), Toast.LENGTH_LONG).show();
         editText_username.setText(extras.getString("Name"));
-
-
         editText_phone=findViewById(R.id.editText_phone);
         editText_password=findViewById(R.id.editText_password);
-//        btn_login=findViewById(R.id.btn_login);
         btn_signupBack=findViewById(R.id.btn_signupBack);
         mobileSpinner=findViewById(R.id.mobileSpinner);
         String[] items = new String[]{"+2", "+966", "+900"};
@@ -74,7 +90,6 @@ public class SignupActivity extends AppCompatActivity {
                 return true;
             }
         });
-
         mobileSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -93,14 +108,6 @@ public class SignupActivity extends AppCompatActivity {
                 Toast.makeText(SignupActivity.this,"add pic",Toast.LENGTH_SHORT).show();
             }
         });
-
-//        btn_login.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(new Intent(SignupActivity.this, LoginActivity.class));
-//                finish();
-//            }
-//        });
 
         btn_signupBack.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -89,7 +89,6 @@ public class EditProfileActivity extends AppCompatActivity {
                 int account_id = SharedPrefManger.getUser_ID();
                 int store_id = SharedPrefManger.getStore_ID();
                 String old_password = SharedPrefManger.getLogin_password();
-//                Toast.makeText(EditProfileActivity.this, ""+old_password, Toast.LENGTH_SHORT).show();
                 String newName = activityEditProfileBinding.editTextUsername.getText().toString();
                 String phone = activityEditProfileBinding.editTextPhone.getRawText();
                 String new_password = activityEditProfileBinding.editTextPassword.getText().toString();

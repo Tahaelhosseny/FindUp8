@@ -48,8 +48,9 @@ public class LoginViewModel extends Observable {
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                 Log.e("MyData", new Gson().toJson(response.body()));
                 if (response.body().getSuccess() == 1 && response.body().getData().get(0).getLogin_type().equals("User")) {
-                    LoginAccepted(response.body().getUser_data().get(0), password);
-                    saveUserSettings(response.body().getUser_data().get(0).getId());
+                    User user = response.body().getUser_data().get(0);
+                    LoginAccepted(user , phone , password);
+                    saveUserSettings(user.getId());
                     mContext.startActivity(new Intent(mContext, MainActivity.class));
 
                 } else if (response.body().getSuccess() == 1 && response.body().getData().get(0).getLogin_type().equals("Store")) {
@@ -119,16 +120,15 @@ public class LoginViewModel extends Observable {
         SharedPrefManger.setUserLanguage(userSetting.getLanguage());
         SharedPrefManger.setUserSettingsId(userSetting.getSetting_id());
     }
-    private void LoginAccepted(User user,String pass){
-        SharedPrefManger sharedPrefManger = new SharedPrefManger(mContext);
-        sharedPrefManger.setIsLoggedIn(true);
-        sharedPrefManger.setLogin_phone(user.getMobile());
-        sharedPrefManger.setLogin_password(pass);
-        sharedPrefManger.setUserID(user.getId());
-        Toast.makeText(mContext, ""+user.getId(), Toast.LENGTH_SHORT).show();
-        sharedPrefManger.setIsLoggedInAsCustomer(true);
-        sharedPrefManger.setUSer_name(user.getName());
-        sharedPrefManger.setLoginType("user");
+    private void LoginAccepted(User user,String email ,String pass){
+        SharedPrefManger.setIsLoggedIn(true);
+        SharedPrefManger.setLogin_phone(user.getMobile());
+        SharedPrefManger.setLogin_password(pass);
+        SharedPrefManger.setUser_mail(email);
+        SharedPrefManger.setUserID(user.getId());
+        SharedPrefManger.setIsLoggedInAsCustomer(true);
+        SharedPrefManger.setUSer_name(user.getName());
+        SharedPrefManger.setLoginType("user");
     }
     private void LoginStoreAccepted(User user,String pass){
         SharedPrefManger sharedPrefManger = new SharedPrefManger(mContext);

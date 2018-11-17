@@ -15,6 +15,7 @@ import findupproducts.example.com.findup.Helper.Remote.ResponseModel.VerifyCodeR
 import findupproducts.example.com.findup.Helper.SharedPrefManger;
 import findupproducts.example.com.findup.Helper.UI_Utility;
 import findupproducts.example.com.findup.UI.activities.ForgotPasswordActivity;
+import findupproducts.example.com.findup.UI.activities.LoginActivity;
 import findupproducts.example.com.findup.UI.activities.VerifyCodeActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -33,9 +34,13 @@ public class VerifyResetPassCodeViewModel extends Observable {
             public void onResponse(Call<VerifyCodeResponse> call, Response<VerifyCodeResponse> response) {
                 alertDialog.dismiss();
                 if(response.body().getSuccess() == 1){
-                    Intent intent = new Intent(mContext , ForgotPasswordActivity.class);
-                    intent.putExtra("phone" , mobile);
-                    mContext.startActivity(intent);
+                    if(SharedPrefManger.getVerifyType().equals("register")){
+                        mContext.startActivity(new Intent(mContext , LoginActivity.class));
+                    }else {
+                        Intent intent = new Intent(mContext, ForgotPasswordActivity.class);
+                        intent.putExtra("phone", mobile);
+                        mContext.startActivity(intent);
+                    }
                 }else {
                     Toast.makeText(mContext, ""+response.body().getError_msg(), Toast.LENGTH_SHORT).show();
                 }

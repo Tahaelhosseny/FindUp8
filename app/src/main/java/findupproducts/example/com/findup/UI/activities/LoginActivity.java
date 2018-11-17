@@ -4,9 +4,12 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Toast;
+
 import findupproducts.example.com.findup.UI.Presenter.Activities.LoginPresenter;
 import findupproducts.example.com.findup.UI.ViewModel.Activites.LoginViewModel;
 import findupproducts.example.com.findup.databinding.ActivityLoginBinding;
@@ -26,36 +29,20 @@ public class LoginActivity extends AppCompatActivity {
         binding.setPresenter(new LoginPresenter() {
             @Override
             public void LoginLoadData() {
-                String phone = binding.editTextPhone.getRawText();
+                String phone = binding.editTextPhone.getText().toString();
                 String pass  = binding.editTextPassword.getText().toString();
-                phone = phoneKey + phone;
-                phone = phone.replace("+","");
+                if(TextUtils.isEmpty(phone)){
+                    Toast.makeText(LoginActivity.this, "Please Enter Email", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if(TextUtils.isEmpty(pass)){
+                    Toast.makeText(LoginActivity.this, "Please Enter Password", Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 loginViewModel.sendLoginRequest(phone,pass);
             }
         });
 
-        String[] items = new String[]{"+2", "+966", "+900"};
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.spinner_item, items);
-        binding.mobileSpinner.setAdapter(adapter);
-        binding.editTextPhone.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View view) {
-                binding.mobileSpinner.performClick();
-                return true;
-            }
-        });
-
-        binding.mobileSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                phoneKey = adapterView.getItemAtPosition(i).toString();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
 
         binding.btnForgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override

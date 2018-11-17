@@ -13,6 +13,7 @@ import android.widget.TextView;
 import findupproducts.example.com.findup.Helper.SharedPrefManger;
 import findupproducts.example.com.findup.R;
 import findupproducts.example.com.findup.UI.activities.AddProductTruckActivity;
+import findupproducts.example.com.findup.UI.activities.ChatWithStoreActivity;
 import findupproducts.example.com.findup.UI.activities.NotificationsActivity;
 import findupproducts.example.com.findup.UI.activities.ProfileChatsActivity;
 import findupproducts.example.com.findup.UI.activities.SettingsActivity;
@@ -51,7 +52,7 @@ public class ProfileFragment extends Fragment {
         btn_chats.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getActivity(), ProfileChatsActivity.class));
+                startActivity(new Intent(getActivity(), ChatWithStoreActivity.class));
             }
         });
         btn_saved.setOnClickListener(new View.OnClickListener() {

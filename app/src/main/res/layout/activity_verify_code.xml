@@ -51,8 +51,8 @@
 
     <ImageView
         android:id="@+id/pic_account"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginBottom="16dp"
         android:layout_marginLeft="34dp"
         android:layout_marginStart="34dp"
@@ -80,7 +80,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/sfcompactdisplay_semibold"
-        android:hint="+9999999999"
+        android:hint="ex@example.com"
         android:textAlignment="center"
         android:textColor="@color/colorBlack"
         android:textSize="24sp"
@@ -212,6 +212,7 @@
         android:layout_marginTop="16dp"
         android:background="@drawable/bg_button_rounded_null"
         android:text="Check Code"
+        android:visibility="gone"
         android:onClick="@{(v)->presenter.checkVerifyResetCode()}"
         android:textAllCaps="false"
         android:textColor="@color/colorAccent"

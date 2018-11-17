@@ -97,6 +97,37 @@
             app:layout_constraintStart_toStartOf="@+id/textView2"
             app:layout_constraintTop_toBottomOf="@+id/textView" />
 
+        <TextView
+            android:id="@+id/txt_mail_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:drawablePadding="@dimen/login_text_padding_from_drawable"
+            android:drawableLeft="@drawable/__3x2"
+            android:text="Email"
+            android:textAlignment="center"
+            android:textColor="@color/colorWhiteGrey"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/editText_username"
+            app:layout_constraintTop_toBottomOf="@+id/editText_username" />
+
+        <EditText
+            android:id="@+id/editText_mail"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:inputType="textEmailAddress"
+            android:shadowColor="@color/colorBlack"
+            android:textColor="@color/colorBlack"
+            android:textColorHighlight="@color/colorWhiteGrey"
+            android:textColorLink="@color/colorWhiteGrey"
+            android:textCursorDrawable="@drawable/color_black"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:theme="@style/MyEditText"
+            app:layout_constraintStart_toStartOf="@+id/txt_mail_text"
+            app:layout_constraintTop_toBottomOf="@+id/txt_mail_text" />
+
 
         <TextView
             android:id="@+id/textView2"
@@ -112,7 +143,7 @@
             android:textColor="@color/colorWhiteGrey"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editText_username" />
+            app:layout_constraintTop_toBottomOf="@+id/editText_mail" />
 
 
         <Spinner

@@ -62,7 +62,7 @@ import retrofit2.http.Query;
 public interface ApiInterface {
     String HASH = CONST.API_HASH;
     @GET(ApiClient.PATH_URL+"reg_login?tag=login&HashSecure="+HASH)
-    Call<LoginResponse> LoginRequest(@Query("mobile") String mobile,@Query("password") String password);
+    Call<LoginResponse> LoginRequest(@Query("email") String mobile,@Query("password") String password);
 
     @GET(ApiClient.PATH_URL+"stores?tag=get_all_stores&HashSecure="+HASH)
     Call<StoresResponse> GetAllStores(@Query("account_id") String account_id);
@@ -73,7 +73,6 @@ public interface ApiInterface {
     @GET(ApiClient.PATH_URL+"user_profile?tag=get_all_currency&HashSecure="+HASH)
     Call<CurrencyResponse> getAllCurrency();
 
-
     @GET(ApiClient.PATH_URL+"user_profile?tag=get_user_notifications&HashSecure="+HASH)
     Call<NotificationResponse> getUserNotification(@Query("account_id") String account_id);
 
@@ -81,7 +80,7 @@ public interface ApiInterface {
     Call<GetAllSavedResponse> getUserSaved(@Query("account_id") int account_id);
 
     @GET(ApiClient.PATH_URL+"reg_login?tag=verify_code&HashSecure="+ HASH)
-    Call<VerifyCodeResponse> checkVerifyCode(@Query("mobile") String mobile , @Query("code") String code);
+    Call<VerifyCodeResponse> checkVerifyCode(@Query("email") String mobile , @Query("code") String code);
 
     @GET(ApiClient.PATH_URL+"reg_login?tag=forget_pass&HashSecure="+HASH)
     Call<AskCodeResponse> getResetPasswordCode(@Query("mobile") String mobile);

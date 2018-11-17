@@ -94,6 +94,28 @@ public class SharedPrefManger {
     public static String getUser_name() {
         return mSharedPref.getString("user_name", "");
     }
+
+
+    public static void setVerifyType(String value) {
+        mSharedPref.edit().putString("verify_type", value).apply();
+    }
+    public static String getVerifyType() {
+        return mSharedPref.getString("verify_type", "");
+    }
+
+
+    public static void setUser_mail(String value) {
+        mSharedPref.edit().putString("user_email", value).apply();
+    }
+    public static String getUser_mail() {
+        return mSharedPref.getString("user_email", "");
+    }
+    public static void setUser_img(String value) {
+        mSharedPref.edit().putString("user_name", value).apply();
+    }
+    public static String getUser_img() {
+        return mSharedPref.getString("user_image", "");
+    }
     public static void setStore_namee(String value) {
         mSharedPref.edit().putString("store_name", value).apply();
     }
@@ -205,7 +227,6 @@ public class SharedPrefManger {
         return mSharedPref.getInt("permant_currency" , 0);
     }
     //-----------------------------------------Notification -----------------------------------------------------------
-
      public static void saveToken(String token){
         mSharedPref.edit().putString("token" , token).apply();
      }

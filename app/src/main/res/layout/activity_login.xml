@@ -61,7 +61,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginStart="34dp"
         android:drawableStart="@drawable/group_3x"
-        android:text="@string/mobile"
+        android:text="Email"
         android:drawablePadding="@dimen/login_text_padding_from_drawable"
         android:textAlignment="center"
         android:textColor="@color/colorWhiteGrey"
@@ -69,24 +69,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar_login" />
 
-    <Spinner
-        android:id="@+id/mobileSpinner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@null"
-        android:spinnerMode="dialog"
-        android:paddingBottom="5dp"
-        app:layout_constraintBottom_toBottomOf="@+id/editText_phone"
-        app:layout_constraintStart_toStartOf="@+id/editText_phone" />
+
 
     <com.santalu.maskedittext.MaskEditText
         android:id="@+id/editText_phone"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:digits="0123456789"
-        android:inputType="phone"
-        android:paddingStart="55dp"
+        android:inputType="textEmailAddress"
         android:shadowColor="@color/colorBlack"
         android:textColor="@color/colorBlack"
         android:textColorHighlight="@color/colorWhiteGrey"
@@ -98,7 +88,7 @@
         app:layout_constraintEnd_toEndOf="@+id/editText_password"
         app:layout_constraintStart_toStartOf="@+id/textView4"
         app:layout_constraintTop_toBottomOf="@+id/textView4"
-        app:met_mask="| #### ## ## ###" />
+        />
 
 
     <TextView

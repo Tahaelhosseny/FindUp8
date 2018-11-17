@@ -68,50 +68,6 @@ public class ChatWithStoreFragment extends Fragment {
             }
         });
 
-//        final Dialog dialog = initDialog(products);
-//        final EditText msg = dialog.findViewById(R.id.chatboxEdit);
-//        final EditText org_msg = getActivity().findViewById(R.id.chatboxEdit);
-//        dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
-//            @Override
-//            public void onDismiss(DialogInterface d) {
-//                org_msg.setText(msg.getText().toString());
-//            }
-//        });
-//        dialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
-//            @Override
-//            public void onCancel(DialogInterface dialog) {
-//                org_msg.setText(msg.getText().toString());
-//            }
-//        });
-//
-//        Button addBtn = getActivity().findViewById(R.id.addBtn);
-//        addBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                msg.setText(org_msg.getText().toString());
-//                dialog.show();
-//                msg.setFocusable(true);
-//            }
-//        });
-    }
 
-    private Dialog initDialog(List<Product> products) {
-        Dialog dialog = new Dialog(getActivity(), R.style.fullScreeDialog);
-        dialog.setContentView(R.layout.send_products_chat_layout);
-        WindowManager.LayoutParams params = dialog.getWindow().getAttributes();
-        params.width = WindowManager.LayoutParams.MATCH_PARENT;
-        params.height = WindowManager.LayoutParams.WRAP_CONTENT;
-        params.gravity = Gravity.BOTTOM;
-        //params.flags &= ~WindowManager.LayoutParams.FLAG_DIM_BEHIND;
-
-        RecyclerView recyclerView = dialog.findViewById(R.id.reyclerview_send_products);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        SendChatProductsAdapter adapter = new SendChatProductsAdapter(getActivity(), products);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        dialog.getWindow().setAttributes(params);
-        dialog.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
-        return dialog;
     }
 }

@@ -23,7 +23,6 @@ import findupproducts.example.com.findup.databinding.ActivityVerifyCodeBinding;
 public class VerifyCodeActivity extends AppCompatActivity {
     ActivityVerifyCodeBinding activityVerifyCodeBinding;
     VerifyResetPassCodeViewModel verifyResetPassCodeViewModel;
-
     public int counter=30;
     TextView txtNumber, txtTimer;
     Button btnBack, btnResend , btnCheckCode;
@@ -35,14 +34,13 @@ public class VerifyCodeActivity extends AppCompatActivity {
         verifyResetPassCodeViewModel = new VerifyResetPassCodeViewModel(this);
         activityVerifyCodeBinding = DataBindingUtil.setContentView(this,R.layout.activity_verify_code);
         activityVerifyCodeBinding.setVerifyCode(verifyResetPassCodeViewModel);
-        String phone = getIntent().getStringExtra("mobile");
+        String phone = getIntent().getStringExtra("email");
         activityVerifyCodeBinding.txtNumber.setText(phone);
         activityVerifyCodeBinding.setPresenter(new VerifyResetPassPresenter() {
             @Override
             public void checkVerifyResetCode() {
 
             }
-
 
             @Override
             public void resendCodeAgain() {
@@ -176,7 +174,7 @@ public class VerifyCodeActivity extends AppCompatActivity {
 
             }
         });
-        new CountDownTimer(90000, 1000){
+        new CountDownTimer(500000, 1000){
 
             @Override
             public void onTick(long l) {
