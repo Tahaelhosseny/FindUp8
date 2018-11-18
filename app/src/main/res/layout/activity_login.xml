@@ -60,7 +60,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginStart="34dp"
-        android:drawableStart="@drawable/group_3x"
+        android:drawableStart="@drawable/__3x2"
         android:text="Email"
         android:drawablePadding="@dimen/login_text_padding_from_drawable"
         android:textAlignment="center"
@@ -130,6 +130,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:background="@null"
+        android:fontFamily="@font/sfcompactdisplay_light"
         android:drawableStart="@drawable/combined_shape_2x"
         android:text="@string/forget_password"
         android:textAllCaps="false"
@@ -137,21 +138,20 @@
         app:layout_constraintStart_toStartOf="@+id/editText_password"
         app:layout_constraintTop_toBottomOf="@+id/editText_password" />
 
-    <Button
-        android:id="@+id/btn_login"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/bg_button_rounded_accent"
-        android:text="@string/login"
-        android:textAllCaps="false"
-        android:textColor="@color/colorWhite"
-        android:textStyle="bold"
-        android:onClick="@{(v)->presenter.LoginLoadData()}"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_forgotPassword"/>
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="44dp"
+            android:background="@drawable/bg_button_rounded_accent"
+            android:onClick="@{(v)->presenter.LoginLoadData()}"
+            android:text="@string/login"
+            android:textAllCaps="false"
+            android:textColor="@color/colorWhite"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_forgotPassword" />
 
 
 </android.support.constraint.ConstraintLayout>

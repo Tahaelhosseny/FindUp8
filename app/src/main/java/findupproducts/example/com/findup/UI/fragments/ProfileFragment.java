@@ -52,7 +52,7 @@ public class ProfileFragment extends Fragment {
         btn_chats.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getActivity(), ChatWithStoreActivity.class));
+                startActivity(new Intent(getActivity(), ProfileChatsActivity.class));
             }
         });
         btn_saved.setOnClickListener(new View.OnClickListener() {

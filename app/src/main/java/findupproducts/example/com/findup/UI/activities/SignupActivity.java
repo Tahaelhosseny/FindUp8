@@ -75,7 +75,6 @@ public class SignupActivity extends AppCompatActivity {
         });
         pic_account=findViewById(R.id.pic_account);
         editText_username=findViewById(R.id.editText_username);
-        Toast.makeText(this, ""+extras.getString("Name"), Toast.LENGTH_LONG).show();
         editText_username.setText(extras.getString("Name"));
         editText_phone=findViewById(R.id.editText_phone);
         editText_password=findViewById(R.id.editText_password);

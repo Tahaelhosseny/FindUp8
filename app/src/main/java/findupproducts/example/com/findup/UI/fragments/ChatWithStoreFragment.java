@@ -39,12 +39,9 @@ public class ChatWithStoreFragment extends Fragment {
 
     FragmentChatWithGenBinding binding;
     ChatWithContactViewModel viewModel;
-
     public ChatWithStoreFragment() {
         // Required empty public constructor
     }
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -55,7 +52,6 @@ public class ChatWithStoreFragment extends Fragment {
         binding.setStoreContact(viewModel);
         return view;
     }
-
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
@@ -67,7 +63,5 @@ public class ChatWithStoreFragment extends Fragment {
                 viewModel.sendMessageToUser(binding.chatboxEdit);
             }
         });
-
-
     }
 }

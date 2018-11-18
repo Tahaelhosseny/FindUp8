@@ -53,7 +53,7 @@
         android:layout_marginLeft="@dimen/main_activity_title_marginLeft"
         android:layout_marginStart="@dimen/main_activity_title_marginStart"
         android:layout_marginTop="@dimen/main_activity_title_marginTop"
-        android:fontFamily="@font/sfcompactdisplay_heavy"
+        android:fontFamily="@font/sfcompactdisplay_medium"
         android:text="@string/near_me_text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/catsContainer" />
@@ -94,7 +94,7 @@
         android:layout_marginLeft="@dimen/main_activity_title_marginLeft"
         android:layout_marginStart="@dimen/main_activity_title_marginStart"
         android:layout_marginTop="@dimen/main_activity_title_marginTop"
-        android:fontFamily="@font/sfcompactdisplay_heavy"
+        android:fontFamily="@font/sfcompactdisplay_medium"
         android:text="@string/events_text"
         app:layout_constraintBottom_toTopOf="@+id/eventsContainer"
         app:layout_constraintStart_toStartOf="parent"
