@@ -43,6 +43,7 @@ public class SignupActivity extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
         registerBinding.editTextMail.setText(extras.getString("Email"));
+        registerBinding.editTextUsername.setText(extras.getString("Name"));
         registerBinding.setPresenter(new RegisterPresenter() {
             @Override
             public void RegisterLoadData() {

@@ -88,9 +88,7 @@ public class MainActivity extends AppCompatActivity implements LocationView{
                 @Override
                 public void onSuccess(InstanceIdResult instanceIdResult) {
                     String token = instanceIdResult.getToken();
-//                    updateToken(token);
                     Log.e("Token" , token);
-//                    Toast.makeText(MainActivity.this, ""+token, Toast.LENGTH_LONG).show();
 
                 }
             });
@@ -102,7 +100,6 @@ public class MainActivity extends AppCompatActivity implements LocationView{
                     String token = instanceIdResult.getToken();
                     updateToken(token);
                     Log.e("Token" , token);
-                    Toast.makeText(MainActivity.this, ""+token, Toast.LENGTH_LONG).show();
 
                 }
             });
@@ -361,9 +358,9 @@ public class MainActivity extends AppCompatActivity implements LocationView{
             @Override
             public void onResponse(Call<TokenResponse> call, Response<TokenResponse> response) {
                 if(response.body().getSuccess() == 1){
-                    Toast.makeText(MainActivity.this, "Success "+response.body().getError_msg(), Toast.LENGTH_SHORT).show();
+                    Log.e("Success Update Token" , response.body().getError_msg());
                 }else{
-                    Toast.makeText(MainActivity.this, ""+response.body().getError_msg(), Toast.LENGTH_SHORT).show();
+                    Log.e("Error Update Token" , response.body().getError_msg());
                 }
             }
 

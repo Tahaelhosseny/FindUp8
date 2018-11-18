@@ -5,6 +5,8 @@ import android.content.Context;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,15 +26,15 @@ public class ProductsViewModel extends java.util.Observable {
     }
 
 
-    public void bindStoreProducts(RecyclerView recyclerView, int store_id) {
+    public void bindStoreProducts(RecyclerView recyclerView , TextView empty, int store_id) {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         ProductsAdapter adapter = new ProductsAdapter(mContext, new ArrayList<>());
-        LoadProductsFromDatabase(adapter, store_id);
+        LoadProductsFromDatabase(adapter, store_id , empty);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false));
     }
 
-    private void LoadProductsFromDatabase(ProductsAdapter adapter, int store_id) {
+    private void LoadProductsFromDatabase(ProductsAdapter adapter, int store_id , TextView empty) {
         DBHandler.getProductByStoreID(store_id, mContext, new Products() {
             @Override
             public void onSuccess(Flowable<List<Product>> listFlowable) {
@@ -40,8 +42,12 @@ public class ProductsViewModel extends java.util.Observable {
                     ((Activity) mContext).runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            adapter.setProducts(val);
-                            adapter.notifyDataSetChanged();
+                            if (val.size() < 1){
+                                empty.setVisibility(View.VISIBLE);
+                            }else{
+                                adapter.setProducts(val);
+                                adapter.notifyDataSetChanged();
+                            }
                         }
                     });
                 });

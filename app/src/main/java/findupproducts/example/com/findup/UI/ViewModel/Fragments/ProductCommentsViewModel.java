@@ -54,7 +54,6 @@ public class ProductCommentsViewModel extends Observable {
 
 
     public void LoadCommentsFromDatabase(CommentsAdapter adapter , int id) {
-        Toast.makeText(mContext, "Load Store Comments", Toast.LENGTH_SHORT).show();
         Utility.UpdateCurrentLocation((Activity) mContext, mContext);
             DBHandler.getCommentByStoreID(id, mContext, new findupproducts.example.com.findup.Helper.Database.Interfaces.Comment.Comment() {
                 @Override

@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,7 +49,7 @@ public class CommentsFragment extends Fragment {
             store_id = i.getIntExtra("store_id", 0);
         }
         else{
-            Toast.makeText(getActivity(), "Something went error", Toast.LENGTH_SHORT).show();
+            Log.e("Error Intent Data" , "There is Problem to pass data between intents");
         }
         if(product_id == 0){
             productCommentsViewModel.InitRecyclerView(commentLayoutBinding.commentsRecyclerview,store_id , 1);

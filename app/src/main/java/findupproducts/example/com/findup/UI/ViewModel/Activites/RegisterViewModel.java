@@ -32,7 +32,6 @@ public class RegisterViewModel extends Observable {
     }
 
     public void sendRegisterRequest(String name,  String password , String mobile , String email){
-
         final AlertDialog alertDialog = UI_Utility.ShowProgressDialog(mContext, true);
         alertDialog.show();
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
@@ -51,7 +50,6 @@ public class RegisterViewModel extends Observable {
                 Log.e("url",call.request().url().toString());
                 alertDialog.dismiss();
             }
-
             @Override
             public void onFailure(Call<RegisterResponse> call, Throwable t) {
                 Toast.makeText(mContext,"invalid data",Toast.LENGTH_SHORT).show();
@@ -61,7 +59,6 @@ public class RegisterViewModel extends Observable {
             }
         });
     }
-
     private void RegisterAccepted(String mail , String password , int user_id){
         SharedPrefManger sharedPrefManger = new SharedPrefManger(mContext);
         sharedPrefManger.setIsLoggedIn(true);

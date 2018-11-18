@@ -149,6 +149,17 @@
             app:layout_constraintHorizontal_bias="0.047"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/workTimeDaysInfoTxt" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:padding="5dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.047"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/contactTxt"
+            android:layout_height="wrap_content"
+            android:id="@+id/contacts_linear">
+
 
         <ImageView
             android:id="@+id/mailImg"
@@ -157,8 +168,7 @@
             android:layout_marginTop="8dp"
             android:padding="5dp"
             app:srcCompat="@drawable/mail_3x"
-            app:layout_constraintStart_toStartOf="@id/contactTxt"
-            app:layout_constraintTop_toBottomOf="@+id/contactTxt" />
+            />
 
         <ImageView
             android:id="@+id/siteImg"
@@ -166,8 +176,6 @@
             android:layout_height="55dp"
             android:layout_marginTop="8dp"
             android:padding="5dp"
-            app:layout_constraintStart_toEndOf="@id/mailImg"
-            app:layout_constraintTop_toBottomOf="@+id/contactTxt"
             app:srcCompat="@drawable/web_1_5x" />
 
         <ImageView
@@ -177,8 +185,7 @@
             android:layout_marginTop="8dp"
             android:padding="5dp"
             app:srcCompat="@drawable/chat2_3x"
-            app:layout_constraintStart_toEndOf="@id/siteImg"
-            app:layout_constraintTop_toBottomOf="@+id/contactTxt" />
+             />
 
         <ImageView
             android:id="@+id/phoneImg"
@@ -187,8 +194,7 @@
             android:layout_marginTop="8dp"
             android:padding="5dp"
             app:srcCompat="@drawable/phone_3x"
-            app:layout_constraintStart_toEndOf="@id/chatImg"
-            app:layout_constraintTop_toBottomOf="@+id/contactTxt" />
+             />
 
         <ImageView
             android:id="@+id/twitterImg"
@@ -197,8 +203,7 @@
             android:layout_marginTop="8dp"
             android:padding="5dp"
             app:srcCompat="@drawable/tiwitter_3x"
-            app:layout_constraintStart_toEndOf="@id/phoneImg"
-            app:layout_constraintTop_toBottomOf="@+id/contactTxt" />
+             />
 
         <ImageView
             android:id="@+id/snapImg"
@@ -206,9 +211,8 @@
             android:layout_height="55dp"
             android:layout_marginTop="8dp"
             android:padding="5dp"
-            app:srcCompat="@drawable/snap_3x"
-            app:layout_constraintStart_toEndOf="@id/twitterImg"
-            app:layout_constraintTop_toBottomOf="@+id/contactTxt" />
+            app:srcCompat="@drawable/snap_3x" />
+        </LinearLayout>
 
         <TextView
             android:id="@+id/photosTxt"
@@ -224,7 +228,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.047"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/mailImg" />
+            app:layout_constraintTop_toBottomOf="@+id/contacts_linear" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/storePhotosRecycler"
