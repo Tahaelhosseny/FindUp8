@@ -66,6 +66,7 @@ public class ChatStoreViewModel extends Observable {
 
     }
 
+
     public void sendMessageToStore(EditText messageEdit){
         if (storeId== -1)
             Toast.makeText(mContext, "Please select contact", Toast.LENGTH_LONG).show();
