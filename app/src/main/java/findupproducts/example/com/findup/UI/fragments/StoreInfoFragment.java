@@ -56,7 +56,7 @@ public class StoreInfoFragment extends Fragment implements OnMapReadyCallback {
         View rootView = binding.getRoot();
         Intent i = getActivity().getIntent();
         store_id = i.getIntExtra("store_id",1);
-        Toast.makeText(getActivity(), ""+ store_id, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getActivity(), ""+ store_id, Toast.LENGTH_SHORT).show();
         //here data must be an instance of the class MarsDataProvider
         storeInfoViewModel = new StoreInfoViewModel(getContext(), getArguments().getInt("store_id"));
         binding.setInfo(storeInfoViewModel);
@@ -84,7 +84,7 @@ public class StoreInfoFragment extends Fragment implements OnMapReadyCallback {
                 showRate();
             }
         });
-        storeInfoViewModel.bindCommentsPhotos(binding.commentUsersImg);
+        storeInfoViewModel.bindCommentsPhotos(binding.commentUsersImg , binding.commentUsersTxt , binding.commentUsersNumTxt , binding.showComments);
         storeInfoViewModel.bindPhotos(binding.storePhotosRecycler);
         storeInfoViewModel.bindStoreData(binding.aboutTxtDetails, binding.workTimeDaysInfoTxt, binding.workTimeInfoTxt,
                 binding.mailImg, binding.siteImg, binding.chatImg, binding.twitterImg, binding.snapImg,binding.showComments

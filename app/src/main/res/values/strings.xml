@@ -60,7 +60,7 @@
     <string name="profile_number">+966 55 11 73 969</string>
     <string name="chats">Chats</string>
     <string name="you_saved">You Saved</string>
-    <string name="create_store_account">Create Store Account</string>
+    <string name="create_store_account">GET MONEY WITH STORE ACCOUNT</string>
     <string name="profile_notification">Notifications</string>
     <string name="system_message">System Message</string>
     <string name="add_your_first_product">Add Your Product</string>
@@ -125,7 +125,7 @@
     <string name="intro_text">The Red and Black Cafe was a radical safer space cafe and worker…</string>
     <string name="log_in">Log In</string>
     <string name="sign_up">Sign Up</string>
-    <string name="or">OR</string>
+    <string name="or">OR SIGN IN WITH</string>
     <string name="craft_details">Craft Details</string>
     <string name="start_day">Start Date</string>
     <string name="end_day">End Date</string>

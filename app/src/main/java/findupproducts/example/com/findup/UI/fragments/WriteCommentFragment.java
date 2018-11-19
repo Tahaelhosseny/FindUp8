@@ -47,7 +47,7 @@ public class WriteCommentFragment extends Fragment {
         Intent i = getActivity().getIntent();
         int store_id = i.getIntExtra("store_id", 0);
         int product_id =  i.getIntExtra("product_id" , 0);
-        Toast.makeText(getActivity(), ""+store_id, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getActivity(), ""+store_id, Toast.LENGTH_SHORT).show();
         addCommentStoreViewModel = new AddCommentStoreViewModel(view.getContext());
         writeCommentLayoutBinding.setPresenter(new AddCommentStorePresenter() {
             @Override
@@ -57,10 +57,10 @@ public class WriteCommentFragment extends Fragment {
                     Toast.makeText(getActivity(), "Please Enter Comment Field", Toast.LENGTH_SHORT).show();
                 }else{
                     if(product_id == 0){
-                        Toast.makeText(getActivity(), "Here Store", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(getActivity(), "Here Store", Toast.LENGTH_SHORT).show();
                         addCommentStoreViewModel.addCommentToStore(SharedPrefManger.getUser_ID() , commentText.getText().toString() , store_id);
                     }else{
-                        Toast.makeText(getActivity(), "Here Product", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(getActivity(), "Here Product", Toast.LENGTH_SHORT).show();
                         addCommentStoreViewModel.addCommentToProduct(commentText.getText().toString() , product_id);
                     }
                 }

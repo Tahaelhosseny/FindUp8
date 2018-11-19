@@ -62,10 +62,8 @@ public class StoreInfoViewModel extends Observable {
 
 
 
-    public void bindCommentsPhotos(RecyclerView recyclerView) {
+    public void bindCommentsPhotos(RecyclerView recyclerView , TextView userCommentName , TextView userCommentCount , ImageView toComments) {
         List<Comment> commentList = new ArrayList<>();
-
-
         LinearLayoutManager layoutManager = new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, true);
         layoutManager.setReverseLayout(true);
         layoutManager.setStackFromEnd(true);
@@ -73,8 +71,6 @@ public class StoreInfoViewModel extends Observable {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         CommentsPhotosAdapter adapter = new CommentsPhotosAdapter(mContext, commentList);
         recyclerView.setAdapter(adapter);
-
-
         DBHandler.getCommentByStoreID(store_id, mContext, new findupproducts.example.com.findup.Helper.Database.Interfaces.Comment.Comment() {
             @Override
             public void onSuccess(Flowable<List<Comment>> commentFlowable) {
@@ -83,9 +79,52 @@ public class StoreInfoViewModel extends Observable {
 
                         @Override
                         public void run() {
-                            commentList.clear();
-                            commentList.addAll(val);
-                            recyclerView.setAdapter(adapter);
+                            int num = val.size();
+                            if(num == 0){
+                                userCommentName.setText("No Comments Yet");
+                                userCommentCount.setText("No One Comment on this");
+                                toComments.setVisibility(View.GONE);
+                            }else  if (num > 0 && num < 3){
+                                String stat = "";
+                                for (int i = 0 ; i < num ; i++){
+                                    if (num == 1) {
+                                        stat = stat + val.get(i).getAccount_name();
+                                    }else {
+                                        if((i+1) == num){
+                                            stat = stat + val.get(i).getAccount_name();
+                                        }else{
+                                            stat = stat + val.get(i).getAccount_name() + " and ";
+                                        }
+                                    }
+                                }
+                                stat += " commented";
+                                userCommentName.setText(stat);
+                                userCommentCount.setText("No more Comments");
+                            }else if(num >= 3){
+                                String stat = "";
+                                for (int i = 0 ; i < 3 ; i++){
+                                    if((i+1) == 3){
+                                        stat = stat + val.get(i).getAccount_name();
+                                    }else{
+                                        stat = stat + val.get(i).getAccount_name() + " and ";
+                                    }
+                                }
+                                userCommentName.setText(stat);
+                                if ((val.size()-3) == 0){
+                                    userCommentCount.setText("And no more commented in this");
+                                }else{
+                                    userCommentCount.setText("And "+(val.size() - 3)+" commented in this");
+                                }
+                            }
+
+                            //---------------------------------------------------------------------------------------------
+                            if (num == 0){
+                                recyclerView.setVisibility(View.INVISIBLE);
+                            }else {
+                                commentList.clear();
+                                commentList.addAll(val);
+                                recyclerView.setAdapter(adapter);
+                            }
                         }
                     });
                     //adapter.notifyDataSetChanged();

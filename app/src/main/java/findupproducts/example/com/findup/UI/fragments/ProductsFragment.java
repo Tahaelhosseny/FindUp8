@@ -28,11 +28,8 @@ public class ProductsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_products, container, false);
-
         View view = binding.getRoot();
-        //here data must be an instance of the class MarsDataProvider
         productsViewModel = new ProductsViewModel(view.getContext());
         binding.setProducts(productsViewModel);
         return view;
@@ -45,7 +42,6 @@ public class ProductsFragment extends Fragment {
         if (i.hasExtra("store_id"))
             store_id = i.getIntExtra("store_id", 1);
 
-
-        productsViewModel.bindStoreProducts(binding.productsRecyclerView, store_id);
+        productsViewModel.bindStoreProducts(binding.productsRecyclerView, binding.emptyProductText , store_id);
     }
 }

@@ -44,11 +44,11 @@ public class SplashScreenViewModel  extends Observable {
 //                    DBHandler.deleteAllStoreData(mContext);
                     if(DBUtility.InsertStores(response.body().getData(),mContext) > 0){
                         loaded.onNext(++defult_load[0]);
-                        Toast.makeText(mContext, "Store Added", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(mContext, "Store Added", Toast.LENGTH_SHORT).show();
                     }
                 }
                 else
-                    Toast.makeText(mContext,"App have an error Store "+response.body().getError_msg(),Toast.LENGTH_SHORT).show();
+                    Log.e("Error Add Store" , response.body().getError_msg());
                 Log.e("url",call.request().url().toString());
             }
 
@@ -57,7 +57,6 @@ public class SplashScreenViewModel  extends Observable {
                 //Toast.makeText(mContext,"invalid data",Toast.LENGTH_SHORT).show();
                 t.printStackTrace();
                 UI_Utility.noConnection(mContext,true);
-                Toast.makeText(mContext, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
                 Log.e("url",call.request().url().toString());
                 Log.e("store_error",t.getMessage());
             }
@@ -74,10 +73,8 @@ public class SplashScreenViewModel  extends Observable {
                         loaded.onNext(++defult_load[0]);
                     if (DBUtility.InsertCategories(response.body().getCategories(), mContext) > 0)
                         loaded.onNext(++defult_load[0]);
-
-                    Toast.makeText(mContext, "Event Added", Toast.LENGTH_SHORT).show();
                 } else
-                    Toast.makeText(mContext, "App have an error Event "+response.body().getError_msg(), Toast.LENGTH_SHORT).show();
+                    Log.e("Error Add Events" , response.body().getError_msg());
             }
 
             @Override
