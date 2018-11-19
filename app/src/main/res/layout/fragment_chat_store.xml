@@ -14,7 +14,6 @@
             type="findupproducts.example.com.findup.UI.Presenter.Fragments.ChatStorePresenter"/>
     </data>
 <android.support.constraint.ConstraintLayout
-
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -100,9 +99,9 @@
             android:layout_width="32dp"
             android:layout_height="32dp"
             android:layout_margin="5dp"
-            android:background="@drawable/search_1_5x"
             android:clickable="true"
             android:gravity="center"
+            android:background="@drawable/send_msg"
             app:layout_constraintEnd_toStartOf="@id/emojiBtn"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>

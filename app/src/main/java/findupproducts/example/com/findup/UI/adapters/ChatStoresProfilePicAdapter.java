@@ -52,7 +52,7 @@ public class ChatStoresProfilePicAdapter extends RecyclerView.Adapter<ChatStores
         Store store = stores.get(position);
 
         holder.store_name.setText(store.getStore_name());
-        if (!store.getStore_banner().isEmpty()) {
+        if (!store.getStore_logo().isEmpty()) {
             Glide.with(context).load(store.getStore_banner()).into(holder.store_img);
         }
 

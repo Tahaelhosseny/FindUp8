@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 
@@ -21,6 +22,7 @@ import findupproducts.example.com.findup.Helper.Remote.ApiInterface;
 import findupproducts.example.com.findup.Helper.Remote.ResponseModel.GetFullChatResponse;
 import findupproducts.example.com.findup.Helper.Remote.ResponseModel.SearchStoreResponse;
 import findupproducts.example.com.findup.Helper.Remote.ResponseModel.SendChatResponse;
+import findupproducts.example.com.findup.Helper.Remote.ResponseModel.StoreForChat;
 import findupproducts.example.com.findup.Helper.Remote.ResponseModel.StoresResponse;
 import findupproducts.example.com.findup.Helper.SharedPrefManger;
 import findupproducts.example.com.findup.R;
@@ -40,12 +42,30 @@ public class ChatStoreViewModel extends Observable {
     private List<GetChat> messageList;
     private MessageListAdapter mMessageAdapter;
 
-    public ChatStoreViewModel(Context mContext){this.mContext = mContext;}
+    public ChatStoreViewModel(Context mContext){
+        this.mContext = mContext;
+    }
 
     public void GetStoresForChat(RecyclerView storesRecyclerView, RecyclerView mMessageRecycler){
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-        Call<StoresResponse> getStoresForChat = apiService.GetAllStores(String.valueOf(SharedPrefManger.getUser_ID()));
-        getStoresForChat.enqueue(new Callback<StoresResponse>() {
+        Call<StoreForChat> getStoresForChat = apiService.getStoresForChat();
+        getStoresForChat.enqueue(new Callback<StoreForChat>() {
+            @Override
+            public void onResponse(Call<StoreForChat> call, Response<StoreForChat> response) {
+                if(response.body().getSuccess() == 1){
+                    List<Store> stores = response.body().getGetStoreContacts();
+                    InitRecycler(stores , storesRecyclerView, mMessageRecycler);
+                }else{
+                    Toast.makeText(mContext, "There is Problem Occurred", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<StoreForChat> call, Throwable t) {
+
+            }
+        });
+        /*getStoresForChat.enqueue(new Callback<StoresResponse>() {
             @Override
             public void onResponse(Call<StoresResponse> call, Response<StoresResponse> response) {
                 if(response.body().getSuccess() == 1){
@@ -57,16 +77,18 @@ public class ChatStoreViewModel extends Observable {
             }
             @Override
             public void onFailure(Call<StoresResponse> call, Throwable t) {
-                //Toast.makeText(mContext, "Failure : " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(mContext, "Failure : " + t.getMessage(), Toast.LENGTH_SHORT).show();
                 t.printStackTrace();
             }
-        });
+        });*/
 
     }
 
     public void sendMessageToStore(EditText messageEdit){
-        if (storeId== -1)
+        if (storeId== -1){
             Toast.makeText(mContext, "Please select contact", Toast.LENGTH_LONG).show();
+            return;
+        }
 
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
         Call<SendChatResponse> sendMessage = apiService.sendMessage(SharedPrefManger.getUser_ID() , storeId, "User" , "Store" , "" ,messageEdit.getText().toString() );
@@ -94,6 +116,8 @@ public class ChatStoreViewModel extends Observable {
     }
 
     private void getFullChat(RecyclerView mMessageRecycler, int storeId){
+        messageList = new ArrayList<>();
+        mMessageAdapter = new MessageListAdapter(mContext, messageList,"user");
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
         Call<GetFullChatResponse> getFullChat = apiService.getChatHistory(SharedPrefManger.getUser_ID() , storeId , "User");
         getFullChat.enqueue(new Callback<GetFullChatResponse>() {
@@ -111,6 +135,7 @@ public class ChatStoreViewModel extends Observable {
                     mMessageAdapter.notifyDataSetChanged();
                 }else {
                     messageList.clear();
+                    mMessageRecycler.setAdapter(mMessageAdapter);
                     mMessageAdapter.notifyDataSetChanged();
                     Toast.makeText(mContext, "No Chat with this store", Toast.LENGTH_SHORT).show();
                 }
@@ -118,6 +143,8 @@ public class ChatStoreViewModel extends Observable {
 
             @Override
             public void onFailure(Call<GetFullChatResponse> call, Throwable t) {
+                messageList.clear();
+                mMessageAdapter.notifyDataSetChanged();
                 Toast.makeText(mContext, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });

@@ -44,9 +44,13 @@ public class ChatWithContactViewModel extends Observable {
     List<GetChat> messageList;
     private MessageListAdapter mMessageAdapter;
 
-    public ChatWithContactViewModel(Context mContext){this.mContext = mContext;}
+    public ChatWithContactViewModel(Context mContext){
+        this.mContext = mContext;
+        messageList = new ArrayList<>();
+    }
 
     public void GetContact(RecyclerView contactsRecyclerView, RecyclerView mMessageRecycler){
+        Log.e("MyData", ""+SharedPrefManger.getStore_ID());
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
         Call<GetChatContactResponse> getStoreContacts = apiService.getContacts(SharedPrefManger.getStore_ID() , "Store");
         getStoreContacts.enqueue(new Callback<GetChatContactResponse>() {

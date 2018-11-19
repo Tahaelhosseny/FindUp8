@@ -233,7 +233,7 @@
         </activity>
         <activity
             android:name=".UI.activities.CategeoryStoresAcivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />
         <activity
             android:name=".UI.activities.SetLocationActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen" />

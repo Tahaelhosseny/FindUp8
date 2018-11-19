@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import findupproducts.example.com.findup.R;
 import findupproducts.example.com.findup.UI.fragments.ChatWithStoreFragment;
+import findupproducts.example.com.findup.UI.fragments.StoreChatFragment;
 
 public class ChatWithStoreActivity extends AppCompatActivity {
 

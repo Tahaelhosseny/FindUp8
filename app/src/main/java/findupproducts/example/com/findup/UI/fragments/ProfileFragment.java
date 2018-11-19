@@ -24,6 +24,8 @@ import findupproducts.example.com.findup.UI.activities.UserSavedActivity;
 
 public class ProfileFragment extends Fragment {
 
+    private TextView prof_name, prof_phone;
+
     public ProfileFragment() {
         // Required empty public constructor
     }
@@ -39,10 +41,9 @@ public class ProfileFragment extends Fragment {
         Button btn_saved = view.findViewById(R.id.btn_saved);
         Button btn_settings = view.findViewById(R.id.btn_settings);
         Button btn_createStoreAccount = view.findViewById(R.id.btn_createStoreAccount);
-        TextView prof_name = view.findViewById(R.id.profile_name);
-        TextView prof_phone = view.findViewById(R.id.profile_phone);
-        prof_name.setText(SharedPrefManger.getUser_name());
-        prof_phone.setText(SharedPrefManger.getLogin_phone());
+        prof_name = view.findViewById(R.id.profile_name);
+        prof_phone = view.findViewById(R.id.profile_phone);
+        bindUserInfo();
         btn_notifications.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -80,5 +81,16 @@ public class ProfileFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+    }
+
+    private void bindUserInfo(){
+        prof_name.setText(SharedPrefManger.getUser_name());
+        prof_phone.setText(SharedPrefManger.getLogin_phone());
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        bindUserInfo();
     }
 }

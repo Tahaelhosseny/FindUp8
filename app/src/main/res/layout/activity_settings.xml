@@ -130,32 +130,20 @@
             android:textStyle="bold"/>
     </LinearLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/material_elevation_dialog"
-        android:textSize="20sp"
-        android:fontFamily="@font/sfcompactdisplay_semibold"
-        android:text="@string/logout"
-        android:textColor="@color/colorBlack"
-        android:textAllCaps="false"
-        android:layout_marginBottom="2dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearSettings" />
-
-    <ImageButton
+    <Button
         android:id="@+id/btn_logout"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/forward"
-        android:background="@null"
+        android:background="@drawable/bg_button_rounded_null"
+        android:text="@string/logout"
         android:layout_margin="@dimen/activity_vertical_margin"
-        android:padding="@dimen/activity_vertical_margin"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        android:fontFamily="@font/sfcompactdisplay_semibold"
+        android:textAlignment="viewStart"
+        android:drawableEnd="@drawable/forward"
         app:layout_constraintTop_toBottomOf="@+id/linearSettings"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:contentDescription="@string/logout" />
+        app:layout_constraintEnd_toEndOf="parent"/>
 
 </android.support.constraint.ConstraintLayout>

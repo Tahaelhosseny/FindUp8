@@ -34,10 +34,9 @@ import java.util.Locale;
 import java.util.TimeZone;
 
 import findupproducts.example.com.findup.R;
-import findupproducts.example.com.findup.UI.activities.ChatWithStoreActivity;
 import findupproducts.example.com.findup.UI.activities.SpecificChatWithStore;
 import findupproducts.example.com.findup.UI.fragments.CategoryFragment;
-import findupproducts.example.com.findup.UI.fragments.ChatWithStoreFragment;
+import findupproducts.example.com.findup.UI.fragments.StoreChatFragment;
 import findupproducts.example.com.findup.UI.fragments.MainFragment;
 import findupproducts.example.com.findup.UI.fragments.MapFragment;
 import findupproducts.example.com.findup.UI.fragments.ProfileFragment;
@@ -120,7 +119,7 @@ public class Utility {
         else {
             storeTags.clear();
             storeTags.add(StoreAccountHomeFragment.class.getName());
-            storeTags.add(ChatWithStoreFragment.class.getName());
+            storeTags.add(StoreChatFragment.class.getName());
             storeTags.add(ProfileStoreFragment.class.getName());
             return storeTags;
         }

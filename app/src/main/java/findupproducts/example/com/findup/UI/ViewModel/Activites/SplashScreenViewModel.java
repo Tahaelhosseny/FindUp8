@@ -59,7 +59,7 @@ public class SplashScreenViewModel  extends Observable {
                 UI_Utility.noConnection(mContext,true);
                 Toast.makeText(mContext, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
                 Log.e("url",call.request().url().toString());
-                Log.e("errmor",t.getMessage());
+                Log.e("store_error",t.getMessage());
             }
         });
 
@@ -107,7 +107,7 @@ public class SplashScreenViewModel  extends Observable {
         ((Activity) mContext).runOnUiThread(new Runnable() {
             public void run() {
                 if(sharedPrefManger.isIsLoggedIn()){
-                    if(sharedPrefManger.getUser_ID() != 0){
+                    if(sharedPrefManger.getLogin_type().equals("user")){
                         mContext.startActivity(new Intent(mContext, MainActivity.class));
                         ((Activity) mContext).finish();
                     }

@@ -86,13 +86,13 @@ public class StoreInformationActivity extends AppCompatActivity {
         editText_tags = findViewById(R.id.editText_tags);
         editText_description = findViewById(R.id.editText_description);
         editText_otherLanguage = findViewById(R.id.editText_otherLanguage);
-        if (getIntent().getExtras().getInt("next_id") == 2) {
+        /*if (getIntent().getExtras().getInt("next_id") == 2) {
             txt_storeName.setText(R.string.your_name);
             txt_otherLanguage.setVisibility(View.GONE);
             editText_otherLanguage.setVisibility(View.GONE);
             txt_tags.setVisibility(View.GONE);
             editText_tags.setVisibility(View.GONE);
-        }
+        }*/
         Button btn_next = findViewById(R.id.btn_next);
         btn_next.setOnClickListener(new View.OnClickListener() {
             @Override

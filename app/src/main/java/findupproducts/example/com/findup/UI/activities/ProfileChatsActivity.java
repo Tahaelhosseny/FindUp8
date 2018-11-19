@@ -7,7 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import findupproducts.example.com.findup.R;
-import findupproducts.example.com.findup.UI.fragments.ChatStoreFragment;
+import findupproducts.example.com.findup.UI.fragments.ChatWithStoreFragment;
 
 public class ProfileChatsActivity extends AppCompatActivity {
 
@@ -25,6 +25,6 @@ public class ProfileChatsActivity extends AppCompatActivity {
 
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
-        transaction.replace(R.id.chat_fragment_container, new ChatStoreFragment()).commit();
+        transaction.replace(R.id.chat_fragment_container, new ChatWithStoreFragment()).commit();
     }
 }

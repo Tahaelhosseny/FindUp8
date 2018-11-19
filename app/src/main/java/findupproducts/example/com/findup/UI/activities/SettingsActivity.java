@@ -14,8 +14,7 @@ import findupproducts.example.com.findup.R;
 public class SettingsActivity extends AppCompatActivity implements View.OnClickListener {
 
     Button btn_editProfile, btn_notifications, btn_currency, btn_measureDistance, btn_language,
-            btn_inviteFriend, btn_contactUs, btn_terms, btn_settingsBack;
-    ImageButton btn_logout;
+            btn_inviteFriend, btn_contactUs, btn_terms, btn_settingsBack, btn_logout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

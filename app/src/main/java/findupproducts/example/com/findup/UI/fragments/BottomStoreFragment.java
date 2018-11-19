@@ -1,6 +1,5 @@
 package findupproducts.example.com.findup.UI.fragments;
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,13 +7,10 @@ import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
@@ -23,7 +19,6 @@ import android.view.ViewGroup;
 import findupproducts.example.com.findup.Helper.UI_Utility;
 import findupproducts.example.com.findup.Helper.Utility;
 import findupproducts.example.com.findup.R;
-import findupproducts.example.com.findup.UI.adapters.BottomBarAdapter;
 import findupproducts.example.com.findup.UI.adapters.BottomBarStoreAdapter;
 
 public class BottomStoreFragment extends Fragment {
@@ -98,8 +93,8 @@ public class BottomStoreFragment extends Fragment {
                 Utility.replaceStoreFragment(((FragmentActivity)mContext).getSupportFragmentManager(), new StoreAccountHomeFragment(), R.id.store_main_container, 0,menu);
                 break;
             case 1:
-                selectedFragment = new ChatStoreFragment();
-                Utility.replaceStoreFragment(((FragmentActivity)mContext).getSupportFragmentManager(), new ChatWithStoreFragment(), R.id.store_main_container, 0,menu);
+                selectedFragment = new ChatWithStoreFragment();
+                Utility.replaceStoreFragment(((FragmentActivity)mContext).getSupportFragmentManager(), new StoreChatFragment(), R.id.store_main_container, 0,menu);
                 break;
             case 2:
 //                ToolbarSwitch(true,mContext);

@@ -40,6 +40,7 @@ import findupproducts.example.com.findup.Helper.Remote.ResponseModel.SearchStore
 import findupproducts.example.com.findup.Helper.Remote.ResponseModel.SendChatResponse;
 import findupproducts.example.com.findup.Helper.Remote.ResponseModel.StoreAddressResponse;
 import findupproducts.example.com.findup.Helper.Remote.ResponseModel.StoreEditResponse;
+import findupproducts.example.com.findup.Helper.Remote.ResponseModel.StoreForChat;
 import findupproducts.example.com.findup.Helper.Remote.ResponseModel.StoreNotificationResponse;
 import findupproducts.example.com.findup.Helper.Remote.ResponseModel.StoreSettingsGetResponse;
 import findupproducts.example.com.findup.Helper.Remote.ResponseModel.StoresResponse;
@@ -113,6 +114,9 @@ public interface ApiInterface {
 
     @GET(ApiClient.PATH_URL+"chat?tag=get_contact_chatting&HashSecure="+HASH)
     Call<GetChatContactResponse> getContacts(@Query("current_id") int current_id , @Query("current_type") String current_type);
+
+    @GET(ApiClient.PATH_URL+"chat?tag=get_all_contacts&HashSecure="+HASH)
+    Call<StoreForChat> getStoresForChat();
 
     @GET(ApiClient.PATH_URL+"chat?tag=get_chat_history&HashSecure="+HASH)
     Call<GetFullChatResponse> getChatHistory(@Query("account_id") int account_id , @Query("store_id") int store_id , @Query("current_type") String current_type);

@@ -50,16 +50,18 @@ public class EditProfileActivity extends AppCompatActivity {
     ImageView myImg;
     TextView type;
     ImageButton btn_deleteAccount;
+    private SharedPrefManger sharedPrefManger;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        sharedPrefManger = new SharedPrefManger(this);
         editProfileViewModel = new EditProfileViewModel(this);
         activityEditProfileBinding= DataBindingUtil.setContentView(this,R.layout.activity_edit_profile);
         activityEditProfileBinding.btnDeleteAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                editProfileViewModel.sendCode(SharedPrefManger.getLogin_phone());
+                editProfileViewModel.sendCode(sharedPrefManger.getLogin_phone());
             }
         });
         editText_phone=findViewById(R.id.editText_phone);
@@ -72,23 +74,24 @@ public class EditProfileActivity extends AppCompatActivity {
             }
         });
         activityEditProfileBinding.setEditProfileData(editProfileViewModel);
-        if(SharedPrefManger.getUser_ID() == 0){
+        if(sharedPrefManger.getLogin_type().equals("store")){
             type = findViewById(R.id.textView); type.setText("Store Name");
-            activityEditProfileBinding.editTextPassword.setText(SharedPrefManger.getLogin_password());
-            activityEditProfileBinding.editTextUsername.setText(SharedPrefManger.getStore_namee());
-            activityEditProfileBinding.editTextPhone.setText(SharedPrefManger.getLogin_phone());
-            Picasso.with(this).load(SharedPrefManger.getStore_logo()).placeholder(R.color.material_color_grey_500).into(activityEditProfileBinding.picAccount);
+            activityEditProfileBinding.editTextPassword.setText(sharedPrefManger.getLogin_password());
+            activityEditProfileBinding.editTextUsername.setText(sharedPrefManger.getStore_namee());
+            activityEditProfileBinding.editTextPhone.setText(sharedPrefManger.getLogin_phone());
+            if (!sharedPrefManger.getStore_logo().isEmpty())
+                Picasso.with(this).load(SharedPrefManger.getStore_logo()).placeholder(R.color.material_color_grey_500).into(activityEditProfileBinding.picAccount);
         }else{
-            activityEditProfileBinding.editTextPassword.setText(SharedPrefManger.getLogin_password());
-            activityEditProfileBinding.editTextUsername.setText(SharedPrefManger.getUser_name());
-            activityEditProfileBinding.editTextPhone.setText(SharedPrefManger.getLogin_phone());
+            activityEditProfileBinding.editTextPassword.setText(sharedPrefManger.getLogin_password());
+            activityEditProfileBinding.editTextUsername.setText(sharedPrefManger.getUser_name());
+            activityEditProfileBinding.editTextPhone.setText(sharedPrefManger.getLogin_phone());
         }
         activityEditProfileBinding.setPresenter(new EditProfilePresenter() {
             @Override
             public void editProfileData() {
-                int account_id = SharedPrefManger.getUser_ID();
-                int store_id = SharedPrefManger.getStore_ID();
-                String old_password = SharedPrefManger.getLogin_password();
+                int account_id = sharedPrefManger.getUser_ID();
+                int store_id = sharedPrefManger.getStore_ID();
+                String old_password = sharedPrefManger.getLogin_password();
                 String newName = activityEditProfileBinding.editTextUsername.getText().toString();
                 String phone = activityEditProfileBinding.editTextPhone.getRawText();
                 String new_password = activityEditProfileBinding.editTextPassword.getText().toString();
