@@ -21,6 +21,8 @@ import findupproducts.example.com.findup.models.Store;
 
 public class EventDataViewModel {
     private Context mContext;
+    public static double e_long , e_lat ;
+    public static String e_name;
     String event_id;
     public static Event event;
     public EventDataViewModel(Context mContext , String  event_id){
@@ -65,6 +67,9 @@ public class EventDataViewModel {
                                 location.setText(val.get(i).getEvent_address());
                                 price.setText(val.get(i).getEvent_cost());
                                 about.setText(val.get(i).getEvent_desc());
+                                e_lat = Double.parseDouble(val.get(i).getEvent_latitude());
+                                e_long = Double.parseDouble(val.get(i).getEvent_longitude());
+                                e_name = val.get(i).getEvent_name();
                                 Toast.makeText(mContext, ""+val.get(i).getEvent_photo(), Toast.LENGTH_SHORT).show();
                                 Picasso.with(mContext).load(val.get(i).getEvent_photo()).into(event_banner);
                             }

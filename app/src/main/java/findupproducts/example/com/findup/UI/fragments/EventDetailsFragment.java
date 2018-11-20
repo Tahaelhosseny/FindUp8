@@ -24,6 +24,9 @@ import findupproducts.example.com.findup.UI.ViewModel.Fragments.EventDataViewMod
 import findupproducts.example.com.findup.UI.ViewModel.Fragments.EventsViewModel;
 import findupproducts.example.com.findup.databinding.FragmentEventDetailsBinding;
 
+import static findupproducts.example.com.findup.UI.ViewModel.Fragments.EventDataViewModel.e_lat;
+import static findupproducts.example.com.findup.UI.ViewModel.Fragments.EventDataViewModel.e_long;
+import static findupproducts.example.com.findup.UI.ViewModel.Fragments.EventDataViewModel.e_name;
 import static findupproducts.example.com.findup.UI.ViewModel.Fragments.EventDataViewModel.event;
 
 
@@ -63,25 +66,12 @@ public class EventDetailsFragment extends Fragment implements OnMapReadyCallback
                 , binding.locationTxt , binding.ticketPriceTxt , binding.aboutTxtDetails);
     }
 
-    private void LoadEventData(String event_id) {
-    }
-
-    private void bindUI() {
-
-    }
-
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        LatLng sydney = new LatLng(-34, 151);
-        googleMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
+        LatLng sydney = new LatLng(e_lat, e_long);
+        googleMap.addMarker(new MarkerOptions().position(sydney).title(e_name));
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(sydney.latitude - ((sydney.latitude * 14) / 1000000), sydney.longitude - ((sydney.longitude * 14) / 400000)), 14));
         googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-
-        /*LatLng eventLoc = new LatLng(Double.parseDouble(event.getEvent_latitude()),Double.parseDouble(event.getEvent_latitude()));
-        googleMap.addMarker(new MarkerOptions().position(eventLoc).icon(
-                BitmapDescriptorFactory.fromResource(R.drawable.map_marker)
-        ).title(event.getEvent_name()));
-        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(eventLoc,4));*/
 
     }
 }
