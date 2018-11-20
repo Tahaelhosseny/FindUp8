@@ -66,8 +66,10 @@ public class ProductDetailViewModel extends Observable {
                     ((Activity) mContext).runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            //TODO Start binding data from variable @v
-                            bindCommentsPhotos(commentPhoto);
+
+
+
+                            bindCommentsPhotos(commentPhoto , commentUsersNumTxt , commentUsersTxt , pComments);
                             bindPhotos(productPhotosRecycler);
                             commentUsersNumTxt.setText(""+v.getProduct_comments_count());
                             product_price.setText(""+v.getProduct_price());
@@ -146,10 +148,8 @@ public class ProductDetailViewModel extends Observable {
         });
         }
 
-    public void bindCommentsPhotos(RecyclerView recyclerView) {
+    public void bindCommentsPhotos(RecyclerView recyclerView , TextView commentUserCount , TextView commentText , ImageView toComments) {
         List<ProductComment> commentList = new ArrayList<>();
-
-
         LinearLayoutManager layoutManager = new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, true);
         layoutManager.setReverseLayout(true);
         layoutManager.setStackFromEnd(true);
@@ -167,9 +167,52 @@ public class ProductDetailViewModel extends Observable {
 
                                 @Override
                                 public void run() {
-                                    commentList.clear();
-                                    commentList.addAll(val);
-                                    recyclerView.setAdapter(adapter);
+                                    int num = val.size();
+                                    if(num == 0){
+                                        commentText.setText("No Comments Yet");
+                                        commentUserCount.setText("No One Comment on this");
+                                        toComments.setVisibility(View.GONE);
+                                    }else  if (num > 0 && num < 3){
+                                        String stat = "";
+                                        for (int i = 0 ; i < num ; i++){
+                                            if (num == 1) {
+                                                stat = stat + val.get(i).getAccount_name();
+                                            }else {
+                                                if((i+1) == num){
+                                                    stat = stat + val.get(i).getAccount_name();
+                                                }else{
+                                                    stat = stat + val.get(i).getAccount_name() + " and ";
+                                                }
+                                            }
+                                        }
+                                        stat += " commented";
+                                        commentText.setText(stat);
+                                        commentUserCount.setText("No more Comments");
+                                    }else if(num >= 3){
+                                        String stat = "";
+                                        for (int i = 0 ; i < 3 ; i++){
+                                            if((i+1) == 3){
+                                                stat = stat + val.get(i).getAccount_name();
+                                            }else{
+                                                stat = stat + val.get(i).getAccount_name() + " and ";
+                                            }
+                                        }
+                                        commentText.setText(stat);
+                                        if ((val.size()-3) == 0){
+                                            commentUserCount.setText("And no more commented in this");
+                                        }else{
+                                            commentUserCount.setText("And "+(val.size() - 3)+" commented in this");
+                                        }
+                                    }
+
+                                    //---------------------------------------------------------------------------------------------
+                                    if (num == 0){
+                                        recyclerView.setVisibility(View.INVISIBLE);
+                                    }else {
+                                        commentList.clear();
+                                        commentList.addAll(val);
+                                        recyclerView.setAdapter(adapter);
+                                    }
                                 }
                             });
                             //adapter.notifyDataSetChanged();
