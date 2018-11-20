@@ -70,8 +70,9 @@
             </LinearLayout>
             <TextView
                 android:id="@+id/txt_store_desc"
-                android:layout_width="wrap_content"
+                android:layout_width="220dp"
                 android:layout_marginTop="5dp"
+                android:maxLines="1"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 android:text="Description"
