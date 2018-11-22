@@ -768,5 +768,6 @@
 
     <dimen name="settings_label_text_size">@dimen/sp36</dimen>
 
+    <dimen name="edit_text_padding">3dp</dimen>
 
 </resources>

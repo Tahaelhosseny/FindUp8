@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout android:layout_height="match_parent"
+<android.support.constraint.ConstraintLayout
+    android:layout_height="match_parent"
     android:layout_width="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/colorWhite">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar_information"
@@ -85,11 +87,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
+                android:fontFamily="@font/sfcompactdisplay_regular"
+                android:padding="@dimen/edit_text_padding"
                 android:textColor="@color/colorBlack"
                 android:textColorHighlight="@color/colorWhiteGrey"
                 android:textColorLink="@color/colorWhiteGrey"
                 android:textCursorDrawable="@drawable/color_black"
-                android:textSize="@dimen/sp18"
+                android:textSize="@dimen/sp20"
                 android:background="@drawable/bg_edit"
                 app:layout_constraintTop_toBottomOf="@+id/txt_storeName" />
 
@@ -103,7 +107,7 @@
                 android:fontFamily="@font/sfcompactdisplay_semibold"
                 android:textColor="@color/colorWhiteGrey"
                 android:textStyle="bold"
-                android:textSize="@dimen/sp18"
+                android:textSize="@dimen/sp20"
                 app:layout_constraintTop_toBottomOf="@+id/editText_storeName"/>
             <EditText
                 android:id="@+id/editText_otherLanguage"
@@ -117,7 +121,9 @@
                 android:textColorLink="@color/colorWhiteGrey"
                 android:textCursorDrawable="@drawable/color_black"
                 android:background="@drawable/bg_edit"
-                android:textSize="@dimen/sp18"/>
+                android:fontFamily="@font/sfcompactdisplay_regular"
+                android:padding="@dimen/edit_text_padding"
+                android:textSize="@dimen/sp20"/>
             <TextView
                 android:id="@+id/txt_tags"
                 android:layout_width="wrap_content"
@@ -143,7 +149,9 @@
                 android:textColorLink="@color/colorWhiteGrey"
                 android:textCursorDrawable="@drawable/color_black"
                 android:background="@drawable/bg_edit"
-                android:textSize="@dimen/sp18"/>
+                android:fontFamily="@font/sfcompactdisplay_regular"
+                android:padding="@dimen/edit_text_padding"
+                android:textSize="@dimen/sp20"/>
             <TextView
                 android:id="@+id/txt_description"
                 android:layout_width="wrap_content"
@@ -169,21 +177,26 @@
                 android:textColorLink="@color/colorWhiteGrey"
                 android:textCursorDrawable="@drawable/color_black"
                 android:background="@drawable/bg_edit"
-                android:textSize="@dimen/sp18"/>
+                android:fontFamily="@font/sfcompactdisplay_regular"
+                android:padding="@dimen/edit_text_padding"
+                android:textSize="@dimen/sp20"/>
+
             <Button
                 android:id="@+id/btn_next"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:layout_marginBottom="32dp"
+                android:layout_marginTop="50dp"
                 android:background="@drawable/bg_button_rounded_accent"
-                android:text="@string/next"
                 android:fontFamily="@font/sfcompactdisplay_semibold"
-                android:textSize="18sp"
+                android:text="@string/next"
                 android:textAllCaps="false"
                 android:textColor="@color/colorWhite"
+                android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/editText_description"/>
+                app:layout_constraintTop_toBottomOf="@id/editText_description"
+                app:layout_constraintVertical_bias="1.0" />
         </android.support.constraint.ConstraintLayout>
 
     </ScrollView>

@@ -8,6 +8,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -22,6 +23,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+
+import java.io.IOException;
 
 import findupproducts.example.com.findup.Helper.Remote.ApiClient;
 import findupproducts.example.com.findup.Helper.Remote.ApiInterface;
@@ -120,17 +123,29 @@ public class StoreInformationActivity extends AppCompatActivity {
                 case (PICK_LOGO) : {
                     selectedLogo = data.getData();
                     assert selectedLogo != null;
-                    Bitmap bitmap = BitmapFactory.decodeFile(getImgPath(selectedLogo));
+                    Uri path = data.getData();
+                    Bitmap bitmap = null;
+                    try {
+                        bitmap = MediaStore.Images.Media.getBitmap(StoreInformationActivity.this.getContentResolver(),path);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                     imgLogo.setImageBitmap(bitmap);
-                    createStore.setStore_logo(getImgPath(selectedLogo));
+                    createStore.setStore_logo(path.getPath());
                     break;
                 }
                 case (PICK_BANNER) : {
                     selectedBanner = data.getData();
+                    Uri path = data.getData();
                     assert selectedBanner != null;
-                    Bitmap bitmap = BitmapFactory.decodeFile(getImgPath(selectedBanner));
+                    Bitmap bitmap = null;
+                    try {
+                        bitmap = MediaStore.Images.Media.getBitmap(StoreInformationActivity.this.getContentResolver(),path);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                     imgBanner.setImageBitmap(bitmap);
-                    createStore.setStore_banner(getImgPath(selectedBanner));
+                    createStore.setStore_banner(path.getPath());
                     break;
                 }
             }
