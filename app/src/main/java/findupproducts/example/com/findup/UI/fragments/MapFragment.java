@@ -6,12 +6,14 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.InflateException;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageButton;
 
@@ -138,6 +140,13 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        android.support.v7.widget.Toolbar toolbar = getActivity().findViewById(R.id.toolbar_top);
+        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(false);
+        toolbar.setBackgroundColor(getResources().getColor(R.color.colorWhite));
+        FrameLayout frameLayout = getActivity().findViewById(R.id.navigation_bottom_container);
+        frameLayout.setBackgroundColor(getResources().getColor(R.color.colorWhite));
         ImageButton view_fillter = getActivity().findViewById(R.id.search_filter);
         filter = getActivity().findViewById(R.id.filter);
         CardView distace = filter.findViewById(R.id.distance_card);
