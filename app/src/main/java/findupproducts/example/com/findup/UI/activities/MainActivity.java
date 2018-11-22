@@ -66,6 +66,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static findupproducts.example.com.findup.UI.activities.IntroActivity.clickCatType;
+
 public class MainActivity extends AppCompatActivity implements LocationView{
     public static FilterQueries filterData;
     public static List<Store>filteredMapDataStore;
@@ -82,6 +84,7 @@ public class MainActivity extends AppCompatActivity implements LocationView{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        clickCatType = "";
         SharedPrefManger sharedPrefManger = new SharedPrefManger(this);
         if (sharedPrefManger.getUser_ID() == 0) {
             FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(MainActivity.this, new OnSuccessListener<InstanceIdResult>() {

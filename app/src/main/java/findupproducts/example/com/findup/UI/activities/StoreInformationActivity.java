@@ -36,6 +36,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static findupproducts.example.com.findup.UI.activities.IntroActivity.clickCatType;
+
 public class StoreInformationActivity extends AppCompatActivity {
 
     private static final int PICK_LOGO = 1;

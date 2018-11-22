@@ -5,9 +5,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 
 import findupproducts.example.com.findup.R;
@@ -40,6 +42,13 @@ public class SearchFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        android.support.v7.widget.Toolbar toolbar = getActivity().findViewById(R.id.toolbar_top);
+        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(false);
+        toolbar.setBackgroundColor(getResources().getColor(R.color.colorWhite));
+        FrameLayout frameLayout = getActivity().findViewById(R.id.navigation_bottom_container);
+        frameLayout.setBackgroundColor(getResources().getColor(R.color.colorWhite));
         getActivity().overridePendingTransition(R.anim.abc_slide_in_bottom, R.anim.abc_slide_out_top);
         getChildFragmentManager().beginTransaction().replace(R.id.catsContainer, new MainCatsFragment()).commit();
         getChildFragmentManager().beginTransaction().replace(R.id.store_container, new StoreSearchedFragment()).commit();
