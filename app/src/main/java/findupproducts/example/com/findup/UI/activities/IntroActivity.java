@@ -82,7 +82,7 @@ public class IntroActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_intro);
+//      setContentView(R.layout.activity_intro);
         introViewModel = new IntroViewModel(this);
         activityIntroBinding = DataBindingUtil.setContentView(this,R.layout.activity_intro);
         activityIntroBinding.setIntroview(introViewModel);

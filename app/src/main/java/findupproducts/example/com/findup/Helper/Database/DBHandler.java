@@ -295,6 +295,11 @@ public class DBHandler {
             @Override
             public void run() {
                 FindUpDatabase.getAppDatabase(context).daoAccess().deleteAllStoreData();
+                FindUpDatabase.getAppDatabase(context).daoAccess().deleteAllComments();
+                FindUpDatabase.getAppDatabase(context).daoAccess().deleteAllProductsData();
+                FindUpDatabase.getAppDatabase(context).daoAccess().deleteAllProductsPhotosData();
+                FindUpDatabase.getAppDatabase(context).daoAccess().deleteAllProductComments();
+                FindUpDatabase.getAppDatabase(context).daoAccess().deleteAllStorePhotoData();
             }
         }).start();
     }

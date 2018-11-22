@@ -748,8 +748,8 @@
     <dimen name="search_activity_title_marginTop">36sp</dimen>
 
     <dimen name="login_social_media_icons_size">40dp</dimen>
-    <dimen name="login_logo_size">50dp</dimen>
-    <dimen name="login_photo_size">50dp</dimen>
+    <dimen name="login_logo_size">75dp</dimen>
+    <dimen name="login_photo_size">75dp</dimen>
 
     <dimen name="start_margin_left">25dp</dimen>
     <dimen name="dp150">150dp</dimen>
@@ -761,6 +761,7 @@
     <dimen name="sp20">20sp</dimen>
     <dimen name="sp22">22sp</dimen>
     <dimen name="sp24">24sp</dimen>
+    <dimen name="sp26">26sp</dimen>
     <dimen name="sp36">36sp</dimen>
     <dimen name="sp48">48sp</dimen>
 

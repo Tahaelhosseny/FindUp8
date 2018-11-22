@@ -45,23 +45,11 @@ public interface DaoAccess {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertCategories(List<Category> categoryList);
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insertProductComment(ProductComment commentModel);
-
-    @Query("SELECT * FROM Event WHERE event_id = :event_id")
-    Flowable<List<Event>> getEventByEventID(int event_id);
-
-    @Query("SELECT * FROM Category WHERE show_home_flag = 1")
-    Flowable<List<Category>> getCategoryInHome();
-
-    @Query("SELECT * FROM ProductComment WHERE comment_id = (SELECT MAX(comment_id) FROM ProductComment WHERE product_id = :product_id)")
-    Flowable<List<ProductComment>> getSpecificComment(int product_id);
-
     @Query("SELECT * FROM Category")
     Flowable<List<Category>> getCategories();
 
-    @Query("SELECT * FROM Store WHERE store_cat_id = :cat_id")
-    Flowable<List<Store>> getStoreByCat(int cat_id);
+    @Query("SELECT * FROM Category WHERE show_home_flag = 1")
+    Flowable<List<Category>> getCategoryInHome();
 
 
     @Update
@@ -72,6 +60,19 @@ public interface DaoAccess {
 
     @Delete
     void DeleteAllCategories(List<Category> categoryList);
+
+
+
+    //Product comments
+
+    @Query("DELETE FROM ProductComment")
+    void deleteAllProductComments();
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void insertProductComment(ProductComment commentModel);
+
+    @Query("SELECT * FROM ProductComment WHERE comment_id = (SELECT MAX(comment_id) FROM ProductComment WHERE product_id = :product_id)")
+    Flowable<List<ProductComment>> getSpecificComment(int product_id);
 
 
     //Stores table
@@ -86,6 +87,12 @@ public interface DaoAccess {
 
     @Query("SELECT * FROM store")
     Flowable<List<Store>> getAllStores();
+
+
+    @Query("SELECT * FROM Store WHERE store_cat_id = :cat_id")
+    Flowable<List<Store>> getStoreByCat(int cat_id);
+
+
 
     @Query("UPDATE Product set if_liked = :if_liked AND product_likes_count = :count WHERE product_id = :product_id")
     void likeProduct(int count , int product_id , int if_liked);
@@ -105,7 +112,12 @@ public interface DaoAccess {
 
     @Query("SELECT * FROM NotificationStore")
     Flowable<List<NotificationStore>> getAllStoreNotification();
+
+
     //Comments table
+    @Query("DELETE FROM Comment")
+    void deleteAllComments();
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertComment(Comment comment);
 
@@ -129,6 +141,9 @@ public interface DaoAccess {
 
     @Update
     void UpdateEvent(Comment comment);
+
+    @Query("SELECT * FROM Event WHERE event_id = :event_id")
+    Flowable<List<Event>> getEventByEventID(int event_id);
 
     @Query("DELETE FROM Store")
     void deleteAllStoreData();
@@ -174,6 +189,9 @@ public interface DaoAccess {
      *
      *************************************************************************************/
 
+    @Query("DELETE FROM Product")
+    void deleteAllProductsData();
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertProduct(Product product);
 
@@ -202,6 +220,9 @@ public interface DaoAccess {
      *
      *************************************************************************************/
 
+    @Query("DELETE FROM ProductPhoto")
+    void deleteAllProductsPhotosData();
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertProductPhoto(ProductPhoto productPhoto);
 
@@ -220,6 +241,10 @@ public interface DaoAccess {
      * Store Photos table
      *
      *************************************************************************************/
+
+    @Query("DELETE FROM StorePhoto")
+    void deleteAllStorePhotoData();
+
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertStorePhoto(StorePhoto storePhoto);

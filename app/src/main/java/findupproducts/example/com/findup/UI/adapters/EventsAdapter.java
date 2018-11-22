@@ -33,6 +33,7 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.ViewHolder
         this.context = context;
         this.events = events;
     }
+
     @NonNull
     @Override
     public EventsAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

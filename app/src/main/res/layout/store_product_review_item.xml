@@ -11,7 +11,7 @@
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_margin="10dp"
-        app:srcCompat="@drawable/placeholder"
+        app:srcCompat="@color/colorLightGrey"
         android:scaleType="fitXY"/>
 
     <TextView

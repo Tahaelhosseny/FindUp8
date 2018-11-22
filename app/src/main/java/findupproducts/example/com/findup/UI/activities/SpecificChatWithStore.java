@@ -23,8 +23,8 @@ public class SpecificChatWithStore extends AppCompatActivity {
         binding= DataBindingUtil.setContentView(this,R.layout.activity_specific_chat_with_store);
         String store_id = getIntent().getStringExtra("store_id");
         String name  = getIntent().getStringExtra("store_name");
-        Toast.makeText(this, store_id, Toast.LENGTH_SHORT).show();
-        Toast.makeText(this, name, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, store_id, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, name, Toast.LENGTH_SHORT).show();
         binding.btnBack.setText(name);
         viewModel.getFullChat(binding.reyclerviewMessageList , Integer.parseInt(store_id));
         binding.setPresenter(new SpecificChatPresenter() {

@@ -179,5 +179,6 @@
     <string name="count_value_milion">M</string>
     <string name="count_value_k">K</string>
     <string name="google_maps_keyget" templateMergeStrategy="preserve" translatable="false">AIzaSyBLjARROzvEGohPOzbnFGiQJthhOuJz6WQ</string>
+    <string name="app_slogan">Search, Find, Go</string>
 
 </resources>
