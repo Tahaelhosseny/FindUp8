@@ -3,6 +3,7 @@ package findupproducts.example.com.findup.UI.activities;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -11,6 +12,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.content.CursorLoader;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
@@ -26,6 +28,7 @@ import com.google.gson.Gson;
 
 import java.io.IOException;
 
+import findupproducts.example.com.findup.Helper.FilePath;
 import findupproducts.example.com.findup.Helper.Remote.ApiClient;
 import findupproducts.example.com.findup.Helper.Remote.ApiInterface;
 import findupproducts.example.com.findup.Helper.Remote.ResponseModel.CountriesResponse;
@@ -43,7 +46,7 @@ public class StoreInformationActivity extends AppCompatActivity {
     private static final int PICK_LOGO = 1;
     private static final int PICK_BANNER = 2;
     private static final int PICK_WORK_DAYS = 3;
-
+    String selectedFilePath;
     public static Store createStore;
 
     final int appVersion = Build.VERSION.SDK_INT;
@@ -132,8 +135,11 @@ public class StoreInformationActivity extends AppCompatActivity {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
+
                     imgLogo.setImageBitmap(bitmap);
-                    createStore.setStore_logo(path.getPath());
+                    selectedFilePath = FilePath.getPath(this,path);
+                    Log.i("selected","Selected File Path:" + selectedFilePath);
+                    createStore.setStore_logo_uri(path);
                     break;
                 }
                 case (PICK_BANNER) : {
@@ -147,7 +153,7 @@ public class StoreInformationActivity extends AppCompatActivity {
                         e.printStackTrace();
                     }
                     imgBanner.setImageBitmap(bitmap);
-                    createStore.setStore_banner(path.getPath());
+                    createStore.setStore_banner_uri(path);
                     break;
                 }
             }
@@ -219,13 +225,6 @@ public class StoreInformationActivity extends AppCompatActivity {
         });
     }
 
-    private String getImgPath(Uri imgUri){
-        Log.e("MyData", imgUri.getPath());
-        if (imgUri.getPath().contains(":"))
-            return imgUri.getPath().substring(imgUri.getPath().indexOf(":")+1);
-        else
-            return imgUri.getPath();
-    }
 
     @Override
     public void onBackPressed() {
