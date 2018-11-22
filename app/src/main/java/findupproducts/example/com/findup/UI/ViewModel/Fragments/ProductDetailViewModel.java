@@ -79,7 +79,7 @@ public class ProductDetailViewModel extends Observable {
                             aboutProduct.setText(v.getProduct_name());
                             product_name.setText(v.getProduct_name());
                             pComments.setOnClickListener(v ->
-                                    mContext.startActivity(new Intent(mContext, CommentsActivity.class).putExtra("product_id",product_id)));
+                            mContext.startActivity(new Intent(mContext, CommentsActivity.class).putExtra("product_id",product_id)));
                         }
                     });
                     });
@@ -157,8 +157,6 @@ public class ProductDetailViewModel extends Observable {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         CommentsProductPhotoAdater adapter = new CommentsProductPhotoAdater(mContext, commentList);
         recyclerView.setAdapter(adapter);
-
-
         DBHandler.getCommentByProductID(product_id, mContext, new PComment() {
                     @Override
                     public void onSuccess(Flowable<List<ProductComment>> commentFlowable) {
