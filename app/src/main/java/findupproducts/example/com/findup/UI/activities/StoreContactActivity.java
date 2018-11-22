@@ -21,7 +21,6 @@ import com.google.gson.Gson;
 import java.io.File;
 
 import findupproducts.example.com.findup.Helper.Database.DBUtility;
-import findupproducts.example.com.findup.Helper.FilePath;
 import findupproducts.example.com.findup.Helper.Remote.ApiClient;
 import findupproducts.example.com.findup.Helper.Remote.ApiInterface;
 import findupproducts.example.com.findup.Helper.Remote.ResponseModel.CitiesResponse;
@@ -171,8 +170,8 @@ public class StoreContactActivity extends AppCompatActivity {
         createStore.setStore_facebook_link(facebook);
         createStore.setStore_location_type(findViewById(radioLocation.getCheckedRadioButtonId()).getTag().toString());
         createStore.setStore_cat_id(String.valueOf(getIntent().getExtras().getInt("next_id")));
-        File logoFile = new File(FilePath.getPath(this,createStore.getStore_logo_uri()));
-        File bannerFile = new File(FilePath.getPath(this,createStore.getStore_banner_uri()));
+        File logoFile = new File(createStore.getStore_logo());
+        File bannerFile = new File(createStore.getStore_banner());
 
         MultipartBody.Part store_name = MultipartBody.Part.createFormData("store_name", createStore.getStore_name());
         MultipartBody.Part store_desc = MultipartBody.Part.createFormData("store_desc", createStore.getStore_desc());

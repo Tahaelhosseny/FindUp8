@@ -6,7 +6,6 @@ import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 import android.content.Context;
 import android.location.Location;
-import android.net.Uri;
 import android.support.annotation.NonNull;
 
 import com.google.android.gms.maps.model.LatLng;
@@ -42,10 +41,6 @@ public class Store {
 //    @NonNull
     @ColumnInfo(name = "store_logo")
     private String store_logo;
-    @Ignore
-    private Uri store_logo_uri;
-    @Ignore
-    private Uri store_banner_uri;
     @ColumnInfo(name = "placeReview")
     private String placeReview;
 //    @NonNull
@@ -412,21 +407,5 @@ public class Store {
 
     public void setIf_saved(int if_saved) {
         this.if_saved = if_saved;
-    }
-
-    public Uri getStore_logo_uri() {
-        return store_logo_uri;
-    }
-
-    public void setStore_logo_uri(Uri store_logo_uri) {
-        this.store_logo_uri = store_logo_uri;
-    }
-
-    public Uri getStore_banner_uri() {
-        return store_banner_uri;
-    }
-
-    public void setStore_banner_uri(Uri store_banner_uri) {
-        this.store_banner_uri = store_banner_uri;
     }
 }
