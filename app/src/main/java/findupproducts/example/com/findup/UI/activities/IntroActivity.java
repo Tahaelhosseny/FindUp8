@@ -49,7 +49,7 @@ import findupproducts.example.com.findup.UI.ViewModel.Activites.IntroViewModel;
 import findupproducts.example.com.findup.databinding.ActivityIntroBinding;
 
 public class IntroActivity extends AppCompatActivity {
-
+    public static String clickCatType;
     private String TAG = IntroActivity.class.getSimpleName();
     Button btn_skip, btn_login, btn_signup, btn_creatAccount;
     ImageButton  btn_facebook, btn_instagram, btn_twitter;
@@ -169,6 +169,7 @@ public class IntroActivity extends AppCompatActivity {
         btn_creatAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                clickCatType = "create";
                 startActivity(new Intent(IntroActivity.this, StoreChooseCategoryActivity.class));
             }
         });

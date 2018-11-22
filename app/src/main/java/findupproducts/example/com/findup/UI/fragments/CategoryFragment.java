@@ -28,6 +28,8 @@ import findupproducts.example.com.findup.R;
 import findupproducts.example.com.findup.UI.activities.CategeoryStoresAcivity;
 import findupproducts.example.com.findup.UI.activities.ProductsActivity;
 
+import static findupproducts.example.com.findup.UI.activities.IntroActivity.clickCatType;
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -162,7 +164,9 @@ public class CategoryFragment extends Fragment {
             itemHolder.rootView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    startActivity(new Intent(getActivity(), CategeoryStoresAcivity.class).putExtra("id" , id));
+                    if(!clickCatType.equals("create")){
+                        startActivity(new Intent(getActivity(), CategeoryStoresAcivity.class).putExtra("id" , id));
+                    }
                 }
             });
             //changeTextSize(itemHolder.contentText,itemHolder.contentText.getTextSize(),((ItemViewHolder) holder).defalut_text_size);

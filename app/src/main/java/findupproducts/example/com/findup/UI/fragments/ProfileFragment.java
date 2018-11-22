@@ -22,6 +22,8 @@ import findupproducts.example.com.findup.UI.activities.StoreChooseCategoryActivi
 import findupproducts.example.com.findup.UI.activities.StoreContactActivity;
 import findupproducts.example.com.findup.UI.activities.UserSavedActivity;
 
+import static findupproducts.example.com.findup.UI.activities.IntroActivity.clickCatType;
+
 public class ProfileFragment extends Fragment {
 
     private TextView prof_name, prof_phone;
@@ -71,6 +73,7 @@ public class ProfileFragment extends Fragment {
         btn_createStoreAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                clickCatType = "create";
                 startActivity(new Intent(getActivity(), StoreChooseCategoryActivity.class));
             }
         });
