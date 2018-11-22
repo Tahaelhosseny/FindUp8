@@ -38,7 +38,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:text="@string/comments_write_comment_btn"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:fontFamily="@font/sfcompactdisplay_semibold"
             android:textColor="@color/material_color_white"
             android:textAllCaps="false"

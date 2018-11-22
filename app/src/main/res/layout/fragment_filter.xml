@@ -20,9 +20,9 @@
             android:fontFamily="@font/sfcompactdisplay_medium"
             android:padding="@dimen/_5sdp"
             android:text="Price"
-            android:textSize="@dimen/_16sdp"
-            android:textStyle="bold"
-            android:textColor="@color/material_color_grey_600" />
+            android:textColor="@color/material_color_grey_600"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <co.ceryle.radiorealbutton.RadioRealButtonGroup
             android:id="@+id/priceRadioGroup"
@@ -73,7 +73,7 @@
             android:fontFamily="@font/sfcompactdisplay_medium"
             android:padding="@dimen/_5sdp"
             android:text="Time"
-            android:textSize="@dimen/_16sdp"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
         <co.ceryle.radiorealbutton.RadioRealButtonGroup
@@ -111,7 +111,7 @@
             android:fontFamily="@font/sfcompactdisplay_medium"
             android:padding="5dp"
             android:text="Rating"
-            android:textSize="16sp"
+            android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.047"
@@ -190,8 +190,8 @@
             android:fontFamily="@font/sfcompactdisplay_medium"
             android:padding="@dimen/_5sdp"
             android:text="Distance"
-            android:textSize="@dimen/_16sdp"
             android:textColor="@color/material_color_grey_600"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
         <com.warkiz.tickseekbar.TickSeekBar

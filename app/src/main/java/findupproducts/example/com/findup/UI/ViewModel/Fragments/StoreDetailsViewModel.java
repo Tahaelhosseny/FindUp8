@@ -134,6 +134,8 @@ public class StoreDetailsViewModel extends java.util.Observable {
                             tabLayout.setIconVisible(false);
                             tabLayout.getTitleView(0).setTypeface(Typeface.create("sfcompactdisplay_semibold", Typeface.NORMAL));
                             tabLayout.getTitleView(1).setTypeface(Typeface.create("sfcompactdisplay_heavy", Typeface.NORMAL));
+                            tabLayout.getTitleView(0).setTextSize(14);
+                            tabLayout.getTitleView(1).setTextSize(14);
                         }
                     });
                 });

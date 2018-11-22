@@ -14,11 +14,9 @@
             type="findupproducts.example.com.findup.UI.Presenter.Activities.CreateEventPresenter"/>
     </data>
     <ScrollView
-
         android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:fillViewport="true"
-        >
+        android:fillViewport="true">
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
@@ -77,11 +75,10 @@
                     android:id="@+id/txt_eventName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/activity_vertical_margin"
                     android:layout_marginTop="@dimen/activity_vertical_margin"
                     android:text="Event Name"
                     android:textColor="@color/colorWhiteGrey"
-                    android:textSize="@dimen/sp18"
+                    android:textSize="21sp"
                     android:textStyle="bold"
                     app:layout_constraintTop_toBottomOf="@id/pic_banner" />
 
@@ -95,18 +92,17 @@
                     android:textColorHighlight="@color/colorWhiteGrey"
                     android:textColorLink="@color/colorWhiteGrey"
                     android:textCursorDrawable="@drawable/color_black"
-                    android:textSize="@dimen/sp18"
+                    android:textSize="20sp"
                     app:layout_constraintTop_toBottomOf="@+id/txt_eventName" />
 
                 <TextView
                     android:id="@+id/txt_otherLanguage"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/activity_vertical_margin"
                     android:layout_marginTop="@dimen/activity_vertical_margin"
                     android:text="@string/other_language"
                     android:textColor="@color/colorWhiteGrey"
-                    android:textSize="@dimen/sp18"
+                    android:textSize="21sp"
                     android:textStyle="bold"
                     app:layout_constraintTop_toBottomOf="@+id/editText_eventName" />
 
@@ -114,25 +110,23 @@
                     android:id="@+id/editText_otherLanguage"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/activity_vertical_margin"
                     android:inputType="text"
                     android:shadowColor="@color/colorBlack"
                     android:textColor="@color/colorBlack"
                     android:textColorHighlight="@color/colorWhiteGrey"
                     android:textColorLink="@color/colorWhiteGrey"
                     android:textCursorDrawable="@drawable/color_black"
-                    android:textSize="@dimen/sp18"
+                    android:textSize="20sp"
                     app:layout_constraintTop_toBottomOf="@+id/txt_otherLanguage" />
 
                 <TextView
                     android:id="@+id/txt_eventTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/activity_vertical_margin"
                     android:layout_marginTop="@dimen/activity_vertical_margin"
                     android:text="@string/work_time"
                     android:textColor="@color/colorWhiteGrey"
-                    android:textSize="@dimen/sp16"
+                    android:textSize="21sp"
                     android:textStyle="bold"
                     app:layout_constraintTop_toBottomOf="@+id/editText_otherLanguage" />
 
@@ -140,18 +134,16 @@
                     android:id="@+id/txt_days"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/activity_vertical_margin"
                     android:layout_marginTop="@dimen/activity_vertical_margin"
                     android:text="@string/days"
                     android:textColor="@color/colorWhiteGrey"
-                    android:textSize="@dimen/sp16"
+                    android:textSize="20sp"
                     app:layout_constraintTop_toBottomOf="@+id/txt_eventTime" />
 
                 <EditText
                     android:id="@+id/edit_days"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/activity_vertical_margin"
                     android:hint="Sun - Mon"
                     android:inputType="text"
                     android:shadowColor="@color/colorBlack"
@@ -159,7 +151,7 @@
                     android:textColorHighlight="@color/colorWhiteGrey"
                     android:textColorLink="@color/colorWhiteGrey"
                     android:textCursorDrawable="@drawable/color_black"
-                    android:textSize="@dimen/sp18"
+                    android:textSize="20sp"
                     app:layout_constraintTop_toBottomOf="@+id/txt_days" />
 
                 <LinearLayout
@@ -177,7 +169,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/start_day"
                         android:textColor="@color/colorBlack"
-                        android:textSize="@dimen/sp16"
+                        android:textSize="20sp"
                         android:textStyle="bold" />
 
                 </LinearLayout>
@@ -186,11 +178,10 @@
                     android:id="@+id/txt_time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/activity_vertical_margin"
                     android:layout_marginTop="@dimen/activity_vertical_margin"
                     android:text="@string/time"
                     android:textColor="@color/colorWhiteGrey"
-                    android:textSize="@dimen/sp16"
+                    android:textSize="20sp"
                     app:layout_constraintTop_toBottomOf="@+id/day_picker_layout" />
 
                 <LinearLayout
@@ -209,7 +200,7 @@
                         android:layout_marginLeft="@dimen/_3sdp"
                         android:text="00"
                         android:textColor="@color/colorBlack"
-                        android:textSize="@dimen/sp16" />
+                        android:textSize="20sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -224,7 +215,7 @@
                         android:layout_marginLeft="@dimen/_3sdp"
                         android:text="00"
                         android:textColor="@color/colorBlack"
-                        android:textSize="@dimen/sp16" />
+                        android:textSize="20sp" />
 
                 </LinearLayout>
 
@@ -232,11 +223,10 @@
                     android:id="@+id/txt_description"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/activity_vertical_margin"
                     android:layout_marginTop="@dimen/activity_vertical_margin"
                     android:text="@string/description"
                     android:textColor="@color/colorWhiteGrey"
-                    android:textSize="@dimen/sp18"
+                    android:textSize="21sp"
                     android:textStyle="bold"
                     app:layout_constraintTop_toBottomOf="@+id/time_picker_linear" />
 
@@ -244,25 +234,23 @@
                     android:id="@+id/editText_description"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/activity_vertical_margin"
                     android:inputType="text"
                     android:shadowColor="@color/colorBlack"
                     android:textColor="@color/colorBlack"
                     android:textColorHighlight="@color/colorWhiteGrey"
                     android:textColorLink="@color/colorWhiteGrey"
                     android:textCursorDrawable="@drawable/color_black"
-                    android:textSize="@dimen/sp18"
+                    android:textSize="20sp"
                     app:layout_constraintTop_toBottomOf="@+id/txt_description" />
 
                 <TextView
                     android:id="@+id/txt_address"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/activity_vertical_margin"
                     android:layout_marginTop="@dimen/activity_vertical_margin"
                     android:text="@string/address"
                     android:textColor="@color/colorWhiteGrey"
-                    android:textSize="@dimen/sp18"
+                    android:textSize="21sp"
                     android:textStyle="bold"
                     app:layout_constraintTop_toBottomOf="@+id/editText_description" />
 
@@ -293,11 +281,12 @@
                     android:text="@string/btn_submit"
                     android:textAllCaps="false"
                     android:textColor="@color/colorWhite"
+                    android:textSize="18sp"
                     android:textStyle="bold"
-                    app:layout_constraintTop_toBottomOf="@id/txt_address"
                     app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"/>
+                    app:layout_constraintTop_toBottomOf="@id/txt_address" />
             </android.support.constraint.ConstraintLayout>
         </android.support.constraint.ConstraintLayout>
     </ScrollView>

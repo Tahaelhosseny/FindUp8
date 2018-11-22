@@ -14,30 +14,33 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/txt_success"/>
+
     <TextView
         android:id="@+id/txt_success"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/successful"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
         android:fontFamily="@font/sfcompactdisplay_heavy"
-        android:textSize="36sp"
+        android:text="@string/successful"
         android:textColor="@color/colorBlack"
-        app:layout_constraintBottom_toTopOf="@+id/txt_thanks"/>
+        android:textSize="49sp"
+        app:layout_constraintBottom_toTopOf="@+id/txt_thanks"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
     <TextView
         android:id="@+id/txt_thanks"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="@dimen/activity_vertical_margin"
         android:layout_marginLeft="@dimen/activity_vertical_margin"
+        android:layout_marginRight="@dimen/activity_vertical_margin"
         android:text="@string/thanks_text"
+        android:textAlignment="center"
+        android:textColor="@color/colorBlack"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@id/btn_switch"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/btn_switch"
-        android:textAlignment="center"
-        android:textColor="@color/colorBlack"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:layout_width="match_parent"
@@ -49,6 +52,7 @@
         android:textAllCaps="false"
         android:textColor="@color/colorWhite"
         android:textStyle="bold"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
 </android.support.constraint.ConstraintLayout>

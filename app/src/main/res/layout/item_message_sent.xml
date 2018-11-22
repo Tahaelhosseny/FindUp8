@@ -7,16 +7,16 @@
 
     <TextView
         android:id="@+id/text_message_body"
-        android:text="hello, hello!"
-        android:background="@drawable/bg_sent_message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginRight="8dp"
+        android:background="@drawable/bg_sent_message"
+        android:fontFamily="@font/sfcompactdisplay_thin"
         android:maxWidth="240dp"
         android:padding="15dp"
-        android:fontFamily="@font/sfcompactdisplay_thin"
-        android:textSize="17sp"
+        android:text="hello, hello!"
         android:textColor="@color/material_color_white"
-        android:layout_marginRight="8dp"
+        android:textSize="13sp"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

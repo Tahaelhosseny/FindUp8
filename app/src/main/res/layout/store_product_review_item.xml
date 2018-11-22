@@ -18,12 +18,11 @@
         android:id="@+id/productItemNameTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
         android:layout_marginStart="20dp"
         android:fontFamily="@font/sfcompactdisplay_semibold"
         android:text="Product Name"
         android:textColor="@color/material_color_black"
-        android:textSize="20sp"
+        android:textSize="26sp"
         app:layout_constraintStart_toEndOf="@id/productItemImg" />
 
     <TextView
@@ -34,7 +33,7 @@
         android:fontFamily="@font/sfcompactdisplay_medium"
         android:text="The red and Black cafe"
         android:textColor="@color/material_color_grey_600"
-        android:textSize="14sp"
+        android:textSize="17sp"
         app:layout_constraintStart_toStartOf="@id/productItemNameTxt"
         app:layout_constraintTop_toBottomOf="@+id/productItemNameTxt" />
 
@@ -42,13 +41,13 @@
         android:id="@+id/viewPreTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="View previous comment"
-        android:textSize="15sp"
-        android:textColor="@color/colorBlack"
-        android:fontFamily="@font/sfcompactdisplay_regular"
         android:layout_marginTop="15dp"
+        android:fontFamily="@font/sfcompactdisplay_regular"
+        android:text="View previous comment"
+        android:textColor="@color/colorBlack"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@id/productItemImg"
-        app:layout_constraintTop_toBottomOf="@+id/productItemImg"/>
+        app:layout_constraintTop_toBottomOf="@+id/productItemImg" />
 
     <ImageView
         android:id="@+id/user_photo"
@@ -65,11 +64,11 @@
         android:id="@+id/comment_username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="15dp"
         android:fontFamily="@font/sfcompactdisplay_semibold"
         android:text="Nof Ahmed"
-        android:textSize="25sp"
-        android:layout_margin="15dp"
         android:textColor="@color/material_color_black"
+        android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@+id/user_photo"
         app:layout_constraintTop_toBottomOf="@+id/viewPreTxt" />
 
@@ -79,10 +78,10 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
         android:layout_marginTop="4dp"
-        android:lineSpacingExtra="1sp"
-        android:textSize="19sp"
         android:fontFamily="@font/sfcompactdisplay_semibold"
+        android:lineSpacingExtra="1sp"
         android:text="There are many variations of passages of larem lpsum avaliable, but the mojrity have suffeed alteration in some form, by injected humour."
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/comment_username"
         app:layout_constraintTop_toBottomOf="@+id/comment_username" />
@@ -91,20 +90,11 @@
         android:id="@+id/timeTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="24dp"
         android:layout_marginTop="10dp"
-        android:textSize="19sp"
         android:fontFamily="@font/sfcompactdisplay_semibold"
         android:text="1h"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/comment_txt"
         app:layout_constraintTop_toBottomOf="@+id/comment_txt" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_2sdp"
-        app:layout_constraintTop_toBottomOf="@+id/timeTxt"
-        android:background="@color/colorBlack"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="321dp" />
 
 </android.support.constraint.ConstraintLayout>

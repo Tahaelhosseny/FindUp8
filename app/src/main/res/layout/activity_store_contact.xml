@@ -51,10 +51,10 @@
                 android:id="@+id/txt_country"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/sfcompactdisplay_semibold"
                 android:text="@string/country"
                 android:textColor="@color/colorWhiteGrey"
-                android:textSize="18sp"
-                android:fontFamily="@font/sfcompactdisplay_semibold"
+                android:textSize="21sp"
                 android:textStyle="bold" />
 
             <AutoCompleteTextView
@@ -78,13 +78,12 @@
                 android:id="@+id/txt_city"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/activity_vertical_margin"
                 android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:fontFamily="@font/sfcompactdisplay_semibold"
                 android:text="@string/city"
                 android:textColor="@color/colorWhiteGrey"
-                android:textSize="18sp"
+                android:textSize="21sp"
                 android:textStyle="bold"
-                android:fontFamily="@font/sfcompactdisplay_semibold"
                 app:layout_constraintTop_toBottomOf="@id/editText_country" />
 
             <AutoCompleteTextView
@@ -108,13 +107,12 @@
                 android:id="@+id/txt_location"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/activity_vertical_margin"
                 android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:fontFamily="@font/sfcompactdisplay_semibold"
                 android:text="@string/location"
                 android:textColor="@color/colorWhiteGrey"
-                android:textSize="18sp"
+                android:textSize="21sp"
                 android:textStyle="bold"
-                android:fontFamily="@font/sfcompactdisplay_semibold"
                 app:layout_constraintTop_toBottomOf="@id/editText_city" />
 
             <RadioGroup
@@ -175,13 +173,12 @@
                 android:id="@+id/txt_mobile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/activity_vertical_margin"
                 android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:fontFamily="@font/sfcompactdisplay_semibold"
                 android:text="@string/mobile_phone"
                 android:textColor="@color/colorWhiteGrey"
-                android:textSize="18sp"
+                android:textSize="21sp"
                 android:textStyle="bold"
-                android:fontFamily="@font/sfcompactdisplay_semibold"
                 app:layout_constraintTop_toBottomOf="@id/radioLocation" />
 
             <Spinner
@@ -198,13 +195,12 @@
                 android:id="@+id/txt_email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/activity_vertical_margin"
                 android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:fontFamily="@font/sfcompactdisplay_semibold"
                 android:text="Email"
                 android:textColor="@color/colorWhiteGrey"
-                android:textSize="18sp"
+                android:textSize="21sp"
                 android:textStyle="bold"
-                android:fontFamily="@font/sfcompactdisplay_semibold"
                 app:layout_constraintTop_toBottomOf="@id/editText_mobile" />
 
             <EditText
@@ -226,13 +222,12 @@
                 android:id="@+id/txt_website"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/activity_vertical_margin"
                 android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:fontFamily="@font/sfcompactdisplay_semibold"
                 android:text="@string/website"
                 android:textColor="@color/colorWhiteGrey"
-                android:textSize="18sp"
+                android:textSize="21sp"
                 android:textStyle="bold"
-                android:fontFamily="@font/sfcompactdisplay_semibold"
                 app:layout_constraintTop_toBottomOf="@id/editText_password" />
 
             <EditText
@@ -254,13 +249,12 @@
                 android:id="@+id/txt_social"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/activity_vertical_margin"
                 android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:fontFamily="@font/sfcompactdisplay_semibold"
                 android:text="@string/social"
                 android:textColor="@color/colorWhiteGrey"
-                android:textSize="18sp"
+                android:textSize="21sp"
                 android:textStyle="bold"
-                android:fontFamily="@font/sfcompactdisplay_semibold"
                 app:layout_constraintTop_toBottomOf="@id/editText_website" />
 
             <EditText
@@ -355,13 +349,12 @@
                 android:id="@+id/txt_pass"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/activity_vertical_margin"
                 android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:fontFamily="@font/sfcompactdisplay_semibold"
                 android:text="@string/password"
                 android:textColor="@color/colorWhiteGrey"
-                android:textSize="18sp"
+                android:textSize="21sp"
                 android:textStyle="bold"
-                android:fontFamily="@font/sfcompactdisplay_semibold"
                 app:layout_constraintTop_toBottomOf="@id/editText_email" />
 
             <EditText

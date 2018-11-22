@@ -72,43 +72,41 @@
                 android:id="@+id/txt_storeName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/activity_vertical_margin"
                 android:layout_marginTop="@dimen/activity_vertical_margin"
-                android:text="@string/store_name"
                 android:fontFamily="@font/sfcompactdisplay_semibold"
+                android:text="@string/store_name"
                 android:textColor="@color/colorWhiteGrey"
+                android:textSize="21sp"
                 android:textStyle="bold"
-                android:textSize="@dimen/sp18"
-                app:layout_constraintTop_toBottomOf="@+id/pic_banner"/>
+                app:layout_constraintTop_toBottomOf="@+id/pic_banner" />
 
             <EditText
                 android:id="@+id/editText_storeName"
-                android:theme="@style/MyEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text"
+                android:background="@drawable/bg_edit"
                 android:fontFamily="@font/sfcompactdisplay_regular"
+                android:inputType="text"
                 android:padding="@dimen/edit_text_padding"
                 android:textColor="@color/colorBlack"
                 android:textColorHighlight="@color/colorWhiteGrey"
                 android:textColorLink="@color/colorWhiteGrey"
                 android:textCursorDrawable="@drawable/color_black"
-                android:textSize="@dimen/sp20"
-                android:background="@drawable/bg_edit"
+                android:textSize="20sp"
+                android:theme="@style/MyEditText"
                 app:layout_constraintTop_toBottomOf="@+id/txt_storeName" />
 
             <TextView
                 android:id="@+id/txt_otherLanguage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/activity_vertical_margin"
                 android:layout_marginTop="@dimen/activity_vertical_margin"
-                android:text="@string/other_language"
                 android:fontFamily="@font/sfcompactdisplay_semibold"
+                android:text="@string/other_language"
                 android:textColor="@color/colorWhiteGrey"
+                android:textSize="21sp"
                 android:textStyle="bold"
-                android:textSize="@dimen/sp20"
-                app:layout_constraintTop_toBottomOf="@+id/editText_storeName"/>
+                app:layout_constraintTop_toBottomOf="@+id/editText_storeName" />
             <EditText
                 android:id="@+id/editText_otherLanguage"
                 android:layout_width="match_parent"
@@ -124,17 +122,17 @@
                 android:fontFamily="@font/sfcompactdisplay_regular"
                 android:padding="@dimen/edit_text_padding"
                 android:textSize="@dimen/sp20"/>
+
             <TextView
                 android:id="@+id/txt_tags"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/activity_vertical_margin"
                 android:layout_marginTop="@dimen/activity_vertical_margin"
                 android:text="@string/tags"
                 android:textColor="@color/colorWhiteGrey"
+                android:textSize="21sp"
                 android:textStyle="bold"
-                android:textSize="@dimen/sp18"
-                app:layout_constraintTop_toBottomOf="@+id/editText_otherLanguage"/>
+                app:layout_constraintTop_toBottomOf="@+id/editText_otherLanguage" />
 
             <EditText
                 android:id="@+id/editText_tags"
