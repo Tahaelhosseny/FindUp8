@@ -52,7 +52,8 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         tools:layout_editor_absoluteX="16dp" />
-
+        app:layout_constraintBottom_toBottomOf="parent" />
+  
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

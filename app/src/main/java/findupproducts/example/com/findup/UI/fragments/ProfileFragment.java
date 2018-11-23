@@ -4,10 +4,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import findupproducts.example.com.findup.Helper.SharedPrefManger;
@@ -22,6 +24,8 @@ import findupproducts.example.com.findup.UI.activities.StoreChooseCategoryActivi
 import findupproducts.example.com.findup.UI.activities.StoreContactActivity;
 import findupproducts.example.com.findup.UI.activities.UserSavedActivity;
 
+import static findupproducts.example.com.findup.UI.activities.IntroActivity.clickCatType;
+
 public class ProfileFragment extends Fragment {
 
     private TextView prof_name, prof_phone;
@@ -35,7 +39,13 @@ public class ProfileFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
-
+        android.support.v7.widget.Toolbar toolbar = getActivity().findViewById(R.id.toolbar_top);
+        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(false);
+        toolbar.setBackgroundColor(getResources().getColor(R.color.colorWhite));
+        FrameLayout frameLayout = getActivity().findViewById(R.id.navigation_bottom_container);
+        frameLayout.setBackgroundColor(getResources().getColor(R.color.colorWhite));
         Button btn_notifications = view.findViewById(R.id.btn_notifications);
         Button btn_chats = view.findViewById(R.id.btn_chats);
         Button btn_saved = view.findViewById(R.id.btn_saved);
@@ -71,6 +81,7 @@ public class ProfileFragment extends Fragment {
         btn_createStoreAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                clickCatType = "create";
                 startActivity(new Intent(getActivity(), StoreChooseCategoryActivity.class));
             }
         });
