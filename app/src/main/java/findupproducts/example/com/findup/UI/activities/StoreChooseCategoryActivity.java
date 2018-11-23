@@ -31,7 +31,7 @@ public class StoreChooseCategoryActivity extends AppCompatActivity {
         btn_truckBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+                startActivity(new Intent(StoreChooseCategoryActivity.this , IntroActivity.class)); finish();
             }
         });
 
