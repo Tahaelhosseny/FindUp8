@@ -25,8 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="18dp"
-        android:background="@color/colorWhite"
-        >
+        android:background="@color/colorWhite">
         <Button
             android:id="@+id/btn_CatStoreBack"
             android:layout_width="wrap_content"
@@ -51,8 +50,9 @@
         android:id="@+id/store_cat_recycler"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:layout_editor_absoluteY="74dp"
-        ></android.support.v7.widget.RecyclerView>
+        tools:layout_editor_absoluteY="74dp">
+
+    </android.support.v7.widget.RecyclerView>
 
 </LinearLayout>
     </ScrollView>

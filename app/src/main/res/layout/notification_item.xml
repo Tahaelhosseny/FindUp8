@@ -34,9 +34,9 @@
         android:fontFamily="@font/sfcompactdisplay_semibold"
         android:text="System Message"
         android:textColor="@color/material_color_black"
-        android:textSize="24sp"
+        android:textSize="26sp"
         app:layout_constraintStart_toStartOf="@id/notificationItemDate"
-        app:layout_constraintTop_toBottomOf="@+id/notificationItemDate"/>
+        app:layout_constraintTop_toBottomOf="@+id/notificationItemDate" />
 
     <TextView
         android:id="@+id/notificationItemDesc"
@@ -45,19 +45,18 @@
         android:layout_marginTop="5dp"
         android:fontFamily="@font/sfcompactdisplay_medium"
         android:text="The red and Black cafe"
-        android:textSize="19sp"
         android:textColor="@color/material_color_grey_600"
+        android:textSize="17sp"
         app:layout_constraintStart_toStartOf="@id/notificationItemTypeTxt"
-        app:layout_constraintTop_toBottomOf="@+id/notificationItemTypeTxt"/>
+        app:layout_constraintTop_toBottomOf="@+id/notificationItemTypeTxt" />
 
     <ImageView
         android:id="@+id/delNotificationBtn"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_marginEnd="10dp"
-        android:layout_marginRight="10dp"
-        app:srcCompat="@drawable/rubbish_bin_3x"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/notificationItemDate"/>
+        app:layout_constraintTop_toTopOf="@id/notificationItemDate"
+        app:srcCompat="@drawable/rubbish_bin_3x" />
 
 </android.support.constraint.ConstraintLayout>

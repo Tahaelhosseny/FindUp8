@@ -20,12 +20,11 @@
         android:id="@+id/productItemNameTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
         android:layout_marginStart="20dp"
         android:fontFamily="@font/sfcompactdisplay_semibold"
         android:text="Product Name"
         android:textColor="@color/material_color_black"
-        android:textSize="20sp"
+        android:textSize="26sp"
         app:layout_constraintStart_toEndOf="@id/productItemImg" />
 
     <TextView
@@ -36,7 +35,7 @@
         android:fontFamily="@font/sfcompactdisplay_medium"
         android:text="The red and Black cafe"
         android:textColor="@color/material_color_grey_600"
-        android:textSize="14sp"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@id/productItemNameTxt"
         app:layout_constraintTop_toBottomOf="@+id/productItemNameTxt" />
 
@@ -47,7 +46,7 @@
         android:fontFamily="@font/sfcompactdisplay_semibold"
         android:text="18.5"
         android:textColor="@color/material_color_black"
-        android:textSize="20sp"
+        android:textSize="26sp"
         app:layout_constraintStart_toStartOf="@id/productItemDesc"
         app:layout_constraintTop_toBottomOf="@+id/productItemDesc" />
 
@@ -59,7 +58,7 @@
         android:fontFamily="@font/sfcompactdisplay_semibold"
         android:text="SR"
         android:textColor="@color/material_color_black"
-        android:textSize="20sp"
+        android:textSize="26sp"
         app:layout_constraintBottom_toBottomOf="@+id/productItemPrice"
         app:layout_constraintStart_toEndOf="@+id/productItemPrice" />
 
@@ -73,7 +72,7 @@
         android:fontFamily="@font/sfcompactdisplay_light"
         android:text="567"
         android:textColor="@color/material_color_grey_600"
-        android:textSize="18sp"
+        android:textSize="17sp"
         app:layout_constraintStart_toStartOf="@id/productItemPrice"
         app:layout_constraintTop_toBottomOf="@+id/productItemPrice" />
 
@@ -81,15 +80,14 @@
         android:id="@+id/productNumLikes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="36dp"
         android:layout_marginStart="36dp"
         android:layout_marginTop="8dp"
-        android:fontFamily="@font/sfcompactdisplay_light"
-        android:text="2.2k"
-        android:textSize="18sp"
-        android:textColor="@color/material_color_grey_600"
         android:drawablePadding="3dp"
         android:drawableStart="@drawable/like"
+        android:fontFamily="@font/sfcompactdisplay_light"
+        android:text="2.2k"
+        android:textColor="@color/material_color_grey_600"
+        android:textSize="17sp"
         app:layout_constraintStart_toEndOf="@id/productNumComments"
         app:layout_constraintTop_toBottomOf="@+id/productItemPrice" />
 

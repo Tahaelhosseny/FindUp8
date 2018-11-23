@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:orientation="vertical"
@@ -8,80 +8,70 @@
     android:layout_margin="10dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_marginTop="@dimen/_5sdp"
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/storeImgCard"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="20dp"
+        android:elevation="5dp"
+        tools:style="@style/CardView"
+        android:background="@color/colorLightGrey"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:layout_gravity="center"
+        app:layout_anchorGravity="center"
+        android:foregroundGravity="center">
+
+        <ImageView
+            android:id="@+id/img_store_img"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@mipmap/ic_launcher" />
+
+    </android.support.v7.widget.CardView>
+
+    <TextView
+        android:id="@+id/txt_store_name"
+        android:layout_width="@dimen/_170sdp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <android.support.v7.widget.CardView
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_margin="10dp"
-            app:cardCornerRadius="20dp"
-            android:elevation="5dp"
-            tools:style="@style/CardView"
-            android:background="@color/colorLightGrey"
-            android:foreground="?android:attr/selectableItemBackground"
-            android:layout_gravity="center"
-            app:layout_anchorGravity="center"
-            android:foregroundGravity="center">
+        android:text="Store Name"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:fontFamily="@font/sfcompactdisplay_semibold"
+        android:layout_marginStart="10dp"
+        app:layout_constraintStart_toEndOf="@+id/storeImgCard"/>
 
-            <ImageView
-                android:id="@+id/img_store_img"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="fitXY"
-                android:src="@mipmap/ic_launcher" />
-
-        </android.support.v7.widget.CardView>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_marginTop="@dimen/_5sdp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <TextView
-                    android:id="@+id/txt_store_name"
-                    android:layout_width="@dimen/_170sdp"
-                    android:layout_height="wrap_content"
-                    android:text="Store Name"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/txt_store_rate"
-                    android:layout_width="@dimen/_20sdp"
-                    android:layout_height="wrap_content"
-                    android:text="5.0"
-                    />
-
-                <ImageView
-                    android:id="@+id/imageView3"
-                    android:layout_width="15dp"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:layout_marginLeft="@dimen/_4sdp"
-                    android:layout_height="15dp"
-                    android:background="@drawable/_0_5x" />
-            </LinearLayout>
-            <TextView
-                android:id="@+id/txt_store_desc"
-                android:layout_width="220dp"
-                android:layout_marginTop="5dp"
-                android:maxLines="1"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:text="Description"
-                android:textSize="15sp"
-                tools:layout_editor_absoluteX="89dp" />
-        </LinearLayout>
-    </LinearLayout>
-    <LinearLayout
+    <TextView
+        android:id="@+id/txt_store_rate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        tools:layout_editor_absoluteX="297dp">
-    </LinearLayout>
-</LinearLayout>
+        android:text="5.0"
+        android:textSize="12sp"
+        android:fontFamily="@font/sfcompactdisplay_regular"
+        android:layout_marginEnd="5dp"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="15dp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_height="15dp"
+        android:layout_marginEnd="5dp"
+        android:background="@drawable/_0_5x"
+        app:layout_constraintEnd_toStartOf="@id/txt_store_rate" />
+
+    <TextView
+        android:id="@+id/txt_store_desc"
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:maxLines="1"
+        android:text="Description"
+        android:fontFamily="@font/sfcompactdisplay_regular"
+        android:textSize="17sp"
+        app:layout_constraintStart_toStartOf="@id/txt_store_name"
+        app:layout_constraintTop_toBottomOf="@id/txt_store_name"/>
+
+</android.support.constraint.ConstraintLayout>

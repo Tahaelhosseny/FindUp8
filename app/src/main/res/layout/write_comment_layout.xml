@@ -29,7 +29,7 @@
         android:fontFamily="@font/sfcompactdisplay_semibold"
         android:text="@string/comments_write_your_comment_txt"
         android:textColor="@color/semi_hit_color"
-        android:textSize="16sp"
+        android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -42,7 +42,7 @@
         android:fontFamily="@font/sfcompactdisplay_semibold"
         android:text="@string/comments_max_characters_txt"
         android:textColor="@color/semi_hit_color"
-        android:textSize="16sp"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -54,11 +54,11 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
         android:ems="10"
-        android:textSize="20sp"
         android:fontFamily="@font/sfcompactdisplay_regular"
         android:hint="here you con write your comment to publish it"
-        android:maxLength="300"
         android:inputType="textMultiLine"
+        android:maxLength="300"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/write_yout_comment" />
@@ -67,20 +67,20 @@
         android:id="@+id/write_comment_btn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:background="@drawable/bg_form_rounded"
+        android:backgroundTint="@color/colorAccent"
+        android:elevation="@dimen/cardview_default_elevation"
+        android:fontFamily="@font/sfcompactdisplay_semibold"
+        android:onClick="@{(v)->presenter.addCommentToStore()}"
+        android:text="Submit"
+        android:textAllCaps="false"
+        android:textColor="@color/material_color_white"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:onClick="@{(v)->presenter.addCommentToStore()}"
-        android:text="@string/comments_write_comment_btn"
-        android:textSize="20sp"
-        android:fontFamily="@font/sfcompactdisplay_semibold"
-        android:textColor="@color/material_color_white"
-        android:textAllCaps="false"
-        android:elevation="@dimen/cardview_default_elevation"
-        android:layout_marginBottom="15dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:background="@drawable/bg_form_rounded"
-        android:backgroundTint="@color/colorAccent"/>
+        app:layout_constraintStart_toStartOf="parent" />
 </android.support.constraint.ConstraintLayout>
 </layout>

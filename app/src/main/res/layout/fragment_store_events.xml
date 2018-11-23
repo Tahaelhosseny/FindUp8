@@ -47,6 +47,7 @@ xmlns:tools="http://schemas.android.com/tools"
             android:fontFamily="@font/sfcompactdisplay_medium"
             android:text="@string/create_new_events"
             android:textAllCaps="false"
+            android:textSize="18sp"
             android:textColor="@color/material_color_white"
             android:textStyle="bold" />
     </LinearLayout>

@@ -1,42 +1,38 @@
 package findupproducts.example.com.findup.UI.fragments;
 
-
 import android.animation.ValueAnimator;
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.TextView;
+import android.widget.Toolbar;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import findupproducts.example.com.findup.Helper.Database.DBHandler;
+import findupproducts.example.com.findup.R;
+import findupproducts.example.com.findup.UI.activities.CategeoryStoresAcivity;
+import findupproducts.example.com.findup.models.Category;
 import io.github.luizgrp.sectionedrecyclerviewadapter.SectionParameters;
 import io.github.luizgrp.sectionedrecyclerviewadapter.SectionedRecyclerViewAdapter;
 import io.github.luizgrp.sectionedrecyclerviewadapter.StatelessSection;
 import io.reactivex.Flowable;
-import findupproducts.example.com.findup.Helper.Database.DBHandler;
-import findupproducts.example.com.findup.Helper.Database.Interfaces.Category.Category;
-import findupproducts.example.com.findup.R;
-import findupproducts.example.com.findup.UI.activities.CategeoryStoresAcivity;
-import findupproducts.example.com.findup.UI.activities.ProductsActivity;
 
-import static findupproducts.example.com.findup.UI.activities.IntroActivity.clickCatType;
-
-
-public class CategoryFragment extends Fragment {
+public class Category2Fragment extends Fragment {
 
     static List<ExpandableSection> expandableSections;
     private SectionedRecyclerViewAdapter sectionAdapter;
 
-    public CategoryFragment() {
+    public Category2Fragment() {
         // Required empty public constructor
     }
 
@@ -52,20 +48,28 @@ public class CategoryFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_category, container, false);
+        return inflater.inflate(R.layout.fragment_2_category, container, false);
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-
+        android.support.v7.widget.Toolbar toolbar = getActivity().findViewById(R.id.toolbar_top);
+        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(false);
+        toolbar.setBackgroundColor(getResources().getColor(R.color.colorBlack));
+        toolbar.setTitle("");
+//        toolbar.setTitleTextColor(getResources().getColor(R.color.colorWhite));
+        FrameLayout frameLayout = getActivity().findViewById(R.id.navigation_bottom_container);
+        frameLayout.setBackgroundColor(getResources().getColor(R.color.colorBlack));
         expandableSections = new ArrayList<>();
         sectionAdapter = new SectionedRecyclerViewAdapter();
         List<Category> cat = new ArrayList<>();
-        DBHandler.GetAllCategories(getActivity(), new Category() {
+        DBHandler.GetAllCategories(getActivity(), new findupproducts.example.com.findup.Helper.Database.Interfaces.Category.Category() {
             @Override
-            public void onSuccess(Flowable<List<findupproducts.example.com.findup.models.Category>> listFlowable) {
+            public void onSuccess(Flowable<List<Category>> listFlowable) {
                 listFlowable.subscribe(
                         val -> {
                             (getActivity()).runOnUiThread(new Runnable() {
@@ -83,8 +87,10 @@ public class CategoryFragment extends Fragment {
                         }
                 );
             }
+
             @Override
             public void onFail() {
+
             }
         });
     }
@@ -162,9 +168,7 @@ public class CategoryFragment extends Fragment {
             itemHolder.rootView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if(!clickCatType.equals("create")){
                         startActivity(new Intent(getActivity(), CategeoryStoresAcivity.class).putExtra("id" , id));
-                    }
                 }
             });
             //changeTextSize(itemHolder.contentText,itemHolder.contentText.getTextSize(),((ItemViewHolder) holder).defalut_text_size);

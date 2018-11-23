@@ -123,19 +123,19 @@
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
 
-    <Button
-        android:id="@+id/btn_forgotPassword"
-        android:layout_width="140dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:background="@null"
-        android:fontFamily="@font/sfcompactdisplay_light"
-        android:drawableStart="@drawable/combined_shape_2x"
-        android:text="@string/forget_password"
-        android:textAllCaps="false"
-        android:textColor="@color/colorBlack"
-        app:layout_constraintStart_toStartOf="@+id/editText_password"
-        app:layout_constraintTop_toBottomOf="@+id/editText_password" />
+        <Button
+            android:id="@+id/btn_forgotPassword"
+            android:layout_width="140dp"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:drawableStart="@drawable/combined_shape_2x"
+            android:fontFamily="@font/sfcompactdisplay_light"
+            android:text="@string/forget_password"
+            android:textAllCaps="false"
+            android:textColor="@color/colorBlack"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/editText_password"
+            app:layout_constraintTop_toBottomOf="@+id/editText_password" />
 
         <Button
             android:id="@+id/btn_login"

@@ -40,9 +40,9 @@ public class BottomBarFragment extends Fragment {
                     UI_Utility.BottomNavigationMenu_icons_change(menu, position);
                     adapter.notifyDataSetChanged();
                     Fragment selectedFragment = new MainFragment();
-                    ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-                    ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(false);
-                    ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Category");
+//                    ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+//                    ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(false);
+//                    ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Category");
                     ReplaceFragment(position,v.getContext(),menu);
                     //getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_toolbar_container, selectedFragment).commit();
                 }
@@ -74,11 +74,11 @@ public class BottomBarFragment extends Fragment {
                 break;
             case 3:
                 ToolbarSwitch(true,mContext);
-                selectedFragment = new CategoryFragment();
-                Utility.replaceFragment(((FragmentActivity)mContext).getSupportFragmentManager(), new CategoryFragment(), R.id.main_toolbar_container, 0,menu);
-                ((AppCompatActivity) mContext).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-                ((AppCompatActivity) mContext).getSupportActionBar().setDisplayShowHomeEnabled(false);
-                ((AppCompatActivity) mContext).getSupportActionBar().setTitle(mContext.getString(R.string.category));
+                selectedFragment = new Category2Fragment();
+                Utility.replaceFragment(((FragmentActivity)mContext).getSupportFragmentManager(), new Category2Fragment(), R.id.main_toolbar_container, 0,menu);
+//                ((AppCompatActivity) mContext).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+//                ((AppCompatActivity) mContext).getSupportActionBar().setDisplayShowHomeEnabled(false);
+//                ((AppCompatActivity) mContext).getSupportActionBar().setTitle(mContext.getString(R.string.category));
                 break;
             case 4:
                 ToolbarSwitch(true,mContext);
