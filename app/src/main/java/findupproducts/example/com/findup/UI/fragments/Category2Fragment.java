@@ -63,6 +63,8 @@ public class Category2Fragment extends Fragment {
         toolbar.setBackgroundColor(getResources().getColor(R.color.colorBlack));
         toolbar.setTitle("Category");
         toolbar.setTitleTextColor(getResources().getColor(R.color.colorWhite));
+
+
         FrameLayout frameLayout = getActivity().findViewById(R.id.navigation_bottom_container);
         frameLayout.setBackgroundColor(getResources().getColor(R.color.colorBlack));
         expandableSections = new ArrayList<>();
