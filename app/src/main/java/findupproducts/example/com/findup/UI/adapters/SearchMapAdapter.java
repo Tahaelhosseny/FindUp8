@@ -104,7 +104,9 @@ public class SearchMapAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                     .oval(false)
                     .build();
             Picasso.with(context).load(store.getStore_banner()).transform(transformation).placeholder(R.drawable.near_by_place_holder).into(banner);
-            description.setText(store.getStore_desc());type.setText("Store");
+            name.setText(store.getStore_name());
+            description.setText(store.getStore_desc());
+            type.setText("Store");
             constraintLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
