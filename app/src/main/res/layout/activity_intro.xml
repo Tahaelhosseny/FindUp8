@@ -15,9 +15,6 @@
             type="findupproducts.example.com.findup.UI.Presenter.Activities.SocialPresenter"/>
 
     </data>
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -203,5 +200,4 @@
             app:layout_constraintVertical_bias="1.0" />
 
     </LinearLayout>
-</ScrollView>
 </layout>
