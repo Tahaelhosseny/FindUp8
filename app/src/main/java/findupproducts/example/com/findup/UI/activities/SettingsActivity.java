@@ -90,7 +90,7 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
 
             case R.id.btn_logout:
                 LogoutAccepted();
-                startActivity(new Intent(SettingsActivity.this, SplashScreenActivity.class));
+                startActivity(new Intent(SettingsActivity.this, IntroActivity.class));
                 finish();
                 break;
         }
