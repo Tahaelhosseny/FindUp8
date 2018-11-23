@@ -28,7 +28,7 @@
         android:fontFamily="@font/sfcompactdisplay_semibold"
         android:text="@string/product_name"
         android:textColor="@color/material_color_black"
-        android:textSize="20sp"
+        android:textSize="26sp"
         app:layout_constraintStart_toEndOf="@id/productItemImg" />
 
     <TextView
@@ -38,9 +38,9 @@
         android:layout_marginTop="10dp"
         android:fontFamily="@font/sfcompactdisplay_semibold"
         android:text="@string/product_description"
-        android:textSize="20sp"
+        android:textSize="17sp"
         app:layout_constraintStart_toStartOf="@id/productItemNameTxt"
-        app:layout_constraintTop_toBottomOf="@+id/productItemNameTxt"/>
+        app:layout_constraintTop_toBottomOf="@+id/productItemNameTxt" />
 
     <TextView
         android:id="@+id/productItemPrice"
@@ -50,7 +50,7 @@
         android:fontFamily="@font/sfcompactdisplay_semibold"
         android:text="@string/product_price"
         android:textColor="@color/material_color_black"
-        android:textSize="20sp"
+        android:textSize="26sp"
         app:layout_constraintStart_toStartOf="@id/productItemDesc"
-        app:layout_constraintTop_toBottomOf="@+id/productItemDesc"/>
+        app:layout_constraintTop_toBottomOf="@+id/productItemDesc" />
 </android.support.constraint.ConstraintLayout>

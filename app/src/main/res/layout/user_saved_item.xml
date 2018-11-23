@@ -19,13 +19,12 @@
         android:id="@+id/userSavedItemName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
         android:layout_marginStart="20dp"
         android:fontFamily="@font/sfcompactdisplay_semibold"
-        android:text="Chocolate Cake"
         android:letterSpacing=".05"
+        android:text="Chocolate Cake"
         android:textColor="@color/material_color_grey_900"
-        android:textSize="22sp"
+        android:textSize="26sp"
         app:layout_constraintStart_toEndOf="@id/userSavedItemImg" />
 
     <TextView

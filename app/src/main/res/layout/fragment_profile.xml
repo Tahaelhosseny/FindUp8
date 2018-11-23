@@ -22,85 +22,85 @@
         android:id="@+id/profile_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/activity_vertical_margin"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/sfcompactdisplay_semibold"
         android:text="@string/profile_name"
         android:textColor="@color/colorBlack"
-        android:fontFamily="@font/sfcompactdisplay_semibold"
-        android:textSize="20sp"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="@dimen/activity_vertical_margin"
-        app:layout_constraintStart_toEndOf="@id/profile_pic"
+        android:textSize="26sp"
         app:layout_constraintLeft_toRightOf="@id/profile_pic"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintStart_toEndOf="@id/profile_pic"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/profile_phone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/activity_vertical_margin"
+        android:fontFamily="@font/sfcompactdisplay_medium"
         android:text="@string/profile_number"
         android:textColor="@color/colorBlack"
-        android:fontFamily="@font/sfcompactdisplay_medium"
-        android:textSize="16sp"
-        android:layout_marginStart="@dimen/activity_vertical_margin"
-        app:layout_constraintStart_toEndOf="@id/profile_pic"
+        android:textSize="20sp"
         app:layout_constraintLeft_toRightOf="@id/profile_pic"
-        app:layout_constraintTop_toBottomOf="@id/profile_name"/>
+        app:layout_constraintStart_toEndOf="@id/profile_pic"
+        app:layout_constraintTop_toBottomOf="@id/profile_name" />
 
     <Button
         android:id="@+id/btn_notifications"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/bg_button_rounded_null"
-        android:drawableStart="@drawable/notifications_button"
-        android:drawablePadding="10dp"
-        app:layout_constraintTop_toBottomOf="@id/profile_pic"
         android:layout_marginTop="30dp"
+        android:background="@drawable/bg_button_rounded_null"
+        android:drawablePadding="10dp"
+        android:drawableStart="@drawable/notifications_button"
+        android:fontFamily="@font/sfcompactdisplay_semibold"
         android:text="@string/profile_notification"
         android:textAllCaps="false"
-        android:textSize="18sp"
-        android:fontFamily="@font/sfcompactdisplay_semibold"
-        app:layout_constraintStart_toStartOf="@id/profile_pic"/>
+        android:textSize="26sp"
+        app:layout_constraintStart_toStartOf="@id/profile_pic"
+        app:layout_constraintTop_toBottomOf="@id/profile_pic" />
 
     <Button
         android:id="@+id/btn_chats"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/bg_button_rounded_null"
-        android:drawableStart="@drawable/chat"
         android:drawablePadding="10dp"
-        app:layout_constraintTop_toBottomOf="@id/btn_notifications"
+        android:drawableStart="@drawable/chat"
+        android:fontFamily="@font/sfcompactdisplay_semibold"
         android:text="@string/chats"
         android:textAllCaps="false"
-        android:textSize="18sp"
-        android:fontFamily="@font/sfcompactdisplay_semibold"
-        app:layout_constraintStart_toStartOf="@id/profile_pic"/>
+        android:textSize="26sp"
+        app:layout_constraintStart_toStartOf="@id/profile_pic"
+        app:layout_constraintTop_toBottomOf="@id/btn_notifications" />
 
     <Button
         android:id="@+id/btn_saved"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/bg_button_rounded_null"
-        android:drawableStart="@drawable/fav"
         android:drawablePadding="10dp"
-        app:layout_constraintTop_toBottomOf="@id/btn_chats"
+        android:drawableStart="@drawable/fav"
+        android:fontFamily="@font/sfcompactdisplay_semibold"
         android:text="@string/you_saved"
         android:textAllCaps="false"
-        android:textSize="18sp"
-        android:fontFamily="@font/sfcompactdisplay_semibold"
-        app:layout_constraintStart_toStartOf="@id/profile_pic"/>
+        android:textSize="26sp"
+        app:layout_constraintStart_toStartOf="@id/profile_pic"
+        app:layout_constraintTop_toBottomOf="@id/btn_chats" />
 
     <Button
         android:id="@+id/btn_settings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/bg_button_rounded_null"
-        android:drawableStart="@drawable/settings"
         android:drawablePadding="10dp"
-        app:layout_constraintTop_toBottomOf="@id/btn_saved"
+        android:drawableStart="@drawable/settings"
+        android:fontFamily="@font/sfcompactdisplay_semibold"
         android:text="@string/settings"
         android:textAllCaps="false"
-        android:textSize="18sp"
-        android:fontFamily="@font/sfcompactdisplay_semibold"
-        app:layout_constraintStart_toStartOf="@id/profile_pic"/>
+        android:textSize="26sp"
+        app:layout_constraintStart_toStartOf="@id/profile_pic"
+        app:layout_constraintTop_toBottomOf="@id/btn_saved" />
 
     <Button
         android:id="@+id/btn_createStoreAccount"
@@ -113,7 +113,7 @@
         android:text="@string/create_store_account"
         android:textAlignment="viewStart"
         android:textAllCaps="false"
-        android:textSize="18sp"
+        android:textSize="26sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@id/btn_settings"
         app:layout_constraintTop_toBottomOf="@id/btn_settings"

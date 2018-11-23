@@ -32,20 +32,20 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAlignment="viewStart"
-                android:text="@string/add_your_first_product"
-                android:textColor="@color/colorBlack"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
                 android:fontFamily="@font/sfcompactdisplay_semibold"
-                android:textSize="20sp"
-                android:layout_marginTop="@dimen/activity_vertical_margin"/>
+                android:text="@string/add_your_first_product"
+                android:textAlignment="viewStart"
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAlignment="viewStart"
-                android:text="@string/add_your_first_product_hint"
                 android:fontFamily="@font/sfcompactdisplay_regular"
-                android:textSize="20sp"/>
+                android:text="@string/add_your_first_product_hint"
+                android:textAlignment="viewStart"
+                android:textSize="14sp" />
             <ImageButton
                 android:id="@+id/pic_product"
                 android:layout_width="50dp"
@@ -61,83 +61,90 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/activity_vertical_margin"
                 android:background="@drawable/bg_rounded_edittext">
+
                 <EditText
                     android:id="@+id/editText_productName"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:background="@null"
+                    android:fontFamily="@font/sfcompactdisplay_semibold"
                     android:hint="@string/product_name"
                     android:inputType="text"
                     android:padding="5dp"
                     android:singleLine="true"
                     android:textColor="@color/colorBlack"
                     android:textColorHint="@color/colorWhiteGrey"
-                    android:fontFamily="@font/sfcompactdisplay_semibold"
-                    android:textSize="20sp"/>
+                    android:textSize="16sp" />
             </android.support.design.widget.TextInputLayout>
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/activity_vertical_margin"
                 android:background="@drawable/bg_rounded_edittext">
+
                 <EditText
                     android:id="@+id/editText_productDescription"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:background="@null"
+                    android:fontFamily="@font/sfcompactdisplay_semibold"
                     android:hint="@string/description"
                     android:inputType="text"
                     android:padding="5dp"
                     android:singleLine="true"
                     android:textColor="@color/colorBlack"
                     android:textColorHint="@color/colorWhiteGrey"
-                    android:fontFamily="@font/sfcompactdisplay_semibold"
-                    android:textSize="20sp"/>
+                    android:textSize="16sp" />
             </android.support.design.widget.TextInputLayout>
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/activity_vertical_margin"
                 android:background="@drawable/bg_rounded_edittext">
+
                 <EditText
                     android:id="@+id/editText_product_price"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:background="@null"
+                    android:fontFamily="@font/sfcompactdisplay_semibold"
                     android:hint="@string/price"
                     android:inputType="text"
                     android:padding="5dp"
                     android:singleLine="true"
                     android:textColor="@color/colorBlack"
                     android:textColorHint="@color/colorWhiteGrey"
-                    android:fontFamily="@font/sfcompactdisplay_semibold"
-                    android:textSize="20sp"/>
+                    android:textSize="16sp" />
             </android.support.design.widget.TextInputLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_marginBottom="@dimen/activity_vertical_margin">
+
                 <Button
                     android:id="@+id/btn_addProductDone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="5dp"
                     android:layout_weight="1"
+                    android:background="@drawable/bg_button_rounded_light_accent"
                     android:text="@string/done"
                     android:textAllCaps="false"
-                    android:textStyle="bold"
-                    android:layout_marginEnd="5dp"
-                    android:background="@drawable/bg_button_rounded_light_accent"/>
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
                 <Button
                     android:id="@+id/btn_addProductDelete"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
                     android:layout_weight="1"
+                    android:background="@drawable/bg_button_rounded_default"
                     android:text="@string/delete"
                     android:textAllCaps="false"
-                    android:textStyle="bold"
-                    android:layout_marginStart="5dp"
-                    android:background="@drawable/bg_button_rounded_default"/>
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
         </LinearLayout>

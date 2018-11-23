@@ -51,18 +51,19 @@
             android:padding="5dp"
             android:text="Event"
             android:textColor="@color/colorBlack"
-            android:textSize="20sp"
+            android:textSize="30sp"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/storeName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="45dp"
             android:fontFamily="@font/sfcompactdisplay_regular"
             android:padding="5dp"
             android:text="by Store"
             android:textColor="@color/colorBlack"
-            android:layout_marginTop="45dp"/>
+            android:textSize="16sp" />
 
     </android.support.v7.widget.CardView>
 
@@ -82,13 +83,12 @@
         android:id="@+id/dateTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
         android:layout_marginStart="20dp"
         android:fontFamily="@font/sfcompactdisplay_regular"
         android:padding="5dp"
         android:text="Date and Time"
         android:textColor="@color/colorBlack"
-        android:textSize="14sp"
+        android:textSize="17sp"
         app:layout_anchor="@+id/calImg"
         app:layout_anchorGravity="center|right"
         app:layout_constraintBottom_toBottomOf="@+id/calImg"
@@ -112,13 +112,12 @@
         android:id="@+id/locationTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
         android:layout_marginStart="20dp"
         android:fontFamily="@font/sfcompactdisplay_regular"
         android:padding="5dp"
         android:text="Location"
         android:textColor="@color/colorBlack"
-        android:textSize="14sp"
+        android:textSize="17sp"
         app:layout_anchor="@+id/locImg"
         app:layout_anchorGravity="center|right"
         app:layout_constraintBottom_toBottomOf="@+id/locImg"
@@ -142,19 +141,17 @@
         android:id="@+id/ticketPriceTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="249dp"
+        android:layout_marginStart="20dp"
         android:fontFamily="@font/sfcompactdisplay_regular"
         android:padding="5dp"
         android:text="Ticket Price"
         android:textColor="@color/colorBlack"
-        android:textSize="14sp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginStart="20dp"
+        android:textSize="17sp"
         app:layout_anchor="@+id/tckImg"
         app:layout_anchorGravity="center|right"
-        app:layout_constraintTop_toTopOf="@+id/tckImg"
         app:layout_constraintBottom_toBottomOf="@+id/tckImg"
-        app:layout_constraintStart_toEndOf="@id/tckImg"/>
+        app:layout_constraintStart_toEndOf="@id/tckImg"
+        app:layout_constraintTop_toTopOf="@+id/tckImg" />
 
     <TextView
         android:id="@+id/aboutTxt"
@@ -165,7 +162,7 @@
         android:padding="5dp"
         android:text="About"
         android:textColor="@color/colorBlack"
-        android:textSize="14sp"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.047"
@@ -180,24 +177,24 @@
         android:padding="5dp"
         android:text="The Red and Black The Red and Black The Red and Black The Red and Black The Red and Black The Red and Black The Red and Black"
         android:textColor="@color/colorBlack"
-        android:textSize="14sp"
-        app:layout_constraintTop_toBottomOf="@+id/aboutTxt"
-        app:layout_constraintStart_toStartOf="@id/aboutTxt"/>
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@id/aboutTxt"
+        app:layout_constraintTop_toBottomOf="@+id/aboutTxt" />
 
     <TextView
         android:id="@+id/addressTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="15dp"
         android:layout_marginTop="4dp"
         android:fontFamily="@font/sfcompactdisplay_regular"
         android:padding="5dp"
-        android:layout_margin="15dp"
         android:text="Address"
         android:textColor="@color/colorBlack"
-        android:textSize="14sp"
+        android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/aboutTxtDetails"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/aboutTxtDetails" />
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
@@ -229,7 +226,7 @@
             android:fontFamily="@font/sfcompactdisplay_light"
             android:lineSpacingMultiplier="1.3"
             android:text="123 , test street Cairo , Egypt street reyiad"
-            android:textSize="18dp"
+            android:textSize="14sp"
             app:layout_constraintStart_toStartOf="@+id/mapView"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -246,6 +243,7 @@
             android:drawableStart="@drawable/_2_3x"
             android:paddingEnd="20dp"
             android:paddingStart="10dp"
+            android:textSize="12sp"
             android:text="Get direction"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"

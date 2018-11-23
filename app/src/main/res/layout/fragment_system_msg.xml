@@ -23,10 +23,10 @@
         android:layout_marginTop="20dp"
         android:fontFamily="@font/sfcompactdisplay_thin"
         android:text="12/05/2018"
-        android:textSize="16sp"
         android:textColor="@color/material_color_grey_500"
-        app:layout_constraintTop_toBottomOf="@id/systemImg"
-        app:layout_constraintStart_toStartOf="@id/systemImg"/>
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@id/systemImg"
+        app:layout_constraintTop_toBottomOf="@id/systemImg" />
 
     <TextView
         android:id="@+id/systemMsgTypeTxt"
@@ -36,9 +36,9 @@
         android:fontFamily="@font/sfcompactdisplay_semibold"
         android:text="System Message"
         android:textColor="@color/material_color_black"
-        android:textSize="22sp"
+        android:textSize="26sp"
         app:layout_constraintStart_toStartOf="@id/systemMsgDate"
-        app:layout_constraintTop_toBottomOf="@+id/systemMsgDate"/>
+        app:layout_constraintTop_toBottomOf="@+id/systemMsgDate" />
 
     <TextView
         android:id="@+id/systemMsgDesc"
@@ -55,13 +55,12 @@
 
     <ImageView
         android:id="@+id/delSystemMsgBtn"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="10dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_marginEnd="10dp"
-        android:layout_marginRight="10dp"
-        app:srcCompat="@drawable/rubbish_bin_3x"
+        android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/systemImg"/>
+        app:layout_constraintTop_toTopOf="@id/systemImg"
+        app:srcCompat="@drawable/rubbish_bin_3x" />
 
 </android.support.constraint.ConstraintLayout>
