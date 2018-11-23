@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="UI.activities.StoreContactActivity"
-    android:background="@color/colorWhite">
+    tools:context="UI.activities.StoreContactActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar_contact"
@@ -70,12 +69,10 @@
                 android:textColorHighlight="@color/colorWhiteGrey"
                 android:textColorLink="@color/colorWhiteGrey"
                 android:textCursorDrawable="@drawable/color_black"
+                android:textSize="18sp"
                 android:theme="@style/MyEditText"
                 android:background="@drawable/bg_edit"
-                app:layout_constraintTop_toBottomOf="@+id/txt_country"
-                android:fontFamily="@font/sfcompactdisplay_regular"
-                android:padding="@dimen/edit_text_padding"
-                android:textSize="@dimen/sp20"/>
+                app:layout_constraintTop_toBottomOf="@+id/txt_country" />
 
             <TextView
                 android:id="@+id/txt_city"
@@ -101,12 +98,10 @@
                 android:textColorHighlight="@color/colorWhiteGrey"
                 android:textColorLink="@color/colorWhiteGrey"
                 android:textCursorDrawable="@drawable/color_black"
+                android:textSize="18sp"
                 android:theme="@style/MyEditText"
                 android:background="@drawable/bg_edit"
-                app:layout_constraintTop_toBottomOf="@+id/txt_city"
-                android:fontFamily="@font/sfcompactdisplay_regular"
-                android:padding="@dimen/edit_text_padding"
-                android:textSize="@dimen/sp20"/>
+                app:layout_constraintTop_toBottomOf="@+id/txt_city" />
 
             <TextView
                 android:id="@+id/txt_location"
@@ -218,9 +213,7 @@
                 android:textColorHighlight="@color/colorWhiteGrey"
                 android:textColorLink="@color/colorWhiteGrey"
                 android:textCursorDrawable="@drawable/color_black"
-                android:fontFamily="@font/sfcompactdisplay_regular"
-                android:padding="@dimen/edit_text_padding"
-                android:textSize="@dimen/sp20"
+                android:textSize="18sp"
                 android:theme="@style/MyEditText"
                 android:background="@drawable/bg_edit"
                 app:layout_constraintTop_toBottomOf="@+id/txt_email" />
@@ -247,9 +240,7 @@
                 android:textColorHighlight="@color/colorWhiteGrey"
                 android:textColorLink="@color/colorWhiteGrey"
                 android:textCursorDrawable="@drawable/color_black"
-                android:fontFamily="@font/sfcompactdisplay_regular"
-                android:padding="@dimen/edit_text_padding"
-                android:textSize="@dimen/sp20"
+                android:textSize="18sp"
                 android:theme="@style/MyEditText"
                 android:background="@drawable/bg_edit"
                 app:layout_constraintTop_toBottomOf="@+id/txt_website" />
@@ -279,9 +270,7 @@
                 android:textColorHighlight="@color/colorWhiteGrey"
                 android:textColorLink="@color/colorWhiteGrey"
                 android:textCursorDrawable="@drawable/color_black"
-                android:fontFamily="@font/sfcompactdisplay_regular"
-                android:padding="@dimen/edit_text_padding"
-                android:textSize="@dimen/sp20"
+                android:textSize="18sp"
                 android:theme="@style/MyEditText"
                 android:background="@drawable/bg_edit"
                 app:layout_constraintTop_toBottomOf="@+id/txt_social" />
@@ -299,9 +288,7 @@
                 android:textColorHighlight="@color/colorWhiteGrey"
                 android:textColorLink="@color/colorWhiteGrey"
                 android:textCursorDrawable="@drawable/color_black"
-                android:fontFamily="@font/sfcompactdisplay_regular"
-                android:padding="@dimen/edit_text_padding"
-                android:textSize="@dimen/sp20"
+                android:textSize="18sp"
                 android:theme="@style/MyEditText"
                 android:background="@drawable/bg_edit"
                 app:layout_constraintTop_toBottomOf="@+id/editText_instagram" />
@@ -319,9 +306,7 @@
                 android:textColorHighlight="@color/colorWhiteGrey"
                 android:textColorLink="@color/colorWhiteGrey"
                 android:textCursorDrawable="@drawable/color_black"
-                android:fontFamily="@font/sfcompactdisplay_regular"
-                android:padding="@dimen/edit_text_padding"
-                android:textSize="@dimen/sp20"
+                android:textSize="18sp"
                 android:theme="@style/MyEditText"
                 android:background="@drawable/bg_edit"
                 app:layout_constraintTop_toBottomOf="@+id/editText_twitter" />
