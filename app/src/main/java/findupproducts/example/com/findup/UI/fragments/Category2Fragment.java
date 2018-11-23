@@ -27,6 +27,7 @@ import io.github.luizgrp.sectionedrecyclerviewadapter.SectionedRecyclerViewAdapt
 import io.github.luizgrp.sectionedrecyclerviewadapter.StatelessSection;
 import io.reactivex.Flowable;
 
+
 public class Category2Fragment extends Fragment {
 
     static List<ExpandableSection> expandableSections;
@@ -60,8 +61,8 @@ public class Category2Fragment extends Fragment {
         ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(false);
         toolbar.setBackgroundColor(getResources().getColor(R.color.colorBlack));
-        toolbar.setTitle("");
-//        toolbar.setTitleTextColor(getResources().getColor(R.color.colorWhite));
+        toolbar.setTitle("Category");
+        toolbar.setTitleTextColor(getResources().getColor(R.color.colorWhite));
         FrameLayout frameLayout = getActivity().findViewById(R.id.navigation_bottom_container);
         frameLayout.setBackgroundColor(getResources().getColor(R.color.colorBlack));
         expandableSections = new ArrayList<>();

@@ -40,7 +40,7 @@ public class StoreByCatAdapter extends RecyclerView.Adapter<StoreByCatAdapter.Vi
         TextView txt_name;
         TextView txt_desc;
         TextView txt_ratee;
-        LinearLayout linearLayout;
+        ConstraintLayout linearLayout;
 
         public ViewHolder(View view) {
             super(view);
@@ -63,7 +63,7 @@ public class StoreByCatAdapter extends RecyclerView.Adapter<StoreByCatAdapter.Vi
 
     @Override
     public void onBindViewHolder(@NonNull StoreByCatAdapter.ViewHolder holder, int position) {
-        Store store = stores.get(position);
+        final Store store = stores.get(position);
         holder.txt_name.setText(store.getStore_name());
         holder.txt_desc.setText(store.getStore_desc());
         if(store.getStore_rating() == ""){

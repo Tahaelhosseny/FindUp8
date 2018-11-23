@@ -76,9 +76,6 @@ public class BottomBarFragment extends Fragment {
                 ToolbarSwitch(true,mContext);
                 selectedFragment = new Category2Fragment();
                 Utility.replaceFragment(((FragmentActivity)mContext).getSupportFragmentManager(), new Category2Fragment(), R.id.main_toolbar_container, 0,menu);
-//                ((AppCompatActivity) mContext).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-//                ((AppCompatActivity) mContext).getSupportActionBar().setDisplayShowHomeEnabled(false);
-//                ((AppCompatActivity) mContext).getSupportActionBar().setTitle(mContext.getString(R.string.category));
                 break;
             case 4:
                 ToolbarSwitch(true,mContext);
