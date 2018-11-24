@@ -184,9 +184,9 @@ public class NewProductActivity extends AppCompatActivity {
                 editText_product_price.getText().toString(),
                 editText_productName.getText().toString(),
                 editText_productDescription.getText().toString(),
-                FilePath.getPath(NewProductActivity.this,selectedProduct));
+                getRealPathFromURI(selectedProduct));
 
-        File imgFile = new File(FilePath.getPath(NewProductActivity.this,selectedProduct));
+        File imgFile = new File(getRealPathFromURI(selectedProduct));
         RequestBody requestImgFile =
                 RequestBody.create(MediaType.parse("image/png"), imgFile);
         MultipartBody.Part product_img =
@@ -216,8 +216,7 @@ public class NewProductActivity extends AppCompatActivity {
                     resultIntent.putExtra("pro_name", editText_productName.getText().toString());
                     resultIntent.putExtra("pro_desc", editText_productDescription.getText().toString());
                     resultIntent.putExtra("pro_price", editText_product_price.getText().toString());
-                    String selectedFilePath = FilePath.getPath(NewProductActivity.this,selectedProduct);
-                    resultIntent.putExtra("pro_img", selectedFilePath);
+                    resultIntent.putExtra("pro_img", getRealPathFromURI(selectedProduct));
                     setResult(Activity.RESULT_OK, resultIntent);
                     finish();
                 }
@@ -243,5 +242,10 @@ public class NewProductActivity extends AppCompatActivity {
     private boolean checkIfAlreadyhavePermission() {
         int result = ContextCompat.checkSelfPermission(this, android.Manifest.permission.WRITE_EXTERNAL_STORAGE);
         return result == PackageManager.PERMISSION_GRANTED;
+    }
+
+    public String getRealPathFromURI(Uri originalUri) {
+        String path = originalUri.getLastPathSegment();
+        return path.substring(path.indexOf(":") +1);
     }
 }
