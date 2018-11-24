@@ -99,7 +99,7 @@ public class Category2Fragment extends Fragment {
             public void onAnimationUpdate(ValueAnimator valueAnimator) {
                 float animatedValue = (float) valueAnimator.getAnimatedValue();
                 textView.setTextSize(animatedValue);
-                if(PendSize == 19){
+                if (PendSize == 19) {
                     textView.setTextColor(getResources().getColor(R.color.colorWhiteGrey));
                 }else{
                     textView.setTextColor(getResources().getColor(R.color.colorWhite));
@@ -166,7 +166,7 @@ public class Category2Fragment extends Fragment {
             itemHolder.rootView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                        startActivity(new Intent(getActivity(), CategeoryStoresAcivity.class).putExtra("id" , id));
+                    startActivity(new Intent(getActivity(), CategeoryStoresAcivity.class).putExtra("id" , id));
                 }
             });
             //changeTextSize(itemHolder.contentText,itemHolder.contentText.getTextSize(),((ItemViewHolder) holder).defalut_text_size);
@@ -189,10 +189,8 @@ public class Category2Fragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     for (int i = 0; i < expandableSections.size(); i++) {
-                        if (!expandableSections.get(i).expanded){
+                        if (!expandableSections.get(i).expanded)
                             changeTextSize(headerHolder.titleText, 19, 30);
-                            headerHolder.titleText.setTextColor(getResources().getColor(R.color.colorWhite));
-                        }
                         else
                             changeTextSize(headerHolder.titleText, 19, 19);
                         expandableSections.get(i).expanded = false;

@@ -199,7 +199,7 @@ public interface DaoAccess {
     void insertProducts(List<Product> productList);
 
     @Query("SELECT * FROM Product WHERE product_id = :prod_id")
-    Flowable<List<Product>> getProductByID(int prod_id);
+    Flowable<Product> getProductByID(int prod_id);
 
     @Query("SELECT * FROM Product WHERE store_id = :store_id")
     Flowable<List<Product>> getProductByStoreID(int store_id);

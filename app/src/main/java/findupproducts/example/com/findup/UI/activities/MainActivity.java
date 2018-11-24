@@ -207,7 +207,7 @@ public class MainActivity extends AppCompatActivity implements LocationView{
                         (MainActivity.this).runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                searchedProducts.clear();
+//                                searchedProducts.clear();
                                 for (int i = 0 ; i < val.size() ; i++){
                                         if(i < 5){
                                             searchedProducts.add(val.get(i));

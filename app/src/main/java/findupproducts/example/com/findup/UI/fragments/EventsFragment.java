@@ -30,9 +30,8 @@ import findupproducts.example.com.findup.models.Event;
  */
 public class EventsFragment extends Fragment {
 
-
+    public static String t = "1";
     int type;
-
     public EventsFragment() {
         // Required empty public constructor
     }
@@ -62,7 +61,7 @@ public class EventsFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        eventsViewModel.InitRecyclerView(binding.eventsRecyclerView,type);
+        eventsViewModel.InitRecyclerView(binding.eventsRecyclerView,LinearLayoutManager.HORIZONTAL);
     }
 
 
