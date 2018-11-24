@@ -23,7 +23,7 @@ import findupproducts.example.com.findup.models.UserSavedItem;
         NotificationUser.class , NotificationStore.class ,
         UserSavedItem.class , ProductComment.class}, version = 2, exportSchema = false)
 public abstract class FindUpDatabase extends RoomDatabase {
-    private static final String DATABASE_NAME = "FindUp.db";
+    private static final String DATABASE_NAME = "findup.db";
     private static FindUpDatabase INSTANCE;
 
     public static FindUpDatabase getAppDatabase(Context context) {

@@ -33,11 +33,6 @@ public class CommentsPhotosAdapter extends RecyclerView.Adapter<CommentsPhotosAd
         this.context = context;
         if (CommentsList.size() > 3) {
             this.CommentsList = CommentsList.subList(0, 3);
-        } else if(CommentsList.size() < 1){
-            Comment comment = new Comment();
-            comment.setAccount_image("https://ibb.co/cymQL2p");
-            CommentsList.add(comment);
-            this.CommentsList = CommentsList;
         }else{
             this.CommentsList = CommentsList;
         }

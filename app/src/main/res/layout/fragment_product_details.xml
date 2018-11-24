@@ -15,233 +15,232 @@
 
     </data>
     <ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".UI.fragments.ProductDetailsFragment">
-
-    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:context=".UI.fragments.ProductDetailsFragment">
 
-        <ImageView
-            android:id="@+id/product_banner"
+        <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:background="@drawable/product_placeholder_background_image"
-            android:scaleType="fitCenter"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            android:layout_height="match_parent">
 
-
-        <android.support.v7.widget.CardView
-            android:id="@+id/infoLayout"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="40dp"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="108dp"
-            android:orientation="vertical"
-            app:cardCornerRadius="5dp"
-            app:layout_anchor="@+id/product_banner"
-            app:layout_anchorGravity="bottom|center"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <android.support.constraint.ConstraintLayout
+            <ImageView
+                android:id="@+id/product_banner"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="10dp">
+                android:layout_height="150dp"
+                android:background="@drawable/product_placeholder_background_image"
+                android:scaleType="fitCenter"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
 
-                <TextView
-                    android:id="@+id/product_name"
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/infoLayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="40dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="108dp"
+                android:orientation="vertical"
+                app:cardCornerRadius="5dp"
+                app:layout_anchor="@+id/product_banner"
+                app:layout_anchorGravity="bottom|center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp">
+
+                    <TextView
+                        android:id="@+id/product_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/sfcompactdisplay_semibold"
+                        android:padding="5dp"
+                        android:text="Chocklate Cake"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="30sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/product_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/sfcompactdisplay_semibold"
+                        android:padding="5dp"
+                        android:text="18.5 SR"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="26sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"/>
+
+                    <TextView
+                        android:id="@+id/productStoreTxt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="8dp"
+                        android:fontFamily="@font/sfcompactdisplay_regular"
+                        android:padding="5dp"
+                        android:text="Black Cafe"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="16sp"
+                        app:layout_constraintStart_toStartOf="@+id/product_name"
+                        app:layout_constraintTop_toBottomOf="@+id/product_name" />
+
+                    <ImageView
+                        android:id="@+id/likeImg"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:padding="5dp"
+                        app:layout_constraintStart_toStartOf="@+id/productStoreTxt"
+                        app:layout_constraintTop_toBottomOf="@+id/productStoreTxt"
+                        app:srcCompat="@drawable/like_3x" />
+
+                    <TextView
+                        android:id="@+id/product_like_count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2.2K"
+                        android:textSize="17sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/likeImg"
+                        app:layout_constraintStart_toEndOf="@+id/likeImg"
+                        app:layout_constraintTop_toTopOf="@+id/likeImg" />
+
+                </android.support.constraint.ConstraintLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <TextView
+                android:id="@+id/aboutTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/sfcompactdisplay_medium"
+                android:padding="5dp"
+                android:text="About"
+                android:textColor="@color/colorBlack"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.047"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/infoLayout" />
+
+            <TextView
+                android:id="@+id/aboutProduct"
+                android:layout_width="360dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/sfcompactdisplay_regular"
+                android:padding="5dp"
+                android:text="The Red and Black Cafe was a radical safer space cafe and worker-managed collective located in Portland, Oregon."
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/aboutTxt"
+                app:layout_constraintTop_toBottomOf="@id/aboutTxt" />
+
+            <TextView
+                android:id="@+id/photosTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/sfcompactdisplay_medium"
+                android:padding="5dp"
+                android:text="Photos"
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.047"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/aboutProduct" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/productPhotosRecycler"
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:padding="5dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/photosTxt">
+
+            </android.support.v7.widget.RecyclerView>
+
+            <TextView
+                android:id="@+id/commentsTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/sfcompactdisplay_medium"
+                android:padding="5dp"
+                android:text="Comments"
+                android:textColor="@color/colorBlack"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.047"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/productPhotosRecycler" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/commentsTxt"
+                android:orientation="horizontal"
+                android:id="@+id/comment_linear">
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/commentUsersImg"
+                    android:layout_width="90dp"
+                    android:layout_height="60dp"
+                    android:layout_marginTop="8dp"
+                    android:padding="5dp"
+                    />
+                <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/sfcompactdisplay_semibold"
-                    android:padding="5dp"
-                    android:text="Chocklate Cake"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="30sp"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:layout_marginLeft="20dp"
+                    android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/commentUsersTxt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/sfcompactdisplay_medium"
+                        android:padding="5dp"
+                        android:text="Nof, Sara, Saga"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        />
 
-                <TextView
-                    android:id="@+id/product_price"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/sfcompactdisplay_semibold"
-                    android:padding="5dp"
-                    android:text="18.5 SR"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="26sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"/>
-
-                <TextView
-                    android:id="@+id/productStoreTxt"
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:layout_marginStart="8dp"
-                    android:fontFamily="@font/sfcompactdisplay_regular"
-                    android:padding="5dp"
-                    android:text="Black Cafe"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="16sp"
-                    app:layout_constraintStart_toStartOf="@+id/product_name"
-                    app:layout_constraintTop_toBottomOf="@+id/product_name" />
-
+                    <TextView
+                        android:id="@+id/commentUsersNumTxt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:fontFamily="@font/sfcompactdisplay_regular"
+                        android:padding="5dp"
+                        android:text="and 250 people comment on this"
+                        android:textSize="12sp"
+                        />
+                </LinearLayout>
                 <ImageView
-                    android:id="@+id/likeImg"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:padding="5dp"
-                    app:layout_constraintStart_toStartOf="@+id/productStoreTxt"
-                    app:layout_constraintTop_toBottomOf="@+id/productStoreTxt"
-                    app:srcCompat="@drawable/like_3x" />
-
-                <TextView
-                    android:id="@+id/product_like_count"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="2.2K"
-                    android:textSize="17sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/likeImg"
-                    app:layout_constraintStart_toEndOf="@+id/likeImg"
-                    app:layout_constraintTop_toTopOf="@+id/likeImg" />
+                    app:srcCompat="@drawable/ic_forward"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:id="@+id/show_product_comment"
+                    />
 
-            </android.support.constraint.ConstraintLayout>
+            </LinearLayout>
+        </android.support.constraint.ConstraintLayout>
 
-        </android.support.v7.widget.CardView>
-
-        <TextView
-            android:id="@+id/aboutTxt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:fontFamily="@font/sfcompactdisplay_medium"
-            android:padding="5dp"
-            android:text="About"
-            android:textColor="@color/colorBlack"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.047"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/infoLayout" />
-
-        <TextView
-            android:id="@+id/aboutProduct"
-            android:layout_width="360dp"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/sfcompactdisplay_regular"
-            android:padding="5dp"
-            android:text="The Red and Black Cafe was a radical safer space cafe and worker-managed collective located in Portland, Oregon."
-            android:textColor="@color/colorBlack"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/aboutTxt"
-            app:layout_constraintTop_toBottomOf="@id/aboutTxt" />
-
-        <TextView
-            android:id="@+id/photosTxt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:fontFamily="@font/sfcompactdisplay_medium"
-            android:padding="5dp"
-            android:text="Photos"
-            android:textColor="@color/colorBlack"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.047"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/aboutProduct" />
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/productPhotosRecycler"
-            android:layout_width="match_parent"
-            android:layout_height="90dp"
-            android:padding="5dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/photosTxt">
-
-        </android.support.v7.widget.RecyclerView>
-
-        <TextView
-            android:id="@+id/commentsTxt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:fontFamily="@font/sfcompactdisplay_medium"
-            android:padding="5dp"
-            android:text="Comments"
-            android:textColor="@color/colorBlack"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.047"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/productPhotosRecycler" />
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/commentsTxt"
-            android:orientation="horizontal"
-            android:id="@+id/comment_linear">
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/commentUsersImg"
-            android:layout_width="90dp"
-            android:layout_height="60dp"
-            android:layout_marginTop="8dp"
-            android:padding="5dp"
-            />
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:orientation="vertical">
-        <TextView
-            android:id="@+id/commentUsersTxt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/sfcompactdisplay_medium"
-            android:padding="5dp"
-            android:text="Nof, Sara, Saga"
-            android:textColor="@color/colorBlack"
-            android:textSize="14sp"
-            android:textStyle="bold"
-             />
-
-        <TextView
-            android:id="@+id/commentUsersNumTxt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
-            android:fontFamily="@font/sfcompactdisplay_regular"
-            android:padding="5dp"
-            android:text="and 250 people comment on this"
-            android:textSize="12sp"
-            />
-        </LinearLayout>
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/ic_forward"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:id="@+id/show_product_comment"
-            app:layout_constraintHorizontal_bias="0.887"
-             />
-
-        </LinearLayout>
-    </android.support.constraint.ConstraintLayout>
-
-</ScrollView>
+    </ScrollView>
 </layout>
