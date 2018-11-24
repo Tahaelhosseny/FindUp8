@@ -57,32 +57,29 @@ public class ProductDetailViewModel extends Observable {
         DBHandler.getProductByID(product_id, mContext, new Products() {
             @Override
             public void onSuccess(Flowable<List<Product>> listFlowable) {
-                listFlowable.subscribe(
-                        v->{
-                            ((Activity)mContext).runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    for (int i = 0 ; i < v.size() ; i++){
-                                        bindCommentsPhotos(commentPhoto , commentUsersNumTxt , commentUsersTxt , pComments);
-                                        bindPhotos(productPhotosRecycler);
-                                        commentUsersNumTxt.setText(""+v.get(i).getProduct_comments_count());
-                                        product_price.setText(""+v.get(i).getProduct_price());
-                                        productStoreTxt.setText(v.get(i).getProduct_name());
-                                        product_like_count.setText(""+v.get(i).getProduct_likes_count());
-                                        Picasso.with(mContext).load(v.get(i).getProduct_banner()).into(product_banner);
-                                        aboutProduct.setText(v.get(i).getProduct_name());
-                                        product_name.setText(v.get(i).getProduct_name());
-                                        pComments.setOnClickListener(v ->
-                                                mContext.startActivity(new Intent(mContext, CommentsActivity.class).putExtra("product_id",product_id)));
-                                    }
-                                }
-                            });
-                        }
-                );
+
             }
 
             @Override
             public void getProduct(Flowable<Product> productFlowable) {
+                productFlowable.subscribe(v->{
+                    ((Activity) mContext).runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            bindCommentsPhotos(commentPhoto , commentUsersNumTxt , commentUsersTxt , pComments);
+                            bindPhotos(productPhotosRecycler);
+                            commentUsersNumTxt.setText(""+v.getProduct_comments_count());
+                            product_price.setText(""+v.getProduct_price());
+                            productStoreTxt.setText(v.getProduct_name());
+                            product_like_count.setText(""+v.getProduct_likes_count());
+                            Picasso.with(mContext).load(v.getProduct_banner()).into(product_banner);
+                            aboutProduct.setText(v.getProduct_name());
+                            product_name.setText(v.getProduct_name());
+                            pComments.setOnClickListener(v ->
+                            mContext.startActivity(new Intent(mContext, CommentsActivity.class).putExtra("product_id",product_id)));
+                        }
+                    });
+                    });
             }
 
             @Override
@@ -205,7 +202,7 @@ public class ProductDetailViewModel extends Observable {
 
                                     //---------------------------------------------------------------------------------------------
                                     if (num == 0){
-                                        recyclerView.setVisibility(View.GONE);
+                                        recyclerView.setVisibility(View.INVISIBLE);
                                     }else {
                                         commentList.clear();
                                         commentList.addAll(val);

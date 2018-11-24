@@ -17,7 +17,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Observable;
 
-import findupproducts.example.com.findup.Helper.SharedPrefManger;
 import io.reactivex.Flowable;
 import findupproducts.example.com.findup.Helper.Database.DBHandler;
 import findupproducts.example.com.findup.Helper.Database.Interfaces.Events;
@@ -43,7 +42,7 @@ public class EventsViewModel extends Observable {
         LoadDataFromDataBase(adapter);
     }
     private void LoadDataFromDataBase(EventsAdapter adapter){
-        DBHandler.getEventByStoreID(SharedPrefManger.getStore_ID(),mContext, new Events() {
+        DBHandler.getEventByStoreID(1 ,mContext, new Events() {
             @Override
             public void onSuccess(Flowable<List<Event>> listFlowable) {
                 listFlowable.subscribe(eventList -> {
