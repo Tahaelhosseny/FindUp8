@@ -223,6 +223,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/contacts_linear" />
 
+
         <android.support.v7.widget.RecyclerView
             android:id="@+id/storePhotosRecycler"
             android:layout_width="wrap_content"
@@ -299,16 +300,26 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/storeRatingBar" />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:id="@+id/photos_linear"
+            app:layout_constraintTop_toBottomOf="@id/commentsTxt"
+            android:layout_height="wrap_content">
         <android.support.v7.widget.RecyclerView
             android:id="@+id/commentUsersImg"
             android:layout_width="90dp"
             android:layout_height="60dp"
             android:layout_marginTop="8dp"
             android:padding="5dp"
-            app:layout_constraintStart_toStartOf="@id/commentsTxt"
-            app:layout_constraintTop_toBottomOf="@+id/commentsTxt"
+            android:visibility="visible"
             />
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:orientation="vertical">
         <TextView
             android:id="@+id/commentUsersTxt"
             android:layout_width="wrap_content"
@@ -319,8 +330,7 @@
             android:textColor="@color/colorBlack"
             android:textSize="14sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@id/commentUsersImg"
-            app:layout_constraintTop_toTopOf="@+id/commentUsersImg" />
+             />
 
         <TextView
             android:id="@+id/commentUsersNumTxt"
@@ -330,10 +340,8 @@
             android:fontFamily="@font/sfcompactdisplay_regular"
             android:padding="5dp"
             android:text="and 250 people comment on this"
-            android:textSize="12sp"
-            app:layout_constraintStart_toStartOf="@id/commentUsersTxt"
-            app:layout_constraintTop_toBottomOf="@+id/commentUsersTxt" />
-
+            android:textSize="12sp" />
+            </LinearLayout>
         <ImageView
             android:id="@+id/show_comments"
             android:layout_width="wrap_content"
@@ -341,8 +349,9 @@
             app:srcCompat="@drawable/ic_forward"
             app:layout_constraintEnd_toEndOf="@id/addRateTxt"
             app:layout_constraintHorizontal_bias="0.887"
-            app:layout_constraintStart_toEndOf="@id/commentUsersNumTxt"
-            app:layout_constraintTop_toTopOf="@+id/commentUsersNumTxt" />
+             />
+
+        </LinearLayout>
 
         <TextView
             android:id="@+id/addressTxt"
@@ -358,7 +367,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.047"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/commentUsersImg" />
+            app:layout_constraintTop_toBottomOf="@+id/photos_linear" />
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"

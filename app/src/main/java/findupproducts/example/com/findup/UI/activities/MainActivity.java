@@ -209,13 +209,15 @@ public class MainActivity extends AppCompatActivity implements LocationView{
                             public void run() {
                                 searchedProducts.clear();
                                 for (int i = 0 ; i < val.size() ; i++){
-                                    if(i < 5){
-                                        searchedProducts.add(val.get(i));
-                                    }else{
-                                        break;
-                                    }
+                                        if(i < 5){
+                                            searchedProducts.add(val.get(i));
+                                            Log.e("Count" , ""+i);
+                                        }else{
+                                            Log.e("Count" , "Failed To Get Products");
+                                            break;
+                                        }
                                 }
-                                Log.e("F Event Size" , String.valueOf(searchedProducts.size()));
+                                Log.e("F Products Size" , String.valueOf(searchedProducts.size()));
                             }
                         });
                     });

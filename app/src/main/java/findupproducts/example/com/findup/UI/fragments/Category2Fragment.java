@@ -99,6 +99,11 @@ public class Category2Fragment extends Fragment {
             public void onAnimationUpdate(ValueAnimator valueAnimator) {
                 float animatedValue = (float) valueAnimator.getAnimatedValue();
                 textView.setTextSize(animatedValue);
+                if(PendSize == 19){
+                    textView.setTextColor(getResources().getColor(R.color.colorWhiteGrey));
+                }else{
+                    textView.setTextColor(getResources().getColor(R.color.colorWhite));
+                }
             }
         });
         animator.start();
@@ -187,7 +192,6 @@ public class Category2Fragment extends Fragment {
                         if (!expandableSections.get(i).expanded){
                             changeTextSize(headerHolder.titleText, 19, 30);
                             headerHolder.titleText.setTextColor(getResources().getColor(R.color.colorWhite));
-
                         }
                         else
                             changeTextSize(headerHolder.titleText, 19, 19);
