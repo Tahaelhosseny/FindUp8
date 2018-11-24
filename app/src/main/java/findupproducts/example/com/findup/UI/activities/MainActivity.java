@@ -76,7 +76,6 @@ public class MainActivity extends AppCompatActivity implements LocationView{
     public static List<Event> searchedEvents;
     public static List<Store> searchedStore;
 
-    Toolbar toolbar;
     private RxLocation rxLocation;
     FragmentTransaction transaction;
     LocationUtility locationUtility;
@@ -113,10 +112,7 @@ public class MainActivity extends AppCompatActivity implements LocationView{
         searchedEvents = new ArrayList<>();
         searchedProducts = new ArrayList<>();
         searchedStore = new ArrayList<>();
-        toolbar =  findViewById(R.id.toolbar_top);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-        getSupportActionBar().setDisplayShowHomeEnabled(false);
+
         insertUserNotification();
         getUserSaved();
         FragmentManager manager = getSupportFragmentManager();
