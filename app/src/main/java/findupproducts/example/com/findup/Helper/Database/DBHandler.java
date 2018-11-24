@@ -404,8 +404,8 @@ public class DBHandler {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                Flowable<Product> productFlowable = FindUpDatabase.getAppDatabase(context).daoAccess().getProductByID(prod_id);
-                products.getProduct(productFlowable);
+                Flowable<List<Product>> productFlowable = FindUpDatabase.getAppDatabase(context).daoAccess().getProductByID(prod_id);
+                products.onSuccess(productFlowable);
             }
         }).start();
     }
