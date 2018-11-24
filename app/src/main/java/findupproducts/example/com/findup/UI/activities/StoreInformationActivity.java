@@ -128,32 +128,28 @@ public class StoreInformationActivity extends AppCompatActivity {
                 case (PICK_LOGO) : {
                     selectedLogo = data.getData();
                     assert selectedLogo != null;
-                    Uri path = data.getData();
                     Bitmap bitmap = null;
                     try {
-                        bitmap = MediaStore.Images.Media.getBitmap(StoreInformationActivity.this.getContentResolver(),path);
+                        bitmap = MediaStore.Images.Media.getBitmap(StoreInformationActivity.this.getContentResolver(),selectedLogo);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
 
                     imgLogo.setImageBitmap(bitmap);
-                    selectedFilePath = FilePath.getPath(this,path);
-                    Log.i("selected","Selected File Path:" + selectedFilePath);
-                    createStore.setStore_logo_uri(path);
+                    createStore.setStore_logo_uri(selectedLogo);
                     break;
                 }
                 case (PICK_BANNER) : {
                     selectedBanner = data.getData();
-                    Uri path = data.getData();
                     assert selectedBanner != null;
                     Bitmap bitmap = null;
                     try {
-                        bitmap = MediaStore.Images.Media.getBitmap(StoreInformationActivity.this.getContentResolver(),path);
+                        bitmap = MediaStore.Images.Media.getBitmap(StoreInformationActivity.this.getContentResolver(),selectedBanner);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
                     imgBanner.setImageBitmap(bitmap);
-                    createStore.setStore_banner_uri(path);
+                    createStore.setStore_banner_uri(selectedBanner);
                     break;
                 }
             }

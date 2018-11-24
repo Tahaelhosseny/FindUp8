@@ -210,7 +210,8 @@ public interface ApiInterface {
             @Part MultipartBody.Part store_banner,
             @Part MultipartBody.Part store_otherlang,
             @Part MultipartBody.Part store_tags,
-            @Part MultipartBody.Part user_id);
+            @Part MultipartBody.Part user_id,
+            @Part MultipartBody.Part email);
 
     @Multipart
     @POST(ApiClient.PATH_URL+"stores?tag=create_event&HashSecure="+HASH)

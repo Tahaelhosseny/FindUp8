@@ -167,6 +167,20 @@
                     android:tag="@string/show_me_in_my_city"
                     android:textColor="@color/colorBlack"
                     android:textSize="16sp" />
+
+                <RadioButton
+                    android:id="@+id/radioShowMeInWorld"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:button="@null"
+                    android:drawableEnd="@drawable/radio_button_selector"
+                    android:fontFamily="@font/sfcompactdisplay_medium"
+                    android:gravity="start"
+                    android:text="show me in the world"
+                    android:tag="show me in the world"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16sp" />
             </RadioGroup>
 
             <TextView

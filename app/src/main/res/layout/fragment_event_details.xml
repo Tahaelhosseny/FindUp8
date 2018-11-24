@@ -24,7 +24,7 @@
     tools:context=".UI.fragments.EventDetailsFragment">
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/eventPhoto"
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:src="@drawable/tiny_cat"
@@ -37,7 +37,7 @@
         android:layout_marginTop="108dp"
         app:cardCornerRadius="5dp"
         android:orientation="vertical"
-        app:layout_anchor="@+id/imageView2"
+        app:layout_anchor="@+id/eventPhoto"
         app:layout_anchorGravity="bottom|center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

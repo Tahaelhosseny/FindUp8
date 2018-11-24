@@ -21,8 +21,7 @@
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/dp150">
+        android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/product_banner"
@@ -33,8 +32,9 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 
+
         <android.support.v7.widget.CardView
-            android:id="@+id/nameLayout"
+            android:id="@+id/infoLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="40dp"
@@ -42,7 +42,7 @@
             android:layout_marginTop="108dp"
             android:orientation="vertical"
             app:cardCornerRadius="5dp"
-            app:layout_anchor="@+id/imageView2"
+            app:layout_anchor="@+id/product_banner"
             app:layout_anchorGravity="bottom|center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -76,8 +76,8 @@
                     android:textColor="@color/colorBlack"
                     android:textSize="26sp"
                     android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/likeImg" />
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
 
                 <TextView
                     android:id="@+id/productStoreTxt"
@@ -103,7 +103,7 @@
 
                 <TextView
                     android:id="@+id/product_like_count"
-                    android:layout_width="29dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="2.2K"
                     android:textSize="17sp"
@@ -129,7 +129,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.047"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/nameLayout" />
+            app:layout_constraintTop_toBottomOf="@id/infoLayout" />
 
         <TextView
             android:id="@+id/aboutProduct"
