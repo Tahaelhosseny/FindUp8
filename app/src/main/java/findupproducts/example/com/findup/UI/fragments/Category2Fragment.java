@@ -55,16 +55,6 @@ public class Category2Fragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
-        android.support.v7.widget.Toolbar toolbar = getActivity().findViewById(R.id.toolbar_top);
-        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(false);
-        toolbar.setBackgroundColor(getResources().getColor(R.color.colorBlack));
-        toolbar.setTitle("Category");
-        toolbar.setTitleTextColor(getResources().getColor(R.color.colorWhite));
-
-
         FrameLayout frameLayout = getActivity().findViewById(R.id.navigation_bottom_container);
         frameLayout.setBackgroundColor(getResources().getColor(R.color.colorBlack));
         expandableSections = new ArrayList<>();
@@ -194,8 +184,11 @@ public class Category2Fragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     for (int i = 0; i < expandableSections.size(); i++) {
-                        if (!expandableSections.get(i).expanded)
+                        if (!expandableSections.get(i).expanded){
                             changeTextSize(headerHolder.titleText, 19, 30);
+                            headerHolder.titleText.setTextColor(getResources().getColor(R.color.colorWhite));
+
+                        }
                         else
                             changeTextSize(headerHolder.titleText, 19, 19);
                         expandableSections.get(i).expanded = false;

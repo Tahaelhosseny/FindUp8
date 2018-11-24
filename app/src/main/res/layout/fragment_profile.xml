@@ -7,30 +7,42 @@
     android:theme="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen"
     tools:context=".UI.fragments.ProfileFragment">
 
+    <TextView
+        android:id="@+id/prodile_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:text="Profile"
+        android:textColor="@color/colorBlack"
+        android:textSize="26sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_editor_absoluteX="13dp" />
+
     <ImageView
         android:id="@+id/profile_pic"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:layout_marginStart="@dimen/activity_vertical_margin"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
         android:contentDescription="@string/profile"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/prodile_text"
         app:srcCompat="@drawable/group_5_2x" />
 
     <TextView
         android:id="@+id/profile_name"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/activity_vertical_margin"
-        android:layout_marginTop="20dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
         android:fontFamily="@font/sfcompactdisplay_semibold"
         android:text="@string/profile_name"
         android:textColor="@color/colorBlack"
         android:textSize="26sp"
         app:layout_constraintLeft_toRightOf="@id/profile_pic"
         app:layout_constraintStart_toEndOf="@id/profile_pic"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:layout_editor_absoluteY="75dp" />
 
     <TextView
         android:id="@+id/profile_phone"
