@@ -47,6 +47,13 @@ public class SharedPrefManger {
     public static void setIsLoggedIn(boolean value) {
         mSharedPref.edit().putBoolean("isLoggedIn", value).apply();
     }
+
+    public static String getStoreLocation_type() {
+        return mSharedPref.getString("store_location_type", "");
+    }
+    public static void setStoreLocation_type(String value) {
+        mSharedPref.edit().putString("store_location_type", value).apply();
+    }
     public static boolean isIsLoggedIn() {
         return mSharedPref.getBoolean("isLoggedIn", false);
     }

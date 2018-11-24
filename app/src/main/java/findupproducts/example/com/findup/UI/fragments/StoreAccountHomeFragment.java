@@ -63,6 +63,9 @@ public class StoreAccountHomeFragment extends Fragment {
                 getActivity().startActivity(new Intent(getActivity(), SetLocationActivity.class));
             }
         });
+        SharedPrefManger sharedPrefManger = new SharedPrefManger(getActivity());
+        if (!sharedPrefManger.getStoreLocation_type().equals("dynamic"))
+            setLocBtn.setVisibility(View.GONE);
 
         adapter = new StoreProductsReviewsAdapter(getActivity(), new ArrayList<Product>());
         LoadProduct(recyclerView);

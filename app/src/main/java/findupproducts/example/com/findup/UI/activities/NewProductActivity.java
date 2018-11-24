@@ -26,6 +26,7 @@ import com.google.gson.Gson;
 
 import java.io.File;
 
+import findupproducts.example.com.findup.Helper.FilePath;
 import findupproducts.example.com.findup.Helper.Remote.ApiClient;
 import findupproducts.example.com.findup.Helper.Remote.ApiInterface;
 import findupproducts.example.com.findup.Helper.Remote.ResponseModel.CreateProductResponse;
@@ -45,12 +46,13 @@ public class NewProductActivity extends AppCompatActivity {
     EditText editText_productName, editText_productDescription,  editText_product_price;
     Button btn_addProductDone, btn_addProductDelete;
     Uri selectedProduct;
-    ImageButton pic_product;
+    ImageButton pic_product,pic_product2,pic_product3,pic_product4;
     final int appVersion = Build.VERSION.SDK_INT;
     int pro_pos = -1;
     int pro_id = -1;
     ApiInterface apiService;
     SharedPrefManger sharedPrefManger;
+    boolean isCraft = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +66,9 @@ public class NewProductActivity extends AppCompatActivity {
         editText_productDescription = findViewById(R.id.editText_productDescription);
         editText_product_price = findViewById(R.id.editText_product_price);
         pic_product = findViewById(R.id.pic_product);
+        pic_product2 = findViewById(R.id.pic_product2);
+        pic_product3 = findViewById(R.id.pic_product3);
+        pic_product4 = findViewById(R.id.pic_product4);
 
         if (appVersion > Build.VERSION_CODES.LOLLIPOP_MR1) {
             if (!checkIfAlreadyhavePermission()) {
@@ -74,6 +79,8 @@ public class NewProductActivity extends AppCompatActivity {
         if (getIntent() != null){
             pro_pos = getIntent().getIntExtra("pro_pos", -1);
             pro_id = getIntent().getIntExtra("pro_id", -1);
+            if (getIntent().hasExtra("isCraft"))
+                isCraft = true;
         }
 
         if (pro_pos != -1){
@@ -141,7 +148,7 @@ public class NewProductActivity extends AppCompatActivity {
                 case (1) : {
                     selectedProduct = data.getData();
                     assert selectedProduct != null;
-                    Bitmap bitmap = BitmapFactory.decodeFile(getImgPath(selectedProduct));
+                    Bitmap bitmap = BitmapFactory.decodeFile(FilePath.getPath(NewProductActivity.this,selectedProduct));
                     pic_product.setImageBitmap(bitmap);
                     break;
                 }
@@ -167,14 +174,19 @@ public class NewProductActivity extends AppCompatActivity {
             return;
         }
 
+        if (isCraft) {
+            finish();
+            return;
+        }
+
         AddProduct addProduct = new AddProduct(
                 -1,
                 editText_product_price.getText().toString(),
                 editText_productName.getText().toString(),
                 editText_productDescription.getText().toString(),
-                getImgPath(selectedProduct));
+                FilePath.getPath(NewProductActivity.this,selectedProduct));
 
-        File imgFile = new File(getImgPath(selectedProduct));
+        File imgFile = new File(FilePath.getPath(NewProductActivity.this,selectedProduct));
         RequestBody requestImgFile =
                 RequestBody.create(MediaType.parse("image/png"), imgFile);
         MultipartBody.Part product_img =
@@ -204,7 +216,8 @@ public class NewProductActivity extends AppCompatActivity {
                     resultIntent.putExtra("pro_name", editText_productName.getText().toString());
                     resultIntent.putExtra("pro_desc", editText_productDescription.getText().toString());
                     resultIntent.putExtra("pro_price", editText_product_price.getText().toString());
-                    resultIntent.putExtra("pro_img", getImgPath(selectedProduct));
+                    String selectedFilePath = FilePath.getPath(NewProductActivity.this,selectedProduct);
+                    resultIntent.putExtra("pro_img", selectedFilePath);
                     setResult(Activity.RESULT_OK, resultIntent);
                     finish();
                 }
@@ -230,13 +243,5 @@ public class NewProductActivity extends AppCompatActivity {
     private boolean checkIfAlreadyhavePermission() {
         int result = ContextCompat.checkSelfPermission(this, android.Manifest.permission.WRITE_EXTERNAL_STORAGE);
         return result == PackageManager.PERMISSION_GRANTED;
-    }
-
-    private String getImgPath(Uri imgUri){
-        Log.e("MyData", imgUri.getPath());
-        if (imgUri.getPath().contains(":"))
-            return imgUri.getPath().substring(imgUri.getPath().indexOf(":")+1);
-        else
-            return imgUri.getPath();
     }
 }

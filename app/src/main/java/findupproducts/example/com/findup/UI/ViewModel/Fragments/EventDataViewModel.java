@@ -71,7 +71,8 @@ public class EventDataViewModel {
                                 e_long = Double.parseDouble(val.get(i).getEvent_longitude());
                                 e_name = val.get(i).getEvent_name();
                                 Toast.makeText(mContext, ""+val.get(i).getEvent_photo(), Toast.LENGTH_SHORT).show();
-                                Picasso.with(mContext).load(val.get(i).getEvent_photo()).into(event_banner);
+                                if (!val.get(i).getEvent_photo().isEmpty())
+                                    Picasso.with(mContext).load(val.get(i).getEvent_photo()).into(event_banner);
                             }
                         }
                     });

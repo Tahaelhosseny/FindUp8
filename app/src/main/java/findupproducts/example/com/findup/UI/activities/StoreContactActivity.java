@@ -51,7 +51,7 @@ public class StoreContactActivity extends AppCompatActivity {
 
     RadioGroup radioLocation;
     RadioButton radioShowCity;
-    EditText editText_website, editText_instagram, editText_twitter, editText_facebook, editText_mobile, editText_password;
+    EditText editText_website, editText_instagram, editText_twitter, editText_facebook, editText_mobile, editText_password,editText_email;
     AutoCompleteTextView editText_country , editText_city;
     ApiInterface apiService;
     int countryId = 0;
@@ -67,6 +67,7 @@ public class StoreContactActivity extends AppCompatActivity {
         editText_country = findViewById(R.id.editText_country);
         editText_city = findViewById(R.id.editText_city);
         editText_mobile = findViewById(R.id.editText_mobile);
+        editText_email = findViewById(R.id.editText_email);
         editText_password = findViewById(R.id.editText_password);
         editText_website = findViewById(R.id.editText_website);
         editText_instagram = findViewById(R.id.editText_instagram);
@@ -106,10 +107,10 @@ public class StoreContactActivity extends AppCompatActivity {
                 finish();
             }
         });
-        radioShowCity = findViewById(R.id.radioShowCity);
+        /*radioShowCity = findViewById(R.id.radioShowCity);
         if (getIntent().getExtras().getInt("next_id") == 2) {
             radioShowCity.setVisibility(View.GONE);
-        }
+        }*/
         final Button btn_next = findViewById(R.id.btn_next);
         btn_next.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -143,6 +144,9 @@ public class StoreContactActivity extends AppCompatActivity {
         } else if (TextUtils.isEmpty(editText_password.getText().toString())){
             Toast.makeText(this, "Enter Mobile", Toast.LENGTH_LONG).show();
             return;
+        } else if (TextUtils.isEmpty(editText_email.getText().toString())){
+            Toast.makeText(this, "Enter Email", Toast.LENGTH_LONG).show();
+            return;
         }/*else if (TextUtils.isEmpty(editText_website.getText().toString())){
             Toast.makeText(this, "Enter Website", Toast.LENGTH_LONG).show();
             return;
@@ -170,7 +174,6 @@ public class StoreContactActivity extends AppCompatActivity {
         createStore.setStore_twitter_link(Twitter);
         createStore.setStore_facebook_link(facebook);
         createStore.setStore_location_type(findViewById(radioLocation.getCheckedRadioButtonId()).getTag().toString());
-        createStore.setStore_cat_id(String.valueOf(getIntent().getExtras().getInt("next_id")));
         File logoFile = new File(FilePath.getPath(this,createStore.getStore_logo_uri()));
         File bannerFile = new File(FilePath.getPath(this,createStore.getStore_banner_uri()));
 
@@ -180,6 +183,7 @@ public class StoreContactActivity extends AppCompatActivity {
         MultipartBody.Part city_id = MultipartBody.Part.createFormData("city_id", ""+cityId);
         MultipartBody.Part location_type = MultipartBody.Part.createFormData("location_type", createStore.getStore_location_type());
         MultipartBody.Part mobile = MultipartBody.Part.createFormData("mobile", createStore.getStore_mobile());
+        MultipartBody.Part email = MultipartBody.Part.createFormData("email", editText_email.getText().toString());
         MultipartBody.Part password = MultipartBody.Part.createFormData("password", editText_password.getText().toString());
         MultipartBody.Part website_link = MultipartBody.Part.createFormData("website_link", createStore.getStore_website_link());
         MultipartBody.Part twitter_link = MultipartBody.Part.createFormData("twitter_link", createStore.getStore_twitter_link());
@@ -218,7 +222,8 @@ public class StoreContactActivity extends AppCompatActivity {
                 bodybannerFile,
                 store_otherlang,
                 store_tags,
-                user_id
+                user_id,
+                email
         );
 
         newStore.enqueue(new Callback<CreateStoreResponse>() {
@@ -244,20 +249,26 @@ public class StoreContactActivity extends AppCompatActivity {
         finish();
     }
 
-    private void nextStep(int storeId){
+    private void nextStep(int storeId) {
         SharedPrefManger sharedPrefManger = new SharedPrefManger(this);
         sharedPrefManger.setIsLoggedIn(true);
         sharedPrefManger.setLoginType("store");
         sharedPrefManger.setStoreID(storeId);
-        Toast.makeText(StoreContactActivity.this,""+storeId,Toast.LENGTH_SHORT).show();
-        if (radioLocation.getCheckedRadioButtonId() == R.id.radioDynamicLocation){
-            Toast.makeText(StoreContactActivity.this,"Account Created",Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(StoreContactActivity.this, AddProductTruckActivity.class));
+        Toast.makeText(StoreContactActivity.this, "Account Created", Toast.LENGTH_SHORT).show();
+        if (radioLocation.getCheckedRadioButtonId() == R.id.radioStaticLocation) {
+            startActivity(new Intent(StoreContactActivity.this, SetLocationActivity.class)
+                    .putExtra("new_store", true));
             finish();
-        } else {
-            startActivity(new Intent(StoreContactActivity.this, SetLocationActivity.class).putExtra("new_store", true));
-            finish();
-        }
+        } else if ((radioLocation.getCheckedRadioButtonId() == R.id.radioDynamicLocation)){
+            sharedPrefManger.setStoreLocation_type("dynamic");
+            goToAddProducts();
+        }else
+            goToAddProducts();
+    }
+
+    private void goToAddProducts(){
+        startActivity(new Intent(StoreContactActivity.this, AddProductTruckActivity.class));
+        finish();
     }
 
     private void loadCountries(){
