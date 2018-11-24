@@ -9,6 +9,8 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -24,9 +26,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.common.util.IOUtils;
 import com.google.gson.Gson;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 
 import findupproducts.example.com.findup.Helper.FilePath;
 import findupproducts.example.com.findup.Helper.Remote.ApiClient;
@@ -134,9 +141,9 @@ public class StoreInformationActivity extends AppCompatActivity {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-
                     imgLogo.setImageBitmap(bitmap);
                     createStore.setStore_logo_uri(selectedLogo);
+                    createStore.setStore_logo(getRealPathFromURI(selectedLogo));
                     break;
                 }
                 case (PICK_BANNER) : {
@@ -150,6 +157,7 @@ public class StoreInformationActivity extends AppCompatActivity {
                     }
                     imgBanner.setImageBitmap(bitmap);
                     createStore.setStore_banner_uri(selectedBanner);
+                    createStore.setStore_banner(getRealPathFromURI(selectedBanner));
                     break;
                 }
             }
@@ -226,5 +234,18 @@ public class StoreInformationActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         finish();
+    }
+
+    public String getRealPathFromURI(Uri originalUri) {
+        String path = originalUri.getLastPathSegment();
+        return path.substring(path.indexOf(":") +1);
+    }
+
+    private Uri getUri() {
+        String state = Environment.getExternalStorageState();
+        if(!state.equalsIgnoreCase(Environment.MEDIA_MOUNTED))
+            return MediaStore.Images.Media.INTERNAL_CONTENT_URI;
+
+        return MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
     }
 }

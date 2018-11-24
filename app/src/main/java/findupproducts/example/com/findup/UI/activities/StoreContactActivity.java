@@ -1,7 +1,11 @@
 package findupproducts.example.com.findup.UI.activities;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.DocumentsContract;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
@@ -174,8 +178,11 @@ public class StoreContactActivity extends AppCompatActivity {
         createStore.setStore_twitter_link(Twitter);
         createStore.setStore_facebook_link(facebook);
         createStore.setStore_location_type(findViewById(radioLocation.getCheckedRadioButtonId()).getTag().toString());
-        File logoFile = new File(FilePath.getPath(this,createStore.getStore_logo_uri()));
-        File bannerFile = new File(FilePath.getPath(this,createStore.getStore_banner_uri()));
+        /*File logoFile = new File(getRealPathFromURI(createStore.getStore_logo_uri()));
+        File bannerFile = new File(getRealPathFromURI(createStore.getStore_banner_uri()));*/
+
+        File logoFile = new File(createStore.getStore_logo());
+        File bannerFile = new File(createStore.getStore_banner());
 
         MultipartBody.Part store_name = MultipartBody.Part.createFormData("store_name", createStore.getStore_name());
         MultipartBody.Part store_desc = MultipartBody.Part.createFormData("store_desc", createStore.getStore_desc());
