@@ -11,13 +11,30 @@
         android:layout_height="match_parent"
         android:src="@drawable/truck"
         android:scaleType="centerCrop"
-        android:alpha="0.9"/>
+        android:alpha="0.9"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+
+    <TextView
+        android:id="@+id/cat_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="40dp"
+        android:text="Category"
+        android:fontFamily="@font/sfcompactdisplay_medium"
+        android:textColor="@color/colorWhite"
+        android:textStyle="bold"
+        android:textSize="26sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/categoryRecyclerview"
-        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_marginTop="38dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/cat_text" />
 
 
 </android.support.constraint.ConstraintLayout>

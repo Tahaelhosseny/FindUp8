@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.f2prateek.rx.preferences2.Preference;
 import com.squareup.picasso.Picasso;

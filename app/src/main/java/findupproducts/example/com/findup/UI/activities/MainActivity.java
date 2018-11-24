@@ -76,7 +76,6 @@ public class MainActivity extends AppCompatActivity implements LocationView{
     public static List<Event> searchedEvents;
     public static List<Store> searchedStore;
 
-    Toolbar toolbar;
     private RxLocation rxLocation;
     FragmentTransaction transaction;
     LocationUtility locationUtility;
@@ -113,10 +112,7 @@ public class MainActivity extends AppCompatActivity implements LocationView{
         searchedEvents = new ArrayList<>();
         searchedProducts = new ArrayList<>();
         searchedStore = new ArrayList<>();
-        toolbar =  findViewById(R.id.toolbar_top);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-        getSupportActionBar().setDisplayShowHomeEnabled(false);
+
         insertUserNotification();
         getUserSaved();
         FragmentManager manager = getSupportFragmentManager();
@@ -213,13 +209,15 @@ public class MainActivity extends AppCompatActivity implements LocationView{
                             public void run() {
                                 searchedProducts.clear();
                                 for (int i = 0 ; i < val.size() ; i++){
-                                    if(i < 5){
-                                        searchedProducts.add(val.get(i));
-                                    }else{
-                                        break;
-                                    }
+                                        if(i < 5){
+                                            searchedProducts.add(val.get(i));
+                                            Log.e("Count" , ""+i);
+                                        }else{
+                                            Log.e("Count" , "Failed To Get Products");
+                                            break;
+                                        }
                                 }
-                                Log.e("F Event Size" , String.valueOf(searchedProducts.size()));
+                                Log.e("F Products Size" , String.valueOf(searchedProducts.size()));
                             }
                         });
                     });

@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.makeramen.roundedimageview.RoundedTransformationBuilder;
 import com.squareup.picasso.Picasso;
@@ -30,10 +31,16 @@ public class CommentsPhotosAdapter extends RecyclerView.Adapter<CommentsPhotosAd
 
     public CommentsPhotosAdapter(Context context, List<Comment> CommentsList) {
         this.context = context;
-        if (CommentsList.size() > 3)
+        if (CommentsList.size() > 3) {
             this.CommentsList = CommentsList.subList(0, 3);
-        else
+        } else if(CommentsList.size() < 1){
+            Comment comment = new Comment();
+            comment.setAccount_image("https://ibb.co/cymQL2p");
+            CommentsList.add(comment);
             this.CommentsList = CommentsList;
+        }else{
+            this.CommentsList = CommentsList;
+        }
     }
 
     @NonNull
@@ -47,6 +54,7 @@ public class CommentsPhotosAdapter extends RecyclerView.Adapter<CommentsPhotosAd
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Comment comment = CommentsList.get(position);
+        Toast.makeText(context, ""+comment.getAccount_image(), Toast.LENGTH_SHORT).show();
         if (!comment.getAccount_image().isEmpty()) {
             Transformation transformation = new RoundedTransformationBuilder()
                     .cornerRadiusDp(90)

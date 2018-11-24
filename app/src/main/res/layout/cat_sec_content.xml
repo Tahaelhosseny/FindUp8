@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/sfcompactdisplay_medium"
         android:text="Content"
-        android:textColor="@color/colorWhiteGrey"
+        android:textColor="@color/colorWhite"
         android:textSize="16sp" />
 
 </android.support.constraint.ConstraintLayout>

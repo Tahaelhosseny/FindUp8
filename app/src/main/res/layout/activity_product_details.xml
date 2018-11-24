@@ -13,24 +13,5 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar_top"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="?attr/actionBarSize"
-        app:theme="@style/ToolBarThemeNoBg">
-
-        <Button
-            android:id="@+id/btnBack"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="22dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="4dp"
-            android:background="@null"
-            android:drawableLeft="@drawable/baseline_close_black_48" />
-
-    </android.support.v7.widget.Toolbar>
 
 </android.support.constraint.ConstraintLayout>
