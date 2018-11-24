@@ -35,27 +35,27 @@
         android:id="@+id/profile_name"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_marginStart="16dp"
+
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="80dp"
         android:fontFamily="@font/sfcompactdisplay_semibold"
         android:text="@string/profile_name"
         android:textColor="@color/colorBlack"
         android:textSize="26sp"
-        app:layout_constraintLeft_toRightOf="@id/profile_pic"
-        app:layout_constraintStart_toEndOf="@id/profile_pic"
-        tools:layout_editor_absoluteY="75dp" />
+        app:layout_constraintStart_toEndOf="@+id/profile_pic"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/profile_phone"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/activity_vertical_margin"
+        android:layout_height="32dp"
+        android:layout_marginStart="12dp"
         android:fontFamily="@font/sfcompactdisplay_medium"
         android:text="@string/profile_number"
         android:textColor="@color/colorBlack"
         android:textSize="20sp"
-        app:layout_constraintLeft_toRightOf="@id/profile_pic"
-        app:layout_constraintStart_toEndOf="@id/profile_pic"
-        app:layout_constraintTop_toBottomOf="@id/profile_name" />
+        app:layout_constraintStart_toEndOf="@+id/profile_pic"
+        app:layout_constraintTop_toBottomOf="@+id/profile_name" />
 
     <Button
         android:id="@+id/btn_notifications"
