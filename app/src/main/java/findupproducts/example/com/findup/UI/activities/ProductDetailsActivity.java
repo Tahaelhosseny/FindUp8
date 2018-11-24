@@ -8,6 +8,7 @@ import android.view.View;
 
 import findupproducts.example.com.findup.R;
 import findupproducts.example.com.findup.UI.fragments.ProductDetailsFragment;
+import findupproducts.example.com.findup.models.Product;
 
 public class ProductDetailsActivity extends AppCompatActivity {
 
@@ -19,10 +20,9 @@ public class ProductDetailsActivity extends AppCompatActivity {
         findViewById(R.id.btnBack).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+                ProductDetailsActivity.super.onBackPressed();
             }
         });
-
 
         ProductDetailsFragment productDetailsFragment = new ProductDetailsFragment();
         FragmentManager manager = getSupportFragmentManager();

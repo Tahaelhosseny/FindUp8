@@ -62,7 +62,7 @@ public class ChatWithContactViewModel extends Observable {
                     List<GetContact> contacts = response.body().getGetStoreContacts();
                     InitRecycler(contacts , contactsRecyclerView, mMessageRecycler);
                 }else{
-                    Toast.makeText(mContext, "There is Problem Occurred", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(mContext, response.body().getError_msg(), Toast.LENGTH_SHORT).show();
                 }
             }
 

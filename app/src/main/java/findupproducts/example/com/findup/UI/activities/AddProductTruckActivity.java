@@ -30,6 +30,7 @@ public class AddProductTruckActivity extends AppCompatActivity {
     RecyclerView recyclerTruckProducts;
     List<AddProduct> products;
     AddProductsAdapter adapter;
+    boolean isCraft = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +38,11 @@ public class AddProductTruckActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_product_truck);
         products = new ArrayList<>();
         adapter = new AddProductsAdapter(this, products);
+
+        if (getIntent().hasExtra("isCraft"))
+            isCraft = true;
+
+        Log.e("MyData", ""+ isCraft);
 
         btn_addProductBack = findViewById(R.id.btn_addProductBack);
 
@@ -57,7 +63,11 @@ public class AddProductTruckActivity extends AppCompatActivity {
         addProductLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivityForResult(new Intent(AddProductTruckActivity.this, NewProductActivity.class), 0);
+                if (isCraft)
+                    startActivityForResult(new Intent(AddProductTruckActivity.this, NewProductActivity.class)
+                        .putExtra("isCraft", isCraft), 0);
+                else
+                    startActivityForResult(new Intent(AddProductTruckActivity.this, NewProductActivity.class), 0);
             }
         });
 

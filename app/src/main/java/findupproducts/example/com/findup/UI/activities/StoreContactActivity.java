@@ -274,7 +274,11 @@ public class StoreContactActivity extends AppCompatActivity {
     }
 
     private void goToAddProducts(){
-        startActivity(new Intent(StoreContactActivity.this, AddProductTruckActivity.class));
+        if (createStore.getStore_cat_id().equals("2"))
+            startActivity(new Intent(StoreContactActivity.this, AddProductTruckActivity.class)
+                    .putExtra("isCraft", true));
+        else
+            startActivity(new Intent(StoreContactActivity.this, AddProductTruckActivity.class));
         finish();
     }
 
