@@ -60,6 +60,7 @@
                     android:layout_marginBottom="@dimen/activity_vertical_margin"
                     app:srcCompat="@drawable/group_5_2x"
                     android:background="@null"
+                    android:layout_margin="5dp"
                     android:contentDescription="@string/add_product"/>
 
                 <ImageButton
@@ -69,6 +70,7 @@
                     app:srcCompat="@drawable/group_5_2x"
                     android:background="@null"
                     android:contentDescription="@string/add_product"
+                    android:layout_margin="5dp"
                     android:visibility="gone"/>
 
                 <ImageButton
@@ -78,7 +80,8 @@
                     app:srcCompat="@drawable/group_5_2x"
                     android:background="@null"
                     android:contentDescription="@string/add_product"
-                    android:visibility="gone"/>
+                    android:visibility="gone"
+                    android:layout_margin="5dp"/>
 
                 <ImageButton
                     android:id="@+id/pic_product4"
@@ -87,7 +90,8 @@
                     app:srcCompat="@drawable/group_5_2x"
                     android:background="@null"
                     android:contentDescription="@string/add_product"
-                    android:visibility="gone"/>
+                    android:visibility="gone"
+                    android:layout_margin="5dp"/>
 
             </LinearLayout>
 
