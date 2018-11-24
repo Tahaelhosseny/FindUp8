@@ -8,6 +8,7 @@ import android.view.View;
 
 import findupproducts.example.com.findup.R;
 import findupproducts.example.com.findup.UI.fragments.ProductDetailsFragment;
+import findupproducts.example.com.findup.models.Product;
 
 public class ProductDetailsActivity extends AppCompatActivity {
 
@@ -15,15 +16,17 @@ public class ProductDetailsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_details);
+
+        findViewById(R.id.btnBack).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ProductDetailsActivity.super.onBackPressed();
+            }
+        });
+
         ProductDetailsFragment productDetailsFragment = new ProductDetailsFragment();
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.replace(R.id.product_fragment_container, productDetailsFragment).commit();
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        finish();
     }
 }

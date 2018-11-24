@@ -141,7 +141,6 @@ public interface ApiInterface {
     Call<AddCommentStoreResponse> addNewStoreComment(@Field("account_id") int account_id , @Field("store_id") int store_id
             , @Field("comment") String comment);
 
-
     @POST(ApiClient.PATH_URL+"user_actions?tag=add_product_comment&HashSecure="+HASH)
     @FormUrlEncoded
     Call<AddCommentProductResponse> addNewProductComment(@Field("account_id") int account_id , @Field("product_id") int product_id

@@ -25,6 +25,7 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 
 import java.io.File;
+import java.io.IOException;
 
 import findupproducts.example.com.findup.Helper.FilePath;
 import findupproducts.example.com.findup.Helper.Remote.ApiClient;
@@ -45,7 +46,7 @@ public class NewProductActivity extends AppCompatActivity {
 
     EditText editText_productName, editText_productDescription,  editText_product_price;
     Button btn_addProductDone, btn_addProductDelete;
-    Uri selectedProduct;
+    Uri selectedProduct,selectedProduct2,selectedProduct3,selectedProduct4;
     ImageButton pic_product,pic_product2,pic_product3,pic_product4;
     final int appVersion = Build.VERSION.SDK_INT;
     int pro_pos = -1;
@@ -83,6 +84,12 @@ public class NewProductActivity extends AppCompatActivity {
                 isCraft = true;
         }
 
+        if (isCraft){
+            pic_product2.setVisibility(View.VISIBLE);
+            pic_product3.setVisibility(View.VISIBLE);
+            pic_product4.setVisibility(View.VISIBLE);
+        }
+
         if (pro_pos != -1){
             editText_productName.setText(getIntent().getStringExtra("pro_name"));
             editText_productDescription.setText(getIntent().getStringExtra("pro_desc"));
@@ -97,7 +104,25 @@ public class NewProductActivity extends AppCompatActivity {
         pic_product.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                pickImg();
+                pickImg(1);
+            }
+        });
+        pic_product2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pickImg(2);
+            }
+        });
+        pic_product3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pickImg(3);
+            }
+        });
+        pic_product4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pickImg(4);
             }
         });
 
@@ -148,8 +173,49 @@ public class NewProductActivity extends AppCompatActivity {
                 case (1) : {
                     selectedProduct = data.getData();
                     assert selectedProduct != null;
-                    Bitmap bitmap = BitmapFactory.decodeFile(FilePath.getPath(NewProductActivity.this,selectedProduct));
+                    Bitmap bitmap = null;
+                    try {
+                        bitmap = MediaStore.Images.Media.getBitmap(NewProductActivity.this.getContentResolver(),selectedProduct);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                     pic_product.setImageBitmap(bitmap);
+                    break;
+                }
+                case (2) : {
+                    selectedProduct2 = data.getData();
+                    assert selectedProduct2 != null;
+                    Bitmap bitmap = null;
+                    try {
+                        bitmap = MediaStore.Images.Media.getBitmap(NewProductActivity.this.getContentResolver(),selectedProduct2);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    pic_product2.setImageBitmap(bitmap);
+                    break;
+                }
+                case (3) : {
+                    selectedProduct3 = data.getData();
+                    assert selectedProduct3 != null;
+                    Bitmap bitmap = null;
+                    try {
+                        bitmap = MediaStore.Images.Media.getBitmap(NewProductActivity.this.getContentResolver(),selectedProduct3);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    pic_product3.setImageBitmap(bitmap);
+                    break;
+                }
+                case (4) : {
+                    selectedProduct4 = data.getData();
+                    assert selectedProduct4 != null;
+                    Bitmap bitmap = null;
+                    try {
+                        bitmap = MediaStore.Images.Media.getBitmap(NewProductActivity.this.getContentResolver(),selectedProduct4);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    pic_product4.setImageBitmap(bitmap);
                     break;
                 }
             }
@@ -232,11 +298,11 @@ public class NewProductActivity extends AppCompatActivity {
         });
     }
 
-    private void pickImg(){
+    private void pickImg(int requestCode){
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent, "Select Picture"), 1);
+        startActivityForResult(Intent.createChooser(intent, "Select Picture"), requestCode);
     }
 
     private boolean checkIfAlreadyhavePermission() {
