@@ -28,6 +28,7 @@ import findupproducts.example.com.findup.UI.adapters.ChatStoresProfilePicAdapter
 import findupproducts.example.com.findup.UI.adapters.MessageListAdapter;
 import findupproducts.example.com.findup.UI.adapters.RecyclerTouchListener;
 import findupproducts.example.com.findup.models.GetChat;
+import findupproducts.example.com.findup.models.SendMessage;
 import findupproducts.example.com.findup.models.Store;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -42,11 +43,10 @@ public class SpecificChatViewModel extends Observable {
     }
     public void sendMessageToStore(int storeId , EditText messageEdit){
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-        Call<SendChatResponse> sendMessage = apiService.sendMessage(SharedPrefManger.getUser_ID() , storeId, "User" , "Store" , "" ,messageEdit.getText().toString() );
+        Call<SendChatResponse> sendMessage = apiService.sendMessage(SharedPrefManger.getUser_ID() , storeId , "User" , "Store" , "" ,messageEdit.getText().toString() );
         sendMessage.enqueue(new Callback<SendChatResponse>() {
             @Override
             public void onResponse(Call<SendChatResponse> call, Response<SendChatResponse> response) {
-                //Log.e("MyData", new Gson().toJson(response.body()));
                 if(response.body().getSuccess() == 1){
                     Log.e("MyData", "msg sent");
                     GetChat newMsg = new GetChat();
@@ -61,6 +61,8 @@ public class SpecificChatViewModel extends Observable {
 
             @Override
             public void onFailure(Call<SendChatResponse> call, Throwable t) {
+                messageList.clear();
+                mMessageAdapter.notifyDataSetChanged();
                 Toast.makeText(mContext, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });

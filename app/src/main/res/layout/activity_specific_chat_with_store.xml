@@ -120,25 +120,14 @@
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:layout_margin="5dp"
-                android:background="@drawable/fav"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/send_msg"
                 android:clickable="true"
+                android:gravity="center"
                 android:onClick="@{(v)->presenter.sendMessage()}"
-                android:gravity="center"
-                app:layout_constraintEnd_toStartOf="@id/emojiBtn"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
-
-            <Button
-                android:id="@+id/emojiBtn"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:layout_margin="5dp"
-                android:background="@drawable/fav"
-                android:clickable="true"
-                android:gravity="center"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
         </android.support.constraint.ConstraintLayout>
 
