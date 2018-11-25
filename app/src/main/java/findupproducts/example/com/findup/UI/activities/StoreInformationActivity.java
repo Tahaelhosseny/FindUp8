@@ -10,43 +10,34 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
-import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.content.CursorLoader;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.common.util.IOUtils;
 import com.google.gson.Gson;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 
-import findupproducts.example.com.findup.Helper.FilePath;
 import findupproducts.example.com.findup.Helper.Remote.ApiClient;
 import findupproducts.example.com.findup.Helper.Remote.ApiInterface;
 import findupproducts.example.com.findup.Helper.Remote.ResponseModel.CountriesResponse;
 import findupproducts.example.com.findup.R;
-import findupproducts.example.com.findup.models.Country;
 import findupproducts.example.com.findup.models.Store;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
-import static findupproducts.example.com.findup.UI.activities.IntroActivity.clickCatType;
 
 public class StoreInformationActivity extends AppCompatActivity {
 
@@ -129,7 +120,6 @@ public class StoreInformationActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
         if (resultCode == Activity.RESULT_OK && data != null){
             switch(requestCode) {
                 case (PICK_LOGO) : {
@@ -141,23 +131,51 @@ public class StoreInformationActivity extends AppCompatActivity {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                    imgLogo.setImageBitmap(bitmap);
+
+                    String[] prjection ={MediaStore.Images.Media.DATA};
+                    Cursor cursor=getContentResolver().query(selectedLogo,prjection,null,null,null);
+                    cursor.moveToFirst();
+
+                    int columnIndex=cursor.getColumnIndex(prjection[0]);
+                    String path=cursor.getString(columnIndex);
+                    cursor.close();
+
+                    Bitmap selectFile = BitmapFactory.decodeFile(path);
+                    imgLogo.setImageBitmap(selectFile);
+                    createStore.setStore_logo(path);
                     createStore.setStore_logo_uri(selectedLogo);
-                    createStore.setStore_logo(getRealPathFromURI(selectedLogo));
                     break;
                 }
                 case (PICK_BANNER) : {
                     selectedBanner = data.getData();
                     assert selectedBanner != null;
                     Bitmap bitmap = null;
-                    try {
+                    /*try {
                         bitmap = MediaStore.Images.Media.getBitmap(StoreInformationActivity.this.getContentResolver(),selectedBanner);
                     } catch (IOException e) {
                         e.printStackTrace();
+                    }*/
+                    String[] prjection ={MediaStore.Images.Media.DATA};
+                    Cursor cursor=getContentResolver().query(selectedBanner,prjection,null,null,null);
+                    cursor.moveToFirst();
+
+                    int columnIndex=cursor.getColumnIndex(prjection[0]);
+                    String path=cursor.getString(columnIndex);
+                    cursor.close();
+
+                    Bitmap selectFile = BitmapFactory.decodeFile(path);
+                    imgBanner.setImageBitmap(selectFile);
+                    createStore.setStore_banner(path);
+                    /*File file = null;
+                    try {
+                        file = new fileFromBitmap(bitmap, this).execute().get();
+                        createStore.setBannerFile(file);
+                    } catch (ExecutionException e) {
+                        e.printStackTrace();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
                     }
-                    imgBanner.setImageBitmap(bitmap);
-                    createStore.setStore_banner_uri(selectedBanner);
-                    createStore.setStore_banner(getRealPathFromURI(selectedBanner));
+                    createStore.setStore_banner_uri(selectedBanner);*/
                     break;
                 }
             }
@@ -168,7 +186,8 @@ public class StoreInformationActivity extends AppCompatActivity {
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent, "Select Picture"), pickerTag);
+        Intent intent1 = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(Intent.createChooser(intent1, "Select Picture"), pickerTag);
     }
 
     private boolean checkIfAlreadyhavePermission() {
@@ -236,9 +255,17 @@ public class StoreInformationActivity extends AppCompatActivity {
         finish();
     }
 
-    public String getRealPathFromURI(Uri originalUri) {
-        String path = originalUri.getLastPathSegment();
-        return path.substring(path.indexOf(":") +1);
+    public File getFileFromBitmap(Bitmap bitmap, String filename) throws IOException {
+        File f = new File(this.getCacheDir(), filename);
+        f.createNewFile();
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 0 , bos);
+        byte[] bitmapdata = bos.toByteArray();
+        FileOutputStream fos = new FileOutputStream(f);
+        fos.write(bitmapdata);
+        fos.flush();
+        fos.close();
+        return f;
     }
 
     private Uri getUri() {
