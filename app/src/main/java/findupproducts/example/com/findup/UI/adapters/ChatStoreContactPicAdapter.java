@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.makeramen.roundedimageview.RoundedDrawable;
+import com.makeramen.roundedimageview.RoundedImageView;
 import com.mikhaellopez.circularimageview.CircularImageView;
 import com.squareup.picasso.Picasso;
 
@@ -74,7 +76,7 @@ public class ChatStoreContactPicAdapter extends RecyclerView.Adapter<ChatStoreCo
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        CircularImageView store_img;
+        com.felix.bottomnavygation.Util.RoundedImageView store_img;
         TextView store_name;
 
         public ViewHolder(View view) {

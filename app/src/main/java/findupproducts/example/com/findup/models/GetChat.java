@@ -10,6 +10,10 @@ public class GetChat {
     private String msg_body;
     private String msg_date;
 
+    public GetChat() {
+    }
+
+
     public int getId() {
         return id;
     }

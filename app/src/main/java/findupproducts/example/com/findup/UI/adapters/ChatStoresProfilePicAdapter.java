@@ -19,16 +19,17 @@ import java.util.List;
 
 import findupproducts.example.com.findup.R;
 import findupproducts.example.com.findup.UI.activities.ProductDetailsActivity;
+import findupproducts.example.com.findup.models.GetContact;
 import findupproducts.example.com.findup.models.Store;
 
 public class ChatStoresProfilePicAdapter extends RecyclerView.Adapter<ChatStoresProfilePicAdapter.ViewHolder> {
 
-    private List<Store> stores;
+    private List<GetContact> stores;
     private Context context;
 
     private int middle_element_position;
 
-    public ChatStoresProfilePicAdapter(Context context, List<Store> stores, int middle_element_position) {
+    public ChatStoresProfilePicAdapter(Context context, List<GetContact> stores, int middle_element_position) {
         this.context = context;
         this.stores = stores;
         this.middle_element_position = middle_element_position;
@@ -49,11 +50,11 @@ public class ChatStoresProfilePicAdapter extends RecyclerView.Adapter<ChatStores
     @Override
     public void onBindViewHolder(@NonNull final ChatStoresProfilePicAdapter.ViewHolder holder, int position) {
 
-        Store store = stores.get(position);
+        GetContact store = stores.get(position);
 
-        holder.store_name.setText(store.getStore_name());
-        if (!store.getStore_logo().isEmpty()) {
-            Glide.with(context).load(store.getStore_banner()).into(holder.store_img);
+        holder.store_name.setText(store.getName());
+        if (!store.getImage().isEmpty()) {
+            Glide.with(context).load(store.getImage()).into(holder.store_img);
         }
 
     }
