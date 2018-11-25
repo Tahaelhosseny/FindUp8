@@ -46,8 +46,6 @@ public class MainStoreActivity extends AppCompatActivity {
 
             }
         });
-        /*getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-        getSupportActionBar().setDisplayShowHomeEnabled(false);*/
         insertSoreNotification();
         FragmentManager manager = getSupportFragmentManager();
         transaction = manager.beginTransaction();
