@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
 import com.google.android.gms.common.util.DbUtils;
 
@@ -56,6 +57,7 @@ public class StoreAccountHomeFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         RecyclerView recyclerView = getActivity().findViewById(R.id.reviewsRecyclerView);
+        LinearLayout linearLayout = getActivity().findViewById(R.id.location_linear);
         Button setLocBtn = getActivity().findViewById(R.id.setLocBtn);
         setLocBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,7 +67,7 @@ public class StoreAccountHomeFragment extends Fragment {
         });
         SharedPrefManger sharedPrefManger = new SharedPrefManger(getActivity());
         if (!sharedPrefManger.getStoreLocation_type().equals("dynamic"))
-            setLocBtn.setVisibility(View.GONE);
+            linearLayout.setVisibility(View.GONE);
 
         adapter = new StoreProductsReviewsAdapter(getActivity(), new ArrayList<Product>());
         LoadProduct(recyclerView);
