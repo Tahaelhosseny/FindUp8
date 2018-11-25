@@ -80,17 +80,7 @@
             android:textSize="26sp"
             android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/btn_language"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_button_rounded_null"
-            android:fontFamily="@font/sfcompactdisplay_semibold"
-            android:text="@string/language"
-            android:textAlignment="viewStart"
-            android:textAllCaps="false"
-            android:textSize="26sp"
-            android:textStyle="bold" />
+
 
         <Button
             android:id="@+id/btn_inviteFriend"
