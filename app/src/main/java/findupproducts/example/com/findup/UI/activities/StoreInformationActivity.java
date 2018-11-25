@@ -30,6 +30,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+import findupproducts.example.com.findup.Helper.FilePath;
 import findupproducts.example.com.findup.Helper.Remote.ApiClient;
 import findupproducts.example.com.findup.Helper.Remote.ApiInterface;
 import findupproducts.example.com.findup.Helper.Remote.ResponseModel.CountriesResponse;
@@ -125,7 +126,7 @@ public class StoreInformationActivity extends AppCompatActivity {
                 case (PICK_LOGO) : {
                     selectedLogo = data.getData();
                     assert selectedLogo != null;
-                    Bitmap bitmap = null;
+                    /*Bitmap bitmap = null;
                     try {
                         bitmap = MediaStore.Images.Media.getBitmap(StoreInformationActivity.this.getContentResolver(),selectedLogo);
                     } catch (IOException e) {
@@ -138,8 +139,9 @@ public class StoreInformationActivity extends AppCompatActivity {
 
                     int columnIndex=cursor.getColumnIndex(prjection[0]);
                     String path=cursor.getString(columnIndex);
-                    cursor.close();
+                    cursor.close();*/
 
+                    String path = FilePath.getPath(this, selectedLogo);
                     Bitmap selectFile = BitmapFactory.decodeFile(path);
                     imgLogo.setImageBitmap(selectFile);
                     createStore.setStore_logo(path);
@@ -154,15 +156,16 @@ public class StoreInformationActivity extends AppCompatActivity {
                         bitmap = MediaStore.Images.Media.getBitmap(StoreInformationActivity.this.getContentResolver(),selectedBanner);
                     } catch (IOException e) {
                         e.printStackTrace();
-                    }*/
+                    }
                     String[] prjection ={MediaStore.Images.Media.DATA};
                     Cursor cursor=getContentResolver().query(selectedBanner,prjection,null,null,null);
                     cursor.moveToFirst();
 
                     int columnIndex=cursor.getColumnIndex(prjection[0]);
                     String path=cursor.getString(columnIndex);
-                    cursor.close();
+                    cursor.close();*/
 
+                    String path = FilePath.getPath(this, selectedBanner);
                     Bitmap selectFile = BitmapFactory.decodeFile(path);
                     imgBanner.setImageBitmap(selectFile);
                     createStore.setStore_banner(path);
