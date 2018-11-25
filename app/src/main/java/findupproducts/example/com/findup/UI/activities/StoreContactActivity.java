@@ -59,7 +59,6 @@ public class StoreContactActivity extends AppCompatActivity {
     RadioButton radioShowCity;
     EditText editText_website, editText_instagram, editText_twitter, editText_facebook, editText_mobile, editText_password,editText_email;
     AutoCompleteTextView editText_country , editText_city;
-    ApiInterface apiService;
     int countryId = 0;
     int cityId = 0;
     private String phoneKey = "";
@@ -68,7 +67,6 @@ public class StoreContactActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_store_contact);
-        apiService = ApiClient.getClient().create(ApiInterface.class);
 
         editText_country = findViewById(R.id.editText_country);
         editText_city = findViewById(R.id.editText_city);
@@ -202,19 +200,12 @@ public class StoreContactActivity extends AppCompatActivity {
         MultipartBody.Part user_id = MultipartBody.Part.createFormData("parent_user_id", "1");
         MultipartBody.Part store_otherlang = MultipartBody.Part.createFormData("store_otherlang", createStore.getStore_otherlang());
         MultipartBody.Part store_tags = MultipartBody.Part.createFormData("store_tags", createStore.getStore_tags());
-        /*MultipartBody.Part work_days = MultipartBody.Part.createFormData("work_days", createStore.getWorkDays());
-        MultipartBody.Part work_fromtime = MultipartBody.Part.createFormData("work_fromtime", "1:00");
-        MultipartBody.Part work_totime = MultipartBody.Part.createFormData("work_totime", "10:00");
-        MultipartBody.Part store_logo_base64 = MultipartBody.Part.createFormData("store_logo_base64", "");
-        MultipartBody.Part store_banner_base64 = MultipartBody.Part.createFormData("store_banner_base64", "-");*/
-
         RequestBody requestlogoFile = RequestBody.create(MediaType.parse("image/png"), logoFile);
         RequestBody requestbannerFile = RequestBody.create(MediaType.parse("image/png"), bannerFile);
-
         MultipartBody.Part bodylogoFile = MultipartBody.Part.createFormData("store_logo", logoFile.getName(), requestlogoFile);
         MultipartBody.Part bodybannerFile = MultipartBody.Part.createFormData("store_banner", bannerFile.getName(), requestbannerFile);
-
-        Call<CreateStoreResponse> newStore =  apiService.createNewStore(
+        ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
+        Call<CreateStoreResponse> newStore =  apiInterface.createNewStore(
                 store_name,
                 store_desc,
                 country_id,
@@ -321,8 +312,8 @@ public class StoreContactActivity extends AppCompatActivity {
                 countryId = country.getCountry_id();
         }
         Log.e("MyData", ""+countryId);
-
-        Call<CitiesResponse> getCities = apiService.getCountryCities(countryId,"");
+        ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
+        Call<CitiesResponse> getCities = apiInterface.getCountryCities(countryId,"");
         getCities.enqueue(new Callback<CitiesResponse>() {
             @Override
             public void onResponse(Call<CitiesResponse> call, Response<CitiesResponse> response) {

@@ -194,7 +194,6 @@ public class StoreInformationActivity extends AppCompatActivity {
         int result = ContextCompat.checkSelfPermission(this, android.Manifest.permission.WRITE_EXTERNAL_STORAGE);
         return result == PackageManager.PERMISSION_GRANTED;
     }
-
     private void nextStep(){
         String storeLang, storeTags, storeDesc;
         storeLang = "";
