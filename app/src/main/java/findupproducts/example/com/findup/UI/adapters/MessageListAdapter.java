@@ -90,29 +90,33 @@ public class MessageListAdapter extends RecyclerView.Adapter {
 
     private class SentMessageHolder extends RecyclerView.ViewHolder {
         TextView messageText;
-
+        TextView time;
         SentMessageHolder(View itemView) {
             super(itemView);
 
             messageText = itemView.findViewById(R.id.text_message_body);
+            time = itemView.findViewById(R.id.date_txt_chat);
         }
 
         void bind(GetChat message) {
             messageText.setText(message.getMsg_body());
+            time.setText(message.getMsg_date());
         }
     }
 
     private class ReceivedMessageHolder extends RecyclerView.ViewHolder {
         TextView messageText;
-
+        TextView time;
         ReceivedMessageHolder(View itemView) {
             super(itemView);
 
             messageText = itemView.findViewById(R.id.text_message_body);
+            time = itemView.findViewById(R.id.date_txt_chat);
         }
 
         void bind(GetChat message) {
             messageText.setText(message.getMsg_body());
+            time.setText(message.getMsg_date());
         }
     }
 }
