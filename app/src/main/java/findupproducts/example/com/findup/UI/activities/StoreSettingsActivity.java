@@ -13,7 +13,7 @@ import findupproducts.example.com.findup.R;
 
 public class StoreSettingsActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button btn_storeEditProfile, btn_storeNotifications, btn_storeLanguage, btn_currency,
+    Button btn_storeEditProfile, btn_storeNotifications,  btn_currency,
             btn_storeInviteFriend, btn_storeContactUs, btn_storeTerms, btn_storeSettingsBack,btn_logout;
 
     @Override
@@ -29,9 +29,6 @@ public class StoreSettingsActivity extends AppCompatActivity implements View.OnC
 
         btn_storeNotifications = findViewById(R.id.btn_storeNotifications);
         btn_storeNotifications.setOnClickListener(this);
-
-        btn_storeLanguage = findViewById(R.id.btn_storeLanguage);
-        btn_storeLanguage.setOnClickListener(this);
 
         btn_storeInviteFriend = findViewById(R.id.btn_storeInviteFriend);
         btn_storeInviteFriend.setOnClickListener(this);
@@ -71,9 +68,6 @@ public class StoreSettingsActivity extends AppCompatActivity implements View.OnC
                 startActivity(new Intent(StoreSettingsActivity.this, StoreNotificationSettActivity.class));
                 break;
 
-            case R.id.btn_storeLanguage:
-                startActivity(new Intent(StoreSettingsActivity.this, LanguagesActivity.class));
-                break;
 
             case R.id.btn_storeInviteFriend:
                 Toast.makeText(StoreSettingsActivity.this, "invite", Toast.LENGTH_SHORT).show();
