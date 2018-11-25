@@ -11,6 +11,7 @@ import android.support.annotation.NonNull;
 
 import com.google.android.gms.maps.model.LatLng;
 
+import java.io.File;
 import java.util.List;
 
 import findupproducts.example.com.findup.Helper.Location.LocationUtility;
@@ -129,6 +130,28 @@ public class Store {
 
     @Ignore
     private List<Country> counriesList;
+
+    @Ignore
+    private File logoFile;
+
+    @Ignore
+    private File bannerFile;
+
+    public File getLogoFile() {
+        return logoFile;
+    }
+
+    public void setLogoFile(File logoFile) {
+        this.logoFile = logoFile;
+    }
+
+    public File getBannerFile() {
+        return bannerFile;
+    }
+
+    public void setBannerFile(File bannerFile) {
+        this.bannerFile = bannerFile;
+    }
 
     public List<Country> getCounriesList() {
         return counriesList;

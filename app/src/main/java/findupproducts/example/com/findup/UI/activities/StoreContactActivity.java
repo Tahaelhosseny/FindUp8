@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
@@ -33,6 +34,7 @@ import findupproducts.example.com.findup.Helper.Remote.ResponseModel.CountriesRe
 import findupproducts.example.com.findup.Helper.Remote.ResponseModel.CreateStoreResponse;
 import findupproducts.example.com.findup.Helper.Remote.ResponseModel.StoresResponse;
 import findupproducts.example.com.findup.Helper.SharedPrefManger;
+import findupproducts.example.com.findup.Helper.UI_Utility;
 import findupproducts.example.com.findup.R;
 import findupproducts.example.com.findup.models.City;
 import findupproducts.example.com.findup.models.Country;
@@ -168,6 +170,9 @@ public class StoreContactActivity extends AppCompatActivity {
             return;
         }*/
 
+        final AlertDialog alertDialog = UI_Utility.ShowProgressDialog(this, true);
+        alertDialog.show();
+
         String storeMobile = phoneKey + editText_mobile.getText().toString();
         storeMobile = storeMobile.replace("|","");
         storeMobile = storeMobile.replace("+","");
@@ -178,9 +183,6 @@ public class StoreContactActivity extends AppCompatActivity {
         createStore.setStore_twitter_link(Twitter);
         createStore.setStore_facebook_link(facebook);
         createStore.setStore_location_type(findViewById(radioLocation.getCheckedRadioButtonId()).getTag().toString());
-        /*File logoFile = new File(getRealPathFromURI(createStore.getStore_logo_uri()));
-        File bannerFile = new File(getRealPathFromURI(createStore.getStore_banner_uri()));*/
-
         File logoFile = new File(createStore.getStore_logo());
         File bannerFile = new File(createStore.getStore_banner());
 
@@ -241,11 +243,13 @@ public class StoreContactActivity extends AppCompatActivity {
                     nextStep(response.body().getData().get(0).getStore_id());
                 else
                     Toast.makeText(StoreContactActivity.this,response.body().getError_msg(),Toast.LENGTH_SHORT).show();
+                alertDialog.dismiss();
             }
 
             @Override
             public void onFailure(Call<CreateStoreResponse> call, Throwable t) {
                 t.printStackTrace();
+                alertDialog.dismiss();
             }
         });
     }
