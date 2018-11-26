@@ -20,7 +20,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
+import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.common.util.DbUtils;
+import com.google.android.gms.location.places.ui.PlacePicker;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,6 +53,8 @@ import findupproducts.example.com.findup.models.ReviewStoreItem;
 public class StoreAccountHomeFragment extends Fragment {
 
     StoreProductsReviewsAdapter adapter;
+    private static final int PLACE_PICKER_REQUEST = 2;
+    SharedPrefManger sharedPrefManger;
 
     public StoreAccountHomeFragment() {
         // Required empty public constructor
@@ -75,9 +80,27 @@ public class StoreAccountHomeFragment extends Fragment {
         setLocBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getActivity().startActivity(new Intent(getActivity(), SetLocationActivity.class));
+                //getActivity().startActivity(new Intent(getActivity(), SetLocationActivity.class));
+                try {
+                    pickAddress();
+                } catch (GooglePlayServicesNotAvailableException e) {
+                    e.printStackTrace();
+                } catch (GooglePlayServicesRepairableException e) {
+                    e.printStackTrace();
+                }
             }
         });
+        sharedPrefManger = new SharedPrefManger(getActivity());
+        if (!sharedPrefManger.getStoreLocation_type().contains("Dynamic"))
+            setLocBtn.setVisibility(View.GONE);
+
+        TextView locationTypeTxt = getActivity().findViewById(R.id.locationTypeTxt);
+        if (sharedPrefManger.getStoreLocation_type().contains("Static"))
+            locationTypeTxt.setText("your Location is Static");
+        else
+            locationTypeTxt.setVisibility(View.GONE);
+
+
         SharedPrefManger sharedPrefManger = new SharedPrefManger(getActivity());
         if (!sharedPrefManger.getStoreLocation_type().equals("Dynamic")) {
             linearLayout.setVisibility(View.GONE);
@@ -198,5 +221,9 @@ public class StoreAccountHomeFragment extends Fragment {
         });
     }
 
+    private void pickAddress() throws GooglePlayServicesNotAvailableException, GooglePlayServicesRepairableException {
+        PlacePicker.IntentBuilder builder = new PlacePicker.IntentBuilder();
 
+        startActivityForResult(builder.build(getActivity()), PLACE_PICKER_REQUEST);
+    }
 }

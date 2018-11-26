@@ -22,6 +22,16 @@ public class CreateStoreEventResponse {
     @SerializedName("data")
     @Expose
     private List<Event> data;
+    @SerializedName("id") @Expose
+    int id;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getError_photo() {
         return error_photo;

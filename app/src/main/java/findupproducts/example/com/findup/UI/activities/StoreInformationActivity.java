@@ -126,21 +126,6 @@ public class StoreInformationActivity extends AppCompatActivity {
                 case (PICK_LOGO) : {
                     selectedLogo = data.getData();
                     assert selectedLogo != null;
-                    /*Bitmap bitmap = null;
-                    try {
-                        bitmap = MediaStore.Images.Media.getBitmap(StoreInformationActivity.this.getContentResolver(),selectedLogo);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-
-                    String[] prjection ={MediaStore.Images.Media.DATA};
-                    Cursor cursor=getContentResolver().query(selectedLogo,prjection,null,null,null);
-                    cursor.moveToFirst();
-
-                    int columnIndex=cursor.getColumnIndex(prjection[0]);
-                    String path=cursor.getString(columnIndex);
-                    cursor.close();*/
-
                     String path = FilePath.getPath(this, selectedLogo);
                     Bitmap selectFile = BitmapFactory.decodeFile(path);
                     imgLogo.setImageBitmap(selectFile);
@@ -151,34 +136,10 @@ public class StoreInformationActivity extends AppCompatActivity {
                 case (PICK_BANNER) : {
                     selectedBanner = data.getData();
                     assert selectedBanner != null;
-                    Bitmap bitmap = null;
-                    /*try {
-                        bitmap = MediaStore.Images.Media.getBitmap(StoreInformationActivity.this.getContentResolver(),selectedBanner);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    String[] prjection ={MediaStore.Images.Media.DATA};
-                    Cursor cursor=getContentResolver().query(selectedBanner,prjection,null,null,null);
-                    cursor.moveToFirst();
-
-                    int columnIndex=cursor.getColumnIndex(prjection[0]);
-                    String path=cursor.getString(columnIndex);
-                    cursor.close();*/
-
                     String path = FilePath.getPath(this, selectedBanner);
                     Bitmap selectFile = BitmapFactory.decodeFile(path);
                     imgBanner.setImageBitmap(selectFile);
                     createStore.setStore_banner(path);
-                    /*File file = null;
-                    try {
-                        file = new fileFromBitmap(bitmap, this).execute().get();
-                        createStore.setBannerFile(file);
-                    } catch (ExecutionException e) {
-                        e.printStackTrace();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    createStore.setStore_banner_uri(selectedBanner);*/
                     break;
                 }
             }
@@ -255,26 +216,5 @@ public class StoreInformationActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         finish();
-    }
-
-    public File getFileFromBitmap(Bitmap bitmap, String filename) throws IOException {
-        File f = new File(this.getCacheDir(), filename);
-        f.createNewFile();
-        ByteArrayOutputStream bos = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG, 0 , bos);
-        byte[] bitmapdata = bos.toByteArray();
-        FileOutputStream fos = new FileOutputStream(f);
-        fos.write(bitmapdata);
-        fos.flush();
-        fos.close();
-        return f;
-    }
-
-    private Uri getUri() {
-        String state = Environment.getExternalStorageState();
-        if(!state.equalsIgnoreCase(Environment.MEDIA_MOUNTED))
-            return MediaStore.Images.Media.INTERNAL_CONTENT_URI;
-
-        return MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
     }
 }

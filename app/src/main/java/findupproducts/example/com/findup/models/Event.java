@@ -1,6 +1,7 @@
 package findupproducts.example.com.findup.models;
 
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
@@ -29,7 +30,27 @@ public class Event {
     private String publish_flag;
     private String block_flag;
     private String if_saved;
+
+    public Event() {
+    }
+
     private String language;
+
+    @Ignore
+    public Event(@NonNull String event_id, String event_name, String event_photo, String event_start_date, String event_days, String event_time, String event_cost, String event_desc, String event_address, String store_id, String event_longitude, String event_latitude) {
+        this.event_id = event_id;
+        this.event_name = event_name;
+        this.event_photo = event_photo;
+        this.event_start_date = event_start_date;
+        this.event_days = event_days;
+        this.event_time = event_time;
+        this.event_cost = event_cost;
+        this.event_desc = event_desc;
+        this.event_address = event_address;
+        this.store_id = store_id;
+        this.event_longitude = event_longitude;
+        this.event_latitude = event_latitude;
+    }
 
     public String getLanguage() {
         return language;

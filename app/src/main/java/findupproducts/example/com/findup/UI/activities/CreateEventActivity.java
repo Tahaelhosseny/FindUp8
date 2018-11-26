@@ -11,6 +11,8 @@ import android.content.pm.PackageManager;
 import android.databinding.DataBindingUtil;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.location.Address;
+import android.location.Geocoder;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.MediaStore;
@@ -45,9 +47,12 @@ import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
+import java.util.Locale;
 
 import javax.sql.PooledConnection;
 
+import findupproducts.example.com.findup.Helper.FilePath;
 import findupproducts.example.com.findup.Helper.SharedPrefManger;
 import findupproducts.example.com.findup.R;
 import findupproducts.example.com.findup.UI.Presenter.Activities.CreateEventPresenter;
@@ -60,8 +65,6 @@ public class CreateEventActivity extends AppCompatActivity {
     private static final int PLACE_PICKER_REQUEST = 2;
     Event eventToCreate;
     Uri selectedBanner;
-    private TextView start_result_txt , end_result_txt , day_start_txt ;
-    private EditText editText_days;
     static final int DIALOG_ID = 0;
     int hour_text , minute_text;
     int status = 0;
@@ -72,6 +75,8 @@ public class CreateEventActivity extends AppCompatActivity {
     ActivityCreateEventBinding activityCreateEventBinding;
     CreateEventViewModel createEventViewModel;
     Button mapBtn;
+    String selectedAddress;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,10 +88,6 @@ public class CreateEventActivity extends AppCompatActivity {
             }
         }
         eventToCreate = new Event();
-        editText_days = findViewById(R.id.edit_days);
-        start_result_txt = findViewById(R.id.start_at_txt_time);
-        end_result_txt = findViewById(R.id.end_at_txt_time);
-        day_start_txt = findViewById(R.id.txt_day_work_start);
         mapBtn = findViewById(R.id.setLocBtn);
         Button btn_createEventBack=findViewById(R.id.btn_createEventBack);
         activityCreateEventBinding.setCreateStoreEvents(createEventViewModel);
@@ -102,26 +103,25 @@ public class CreateEventActivity extends AppCompatActivity {
                 saveEvent();
             }
         });
-        start_result_txt.setOnClickListener(new View.OnClickListener() {
+        activityCreateEventBinding.startAtTxtTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 status = 1;
                 showTimeDialog();
             }
         });
-        end_result_txt.setOnClickListener(new View.OnClickListener() {
+        activityCreateEventBinding.endAtTxtTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 status = 2;
                 showTimeDialog();
             }
         });
-        day_start_txt.setOnClickListener(new View.OnClickListener() {
+        activityCreateEventBinding.daysInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 date_status = 1;
                 pickDate();
-
             }
         });
 
@@ -158,8 +158,7 @@ public class CreateEventActivity extends AppCompatActivity {
                 day = day;
                 year = year;
                 month = month+1;
-                day_start_txt.setText("Start Date");
-                day_start_txt.setText(day + "-" + month + "-" + year);
+                activityCreateEventBinding.daysInfo.setText(day + "-" + month + "-" + year);
             }
         },day , month , year
         );
@@ -167,24 +166,32 @@ public class CreateEventActivity extends AppCompatActivity {
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (resultCode == Activity.RESULT_OK && data != null && data.getData() != null){
+        if (resultCode == Activity.RESULT_OK && data != null){
             switch(requestCode) {
                 case (PICK_BANNER) : {
                     selectedBanner = data.getData();
-                    Bitmap selectedImageBitmap = null;
-                    try {
-                        selectedImageBitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), selectedBanner);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    activityCreateEventBinding.picBanner.setImageBitmap(selectedImageBitmap);
-                    eventToCreate.setEvent_photo(selectedBanner.getPath());
+                    assert selectedBanner != null;
+                    String path = FilePath.getPath(this, selectedBanner);
+                    Bitmap selectFile = BitmapFactory.decodeFile(path);
+                    activityCreateEventBinding.picBanner.setImageBitmap(selectFile);
+                    eventToCreate.setEvent_photo(path);
                     break;
                    }
              case (PLACE_PICKER_REQUEST):{
                  Place place = PlacePicker.getPlace(this, data);
                  eventToCreate.setEvent_latitude(String.valueOf(place.getLatLng().latitude));
                  eventToCreate.setEvent_longitude(String.valueOf(place.getLatLng().longitude));
+
+                 Geocoder geocoder;
+                 List<Address> addresses;
+                 geocoder = new Geocoder(this, Locale.getDefault());
+
+                 try {
+                     addresses = geocoder.getFromLocation(place.getLatLng().latitude, place.getLatLng().longitude, 1);
+                     selectedAddress = addresses.get(0).getAddressLine(0);
+                 } catch (IOException e) {
+                     e.printStackTrace();
+                 }
                 }
             }
         }
@@ -197,37 +204,30 @@ public class CreateEventActivity extends AppCompatActivity {
         }else if(TextUtils.isEmpty(activityCreateEventBinding.editTextEventName.getText())){
             Toast.makeText(CreateEventActivity.this, "Specify Event Name", Toast.LENGTH_SHORT).show();
             return;
-        } else if(TextUtils.isEmpty(activityCreateEventBinding.editTextOtherLanguage.getText())){
-            Toast.makeText(CreateEventActivity.this, "Specify Event Language", Toast.LENGTH_SHORT).show();
-            return;
         }else if(TextUtils.isEmpty(activityCreateEventBinding.editTextDescription.getText())){
             Toast.makeText(CreateEventActivity.this, "Specify Event Description", Toast.LENGTH_SHORT).show();
             return;
-        }else if(activityCreateEventBinding.startAtTxtTime.getText().equals("00") || activityCreateEventBinding.endAtTxtTime.getText().equals("00")){
+        }else if(activityCreateEventBinding.startAtTxtTime.getText().equals("09:00") || activityCreateEventBinding.endAtTxtTime.getText().equals("06:00")){
             Toast.makeText(CreateEventActivity.this, "Specify Event Start Time And End Time", Toast.LENGTH_SHORT).show();
             return;
-        }else if(activityCreateEventBinding.txtDayWorkStart.getText().equals("Start Date")){
+        }else if(activityCreateEventBinding.daysInfo.getText().equals("start date")){
             Toast.makeText(CreateEventActivity.this, "Specify Event Date", Toast.LENGTH_SHORT).show();
             return;
-        }else if(TextUtils.isEmpty(editText_days.getText().toString())){
-            Toast.makeText(CreateEventActivity.this, "Specify Days", Toast.LENGTH_SHORT).show();
-            return;
-        }else if(TextUtils.isEmpty(eventToCreate.getEvent_latitude())){
+        }else if(TextUtils.isEmpty(selectedAddress)){
             Toast.makeText(CreateEventActivity.this, "Specify Address", Toast.LENGTH_SHORT).show();
             return;
         }
+
         createEventViewModel.addNewEvent(String.valueOf(activityCreateEventBinding.editTextEventName.getText()) ,
-                String.valueOf(activityCreateEventBinding.txtDayWorkStart.getText()) ,
-                editText_days.getText().toString() ,
+                String.valueOf(activityCreateEventBinding.daysInfo.getText()) ,
+                activityCreateEventBinding.daysInfo.getText().toString() ,
                 (String.valueOf(activityCreateEventBinding.startAtTxtTime.getText())+String.valueOf( activityCreateEventBinding.endAtTxtTime.getText())),
                 String.valueOf(activityCreateEventBinding.editTextDescription.getText()),
-                "Address" , SharedPrefManger.getStore_ID() , eventToCreate.getEvent_longitude() , eventToCreate.getEvent_latitude() , eventToCreate.getEvent_photo());
+                selectedAddress , SharedPrefManger.getStore_ID() , eventToCreate.getEvent_longitude() , eventToCreate.getEvent_latitude() , eventToCreate.getEvent_photo());
     }
 
     private void pickImg(int pickerTag){
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
+        Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         startActivityForResult(Intent.createChooser(intent, "Select Picture"), pickerTag);
     }
     private boolean checkIfAlreadyhavePermission() {
@@ -255,9 +255,9 @@ public class CreateEventActivity extends AppCompatActivity {
         public void onTimeSet(TimePicker timePicker, int hour, int minute) {
             hour_text = hour; minute_text = minute;
             if(status == 1){
-                start_result_txt.setText(hour_text+":"+minute_text);
+                activityCreateEventBinding.startAtTxtTime.setText(hour_text+":"+minute_text);
             }else{
-                end_result_txt.setText(hour_text+":"+minute_text);
+                activityCreateEventBinding.endAtTxtTime.setText(hour_text+":"+minute_text);
             }
         }
     };
