@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.google.android.gms.common.util.DbUtils;
 
@@ -65,7 +66,6 @@ public class StoreAccountHomeFragment extends Fragment {
                 getActivity().startActivity(new Intent(getActivity(), SetLocationActivity.class));
             }
         });
-        SharedPrefManger.setStoreLocation_type("dynamic");
         SharedPrefManger sharedPrefManger = new SharedPrefManger(getActivity());
         if (!sharedPrefManger.getStoreLocation_type().equals("dynamic"))
             linearLayout.setVisibility(View.GONE);
