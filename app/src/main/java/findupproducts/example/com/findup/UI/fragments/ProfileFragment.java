@@ -39,11 +39,10 @@ public class ProfileFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
-        android.support.v7.widget.Toolbar toolbar = getActivity().findViewById(R.id.toolbar_top);
-        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(false);
-        toolbar.setBackgroundColor(getResources().getColor(R.color.colorWhite));
+        // No Toolbar
+
+
+
         FrameLayout frameLayout = getActivity().findViewById(R.id.navigation_bottom_container);
         frameLayout.setBackgroundColor(getResources().getColor(R.color.colorWhite));
         Button btn_notifications = view.findViewById(R.id.btn_notifications);
@@ -82,12 +81,22 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 clickCatType = "create";
+                LogoutAccepted();
                 startActivity(new Intent(getActivity(), StoreChooseCategoryActivity.class));
+                getActivity().finish();
             }
         });
         return view;
     }
 
+    public void LogoutAccepted(){
+        SharedPrefManger.setIsLoggedIn(false);
+        SharedPrefManger.setLogin_phone("");
+        SharedPrefManger.setLogin_password("");
+        SharedPrefManger.setUserID(0);
+        SharedPrefManger.setIsLoggedInAsCustomer(false);
+        SharedPrefManger.setUSer_name("");
+    }
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);

@@ -5,6 +5,7 @@ import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.preference.TwoStatePreference;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -30,9 +31,10 @@ import findupproducts.example.com.findup.UI.activities.ProductsActivity;
 
 import static findupproducts.example.com.findup.UI.activities.IntroActivity.clickCatType;
 
-
+/**
+ * A simple {@link Fragment} subclass.
+ */
 public class CategoryFragment extends Fragment {
-
     static List<ExpandableSection> expandableSections;
     private SectionedRecyclerViewAdapter sectionAdapter;
 
@@ -100,6 +102,11 @@ public class CategoryFragment extends Fragment {
             public void onAnimationUpdate(ValueAnimator valueAnimator) {
                 float animatedValue = (float) valueAnimator.getAnimatedValue();
                 textView.setTextSize(animatedValue);
+                if (PendSize == 19) {
+                    textView.setTextColor(getResources().getColor(R.color.colorWhiteGrey));
+                }else{
+                    textView.setTextColor(getResources().getColor(R.color.colorWhite));
+                }
             }
         });
         animator.start();

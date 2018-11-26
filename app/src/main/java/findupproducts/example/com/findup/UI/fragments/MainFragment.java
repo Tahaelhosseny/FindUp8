@@ -7,14 +7,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import findupproducts.example.com.findup.R;
 
+import static findupproducts.example.com.findup.UI.activities.MainActivity.filterData;
+
 public class MainFragment extends Fragment {
 
+    public static String eventType = "UserMain";
 
     public MainFragment() {
         // Required empty public constructor
@@ -31,11 +36,6 @@ public class MainFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        android.support.v7.widget.Toolbar toolbar = getActivity().findViewById(R.id.toolbar_top);
-        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(false);
-        toolbar.setBackgroundColor(getResources().getColor(R.color.colorWhite));
         FrameLayout frameLayout = getActivity().findViewById(R.id.navigation_bottom_container);
         frameLayout.setBackgroundColor(getResources().getColor(R.color.colorWhite));
         ImageButton search_filter = getActivity().findViewById(R.id.search_filter);
@@ -44,7 +44,8 @@ public class MainFragment extends Fragment {
         LinearLayout search_layout = getActivity().findViewById(R.id.search_edit_text_with_filter);
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M)
             search_layout.setElevation(0);
-
+        EditText search = getActivity().findViewById(R.id.search);
+        filterData.setSearch_text(search.getText().toString());
         getChildFragmentManager().beginTransaction().replace(R.id.catsContainer, new MainCatsFragment()).commit();
         getChildFragmentManager().beginTransaction().replace(R.id.nearMeContainer, new NearMeFragment()).commit();
         getChildFragmentManager().beginTransaction().replace(R.id.eventsContainer, new EventsFragment()).commit();
