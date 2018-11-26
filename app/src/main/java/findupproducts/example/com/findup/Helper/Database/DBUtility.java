@@ -14,6 +14,7 @@ import findupproducts.example.com.findup.models.ProductComment;
 import findupproducts.example.com.findup.models.ProductPhoto;
 import findupproducts.example.com.findup.models.Store;
 import findupproducts.example.com.findup.models.StorePhoto;
+import findupproducts.example.com.findup.models.Store_WorkTime;
 import findupproducts.example.com.findup.models.UserSavedItem;
 
 public class DBUtility {
@@ -24,6 +25,7 @@ public class DBUtility {
             DBHandler.InsertStore(store, mContext);
             InsertComments(store.getStore_comments(), mContext);
             InsertProducts(store.getStore_products(), mContext);
+            InsertStoresWorkTimes(store.getStore_worktime() , mContext);
             for (Product product : store.getStore_products()) {
                 InsertProductPhotos(product.getProductPhotos(), mContext);
                 InsertProductComments(product.getProduct_comments() , mContext);
@@ -41,6 +43,16 @@ public class DBUtility {
         }
         return (sum == notification.size()) ? 1 : 0;
     }
+
+    public static long InsertStoresWorkTimes(List<Store_WorkTime> store_workTimes, Context mContext){
+        int sum = 0 ;
+        for(Store_WorkTime store_workTime : store_workTimes){
+            DBHandler.InsertStoreWorkTime(store_workTime , mContext);
+            sum++;
+        }
+        return (sum == store_workTimes.size()) ? 1 : 0;
+    }
+
     public static long InsertStoreNotification(List<NotificationStore> notification, Context mContext){
         int sum = 0 ;
         for(NotificationStore notificationStore : notification){

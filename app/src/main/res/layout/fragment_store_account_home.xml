@@ -2,7 +2,7 @@
 <ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -51,33 +51,13 @@
                     android:textSize="14dp"
                     android:textStyle="normal"
                     app:layout_constraintStart_toStartOf="parent"
-                    tools:layout_editor_absoluteY="0dp"
-                    tools:ignore="MissingConstraints" />
+                    tools:ignore="MissingConstraints"
+                    tools:layout_editor_absoluteY="0dp" />
 
                 <TextView
                     android:id="@+id/txt_time"
                     android:layout_width="wrap_content"
-                    android:layout_height="21dp"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
-                    android:background="@null"
-                    android:fontFamily="@font/sfcompactdisplay_light"
-                    android:text="Sat , Sun , Tue"
-                    android:textAllCaps="false"
-                    android:textColor="@color/colorWhiteGrey"
-                    android:textSize="14dp"
-                    android:textStyle="normal"
-                    app:layout_constraintBottom_toTopOf="@+id/txt_days"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/txt_location"
-                    app:layout_constraintVertical_bias="0.923" />
-
-                <TextView
-                    android:id="@+id/txt_days"
-                    android:layout_width="wrap_content"
-                    android:layout_height="20dp"
-                    android:layout_marginTop="52dp"
+                    android:layout_height="16dp"
                     android:background="@null"
                     android:fontFamily="@font/sfcompactdisplay_light"
                     android:text="From 4:00 pm To 8:00 pm"
@@ -85,9 +65,23 @@
                     android:textColor="@color/colorWhiteGrey"
                     android:textSize="14dp"
                     android:textStyle="normal"
+                    app:layout_constraintStart_toStartOf="@+id/txt_days"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_days" />
 
-                    app:layout_constraintStart_toStartOf="@+id/txt_time"
-                    app:layout_constraintTop_toTopOf="parent" />
+                <TextView
+                    android:id="@+id/txt_days"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:background="@null"
+                    android:text="Sat , Sun , Tue"
+                    android:fontFamily="@font/sfcompactdisplay_light"
+                    android:textAllCaps="false"
+                    android:textColor="@color/colorWhiteGrey"
+                    android:textSize="14dp"
+                    android:textStyle="normal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_location" />
             </android.support.constraint.ConstraintLayout>
         <Button
             android:id="@+id/setLocBtn"
@@ -125,6 +119,17 @@
             app:layout_constraintStart_toStartOf="@+id/revTxt">
 
         </android.support.v7.widget.RecyclerView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="No Product For This Store Yet"
+            android:gravity="center"
+            android:id="@+id/product_txt_validation"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="@id/reviewsRecyclerView"
+             />
 
     </android.support.constraint.ConstraintLayout>
 
