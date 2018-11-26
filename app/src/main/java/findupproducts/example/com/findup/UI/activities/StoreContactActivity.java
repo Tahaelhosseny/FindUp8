@@ -258,11 +258,12 @@ public class StoreContactActivity extends AppCompatActivity {
         sharedPrefManger.setStoreID(storeId);
         Toast.makeText(StoreContactActivity.this, "Account Created", Toast.LENGTH_SHORT).show();
         if (radioLocation.getCheckedRadioButtonId() == R.id.radioStaticLocation) {
+            sharedPrefManger.setStoreLocation_type("Static");
             startActivity(new Intent(StoreContactActivity.this, SetLocationActivity.class)
                     .putExtra("new_store", true));
             finish();
         } else if ((radioLocation.getCheckedRadioButtonId() == R.id.radioDynamicLocation)){
-            sharedPrefManger.setStoreLocation_type("dynamic");
+            sharedPrefManger.setStoreLocation_type("Dynamic");
             goToAddProducts();
         }else
             goToAddProducts();

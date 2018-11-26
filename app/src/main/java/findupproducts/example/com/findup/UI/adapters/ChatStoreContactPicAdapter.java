@@ -1,7 +1,6 @@
 package findupproducts.example.com.findup.UI.adapters;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,12 +9,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.makeramen.roundedimageview.RoundedDrawable;
-import com.makeramen.roundedimageview.RoundedImageView;
-import com.mikhaellopez.circularimageview.CircularImageView;
-import com.squareup.picasso.Picasso;
+import com.felix.bottomnavygation.Util.RoundedImageView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import findupproducts.example.com.findup.R;
@@ -76,7 +71,7 @@ public class ChatStoreContactPicAdapter extends RecyclerView.Adapter<ChatStoreCo
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        com.felix.bottomnavygation.Util.RoundedImageView store_img;
+        RoundedImageView store_img;
         TextView store_name;
 
         public ViewHolder(View view) {
