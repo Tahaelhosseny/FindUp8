@@ -20,7 +20,7 @@ import findupproducts.example.com.findup.models.UserSavedItem;
 public class DBUtility {
     public static long InsertStores(List<Store> storeList, Context mContext) {
         int sum = 0;
-        DBHandler.deleteAllStoreData(mContext);
+//        DBHandler.deleteAllStoreData(mContext);
         for (Store store : storeList) {
             DBHandler.InsertStore(store, mContext);
             InsertComments(store.getStore_comments(), mContext);

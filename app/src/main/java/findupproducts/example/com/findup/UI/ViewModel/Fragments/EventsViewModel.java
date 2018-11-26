@@ -45,8 +45,7 @@ public class EventsViewModel extends Observable {
         LoadDataFromDataBase(adapter);
     }
     private void LoadDataFromDataBase(EventsAdapter adapter){
-        int id;
-        if(eventType.equals("UserMain")){
+        if(eventType == "MainEvents"){
             DBHandler.getAllEvents(mContext, new Events() {
                 @Override
                 public void onSuccess(Flowable<List<Event>> listFlowable) {
@@ -55,7 +54,7 @@ public class EventsViewModel extends Observable {
                             @Override
                             public void run() {
                                 adapter.setEvents(events);
-                                eventType = "";
+                                adapter.notifyDataSetChanged();
                             }
                         });
                     });
@@ -66,8 +65,8 @@ public class EventsViewModel extends Observable {
 
                 }
             });
-        }else{
-            DBHandler.getEventByStoreID(SharedPrefManger.getStore_ID(),mContext, new Events() {
+        }else {
+            DBHandler.getEventByStoreID(SharedPrefManger.getStore_ID(), mContext, new Events() {
                 @Override
                 public void onSuccess(Flowable<List<Event>> listFlowable) {
                     listFlowable.subscribe(eventList -> {
@@ -76,19 +75,19 @@ public class EventsViewModel extends Observable {
                             public void run() {
                                 boolean check = true;
                                 List<Event> events = new ArrayList<>();
-                                for(int i = 0 ; i < eventList.size() ; i++){
+                                for (int i = 0; i < eventList.size(); i++) {
                                     try {
                                         check = checkDate(eventList.get(i).getEvent_start_date());
                                     } catch (ParseException e) {
                                         e.printStackTrace();
                                     }
-                                    if(!check){
+                                    if (!check) {
 
-                                    }else{
+                                    } else {
                                         events.add(eventList.get(i));
                                     }
                                 }
-                                if(events.size() > 0){
+                                if (events.size() > 0) {
                                     adapter.setEvents(events);
                                     adapter.notifyDataSetChanged();
                                 }
@@ -103,7 +102,6 @@ public class EventsViewModel extends Observable {
                 }
             });
         }
-
     }
 
     public boolean checkDate(String date) throws ParseException {

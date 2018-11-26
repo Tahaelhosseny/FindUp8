@@ -19,7 +19,7 @@ import static findupproducts.example.com.findup.UI.activities.MainActivity.filte
 
 public class MainFragment extends Fragment {
 
-    public static String eventType = "UserMain";
+    public static String eventType = "MainEvents";
 
     public MainFragment() {
         // Required empty public constructor

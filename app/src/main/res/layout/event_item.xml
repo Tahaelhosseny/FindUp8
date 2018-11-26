@@ -22,7 +22,7 @@
         <ImageView
             android:id="@+id/eventsItemImg"
             app:layout_constraintCircleRadius="15dp"
-            android:layout_width="362dp"
+            android:layout_width="match_parent"
             android:layout_height="100dp"
             android:src="@color/material_color_grey_500"
             android:scaleType="fitXY"
