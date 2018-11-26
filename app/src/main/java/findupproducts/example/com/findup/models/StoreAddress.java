@@ -47,8 +47,3 @@ public class StoreAddress {
         this.time = time;
     }
 }
-//"store_id": "1",
-//        "longitude": "39.86533563584089",
-//        "latitude": "21.412829884564413",
-//        "days": "Thursday - Wednesday",
-//        "time": "from 6 to 9"

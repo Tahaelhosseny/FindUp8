@@ -88,7 +88,7 @@ public class StoreSettingsActivity extends AppCompatActivity implements View.OnC
 
             case R.id.btn_logout:
                 LogoutAccepted();
-                startActivity(new Intent(StoreSettingsActivity.this, SplashScreenActivity.class));
+                startActivity(new Intent(StoreSettingsActivity.this, IntroActivity.class));
                 finish();
                 break;
         }

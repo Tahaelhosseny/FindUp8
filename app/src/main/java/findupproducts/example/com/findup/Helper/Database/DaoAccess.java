@@ -12,6 +12,7 @@ import org.intellij.lang.annotations.Flow;
 
 import java.util.List;
 
+import findupproducts.example.com.findup.models.Store_WorkTime;
 import io.reactivex.Flowable;
 import findupproducts.example.com.findup.models.Category;
 import findupproducts.example.com.findup.models.Comment;
@@ -32,6 +33,9 @@ public interface DaoAccess {
     //Categories table
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertCategory(Category category);
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void insertStoreWorkDays(Store_WorkTime store_workTime);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertUserNotification(NotificationUser notificationUser);
@@ -85,20 +89,21 @@ public interface DaoAccess {
     @Query("SELECT * FROM Store WHERE store_id = :store_id")
     Flowable<Store> getStoreByID(int store_id);
 
+    @Query("SELECT * FROM Store_WorkTime WHERE store_id = :store_id")
+    Flowable<Store_WorkTime> getStoreWorkById(int store_id);
+
     @Query("SELECT * FROM store")
     Flowable<List<Store>> getAllStores();
 
-
     @Query("SELECT * FROM Store WHERE store_cat_id = :cat_id")
     Flowable<List<Store>> getStoreByCat(int cat_id);
-
-
 
     @Query("UPDATE Product set if_liked = :if_liked AND product_likes_count = :count WHERE product_id = :product_id")
     void likeProduct(int count , int product_id , int if_liked);
 
     @Query("UPDATE store set if_saved =:if_saved WHERE store_id = :store_id")
     void SaveStoreOperation(int store_id,int if_saved);
+
     @Update
     void UpdateStore(Store store);
     @Delete

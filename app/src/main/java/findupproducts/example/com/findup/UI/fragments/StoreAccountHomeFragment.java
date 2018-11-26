@@ -10,12 +10,14 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.util.DbUtils;
@@ -23,6 +25,12 @@ import com.google.android.gms.common.util.DbUtils;
 import java.util.ArrayList;
 import java.util.List;
 
+import findupproducts.example.com.findup.Helper.Database.Interfaces.Store.StoreWorkTimeI;
+import findupproducts.example.com.findup.Helper.Database.Interfaces.Store.Stores;
+import findupproducts.example.com.findup.Helper.Utility;
+import findupproducts.example.com.findup.UI.activities.CommentsActivity;
+import findupproducts.example.com.findup.models.Store;
+import findupproducts.example.com.findup.models.Store_WorkTime;
 import io.reactivex.Flowable;
 import findupproducts.example.com.findup.Helper.Database.DBHandler;
 import findupproducts.example.com.findup.Helper.Database.Interfaces.Notifications.NotificationsUserI;
@@ -59,6 +67,10 @@ public class StoreAccountHomeFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         RecyclerView recyclerView = getActivity().findViewById(R.id.reviewsRecyclerView);
         LinearLayout linearLayout = getActivity().findViewById(R.id.location_linear);
+        TextView location = getActivity().findViewById(R.id.txt_location);
+        TextView days = getActivity().findViewById(R.id.txt_days);
+        TextView time = getActivity().findViewById(R.id.txt_time);
+        TextView textView = getActivity().findViewById(R.id.product_txt_validation);
         Button setLocBtn = getActivity().findViewById(R.id.setLocBtn);
         setLocBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,11 +79,76 @@ public class StoreAccountHomeFragment extends Fragment {
             }
         });
         SharedPrefManger sharedPrefManger = new SharedPrefManger(getActivity());
-        if (!sharedPrefManger.getStoreLocation_type().equals("dynamic"))
+        if (!sharedPrefManger.getStoreLocation_type().equals("Dynamic")) {
             linearLayout.setVisibility(View.GONE);
+        }else{
+            DBHandler.getStoreByID(SharedPrefManger.getStore_ID(), getActivity(), new Stores() {
+                @Override
+                public void onSuccess(Flowable<List<Store>> listFlowable) {
 
+                }
+                @Override
+                public void onFail() {
+
+                }
+                @Override
+                public void getStoreID(Flowable<Store> storeFlowable) {
+                    storeFlowable.subscribe(store -> {
+                         getActivity().runOnUiThread(new Runnable() {
+
+                            @Override
+                            public void run() {
+                                if(store.getStore_location_address().equals("")){
+                                    location.setText("No Address Specified Until Now");
+                                }else {
+                                    location.setText(store.getStore_location_address());
+                                }
+                                  getTimeDay(days , time);
+                               }
+                            }
+                        );
+                    });
+                }
+            });
+        }
         adapter = new StoreProductsReviewsAdapter(getActivity(), new ArrayList<Product>());
-        LoadProduct(recyclerView);
+        LoadProduct(recyclerView , textView);
+    }
+
+    private void getTimeDay(TextView days, TextView time) {
+        DBHandler.getStoreWorkByID(SharedPrefManger.getStore_ID(), getActivity(), new StoreWorkTimeI() {
+            @Override
+            public void onSuccess(Flowable<List<Store_WorkTime>> listFlowable) {
+
+            }
+
+            @Override
+            public void getStoreID(Flowable<Store_WorkTime> store_workTimeFlowable) {
+                store_workTimeFlowable.subscribe(store -> {
+                    getActivity().runOnUiThread(new Runnable() {
+                                                    @Override
+                                                    public void run() {
+                                                        if(store.getStore_workdays().equals("")){
+                                                            days.setText("No Days Specified Until Now");
+                                                        }else{
+                                                            days.setText(store.getStore_workdays());
+                                                        }
+                                                        if(store.getWork_to_time().equals("") || store.getWork_from_time().equals("")){
+                                                            days.setText("No Time Specified Until Now");
+                                                        }else {
+                                                            time.setText("From " + store.getWork_from_time() + " To " + store.getWork_to_time());
+                                                        }
+                                                    }
+                                                }
+                    );
+                });
+            }
+
+            @Override
+            public void onFail() {
+
+            }
+        });
     }
 
     private void bindUI(RecyclerView recyclerView) {
@@ -82,7 +159,7 @@ public class StoreAccountHomeFragment extends Fragment {
                 LinearLayoutManager.VERTICAL);
         recyclerView.addItemDecoration(dividerItemDecoration);
     }
-    private void LoadProduct(RecyclerView recyclerView){
+    private void LoadProduct(RecyclerView recyclerView , TextView textView){
         DBHandler.getProductByStoreID(SharedPrefManger.getStore_ID(), getActivity(), new Products() {
             @Override
             public void onSuccess(Flowable<List<Product>> listFlowable) {
@@ -92,9 +169,17 @@ public class StoreAccountHomeFragment extends Fragment {
                                 @Override
                                 public void run() {
                                     Log.e("Val Pro" , String.valueOf(val.size()));
-                                    adapter.setProduct(val);
-                                    adapter.notifyDataSetChanged();
-                                    bindUI(recyclerView);
+                                    List<Product> products = new ArrayList<>();
+                                    for (int i = 0 ; i  < val.size() ; i++){
+                                        products.add(val.get(i));
+                                    }
+                                    if(products.size() > 0) {
+                                        adapter.setProduct(products);
+                                        adapter.notifyDataSetChanged();
+                                        bindUI(recyclerView);
+                                    }else{
+                                        textView.setVisibility(View.VISIBLE);
+                                    }
                                 }
                             });
                         }

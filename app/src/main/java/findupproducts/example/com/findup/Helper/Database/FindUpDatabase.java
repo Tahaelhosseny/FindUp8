@@ -15,9 +15,11 @@ import findupproducts.example.com.findup.models.ProductComment;
 import findupproducts.example.com.findup.models.ProductPhoto;
 import findupproducts.example.com.findup.models.Store;
 import findupproducts.example.com.findup.models.StorePhoto;
+import findupproducts.example.com.findup.models.Store_WorkTime;
 import findupproducts.example.com.findup.models.UserSavedItem;
 
 @Database(entities = {Category.class, Store.class,
+        Store_WorkTime.class,
         Comment.class, Event.class, Product.class,
         StorePhoto.class, ProductPhoto.class ,
         NotificationUser.class , NotificationStore.class ,
