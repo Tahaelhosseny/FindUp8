@@ -54,6 +54,7 @@ public class NewProductActivity extends AppCompatActivity {
     ApiInterface apiService;
     SharedPrefManger sharedPrefManger;
     boolean isCraft = false;
+    String path;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -180,6 +181,7 @@ public class NewProductActivity extends AppCompatActivity {
                         e.printStackTrace();
                     }
                     pic_product.setImageBitmap(bitmap);
+                    path = FilePath.getPath(this, selectedProduct);
                     break;
                 }
                 case (2) : {
@@ -250,9 +252,9 @@ public class NewProductActivity extends AppCompatActivity {
                 editText_product_price.getText().toString(),
                 editText_productName.getText().toString(),
                 editText_productDescription.getText().toString(),
-                getRealPathFromURI(selectedProduct));
+                path);
 
-        File imgFile = new File(getRealPathFromURI(selectedProduct));
+        File imgFile = new File(path);
         RequestBody requestImgFile =
                 RequestBody.create(MediaType.parse("image/png"), imgFile);
         MultipartBody.Part product_img =
@@ -282,7 +284,7 @@ public class NewProductActivity extends AppCompatActivity {
                     resultIntent.putExtra("pro_name", editText_productName.getText().toString());
                     resultIntent.putExtra("pro_desc", editText_productDescription.getText().toString());
                     resultIntent.putExtra("pro_price", editText_product_price.getText().toString());
-                    resultIntent.putExtra("pro_img", getRealPathFromURI(selectedProduct));
+                    resultIntent.putExtra("pro_img", path);
                     setResult(Activity.RESULT_OK, resultIntent);
                     finish();
                 }
@@ -299,19 +301,12 @@ public class NewProductActivity extends AppCompatActivity {
     }
 
     private void pickImg(int requestCode){
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
+        Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         startActivityForResult(Intent.createChooser(intent, "Select Picture"), requestCode);
     }
 
     private boolean checkIfAlreadyhavePermission() {
         int result = ContextCompat.checkSelfPermission(this, android.Manifest.permission.WRITE_EXTERNAL_STORAGE);
         return result == PackageManager.PERMISSION_GRANTED;
-    }
-
-    public String getRealPathFromURI(Uri originalUri) {
-        String path = originalUri.getLastPathSegment();
-        return path.substring(path.indexOf(":") +1);
     }
 }

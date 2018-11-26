@@ -202,7 +202,7 @@ public class SetLocationActivity extends AppCompatActivity implements OnMapReady
                     }else
                         SetLocationActivity.this.finish();
                 }else{
-                    Toast.makeText(SetLocationActivity.this, "Error adding Event", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SetLocationActivity.this, "Error setting Address", Toast.LENGTH_SHORT).show();
                 }
             }
 
