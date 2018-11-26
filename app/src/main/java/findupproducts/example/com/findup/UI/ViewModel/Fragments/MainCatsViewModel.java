@@ -37,7 +37,7 @@ public class MainCatsViewModel extends Observable {
 
             @Override
             public boolean canScrollHorizontally() {
-                return false;
+                return true;
             }
         });
         recyclerView.smoothScrollToPosition(0);

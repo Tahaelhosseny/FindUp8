@@ -85,7 +85,7 @@ public class ChatStoreViewModel extends Observable {
 
     }
 
-    public void sendMessageToStore(EditText messageEdit){
+    public void sendMessageToStore(RecyclerView recycle , EditText messageEdit){
         if (storeId== -1){
             Toast.makeText(mContext, "Please select contact", Toast.LENGTH_LONG).show();
             return;
@@ -103,8 +103,9 @@ public class ChatStoreViewModel extends Observable {
                     newMsg.setMsg_body(response.body().getGetChatMessage().get(0).getMsg_body());
                     newMsg.setSender_id(response.body().getGetChatMessage().get(0).getSender_id());
                     newMsg.setSender_type(response.body().getGetChatMessage().get(0).getSender_type());
-                    messageList.add(newMsg);
-                    mMessageAdapter.notifyDataSetChanged();
+//                    messageList.add(newMsg);
+//                    mMessageAdapter.notifyDataSetChanged();
+                    getFullChat(recycle , storeId);
                     messageEdit.setText("");
                 }
             }

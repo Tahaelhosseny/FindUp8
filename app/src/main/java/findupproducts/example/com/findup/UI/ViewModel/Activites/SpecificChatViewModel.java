@@ -41,7 +41,7 @@ public class SpecificChatViewModel extends Observable {
     public SpecificChatViewModel(Context mContext){
         this.mContext = mContext;
     }
-    public void sendMessageToStore(int storeId , EditText messageEdit){
+    public void sendMessageToStore(RecyclerView recyclerView ,  int storeId , EditText messageEdit){
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
         Call<SendChatResponse> sendMessage = apiService.sendMessage(SharedPrefManger.getUser_ID() , storeId , "User" , "Store" , "" ,messageEdit.getText().toString() );
         sendMessage.enqueue(new Callback<SendChatResponse>() {
@@ -53,8 +53,9 @@ public class SpecificChatViewModel extends Observable {
                     newMsg.setMsg_body(response.body().getGetChatMessage().get(0).getMsg_body());
                     newMsg.setSender_id(response.body().getGetChatMessage().get(0).getSender_id());
                     newMsg.setSender_type(response.body().getGetChatMessage().get(0).getSender_type());
-                    messageList.add(newMsg);
-                    mMessageAdapter.notifyDataSetChanged();
+//                    messageList.add(newMsg);
+//                    mMessageAdapter.notifyDataSetChanged();
+                    getFullChat(recyclerView , storeId);
                     messageEdit.setText("");
                 }
             }

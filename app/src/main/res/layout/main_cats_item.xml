@@ -16,12 +16,12 @@
             android:layout_height="70dp"
             app:cardCornerRadius="10dp"
             android:elevation="5dp"
+            android:layout_margin="10dp"
             tools:style="@style/CardView"
             android:foreground="?android:attr/selectableItemBackground"
             android:layout_gravity="center"
             android:foregroundGravity="center"
             app:layout_anchorGravity="center">
-
                 <TextView
                     android:id="@+id/mainCatName"
                     style="@style/text_style"

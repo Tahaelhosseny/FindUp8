@@ -73,7 +73,7 @@ public class ChatWithContactViewModel extends Observable {
         });
     }
 
-    public void sendMessageToUser(EditText messageEdit){
+    public void sendMessageToUser(RecyclerView recycle , EditText messageEdit){
         if (userId == -1)
             Toast.makeText(mContext, "Please select contact", Toast.LENGTH_SHORT).show();
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
@@ -87,8 +87,9 @@ public class ChatWithContactViewModel extends Observable {
                     newMsg.setMsg_body(response.body().getGetChatMessage().get(0).getMsg_body());
                     newMsg.setSender_id(response.body().getGetChatMessage().get(0).getSender_id());
                     newMsg.setSender_type(response.body().getGetChatMessage().get(0).getSender_type());
-                    messageList.add(newMsg);
-                    mMessageAdapter.notifyDataSetChanged();
+//                    messageList.add(newMsg);
+//                    mMessageAdapter.notifyDataSetChanged();
+                    getFullChatInStoreUI(recycle , userId);
                     messageEdit.setText("");
                 }
             }

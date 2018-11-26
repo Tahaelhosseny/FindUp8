@@ -61,12 +61,9 @@ public class EventsFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        eventsViewModel.InitRecyclerView(binding.eventsRecyclerView,type);
+        eventsViewModel.InitRecyclerView(binding.eventsRecyclerView,LinearLayoutManager.HORIZONTAL);
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        eventsViewModel.InitRecyclerView(binding.eventsRecyclerView,type);
-    }
+
+
 }
