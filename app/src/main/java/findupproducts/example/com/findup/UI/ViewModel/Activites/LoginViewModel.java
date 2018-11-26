@@ -140,6 +140,7 @@ public class LoginViewModel extends Observable {
         SharedPrefManger.setStore_logo(user.getStore_logo());
         SharedPrefManger.setStore_namee(user.getName());
         SharedPrefManger.setLoginType("store");
+        SharedPrefManger.setStoreLocation_type(user.getLocation_type());
     }
     private void saveStoreSettingSuccess(StoreSetting storeSetting){
         SharedPrefManger.setChatNotiFlagStore(storeSetting.getChat_noti_flag());

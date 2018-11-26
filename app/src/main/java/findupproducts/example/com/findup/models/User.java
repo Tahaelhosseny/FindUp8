@@ -8,6 +8,10 @@ public class User {
     @SerializedName("user_id")
     @Expose
     private int id;
+
+    @SerializedName("location_type")
+    @Expose
+    private String location_type;
     @SerializedName("user_name")
     @Expose
     private String name;
@@ -130,5 +134,13 @@ public class User {
 
     public void setLogin_type(String login_type) {
         this.login_type = login_type;
+    }
+
+    public String getLocation_type() {
+        return location_type;
+    }
+
+    public void setLocation_type(String location_type) {
+        this.location_type = location_type;
     }
 }
