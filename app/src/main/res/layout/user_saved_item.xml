@@ -29,11 +29,12 @@
 
     <TextView
         android:id="@+id/userSavedItemDesc"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:fontFamily="@font/sfcompactdisplay_regular"
         android:text="The Red and Black cafe"
+        android:maxLines="1"
         android:textSize="17sp"
         android:textColor="@color/material_color_grey_600"
         app:layout_constraintStart_toStartOf="@id/userSavedItemName"

@@ -22,6 +22,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class CurrencyViewModel extends Observable {
+    public static List<Currency> currency = new ArrayList<>();
     private Context mContext;
     private List<Currency> currencyList = new ArrayList<>();
     public CurrencyViewModel(Context mContext){
@@ -36,7 +37,6 @@ public class CurrencyViewModel extends Observable {
             public void onResponse(Call<CurrencyResponse> call, Response<CurrencyResponse> response) {
                 if(response.body().getSuccess() == 1){
                     SharedPrefManger.setCurrencyIdStore(currency_id);
-                    Toast.makeText(mContext, "Value That Saved Successfully "+SharedPrefManger.getCurrencyIdStore(), Toast.LENGTH_SHORT).show();
                 }else{
                     Toast.makeText(mContext, ""+response.body().getError_msg(), Toast.LENGTH_SHORT).show();
                 }
@@ -49,13 +49,13 @@ public class CurrencyViewModel extends Observable {
         });
     }
     public void getAllCurrency(RecyclerView recyclerView){
+        currency.clear();
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
         Call<CurrencyResponse> getAllCurrency = apiService.getAllCurrency();
         getAllCurrency.enqueue(new Callback<CurrencyResponse>() {
             @Override
             public void onResponse(Call<CurrencyResponse> call, Response<CurrencyResponse> response) {
                 if(response.body().getSuccess() == 1){
-                    List<Currency> currency = new ArrayList<>();
                     for (int i = 0 ; i < response.body().getUser_data().size() ; i ++){
                         currency.add(response.body().getUser_data().get(i));
                     }

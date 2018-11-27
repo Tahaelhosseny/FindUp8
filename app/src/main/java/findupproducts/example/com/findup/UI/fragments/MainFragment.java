@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,12 +15,18 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import findupproducts.example.com.findup.R;
+import findupproducts.example.com.findup.UI.adapters.EventsAdapter;
+import findupproducts.example.com.findup.UI.adapters.NearMeAdapter;
+import findupproducts.example.com.findup.models.Event;
+import findupproducts.example.com.findup.models.Store;
 
 import static findupproducts.example.com.findup.UI.activities.MainActivity.filterData;
 
 public class MainFragment extends Fragment {
-
     public static String eventType = "MainEvents";
 
     public MainFragment() {
@@ -50,4 +58,8 @@ public class MainFragment extends Fragment {
         getChildFragmentManager().beginTransaction().replace(R.id.nearMeContainer, new NearMeFragment()).commit();
         getChildFragmentManager().beginTransaction().replace(R.id.eventsContainer, new EventsFragment()).commit();
     }
+    List<Store> stores = new ArrayList<>();
+    List<Event> events = new ArrayList<>();
+    NearMeAdapter nearMeAdapter = new NearMeAdapter(getActivity() , new ArrayList<>());
+    EventsAdapter eventsAdapter = new EventsAdapter(getActivity() , new ArrayList<>());
 }
