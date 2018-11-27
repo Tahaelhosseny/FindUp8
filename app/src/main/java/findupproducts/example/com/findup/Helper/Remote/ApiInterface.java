@@ -243,7 +243,10 @@ public interface ApiInterface {
             @Part MultipartBody.Part product_name,
             @Part MultipartBody.Part description,
             @Part MultipartBody.Part product_price,
-            @Part MultipartBody.Part product_img);
+            @Part MultipartBody.Part product_img,
+            @Part MultipartBody.Part product_img1,
+            @Part MultipartBody.Part product_img2,
+            @Part MultipartBody.Part product_img3);
 
     @POST(ApiClient.PATH_URL+"stores?tag=change_store_address&HashSecure="+HASH)
     @FormUrlEncoded
@@ -253,7 +256,8 @@ public interface ApiInterface {
             @Field("latitude") double latitude,
             @Field("days") String days,
             @Field("from_time") String from_time,
-            @Field("to_time") String to_time
+            @Field("to_time") String to_time,
+            @Field("address") String address
     );
     @POST(ApiClient.PATH_URL+"stores?tag=edit_store_profile&HashSecure="+HASH)
     @FormUrlEncoded

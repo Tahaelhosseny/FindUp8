@@ -30,7 +30,7 @@ public class EventDataViewModel {
     }
 
     public void BindUI(TextView event_name , TextView store_name , ImageView event_banner , TextView date , TextView location , TextView price ,
-                       TextView about){
+                       TextView about,TextView address ){
         DBHandler.getEventByEventID(Integer.parseInt(event_id), mContext, new Events() {
             @Override
             public void onSuccess(Flowable<List<Event>> listFlowable) {
@@ -70,6 +70,7 @@ public class EventDataViewModel {
                                 e_lat = Double.parseDouble(val.get(i).getEvent_latitude());
                                 e_long = Double.parseDouble(val.get(i).getEvent_longitude());
                                 e_name = val.get(i).getEvent_name();
+                                address.setText(val.get(0).getEvent_address());
                                 Toast.makeText(mContext, ""+val.get(i).getEvent_photo(), Toast.LENGTH_SHORT).show();
                                 if (!val.get(i).getEvent_photo().isEmpty())
                                     Picasso.with(mContext).load(val.get(i).getEvent_photo()).into(event_banner);

@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.View;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import findupproducts.example.com.findup.R;
 import findupproducts.example.com.findup.UI.activities.MainActivity;
@@ -146,6 +147,12 @@ public class UI_Utility {
         }else
             return  String.valueOf(value);
 
+    }
+
+    public static String fromMinutesToHHmm(int min) {
+        long hours = TimeUnit.MINUTES.toHours(Long.valueOf(min));
+        long remainMinutes = min - TimeUnit.HOURS.toMinutes(hours);
+        return String.format("%02d:%02d", hours, remainMinutes);
     }
 }
 

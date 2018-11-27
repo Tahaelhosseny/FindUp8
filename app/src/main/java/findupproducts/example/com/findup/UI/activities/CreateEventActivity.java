@@ -54,6 +54,8 @@ import javax.sql.PooledConnection;
 
 import findupproducts.example.com.findup.Helper.FilePath;
 import findupproducts.example.com.findup.Helper.SharedPrefManger;
+import findupproducts.example.com.findup.Helper.UI_Utility;
+import findupproducts.example.com.findup.Helper.Utility;
 import findupproducts.example.com.findup.R;
 import findupproducts.example.com.findup.UI.Presenter.Activities.CreateEventPresenter;
 import findupproducts.example.com.findup.UI.ViewModel.Activites.CreateEventViewModel;
@@ -66,7 +68,8 @@ public class CreateEventActivity extends AppCompatActivity {
     Event eventToCreate;
     Uri selectedBanner;
     static final int DIALOG_ID = 0;
-    int hour_text , minute_text;
+    int hour_text = 0 , minute_text = 0;
+    String from, to;
     int status = 0;
     final int appVersion = Build.VERSION.SDK_INT;
     int date_status = 0;
@@ -155,9 +158,6 @@ public class CreateEventActivity extends AppCompatActivity {
         datePickerDialog = new DatePickerDialog(CreateEventActivity.this, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                day = day;
-                year = year;
-                month = month+1;
                 activityCreateEventBinding.daysInfo.setText(day + "-" + month + "-" + year);
             }
         },day , month , year
@@ -207,7 +207,7 @@ public class CreateEventActivity extends AppCompatActivity {
         }else if(TextUtils.isEmpty(activityCreateEventBinding.editTextDescription.getText())){
             Toast.makeText(CreateEventActivity.this, "Specify Event Description", Toast.LENGTH_SHORT).show();
             return;
-        }else if(activityCreateEventBinding.startAtTxtTime.getText().equals("09:00") || activityCreateEventBinding.endAtTxtTime.getText().equals("06:00")){
+        }else if(from.isEmpty() || to.isEmpty()){
             Toast.makeText(CreateEventActivity.this, "Specify Event Start Time And End Time", Toast.LENGTH_SHORT).show();
             return;
         }else if(activityCreateEventBinding.daysInfo.getText().equals("start date")){
@@ -221,7 +221,7 @@ public class CreateEventActivity extends AppCompatActivity {
         createEventViewModel.addNewEvent(String.valueOf(activityCreateEventBinding.editTextEventName.getText()) ,
                 String.valueOf(activityCreateEventBinding.daysInfo.getText()) ,
                 activityCreateEventBinding.daysInfo.getText().toString() ,
-                (String.valueOf(activityCreateEventBinding.startAtTxtTime.getText())+String.valueOf( activityCreateEventBinding.endAtTxtTime.getText())),
+                (String.valueOf(activityCreateEventBinding.startAtTxtTime.getText())+" - "+String.valueOf( activityCreateEventBinding.endAtTxtTime.getText())),
                 String.valueOf(activityCreateEventBinding.editTextDescription.getText()),
                 selectedAddress , SharedPrefManger.getStore_ID() , eventToCreate.getEvent_longitude() , eventToCreate.getEvent_latitude() , eventToCreate.getEvent_photo());
     }
@@ -254,10 +254,13 @@ public class CreateEventActivity extends AppCompatActivity {
         @Override
         public void onTimeSet(TimePicker timePicker, int hour, int minute) {
             hour_text = hour; minute_text = minute;
+            minute_text = (hour_text*60)+minute_text;
             if(status == 1){
-                activityCreateEventBinding.startAtTxtTime.setText(hour_text+":"+minute_text);
+                from = UI_Utility.fromMinutesToHHmm(minute_text);
+                activityCreateEventBinding.startAtTxtTime.setText(from);
             }else{
-                activityCreateEventBinding.endAtTxtTime.setText(hour_text+":"+minute_text);
+                to = UI_Utility.fromMinutesToHHmm(minute_text);
+                activityCreateEventBinding.endAtTxtTime.setText(to);
             }
         }
     };

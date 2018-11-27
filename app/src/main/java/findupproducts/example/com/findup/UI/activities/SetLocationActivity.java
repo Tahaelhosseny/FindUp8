@@ -37,6 +37,7 @@ import findupproducts.example.com.findup.Helper.Remote.ApiClient;
 import findupproducts.example.com.findup.Helper.Remote.ApiInterface;
 import findupproducts.example.com.findup.Helper.Remote.ResponseModel.StoreAddressResponse;
 import findupproducts.example.com.findup.Helper.SharedPrefManger;
+import findupproducts.example.com.findup.Helper.UI_Utility;
 import findupproducts.example.com.findup.Helper.Utility;
 
 import findupproducts.example.com.findup.R;
@@ -179,7 +180,7 @@ public class SetLocationActivity extends AppCompatActivity implements OnMapReady
         if(TextUtils.isEmpty(selectedAddress)){
             Toast.makeText(this, "Specify Location on the map", Toast.LENGTH_SHORT).show();
             return;
-        }else if(TextUtils.equals(fromTxt.getText().toString(), "From: ")){
+        }else if(TextUtils.equals(fromTxt.getText().toString(), "From: ") || TextUtils.equals(toTxt.getText().toString(), "To: ")){
             Toast.makeText(this, "Specify Time", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -190,7 +191,7 @@ public class SetLocationActivity extends AppCompatActivity implements OnMapReady
 
         SharedPrefManger sharedPrefManger = new SharedPrefManger(this);
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-        Call<StoreAddressResponse> setStoreAddress = apiService.setStoreAddress(sharedPrefManger.getStore_ID(),selectedLatLng.longitude,selectedLatLng.latitude,selectedDays.toString(),fromTxt.getText().toString(),toTxt.getText().toString());
+        Call<StoreAddressResponse> setStoreAddress = apiService.setStoreAddress(sharedPrefManger.getStore_ID(),selectedLatLng.longitude,selectedLatLng.latitude,selectedDays.toString(),fromTxt.getText().toString(),toTxt.getText().toString(),selectedAddress);
         setStoreAddress.enqueue(new Callback<StoreAddressResponse>() {
             @Override
             public void onResponse(Call<StoreAddressResponse> call, Response<StoreAddressResponse> response) {
@@ -227,12 +228,14 @@ public class SetLocationActivity extends AppCompatActivity implements OnMapReady
         @Override
         public void onTimeSet(TimePicker timePicker, int hour, int minute) {
             hour_text = hour; minute_text = minute;
+            minute_text = (hour_text*60)+minute_text;
+            String newtime = UI_Utility.fromMinutesToHHmm(minute_text);
             if(time_type == 1){
-                from = hour_text+":"+minute_text;
-                fromTxt.setText(fromTxt.getText().toString()+hour_text+":"+minute_text);
+                from = newtime;
+                fromTxt.setText("To: "+newtime);
             }else{
-                to = hour_text+":"+minute_text;
-                toTxt.setText(toTxt.getText().toString()+hour_text+":"+minute_text);
+                to = newtime;
+                toTxt.setText("From: "+newtime);
             }
         }
     };

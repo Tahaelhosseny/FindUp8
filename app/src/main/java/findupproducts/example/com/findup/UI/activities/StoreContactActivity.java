@@ -182,6 +182,7 @@ public class StoreContactActivity extends AppCompatActivity {
         createStore.setStore_facebook_link(facebook);
         createStore.setStore_location_type(findViewById(radioLocation.getCheckedRadioButtonId()).getTag().toString());
         File logoFile = new File(createStore.getStore_logo());
+        Log.e("MyPath", createStore.getStore_logo());
         File bannerFile = new File(createStore.getStore_banner());
 
         MultipartBody.Part store_name = MultipartBody.Part.createFormData("store_name", createStore.getStore_name());
@@ -256,6 +257,9 @@ public class StoreContactActivity extends AppCompatActivity {
         sharedPrefManger.setIsLoggedIn(true);
         sharedPrefManger.setLoginType("store");
         sharedPrefManger.setStoreID(storeId);
+        sharedPrefManger.setStore_namee(createStore.getStore_name());
+        sharedPrefManger.setStore_desc(createStore.getStore_desc());
+        sharedPrefManger.setStore_rev("0.0");
         Toast.makeText(StoreContactActivity.this, "Account Created", Toast.LENGTH_SHORT).show();
         if (radioLocation.getCheckedRadioButtonId() == R.id.radioStaticLocation) {
             sharedPrefManger.setStoreLocation_type("Static");
@@ -351,18 +355,5 @@ public class StoreContactActivity extends AppCompatActivity {
 
             }
         });
-    }
-
-    private void LoginStoreAccepted(User user, String pass){
-        SharedPrefManger sharedPrefManger = new SharedPrefManger(this);
-        sharedPrefManger.setIsLoggedIn(true);
-        sharedPrefManger.setLogin_phone(user.getStore_mobile());
-        sharedPrefManger.setLogin_password(pass);
-        sharedPrefManger.setStoreID(user.getId());
-        sharedPrefManger.setIsLoggedInAsCustomer(false);
-        sharedPrefManger.setStore_banner(user.getStore_banner());
-        sharedPrefManger.setStore_logo(user.getStore_logo());
-        sharedPrefManger.setStore_namee(user.getStore_name());
-        sharedPrefManger.setLoginType("store");
     }
 }

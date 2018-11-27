@@ -123,6 +123,18 @@ public class SharedPrefManger {
     public static String getUser_img() {
         return mSharedPref.getString("user_image", "");
     }
+    public static void setStore_rev(String value) {
+        mSharedPref.edit().putString("store_rev", value).apply();
+    }
+    public static String getStore_rev() {
+        return mSharedPref.getString("store_rev", "");
+    }
+    public static void setStore_desc(String value) {
+        mSharedPref.edit().putString("store_desc", value).apply();
+    }
+    public static String getStore_desc() {
+        return mSharedPref.getString("store_desc", "");
+    }
     public static void setStore_namee(String value) {
         mSharedPref.edit().putString("store_name", value).apply();
     }
