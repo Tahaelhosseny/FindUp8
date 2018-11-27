@@ -6,15 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".UI.activities.StoreSettingsActivity">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar_storeSettings"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"
-        android:background="@color/colorWhite"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+
 
         <Button
             android:id="@+id/btn_storeSettingsBack"
@@ -31,7 +23,6 @@
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-    </android.support.v7.widget.Toolbar>
 
     <LinearLayout
         android:id="@+id/linearStoreSettings"
@@ -39,7 +30,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="@dimen/activity_vertical_margin"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_storeSettings"
+        app:layout_constraintTop_toBottomOf="@+id/btn_storeSettingsBack"
         app:layout_constraintStart_toStartOf="parent">
 
         <Button
