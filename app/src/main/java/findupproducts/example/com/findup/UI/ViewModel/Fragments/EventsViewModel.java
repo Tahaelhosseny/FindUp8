@@ -45,7 +45,7 @@ public class EventsViewModel extends Observable {
         LoadDataFromDataBase(adapter);
     }
     private void LoadDataFromDataBase(EventsAdapter adapter){
-        if(eventType == "MainEvents"){
+        if(eventType.equals("MainEvents")){
             DBHandler.getAllEvents(mContext, new Events() {
                 @Override
                 public void onSuccess(Flowable<List<Event>> listFlowable) {
@@ -55,6 +55,7 @@ public class EventsViewModel extends Observable {
                             public void run() {
                                 adapter.setEvents(events);
                                 adapter.notifyDataSetChanged();
+
                             }
                         });
                     });
@@ -65,6 +66,7 @@ public class EventsViewModel extends Observable {
 
                 }
             });
+            eventType = "";
         }else {
             DBHandler.getEventByStoreID(SharedPrefManger.getStore_ID(), mContext, new Events() {
                 @Override
@@ -101,6 +103,7 @@ public class EventsViewModel extends Observable {
 
                 }
             });
+            eventType = "";
         }
     }
 

@@ -84,16 +84,7 @@ public class ProfileStoreFragment extends Fragment {
 //        store_name.setText(SharedPrefManger.getStore_namee());
         //bindStoreData(store_logo , store_review , store_desc , store_Bg , store_name);
 
-        SharedPrefManger sharedPrefManger = new SharedPrefManger(getActivity());
-        if (MStore == null){
-            store_name.setText(sharedPrefManger.getStore_namee());
-            if (!sharedPrefManger.getStore_logo().isEmpty())
-                Picasso.with(getActivity()).load(sharedPrefManger.getStore_logo()).into(store_logo);
-            if (!sharedPrefManger.getStore_banner().isEmpty())
-                Picasso.with(getActivity()).load(sharedPrefManger.getStore_banner()).into(store_Bg);
-            store_desc.setText(sharedPrefManger.getStore_desc());
-            store_review.setText(sharedPrefManger.getStore_rev());
-        }
+        bindStoreData(store_logo , store_review , store_desc , store_Bg , store_name);
     }
 
     public void bindStoreData(ImageView logo_image , TextView rating , TextView store_desc , ImageView banner , TextView name) {
