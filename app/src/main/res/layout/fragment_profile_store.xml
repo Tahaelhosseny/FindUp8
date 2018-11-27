@@ -99,7 +99,7 @@
         android:id="@+id/btn_notifications"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="15dp"
         android:background="@drawable/bg_button_rounded_null"
         android:drawablePadding="10dp"
         android:drawableStart="@drawable/notifications_button"

@@ -3,6 +3,8 @@ package findupproducts.example.com.findup.UI.fragments;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -23,13 +25,19 @@ import android.widget.Toast;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.common.util.DbUtils;
+import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlacePicker;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import findupproducts.example.com.findup.Helper.Database.Interfaces.Store.StoreWorkTimeI;
 import findupproducts.example.com.findup.Helper.Database.Interfaces.Store.Stores;
+import findupproducts.example.com.findup.Helper.Remote.ApiClient;
+import findupproducts.example.com.findup.Helper.Remote.ApiInterface;
+import findupproducts.example.com.findup.Helper.Remote.ResponseModel.StoreAddressResponse;
 import findupproducts.example.com.findup.Helper.Utility;
 import findupproducts.example.com.findup.UI.activities.CommentsActivity;
 import findupproducts.example.com.findup.models.Store;
@@ -46,6 +54,9 @@ import findupproducts.example.com.findup.UI.adapters.StoreProductsReviewsAdapter
 import findupproducts.example.com.findup.models.NotificationUser;
 import findupproducts.example.com.findup.models.Product;
 import findupproducts.example.com.findup.models.ReviewStoreItem;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -97,12 +108,9 @@ public class StoreAccountHomeFragment extends Fragment {
         TextView locationTypeTxt = getActivity().findViewById(R.id.locationTypeTxt);
         if (sharedPrefManger.getStoreLocation_type().contains("Static"))
             locationTypeTxt.setText("your Location is Static");
-        else
-            locationTypeTxt.setVisibility(View.GONE);
-
 
         SharedPrefManger sharedPrefManger = new SharedPrefManger(getActivity());
-        if (!sharedPrefManger.getStoreLocation_type().equals("Dynamic")) {
+        if (!sharedPrefManger.getStoreLocation_type().contains("Dynamic")) {
             linearLayout.setVisibility(View.GONE);
         }else{
             DBHandler.getStoreByID(SharedPrefManger.getStore_ID(), getActivity(), new Stores() {
@@ -219,6 +227,46 @@ public class StoreAccountHomeFragment extends Fragment {
 
             }
         });
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == Activity.RESULT_OK && data != null){
+            switch(requestCode) {
+                case (PLACE_PICKER_REQUEST):{
+                    Place place = PlacePicker.getPlace(getActivity(), data);
+                    Geocoder geocoder;
+                    List<Address> addresses;
+                    String selectedAddress = "";
+                    geocoder = new Geocoder(getActivity(), Locale.getDefault());
+
+                    try {
+                        addresses = geocoder.getFromLocation(place.getLatLng().latitude, place.getLatLng().longitude, 1);
+                        selectedAddress = addresses.get(0).getAddressLine(0);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
+                    Call<StoreAddressResponse> setStoreAddress = apiService.setStoreAddress(sharedPrefManger.getStore_ID(),place.getLatLng().longitude,place.getLatLng().latitude,"","","",selectedAddress);
+                    setStoreAddress.enqueue(new Callback<StoreAddressResponse>() {
+                        @Override
+                        public void onResponse(Call<StoreAddressResponse> call, Response<StoreAddressResponse> response) {
+                            if(response.body().getSuccess() == 1){
+                                Toast.makeText(getActivity(), "Address Set Success", Toast.LENGTH_SHORT).show();
+                            }else{
+                                Toast.makeText(getActivity(), "Error Setting Address", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<StoreAddressResponse> call, Throwable t) {
+                            t.printStackTrace();
+                        }
+                    });
+                }
+            }
+        }
     }
 
     private void pickAddress() throws GooglePlayServicesNotAvailableException, GooglePlayServicesRepairableException {

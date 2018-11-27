@@ -27,6 +27,7 @@ import com.google.gson.Gson;
 import java.io.File;
 import java.io.IOException;
 
+import findupproducts.example.com.findup.Helper.Database.DBHandler;
 import findupproducts.example.com.findup.Helper.FilePath;
 import findupproducts.example.com.findup.Helper.Remote.ApiClient;
 import findupproducts.example.com.findup.Helper.Remote.ApiInterface;
@@ -35,6 +36,7 @@ import findupproducts.example.com.findup.Helper.Remote.ResponseModel.DeleteStore
 import findupproducts.example.com.findup.Helper.SharedPrefManger;
 import findupproducts.example.com.findup.R;
 import findupproducts.example.com.findup.models.AddProduct;
+import findupproducts.example.com.findup.models.Product;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -54,7 +56,7 @@ public class NewProductActivity extends AppCompatActivity {
     ApiInterface apiService;
     SharedPrefManger sharedPrefManger;
     boolean isCraft = false;
-    String path;
+    String path = "",path1 = "",path2 = "",path3 = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -194,6 +196,7 @@ public class NewProductActivity extends AppCompatActivity {
                         e.printStackTrace();
                     }
                     pic_product2.setImageBitmap(bitmap);
+                    path1 = FilePath.getPath(this, selectedProduct2);
                     break;
                 }
                 case (3) : {
@@ -206,6 +209,7 @@ public class NewProductActivity extends AppCompatActivity {
                         e.printStackTrace();
                     }
                     pic_product3.setImageBitmap(bitmap);
+                    path2 = FilePath.getPath(this, selectedProduct3);
                     break;
                 }
                 case (4) : {
@@ -218,6 +222,7 @@ public class NewProductActivity extends AppCompatActivity {
                         e.printStackTrace();
                     }
                     pic_product4.setImageBitmap(bitmap);
+                    path3 = FilePath.getPath(this, selectedProduct4);
                     break;
                 }
             }
@@ -225,6 +230,19 @@ public class NewProductActivity extends AppCompatActivity {
     }
 
     private void addProduct(){
+        /*if (isCraft){
+            if (selectedProduct2 == null){
+                Toast.makeText(this, "Select Image 2", Toast.LENGTH_LONG).show();
+                return;
+            } else if (selectedProduct3 == null){
+                Toast.makeText(this, "Select Image 3", Toast.LENGTH_LONG).show();
+                return;
+            } else if (selectedProduct4 == null){
+                Toast.makeText(this, "Select Image 4", Toast.LENGTH_LONG).show();
+                return;
+            }
+        }*/
+
         if (pro_pos != -1){
             Toast.makeText(this, "Product Already Added", Toast.LENGTH_LONG).show();
             return;
@@ -242,11 +260,6 @@ public class NewProductActivity extends AppCompatActivity {
             return;
         }
 
-        if (isCraft) {
-            finish();
-            return;
-        }
-
         AddProduct addProduct = new AddProduct(
                 -1,
                 editText_product_price.getText().toString(),
@@ -255,10 +268,36 @@ public class NewProductActivity extends AppCompatActivity {
                 path);
 
         File imgFile = new File(path);
+        Log.e("MyPath", path);
         RequestBody requestImgFile =
                 RequestBody.create(MediaType.parse("image/png"), imgFile);
         MultipartBody.Part product_img =
                 MultipartBody.Part.createFormData("product_img", imgFile.getName(), requestImgFile);
+
+        MultipartBody.Part product_img1 = null, product_img2 = null,product_img3 = null;
+        if (isCraft){
+            if (!path1.isEmpty()){
+                File imgFile1 = new File(path1);
+                RequestBody requestImgFile1 =
+                        RequestBody.create(MediaType.parse("image/png"), imgFile1);
+                product_img1 =
+                        MultipartBody.Part.createFormData("product_img1", imgFile1.getName(), requestImgFile1);
+            }
+            if (!path2.isEmpty()){
+                File imgFile2 = new File(path2);
+                RequestBody requestImgFile2 =
+                        RequestBody.create(MediaType.parse("image/png"), imgFile2);
+                product_img2 =
+                        MultipartBody.Part.createFormData("product_img2", imgFile2.getName(), requestImgFile2);
+            }
+            if (!path3.isEmpty()){
+                File imgFile3 = new File(path3);
+                RequestBody requestImgFile3 =
+                        RequestBody.create(MediaType.parse("image/png"), imgFile3);
+                product_img3 =
+                        MultipartBody.Part.createFormData("product_img3", imgFile3.getName(), requestImgFile3);
+            }
+        }
 
         MultipartBody.Part store_id = MultipartBody.Part.createFormData("store_id", ""+sharedPrefManger.getStore_ID());
         MultipartBody.Part product_name = MultipartBody.Part.createFormData("product_name", addProduct.getProductName());
@@ -269,23 +308,35 @@ public class NewProductActivity extends AppCompatActivity {
                 product_name,
                 description,
                 product_price,
-                product_img);
+                product_img,
+                product_img1,
+                product_img2,
+                product_img3);
 
         newProduct.enqueue(new Callback<CreateProductResponse>() {
             @Override
             public void onResponse(Call<CreateProductResponse> call, Response<CreateProductResponse> response) {
                 Log.e("Success", new Gson().toJson(response.body()));
                 if (response.body().getSuccess() ==1){
-                    Toast.makeText(NewProductActivity.this,"Product Added",Toast.LENGTH_SHORT).show();
+                    Product product = new Product(response.body().getData().get(0).getProduct_id(),
+                            Double.parseDouble(editText_product_price.getText().toString()),
+                            0,
+                            0,
+                            editText_productName.getText().toString(),
+                            editText_productDescription.getText().toString(),
+                            "");
+                    product.setStore_id(sharedPrefManger.getStore_ID());
+                    product.setProduct_rate(0);
+                    DBHandler.InsertPrdouct(product,NewProductActivity.this);
                     Intent resultIntent = new Intent();
                     resultIntent.putExtra("opr_type", 1);
-                    resultIntent.putExtra("pro_id", response.body().getData().get(0).getProduct_id());
-                    resultIntent.putExtra("pro_name", editText_productName.getText().toString());
-                    resultIntent.putExtra("pro_name", editText_productName.getText().toString());
-                    resultIntent.putExtra("pro_desc", editText_productDescription.getText().toString());
-                    resultIntent.putExtra("pro_price", editText_product_price.getText().toString());
+                    resultIntent.putExtra("pro_id", product.getProduct_id());
+                    resultIntent.putExtra("pro_name", product.getProduct_name());
+                    resultIntent.putExtra("pro_desc", product.getProduct_desc());
+                    resultIntent.putExtra("pro_price", product.getProduct_desc());
                     resultIntent.putExtra("pro_img", path);
                     setResult(Activity.RESULT_OK, resultIntent);
+                    Toast.makeText(NewProductActivity.this,"Product Added",Toast.LENGTH_SHORT).show();
                     finish();
                 }
                 else{

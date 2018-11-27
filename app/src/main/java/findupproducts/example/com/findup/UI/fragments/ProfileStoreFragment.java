@@ -91,8 +91,8 @@ public class ProfileStoreFragment extends Fragment {
                 Picasso.with(getActivity()).load(sharedPrefManger.getStore_logo()).into(store_logo);
             if (!sharedPrefManger.getStore_banner().isEmpty())
                 Picasso.with(getActivity()).load(sharedPrefManger.getStore_banner()).into(store_Bg);
-            //store_desc.setText(sharedPrefManger.getStore_namee());
-            //store_review.setText(sharedPrefManger.getStore_namee());
+            store_desc.setText(sharedPrefManger.getStore_desc());
+            store_review.setText(sharedPrefManger.getStore_rev());
         }
     }
 

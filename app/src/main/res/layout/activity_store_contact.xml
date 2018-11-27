@@ -160,6 +160,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
                     android:button="@null"
+                    android:layout_marginBottom="5dp"
                     android:drawableEnd="@drawable/radio_button_selector"
                     android:fontFamily="@font/sfcompactdisplay_medium"
                     android:gravity="start"
