@@ -20,13 +20,13 @@ import findupproducts.example.com.findup.UI.Presenter.Fragments.NearMePresenter;
 import findupproducts.example.com.findup.UI.ViewModel.Fragments.NearMeViewModel;
 import findupproducts.example.com.findup.UI.adapters.NearMeAdapter;
 import findupproducts.example.com.findup.databinding.FragmentNearMeBinding;
+import findupproducts.example.com.findup.models.Event;
 import findupproducts.example.com.findup.models.Store;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class NearMeFragment extends Fragment {
-
 
     public NearMeFragment() {
         // Required empty public constructor

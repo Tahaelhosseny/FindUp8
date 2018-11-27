@@ -45,7 +45,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class NewProductActivity extends AppCompatActivity {
-
     EditText editText_productName, editText_productDescription,  editText_product_price;
     Button btn_addProductDone, btn_addProductDelete;
     Uri selectedProduct,selectedProduct2,selectedProduct3,selectedProduct4;
@@ -57,13 +56,11 @@ public class NewProductActivity extends AppCompatActivity {
     SharedPrefManger sharedPrefManger;
     boolean isCraft = false;
     String path = "",path1 = "",path2 = "",path3 = "";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_product);
         sharedPrefManger = new SharedPrefManger(this);
-
         btn_addProductDone = findViewById(R.id.btn_addProductDone);
         btn_addProductDelete = findViewById(R.id.btn_addProductDelete);
         editText_productName = findViewById(R.id.editText_productName);
@@ -73,26 +70,22 @@ public class NewProductActivity extends AppCompatActivity {
         pic_product2 = findViewById(R.id.pic_product2);
         pic_product3 = findViewById(R.id.pic_product3);
         pic_product4 = findViewById(R.id.pic_product4);
-
         if (appVersion > Build.VERSION_CODES.LOLLIPOP_MR1) {
             if (!checkIfAlreadyhavePermission()) {
                 ActivityCompat.requestPermissions(NewProductActivity.this, new String[]{android.Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
             }
         }
-
         if (getIntent() != null){
             pro_pos = getIntent().getIntExtra("pro_pos", -1);
             pro_id = getIntent().getIntExtra("pro_id", -1);
             if (getIntent().hasExtra("isCraft"))
                 isCraft = true;
         }
-
         if (isCraft){
             pic_product2.setVisibility(View.VISIBLE);
             pic_product3.setVisibility(View.VISIBLE);
             pic_product4.setVisibility(View.VISIBLE);
         }
-
         if (pro_pos != -1){
             editText_productName.setText(getIntent().getStringExtra("pro_name"));
             editText_productDescription.setText(getIntent().getStringExtra("pro_desc"));
@@ -101,9 +94,7 @@ public class NewProductActivity extends AppCompatActivity {
             Bitmap bitmap = BitmapFactory.decodeFile(getIntent().getStringExtra("pro_img"));
             pic_product.setImageBitmap(bitmap);
         }
-
         apiService = ApiClient.getClient().create(ApiInterface.class);
-
         pic_product.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -128,14 +119,12 @@ public class NewProductActivity extends AppCompatActivity {
                 pickImg(4);
             }
         });
-
         btn_addProductDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 addProduct();
             }
         });
-
         btn_addProductDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -166,7 +155,6 @@ public class NewProductActivity extends AppCompatActivity {
             });
         }
     }
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -228,7 +216,6 @@ public class NewProductActivity extends AppCompatActivity {
             }
         }
     }
-
     private void addProduct(){
         /*if (isCraft){
             if (selectedProduct2 == null){
@@ -350,12 +337,10 @@ public class NewProductActivity extends AppCompatActivity {
             }
         });
     }
-
     private void pickImg(int requestCode){
         Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         startActivityForResult(Intent.createChooser(intent, "Select Picture"), requestCode);
     }
-
     private boolean checkIfAlreadyhavePermission() {
         int result = ContextCompat.checkSelfPermission(this, android.Manifest.permission.WRITE_EXTERNAL_STORAGE);
         return result == PackageManager.PERMISSION_GRANTED;

@@ -6,6 +6,8 @@ import android.util.Log;
 import java.util.List;
 
 import findupproducts.example.com.findup.Helper.Database.Interfaces.Store.StoreWorkTimeI;
+import findupproducts.example.com.findup.Helper.SharedPrefManger;
+import findupproducts.example.com.findup.models.StoreInfo;
 import findupproducts.example.com.findup.models.Store_WorkTime;
 import io.reactivex.Flowable;
 import findupproducts.example.com.findup.Helper.Database.Interfaces.Comment.Comments;
@@ -439,6 +441,15 @@ public class DBHandler {
             public void run() {
                 FindUpDatabase.getAppDatabase(context).daoAccess().SaveStoreOperation(store.getStore_id(),if_saved);
                 //products.onSuccess(null);
+            }
+        }).start();
+    }
+
+    public static void UpdateStore(StoreInfo store, final Context context) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                FindUpDatabase.getAppDatabase(context).daoAccess().updateStoreData(store.getStore_name() , store.getStore_id() , store.getStore_mobile());
             }
         }).start();
     }

@@ -104,6 +104,9 @@ public interface DaoAccess {
     @Query("UPDATE store set if_saved =:if_saved WHERE store_id = :store_id")
     void SaveStoreOperation(int store_id,int if_saved);
 
+    @Query("UPDATE store set store_name = :store_name AND store_mobile = :store_mobile WHERE store_id = :store_id")
+    void updateStoreData(String store_name , int store_id , String store_mobile);
+
     @Update
     void UpdateStore(Store store);
     @Delete
