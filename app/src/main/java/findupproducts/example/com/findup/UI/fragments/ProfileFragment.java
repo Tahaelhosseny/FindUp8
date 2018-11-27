@@ -17,6 +17,7 @@ import findupproducts.example.com.findup.R;
 import findupproducts.example.com.findup.UI.activities.AddProductTruckActivity;
 import findupproducts.example.com.findup.UI.activities.ChatWithStoreActivity;
 import findupproducts.example.com.findup.UI.activities.NotificationsActivity;
+import findupproducts.example.com.findup.UI.activities.NotificationsSettingsActivity;
 import findupproducts.example.com.findup.UI.activities.ProfileChatsActivity;
 import findupproducts.example.com.findup.UI.activities.SettingsActivity;
 import findupproducts.example.com.findup.UI.activities.StoreAccountHomeActivity;
@@ -56,7 +57,7 @@ public class ProfileFragment extends Fragment {
         btn_notifications.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getActivity(), NotificationsActivity.class));
+                startActivity(new Intent(getActivity(), NotificationsSettingsActivity.class));
             }
         });
         btn_chats.setOnClickListener(new View.OnClickListener() {
