@@ -76,6 +76,12 @@ public class CreateEventViewModel extends Observable {
                     event.setEvent_id(String.valueOf(response.body().getId()));
                     event.setEvent_latitude(lat);
                     event.setEvent_longitude(longt);
+                    event.setEvent_name(event_name);
+                    event.setEvent_address(event_address);
+                    event.setEvent_photo(response.body().getData().get(0).getEvent_photo());
+                    event.setEvent_time(event_time);
+                    event.setEvent_days(event_day);
+                    event.setEvent_start_date(event_start);
                     DBHandler.InsertEvent(event, mContext);
                     Toast.makeText(mContext, "Event Added Successfully", Toast.LENGTH_SHORT).show();
                     ((Activity) mContext).finish();

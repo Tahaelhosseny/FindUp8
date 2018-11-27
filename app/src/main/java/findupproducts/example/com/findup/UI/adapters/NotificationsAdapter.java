@@ -111,7 +111,7 @@ public class NotificationsAdapter extends RecyclerView.Adapter<NotificationsAdap
 
         @Override
         public void onClick(View v) {
-            v.getContext().startActivity(new Intent(v.getContext(), NotificationsActivity.class).putExtra("sysMSG", 1));
+//            v.getContext().startActivity(new Intent(v.getContext(), NotificationsActivity.class).putExtra("sysMSG", 1));
         }
     }
 }
