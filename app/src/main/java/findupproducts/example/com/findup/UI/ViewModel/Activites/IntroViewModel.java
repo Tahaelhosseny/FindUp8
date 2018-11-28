@@ -59,7 +59,6 @@ public class IntroViewModel extends Observable {
                                         }
                                         catch (JSONException e) {
                                             e.printStackTrace();
-                                            toast(e.getMessage());
                                         }
                                     }
                                 });
@@ -82,12 +81,9 @@ public class IntroViewModel extends Observable {
                     @Override
                     public void onError(FacebookException exception)
                     {
-                        toast(exception.getMessage().toString());
+                        exception.printStackTrace();
                     }
                 });
     }
     public void twitterLogin(){}
-    private void toast(String msg){
-        Toast.makeText(mContext, ""+msg, Toast.LENGTH_SHORT).show();
-    }
 }

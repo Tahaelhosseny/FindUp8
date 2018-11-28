@@ -184,7 +184,7 @@ public class VerifyCodeActivity extends AppCompatActivity {
 
             @Override
             public void onFinish() {
-                Toast.makeText(VerifyCodeActivity.this, "Timer finished!!!!", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(VerifyCodeActivity.this, "Timer finished!!!!", Toast.LENGTH_SHORT).show();
             }
         }.start();
     }

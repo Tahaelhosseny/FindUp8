@@ -108,7 +108,7 @@ public class LoginViewModel extends Observable {
 
             @Override
             public void onFailure(Call<UserSettingsResponse> call, Throwable t) {
-                Toast.makeText(mContext, "Undefined Error", Toast.LENGTH_SHORT).show();
+                t.printStackTrace();
             }
         });
     }

@@ -146,9 +146,10 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
                     }
                 }
             }
+
             @Override
             public void onFailure(Call<LikeProductResponse> call, Throwable t) {
-                Toast.makeText(context, "Something went error", Toast.LENGTH_SHORT).show();
+                t.printStackTrace();
             }
         });
     }

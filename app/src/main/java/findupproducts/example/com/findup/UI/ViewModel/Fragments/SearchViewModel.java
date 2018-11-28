@@ -35,7 +35,7 @@ public class SearchViewModel extends Observable {
 
             @Override
             public void onFailure(Call<SearchStoreResponse> call, Throwable t) {
-                Toast.makeText(mContext, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
+                t.printStackTrace();
             }
         });
     }

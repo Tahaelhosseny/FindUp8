@@ -48,7 +48,7 @@ public class VerifyResetPassCodeViewModel extends Observable {
             @Override
             public void onFailure(Call<VerifyCodeResponse> call, Throwable t) {
                 alertDialog.dismiss();
-                Toast.makeText(mContext, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
+                t.printStackTrace();
             }
         });
     }
@@ -72,7 +72,7 @@ public class VerifyResetPassCodeViewModel extends Observable {
             @Override
             public void onFailure(Call<AskCodeResponse> call, Throwable t) {
                 alertDialog.dismiss();
-                Toast.makeText(mContext, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
+                t.printStackTrace();
             }
         });
     }
