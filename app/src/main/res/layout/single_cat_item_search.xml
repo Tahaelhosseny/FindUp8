@@ -47,20 +47,15 @@
         android:id="@+id/txt_store_rate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:drawableStart="@drawable/_0_5x"
+        android:fontFamily="@font/sfcompactdisplay_regular"
         android:text="5.0"
         android:textSize="12sp"
-        android:fontFamily="@font/sfcompactdisplay_regular"
-        android:layout_marginEnd="5dp"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintStart_toEndOf="@+id/txt_store_name"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="0dp" />
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="15dp"
-        android:layout_marginTop="@dimen/_5sdp"
-        android:layout_height="15dp"
-        android:layout_marginEnd="5dp"
-        android:background="@drawable/_0_5x"
-        app:layout_constraintEnd_toStartOf="@id/txt_store_rate" />
 
     <TextView
         android:id="@+id/txt_store_desc"

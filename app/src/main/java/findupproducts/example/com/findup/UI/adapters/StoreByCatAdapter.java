@@ -66,10 +66,10 @@ public class StoreByCatAdapter extends RecyclerView.Adapter<StoreByCatAdapter.Vi
         final Store store = stores.get(position);
         holder.txt_name.setText(store.getStore_name());
         holder.txt_desc.setText(store.getStore_desc());
-        if(store.getStore_rating() == ""){
-            holder.txt_ratee.setText("0.0");
+        if(store.getStore_rating() == "" || store.getStore_rating() == null){
+            holder.txt_ratee.setText(" "+"0.0");
         }else{
-            holder.txt_ratee.setText(store.getStore_rating());
+            holder.txt_ratee.setText(" "+store.getStore_rating());
         }
         if (!store.getStore_logo().isEmpty()) {
             Transformation transformation = new RoundedTransformationBuilder()
