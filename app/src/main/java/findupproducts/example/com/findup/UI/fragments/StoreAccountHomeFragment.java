@@ -110,7 +110,7 @@ public class StoreAccountHomeFragment extends Fragment {
             locationTypeTxt.setText("your Location is Static");
 
         SharedPrefManger sharedPrefManger = new SharedPrefManger(getActivity());
-        if (!sharedPrefManger.getStoreLocation_type().contains("Dynamic")) {
+        if (sharedPrefManger.getStoreLocation_type().contains("Dynamic")) {
             linearLayout.setVisibility(View.GONE);
         }else{
             DBHandler.getStoreByID(SharedPrefManger.getStore_ID(), getActivity(), new Stores() {
