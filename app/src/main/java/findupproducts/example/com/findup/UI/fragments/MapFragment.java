@@ -150,13 +150,13 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         CardView price = filter.findViewById(R.id.price_card);
         CardView saved = filter.findViewById(R.id.saved_card);
         CardView like = filter.findViewById(R.id.liked_card);
-        if(filterData.getFilter_distance() != null ){
+        if(filterData.getFilter_distance() != null && filterData.getSearch_from().equals("FromMap")){
             distace.setVisibility(View.VISIBLE);
         }
-        if(filterData.getFilter_price() != null ){
+        if(filterData.getFilter_price() != null && filterData.getSearch_from().equals("FromMap") ){
             price.setVisibility(View.VISIBLE);
         }
-        if(filterData.getFilter_by() != null){
+        if(filterData.getFilter_by() != null && filterData.getSearch_from().equals("FromMap")){
             if(filterData.getFilter_by() == "liked"){
                 like.setVisibility(View.VISIBLE);
             }

@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 
+import findupproducts.example.com.findup.Helper.Database.DBHandler;
 import findupproducts.example.com.findup.Helper.Remote.ApiClient;
 import findupproducts.example.com.findup.Helper.Remote.ApiInterface;
 import findupproducts.example.com.findup.Helper.Remote.ResponseModel.EditProfileResponse;
@@ -31,7 +32,6 @@ public class EditProfileViewModel extends Observable {
     public EditProfileViewModel(Context mContext) {
         this.mContext = mContext;
     }
-
     public void sendEditProfileRequest(int account_id ,String user_name , String old_password , String new_password , String mobile ){
         final AlertDialog alertDialog = UI_Utility.ShowProgressDialog(mContext, true);
         alertDialog.show();
@@ -44,7 +44,6 @@ public class EditProfileViewModel extends Observable {
                 if (response.body().getSuccess() == 1){
                     EditProfileAccepted(response.body().getUser_data().get(0),new_password);
                     Toast.makeText(mContext, ""+response.body().getError_msg(), Toast.LENGTH_SHORT).show();
-
                 }
                 else {
                     Toast.makeText(mContext, ""+response.body().getError_msg(), Toast.LENGTH_SHORT).show();
@@ -60,7 +59,6 @@ public class EditProfileViewModel extends Observable {
             }
         });
     }
-
     public void sendEditProfileStoreRequest(int store_id ,String store_name , String old_password , String new_password , String mobile ){
         final AlertDialog alertDialog = UI_Utility.ShowProgressDialog(mContext, true);
         alertDialog.show();
@@ -72,8 +70,8 @@ public class EditProfileViewModel extends Observable {
                 alertDialog.dismiss();
                 if (response.body().getSuccess() == 1){
                     EditProfileStoreAccepted(response.body().getData().get(0),new_password);
+                    DBHandler.UpdateStore(response.body().getData().get(0) , mContext);
                     Toast.makeText(mContext, ""+response.body().getError_msg(), Toast.LENGTH_SHORT).show();
-
                 }
                 else {
                     Toast.makeText(mContext, ""+response.body().getError_msg(), Toast.LENGTH_SHORT).show();
@@ -89,7 +87,6 @@ public class EditProfileViewModel extends Observable {
             }
         });
     }
-
     public void sendCode(String mobile){
         final AlertDialog alertDialog = UI_Utility.ShowProgressDialog(mContext, true);
         alertDialog.show();
@@ -115,7 +112,6 @@ public class EditProfileViewModel extends Observable {
             }
         });
     }
-
     private void EditProfileAccepted(User user, String pass){
         SharedPrefManger sharedPrefManger = new SharedPrefManger(mContext);
         sharedPrefManger.setLogin_phone(user.getMobile());

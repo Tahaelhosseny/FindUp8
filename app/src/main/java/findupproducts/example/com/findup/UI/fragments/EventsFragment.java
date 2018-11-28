@@ -25,12 +25,13 @@ import findupproducts.example.com.findup.UI.adapters.RecyclerTouchListener;
 import findupproducts.example.com.findup.databinding.FragmentEventsBinding;
 import findupproducts.example.com.findup.models.Event;
 
+import static findupproducts.example.com.findup.UI.fragments.MainFragment.eventType;
+
 /**
  * A simple {@link Fragment} subclass.
  */
 public class EventsFragment extends Fragment {
 
-    public static String t = "1";
     int type;
     public EventsFragment() {
         // Required empty public constructor
@@ -61,7 +62,11 @@ public class EventsFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        eventsViewModel.InitRecyclerView(binding.eventsMRecyclerView,LinearLayoutManager.HORIZONTAL);
+        if (eventType.equals("MainEvents")) {
+            eventsViewModel.InitRecyclerView(binding.eventsMRecyclerView, LinearLayoutManager.HORIZONTAL);
+        }else {
+            eventsViewModel.InitRecyclerView(binding.eventsMRecyclerView, LinearLayoutManager.VERTICAL);
+        }
     }
 
 

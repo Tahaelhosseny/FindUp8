@@ -51,8 +51,6 @@ public class SearchFragment extends Fragment {
         getChildFragmentManager().beginTransaction().replace(R.id.store_container, new StoreSearchedFragment()).commit();
         getChildFragmentManager().beginTransaction().replace(R.id.event_container, new EventSearchedFragment()).commit();
         getChildFragmentManager().beginTransaction().replace(R.id.product_container, new ProductSearchedFragment()).commit();
-
-
         ImageButton view_fillter = getActivity().findViewById(R.id.search_filter);
         view_fillter.setOnClickListener(new View.OnClickListener() {
             @Override
