@@ -117,7 +117,6 @@ public class IntroActivity extends AppCompatActivity {
 
             @Override
             public void onFail(String error) {
-                Toast.makeText(IntroActivity.this, "Error", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -202,7 +201,6 @@ public class IntroActivity extends AppCompatActivity {
         LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-                Toast.makeText(IntroActivity.this,"facebook:onSuccess",Toast.LENGTH_SHORT).show();
                 handleFacebookAccessToken(loginResult.getAccessToken());
             }
 
@@ -213,7 +211,7 @@ public class IntroActivity extends AppCompatActivity {
 
             @Override
             public void onError(FacebookException error) {
-                Toast.makeText(IntroActivity.this,error.toString(),Toast.LENGTH_SHORT).show();
+                Log.i("Error", error.toString());
                 progressDialog.dismiss();
             }
         });
@@ -235,8 +233,6 @@ public class IntroActivity extends AppCompatActivity {
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithCredential:failure", task.getException());
-                            Toast.makeText(IntroActivity.this, task.getException().getMessage(),
-                                    Toast.LENGTH_SHORT).show();
                         }
 
                         // ...
@@ -283,8 +279,6 @@ public class IntroActivity extends AppCompatActivity {
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithCredential:failure", task.getException());
-                            Toast.makeText(IntroActivity.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
                         }
                         progressDialog.dismiss();
                     }
@@ -292,7 +286,6 @@ public class IntroActivity extends AppCompatActivity {
     }
 
     private void signedIn(FirebaseUser currentUser){
-        Toast.makeText(IntroActivity.this,"signedIn",Toast.LENGTH_SHORT).show();
         startActivity(new Intent(IntroActivity.this, MainActivity.class));
     }
 

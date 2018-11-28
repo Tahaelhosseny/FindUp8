@@ -367,7 +367,7 @@ public class MainActivity extends AppCompatActivity implements LocationView{
 
             @Override
             public void onFailure(Call<TokenResponse> call, Throwable t) {
-                Toast.makeText(MainActivity.this, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
+                t.printStackTrace();
             }
         });
     }

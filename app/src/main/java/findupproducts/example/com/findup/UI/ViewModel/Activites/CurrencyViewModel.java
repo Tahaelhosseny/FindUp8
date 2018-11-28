@@ -44,7 +44,7 @@ public class CurrencyViewModel extends Observable {
 
             @Override
             public void onFailure(Call<CurrencyResponse> call, Throwable t) {
-                Toast.makeText(mContext, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
+                t.printStackTrace();
             }
         });
     }

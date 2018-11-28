@@ -48,7 +48,7 @@ public class AddCommentStoreViewModel extends Observable {
             @Override
             public void onFailure(Call<AddCommentStoreResponse> call, Throwable t) {
                 alertDialog.dismiss();
-                Toast.makeText(mContext, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
+                t.printStackTrace();
             }
         });
 
@@ -75,7 +75,7 @@ public class AddCommentStoreViewModel extends Observable {
             @Override
             public void onFailure(Call<AddCommentProductResponse> call, Throwable t) {
                 alertDialog.dismiss();
-                Toast.makeText(mContext, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
+                t.printStackTrace();
             }
         });
     }

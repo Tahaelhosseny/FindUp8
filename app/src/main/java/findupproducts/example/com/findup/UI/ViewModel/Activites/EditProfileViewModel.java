@@ -55,7 +55,7 @@ public class EditProfileViewModel extends Observable {
             @Override
             public void onFailure(Call<EditProfileResponse> call, Throwable t) {
                 alertDialog.dismiss();
-                Toast.makeText(mContext,""+t.getMessage(),Toast.LENGTH_LONG).show();
+                t.printStackTrace();
                 Log.e("url",call.request().url().toString());
             }
         });
@@ -84,7 +84,7 @@ public class EditProfileViewModel extends Observable {
             @Override
             public void onFailure(Call<StoreEditResponse> call, Throwable t) {
                 alertDialog.dismiss();
-                Toast.makeText(mContext,""+t.getMessage(),Toast.LENGTH_LONG).show();
+                t.printStackTrace();
                 Log.e("url",call.request().url().toString());
             }
         });
@@ -111,7 +111,7 @@ public class EditProfileViewModel extends Observable {
             @Override
             public void onFailure(Call<VerifyCodeResponse> call, Throwable t) {
                 alertDialog.dismiss();
-                Toast.makeText(mContext, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
+                t.printStackTrace();
             }
         });
     }

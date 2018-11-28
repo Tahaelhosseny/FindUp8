@@ -332,9 +332,6 @@ public class StoreInfoViewModel extends Observable {
                 @Override
                 public void onResponse(Call<RateResponse> call, Response<RateResponse> response) {
                     if(response.body().getSuccess() == 1){
-                        Toast.makeText(mContext, "Store_id : " + store_id, Toast.LENGTH_SHORT).show();
-                        Toast.makeText(mContext, "Account ID : "+SharedPrefManger.getUser_ID(), Toast.LENGTH_SHORT).show();
-                        Toast.makeText(mContext, "Rate : "+rate, Toast.LENGTH_SHORT).show();
                         Toast.makeText(mContext, "Rate Successful", Toast.LENGTH_SHORT).show();
                     }else{
                         Toast.makeText(mContext, "Failed To Rate", Toast.LENGTH_SHORT).show();
@@ -343,7 +340,7 @@ public class StoreInfoViewModel extends Observable {
 
                 @Override
                 public void onFailure(Call<RateResponse> call, Throwable t) {
-                    Toast.makeText(mContext, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
+                    t.printStackTrace();
                 }
             });
         }

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -36,7 +37,9 @@ import static findupproducts.example.com.findup.UI.activities.MainActivity.searc
 
 
 public class SortFilterViewModel extends Observable {
+
     private Context mContext;
+
     public SortFilterViewModel(Context mContext){
         this.mContext = mContext;
     }
@@ -70,10 +73,11 @@ public class SortFilterViewModel extends Observable {
             }
         });
     }
+
     public void getFilteredData(){
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
-        Call<SearchStoreResponse> getFiltered = apiService.getFilteredStores(SharedPrefManger.getUser_ID(),
-                filterData.getSearch_text(), filterData.getFilter_price()
+        Call<SearchStoreResponse> getFiltered = apiService.getFilteredStores(SharedPrefManger.getUser_ID()
+                ,filterData.getSearch_text(), filterData.getFilter_price()
                 ,filterData.getFilter_rate(),filterData.getFilter_opennow(),filterData.getFilter_distance()
                 ,filterData.getSearch_from(), String.valueOf(SharedPrefManger.getCurrentLocation().getLocationModel().getLongitude()),
                 String.valueOf(SharedPrefManger.getCurrentLocation().getLocationModel().getLatitude()),filterData.getFilter_by(),filterData.getFilter_byid());
@@ -85,16 +89,14 @@ public class SortFilterViewModel extends Observable {
                         List<Store> stores = response.body().getData().get(0).getStores();
                         List<Event> events = response.body().getData().get(0).getEvents();
                         if (events.size() == 0) {
-                            Toast.makeText(mContext, "There is no data match this search from events", Toast.LENGTH_SHORT).show();
+                            Log.i("MyData","There is no data match this search from events");
                         } else {
                             filteredMapDataEvent.clear();
-                            Toast.makeText(mContext, "We found " + events.size() + " event that match your search", Toast.LENGTH_SHORT).show();
                         }
                         if (stores.size() == 0) {
-                            Toast.makeText(mContext, "There is no data match this search from stores", Toast.LENGTH_SHORT).show();
+                            Log.i("MyData","There is no data match this search from stores");
                         } else {
                             filteredMapDataStore.clear();
-                            Toast.makeText(mContext, "We found " + stores.size() + " store that match your search", Toast.LENGTH_SHORT).show();
                         }
 
                         for (int i = 0; i < stores.size(); i++) {
@@ -108,22 +110,19 @@ public class SortFilterViewModel extends Observable {
                         List<Event> events = response.body().getData().get(0).getEvents();
                         List<Product> products = response.body().getData().get(0).getProducts();
                         if(products.size() == 0){
-                            Toast.makeText(mContext, "There is no data match this search from products", Toast.LENGTH_SHORT).show();
+                            Log.i("MyData","There is no data match this search from products");
                         }else {
                             searchedProducts.clear();
-                            Toast.makeText(mContext, "We found " + products.size() + " products that match your search", Toast.LENGTH_SHORT).show();
                         }
                         if (events.size() == 0) {
-                            Toast.makeText(mContext, "There is no data match this search from events", Toast.LENGTH_SHORT).show();
+                            Log.i("MyData","There is no data match this search from events");
                         } else {
                             searchedEvents.clear();
-                            Toast.makeText(mContext, "We found " + events.size() + " event that match your search", Toast.LENGTH_SHORT).show();
                         }
                         if (stores.size() == 0) {
-                            Toast.makeText(mContext, "There is no data match this search from stores", Toast.LENGTH_SHORT).show();
+                            Log.i("MyData","There is no data match this search from stores");
                         } else {
                             searchedStore.clear();
-                            Toast.makeText(mContext, "We found " + stores.size() + " store that match your search", Toast.LENGTH_SHORT).show();
                         }
                         for (int i = 0; i < stores.size(); i++) {
                             searchedStore.add(stores.get(i));
@@ -138,9 +137,10 @@ public class SortFilterViewModel extends Observable {
 
                 }
             }
+
             @Override
             public void onFailure(Call<SearchStoreResponse> call, Throwable t) {
-                Toast.makeText(mContext, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
+                t.printStackTrace();
             }
         });
     }

@@ -52,7 +52,6 @@ public class RegisterViewModel extends Observable {
             }
             @Override
             public void onFailure(Call<RegisterResponse> call, Throwable t) {
-                Toast.makeText(mContext,"invalid data",Toast.LENGTH_SHORT).show();
                 Log.e("url",call.request().url().toString());
                 t.printStackTrace();
                 alertDialog.dismiss();

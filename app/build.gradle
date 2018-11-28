@@ -106,7 +106,6 @@ dependencies {
 
     //Sdp lib
     implementation 'com.intuit.sdp:sdp-android:1.0.6'
-
     implementation 'de.hdodenhof:circleimageview:2.2.0'
 
     //Firebase Cloud Messaging
@@ -114,7 +113,6 @@ dependencies {
 
     implementation 'com.github.bumptech.glide:glide:4.0.0'
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.1.17'
-
 }
 
 apply plugin: 'com.google.gms.google-services'

@@ -41,7 +41,7 @@ public class ForgetPasswordViewModel extends Observable {
 
             @Override
             public void onFailure(Call<ResetPasswordResponse> call, Throwable t) {
-                Toast.makeText(mContext, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
+                t.printStackTrace();
             }
         });
 

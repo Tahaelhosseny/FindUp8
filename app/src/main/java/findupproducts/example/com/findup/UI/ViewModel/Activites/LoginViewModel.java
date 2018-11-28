@@ -66,7 +66,7 @@ public class LoginViewModel extends Observable {
 
             @Override
             public void onFailure(Call<LoginResponse> call, Throwable t) {
-                Toast.makeText(mContext,"invalid data",Toast.LENGTH_SHORT).show();
+                t.printStackTrace();
                 Log.e("url",call.request().url().toString());
                 alertDialog.dismiss();
             }
