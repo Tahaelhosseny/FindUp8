@@ -35,6 +35,11 @@ public class RadioButtonAdapter extends RecyclerView.Adapter<RadioButtonAdapter.
         this.currencyList = currencyList;
     }
 
+    public void setFilterdCurrency(List<Currency> currency){
+        this.currencyList = currency;
+        notifyDataSetChanged();
+    }
+
     @NonNull
     @Override
     public RadioButtonAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -42,7 +47,6 @@ public class RadioButtonAdapter extends RecyclerView.Adapter<RadioButtonAdapter.
                 .inflate(R.layout.single_radio_button, parent, false);
         return new RadioButtonAdapter.ViewHolder(itemView);
     }
-
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Currency currency = currencyList.get(position);
@@ -80,7 +84,6 @@ public class RadioButtonAdapter extends RecyclerView.Adapter<RadioButtonAdapter.
                     lastChecked = cb;
                     lastCheckedPos = clickedPos;
                     SharedPrefManger.setPermentCurrency(cb.getId());
-                    Toast.makeText(context, "Last Checked : "+SharedPrefManger.getPermantCurrency(), Toast.LENGTH_SHORT).show();
                 }
                 else
                     lastChecked = null;
@@ -89,16 +92,12 @@ public class RadioButtonAdapter extends RecyclerView.Adapter<RadioButtonAdapter.
             }
         });
     }
-
     @Override
     public int getItemCount() {
         return currencyList.size();
     }
-
     public class ViewHolder extends RecyclerView.ViewHolder{
-
         RadioButton radioButton;
-
         public ViewHolder(View view) {
             super(view);
             radioButton = view.findViewById(R.id.radio_adapter);

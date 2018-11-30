@@ -6,15 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".UI.activities.StoreSettingsActivity">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar_storeSettings"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"
-        android:background="@color/colorWhite"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+
 
         <Button
             android:id="@+id/btn_storeSettingsBack"
@@ -27,11 +19,10 @@
             android:text="@string/settings"
             android:textAllCaps="false"
             android:textColor="@color/colorBlack"
-            android:textSize="@dimen/sp24"
+            android:textSize="26sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-    </android.support.v7.widget.Toolbar>
 
     <LinearLayout
         android:id="@+id/linearStoreSettings"
@@ -39,7 +30,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="@dimen/activity_vertical_margin"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_storeSettings"
+        app:layout_constraintTop_toBottomOf="@+id/btn_storeSettingsBack"
         app:layout_constraintStart_toStartOf="parent">
 
         <Button
@@ -51,7 +42,7 @@
             android:text="@string/edit_profile"
             android:textAlignment="viewStart"
             android:textAllCaps="false"
-            android:textSize="@dimen/sp24"
+            android:textSize="26sp"
             android:layout_marginBottom="2dp"
             android:textStyle="bold"/>
 
@@ -64,22 +55,10 @@
             android:text="@string/notifications"
             android:textAlignment="viewStart"
             android:textAllCaps="false"
-            android:textSize="@dimen/sp24"
+            android:textSize="26sp"
             android:layout_marginBottom="2dp"
             android:textStyle="bold"/>
 
-        <Button
-            android:id="@+id/btn_storeLanguage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_button_rounded_null"
-            android:fontFamily="@font/sfcompactdisplay_semibold"
-            android:text="@string/language"
-            android:textAlignment="viewStart"
-            android:textAllCaps="false"
-            android:textSize="@dimen/sp24"
-            android:layout_marginBottom="2dp"
-            android:textStyle="bold"/>
 
         <Button
             android:id="@+id/btn_storeCurrency"
@@ -90,7 +69,7 @@
             android:text="Currency"
             android:textAlignment="viewStart"
             android:textAllCaps="false"
-            android:textSize="@dimen/sp24"
+            android:textSize="26sp"
             android:layout_marginBottom="2dp"
             android:textStyle="bold"/>
 
@@ -103,7 +82,7 @@
             android:text="@string/invite_friend"
             android:textAlignment="viewStart"
             android:textAllCaps="false"
-            android:textSize="@dimen/sp24"
+            android:textSize="26sp"
             android:layout_marginBottom="2dp"
             android:textStyle="bold"/>
 
@@ -116,7 +95,7 @@
             android:text="@string/contact_with_us"
             android:textAlignment="viewStart"
             android:textAllCaps="false"
-            android:textSize="@dimen/sp24"
+            android:textSize="26sp"
             android:layout_marginBottom="2dp"
             android:textStyle="bold"/>
 
@@ -129,36 +108,24 @@
             android:text="@string/terms_of_services"
             android:textAlignment="viewStart"
             android:textAllCaps="false"
-            android:textSize="@dimen/sp24"
+            android:textSize="26sp"
             android:layout_marginBottom="2dp"
             android:textStyle="bold"/>
     </LinearLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/btn_logout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/material_elevation_dialog"
-        android:textSize="@dimen/sp24"
+        android:layout_margin="@dimen/activity_vertical_margin"
+        android:background="@drawable/bg_button_rounded_null"
+        android:drawableEnd="@drawable/forward"
         android:fontFamily="@font/sfcompactdisplay_semibold"
         android:text="@string/logout"
-        android:textColor="@color/colorBlack"
+        android:textAlignment="viewStart"
         android:textAllCaps="false"
-        android:layout_marginBottom="2dp"
-        android:textStyle="bold"
+        android:textSize="26sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearStoreSettings" />
-
-    <ImageButton
-        android:id="@+id/btn_logout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/ic_forward"
-        android:background="@null"
-        android:layout_margin="@dimen/activity_vertical_margin"
-        android:padding="@dimen/activity_vertical_margin"
-        app:layout_constraintTop_toBottomOf="@+id/linearStoreSettings"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:contentDescription="@string/logout" />
 </android.support.constraint.ConstraintLayout>

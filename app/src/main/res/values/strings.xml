@@ -181,4 +181,9 @@
     <string name="google_maps_keyget" templateMergeStrategy="preserve" translatable="false">AIzaSyBLjARROzvEGohPOzbnFGiQJthhOuJz6WQ</string>
     <string name="app_slogan">Search, Find, Go</string>
 
+
+    <string name="no_stores_search">No Stores Found</string>
+    <string name="no_events_search">No Events Found</string>
+
+
 </resources>

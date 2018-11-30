@@ -13,7 +13,7 @@ import findupproducts.example.com.findup.R;
 
 public class SettingsActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button btn_editProfile, btn_notifications, btn_currency, btn_measureDistance, btn_language,
+    Button btn_editProfile, btn_notifications,btn_measureDistance,
             btn_inviteFriend, btn_contactUs, btn_terms, btn_settingsBack, btn_logout;
 
     @Override
@@ -33,8 +33,7 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
         btn_measureDistance = findViewById(R.id.btn_measureDistance);
         btn_measureDistance.setOnClickListener(this);
 
-        btn_language = findViewById(R.id.btn_language);
-        btn_language.setOnClickListener(this);
+
 
         btn_inviteFriend = findViewById(R.id.btn_inviteFriend);
         btn_inviteFriend.setOnClickListener(this);
@@ -67,9 +66,6 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
                 startActivity(new Intent(SettingsActivity.this, MeasureDistanceActivity.class));
                 break;
 
-            case R.id.btn_language:
-                startActivity(new Intent(SettingsActivity.this, LanguagesActivity.class));
-                break;
 
             case R.id.btn_inviteFriend:
                 Toast.makeText(SettingsActivity.this, "invite", Toast.LENGTH_SHORT).show();
@@ -90,7 +86,7 @@ public class SettingsActivity extends AppCompatActivity implements View.OnClickL
 
             case R.id.btn_logout:
                 LogoutAccepted();
-                startActivity(new Intent(SettingsActivity.this, SplashScreenActivity.class));
+                startActivity(new Intent(SettingsActivity.this, IntroActivity.class));
                 finish();
                 break;
         }

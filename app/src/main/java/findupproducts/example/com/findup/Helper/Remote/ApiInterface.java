@@ -141,7 +141,6 @@ public interface ApiInterface {
     Call<AddCommentStoreResponse> addNewStoreComment(@Field("account_id") int account_id , @Field("store_id") int store_id
             , @Field("comment") String comment);
 
-
     @POST(ApiClient.PATH_URL+"user_actions?tag=add_product_comment&HashSecure="+HASH)
     @FormUrlEncoded
     Call<AddCommentProductResponse> addNewProductComment(@Field("account_id") int account_id , @Field("product_id") int product_id
@@ -210,7 +209,8 @@ public interface ApiInterface {
             @Part MultipartBody.Part store_banner,
             @Part MultipartBody.Part store_otherlang,
             @Part MultipartBody.Part store_tags,
-            @Part MultipartBody.Part user_id);
+            @Part MultipartBody.Part user_id,
+            @Part MultipartBody.Part email);
 
     @Multipart
     @POST(ApiClient.PATH_URL+"stores?tag=create_event&HashSecure="+HASH)
@@ -243,7 +243,10 @@ public interface ApiInterface {
             @Part MultipartBody.Part product_name,
             @Part MultipartBody.Part description,
             @Part MultipartBody.Part product_price,
-            @Part MultipartBody.Part product_img);
+            @Part MultipartBody.Part product_img,
+            @Part MultipartBody.Part product_img1,
+            @Part MultipartBody.Part product_img2,
+            @Part MultipartBody.Part product_img3);
 
     @POST(ApiClient.PATH_URL+"stores?tag=change_store_address&HashSecure="+HASH)
     @FormUrlEncoded
@@ -253,7 +256,8 @@ public interface ApiInterface {
             @Field("latitude") double latitude,
             @Field("days") String days,
             @Field("from_time") String from_time,
-            @Field("to_time") String to_time
+            @Field("to_time") String to_time,
+            @Field("address") String address
     );
     @POST(ApiClient.PATH_URL+"stores?tag=edit_store_profile&HashSecure="+HASH)
     @FormUrlEncoded

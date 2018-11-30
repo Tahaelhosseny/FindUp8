@@ -1,5 +1,10 @@
 package findupproducts.example.com.findup.models;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.StringTokenizer;
+
 public class GetChat {
     private int id;
     private int sender_id;
@@ -9,6 +14,11 @@ public class GetChat {
     private String msg_title;
     private String msg_body;
     private String msg_date;
+
+    public GetChat() {
+    }
+
+
 
     public int getId() {
         return id;
@@ -67,6 +77,20 @@ public class GetChat {
     }
 
     public String getMsg_date() {
+
+        StringTokenizer tk = new StringTokenizer(this.msg_date);
+        String date = tk.nextToken();
+        String time = tk.nextToken();
+
+        SimpleDateFormat sdf = new SimpleDateFormat("hh:mm:ss");
+        SimpleDateFormat sdfs = new SimpleDateFormat("hh:mm a");
+        Date dt;
+        try {
+            dt = sdf.parse(time);
+            msg_date = sdfs.format(dt);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         return msg_date;
     }
 

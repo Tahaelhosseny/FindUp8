@@ -93,18 +93,18 @@
 
             <EditText
                 android:id="@+id/chatboxEdit"
-                android:layout_width="0dp"
+                android:layout_width="311dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center"
                 android:layout_margin="5dp"
                 android:layout_marginEnd="16dp"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="8dp"
                 android:background="@drawable/bg_chat_edit"
                 android:hint="Say Something..."
                 android:maxLines="6"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/sendBtn"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/addBtn"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Button
@@ -112,24 +112,14 @@
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:layout_margin="5dp"
-                android:clickable="true"
+                android:layout_marginEnd="16dp"
                 android:background="@drawable/send_msg"
-                android:gravity="center"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/emojiBtn"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <Button
-                android:id="@+id/emojiBtn"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:layout_margin="5dp"
-                android:background="@drawable/fav_3x"
                 android:clickable="true"
                 android:gravity="center"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
 
         </android.support.constraint.ConstraintLayout>
 

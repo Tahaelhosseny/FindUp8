@@ -27,6 +27,7 @@ import io.github.luizgrp.sectionedrecyclerviewadapter.SectionedRecyclerViewAdapt
 import io.github.luizgrp.sectionedrecyclerviewadapter.StatelessSection;
 import io.reactivex.Flowable;
 
+
 public class Category2Fragment extends Fragment {
 
     static List<ExpandableSection> expandableSections;
@@ -54,14 +55,6 @@ public class Category2Fragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
-        android.support.v7.widget.Toolbar toolbar = getActivity().findViewById(R.id.toolbar_top);
-        ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(false);
-        toolbar.setBackgroundColor(getResources().getColor(R.color.colorBlack));
-        toolbar.setTitle("");
-//        toolbar.setTitleTextColor(getResources().getColor(R.color.colorWhite));
         FrameLayout frameLayout = getActivity().findViewById(R.id.navigation_bottom_container);
         frameLayout.setBackgroundColor(getResources().getColor(R.color.colorBlack));
         expandableSections = new ArrayList<>();
@@ -106,6 +99,11 @@ public class Category2Fragment extends Fragment {
             public void onAnimationUpdate(ValueAnimator valueAnimator) {
                 float animatedValue = (float) valueAnimator.getAnimatedValue();
                 textView.setTextSize(animatedValue);
+                if (PendSize == 19) {
+                    textView.setTextColor(getResources().getColor(R.color.colorWhiteGrey));
+                }else{
+                    textView.setTextColor(getResources().getColor(R.color.colorWhite));
+                }
             }
         });
         animator.start();
@@ -168,7 +166,7 @@ public class Category2Fragment extends Fragment {
             itemHolder.rootView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                        startActivity(new Intent(getActivity(), CategeoryStoresAcivity.class).putExtra("id" , id));
+                    startActivity(new Intent(getActivity(), CategeoryStoresAcivity.class).putExtra("id" , id));
                 }
             });
             //changeTextSize(itemHolder.contentText,itemHolder.contentText.getTextSize(),((ItemViewHolder) holder).defalut_text_size);

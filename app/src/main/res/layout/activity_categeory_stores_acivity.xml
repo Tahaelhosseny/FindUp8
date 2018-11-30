@@ -20,12 +20,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     tools:context=".UI.activities.CategeoryStoresAcivity">
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar_cat_store"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="18dp"
-        android:background="@color/colorWhite">
+
         <Button
             android:id="@+id/btn_CatStoreBack"
             android:layout_width="wrap_content"
@@ -41,10 +36,9 @@
             android:text="Category Stores"
             android:textAllCaps="false"
             android:textColor="@color/colorBlack"
-            android:textSize="24sp"
+            android:textSize="24dp"
             android:textStyle="bold"
             />
-    </android.support.v7.widget.Toolbar>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/store_cat_recycler"

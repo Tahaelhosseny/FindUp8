@@ -13,13 +13,6 @@
         android:scaleType="centerCrop"
         android:alpha=".9"/>
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar_truckCategory"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
         <Button
             android:id="@+id/btn_truckCategoryBack"
             android:layout_width="wrap_content"
@@ -30,16 +23,15 @@
             android:text="Choose Category"
             android:textAllCaps="false"
             android:textColor="@color/colorWhite"
-            android:textSize="@dimen/sp24"
+            android:textSize="26dp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-    </android.support.v7.widget.Toolbar>
     <FrameLayout
         android:id="@+id/cats_fragment_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="?attr/actionBarSize"
+        android:layout_marginTop="90dp"
         app:layout_constraintBottom_toTopOf="@+id/btn_truckNext"/>
     <Button
         android:id="@+id/btn_truckNext"

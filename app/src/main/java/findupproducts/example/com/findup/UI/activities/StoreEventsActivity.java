@@ -20,6 +20,8 @@ import findupproducts.example.com.findup.UI.fragments.EventsFragment;
 import findupproducts.example.com.findup.UI.fragments.EventsFragments.PlaceholderFragment;
 import findupproducts.example.com.findup.models.TabEntity;
 
+import static findupproducts.example.com.findup.UI.fragments.MainFragment.eventType;
+
 public class StoreEventsActivity extends AppCompatActivity {
 
     CommonTabLayout tabLayout;
@@ -49,6 +51,7 @@ public class StoreEventsActivity extends AppCompatActivity {
         eventsFragment.setArguments(bundle);
 
         fragmentList.add(new PlaceholderFragment());
+        eventType = "not";
         fragmentList.add(eventsFragment);
         tabLayout = findViewById(R.id.storeTabs);
         tabLayout.setTabData(mTabEntities, this, R.id.fl_change, fragmentList);

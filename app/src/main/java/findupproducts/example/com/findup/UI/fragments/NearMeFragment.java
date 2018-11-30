@@ -5,28 +5,19 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import findupproducts.example.com.findup.R;
 import findupproducts.example.com.findup.UI.Presenter.Fragments.NearMePresenter;
 import findupproducts.example.com.findup.UI.ViewModel.Fragments.NearMeViewModel;
-import findupproducts.example.com.findup.UI.adapters.NearMeAdapter;
 import findupproducts.example.com.findup.databinding.FragmentNearMeBinding;
-import findupproducts.example.com.findup.models.Store;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class NearMeFragment extends Fragment {
-
 
     public NearMeFragment() {
         // Required empty public constructor
@@ -41,7 +32,7 @@ public class NearMeFragment extends Fragment {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_near_me, container, false);
         View view = binding.getRoot();
         //here data must be an instance of the class MarsDataProvider
-        nearMeViewModel = new NearMeViewModel(view.getContext());
+        nearMeViewModel = new NearMeViewModel(view.getContext(), binding.noStoresFound);
         binding.setNearMe(nearMeViewModel);
         return view;
     }
@@ -49,14 +40,22 @@ public class NearMeFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        nearMeViewModel.InitRecyclerView(binding.nearMeRecyclerView);
+        Bundle bundle = getArguments();
+
+        nearMeViewModel.InitRecyclerView(bundle, binding.nearMeRecyclerView);
 
         binding.setPresenter(new NearMePresenter() {
             @Override
             public void InitRecyclerView() {
-                nearMeViewModel.InitRecyclerView(binding.nearMeRecyclerView);
+                nearMeViewModel.InitRecyclerView(bundle, binding.nearMeRecyclerView);
             }
         });
     }
 
+    @Override
+    public void setArguments(@Nullable Bundle args) {
+        super.setArguments(args);
+        if (args.containsKey("search_text"))
+            nearMeViewModel.FilterAdapter(args.getString("search_text"));
+    }
 }

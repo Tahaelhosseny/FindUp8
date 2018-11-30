@@ -96,7 +96,7 @@ public class ProductPhotosAdapter extends RecyclerView.Adapter<ProductPhotosAdap
 
         @Override
         public void onClick(View v) {
-            context.startActivity(new Intent(context, PhotosGalleryActivity.class));
+//            context.startActivity(new Intent(context, PhotosGalleryActivity.class));
         }
     }
 }

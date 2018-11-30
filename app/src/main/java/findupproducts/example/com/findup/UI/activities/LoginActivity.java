@@ -43,7 +43,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-
         binding.btnForgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="UI.activities.StoreContactActivity"
-    android:background="@color/colorWhite">
+    tools:context="UI.activities.StoreContactActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar_contact"
@@ -70,12 +69,10 @@
                 android:textColorHighlight="@color/colorWhiteGrey"
                 android:textColorLink="@color/colorWhiteGrey"
                 android:textCursorDrawable="@drawable/color_black"
+                android:textSize="18sp"
                 android:theme="@style/MyEditText"
                 android:background="@drawable/bg_edit"
-                app:layout_constraintTop_toBottomOf="@+id/txt_country"
-                android:fontFamily="@font/sfcompactdisplay_regular"
-                android:padding="@dimen/edit_text_padding"
-                android:textSize="@dimen/sp20"/>
+                app:layout_constraintTop_toBottomOf="@+id/txt_country" />
 
             <TextView
                 android:id="@+id/txt_city"
@@ -101,12 +98,10 @@
                 android:textColorHighlight="@color/colorWhiteGrey"
                 android:textColorLink="@color/colorWhiteGrey"
                 android:textCursorDrawable="@drawable/color_black"
+                android:textSize="18sp"
                 android:theme="@style/MyEditText"
                 android:background="@drawable/bg_edit"
-                app:layout_constraintTop_toBottomOf="@+id/txt_city"
-                android:fontFamily="@font/sfcompactdisplay_regular"
-                android:padding="@dimen/edit_text_padding"
-                android:textSize="@dimen/sp20"/>
+                app:layout_constraintTop_toBottomOf="@+id/txt_city" />
 
             <TextView
                 android:id="@+id/txt_location"
@@ -165,11 +160,26 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="end"
                     android:button="@null"
+                    android:layout_marginBottom="5dp"
                     android:drawableEnd="@drawable/radio_button_selector"
                     android:fontFamily="@font/sfcompactdisplay_medium"
                     android:gravity="start"
                     android:text="@string/show_me_in_my_city"
                     android:tag="@string/show_me_in_my_city"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="16sp" />
+
+                <RadioButton
+                    android:id="@+id/radioShowMeInWorld"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:button="@null"
+                    android:drawableEnd="@drawable/radio_button_selector"
+                    android:fontFamily="@font/sfcompactdisplay_medium"
+                    android:gravity="start"
+                    android:text="show me in the world"
+                    android:tag="show me in the world"
                     android:textColor="@color/colorBlack"
                     android:textSize="16sp" />
             </RadioGroup>
@@ -217,10 +227,10 @@
                 android:textColor="@color/colorBlack"
                 android:textColorHighlight="@color/colorWhiteGrey"
                 android:textColorLink="@color/colorWhiteGrey"
+                android:hint="Enter Email"
+                android:textColorHint="@color/colorWhiteGrey"
                 android:textCursorDrawable="@drawable/color_black"
-                android:fontFamily="@font/sfcompactdisplay_regular"
-                android:padding="@dimen/edit_text_padding"
-                android:textSize="@dimen/sp20"
+                android:textSize="18sp"
                 android:theme="@style/MyEditText"
                 android:background="@drawable/bg_edit"
                 app:layout_constraintTop_toBottomOf="@+id/txt_email" />
@@ -247,9 +257,9 @@
                 android:textColorHighlight="@color/colorWhiteGrey"
                 android:textColorLink="@color/colorWhiteGrey"
                 android:textCursorDrawable="@drawable/color_black"
-                android:fontFamily="@font/sfcompactdisplay_regular"
-                android:padding="@dimen/edit_text_padding"
-                android:textSize="@dimen/sp20"
+                android:textSize="18sp"
+                android:hint="/example.com"
+                android:textColorHint="@color/colorWhiteGrey"
                 android:theme="@style/MyEditText"
                 android:background="@drawable/bg_edit"
                 app:layout_constraintTop_toBottomOf="@+id/txt_website" />
@@ -274,14 +284,14 @@
                 android:drawablePadding="@dimen/activity_vertical_margin"
                 android:drawableStart="@drawable/group_8_2xi"
                 android:inputType="text"
+                android:hint="/eample955"
+                android:textColorHint="@color/colorWhiteGrey"
                 android:shadowColor="@color/colorBlack"
                 android:textColor="@color/colorBlack"
                 android:textColorHighlight="@color/colorWhiteGrey"
                 android:textColorLink="@color/colorWhiteGrey"
                 android:textCursorDrawable="@drawable/color_black"
-                android:fontFamily="@font/sfcompactdisplay_regular"
-                android:padding="@dimen/edit_text_padding"
-                android:textSize="@dimen/sp20"
+                android:textSize="18sp"
                 android:theme="@style/MyEditText"
                 android:background="@drawable/bg_edit"
                 app:layout_constraintTop_toBottomOf="@+id/txt_social" />
@@ -294,14 +304,14 @@
                 android:drawablePadding="@dimen/activity_vertical_margin"
                 android:drawableStart="@drawable/group_9_2xi"
                 android:inputType="text"
+                android:hint="/example599"
+                android:textColorHint="@color/colorWhiteGrey"
                 android:shadowColor="@color/colorBlack"
                 android:textColor="@color/colorBlack"
                 android:textColorHighlight="@color/colorWhiteGrey"
                 android:textColorLink="@color/colorWhiteGrey"
                 android:textCursorDrawable="@drawable/color_black"
-                android:fontFamily="@font/sfcompactdisplay_regular"
-                android:padding="@dimen/edit_text_padding"
-                android:textSize="@dimen/sp20"
+                android:textSize="18sp"
                 android:theme="@style/MyEditText"
                 android:background="@drawable/bg_edit"
                 app:layout_constraintTop_toBottomOf="@+id/editText_instagram" />
@@ -312,6 +322,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:drawablePadding="@dimen/activity_vertical_margin"
+                android:hint="/example599"
+                android:textColorHint="@color/colorWhiteGrey"
                 android:drawableStart="@drawable/group_6_2xi"
                 android:inputType="text"
                 android:shadowColor="@color/colorBlack"
@@ -319,9 +331,7 @@
                 android:textColorHighlight="@color/colorWhiteGrey"
                 android:textColorLink="@color/colorWhiteGrey"
                 android:textCursorDrawable="@drawable/color_black"
-                android:fontFamily="@font/sfcompactdisplay_regular"
-                android:padding="@dimen/edit_text_padding"
-                android:textSize="@dimen/sp20"
+                android:textSize="18sp"
                 android:theme="@style/MyEditText"
                 android:background="@drawable/bg_edit"
                 app:layout_constraintTop_toBottomOf="@+id/editText_twitter" />
@@ -330,7 +340,8 @@
                 android:id="@+id/btn_next"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:layout_marginBottom="32dp"
+                android:layout_marginTop="40dp"
                 android:background="@drawable/bg_button_rounded_accent"
                 android:text="@string/next"
                 android:fontFamily="@font/sfcompactdisplay_semibold"
@@ -348,6 +359,8 @@
                 android:digits="0123456789"
                 android:inputType="phone"
                 android:paddingStart="55dp"
+                android:hint="Enter Phone"
+                android:textColorHint="@color/colorWhiteGrey"
                 android:shadowColor="@color/colorBlack"
                 android:textColor="@color/colorBlack"
                 android:textColorHighlight="@color/colorWhiteGrey"
@@ -379,6 +392,8 @@
                 android:inputType="textPassword"
                 android:shadowColor="@color/colorBlack"
                 android:textColor="@color/colorBlack"
+                android:hint="Enter Password"
+                android:textColorHint="@color/colorWhiteGrey"
                 android:textColorHighlight="@color/colorWhiteGrey"
                 android:textColorLink="@color/colorWhiteGrey"
                 android:textCursorDrawable="@drawable/color_black"

@@ -119,7 +119,7 @@ public class StoreInfoViewModel extends Observable {
 
                             //---------------------------------------------------------------------------------------------
                             if (num == 0){
-                                recyclerView.setVisibility(View.INVISIBLE);
+                                recyclerView.setVisibility(View.GONE);
                             }else {
                                 commentList.clear();
                                 commentList.addAll(val);

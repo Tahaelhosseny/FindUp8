@@ -14,7 +14,6 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-
 import android.view.Menu;
 import android.widget.Toast;
 
@@ -36,14 +35,16 @@ import java.util.TimeZone;
 import findupproducts.example.com.findup.R;
 import findupproducts.example.com.findup.UI.activities.SpecificChatWithStore;
 import findupproducts.example.com.findup.UI.fragments.CategoryFragment;
-import findupproducts.example.com.findup.UI.fragments.StoreChatFragment;
 import findupproducts.example.com.findup.UI.fragments.MainFragment;
 import findupproducts.example.com.findup.UI.fragments.MapFragment;
 import findupproducts.example.com.findup.UI.fragments.ProfileFragment;
 import findupproducts.example.com.findup.UI.fragments.ProfileStoreFragment;
 import findupproducts.example.com.findup.UI.fragments.SearchFragment;
 import findupproducts.example.com.findup.UI.fragments.StoreAccountHomeFragment;
+import findupproducts.example.com.findup.UI.fragments.StoreChatFragment;
 import findupproducts.example.com.findup.models.CurrentLocation;
+import findupproducts.example.com.findup.models.Event;
+import findupproducts.example.com.findup.models.Store;
 
 public class Utility {
 
@@ -205,7 +206,7 @@ public class Utility {
                         // check if all permissions are granted
                         if (report.areAllPermissionsGranted()) {
 
-                            LocationManager mLocationManager = (LocationManager) context.getSystemService(context.LOCATION_SERVICE);
+                            LocationManager mLocationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
 
                             if (ActivityCompat.checkSelfPermission(activity, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(context, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
 
@@ -218,7 +219,7 @@ public class Utility {
                                             if (location != null) {
                                                 SharedPrefManger sharedPrefManger = new SharedPrefManger(activity);
                                                 CurrentLocation currentLocation = new CurrentLocation(location.getLatitude(), location.getLongitude());
-                                                sharedPrefManger.setCurrentLocation(currentLocation);
+                                                SharedPrefManger.setCurrentLocation(currentLocation);
                                             }
                                         }
 
@@ -314,5 +315,28 @@ public class Utility {
         String uri = String.format(Locale.ENGLISH, "geo:%f,%f", latitude, longitude);
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
         mContext.startActivity(intent);
+    }
+
+    public static List<Store> SearchStores(List<Store> storeList, String search_text) {
+        List<Store> quaryList = new ArrayList<>();
+        for (Store store : storeList) {
+            if (store.getStore_name().toLowerCase().startsWith(search_text.toLowerCase())
+                    || store.getStore_about().toLowerCase().startsWith(search_text.toLowerCase())
+                    || store.getStore_desc().toLowerCase().startsWith(search_text.toLowerCase())) {
+                quaryList.add(store);
+            }
+        }
+        return quaryList;
+    }
+
+    public static List<Event> SearchEvents(List<Event> eventList, String search_text) {
+        List<Event> quaryList = new ArrayList<>();
+        for (Event event : eventList) {
+            if (event.getEvent_name().toLowerCase().startsWith(search_text.toLowerCase())
+                    || event.getEvent_desc().toLowerCase().startsWith(search_text.toLowerCase())) {
+                quaryList.add(event);
+            }
+        }
+        return quaryList;
     }
 }

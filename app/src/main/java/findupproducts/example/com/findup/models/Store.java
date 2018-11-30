@@ -11,6 +11,7 @@ import android.support.annotation.NonNull;
 
 import com.google.android.gms.maps.model.LatLng;
 
+import java.io.File;
 import java.util.List;
 
 import findupproducts.example.com.findup.Helper.Location.LocationUtility;
@@ -122,6 +123,10 @@ public class Store {
     private List<StorePhoto> store_images;
     @Ignore
     private List<Comment> store_comments;
+
+//    @Ignore
+//    private List<Store_WorkTime> store_workTimes;
+
     @Ignore
     private List<Product> store_products;
     @Ignore
@@ -129,6 +134,28 @@ public class Store {
 
     @Ignore
     private List<Country> counriesList;
+
+    @Ignore
+    private File logoFile;
+
+    @Ignore
+    private File bannerFile;
+
+    public File getLogoFile() {
+        return logoFile;
+    }
+
+    public void setLogoFile(File logoFile) {
+        this.logoFile = logoFile;
+    }
+
+    public File getBannerFile() {
+        return bannerFile;
+    }
+
+    public void setBannerFile(File bannerFile) {
+        this.bannerFile = bannerFile;
+    }
 
     public List<Country> getCounriesList() {
         return counriesList;
@@ -145,13 +172,7 @@ public class Store {
     public void setWorkDays(String workDays) {
         this.workDays = workDays;
     }
-//@Ignore
-    //private List<Day> store_workdays;
-    //@Ignore
-    //private Store_WorkTime store_worktime;
 
-    //@Ignore
-    //private Store_WorkTime store_worktime;
 
     @Ignore
     public Store(){}
@@ -354,25 +375,6 @@ public class Store {
         this.store_gmail_link = store_gmail_link;
     }
 
-    /*
-
-    public List<Day> getStore_workdays() {
-        return store_workdays;
-    }
-
-    public void setStore_workdays(List<Day> store_workdays) {
-        this.store_workdays = store_workdays;
-    }
-
-    public Store_WorkTime getStore_worktime() {
-        return store_worktime;
-    }
-
-    public void setStore_worktime(Store_WorkTime store_worktime) {
-        this.store_worktime = store_worktime;
-    }
-
-    */
 
     public String getStore_rating() {
         return store_rating;
@@ -429,4 +431,21 @@ public class Store {
     public void setStore_banner_uri(Uri store_banner_uri) {
         this.store_banner_uri = store_banner_uri;
     }
+    @Ignore
+    private List<Store_WorkTime> store_worktime;
+
+    public List<Store_WorkTime> getStore_worktime() {
+        return store_worktime;
+    }
+
+    public void setStore_worktime(List<Store_WorkTime> store_worktime) {
+        this.store_worktime = store_worktime;
+    }
+    //    public List<Store_WorkTime> getStore_workTimes() {
+//        return store_workTimes;
+//    }
+//
+//    public void setStore_workTimes(List<Store_WorkTime> store_workTimes) {
+//        this.store_workTimes = store_workTimes;
+//    }
 }

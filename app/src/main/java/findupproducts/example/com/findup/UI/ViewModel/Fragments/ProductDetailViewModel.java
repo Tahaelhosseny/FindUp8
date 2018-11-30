@@ -66,9 +66,6 @@ public class ProductDetailViewModel extends Observable {
                     ((Activity) mContext).runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-
-
-
                             bindCommentsPhotos(commentPhoto , commentUsersNumTxt , commentUsersTxt , pComments);
                             bindPhotos(productPhotosRecycler);
                             commentUsersNumTxt.setText(""+v.getProduct_comments_count());
@@ -205,7 +202,7 @@ public class ProductDetailViewModel extends Observable {
 
                                     //---------------------------------------------------------------------------------------------
                                     if (num == 0){
-                                        recyclerView.setVisibility(View.INVISIBLE);
+                                        recyclerView.setVisibility(View.GONE);
                                     }else {
                                         commentList.clear();
                                         commentList.addAll(val);

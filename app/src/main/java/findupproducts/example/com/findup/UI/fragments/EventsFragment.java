@@ -1,38 +1,27 @@
 package findupproducts.example.com.findup.UI.fragments;
 
 
-import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import findupproducts.example.com.findup.R;
 import findupproducts.example.com.findup.UI.ViewModel.Fragments.EventsViewModel;
-import findupproducts.example.com.findup.UI.ViewModel.Fragments.NearMeViewModel;
-import findupproducts.example.com.findup.UI.activities.EventDetailsActivity;
-import findupproducts.example.com.findup.UI.adapters.EventsAdapter;
-import findupproducts.example.com.findup.UI.adapters.RecyclerTouchListener;
 import findupproducts.example.com.findup.databinding.FragmentEventsBinding;
-import findupproducts.example.com.findup.models.Event;
+
+import static findupproducts.example.com.findup.UI.fragments.MainFragment.eventType;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class EventsFragment extends Fragment {
 
-
     int type;
-
     public EventsFragment() {
         // Required empty public constructor
     }
@@ -45,7 +34,7 @@ public class EventsFragment extends Fragment {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_events, container, false);//11842 H
         View view = binding.getRoot();
         //here data must be an instance of the class MarsDataProvider
-        eventsViewModel = new EventsViewModel(view.getContext());
+        eventsViewModel = new EventsViewModel(view.getContext(), binding.noEventsFound);
         binding.setEvents(eventsViewModel);
 
         String behavior;
@@ -62,9 +51,18 @@ public class EventsFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        eventsViewModel.InitRecyclerView(binding.eventsRecyclerView,type);
+        if (eventType.equals("MainEvents")) {
+            eventsViewModel.InitRecyclerView(binding.eventsMRecyclerView, LinearLayoutManager.HORIZONTAL);
+        }else {
+            eventsViewModel.InitRecyclerView(binding.eventsMRecyclerView, LinearLayoutManager.VERTICAL);
+        }
     }
 
+    @Override
+    public void setArguments(@Nullable Bundle args) {
+        super.setArguments(args);
+        if (args.containsKey("search_text"))
+            eventsViewModel.FilterAdapter(args.getString("search_text"));
 
-
+    }
 }

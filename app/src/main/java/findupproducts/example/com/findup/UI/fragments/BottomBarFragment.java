@@ -40,11 +40,7 @@ public class BottomBarFragment extends Fragment {
                     UI_Utility.BottomNavigationMenu_icons_change(menu, position);
                     adapter.notifyDataSetChanged();
                     Fragment selectedFragment = new MainFragment();
-//                    ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-//                    ((AppCompatActivity) getActivity()).getSupportActionBar().setDisplayShowHomeEnabled(false);
-//                    ((AppCompatActivity) getActivity()).getSupportActionBar().setTitle("Category");
                     ReplaceFragment(position,v.getContext(),menu);
-                    //getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_toolbar_container, selectedFragment).commit();
                 }
             };
 
@@ -52,41 +48,31 @@ public class BottomBarFragment extends Fragment {
         Fragment selectedFragment;
         switch (position) {
             case 0:
-                ToolbarSwitch(true,mContext);
+//                ToolbarSwitch(true,mContext);
                 selectedFragment = new MainFragment();
                 Utility.replaceFragment(((FragmentActivity)mContext).getSupportFragmentManager(), new MainFragment(), R.id.main_toolbar_container, 0,menu);
-                ((AppCompatActivity) mContext).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-                ((AppCompatActivity) mContext).getSupportActionBar().setDisplayShowHomeEnabled(false);
-                ((AppCompatActivity) mContext).getSupportActionBar().setTitle(mContext.getString(R.string.find_things));
+
                 break;
             case 1:
-                ToolbarSwitch(false,mContext);
+//                ToolbarSwitch(false,mContext);
                 selectedFragment = new MapFragment();
                 Utility.replaceFragment(((FragmentActivity)mContext).getSupportFragmentManager(), new MapFragment(), R.id.main_toolbar_container, 0,menu);
                 break;
             case 2:
-                ToolbarSwitch(true,mContext);
+//                ToolbarSwitch(true,mContext);
                 selectedFragment = new SearchFragment();
                 Utility.replaceFragment(((FragmentActivity)mContext).getSupportFragmentManager(), new SearchFragment(), R.id.main_toolbar_container, 0,menu);
-                ((AppCompatActivity) mContext).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-                ((AppCompatActivity) mContext).getSupportActionBar().setDisplayShowHomeEnabled(false);
-                ((AppCompatActivity) mContext).getSupportActionBar().setTitle(mContext.getString(R.string.find_things));
+
                 break;
             case 3:
-                ToolbarSwitch(true,mContext);
+//                ToolbarSwitch(true,mContext);
                 selectedFragment = new Category2Fragment();
                 Utility.replaceFragment(((FragmentActivity)mContext).getSupportFragmentManager(), new Category2Fragment(), R.id.main_toolbar_container, 0,menu);
-//                ((AppCompatActivity) mContext).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-//                ((AppCompatActivity) mContext).getSupportActionBar().setDisplayShowHomeEnabled(false);
-//                ((AppCompatActivity) mContext).getSupportActionBar().setTitle(mContext.getString(R.string.category));
                 break;
             case 4:
-                ToolbarSwitch(true,mContext);
+//                ToolbarSwitch(true,mContext);
                 selectedFragment = new ProfileFragment();
                 Utility.replaceFragment(((FragmentActivity)mContext).getSupportFragmentManager(), new ProfileFragment(), R.id.main_toolbar_container, 0,menu);
-                ((AppCompatActivity) mContext).getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-                ((AppCompatActivity) mContext).getSupportActionBar().setDisplayShowHomeEnabled(false);
-                ((AppCompatActivity) mContext).getSupportActionBar().setTitle(mContext.getString(R.string.profile));
                 break;
         }
     }
@@ -143,15 +129,15 @@ public class BottomBarFragment extends Fragment {
         recyclerView.smoothScrollToPosition(0);
     }
 
-    public static void ToolbarSwitch(Boolean sw, Context mContext) {
-        Toolbar toolbar = ((Activity) mContext).findViewById(R.id.toolbar_top);
-        if (!sw) {
-            toolbar.setVisibility(View.GONE);
-            ((CoordinatorLayout.LayoutParams) (((Activity) mContext).findViewById(R.id.main_toolbar_container)).getLayoutParams()).topMargin = 0;
-        } else {
-            TypedValue tv = new TypedValue();
-            toolbar.setVisibility(View.VISIBLE);
-            ((CoordinatorLayout.LayoutParams) (((Activity) mContext).findViewById(R.id.main_toolbar_container)).getLayoutParams()).topMargin = (int) actionBarSize;
-        }
-    }
+//    public static void ToolbarSwitch(Boolean sw, Context mContext) {
+//        Toolbar toolbar = ((Activity) mContext).findViewById(R.id.toolbar_top);
+//        if (!sw) {
+////            toolbar.setVisibility(View.GONE);
+//            ((CoordinatorLayout.LayoutParams) (((Activity) mContext).findViewById(R.id.main_toolbar_container)).getLayoutParams()).topMargin = 0;
+//        } else {
+//            TypedValue tv = new TypedValue();
+////            toolbar.setVisibility(View.VISIBLE);
+//            ((CoordinatorLayout.LayoutParams) (((Activity) mContext).findViewById(R.id.main_toolbar_container)).getLayoutParams()).topMargin = (int) actionBarSize;
+//        }
+//    }
 }

@@ -10,13 +10,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/linearLayout"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:nestedScrollingEnabled="true"
     android:scrollbars="vertical"
     android:scrollbarSize="@dimen/material_baseline_grid_3.5x"
     android:scrollbarStyle="insideOverlay"
     tools:context=".UI.fragments.MainFragment">
 
+
+    <TextView
+        android:id="@+id/main_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:text="Find New Things"
+        android:textColor="@color/colorBlack"
+        android:textSize="26sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_editor_absoluteX="13dp"
+        />
 
     <include
         android:id="@+id/search_edit_text_with_filter"
@@ -25,10 +39,10 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="25dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/main_text" />
 
 
     <FrameLayout
@@ -58,10 +72,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/catsContainer" />
 
+
     <FrameLayout
         android:id="@+id/nearMeContainer"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:minHeight="130dp"
         android:layout_marginEnd="10dp"
         android:layout_marginRight="10dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -70,9 +86,11 @@
 
     </FrameLayout>
 
+
     <FrameLayout
         android:id="@+id/eventsContainer"
         android:layout_width="0dp"
+        android:minHeight="130dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:fadeScrollbars="false"

@@ -5,18 +5,15 @@ import android.content.Context;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Observable;
 
-import io.reactivex.Flowable;
 import findupproducts.example.com.findup.Helper.Database.DBHandler;
 import findupproducts.example.com.findup.Helper.Database.Interfaces.Category.Category;
-import findupproducts.example.com.findup.R;
 import findupproducts.example.com.findup.UI.adapters.MainCategoriesAdapter;
-import findupproducts.example.com.findup.UI.adapters.RecyclerTouchListener;
+import io.reactivex.Flowable;
 
 public class MainCatsViewModel extends Observable {
     Context mContext;

@@ -28,9 +28,9 @@ public class MainCategoriesAdapter extends RecyclerView.Adapter<MainCategoriesAd
     private Context context;
     public MainCategoriesAdapter(Context context, List<Category> categoryList) {
         this.context = context;
-        if (categoryList.size() > 4)
-            this.categoryList = categoryList.subList(0, 4);
-        else
+//        if (categoryList.size() > 4)
+//            this.categoryList = categoryList.subList(0, 4);
+//        else
             this.categoryList = categoryList;
     }
     public void setCategoryList(List<Category> categoryList) {
@@ -50,12 +50,13 @@ public class MainCategoriesAdapter extends RecyclerView.Adapter<MainCategoriesAd
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Category category = categoryList.get(position);
         holder.cat_bg.setCardBackgroundColor(UI_Utility.getCategoryBackgroundIDSArray(context)[position % 4]);
-        if (position == 3)
-            holder.catNameText.setText(context.getResources().getString(R.string.more));
-        else
+//        if (position == 3)
+//            holder.catNameText.setText(context.getResources().getString(R.string.more));
+//        else
             holder.catNameText.setText(category.getCat_name());
 
-        holder.category_item_container.setMinimumWidth(getScreenWidth() / 4);
+
+//        holder.category_item_container.setMinimumWidth(getScreenWidth() / 8);
         holder.cat_bg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

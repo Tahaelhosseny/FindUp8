@@ -131,16 +131,16 @@ public class LoginViewModel extends Observable {
         SharedPrefManger.setLoginType("user");
     }
     private void LoginStoreAccepted(User user,String pass){
-        SharedPrefManger sharedPrefManger = new SharedPrefManger(mContext);
-        sharedPrefManger.setIsLoggedIn(true);
-        sharedPrefManger.setLogin_phone(user.getStore_mobile());
-        sharedPrefManger.setLogin_password(pass);
-        sharedPrefManger.setStoreID(user.getId());
-        sharedPrefManger.setIsLoggedInAsCustomer(false);
-        sharedPrefManger.setStore_banner(user.getStore_banner());
-        sharedPrefManger.setStore_logo(user.getStore_logo());
-        sharedPrefManger.setStore_namee(user.getStore_name());
-        sharedPrefManger.setLoginType("store");
+        SharedPrefManger.setIsLoggedIn(true);
+        SharedPrefManger.setLogin_phone(user.getMobile());
+        SharedPrefManger.setLogin_password(pass);
+        SharedPrefManger.setStoreID(user.getId());
+        SharedPrefManger.setIsLoggedInAsCustomer(false);
+        SharedPrefManger.setStore_banner(user.getImage());
+        SharedPrefManger.setStore_logo(user.getStore_logo());
+        SharedPrefManger.setStore_namee(user.getName());
+        SharedPrefManger.setLoginType("store");
+        SharedPrefManger.setStoreLocation_type(user.getLocation_type());
     }
     private void saveStoreSettingSuccess(StoreSetting storeSetting){
         SharedPrefManger.setChatNotiFlagStore(storeSetting.getChat_noti_flag());

@@ -25,7 +25,10 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 
 import java.io.File;
+import java.io.IOException;
 
+import findupproducts.example.com.findup.Helper.Database.DBHandler;
+import findupproducts.example.com.findup.Helper.FilePath;
 import findupproducts.example.com.findup.Helper.Remote.ApiClient;
 import findupproducts.example.com.findup.Helper.Remote.ApiInterface;
 import findupproducts.example.com.findup.Helper.Remote.ResponseModel.CreateProductResponse;
@@ -33,6 +36,7 @@ import findupproducts.example.com.findup.Helper.Remote.ResponseModel.DeleteStore
 import findupproducts.example.com.findup.Helper.SharedPrefManger;
 import findupproducts.example.com.findup.R;
 import findupproducts.example.com.findup.models.AddProduct;
+import findupproducts.example.com.findup.models.Product;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -41,41 +45,47 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class NewProductActivity extends AppCompatActivity {
-
     EditText editText_productName, editText_productDescription,  editText_product_price;
     Button btn_addProductDone, btn_addProductDelete;
-    Uri selectedProduct;
-    ImageButton pic_product;
+    Uri selectedProduct,selectedProduct2,selectedProduct3,selectedProduct4;
+    ImageButton pic_product,pic_product2,pic_product3,pic_product4;
     final int appVersion = Build.VERSION.SDK_INT;
     int pro_pos = -1;
     int pro_id = -1;
     ApiInterface apiService;
     SharedPrefManger sharedPrefManger;
-
+    boolean isCraft = false;
+    String path = "",path1 = "",path2 = "",path3 = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_product);
         sharedPrefManger = new SharedPrefManger(this);
-
         btn_addProductDone = findViewById(R.id.btn_addProductDone);
         btn_addProductDelete = findViewById(R.id.btn_addProductDelete);
         editText_productName = findViewById(R.id.editText_productName);
         editText_productDescription = findViewById(R.id.editText_productDescription);
         editText_product_price = findViewById(R.id.editText_product_price);
         pic_product = findViewById(R.id.pic_product);
-
+        pic_product2 = findViewById(R.id.pic_product2);
+        pic_product3 = findViewById(R.id.pic_product3);
+        pic_product4 = findViewById(R.id.pic_product4);
         if (appVersion > Build.VERSION_CODES.LOLLIPOP_MR1) {
             if (!checkIfAlreadyhavePermission()) {
                 ActivityCompat.requestPermissions(NewProductActivity.this, new String[]{android.Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
             }
         }
-
         if (getIntent() != null){
             pro_pos = getIntent().getIntExtra("pro_pos", -1);
             pro_id = getIntent().getIntExtra("pro_id", -1);
+            if (getIntent().hasExtra("isCraft"))
+                isCraft = true;
         }
-
+        if (isCraft){
+            pic_product2.setVisibility(View.VISIBLE);
+            pic_product3.setVisibility(View.VISIBLE);
+            pic_product4.setVisibility(View.VISIBLE);
+        }
         if (pro_pos != -1){
             editText_productName.setText(getIntent().getStringExtra("pro_name"));
             editText_productDescription.setText(getIntent().getStringExtra("pro_desc"));
@@ -84,23 +94,37 @@ public class NewProductActivity extends AppCompatActivity {
             Bitmap bitmap = BitmapFactory.decodeFile(getIntent().getStringExtra("pro_img"));
             pic_product.setImageBitmap(bitmap);
         }
-
         apiService = ApiClient.getClient().create(ApiInterface.class);
-
         pic_product.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                pickImg();
+                pickImg(1);
             }
         });
-
+        pic_product2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pickImg(2);
+            }
+        });
+        pic_product3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pickImg(3);
+            }
+        });
+        pic_product4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pickImg(4);
+            }
+        });
         btn_addProductDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 addProduct();
             }
         });
-
         btn_addProductDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -131,7 +155,6 @@ public class NewProductActivity extends AppCompatActivity {
             });
         }
     }
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -141,15 +164,72 @@ public class NewProductActivity extends AppCompatActivity {
                 case (1) : {
                     selectedProduct = data.getData();
                     assert selectedProduct != null;
-                    Bitmap bitmap = BitmapFactory.decodeFile(getImgPath(selectedProduct));
+                    Bitmap bitmap = null;
+                    try {
+                        bitmap = MediaStore.Images.Media.getBitmap(NewProductActivity.this.getContentResolver(),selectedProduct);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                     pic_product.setImageBitmap(bitmap);
+                    path = FilePath.getPath(this, selectedProduct);
+                    break;
+                }
+                case (2) : {
+                    selectedProduct2 = data.getData();
+                    assert selectedProduct2 != null;
+                    Bitmap bitmap = null;
+                    try {
+                        bitmap = MediaStore.Images.Media.getBitmap(NewProductActivity.this.getContentResolver(),selectedProduct2);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    pic_product2.setImageBitmap(bitmap);
+                    path1 = FilePath.getPath(this, selectedProduct2);
+                    break;
+                }
+                case (3) : {
+                    selectedProduct3 = data.getData();
+                    assert selectedProduct3 != null;
+                    Bitmap bitmap = null;
+                    try {
+                        bitmap = MediaStore.Images.Media.getBitmap(NewProductActivity.this.getContentResolver(),selectedProduct3);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    pic_product3.setImageBitmap(bitmap);
+                    path2 = FilePath.getPath(this, selectedProduct3);
+                    break;
+                }
+                case (4) : {
+                    selectedProduct4 = data.getData();
+                    assert selectedProduct4 != null;
+                    Bitmap bitmap = null;
+                    try {
+                        bitmap = MediaStore.Images.Media.getBitmap(NewProductActivity.this.getContentResolver(),selectedProduct4);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    pic_product4.setImageBitmap(bitmap);
+                    path3 = FilePath.getPath(this, selectedProduct4);
                     break;
                 }
             }
         }
     }
-
     private void addProduct(){
+        /*if (isCraft){
+            if (selectedProduct2 == null){
+                Toast.makeText(this, "Select Image 2", Toast.LENGTH_LONG).show();
+                return;
+            } else if (selectedProduct3 == null){
+                Toast.makeText(this, "Select Image 3", Toast.LENGTH_LONG).show();
+                return;
+            } else if (selectedProduct4 == null){
+                Toast.makeText(this, "Select Image 4", Toast.LENGTH_LONG).show();
+                return;
+            }
+        }*/
+
         if (pro_pos != -1){
             Toast.makeText(this, "Product Already Added", Toast.LENGTH_LONG).show();
             return;
@@ -172,13 +252,39 @@ public class NewProductActivity extends AppCompatActivity {
                 editText_product_price.getText().toString(),
                 editText_productName.getText().toString(),
                 editText_productDescription.getText().toString(),
-                getImgPath(selectedProduct));
+                path);
 
-        File imgFile = new File(getImgPath(selectedProduct));
+        File imgFile = new File(path);
+        Log.e("MyPath", path);
         RequestBody requestImgFile =
                 RequestBody.create(MediaType.parse("image/png"), imgFile);
         MultipartBody.Part product_img =
                 MultipartBody.Part.createFormData("product_img", imgFile.getName(), requestImgFile);
+
+        MultipartBody.Part product_img1 = null, product_img2 = null,product_img3 = null;
+        if (isCraft){
+            if (!path1.isEmpty()){
+                File imgFile1 = new File(path1);
+                RequestBody requestImgFile1 =
+                        RequestBody.create(MediaType.parse("image/png"), imgFile1);
+                product_img1 =
+                        MultipartBody.Part.createFormData("product_img1", imgFile1.getName(), requestImgFile1);
+            }
+            if (!path2.isEmpty()){
+                File imgFile2 = new File(path2);
+                RequestBody requestImgFile2 =
+                        RequestBody.create(MediaType.parse("image/png"), imgFile2);
+                product_img2 =
+                        MultipartBody.Part.createFormData("product_img2", imgFile2.getName(), requestImgFile2);
+            }
+            if (!path3.isEmpty()){
+                File imgFile3 = new File(path3);
+                RequestBody requestImgFile3 =
+                        RequestBody.create(MediaType.parse("image/png"), imgFile3);
+                product_img3 =
+                        MultipartBody.Part.createFormData("product_img3", imgFile3.getName(), requestImgFile3);
+            }
+        }
 
         MultipartBody.Part store_id = MultipartBody.Part.createFormData("store_id", ""+sharedPrefManger.getStore_ID());
         MultipartBody.Part product_name = MultipartBody.Part.createFormData("product_name", addProduct.getProductName());
@@ -189,23 +295,35 @@ public class NewProductActivity extends AppCompatActivity {
                 product_name,
                 description,
                 product_price,
-                product_img);
+                product_img,
+                product_img1,
+                product_img2,
+                product_img3);
 
         newProduct.enqueue(new Callback<CreateProductResponse>() {
             @Override
             public void onResponse(Call<CreateProductResponse> call, Response<CreateProductResponse> response) {
                 Log.e("Success", new Gson().toJson(response.body()));
                 if (response.body().getSuccess() ==1){
-                    Toast.makeText(NewProductActivity.this,"Product Added",Toast.LENGTH_SHORT).show();
+                    Product product = new Product(response.body().getData().get(0).getProduct_id(),
+                            Double.parseDouble(editText_product_price.getText().toString()),
+                            0,
+                            0,
+                            editText_productName.getText().toString(),
+                            editText_productDescription.getText().toString(),
+                            "");
+                    product.setStore_id(sharedPrefManger.getStore_ID());
+                    product.setProduct_rate(0);
+                    DBHandler.InsertPrdouct(product,NewProductActivity.this);
                     Intent resultIntent = new Intent();
                     resultIntent.putExtra("opr_type", 1);
-                    resultIntent.putExtra("pro_id", response.body().getData().get(0).getProduct_id());
-                    resultIntent.putExtra("pro_name", editText_productName.getText().toString());
-                    resultIntent.putExtra("pro_name", editText_productName.getText().toString());
-                    resultIntent.putExtra("pro_desc", editText_productDescription.getText().toString());
-                    resultIntent.putExtra("pro_price", editText_product_price.getText().toString());
-                    resultIntent.putExtra("pro_img", getImgPath(selectedProduct));
+                    resultIntent.putExtra("pro_id", product.getProduct_id());
+                    resultIntent.putExtra("pro_name", product.getProduct_name());
+                    resultIntent.putExtra("pro_desc", product.getProduct_desc());
+                    resultIntent.putExtra("pro_price", product.getProduct_desc());
+                    resultIntent.putExtra("pro_img", path);
                     setResult(Activity.RESULT_OK, resultIntent);
+                    Toast.makeText(NewProductActivity.this,"Product Added",Toast.LENGTH_SHORT).show();
                     finish();
                 }
                 else{
@@ -219,24 +337,12 @@ public class NewProductActivity extends AppCompatActivity {
             }
         });
     }
-
-    private void pickImg(){
-        Intent intent = new Intent();
-        intent.setType("image/*");
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent, "Select Picture"), 1);
+    private void pickImg(int requestCode){
+        Intent intent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(Intent.createChooser(intent, "Select Picture"), requestCode);
     }
-
     private boolean checkIfAlreadyhavePermission() {
         int result = ContextCompat.checkSelfPermission(this, android.Manifest.permission.WRITE_EXTERNAL_STORAGE);
         return result == PackageManager.PERMISSION_GRANTED;
-    }
-
-    private String getImgPath(Uri imgUri){
-        Log.e("MyData", imgUri.getPath());
-        if (imgUri.getPath().contains(":"))
-            return imgUri.getPath().substring(imgUri.getPath().indexOf(":")+1);
-        else
-            return imgUri.getPath();
     }
 }

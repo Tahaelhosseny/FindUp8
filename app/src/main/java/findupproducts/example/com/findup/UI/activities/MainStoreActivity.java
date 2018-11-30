@@ -43,12 +43,9 @@ public class MainStoreActivity extends AppCompatActivity {
                 String token = instanceIdResult.getToken();
                 updateToken(token);
                 Log.e("Token" , token);
-                Toast.makeText(MainStoreActivity.this, ""+token, Toast.LENGTH_LONG).show();
 
             }
         });
-        /*getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-        getSupportActionBar().setDisplayShowHomeEnabled(false);*/
         insertSoreNotification();
         FragmentManager manager = getSupportFragmentManager();
         transaction = manager.beginTransaction();
@@ -112,15 +109,15 @@ public class MainStoreActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<TokenResponse> call, Response<TokenResponse> response) {
                 if(response.body().getSuccess() == 1){
-                    Toast.makeText(MainStoreActivity.this, "Success "+response.body().getError_msg(), Toast.LENGTH_SHORT).show();
+                   Log.e("Success" , response.body().getError_msg());
                 }else{
-                    Toast.makeText(MainStoreActivity.this, ""+response.body().getError_msg(), Toast.LENGTH_SHORT).show();
+                    Log.e("Error" , response.body().getError_msg());
                 }
             }
 
             @Override
             public void onFailure(Call<TokenResponse> call, Throwable t) {
-                Toast.makeText(MainStoreActivity.this, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
+                Log.e("Failure" , "Failue "+t.getMessage());
             }
         });
     }

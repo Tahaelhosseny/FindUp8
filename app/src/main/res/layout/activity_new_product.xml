@@ -46,15 +46,54 @@
                 android:text="@string/add_your_first_product_hint"
                 android:textAlignment="viewStart"
                 android:textSize="14sp" />
-            <ImageButton
-                android:id="@+id/pic_product"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/activity_vertical_margin"
-                android:layout_marginBottom="@dimen/activity_vertical_margin"
-                app:srcCompat="@drawable/group_5_2x"
-                android:background="@null"
-                android:contentDescription="@string/add_product"/>
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/pic_product"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="@dimen/activity_vertical_margin"
+                    app:srcCompat="@drawable/group_5_2x"
+                    android:background="@null"
+                    android:layout_margin="5dp"
+                    android:contentDescription="@string/add_product"/>
+
+                <ImageButton
+                    android:id="@+id/pic_product2"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    app:srcCompat="@drawable/group_5_2x"
+                    android:background="@null"
+                    android:contentDescription="@string/add_product"
+                    android:layout_margin="5dp"
+                    android:visibility="gone"/>
+
+                <ImageButton
+                    android:id="@+id/pic_product3"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    app:srcCompat="@drawable/group_5_2x"
+                    android:background="@null"
+                    android:contentDescription="@string/add_product"
+                    android:visibility="gone"
+                    android:layout_margin="5dp"/>
+
+                <ImageButton
+                    android:id="@+id/pic_product4"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    app:srcCompat="@drawable/group_5_2x"
+                    android:background="@null"
+                    android:contentDescription="@string/add_product"
+                    android:visibility="gone"
+                    android:layout_margin="5dp"/>
+
+            </LinearLayout>
 
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"

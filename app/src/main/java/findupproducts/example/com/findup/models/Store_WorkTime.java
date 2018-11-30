@@ -5,11 +5,7 @@ import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
-@Entity(foreignKeys = @ForeignKey(entity = Store.class,
-        parentColumns = "store_id",
-        childColumns = "store_id",
-        onDelete = ForeignKey.CASCADE))
-
+@Entity
 public class Store_WorkTime {
     @NonNull
     @PrimaryKey
@@ -19,6 +15,9 @@ public class Store_WorkTime {
     private int workday_id;
 
     @NonNull
+    private String store_workdays;
+
+    @NonNull
     private String work_from_time;
 
     @NonNull
@@ -26,6 +25,16 @@ public class Store_WorkTime {
 
     @NonNull
     private int store_id;
+
+
+    @NonNull
+    public String getStore_workdays() {
+        return store_workdays;
+    }
+
+    public void setStore_workdays(@NonNull String store_workdays) {
+        this.store_workdays = store_workdays;
+    }
 
     public Store_WorkTime(@NonNull int worktime_id, @NonNull int workday_id, @NonNull String work_from_time, @NonNull String work_to_time, @NonNull int store_id) {
         this.worktime_id = worktime_id;

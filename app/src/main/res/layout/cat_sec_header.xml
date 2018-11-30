@@ -11,8 +11,8 @@
         android:fontFamily="@font/sfcompactdisplay_medium"
         android:padding="5dp"
         android:text="Title"
-        android:textColor="@color/colorWhite"
-        android:textSize="26sp"
+        android:textColor="@color/colorWhiteGrey"
+        android:textSize="27sp"
         android:textStyle="bold" />
 
 </android.support.constraint.ConstraintLayout>

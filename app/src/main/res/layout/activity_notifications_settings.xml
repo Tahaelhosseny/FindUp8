@@ -21,15 +21,7 @@
     style="@style/Theme.AppCompat.Light.NoActionBar.UnFullScreen"
     tools:context=".UI.activities.NotificationsSettingsActivity">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar_currency"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="18dp"
-        android:background="@color/colorWhite"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+
         <Button
             android:id="@+id/btn_notificationsBack"
             android:layout_width="wrap_content"
@@ -47,11 +39,10 @@
             android:textColor="@color/colorBlack"
             android:textSize="24sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/pic_account"
+            app:layout_constraintBottom_toTopOf="@+id/textViewNotifications"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:drawableStart="@drawable/baseline_close_black_18" />
-    </android.support.v7.widget.Toolbar>
 
     <TextView
         android:id="@+id/textViewNotifications"
@@ -64,7 +55,7 @@
         android:textColor="@color/colorBlack"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_currency" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_notificationsBack" />
 
     <TextView
         android:id="@+id/textView12"

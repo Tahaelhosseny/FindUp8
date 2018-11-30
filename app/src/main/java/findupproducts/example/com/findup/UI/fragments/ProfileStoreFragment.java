@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.f2prateek.rx.preferences2.Preference;
 import com.squareup.picasso.Picasso;
@@ -81,9 +82,11 @@ public class ProfileStoreFragment extends Fragment {
         TextView store_desc = getActivity().findViewById(R.id.storeDesc);
         TextView store_review = getActivity().findViewById(R.id.storeReview);
 //        store_name.setText(SharedPrefManger.getStore_namee());
-        bindStoreData(store_logo , store_review , store_desc , store_Bg , store_name);
+        //bindStoreData(store_logo , store_review , store_desc , store_Bg , store_name);
 
+        bindStoreData(store_logo , store_review , store_desc , store_Bg , store_name);
     }
+
     public void bindStoreData(ImageView logo_image , TextView rating , TextView store_desc , ImageView banner , TextView name) {
 
         if (MStore == null) {

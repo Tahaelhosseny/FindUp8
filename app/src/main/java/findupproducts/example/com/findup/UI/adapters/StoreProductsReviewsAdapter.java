@@ -60,7 +60,6 @@ public class StoreProductsReviewsAdapter extends RecyclerView.Adapter<StoreProdu
                     .cornerRadiusDp(20)
                     .oval(false)
                     .build();
-
             Picasso.with(context).load("http://findupproducts.com/findup_api/imgs/"+product.getProduct_banner()).transform(transformation).placeholder(R.drawable.com_facebook_profile_picture_blank_square).into(holder.productImage);
         }
         holder.productDesc.setText(product.getProduct_desc());

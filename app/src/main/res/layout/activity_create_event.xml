@@ -80,6 +80,7 @@
                     android:textColor="@color/colorWhiteGrey"
                     android:textSize="21sp"
                     android:textStyle="bold"
+                    android:fontFamily="@font/sfcompactdisplay_regular"
                     app:layout_constraintTop_toBottomOf="@id/pic_banner" />
 
                 <EditText
@@ -87,6 +88,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"
+                    android:hint="Enter Event Name"
+                    android:textColorHint="@color/colorWhiteGrey"
                     android:shadowColor="@color/colorBlack"
                     android:textColor="@color/colorBlack"
                     android:textColorHighlight="@color/colorWhiteGrey"
@@ -96,83 +99,37 @@
                     app:layout_constraintTop_toBottomOf="@+id/txt_eventName" />
 
                 <TextView
-                    android:id="@+id/txt_otherLanguage"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/activity_vertical_margin"
-                    android:text="@string/other_language"
-                    android:textColor="@color/colorWhiteGrey"
-                    android:textSize="21sp"
-                    android:textStyle="bold"
-                    app:layout_constraintTop_toBottomOf="@+id/editText_eventName" />
-
-                <EditText
-                    android:id="@+id/editText_otherLanguage"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="text"
-                    android:shadowColor="@color/colorBlack"
-                    android:textColor="@color/colorBlack"
-                    android:textColorHighlight="@color/colorWhiteGrey"
-                    android:textColorLink="@color/colorWhiteGrey"
-                    android:textCursorDrawable="@drawable/color_black"
-                    android:textSize="20sp"
-                    app:layout_constraintTop_toBottomOf="@+id/txt_otherLanguage" />
-
-                <TextView
                     android:id="@+id/txt_eventTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/activity_vertical_margin"
-                    android:text="@string/work_time"
+                    android:text="Time"
                     android:textColor="@color/colorWhiteGrey"
                     android:textSize="21sp"
                     android:textStyle="bold"
-                    app:layout_constraintTop_toBottomOf="@+id/editText_otherLanguage" />
+                    android:fontFamily="@font/sfcompactdisplay_regular"
+                    app:layout_constraintTop_toBottomOf="@+id/editText_eventName" />
 
                 <TextView
                     android:id="@+id/txt_days"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/activity_vertical_margin"
-                    android:text="@string/days"
+                    android:text="Date"
                     android:textColor="@color/colorWhiteGrey"
                     android:textSize="20sp"
+                    android:fontFamily="@font/sfcompactdisplay_semibold"
                     app:layout_constraintTop_toBottomOf="@+id/txt_eventTime" />
 
-                <EditText
-                    android:id="@+id/edit_days"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Sun - Mon"
-                    android:inputType="text"
-                    android:shadowColor="@color/colorBlack"
-                    android:textColor="@color/colorBlack"
-                    android:textColorHighlight="@color/colorWhiteGrey"
-                    android:textColorLink="@color/colorWhiteGrey"
-                    android:textCursorDrawable="@drawable/color_black"
-                    android:textSize="20sp"
-                    app:layout_constraintTop_toBottomOf="@+id/txt_days" />
-
-                <LinearLayout
-                    android:id="@+id/day_picker_layout"
+                <TextView
+                    android:id="@+id/days_info"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/activity_vertical_margin"
-                    android:layout_marginTop="5dp"
-                    android:orientation="horizontal"
-                    app:layout_constraintTop_toBottomOf="@+id/edit_days">
-
-                    <TextView
-                        android:id="@+id/txt_day_work_start"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/start_day"
-                        android:textColor="@color/colorBlack"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
+                    android:hint="start date"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/sfcompactdisplay_regular"
+                    android:textColor="@color/material_color_black"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_days"/>
 
                 <TextView
                     android:id="@+id/txt_time"
@@ -182,7 +139,8 @@
                     android:text="@string/time"
                     android:textColor="@color/colorWhiteGrey"
                     android:textSize="20sp"
-                    app:layout_constraintTop_toBottomOf="@+id/day_picker_layout" />
+                    android:fontFamily="@font/sfcompactdisplay_semibold"
+                    app:layout_constraintTop_toBottomOf="@+id/days_info" />
 
                 <LinearLayout
                     android:id="@+id/time_picker_linear"
@@ -198,14 +156,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/_3sdp"
-                        android:text="00"
+                        android:text="09:00"
                         android:textColor="@color/colorBlack"
                         android:textSize="20sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="-"
+                        android:text=" - "
                         android:textSize="@dimen/sp16" />
 
                     <TextView
@@ -213,7 +171,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/_3sdp"
-                        android:text="00"
+                        android:text="06:00"
                         android:textColor="@color/colorBlack"
                         android:textSize="20sp" />
 
@@ -228,6 +186,7 @@
                     android:textColor="@color/colorWhiteGrey"
                     android:textSize="21sp"
                     android:textStyle="bold"
+                    android:fontFamily="@font/sfcompactdisplay_regular"
                     app:layout_constraintTop_toBottomOf="@+id/time_picker_linear" />
 
                 <EditText
@@ -235,6 +194,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"
+                    android:hint="Enter Event Description"
+                    android:textColorHint="@color/colorWhiteGrey"
                     android:shadowColor="@color/colorBlack"
                     android:textColor="@color/colorBlack"
                     android:textColorHighlight="@color/colorWhiteGrey"
@@ -252,6 +213,7 @@
                     android:textColor="@color/colorWhiteGrey"
                     android:textSize="21sp"
                     android:textStyle="bold"
+                    android:fontFamily="@font/sfcompactdisplay_regular"
                     app:layout_constraintTop_toBottomOf="@+id/editText_description" />
 
                 <Button

@@ -13,7 +13,7 @@ import findupproducts.example.com.findup.R;
 
 public class SuccessfulRegisterationActivity extends AppCompatActivity {
 
-    private final int SPLASH_DISPLAY_LENGTH = 2000;
+    private final int SPLASH_DISPLAY_LENGTH = 3000;
     Button btn_switch;
 
     @Override
@@ -24,7 +24,7 @@ public class SuccessfulRegisterationActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(SuccessfulRegisterationActivity.this, StoreAccountHomeActivity.class));
+                startActivity(new Intent(SuccessfulRegisterationActivity.this, MainStoreActivity.class));
                 finish();
             }
         }, SPLASH_DISPLAY_LENGTH);

@@ -9,6 +9,7 @@ import android.view.View;
 
 import findupproducts.example.com.findup.R;
 import findupproducts.example.com.findup.UI.fragments.EventDetailsFragment;
+import findupproducts.example.com.findup.models.Event;
 
 public class EventDetailsActivity extends AppCompatActivity {
 
@@ -20,8 +21,7 @@ public class EventDetailsActivity extends AppCompatActivity {
         findViewById(R.id.btnBack).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(EventDetailsActivity.this, MainActivity.class));
-                finish();
+                EventDetailsActivity.super.onBackPressed();
             }
         });
 

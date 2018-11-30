@@ -64,7 +64,7 @@ public class StoreChatFragment extends Fragment {
         binding.sendBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                viewModel.sendMessageToUser(binding.chatboxEdit);
+                viewModel.sendMessageToUser(binding.reyclerviewMessageList , binding.chatboxEdit);
             }
         });
 

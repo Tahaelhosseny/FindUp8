@@ -18,15 +18,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar_chat"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="18dp"
-        android:background="@color/colorWhite"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+
         <Button
             android:id="@+id/btn_back"
             android:layout_width="wrap_content"
@@ -43,12 +35,11 @@
             android:text="Chat Name"
             android:textAllCaps="false"
             android:textColor="@color/colorBlack"
-            android:textSize="24sp"
+            android:textSize="24dp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/pic_account"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-    </android.support.v7.widget.Toolbar>
 
 
         <android.support.v7.widget.RecyclerView
@@ -58,7 +49,7 @@
             android:layout_marginTop="8dp"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar_chat"
+            app:layout_constraintTop_toBottomOf="@+id/btn_back"
             app:layout_constraintBottom_toTopOf="@+id/divider">
 
         </android.support.v7.widget.RecyclerView>
@@ -120,25 +111,14 @@
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:layout_margin="5dp"
-                android:background="@drawable/fav"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/send_msg"
                 android:clickable="true"
+                android:gravity="center"
                 android:onClick="@{(v)->presenter.sendMessage()}"
-                android:gravity="center"
-                app:layout_constraintEnd_toStartOf="@id/emojiBtn"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
-
-            <Button
-                android:id="@+id/emojiBtn"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:layout_margin="5dp"
-                android:background="@drawable/fav"
-                android:clickable="true"
-                android:gravity="center"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
         </android.support.constraint.ConstraintLayout>
 
