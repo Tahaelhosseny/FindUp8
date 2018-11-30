@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <data>
 
         <variable
@@ -12,10 +13,33 @@
             type="findupproducts.example.com.findup.UI.Presenter.Fragments.NearMePresenter"/>
 
     </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="130dp">
 <android.support.v7.widget.RecyclerView android:id="@+id/nearMeRecyclerView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal">
 
 </android.support.v7.widget.RecyclerView>
+
+        <TextView
+            android:id="@+id/no_stores_found"
+            style="@style/text_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/sfcompactdisplay_medium"
+            android:text="@string/no_stores_search"
+            android:textSize="@dimen/main_activity_title_font_size"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/nearMeRecyclerView" />
+
+    </android.support.constraint.ConstraintLayout>
 </layout>

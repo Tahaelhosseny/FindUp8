@@ -1,42 +1,25 @@
 package findupproducts.example.com.findup.UI.activities;
 
-import android.content.Context;
-import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.Signature;
 import android.location.Address;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
-import android.util.Base64;
 import android.util.Log;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
-import com.google.gson.annotations.SerializedName;
 import com.patloew.rxlocation.RxLocation;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import findupproducts.example.com.findup.Helper.Remote.ResponseModel.TokenResponse;
-import io.reactivex.Flowable;
 import findupproducts.example.com.findup.Helper.Database.DBHandler;
-import findupproducts.example.com.findup.Helper.Database.DBUtility;
 import findupproducts.example.com.findup.Helper.Database.Interfaces.Events;
 import findupproducts.example.com.findup.Helper.Database.Interfaces.Product.Products;
 import findupproducts.example.com.findup.Helper.Database.Interfaces.Store.Stores;
@@ -46,22 +29,20 @@ import findupproducts.example.com.findup.Helper.Remote.ApiClient;
 import findupproducts.example.com.findup.Helper.Remote.ApiInterface;
 import findupproducts.example.com.findup.Helper.Remote.ResponseModel.GetAllSavedResponse;
 import findupproducts.example.com.findup.Helper.Remote.ResponseModel.NotificationResponse;
-import findupproducts.example.com.findup.Helper.Remote.ResponseModel.SaveModelResponse;
+import findupproducts.example.com.findup.Helper.Remote.ResponseModel.TokenResponse;
 import findupproducts.example.com.findup.Helper.SharedPrefManger;
 import findupproducts.example.com.findup.Helper.UI_Utility;
 import findupproducts.example.com.findup.Helper.Utility;
 import findupproducts.example.com.findup.R;
-import findupproducts.example.com.findup.UI.adapters.UserSavedAdapter;
 import findupproducts.example.com.findup.UI.fragments.BottomBarFragment;
 import findupproducts.example.com.findup.UI.fragments.MainFragment;
-import findupproducts.example.com.findup.UI.fragments.MapFragment;
 import findupproducts.example.com.findup.models.CurrentLocation;
 import findupproducts.example.com.findup.models.Event;
 import findupproducts.example.com.findup.models.FilterQueries;
 import findupproducts.example.com.findup.models.Product;
-import findupproducts.example.com.findup.models.SaveModel;
 import findupproducts.example.com.findup.models.Store;
 import findupproducts.example.com.findup.models.UserSavedItem;
+import io.reactivex.Flowable;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -85,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements LocationView{
         setContentView(R.layout.activity_main);
         clickCatType = "";
         SharedPrefManger sharedPrefManger = new SharedPrefManger(this);
-        if (sharedPrefManger.getUser_ID() == 0) {
+        if (SharedPrefManger.getUser_ID() == 0) {
             FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(MainActivity.this, new OnSuccessListener<InstanceIdResult>() {
                 @Override
                 public void onSuccess(InstanceIdResult instanceIdResult) {
@@ -94,7 +75,6 @@ public class MainActivity extends AppCompatActivity implements LocationView{
 
                 }
             });
-
         }else {
             FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(MainActivity.this, new OnSuccessListener<InstanceIdResult>() {
                 @Override
@@ -294,7 +274,7 @@ public class MainActivity extends AppCompatActivity implements LocationView{
     private void insertUserNotification(){
         ApiInterface apiService = ApiClient.getClient().create(ApiInterface.class);
         SharedPrefManger sharedPrefManger = new SharedPrefManger(this);
-        Call<NotificationResponse> userNotification = apiService.getUserNotification(String.valueOf(sharedPrefManger.getUser_ID()));
+        Call<NotificationResponse> userNotification = apiService.getUserNotification(String.valueOf(SharedPrefManger.getUser_ID()));
         userNotification.enqueue(new Callback<NotificationResponse>() {
             @Override
             public void onResponse(Call<NotificationResponse> call, Response<NotificationResponse> response) {
