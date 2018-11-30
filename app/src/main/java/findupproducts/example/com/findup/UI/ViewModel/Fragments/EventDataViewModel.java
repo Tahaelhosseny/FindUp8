@@ -71,6 +71,7 @@ public class EventDataViewModel {
                                 e_long = Double.parseDouble(val.get(i).getEvent_longitude());
                                 e_name = val.get(i).getEvent_name();
                                 address.setText(val.get(0).getEvent_address());
+                                Toast.makeText(mContext, ""+val.get(i).getEvent_photo(), Toast.LENGTH_SHORT).show();
                                 if (!val.get(i).getEvent_photo().isEmpty())
                                     Picasso.with(mContext).load(val.get(i).getEvent_photo()).into(event_banner);
                             }

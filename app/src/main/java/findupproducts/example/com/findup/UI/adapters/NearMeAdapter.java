@@ -1,6 +1,5 @@
 package findupproducts.example.com.findup.UI.adapters;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -11,9 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.android.gms.common.util.DbUtils;
 import com.like.LikeButton;
 import com.like.OnLikeListener;
 import com.makeramen.roundedimageview.RoundedTransformationBuilder;
@@ -22,22 +19,16 @@ import com.squareup.picasso.Transformation;
 
 import java.util.List;
 
-import io.reactivex.Flowable;
 import findupproducts.example.com.findup.Helper.Database.DBHandler;
-import findupproducts.example.com.findup.Helper.Database.Interfaces.SavedItem.SavedItem;
 import findupproducts.example.com.findup.Helper.Location.LocationUtility;
 import findupproducts.example.com.findup.Helper.Remote.ApiClient;
 import findupproducts.example.com.findup.Helper.Remote.ApiInterface;
-import findupproducts.example.com.findup.Helper.Remote.ResponseModel.DeleteSavedResponse;
 import findupproducts.example.com.findup.Helper.Remote.ResponseModel.SaveModelResponse;
-import findupproducts.example.com.findup.Helper.Remote.ResponseModel.StoresResponse;
 import findupproducts.example.com.findup.Helper.SharedPrefManger;
 import findupproducts.example.com.findup.R;
 import findupproducts.example.com.findup.UI.activities.StoreDetailsActivity;
 import findupproducts.example.com.findup.models.CurrentLocation;
 import findupproducts.example.com.findup.models.Store;
-import findupproducts.example.com.findup.models.StoreProducts;
-import findupproducts.example.com.findup.models.UserSavedItem;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -48,12 +39,15 @@ import retrofit2.Response;
 
 public class NearMeAdapter extends RecyclerView.Adapter<NearMeAdapter.ViewHolder> {
 
+    private List<Store> permanently_stores;
     private List<Store> stores;
     private Context context;
     private CurrentLocation currentLocation = new CurrentLocation();
 
+
     public NearMeAdapter(Context context, List<Store> stores) {
         this.context = context;
+        this.permanently_stores = LocationUtility.SortStoresByNearest(context, stores, currentLocation.getLocationModel());
         this.stores = LocationUtility.SortStoresByNearest(context, stores, currentLocation.getLocationModel());
     }
 
@@ -95,16 +89,16 @@ public class NearMeAdapter extends RecyclerView.Adapter<NearMeAdapter.ViewHolder
         }
         if (!SharedPrefManger.isIsLoggedIn())
             holder.likeButton.setVisibility(View.INVISIBLE);
-        holder.likeButton.setLiked((holder.store.getIf_saved()==0)?false:true);
+        holder.likeButton.setLiked(holder.store.getIf_saved() != 0);
         holder.likeButton.setOnLikeListener(new OnLikeListener() {
             @Override
             public void liked(LikeButton likeButton) {
-                SaveStore(context,holder.store,sharedPrefManger.getUser_ID(),likeButton);
+                SaveStore(context, holder.store, SharedPrefManger.getUser_ID(), likeButton);
             }
 
             @Override
             public void unLiked(LikeButton likeButton) {
-                SaveStore(context,holder.store,sharedPrefManger.getUser_ID(),likeButton);
+                SaveStore(context, holder.store, SharedPrefManger.getUser_ID(), likeButton);
             }
         });
 
