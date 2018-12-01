@@ -8,6 +8,7 @@ import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -62,7 +63,6 @@ public class BottomBarFragment extends Fragment {
 //                ToolbarSwitch(true,mContext);
                 selectedFragment = new SearchFragment();
                 Utility.replaceFragment(((FragmentActivity)mContext).getSupportFragmentManager(), new SearchFragment(), R.id.main_toolbar_container, 0,menu);
-
                 break;
             case 3:
 //                ToolbarSwitch(true,mContext);
@@ -72,7 +72,12 @@ public class BottomBarFragment extends Fragment {
             case 4:
 //                ToolbarSwitch(true,mContext);
                 selectedFragment = new ProfileFragment();
-                Utility.replaceFragment(((FragmentActivity)mContext).getSupportFragmentManager(), new ProfileFragment(), R.id.main_toolbar_container, 0,menu);
+                AlertDialog dialogue = UI_Utility.signInDialogue(mContext);
+                SharedPrefManger sharedPrefManger = new SharedPrefManger(mContext);
+                if (!sharedPrefManger.isIsLoggedIn()&& SharedPrefManger.getStore_ID() == 0 && SharedPrefManger.getUser_ID() == 0)
+                    dialogue.show();
+                else
+                    Utility.replaceFragment(((FragmentActivity)mContext).getSupportFragmentManager(), new ProfileFragment(), R.id.main_toolbar_container, 0,menu);
                 break;
         }
     }

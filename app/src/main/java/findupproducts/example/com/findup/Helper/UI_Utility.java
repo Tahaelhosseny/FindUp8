@@ -15,7 +15,9 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import findupproducts.example.com.findup.R;
+import findupproducts.example.com.findup.UI.activities.LoginActivity;
 import findupproducts.example.com.findup.UI.activities.MainActivity;
+import findupproducts.example.com.findup.UI.activities.SignupActivity;
 import findupproducts.example.com.findup.UI.activities.SplashScreenActivity;
 import findupproducts.example.com.findup.models.Day;
 import findupproducts.example.com.findup.models.Store_WorkTime;
@@ -153,6 +155,41 @@ public class UI_Utility {
         long hours = TimeUnit.MINUTES.toHours(Long.valueOf(min));
         long remainMinutes = min - TimeUnit.HOURS.toMinutes(hours);
         return String.format("%02d:%02d", hours, remainMinutes);
+    }
+
+    public static AlertDialog signInDialogue(Context context){
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle(context.getString(R.string.app_name));
+        builder.setMessage("Sign in first to access profile page!");
+        builder.setPositiveButton("Sign up",
+                new DialogInterface.OnClickListener()
+                {
+                    public void onClick(DialogInterface dialog, int id)
+                    {
+                        context.startActivity(new Intent(context, SignupActivity.class));
+                        dialog.cancel();
+                    }
+                });
+
+        builder.setNeutralButton("Cancel",
+                new DialogInterface.OnClickListener()
+                {
+                    public void onClick(DialogInterface dialog, int id)
+                    {
+                        dialog.cancel();
+                    }
+                });
+
+        builder.setNegativeButton("Sign in",
+                new DialogInterface.OnClickListener()
+                {
+                    public void onClick(DialogInterface dialog, int id)
+                    {
+                        context.startActivity(new Intent(context, LoginActivity.class));
+                        dialog.cancel();
+                    }
+                });
+        return builder.create();
     }
 }
 

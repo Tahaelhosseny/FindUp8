@@ -102,8 +102,6 @@ public class StoreAccountHomeFragment extends Fragment {
             }
         });
         sharedPrefManger = new SharedPrefManger(getActivity());
-        if (!sharedPrefManger.getStoreLocation_type().contains("Dynamic"))
-            setLocBtn.setVisibility(View.GONE);
 
         TextView locationTypeTxt = getActivity().findViewById(R.id.locationTypeTxt);
         if (sharedPrefManger.getStoreLocation_type().contains("Static"))
@@ -112,6 +110,7 @@ public class StoreAccountHomeFragment extends Fragment {
         SharedPrefManger sharedPrefManger = new SharedPrefManger(getActivity());
         if (!sharedPrefManger.getStoreLocation_type().contains("Dynamic")) {
             linearLayout.setVisibility(View.GONE);
+            setLocBtn.setVisibility(View.GONE);
         }else{
             DBHandler.getStoreByID(SharedPrefManger.getStore_ID(), getActivity(), new Stores() {
                 @Override

@@ -52,7 +52,6 @@ public class ProductDetailsFragment extends Fragment {
         if (i.hasExtra("prod_id"))
             store_id = i.getIntExtra("prod_id", 1);
         productDetailViewModel = new ProductDetailViewModel(view.getContext(), store_id);
-        Toast.makeText(getActivity(), ""+store_id, Toast.LENGTH_SHORT).show();
         return view;
     }
 

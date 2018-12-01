@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -16,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import findupproducts.example.com.findup.Helper.SharedPrefManger;
+import findupproducts.example.com.findup.Helper.UI_Utility;
 import findupproducts.example.com.findup.R;
 
 /**
@@ -37,9 +39,11 @@ public class BottomBarAdapter extends RecyclerView.Adapter<BottomBarAdapter.View
             if (menu.getItem(i).isVisible())
             this.menuItemList.add(menuItemList.getItem(i));
         }
+
+        /*AlertDialog dialogue = UI_Utility.signInDialogue(mContext);
         SharedPrefManger sharedPrefManger = new SharedPrefManger(mContext);
         if (!sharedPrefManger.isIsLoggedIn()&& SharedPrefManger.getStore_ID() == 0 && SharedPrefManger.getUser_ID() == 0 && menuItemList.size() > 0)
-            this.menuItemList.remove(this.menuItemList.size()-1);
+            dialogue.show();*/
     }
 
     public static Menu getMenu() {
