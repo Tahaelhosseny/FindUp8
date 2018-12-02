@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toolbar;
 
@@ -205,7 +206,6 @@ public class Category2Fragment extends Fragment {
 
         private View rootView;
         private TextView titleText;
-
         HeaderViewHolder(View view) {
             super(view);
             rootView = view;
@@ -216,6 +216,7 @@ public class Category2Fragment extends Fragment {
 
         public View rootView;
         public TextView contentText;
+        private ImageView imageView;
         private int defalut_text_size;
 
         ItemViewHolder(View view) {
@@ -223,6 +224,7 @@ public class Category2Fragment extends Fragment {
 
             rootView = view;
             contentText = view.findViewById(R.id.contentText);
+            imageView = view.findViewById(R.id.for_image);
             defalut_text_size = 19;
         }
     }

@@ -40,6 +40,7 @@ public class StoreChatFragment extends Fragment {
     FragmentChatWithGenBinding binding;
     ChatWithContactViewModel viewModel;
 
+
     public StoreChatFragment() {
         // Required empty public constructor
     }

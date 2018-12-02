@@ -60,7 +60,7 @@
             android:fontFamily="@font/sfcompactdisplay_ultralight"
             android:text="Item Type"
             android:textColor="@color/material_color_black"
-            android:textSize="18dp"
+            android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@+id/search_map_item_desc"
             app:layout_constraintStart_toStartOf="@+id/search_map_item_name"
             app:layout_constraintTop_toBottomOf="@+id/search_map_item_name" />

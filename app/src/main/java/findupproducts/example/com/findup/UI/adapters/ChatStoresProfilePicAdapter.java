@@ -58,11 +58,9 @@ public class ChatStoresProfilePicAdapter extends RecyclerView.Adapter<ChatStores
         }
 
     }
-
     public void setMiddle_element_position(int middle_element_position) {
         this.middle_element_position = middle_element_position;
     }
-
     @Override
     public int getItemCount() {
         return stores.size();

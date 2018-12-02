@@ -27,7 +27,7 @@ public class SuccessfulRegisterationActivity extends AppCompatActivity {
             public void run() {
                 SharedPrefManger.setLoginType("");
                 SharedPrefManger.setStoreID(0);
-                SharedPrefManger.isIsLoggedIn();
+                SharedPrefManger.setIsLoggedIn(false);
                 startActivity(new Intent(SuccessfulRegisterationActivity.this, IntroActivity.class));
                 finish();
             }

@@ -82,7 +82,6 @@ public class StoreSettingsActivity extends AppCompatActivity implements View.OnC
                 break;
 
             case R.id.btn_storeSettingsBack:
-//                LogoutAccepted();
                 finish();
                 break;
 
@@ -93,7 +92,6 @@ public class StoreSettingsActivity extends AppCompatActivity implements View.OnC
                 break;
         }
     }
-
     public void LogoutAccepted(){
         SharedPrefManger.setIsLoggedIn(false);
         SharedPrefManger.setLogin_phone("");

@@ -142,7 +142,11 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
                         int count = product.getProduct_likes_count();
                         DBHandler.likeProduct(product.getProduct_comments_count()-1, product,0,context);
                         textView.setCompoundDrawablesWithIntrinsicBounds(R.drawable.like ,0,0,0);
-                        textView.setText(String.valueOf(count -1));
+                        if ((count-1) == 0) {
+                            textView.setText("0");
+                        }else{
+                            textView.setText(String.valueOf(count - 1));
+                        }
                     }
                 }
             }
