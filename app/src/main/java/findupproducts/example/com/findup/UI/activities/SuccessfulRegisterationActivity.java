@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import findupproducts.example.com.findup.Helper.SharedPrefManger;
 import findupproducts.example.com.findup.R;
 
 public class SuccessfulRegisterationActivity extends AppCompatActivity {
@@ -24,7 +25,10 @@ public class SuccessfulRegisterationActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                startActivity(new Intent(SuccessfulRegisterationActivity.this, MainStoreActivity.class));
+                SharedPrefManger.setLoginType("");
+                SharedPrefManger.setStoreID(0);
+                SharedPrefManger.isIsLoggedIn();
+                startActivity(new Intent(SuccessfulRegisterationActivity.this, IntroActivity.class));
                 finish();
             }
         }, SPLASH_DISPLAY_LENGTH);

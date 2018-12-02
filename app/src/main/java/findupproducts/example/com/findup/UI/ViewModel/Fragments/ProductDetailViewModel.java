@@ -166,7 +166,7 @@ public class ProductDetailViewModel extends Observable {
                                     if(num == 0){
                                         commentText.setText("No Comments Yet");
                                         commentUserCount.setText("No One Comment on this");
-                                        toComments.setVisibility(View.GONE);
+//                                        toComments.setVisibility(View.GONE);
                                     }else  if (num > 0 && num < 3){
                                         String stat = "";
                                         for (int i = 0 ; i < num ; i++){

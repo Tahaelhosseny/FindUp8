@@ -83,7 +83,7 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
                     .cornerRadiusDp(50)
                     .oval(false)
                     .build();
-            Picasso.with(holder.productImg.getContext()).load(holder.product.getProduct_banner()).transform(transformation).placeholder(R.drawable.near_by_place_holder).into(holder.productImg);
+            Picasso.with(holder.productImg.getContext()).load("http://findupproducts.com/findup_api/imgs/"+holder.product.getProduct_banner()).transform(transformation).placeholder(R.drawable.near_by_place_holder).into(holder.productImg);
         }
         if(holder.product.getIf_liked() == 1){
             holder.productNumLikes.setCompoundDrawablesWithIntrinsicBounds(R.drawable.like ,0,0,0);

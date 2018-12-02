@@ -86,7 +86,7 @@ public class AddProductCraftActivity extends AppCompatActivity {
         btn_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(AddProductCraftActivity.this, SuccessfulRegisterationActivity.class));
+                startActivity(new Intent(AddProductCraftActivity.this, SplashScreenActivity.class));
             }
         });
         btn_addCraftDelete.setOnClickListener(new View.OnClickListener() {

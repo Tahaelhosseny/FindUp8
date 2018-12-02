@@ -35,13 +35,14 @@
 
             <android.support.v7.widget.CardView
                 android:id="@+id/infoLayout"
-                android:layout_width="0dp"
+                android:layout_width="345dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="40dp"
-                android:layout_marginStart="40dp"
+                android:layout_marginLeft="13dp"
+                android:layout_marginRight="13dp"
                 android:layout_marginTop="108dp"
                 android:orientation="vertical"
                 app:cardCornerRadius="5dp"
+                android:foregroundGravity="center"
                 app:layout_anchor="@+id/product_banner"
                 app:layout_anchorGravity="bottom|center"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -50,7 +51,7 @@
 
                 <android.support.constraint.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_margin="10dp">
 
                     <TextView
@@ -193,6 +194,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/commentsTxt"
                 android:orientation="horizontal"
                 android:id="@+id/comment_linear">
