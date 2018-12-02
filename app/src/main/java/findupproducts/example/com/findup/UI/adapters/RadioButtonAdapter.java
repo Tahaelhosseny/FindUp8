@@ -103,4 +103,5 @@ public class RadioButtonAdapter extends RecyclerView.Adapter<RadioButtonAdapter.
             radioButton = view.findViewById(R.id.radio_adapter);
         }
     }
+
 }
