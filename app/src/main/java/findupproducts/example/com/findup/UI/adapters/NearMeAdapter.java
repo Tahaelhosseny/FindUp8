@@ -81,7 +81,8 @@ public class NearMeAdapter extends RecyclerView.Adapter<NearMeAdapter.ViewHolder
 
 
         if (!holder.store.getStore_banner().isEmpty()) {
-            Transformation transformation = new RoundedTransformationBuilder().cornerRadiusDp(0 , 15)
+            Transformation transformation = new RoundedTransformationBuilder()
+                    .cornerRadiusDp(0 , 15)
                     .cornerRadiusDp(1 , 15)
                     .oval(false)
                     .build();

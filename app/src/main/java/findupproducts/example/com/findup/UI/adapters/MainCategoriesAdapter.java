@@ -56,7 +56,7 @@ public class MainCategoriesAdapter extends RecyclerView.Adapter<MainCategoriesAd
             holder.catNameText.setText(category.getCat_name());
 
 
-//        holder.category_item_container.setMinimumWidth(getScreenWidth() / 8);
+        holder.category_item_container.setMinimumWidth(getScreenWidth() / 8);
         holder.cat_bg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

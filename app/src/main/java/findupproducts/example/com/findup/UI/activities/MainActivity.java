@@ -110,7 +110,11 @@ public class MainActivity extends AppCompatActivity implements LocationView{
                             public void run() {
                                 filteredMapDataEvent.clear();
                                 for (int i = 0 ; i < val.size() ; i++){
-                                    filteredMapDataEvent.add(val.get(i));
+                                    if(i < 5){
+                                        filteredMapDataEvent.add(val.get(i));
+                                    }else{
+                                        break;
+                                    }
                                 }
                                 Log.e("F Event Size" , String.valueOf(filteredMapDataEvent.size()));
                             }
@@ -134,7 +138,11 @@ public class MainActivity extends AppCompatActivity implements LocationView{
                             public void run() {
                                 filteredMapDataStore.clear();
                                 for (int i = 0 ; i < val.size() ; i++){
-                                    filteredMapDataStore.add(val.get(i));
+                                    if(i<5){
+                                        filteredMapDataStore.add(val.get(i));
+                                    }else{
+                                        break;
+                                    }
                                 }
                                 Log.e("Store Size " , String.valueOf(filteredMapDataStore.size()));
                             }
