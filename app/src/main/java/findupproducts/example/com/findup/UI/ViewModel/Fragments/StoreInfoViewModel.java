@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
@@ -254,7 +255,7 @@ public class StoreInfoViewModel extends Observable {
     private void bind_map_data(Store store, GoogleMap googleMap, Button get_directions_btn, TextView address) {
         MStore = store;
         LatLng sydney = new LatLng(store.getStore_latitude(), store.getStore_longitude());
-        googleMap.addMarker(new MarkerOptions().position(sydney).title(store.getStore_name()));
+        googleMap.addMarker(new MarkerOptions().position(sydney).title(store.getStore_name()).icon(BitmapDescriptorFactory.fromResource(R.drawable.oval_9_copy_2_3x)));
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(sydney.latitude - ((sydney.latitude * 14) / 1000000), sydney.longitude - ((sydney.longitude * 14) / 400000)), 14));
         googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 

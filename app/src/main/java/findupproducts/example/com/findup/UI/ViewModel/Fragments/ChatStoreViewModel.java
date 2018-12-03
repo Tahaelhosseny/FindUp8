@@ -103,8 +103,6 @@ public class ChatStoreViewModel extends Observable {
                     newMsg.setMsg_body(response.body().getGetChatMessage().get(0).getMsg_body());
                     newMsg.setSender_id(response.body().getGetChatMessage().get(0).getSender_id());
                     newMsg.setSender_type(response.body().getGetChatMessage().get(0).getSender_type());
-//                    messageList.add(newMsg);
-//                    mMessageAdapter.notifyDataSetChanged();
                     getFullChat(recycle , storeId);
                     messageEdit.setText("");
                 }
@@ -112,7 +110,7 @@ public class ChatStoreViewModel extends Observable {
 
             @Override
             public void onFailure(Call<SendChatResponse> call, Throwable t) {
-                Toast.makeText(mContext, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
+                Log.e("ERROR SEND MESSAGE" , t.getMessage());
             }
         });
     }
@@ -146,8 +144,8 @@ public class ChatStoreViewModel extends Observable {
             @Override
             public void onFailure(Call<GetFullChatResponse> call, Throwable t) {
                 messageList.clear();
-                mMessageAdapter.notifyDataSetChanged();
-                Toast.makeText(mContext, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
+//                mMessageAdapter.notifyDataSetChanged();
+                Log.e("ERROR FULL CHAT" , t.getMessage());
             }
         });
     }

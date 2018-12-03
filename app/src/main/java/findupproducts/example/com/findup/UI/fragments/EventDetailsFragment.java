@@ -69,7 +69,7 @@ public class EventDetailsFragment extends Fragment implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         LatLng sydney = new LatLng(e_lat, e_long);
-        googleMap.addMarker(new MarkerOptions().position(sydney).title(e_name));
+        googleMap.addMarker(new MarkerOptions().position(sydney).title(e_name).icon(BitmapDescriptorFactory.fromResource(R.drawable.oval_9_copy_2_3x)));
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(sydney.latitude - ((sydney.latitude * 14) / 1000000), sydney.longitude - ((sydney.longitude * 14) / 400000)), 14));
         googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 

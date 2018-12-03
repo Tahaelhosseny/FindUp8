@@ -87,7 +87,7 @@ public class ChatStoresProfilePicAdapter extends RecyclerView.Adapter<ChatStores
 
         @Override
         public void onClick(View v) {
-            context.startActivity(new Intent(context, ProductDetailsActivity.class));
+//            context.startActivity(new Intent(context, ProductDetailsActivity.class));
         }
     }
 }

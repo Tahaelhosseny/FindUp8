@@ -97,8 +97,8 @@ public class ChatWithContactViewModel extends Observable {
             @Override
             public void onFailure(Call<SendChatResponse> call, Throwable t) {
                 messageList.clear();
-                mMessageAdapter.notifyDataSetChanged();
-                Toast.makeText(mContext, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
+//                mMessageAdapter.notifyDataSetChanged();
+//                Toast.makeText(mContext, ""+t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }

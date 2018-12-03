@@ -127,16 +127,16 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             for (Store store : filteredMapDataStore){
                 LatLng storeLoc = new LatLng(store.getStore_latitude(),store.getStore_longitude());
                 googleMap.addMarker(new MarkerOptions().position(storeLoc).icon(
-                        BitmapDescriptorFactory.fromResource(R.drawable.current_location_marker)
+                        BitmapDescriptorFactory.fromResource(R.drawable.oval_9_copy_2_3x)
                 ).title(store.getStore_name()));
-                googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(storeLoc.latitude + ((storeLoc.latitude * 14) / 100000), storeLoc.longitude), 14));
+//                googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(storeLoc.latitude + ((storeLoc.latitude * 14) / 100000), storeLoc.longitude), 14));
             }
 
             for (Event event : filteredMapDataEvent){
                 double latitude = Double.valueOf(event.getEvent_latitude());
                 double longitude = Double.valueOf(event.getEvent_longitude().trim());
                 googleMap.addMarker(new MarkerOptions().position(new LatLng(latitude,longitude)).icon(
-                        BitmapDescriptorFactory.fromResource(R.drawable.current_location_marker)
+                        BitmapDescriptorFactory.fromResource(R.drawable.oval_9_copy_2_3x)
                 ).title(event.getEvent_name()));
             }
         }
