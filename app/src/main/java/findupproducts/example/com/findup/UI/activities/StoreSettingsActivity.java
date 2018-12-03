@@ -61,7 +61,8 @@ public class StoreSettingsActivity extends AppCompatActivity implements View.OnC
                 break;
 
             case R.id.btn_storeCurrency:
-                startActivity(new Intent(StoreSettingsActivity.this, CurrencyActivity.class));
+                startActivity(new Intent(StoreSettingsActivity.this, CurrencyActivity.class)
+                .putExtra("type", 1));
                 break;
 
             case R.id.btn_storeNotifications:

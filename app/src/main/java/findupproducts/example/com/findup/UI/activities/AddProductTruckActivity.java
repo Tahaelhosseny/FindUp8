@@ -45,7 +45,6 @@ public class AddProductTruckActivity extends AppCompatActivity {
         Log.e("MyData", ""+ isCraft);
 
         btn_addProductBack = findViewById(R.id.btn_addProductBack);
-
         addProductLayout = findViewById(R.id.addProductLayout);
         recyclerTruckProducts = findViewById(R.id.recyclerTruckProducts);
         btn_submit = findViewById(R.id.btn_submit);

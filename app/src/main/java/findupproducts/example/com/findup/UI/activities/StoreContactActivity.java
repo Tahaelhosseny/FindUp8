@@ -1,11 +1,13 @@
 package findupproducts.example.com.findup.UI.activities;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -36,6 +38,7 @@ import findupproducts.example.com.findup.Helper.Remote.ResponseModel.StoresRespo
 import findupproducts.example.com.findup.Helper.SharedPrefManger;
 import findupproducts.example.com.findup.Helper.UI_Utility;
 import findupproducts.example.com.findup.R;
+import findupproducts.example.com.findup.models.AddProduct;
 import findupproducts.example.com.findup.models.City;
 import findupproducts.example.com.findup.models.Country;
 import findupproducts.example.com.findup.models.CreateStore;
@@ -55,11 +58,12 @@ import static findupproducts.example.com.findup.UI.activities.StoreInformationAc
 
 public class StoreContactActivity extends AppCompatActivity {
 
+    private final static int PICK_COUNTRY = 2;
+    private final static int PICK_CITY = 3;
     RadioGroup radioLocation;
     RadioButton radioShowCity;
-    EditText editText_website, editText_instagram, editText_twitter, editText_facebook, editText_mobile, editText_password,editText_email;
-    AutoCompleteTextView editText_country , editText_city;
-    int countryId = 0;
+    EditText editText_country , editText_city, editText_website, editText_instagram, editText_twitter, editText_facebook, editText_mobile, editText_password,editText_email;
+    int countryId = -1;
     int cityId = 0;
     private String phoneKey = "";
 
@@ -69,7 +73,28 @@ public class StoreContactActivity extends AppCompatActivity {
         setContentView(R.layout.activity_store_contact);
 
         editText_country = findViewById(R.id.editText_country);
+        editText_country.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivityForResult(new Intent(StoreContactActivity.this, CurrencyActivity.class)
+                        .putExtra("type", 2)
+                        ,PICK_COUNTRY);
+            }
+        });
         editText_city = findViewById(R.id.editText_city);
+        editText_city.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (countryId == -1)
+                startActivityForResult(new Intent(StoreContactActivity.this, CurrencyActivity.class)
+                        .putExtra("type", 3)
+                        .putExtra("country_id", countryId)
+                        , PICK_CITY);
+                else
+                    Toast.makeText(StoreContactActivity.this, "Choose Country First", Toast.LENGTH_LONG).show();
+
+            }
+        });
         editText_mobile = findViewById(R.id.editText_mobile);
         editText_email = findViewById(R.id.editText_email);
         editText_password = findViewById(R.id.editText_password);
@@ -123,7 +148,7 @@ public class StoreContactActivity extends AppCompatActivity {
             }
         });
 
-        loadCountries();
+        //loadCountries();
     }
 
     private void saveStore(){
@@ -291,22 +316,22 @@ public class StoreContactActivity extends AppCompatActivity {
             countries[i] = createStore.getCounriesList().get(i).getName_en();
 
         ArrayAdapter arrayAdapter= new ArrayAdapter<>(StoreContactActivity.this, android.R.layout.simple_dropdown_item_1line, countries);
-        editText_country.setAdapter(arrayAdapter);
+        //editText_country.setAdapter(arrayAdapter);
         editText_country.setInputType(0);
 
         editText_country.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                editText_country.showDropDown();
+                //editText_country.showDropDown();
             }
         });
 
-        editText_country.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        /*editText_country.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                showCities(parent.getItemAtPosition(position).toString());
+                //showCities(parent.getItemAtPosition(position).toString());
             }
-        });
+        });*/
     }
 
     private void showCities(String s) {
@@ -326,7 +351,7 @@ public class StoreContactActivity extends AppCompatActivity {
                 String[] cities = new String[response.body().getData().size()];
                 for (int i = 0; i < response.body().getData().size(); i++)
                     cities[i] = response.body().getData().get(i).getName_en();
-                ArrayAdapter arrayAdapter= new ArrayAdapter<>(StoreContactActivity.this, android.R.layout.simple_dropdown_item_1line, cities);
+                /*ArrayAdapter arrayAdapter= new ArrayAdapter<>(StoreContactActivity.this, android.R.layout.simple_dropdown_item_1line, cities);
                 editText_city.setAdapter(arrayAdapter);
                 editText_city.setInputType(0);
 
@@ -347,7 +372,7 @@ public class StoreContactActivity extends AppCompatActivity {
                         if (hasFocus)
                             editText_city.showDropDown();
                     }
-                });
+                });*/
             }
 
             @Override
@@ -355,5 +380,24 @@ public class StoreContactActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == Activity.RESULT_OK && data != null){
+            switch(requestCode) {
+                case PICK_COUNTRY: {
+                    countryId = data.getIntExtra("country_id", -1);
+                    editText_country.setText(data.getStringExtra("country_name"));
+                    break;
+                }
+                case PICK_CITY: {
+                    cityId = data.getIntExtra("city_id", -1);
+                    editText_city.setText(data.getStringExtra("city_name"));
+                    break;
+                }
+            }
+        }
     }
 }

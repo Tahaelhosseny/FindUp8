@@ -116,7 +116,7 @@ public class StoreInformationActivity extends AppCompatActivity {
             }
         });
 
-        initiateCountries();
+        //initiateCountries();
     }
 
     @Override
