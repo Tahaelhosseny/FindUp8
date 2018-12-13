@@ -70,7 +70,7 @@
     <string name="add_product">Add Products</string>
     <string name="don_t_have_account_create_one">Don\'t have Account..Create one</string>
     <string name="login">Login</string>
-    <string name="forget_password">Forget Password</string>
+    <string name="forget_password">    Forget Password    </string>
     <string name="password">Password</string>
     <string name="new_password">New password</string>
     <string name="new_password_again">New password again</string>
