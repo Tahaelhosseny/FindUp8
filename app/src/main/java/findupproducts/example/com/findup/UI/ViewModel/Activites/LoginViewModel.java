@@ -25,6 +25,7 @@ import findupproducts.example.com.findup.Helper.SharedPrefManger;
 import findupproducts.example.com.findup.Helper.UI_Utility;
 import findupproducts.example.com.findup.UI.activities.MainActivity;
 import findupproducts.example.com.findup.UI.activities.MainStoreActivity;
+import findupproducts.example.com.findup.UI.activities.VerifyCodeActivity;
 import findupproducts.example.com.findup.models.StoreSetting;
 import findupproducts.example.com.findup.models.User;
 import findupproducts.example.com.findup.models.UserSetting;
@@ -57,7 +58,11 @@ public class LoginViewModel extends Observable {
                     LoginStoreAccepted(response.body().getUser_data().get(0), password);
                     saveStoreSetting(response.body().getUser_data().get(0).getId());
                     mContext.startActivity(new Intent(mContext, MainStoreActivity.class));
-                } else {
+                }else if(response.body().getSuccess() == 0 && response.body().getError_msg().equals("Account not found") )
+                {
+                    mContext.startActivity(new Intent(mContext , VerifyCodeActivity.class).putExtra("email" , phone));
+                }
+                else {
                     Toast.makeText(mContext, "phone or password are not correct", Toast.LENGTH_SHORT).show();
                 }
                 Log.e("url",call.request().url().toString());

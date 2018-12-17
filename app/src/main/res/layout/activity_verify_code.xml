@@ -12,7 +12,7 @@
             name="presenter"
             type="findupproducts.example.com.findup.UI.Presenter.Activities.VerifyResetPassPresenter"/>
     </data>
-<android.support.constraint.ConstraintLayout
+<RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
@@ -20,7 +20,7 @@
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar_verify_code"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="18dp"
         android:background="@color/colorWhite"
@@ -53,12 +53,10 @@
         android:id="@+id/pic_account"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_marginBottom="16dp"
         android:layout_marginLeft="34dp"
         android:layout_marginStart="34dp"
-        app:srcCompat="@drawable/group_3"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar_verify_code" />
+        android:layout_below="@+id/toolbar_verify_code"
+        app:srcCompat="@drawable/group_3" />
 
 
     <TextView
@@ -70,126 +68,129 @@
         android:text="Please put the code sent to"
         android:textAlignment="center"
         android:textColor="@color/colorWhiteGrey"
-        android:textSize="23sp"
-        app:layout_constraintStart_toStartOf="@+id/pic_account"
-        app:layout_constraintTop_toBottomOf="@+id/pic_account" />
+        android:textSize="20sp"
+        android:layout_marginLeft="34dp"
+        android:layout_below="@+id/pic_account"/>
 
     <TextView
         android:id="@+id/txtNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginLeft="34dp"
+        android:layout_below="@+id/textView"
+        android:textColor="@color/colorBlack"
         android:fontFamily="@font/sfcompactdisplay_semibold"
         android:hint="ex@example.com"
         android:textAlignment="center"
-        android:textColor="@color/colorBlack"
-        android:textSize="20sp"
+        android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/textView"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-    <com.santalu.maskedittext.MaskEditText
-        android:id="@+id/editText_stDigit"
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:maxLength="1"
-        android:layout_marginTop="26dp"
-        android:digits="0123456789"
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
         android:gravity="center"
-        android:inputType="numberDecimal"
-        android:shadowColor="@color/colorBlack"
-        android:textColor="@color/colorBlack"
-        android:textColorHighlight="@color/colorWhiteGrey"
-        android:textColorLink="@color/colorWhiteGrey"
-        android:textCursorDrawable="@drawable/color_black"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:theme="@style/MyEditText"
-        app:layout_constraintEnd_toStartOf="@+id/editText_ndDigit"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_chainStyle="spread"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtNumber"
-        app:met_mask="#" />
+        android:id="@+id/codelay"
+        android:layout_marginLeft="34dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/txtNumber"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="match_parent">
+            <com.santalu.maskedittext.MaskEditText
+                android:id="@+id/editText_stDigit"
+                android:layout_width="40dp"
+                android:layout_height="60dp"
+                android:maxLength="1"
+                android:digits="0123456789"
+                android:gravity="center"
+                android:inputType="numberDecimal"
+                android:shadowColor="@color/colorBlack"
+                android:textColor="@color/colorBlack"
+                android:textColorHighlight="@color/colorWhiteGrey"
+                android:textColorLink="@color/colorWhiteGrey"
+                android:textCursorDrawable="@drawable/color_black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:theme="@style/MyEditText"
+                app:met_mask="#" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="match_parent">
+            <com.santalu.maskedittext.MaskEditText
+                android:id="@+id/editText_ndDigit"
+                android:maxLength="1"
+                android:layout_width="40dp"
+                android:layout_height="60dp"
+                android:digits="0123456789"
+                android:gravity="center"
+                android:inputType="numberDecimal"
+                android:shadowColor="@color/colorBlack"
+                android:textColor="@color/colorBlack"
+                android:textColorHighlight="@color/colorWhiteGrey"
+                android:textColorLink="@color/colorWhiteGrey"
+                android:textCursorDrawable="@drawable/color_black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:theme="@style/MyEditText"
+                app:met_mask="#" />
 
-    <com.santalu.maskedittext.MaskEditText
-        android:id="@+id/editText_ndDigit"
-        android:maxLength="1"
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="match_parent">
+            <com.santalu.maskedittext.MaskEditText
+                android:id="@+id/editText_rdDigit"
+                android:layout_width="40dp"
+                android:layout_height="60dp"
+                android:maxLength="1"
+                android:digits="0123456789"
+                android:gravity="center"
+                android:inputType="numberDecimal"
+                android:shadowColor="@color/colorBlack"
+                android:textColor="@color/colorBlack"
+                android:textColorHighlight="@color/colorWhiteGrey"
+                android:textColorLink="@color/colorWhiteGrey"
+                android:textCursorDrawable="@drawable/color_black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:theme="@style/MyEditText"
+                app:met_mask="#" />
 
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="40dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="26dp"
-        android:digits="0123456789"
-        android:gravity="center"
-        android:inputType="numberDecimal"
-        android:shadowColor="@color/colorBlack"
-        android:textColor="@color/colorBlack"
-        android:textColorHighlight="@color/colorWhiteGrey"
-        android:textColorLink="@color/colorWhiteGrey"
-        android:textCursorDrawable="@drawable/color_black"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:theme="@style/MyEditText"
-        app:layout_constraintEnd_toStartOf="@+id/editText_rdDigit"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_chainStyle="spread"
-        app:layout_constraintStart_toEndOf="@+id/editText_stDigit"
-        app:layout_constraintTop_toBottomOf="@+id/txtNumber"
-        app:met_mask="#" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="match_parent">
+            <com.santalu.maskedittext.MaskEditText
+                android:id="@+id/editText_thDigit"
+                android:layout_width="40dp"
+                android:layout_height="60dp"
+                android:digits="0123456789"
+                android:gravity="center"
+                android:maxLength="1"
+                android:inputType="numberDecimal"
+                android:shadowColor="@color/colorBlack"
+                android:textColor="@color/colorBlack"
+                android:textColorHighlight="@color/colorWhiteGrey"
+                android:textColorLink="@color/colorWhiteGrey"
+                android:textCursorDrawable="@drawable/color_black"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:theme="@style/MyEditText"
+                app:met_mask="#" />
 
-    <com.santalu.maskedittext.MaskEditText
-        android:id="@+id/editText_rdDigit"
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="40dp"
-        android:maxLength="1"
+        </LinearLayout>
+    </LinearLayout>
 
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="26dp"
-        android:digits="0123456789"
-        android:gravity="center"
-        android:inputType="numberDecimal"
-        android:shadowColor="@color/colorBlack"
-        android:textColor="@color/colorBlack"
-        android:textColorHighlight="@color/colorWhiteGrey"
-        android:textColorLink="@color/colorWhiteGrey"
-        android:textCursorDrawable="@drawable/color_black"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:theme="@style/MyEditText"
-        app:layout_constraintEnd_toStartOf="@+id/editText_thDigit"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_chainStyle="spread"
-        app:layout_constraintStart_toEndOf="@+id/editText_ndDigit"
-        app:layout_constraintTop_toBottomOf="@+id/txtNumber"
-        app:met_mask="#" />
 
-    <com.santalu.maskedittext.MaskEditText
-        android:id="@+id/editText_thDigit"
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="40dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="26dp"
-        android:digits="0123456789"
-        android:gravity="center"
-       android:maxLength="1"
-    android:inputType="numberDecimal"
-        android:shadowColor="@color/colorBlack"
-        android:textColor="@color/colorBlack"
-        android:textColorHighlight="@color/colorWhiteGrey"
-        android:textColorLink="@color/colorWhiteGrey"
-        android:textCursorDrawable="@drawable/color_black"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:theme="@style/MyEditText"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_chainStyle="spread"
-        app:layout_constraintStart_toEndOf="@+id/editText_rdDigit"
-        app:layout_constraintTop_toBottomOf="@+id/txtNumber"
-        app:met_mask="#" />
+
 
     <TextView
         android:id="@+id/timer"
@@ -198,47 +199,47 @@
         android:layout_marginTop="20dp"
         android:fontFamily="@font/sfcompactdisplay_semibold"
         android:textAlignment="center"
+        android:text="00:00"
+        android:layout_centerInParent="true"
+        android:layout_below="@+id/codelay"
+        android:layout_marginLeft="34dp"
         android:textColor="@color/colorWhiteGrey"
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="@id/editText_stDigit"
-        app:layout_constraintTop_toBottomOf="@+id/editText_thDigit" />
+        android:textSize="24sp" />
 
     <Button
         android:id="@+id/btn_submit_check_code"
         android:layout_width="125dp"
+        android:layout_below="@+id/codelay"
         android:layout_height="46dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/bg_button_rounded_null"
         android:text="Check Code"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="34dp"
         android:visibility="gone"
         android:onClick="@{(v)->presenter.checkVerifyResetCode()}"
         android:textAllCaps="false"
         android:textColor="@color/colorAccent"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/timer" />
+        />
 
-    <Button
+    <TextView
         android:id="@+id/btn_resend"
-        android:layout_width="125dp"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
         android:layout_marginEnd="24dp"
         android:layout_marginStart="24dp"
+        android:layout_below="@+id/timer"
         android:layout_marginTop="16dp"
         android:background="@drawable/bg_button_rounded_null"
-        android:onClick="@{(v)->presenter.resendCodeAgain()}"
         android:text="Resend again"
         android:textAllCaps="false"
         android:textColor="@color/colorAccent"
         android:textSize="23sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_submit_check_code" />
+        android:textStyle="bold"/>
 
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>
 </layout>

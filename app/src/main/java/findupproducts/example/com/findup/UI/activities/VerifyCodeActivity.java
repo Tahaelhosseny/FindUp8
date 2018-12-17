@@ -1,5 +1,6 @@
 package findupproducts.example.com.findup.UI.activities;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
@@ -13,19 +14,29 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.JsonObject;
 import com.santalu.maskedittext.MaskEditText;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import findupproducts.example.com.findup.R;
 import findupproducts.example.com.findup.UI.Presenter.Activities.VerifyResetPassPresenter;
 import findupproducts.example.com.findup.UI.ViewModel.Activites.VerifyResetPassCodeViewModel;
 import findupproducts.example.com.findup.databinding.ActivityVerifyCodeBinding;
+import findupproducts.example.com.findup.netHelper.MakeRequest;
+import findupproducts.example.com.findup.netHelper.OnCancelRetry;
+import findupproducts.example.com.findup.netHelper.VolleyCallback;
 
 public class VerifyCodeActivity extends AppCompatActivity {
     ActivityVerifyCodeBinding activityVerifyCodeBinding;
     VerifyResetPassCodeViewModel verifyResetPassCodeViewModel;
-    public int counter=30;
-    TextView txtNumber, txtTimer;
-    Button btnBack, btnResend , btnCheckCode;
+    public int counter=60;
+    TextView txtNumber, txtTimer , btnResend;
+    Button btnBack , btnCheckCode;
     MaskEditText editTextSt, editTextNd, editTextRd, editTextTh;
 
     @Override
@@ -36,18 +47,6 @@ public class VerifyCodeActivity extends AppCompatActivity {
         activityVerifyCodeBinding.setVerifyCode(verifyResetPassCodeViewModel);
         String phone = getIntent().getStringExtra("email");
         activityVerifyCodeBinding.txtNumber.setText(phone);
-        activityVerifyCodeBinding.setPresenter(new VerifyResetPassPresenter() {
-            @Override
-            public void checkVerifyResetCode() {
-
-            }
-
-            @Override
-            public void resendCodeAgain() {
-                verifyResetPassCodeViewModel.resend_code(phone);
-
-            }
-        });
         btnCheckCode = findViewById(R.id.btn_submit_check_code);
         txtNumber=findViewById(R.id.txtNumber);
         btnBack=findViewById(R.id.btn_verifyBack);
@@ -94,6 +93,7 @@ public class VerifyCodeActivity extends AppCompatActivity {
                 editTextTh.setText("");
             }
         });
+
 
         editTextSt.addTextChangedListener(new TextWatcher() {
 
@@ -148,12 +148,14 @@ public class VerifyCodeActivity extends AppCompatActivity {
 
             }
 
-            public void afterTextChanged(Editable s) {
+            public void afterTextChanged(Editable s)
+            {
                 // TODO Auto-generated method stub
             }
 
         });
-        editTextTh.addTextChangedListener(new TextWatcher() {
+        editTextTh.addTextChangedListener(new TextWatcher()
+        {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
@@ -170,23 +172,28 @@ public class VerifyCodeActivity extends AppCompatActivity {
             }
 
             @Override
-            public void afterTextChanged(Editable editable) {
+            public void afterTextChanged(Editable editable)
+            {
 
             }
         });
-        new CountDownTimer(500000, 1000){
 
-            @Override
-            public void onTick(long l) {
-                txtTimer.setText(String.valueOf(counter));
-                counter--;
-            }
 
+
+
+        btnResend.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onFinish() {
-                //Toast.makeText(VerifyCodeActivity.this, "Timer finished!!!!", Toast.LENGTH_SHORT).show();
+            public void onClick(View v)
+            {
+                counter = 60 ;
+                btnResend.setVisibility(View.GONE);
+               sendCode(phone , false);
             }
-        }.start();
+        });
+
+
+        sendCode(phone , true);
     }
 
     @Override
@@ -194,5 +201,62 @@ public class VerifyCodeActivity extends AppCompatActivity {
         super.onBackPressed();
         startActivity(new Intent(VerifyCodeActivity.this, LoginActivity.class));
         finish();
+    }
+
+
+
+
+    void sendCode(String Phone , Boolean flag)
+    {
+        String Url = "http://findupproducts.com/findup_api/reg_login?tag=resend_code&email="+Phone+"&HashSecure=FindUpSecure_@@01072018" ;
+        Activity activityApi = this ;
+        Map<String , String> map = new HashMap<String, String>();
+        MakeRequest makeRequest = new MakeRequest(  Url ,"0" , map , activityApi ,"resend_code" ,true);
+        makeRequest.request(new VolleyCallback() {
+            @Override
+            public void onSuccess(Map<String, String> result)
+            {
+                try {
+                    JSONObject jsonObject = new JSONObject(result.get("res").toString());
+                    if(jsonObject.getInt("success") == 1)
+                    {
+
+                        new CountDownTimer(61000, 1000){
+
+                            @Override
+                            public void onTick(long l) {
+                                txtTimer.setText(String.valueOf(counter));
+                                counter--;
+                            }
+
+                            @Override
+                            public void onFinish()
+                            {
+
+                                if(flag)
+                                    btnResend.setVisibility(View.VISIBLE);
+                                else finish();
+                            }
+                        }.start();
+
+
+                    }else
+                        {
+
+                        }
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new OnCancelRetry() {
+            @Override
+            public void OnCacelRetry()
+            {
+                Toast.makeText(getApplicationContext(),"Failed Try Again Later" , Toast.LENGTH_LONG).show();
+
+            }
+        });
     }
 }

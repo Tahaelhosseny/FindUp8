@@ -8,7 +8,6 @@
             <variable
                 name="loginview"
                 type="findupproducts.example.com.findup.UI.ViewModel.Activites.LoginViewModel"/>
-
             <variable
                 name="presenter"
                 type="findupproducts.example.com.findup.UI.Presenter.Activities.LoginPresenter"/>
@@ -27,7 +26,6 @@
                 android:layout_height="match_parent"
                 android:background="@color/colorWhite"
                 tools:context=".UI.activities.LoginActivity">
-
 
                 <android.support.v7.widget.Toolbar
                     android:id="@+id/toolbar_login"
