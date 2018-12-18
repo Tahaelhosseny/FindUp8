@@ -48,12 +48,12 @@ public class LoginViewModel extends Observable {
             @Override
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                 Log.e("MyData", new Gson().toJson(response.body()));
-                if (response.body().getSuccess() == 1 && response.body().getData().get(0).getLogin_type().equals("User")) {
+                if (response.body().getSuccess() == 1 && response.body().getData().get(0).getLogin_type().equals("User"))
+                {
                     User user = response.body().getUser_data().get(0);
                     LoginAccepted(user , phone , password);
                     saveUserSettings(user.getId());
                     mContext.startActivity(new Intent(mContext, MainActivity.class));
-
                 } else if (response.body().getSuccess() == 1 && response.body().getData().get(0).getLogin_type().equals("Store")) {
                     LoginStoreAccepted(response.body().getUser_data().get(0), password);
                     saveStoreSetting(response.body().getUser_data().get(0).getId());

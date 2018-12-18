@@ -10,10 +10,12 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
+import findupproducts.example.com.findup.Helper.SharedPrefManger;
 import findupproducts.example.com.findup.UI.Presenter.Activities.LoginPresenter;
 import findupproducts.example.com.findup.UI.ViewModel.Activites.LoginViewModel;
 import findupproducts.example.com.findup.databinding.ActivityLoginBinding;
 import findupproducts.example.com.findup.R;
+import findupproducts.example.com.findup.models.Store;
 
 public class LoginActivity extends AppCompatActivity {
     ActivityLoginBinding binding;
@@ -21,11 +23,23 @@ public class LoginActivity extends AppCompatActivity {
     String phoneKey = "";
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         loginViewModel = new LoginViewModel(this);
         binding= DataBindingUtil.setContentView(this,R.layout.activity_login);
         binding.setLoginview(loginViewModel);
+
+
+        if(SharedPrefManger.isIsLoggedIn())
+        {
+            if(SharedPrefManger.isIsLoggedInAsCustomer())
+                startActivity(new Intent(this , MainActivity.class));
+            else
+                startActivity(new Intent(this , Store.class));
+        }
+
+
         binding.setPresenter(new LoginPresenter() {
             @Override
             public void LoginLoadData() {
