@@ -1,5 +1,6 @@
 package findupproducts.example.com.findup.UI.ViewModel.Activites;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -35,8 +36,10 @@ import retrofit2.Response;
 
 public class LoginViewModel extends Observable {
     private Context mContext;
-    public LoginViewModel(Context mContext) {
+    private Activity activity;
+    public LoginViewModel(Activity mContext) {
         this.mContext = mContext;
+        activity = mContext ;
     }
     public void sendLoginRequest(String phone, final String password){
 
@@ -54,11 +57,12 @@ public class LoginViewModel extends Observable {
                     LoginAccepted(user , phone , password);
                     saveUserSettings(user.getId());
                     mContext.startActivity(new Intent(mContext, MainActivity.class));
+                    activity.finish();
                 } else if (response.body().getSuccess() == 1 && response.body().getData().get(0).getLogin_type().equals("Store")) {
                     LoginStoreAccepted(response.body().getUser_data().get(0), password);
                     saveStoreSetting(response.body().getUser_data().get(0).getId());
                     mContext.startActivity(new Intent(mContext, MainStoreActivity.class));
-                }else if(response.body().getSuccess() == 0 && response.body().getError_msg().equals("Account not found") )
+                }else if(response.body().getSuccess() == 0 && response.body().getError_msg().equals("Account not verified") )
                 {
                     mContext.startActivity(new Intent(mContext , VerifyCodeActivity.class).putExtra("email" , phone));
                 }

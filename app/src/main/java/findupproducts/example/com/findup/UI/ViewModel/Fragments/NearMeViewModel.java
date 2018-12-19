@@ -27,17 +27,19 @@ import io.reactivex.Flowable;
 public class NearMeViewModel extends java.util.Observable {
     private Context mContext;
     NearMeAdapter adapter;
+    Activity activity ;
     List<Store> all_stores = new ArrayList<>();
     private TextView no_stores_txt;
 
-    public NearMeViewModel(Context mContext, TextView no_stores_txt) {
+    public NearMeViewModel(Activity mContext, TextView no_stores_txt) {
         this.mContext = mContext;
+        this.activity = mContext;
         this.no_stores_txt = no_stores_txt;
     }
 
     public void InitRecyclerView(Bundle bundle, RecyclerView recyclerView) {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        adapter = new NearMeAdapter(mContext, new ArrayList<>());
+        adapter = new NearMeAdapter(activity, new ArrayList<>());
 
         LoadStoresFromDatabase(adapter);
         recyclerView.setAdapter(adapter);

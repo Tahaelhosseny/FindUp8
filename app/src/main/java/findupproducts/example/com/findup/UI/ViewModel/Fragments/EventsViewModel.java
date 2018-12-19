@@ -26,12 +26,12 @@ import io.reactivex.Flowable;
 import static findupproducts.example.com.findup.UI.fragments.MainFragment.eventType;
 
 public class EventsViewModel extends Observable {
-    Context mContext;
+    Activity mContext;
     List<Event> all_events = new ArrayList<>();
     TextView no_events_txt;
     EventsAdapter adapter;
 
-    public EventsViewModel(Context mContext, TextView no_events_txt) {
+    public EventsViewModel(Activity mContext, TextView no_events_txt) {
         this.mContext = mContext;
         this.no_events_txt = no_events_txt;
     }

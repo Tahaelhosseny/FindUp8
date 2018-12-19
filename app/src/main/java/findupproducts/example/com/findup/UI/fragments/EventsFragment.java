@@ -31,12 +31,11 @@ public class EventsFragment extends Fragment {
     EventsViewModel eventsViewModel;
     FragmentEventsBinding binding;
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_events, container, false);//11842 H
         View view = binding.getRoot();
         //here data must be an instance of the class MarsDataProvider
-        eventsViewModel = new EventsViewModel(view.getContext(), binding.noEventsFound);
+        eventsViewModel = new EventsViewModel(getActivity(), binding.noEventsFound);
         binding.setEvents(eventsViewModel);
 
         String behavior;

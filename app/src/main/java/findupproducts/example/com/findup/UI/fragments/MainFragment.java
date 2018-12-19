@@ -31,16 +31,14 @@ import static findupproducts.example.com.findup.UI.activities.MainActivity.filte
 
 public class MainFragment extends Fragment {
     public static String eventType = "MainEvents";
+    NearMeFragment nearMeFragment;
 
     public MainFragment() {
-        // Required empty public constructor
     }
 
-    NearMeFragment nearMeFragment;
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+    {
         return inflater.inflate(R.layout.fragment_main, container, false);
     }
 

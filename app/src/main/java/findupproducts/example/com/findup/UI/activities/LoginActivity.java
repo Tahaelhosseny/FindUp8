@@ -34,9 +34,15 @@ public class LoginActivity extends AppCompatActivity {
         if(SharedPrefManger.isIsLoggedIn())
         {
             if(SharedPrefManger.isIsLoggedInAsCustomer())
+            {
                 startActivity(new Intent(this , MainActivity.class));
+                finish();
+            }
             else
+            {
                 startActivity(new Intent(this , Store.class));
+                finish();
+            }
         }
 
 

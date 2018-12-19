@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="180dp"
     android:layout_height="wrap_content"
@@ -10,16 +11,12 @@
     android:foreground="?android:attr/selectableItemBackground"
     android:layout_margin="10dp">
 
-    <android.support.constraint.ConstraintLayout
+    <RelativeLayout
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:background="@drawable/near_me_item_bg"
-        app:layout_constraintBottom_toBottomOf="@+id/nearItemImg"
-        app:layout_constraintEnd_toEndOf="@+id/nearItemReview"
-        app:layout_constraintStart_toEndOf="@+id/nearItemReview"
-        app:layout_constraintTop_toBottomOf="@+id/nearItemImg">
+        android:background="@drawable/near_me_item_bg">
 
         <ImageView
             android:id="@+id/nearItemImg"
@@ -30,10 +27,6 @@
             android:minHeight="100dp"
             android:minWidth="180dp"
             app:srcCompat="@color/material_color_grey_500"
-            app:layout_constraintBottom_toTopOf="@+id/nearItemName"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             android:contentDescription="@string/near" />
 
 
@@ -45,28 +38,23 @@
             android:layout_marginStart="5dp"
             android:fontFamily="@font/sfcompactdisplay_semibold"
             android:maxLength="30"
+            android:layout_below="@+id/nearItemImg"
             android:maxLines="1"
             android:text="@string/food"
             android:textColor="@color/material_color_black"
-            android:textSize="22sp"
-            app:layout_constraintBottom_toTopOf="@+id/nearItemDistance"
-            app:layout_constraintStart_toStartOf="@+id/nearItemImg"
-            app:layout_constraintTop_toBottomOf="@+id/nearItemImg" />
+            android:textSize="22sp" />
 
         <TextView
             android:id="@+id/nearItemDistance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
+            android:layout_below="@+id/nearItemName"
             android:layout_marginStart="6dp"
             android:fontFamily="@font/sfcompactdisplay_semibold"
             android:text="@string/_16_8km"
             android:textColor="@color/material_color_black"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/nearItemName" />
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/nearItemTags"
@@ -77,42 +65,39 @@
             android:fontFamily="@font/sfcompactdisplay_regular"
             android:maxLength="30"
             android:maxLines="1"
+            android:layout_below="@+id/nearItemDistance"
             android:text="@string/cafe"
-            android:textSize="12sp"
-            app:layout_constraintBottom_toTopOf="@+id/nearItemReview"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/nearItemDistance" />
+            android:textSize="12sp" />
 
         <TextView
             android:id="@+id/nearItemReview"
+            android:layout_below="@+id/nearItemTags"
             android:layout_width="wrap_content"
+            android:layout_toRightOf="@+id/star"
             android:layout_height="wrap_content"
             android:fontFamily="@font/sfcompactdisplay_ultralight"
             android:text="@string/_5_0"
             android:textSize="12sp"
-            app:layout_constraintStart_toEndOf="@+id/star"
-            app:layout_constraintTop_toBottomOf="@+id/nearItemTags" />
+            />
 
         <ImageView
             android:id="@+id/love"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginStart="8dp"
+            android:padding="12dp"
             android:contentDescription="@string/love"
             android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/fav" />
 
         <com.like.LikeButton
             android:id="@+id/star_button"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_width="50dp"
+            android:visibility="gone"
+            android:layout_alignParentRight="true"
+            android:layout_height="50dp"
+            android:padding="12dp"
             android:elevation="@dimen/cardview_default_elevation"
             app:circle_end_color="@color/colorWhite"
             app:circle_start_color="@color/material_color_grey_700"
@@ -126,16 +111,22 @@
             app:unlike_drawable="@drawable/heart_black_3x" />
 
         <ImageView
+            android:layout_width="40dp"
+            android:id="@+id/fav"
+            android:layout_alignParentRight="true"
+            android:padding="10dp"
+            android:src="@drawable/like_hert"
+            android:layout_height="40dp" />
+
+        <ImageView
             android:id="@+id/star"
             android:layout_width="12sp"
+            android:layout_below="@+id/nearItemTags"
             android:layout_height="12sp"
             android:layout_marginStart="8dp"
             android:contentDescription="@string/star"
-            app:layout_constraintBottom_toBottomOf="@+id/nearItemReview"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/nearItemReview"
             app:srcCompat="@drawable/star_off" />
 
-    </android.support.constraint.ConstraintLayout>
+    </RelativeLayout>
 
 </android.support.v7.widget.CardView>
