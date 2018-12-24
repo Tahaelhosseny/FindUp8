@@ -20,6 +20,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.f2prateek.rx.preferences2.Preference;
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
@@ -27,6 +28,7 @@ import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.List;
@@ -106,39 +108,64 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     }
 
     @Override
-    public void onMapReady(GoogleMap googleMap) {
+    public void onMapReady(GoogleMap googleMap)
+    {
         {
-            CurrentLocation currentLocation = new CurrentLocation();
-            Utility.UpdateCurrentLocation((Activity) getActivity(), getActivity());
+            LatLngBounds.Builder builder = new LatLngBounds.Builder();
 
-            SharedPrefManger sharedPrefManger = new SharedPrefManger(getActivity());
-            Preference<Float> Latitude = sharedPrefManger.getLatitude();
-            Latitude.asObservable().subscribe(val -> LocationUtility.LatitudeToCurrentLocationModel(val, currentLocation));
-            Preference<Float> Longitude = sharedPrefManger.getLongitude();
-            Longitude.asObservable().subscribe(val -> LocationUtility.LongitudeToCurrentLocationModel(val, currentLocation));
 
-            LatLng sydney = new LatLng(currentLocation.getLocation().latitude, currentLocation.getLocation().longitude);
-            googleMap.addMarker(new MarkerOptions().position(sydney).icon(
-                    BitmapDescriptorFactory.fromResource(R.drawable.current_location_marker)
-            ).title("Your Location"));
-            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(sydney.latitude + ((sydney.latitude * 14) / 100000), sydney.longitude), 14));
+
+
+
+
+        //    CurrentLocation currentLocation = new CurrentLocation();
+         //   Utility.UpdateCurrentLocation((Activity) getActivity(), getActivity());
+          //  SharedPrefManger sharedPrefManger = new SharedPrefManger(getActivity());
+            //Preference<Float> Latitude = sharedPrefManger.getLatitude();
+            //Latitude.asObservable().subscribe(val -> LocationUtility.LatitudeToCurrentLocationModel(val, currentLocation));
+           // Preference<Float> Longitude = sharedPrefManger.getLongitude();
+           // Longitude.asObservable().subscribe(val -> LocationUtility.LongitudeToCurrentLocationModel(val, currentLocation));
+
+           // LatLng sydney = new LatLng(currentLocation.getLocation().latitude, currentLocation.getLocation().longitude);
+           // googleMap.addMarker(new MarkerOptions().position(sydney).icon(
+             //       BitmapDescriptorFactory.fromResource(R.drawable.current_location_marker)
+            //).title("Your Location"));
+          //  googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(sydney.latitude + ((sydney.latitude * 14) / 100000), sydney.longitude), 14));
             googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 
             for (Store store : filteredMapDataStore){
+
+
+
                 LatLng storeLoc = new LatLng(store.getStore_latitude(),store.getStore_longitude());
+                builder.include(storeLoc);
                 googleMap.addMarker(new MarkerOptions().position(storeLoc).icon(
                         BitmapDescriptorFactory.fromResource(R.drawable.oval_9_copy_2_3x)
                 ).title(store.getStore_name()));
 //                googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(storeLoc.latitude + ((storeLoc.latitude * 14) / 100000), storeLoc.longitude), 14));
             }
 
-            for (Event event : filteredMapDataEvent){
-                double latitude = Double.valueOf(event.getEvent_latitude());
-                double longitude = Double.valueOf(event.getEvent_longitude().trim());
-                googleMap.addMarker(new MarkerOptions().position(new LatLng(latitude,longitude)).icon(
-                        BitmapDescriptorFactory.fromResource(R.drawable.oval_9_copy_2_3x)
-                ).title(event.getEvent_name()));
+            for (Event event : filteredMapDataEvent)
+            {
+                if(event.getEvent_latitude() != null ||event.getEvent_longitude().trim() != null)
+                {
+                    float latitude = Float.valueOf(event.getEvent_latitude());
+                    float longitude = Float.valueOf(event.getEvent_longitude().trim());
+                    builder.include(new LatLng(latitude,longitude));
+
+                    googleMap.addMarker(new MarkerOptions().position(new LatLng(latitude,longitude)).icon(
+                            BitmapDescriptorFactory.fromResource(R.drawable.oval_9_copy_2_3x)
+                    ).title(event.getEvent_name()));
+                }
+
             }
+
+            LatLngBounds bounds = builder.build();
+            int padding = 0; // offset from edges of the map in pixels
+            CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, padding);
+            googleMap.moveCamera(cu);
+            googleMap.animateCamera(cu);
+
         }
     }
     @Override

@@ -54,7 +54,6 @@ public class StoreDetailsViewModel extends java.util.Observable {
                 CurrentLocation location = new CurrentLocation();
                 Preference<Float> Latitude = sharedPrefManger.getLatitude();
                 Latitude.asObservable().subscribe(latitude -> LocationUtility.LatitudeToCurrentLocationModel(latitude, location));
-
                 Preference<Float> Longitude = sharedPrefManger.getLongitude();
                 Longitude.asObservable().subscribe(longitude -> LocationUtility.LongitudeToCurrentLocationModel(longitude, location));
 
@@ -99,8 +98,8 @@ public class StoreDetailsViewModel extends java.util.Observable {
 
     public void InitTabs(CommonTabLayout tabLayout) {
         ArrayList<CustomTabEntity> mTabEntities = new ArrayList<>();
-        mTabEntities.add(new TabEntity("Information"));
-        mTabEntities.add(new TabEntity("Products"));
+        mTabEntities.add(new TabEntity("INFORMATION"));
+        mTabEntities.add(new TabEntity("PRODUCTS"));
         ArrayList<Fragment> fragmentList = new ArrayList<>();
 
 
